@@ -1,7 +1,8 @@
 <template>
-  <div v-if="showDropdown" class="status" @click="showDropdown = 'true'">
+  <div class="status" @click="showDropdown = !showDropdown">
     {{ status }}
     <TaskDropdown
+      v-if="showDropdown"
       :options="statusOptions"
       @updateOption="updateStatus"
     />

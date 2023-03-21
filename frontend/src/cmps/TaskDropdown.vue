@@ -1,7 +1,7 @@
 <template>
   <section class="task-dropdown">
-    <div v-for="(option, idx) in options" class="option"
-   @click="changeOption(option)" :key="idx">{{ option }}
+    <div v-for="(option, idx) in options" class="option" :key="idx"
+   @click="changeOption(option)">{{ option }}
     </div>
   </section>
 </template>
