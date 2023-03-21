@@ -1,15 +1,14 @@
 <template>
-  <Draggable class="smooth-dnd-draggable-wrapper">
-    <section class="group-title group-grid">
-      <div class="more" v-html="getSvg('more')"></div>
+    <section class="group-grid group-title flex align-center">
+      <div class="more sticky" v-html="getSvg('more')"></div>
       <!-- TODO color task border -->
       <div
-        class="task-border"
+        class="task-border sticky"
         :style="{ 'background-color': group.color }"
       ></div>
       <!-- TODO computed arrow for colors -->
-      <div class="arrow-down" v-html="getSvg('arrowDownB')"></div>
-      <div class="title-wrapper">
+      <div class="arrow-down sticky" v-html="getSvg('arrowDownB')"></div>
+      <div class="title-wrapper flex align-center sticky">
         <button v-show="isTitleFocused" class="color-icon btn-color"></button>
         <div
           class="title-input"
@@ -56,10 +55,9 @@
         tag="div"
         @drop="onTaskDrop($event)"
       >
-        <TaskPreview v-for="task in group.tasks" :key="task" :task="task" :labels="labels" />
+        <TaskPreview v-for="task in group.tasks" :key="task" :task="task" :cmpOrder="cmpOrder" />
       </Container>
     </section>
-  </Draggable>
 </template>
 
 <script>
@@ -69,7 +67,9 @@ import TaskPreview from "./TaskPreview.vue";
 import { utilService } from "../services/util.service";
 
 export default {
-  props: ["group"],
+  props: {
+    group: Object,
+  },
   data() {
     return {
       titleFocus: false,
@@ -81,6 +81,15 @@ export default {
         "File",
         "Status",
         "Timeline",
+      ],
+      cmpOrder: [
+        "date",
+        "text",
+        "priority",
+        "person",
+        "file",
+        "status",
+        "timeline",
       ],
     };
   },

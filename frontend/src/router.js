@@ -19,7 +19,7 @@ const routes = [
   },
   {
     path: '/board',
-    // redirect: '/boards',
+    // redirect: '/board',
     name: 'board',
     component: BoardIndex,
     children: [
