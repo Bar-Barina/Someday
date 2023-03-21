@@ -1,17 +1,15 @@
 <template>
-  <div>
-    <span class="status" @click="showDropdown = !showDropdown">{{
-      status
-    }}</span>
-    <select v-if="showDropdown" v-model="selectedStatus" @change="updateStatus">
-      <option v-for="(option , idx) in statusOptions" :key="idx" :value="status">
-        {{ option }}
-      </option>
-    </select>
+  <div v-if="showDropdown" class="status" @click="showDropdown = 'true'">
+    {{ status }}
+    <TaskDropdown
+      :options="statusOptions"
+      @updateOption="updateStatus"
+    />
   </div>
 </template>
 
 <script>
+import TaskDropdown from './TaskDropdown.vue'
 export default {
   props: {
     task: Object,
@@ -25,9 +23,10 @@ export default {
     }
   },
   methods: {
-    updateStatus() {
-      this.$emit('updateTask', this.selectedStatus)
+    updateStatus(status) {
+      this.selectedStatus = status
       this.showDropdown = false
+      this.$emit('updateTask', { ...this.task, status: status })
     },
   },
   computed: {
@@ -35,14 +34,8 @@ export default {
       return this.selectedStatus
     },
   },
-  created() {
-    console.log('islam')
+  components: {
+    TaskDropdown,
   },
 }
 </script>
-
-<style>
-.status {
-  background-color: blueviolet;
-}
-</style>
