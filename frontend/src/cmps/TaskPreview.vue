@@ -23,8 +23,8 @@
         </button>
       </div>
     </section>
-    <section class="cell2" v-for="label in labels" :key="label">
-      {{ task[label] }}
+    <section class="cell2" v-for="(cmp , idx) in cmpOrders" :key="idx">
+      <component :is="cmp" :task="task" @updateTask="updateTask"></component>
     </section>
   </Draggable>
 </template>
@@ -36,7 +36,10 @@ import { utilService } from '../services/util.service'
 
 
 export default {
-  props: ['task' , 'labels'],
+  props: {
+    cmpOrders: Array,
+    task: Object
+  },
   data() {
     return {};
   },

@@ -1,5 +1,8 @@
 .group-container {
 
+    width: 1280px;
+    margin-bottom: 20px;
+    position: relative;
 
     .sticky {
         position: sticky;
@@ -15,20 +18,20 @@
         }
     }
 
-    .group-grid.labels-grid {
-        text-align: center;
-        grid-template-columns: 40px 6px 32px 364px 980px;
-
-        .task-border {
-            border-top-left-radius: 6px;
-        }
-    }
-
     .group-content {
 
         .labels-grid {
             &>*:not(:first-child) {
                 border-top: 1px solid $clr014;
+            }
+        }
+
+        .group-grid.labels-grid {
+            text-align: center;
+            grid-template-columns: 40px 6px 32px 364px 980px;
+
+            .task-border {
+                border-top-left-radius: 6px;
             }
         }
 
