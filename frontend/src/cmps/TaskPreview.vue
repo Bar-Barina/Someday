@@ -33,6 +33,7 @@
 import { svgService } from "../services/svg.service";
 import { Container, Draggable } from "vue3-smooth-dnd";
 import { utilService } from '../services/util.service'
+import status from './status.vue'
 
 
 export default {
@@ -50,7 +51,8 @@ export default {
   },
   components: {
     Draggable,
-    Container
+    Container,
+    status
   },
 };
 </script>

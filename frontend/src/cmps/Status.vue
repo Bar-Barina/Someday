@@ -4,7 +4,7 @@
       status
     }}</span>
     <select v-if="showDropdown" v-model="selectedStatus" @change="updateStatus">
-      <option v-for="status in statusOptions" :value="status">
+      <option v-for="(option , idx) in statusOptions" :key="idx" :value="status">
         {{ option }}
       </option>
     </select>
@@ -33,9 +33,6 @@ export default {
   computed: {
     status() {
       return this.selectedStatus
-    },
-    statusOptions() {
-      return this.task.status
     },
   },
   created() {
