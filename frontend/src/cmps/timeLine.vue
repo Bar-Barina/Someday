@@ -1,7 +1,6 @@
 <template>
   <div class="demo-date-picker">
     <label class="picker-wrapper">
-      AAAAAA
       <el-date-picker
         class="hide"
         v-model="value"
