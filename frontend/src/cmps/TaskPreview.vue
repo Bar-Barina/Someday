@@ -23,7 +23,7 @@
         </button>
       </div>
     </section>
-    <section class="cell2" v-for="(cmp , idx) in cmpOrder" :key="idx">
+    <section class="cell2" v-for="(cmp , idx) in labels" :key="idx">
       <component :is="cmp" :task="task"></component>
     </section>
   </Draggable>
@@ -33,12 +33,14 @@
 import { svgService } from "../services/svg.service";
 import { Container, Draggable } from "vue3-smooth-dnd";
 import { utilService } from '../services/util.service'
-import status from './status.vue'
+import Status from './Status.vue'
+import Timeline from './Timeline.vue'
+import Date from './Date.vue'
 
 
 export default {
   props: {
-    cmpOrder: Array,
+    labels: Array,
     task: Object
   },
   data() {
@@ -52,7 +54,9 @@ export default {
   components: {
     Draggable,
     Container,
-    status
+    Status,
+    Timeline,
+    Date
   },
 };
 </script>

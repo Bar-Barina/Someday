@@ -55,7 +55,7 @@
         tag="div"
         @drop="onTaskDrop($event)"
       >
-        <TaskPreview v-for="task in group.tasks" :key="task" :task="task" :cmpOrder="cmpOrder" />
+        <TaskPreview v-for="task in group.tasks" :key="task" :task="task" :labels="labels" />
       </Container>
     </section>
 </template>
@@ -81,15 +81,6 @@ export default {
         "File",
         "Status",
         "Timeline",
-      ],
-      cmpOrder: [
-        "date",
-        "text",
-        "priority",
-        "person",
-        "file",
-        "status",
-        "timeline",
       ],
     };
   },
