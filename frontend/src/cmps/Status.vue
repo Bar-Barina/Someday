@@ -1,5 +1,5 @@
 <template>
-  <div class="status" :class="statusClass" @click="toggleModal">
+  <div class="status full-cell" :class="statusClass" @click="toggleModal">
     {{ status }}
     <TaskDropdown
       v-if="showDropdown"
