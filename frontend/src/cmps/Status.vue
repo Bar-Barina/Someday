@@ -5,7 +5,7 @@
     }}</span>
     <select v-if="showDropdown" v-model="selectedStatus" @change="updateStatus">
       <option v-for="status in statusOptions" :value="status">
-        {{ option }}
+        {{ status }}
       </option>
     </select>
   </div>
