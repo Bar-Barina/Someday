@@ -23,8 +23,8 @@
         </button>
       </div>
     </section>
-    <section class="cell2" v-for="(cmp , idx) in cmpOrders" :key="idx">
-      <component :is="cmp" :task="task" @updateTask="updateTask"></component>
+    <section class="cell2" v-for="(cmp , idx) in cmpOrder" :key="idx">
+      <component :is="cmp" :task="task"></component>
     </section>
   </Draggable>
 </template>
@@ -37,7 +37,7 @@ import { utilService } from '../services/util.service'
 
 export default {
   props: {
-    cmpOrders: Array,
+    cmpOrder: Array,
     task: Object
   },
   data() {
@@ -51,6 +51,6 @@ export default {
   components: {
     Draggable,
     Container
-  }
+  },
 };
 </script>
