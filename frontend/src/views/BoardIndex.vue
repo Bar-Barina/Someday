@@ -4,6 +4,8 @@
     <Workspace />
     <BoardHeader />
     <RouterView />
+    <!-- <BoardDetails /> -->
+    <!-- <RouterLink to="/boards/UCvas">AAAAAA</RouterLink> -->
   </section>
   <hr />
   <form @submit.prevent="addBoard()">
@@ -24,6 +26,7 @@ import SideNav from "../cmps/SideNav.vue";
 import Workspace from "../cmps/Workspace.vue";
 // import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service";
 import { boardService } from "../services/board.service.local";
+import BoardDetails from '../cmps/BoardDetails.vue'
 
 import {
   getActionRemoveBoard,
@@ -98,6 +101,7 @@ export default {
     SideNav,
     Workspace,
     BoardHeader,
+    BoardDetails
   }
 };
 </script>

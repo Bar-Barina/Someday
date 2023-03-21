@@ -1,11 +1,14 @@
 <template>
-  <section class="main-table">
-    <GroupList />
-  </section>
+  <Container orientation="vertical" @drop="onGroupDrop($event)">
+      <Draggable v-for="group in groups" :key="group">
+        <GroupPreview :group="group"></GroupPreview>
+      </Draggable>
+    </Container>
 </template>
 
 <script>
-import GroupList from './GroupList.vue'
+import { Container, Draggable } from "vue3-smooth-dnd";
+import GroupPreview from './GroupPreview.vue';
 
 export default {
   data() {
@@ -13,8 +16,17 @@ export default {
 
     }
   },
+   methods: {
+    onGroupDrop(dropResult) {
+      let scene = [...this.groups];
+      scene = utilService.applyDrag(scene, dropResult);
+      this.groups = scene;
+    },
+  },
   components: {
-    GroupList
+    GroupPreview,
+    Container,
+    Draggable
   }
 }
 </script>

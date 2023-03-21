@@ -18,21 +18,21 @@ const routes = [
     component: Home
   },
   {
-    path: '/boards',
-    redirect: '/boards/main-table',
-    name: 'boards',
+    path: '/board',
+    // redirect: '/boards',
+    name: 'board',
     component: BoardIndex,
     children: [
       {
-        path: 'main-table',
+        path: ':boardId',
         component: MainTable
       },
       {
-        path: 'kanban',
+        path: ':boardId/kanban',
         component: Kanban
       },
       {
-        path: 'dashboard',
+        path: ':boardId/dashboard',
         component: Kanban
       },
     ]

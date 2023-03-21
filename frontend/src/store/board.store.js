@@ -29,14 +29,18 @@ export function getActionAddBoardMsg(boardId) {
 
 export const boardStore = {
     state: {
-        boards: []
+        boards: [],
+        currBoard: null
     },
     getters: {
-        boards({boards}) { return boards },
+        boards({ boards }) { return boards },
     },
     mutations: {
         setBoards(state, { boards }) {
             state.boards = boards
+        },
+        setCurrBoard(state, { board }) {
+            state.currBoard = board
         },
         addBoard(state, { board }) {
             state.boards.push(board)
@@ -48,7 +52,7 @@ export const boardStore = {
         removeBoard(state, { boardId }) {
             state.boards = state.boards.filter(board => board._id !== boardId)
         },
-        addBoardMsg(state, { boardId , msg}) {
+        addBoardMsg(state, { boardId, msg }) {
             const board = state.boards.find(board => board._id === boardId)
             if (!board.msgs) board.msgs = []
             board.msgs.push(msg)
@@ -64,6 +68,11 @@ export const boardStore = {
                 console.log('boardStore: Error in addBoard', err)
                 throw err
             }
+        },
+        async getBoardById({ commit }, { boardId }) {
+            const board = await boardService.getById(boardId)
+            commit({ type: 'setCurrBoard', board })
+            return board
         },
         async updateBoard(context, { board }) {
             try {
@@ -96,7 +105,7 @@ export const boardStore = {
         async addBoardMsg(context, { boardId, txt }) {
             try {
                 const msg = await boardService.addBoardMsg(boardId, txt)
-                context.commit({type: 'addBoardMsg', boardId, msg })
+                context.commit({ type: 'addBoardMsg', boardId, msg })
             } catch (err) {
                 console.log('boardStore: Error in addBoardMsg', err)
                 throw err
