@@ -73,7 +73,6 @@ function getEmptyBoard() {
 }
 
 function saveTask(board, groupId, task) {
-    console.log('task', task)
     const boardToSave = JSON.parse(JSON.stringify(board))
     const groupIdx = boardToSave.groups.findIndex(g => g._id === groupId)
     const taskIdx = boardToSave.groups[groupIdx].tasks.findIndex(t => t.id === task.id)
@@ -100,9 +99,9 @@ function saveTask(board, groupId, task) {
 //                             side: "null",
 //                             taskTitle: "learn CSS",
 //                             person: [
-//                                 { name: "tal", color: "red" },
-//                                 { name: "bal", color: "black" },
-//                                 { name: "shal", color: "green" },
+//                                 { name: "tal", color: "red" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
+//                                 { name: "bal", color: "black" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
+//                                 { name: "shal", color: "green" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Working on it",
@@ -116,9 +115,9 @@ function saveTask(board, groupId, task) {
 //                             side: "null",
 //                             taskTitle: "learn vue",
 //                             person: [
-//                                 { name: "tal", color: "red" },
-//                                 { name: "bal", color: "black" },
-//                                 { name: "shal", color: "green" },
+//                                 { name: "tal", color: "red" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
+//                                 { name: "bal", color: "black" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
+//                                 { name: "shal", color: "green" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Stuck",
@@ -132,9 +131,9 @@ function saveTask(board, groupId, task) {
 //                             side: "null",
 //                             taskTitle: "learn js",
 //                             person: [
-//                                 { name: "tal", color: "red" },
-//                                 { name: "bal", color: "black" },
-//                                 { name: "shal", color: "green" },
+//                                 { name: "tal", color: "red" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
+//                                 { name: "bal", color: "black" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
+//                                 { name: "shal", color: "green" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Done",
@@ -155,9 +154,9 @@ function saveTask(board, groupId, task) {
 //                             side: "null",
 //                             taskTitle: "learn CSS",
 //                             person: [
-//                                 { name: "tal", color: "red" },
-//                                 { name: "bal", color: "black" },
-//                                 { name: "shal", color: "green" },
+//                                 { name: "tal", color: "red" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
+//                                 { name: "bal", color: "black" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
+//                                 { name: "shal", color: "green" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Working on it",
@@ -171,9 +170,9 @@ function saveTask(board, groupId, task) {
 //                             side: "null",
 //                             taskTitle: "learn vue",
 //                             person: [
-//                                 { name: "tal", color: "red" },
-//                                 { name: "bal", color: "black" },
-//                                 { name: "shal", color: "green" },
+//                                 { name: "tal", color: "red" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
+//                                 { name: "bal", color: "black" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
+//                                 { name: "shal", color: "green", url: 'https://cdn.monday.com/icons/dapulse-person-column.svg' },
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Stuck",
@@ -187,9 +186,9 @@ function saveTask(board, groupId, task) {
 //                             side: "null",
 //                             taskTitle: "learn js",
 //                             person: [
-//                                 { name: "tal", color: "red" },
-//                                 { name: "bal", color: "black" },
-//                                 { name: "shal", color: "green" },
+//                                 { name: "tal", color: "red" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
+//                                 { name: "bal", color: "black" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
+//                                 { name: "shal", color: "green" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Done",

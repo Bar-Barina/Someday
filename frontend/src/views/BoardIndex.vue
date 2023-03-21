@@ -6,8 +6,8 @@
     <RouterView />
     <!-- <RouterLink to="/boards/UCvas">AAAAAA</RouterLink> -->
   </section>
-  <hr />
-  <form @submit.prevent="addBoard()">
+  <!-- <hr /> -->
+  <!-- <form @submit.prevent="addBoard()">
     <h2>Add board</h2>
     <input type="text" v-model="boardToAdd.title" />
     <button>Save</button>
@@ -16,7 +16,7 @@
   <button @click="updateBoard(board)">Update</button>
   <hr />
   <button @click="addBoardMsg(board._id)">Add board msg</button>
-  <button @click="printBoardToConsole(board)">Print msgs to console</button>
+  <button @click="printBoardToConsole(board)">Print msgs to console</button> -->
 </template>
 
 <script>
