@@ -9,13 +9,23 @@
     <h3 class="sub-line">Manage everything with Someday.com!</h3>
     <div class="underline"></div>
 
-    <div v-for="(star, index) in 17" :key="star" class="star" :class="`star${index + 1}`"></div>
-    <RouterLink to="/boards"><button class="start-btn">
-      Get Started
-      <span class="arrow"><div className="arrow" 
-            v-html="getSvg('arrow')"></div></span>
-    </button></RouterLink>
-    <img src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/Generator_featured%20images/Home%20Page%20-%202022%20Rebrand/first_fold/image.png" alt="">
+    <div
+      v-for="(star, index) in 17"
+      :key="star"
+      class="star"
+      :class="`star${index + 1}`"
+    ></div>
+    <RouterLink to="/board"
+      ><button class="start-btn">
+        Get Started
+        <span class="arrow"
+          ><div className="arrow" v-html="getSvg('arrow')"></div
+        ></span></button
+    ></RouterLink>
+    <img
+      src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/Generator_featured%20images/Home%20Page%20-%202022%20Rebrand/first_fold/image.png"
+      alt=""
+    />
   </section>
 </template>
 
