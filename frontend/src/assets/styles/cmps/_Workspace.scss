@@ -1,11 +1,61 @@
 .workspace {
-    background-color: #f6f7fb;
-    padding-inline-start: 14px;
-    padding-inline-end: 16px;
-    font-weight: 300;
-    color: #323338;
-    padding-top: 12px;
-    position: relative;
-    border-right: 1.2px solid #d0d4e6;
-    grid-area: workspace;
+  width: 254px;
+  margin-top: -12px;
+  background-color: #f6f7fb;
+  padding-inline-start: 14px;
+  padding-inline-end: 16px;
+  font-weight: 300;
+  color: #323338;
+  padding-top: 12px;
+  border-right: 1.2px solid #d0d4e6;
+  .workspace-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+  }
+  .pink-div {
+    width: 20px;
+    height: 20px;
+    background-color: #ed7aef;
+    border-radius: 6px;
+  }
+  .Main-letter {
+    color: white;
+    margin-left: 3px;
+  }
+  .home-svg {
+    margin-top: 9px;
+    margin-left: -4px;
+  }
+  h1 {
+    margin-left: 8px;
+  }
+  input {
+    margin: 0;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    padding: 0 6px;
+    font-weight: 400;
+    padding-right: 3px;
+    border: 1px solid;
+    border-color: #d0d4e4;
+    height: 32px;
+  }
+  button {
+    background-color: #0085ff;
+    border: none;
+    padding: 5px;
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+    color: white;
+    border-radius: 4px;
+    margin-right: -5px;
+  }
+  .workspace-input-btn {
+    justify-content: space-between;
+  }
 }
