@@ -1,5 +1,4 @@
 <template>
-  <Draggable class="group-grid task-row smooth-dnd-draggable-wrapper">
     <div></div>
     <div class="task-border" style="background-color: rgb(0, 134, 192)"></div>
     <div class="flex align-items-center cell1 flex-justify">
@@ -23,22 +22,23 @@
         </button>
       </div>
     </section>
-    <section class="cell2" v-for="(cmp , idx) in cmpOrder" :key="idx">
+    <section class="cell2" v-for="(cmp , idx) in labels" :key="idx">
       <component :is="cmp" :task="task"></component>
     </section>
-  </Draggable>
 </template>
 
 <script>
 import { svgService } from "../services/svg.service"
 import { Container, Draggable } from "vue3-smooth-dnd"
 import { utilService } from '../services/util.service'
-import status from './status.vue'
+import Status from './Status.vue'
+import Timeline from './Timeline.vue'
+import Date from './Date.vue'
 
 
 export default {
   props: {
-    cmpOrder: Array,
+    labels: Array,
     task: Object
   },
   data() {
@@ -52,7 +52,9 @@ export default {
   components: {
     Draggable,
     Container,
-    status
+    Status,
+    Timeline,
+    Date
   },
 };
 </script>

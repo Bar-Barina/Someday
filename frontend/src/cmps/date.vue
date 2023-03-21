@@ -21,7 +21,9 @@ export default {
   components: {},
   created() {},
   data() {
-    return {};
+    return {
+      value: []
+    };
   },
   methods: {
     changeDate() {

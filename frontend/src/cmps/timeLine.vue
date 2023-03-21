@@ -1,14 +1,14 @@
 <template>
-   <div class="demo-date-picker">
-    <label class="block">
+  <div class="demo-date-picker">
+    <label class="picker-wrapper">
       <el-date-picker
+        class="hide"
         v-model="value"
         type="daterange"
         start-placeholder="Start Date"
         end-placeholder="End Date"
         :default-value="[new Date(2010, 9, 1), new Date(2010, 10, 1)]"
         @change="changeDate"
-        class="hide"
       />
     </label>
   </div>
@@ -16,24 +16,23 @@
 
 <script>
 export default {
-  name: 'timeLine', 
+  name: "timeline",
   props: {
-    task:Object
+    task: Object,
   },
-components:{},
-created() {},
+  components: {},
+  created() {},
   data() {
     return {
-      value:[]
-    }
+      value: [],
+    };
   },
   methods: {
     changeDate() {
-      this.$emit('updateTask',this.value)
-    }
+      this.$emit("updateTask", this.value);
+    },
   },
   computed: {},
-}
-
+};
 </script>
 

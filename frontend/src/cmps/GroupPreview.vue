@@ -1,63 +1,69 @@
 <template>
-    <section class="group-grid group-title flex align-center">
-      <div class="more sticky" v-html="getSvg('more')"></div>
-      <!-- TODO color task border -->
+  <section class="group-grid group-title flex align-center">
+    <div class="more sticky" v-html="getSvg('more')"></div>
+    <!-- TODO color task border -->
+    <div
+      class="task-border sticky"
+      :style="{ 'background-color': group.color }"
+    ></div>
+    <!-- TODO computed arrow for colors -->
+    <div class="arrow-down sticky" v-html="getSvg('arrowDownB')"></div>
+    <div class="title-wrapper flex align-center sticky">
+      <button v-show="isTitleFocused" class="color-icon btn-color"></button>
+      <div
+        class="title-input"
+        contenteditable="true"
+        :style="{ color: group.color }"
+        @click="titleFocus = !titleFocus"
+        :class="{ focused: isTitleFocused }"
+      >
+        {{ group.title }}
+      </div>
+    </div>
+  </section>
+  <section class="group-content">
+    <section class="group-grid labels-grid">
+      <div></div>
       <div
         class="task-border sticky"
-        :style="{ 'background-color': group.color }"
+        style="background-color: rgb(0, 134, 192)"
       ></div>
-      <!-- TODO computed arrow for colors -->
-      <div class="arrow-down sticky" v-html="getSvg('arrowDownB')"></div>
-      <div class="title-wrapper flex align-center sticky">
-        <button v-show="isTitleFocused" class="color-icon btn-color"></button>
-        <div
-          class="title-input"
-          contenteditable="true"
-          :style="{ color: group.color }"
-          @click="titleFocus = !titleFocus"
-          :class="{ focused: isTitleFocused }"
-        >
-          {{ group.title }}
-        </div>
+      <div class="sticky cell1">
+        <input type="checkbox" class="checkbox" />
       </div>
-    </section>
-    <section class="group-content">
-      <section class="group-grid labels-grid">
-        <div></div>
-        <div
-          class="task-border sticky"
-          style="background-color: rgb(0, 134, 192)"
-        ></div>
-        <div class="sticky cell1">
-          <input type="checkbox" class="checkbox" />
-        </div>
-        <div class="sticky cell1">Tasks</div>
-        <Container
-          class="smooth-dnd-container horizontal"
-          orientation="horizontal"
-          group-name="labels"
-          tag="div"
-          @drop="onLabelDrop($event)"
-        >
-          <Draggable
-            class="smooth-dnd-draggable-wrapper label cell1"
-            v-for="label in labels"
-            :key="label"
-          >
-            {{ label }}
-          </Draggable>
-        </Container>
-      </section>
+      <div class="sticky cell1">Tasks</div>
       <Container
-        class="smooth-dnd-container"
-        orientation="vertical"
-        group-name="tasks"
+        class="smooth-dnd-container horizontal"
+        orientation="horizontal"
+        group-name="labels"
         tag="div"
-        @drop="onTaskDrop($event)"
+        @drop="onLabelDrop($event)"
       >
-        <TaskPreview v-for="task in group.tasks" :key="task" :task="task" :cmpOrder="cmpOrder" />
+        <Draggable
+          class="label cell1"
+          v-for="(label, idx) in labelsOrder"
+          :key="idx"
+        >
+          {{ label }}
+        </Draggable>
       </Container>
     </section>
+    <Container
+      class="smooth-dnd-container"
+      orientation="vertical"
+      group-name="tasks"
+      tag="div"
+      @drop="onTaskDrop($event)"
+    >
+      <Draggable
+        class="group-grid task-row"
+        v-for="(task, idx) in group.tasks"
+        :key="idx"
+      >
+        <TaskPreview :task="task" :labels="labelsOrder" />
+      </Draggable>
+    </Container>
+  </section>
 </template>
 
 <script>
@@ -67,30 +73,14 @@ import TaskPreview from "./TaskPreview.vue";
 import { utilService } from "../services/util.service";
 
 export default {
+  emits: ["labelDrop"],
   props: {
     group: Object,
+    labelsOrder: Array,
   },
   data() {
     return {
       titleFocus: false,
-      labels: [
-        "Date",
-        "Text",
-        "Priority",
-        "Person",
-        "File",
-        "Status",
-        "Timeline",
-      ],
-      cmpOrder: [
-        "date",
-        "text",
-        "priority",
-        "person",
-        "file",
-        "status",
-        "timeline",
-      ],
     };
   },
   methods: {
@@ -98,12 +88,10 @@ export default {
       return svgService.getSvg(iconName);
     },
     onLabelDrop(dropResult) {
-      let scene = [...this.labels];
-      scene = utilService.applyDrag(scene, dropResult);
-      this.labels = scene;
+      this.$emit("labelDrop", dropResult);
     },
     onTaskDrop(dropResult) {
-      let scene = [...this.group.tasks];
+      let scene = JSON.parse(JSON.stringify(this.group.tasks));
       scene = utilService.applyDrag(scene, dropResult);
       this.group.tasks = scene;
     },
