@@ -32,6 +32,7 @@ import { svgService } from "../services/svg.service"
 import { Container, Draggable } from "vue3-smooth-dnd"
 import { utilService } from '../services/util.service'
 import Status from './Status.vue'
+import Priority from './Priority.vue'
 import Timeline from './Timeline.vue'
 import Date from './Date.vue'
 
@@ -54,7 +55,8 @@ export default {
     Container,
     Status,
     Timeline,
-    Date
+    Date,
+    Priority,
   },
 };
 </script>
