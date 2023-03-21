@@ -71,121 +71,121 @@ function getEmptyBoard() {
     }
 }
 
-; (async () => {
-    await storageService.post(STORAGE_KEY,
-        {
-            groups: [
-                {
-                    title: 'First task',
-                    _id: Math.random().toString(36).slice(2),
-                    color: "red",
-                    tasks: [
-                        {
-                            id: "t101",
-                            side: "null",
-                            taskTitle: "learn CSS",
-                            person: [
-                                { name: "tal", color: "red" },
-                                { name: "bal", color: "black" },
-                                { name: "shal", color: "green" },
-                            ],
-                            date: "27-02-2022",
-                            status: "IN WORK",
-                            priority: "LOW",
-                            timeline: 'late',
-                            file: '11',
-                            text: 'Something'
-                        },
-                        {
-                            id: "t102",
-                            side: "null",
-                            taskTitle: "learn vue",
-                            person: [
-                                { name: "tal", color: "red" },
-                                { name: "bal", color: "black" },
-                                { name: "shal", color: "green" },
-                            ],
-                            date: "27-02-2022",
-                            status: "STUCK",
-                            priority: "LOW",
-                            timeline: 'late',
-                            file: '11',
-                            text: 'Something'
-                        },
-                        {
-                            id: "t103",
-                            side: "null",
-                            taskTitle: "learn js",
-                            person: [
-                                { name: "tal", color: "red" },
-                                { name: "bal", color: "black" },
-                                { name: "shal", color: "green" },
-                            ],
-                            date: "27-02-2022",
-                            status: "DONE",
-                            priority: "LOW",
-                            timeline: 'late',
-                            file: '11',
-                            text: 'Something'
-                        },
-                    ],
-                },
-                {
-                    title: 'First task',
-                    _id: Math.random().toString(36).slice(2),
-                    color: "red",
-                    tasks: [
-                        {
-                            id: "t101",
-                            side: "null",
-                            taskTitle: "learn CSS",
-                            person: [
-                                { name: "tal", color: "red" },
-                                { name: "bal", color: "black" },
-                                { name: "shal", color: "green" },
-                            ],
-                            date: "27-02-2022",
-                            status: "IN WORK",
-                            priority: "LOW",
-                            timeline: 'late',
-                            file: '11',
-                            text: 'Something'
-                        },
-                        {
-                            id: "t102",
-                            side: "null",
-                            taskTitle: "learn vue",
-                            person: [
-                                { name: "tal", color: "red" },
-                                { name: "bal", color: "black" },
-                                { name: "shal", color: "green" },
-                            ],
-                            date: "27-02-2022",
-                            status: "STUCK",
-                            priority: "LOW",
-                            timeline: 'late',
-                            file: '11',
-                            text: 'Something'
-                        },
-                        {
-                            id: "t103",
-                            side: "null",
-                            taskTitle: "learn js",
-                            person: [
-                                { name: "tal", color: "red" },
-                                { name: "bal", color: "black" },
-                                { name: "shal", color: "green" },
-                            ],
-                            date: "27-02-2022",
-                            status: "DONE",
-                            priority: "LOW",
-                            timeline: 'late',
-                            file: '11',
-                            text: 'Something'
-                        },
-                    ],
-                }
-            ]
-        }
-    )
-})();
+// ; (async () => {
+//     await storageService.post(STORAGE_KEY,
+//         {
+//             groups: [
+//                 {
+//                     title: 'First task',
+//                     _id: Math.random().toString(36).slice(2),
+//                     color: "red",
+//                     tasks: [
+//                         {
+//                             id: "t101",
+//                             side: "null",
+//                             taskTitle: "learn CSS",
+//                             person: [
+//                                 { name: "tal", color: "red" },
+//                                 { name: "bal", color: "black" },
+//                                 { name: "shal", color: "green" },
+//                             ],
+//                             date: "27-02-2022",
+//                             status: "IN WORK",
+//                             priority: "LOW",
+//                             timeline: 'late',
+//                             file: '11',
+//                             text: 'Something'
+//                         },
+//                         {
+//                             id: "t102",
+//                             side: "null",
+//                             taskTitle: "learn vue",
+//                             person: [
+//                                 { name: "tal", color: "red" },
+//                                 { name: "bal", color: "black" },
+//                                 { name: "shal", color: "green" },
+//                             ],
+//                             date: "27-02-2022",
+//                             status: "STUCK",
+//                             priority: "LOW",
+//                             timeline: 'late',
+//                             file: '11',
+//                             text: 'Something'
+//                         },
+//                         {
+//                             id: "t103",
+//                             side: "null",
+//                             taskTitle: "learn js",
+//                             person: [
+//                                 { name: "tal", color: "red" },
+//                                 { name: "bal", color: "black" },
+//                                 { name: "shal", color: "green" },
+//                             ],
+//                             date: "27-02-2022",
+//                             status: "DONE",
+//                             priority: "LOW",
+//                             timeline: 'late',
+//                             file: '11',
+//                             text: 'Something'
+//                         },
+//                     ],
+//                 },
+//                 {
+//                     title: 'First task',
+//                     _id: Math.random().toString(36).slice(2),
+//                     color: "red",
+//                     tasks: [
+//                         {
+//                             id: "t101",
+//                             side: "null",
+//                             taskTitle: "learn CSS",
+//                             person: [
+//                                 { name: "tal", color: "red" },
+//                                 { name: "bal", color: "black" },
+//                                 { name: "shal", color: "green" },
+//                             ],
+//                             date: "27-02-2022",
+//                             status: "IN WORK",
+//                             priority: "LOW",
+//                             timeline: 'late',
+//                             file: '11',
+//                             text: 'Something'
+//                         },
+//                         {
+//                             id: "t102",
+//                             side: "null",
+//                             taskTitle: "learn vue",
+//                             person: [
+//                                 { name: "tal", color: "red" },
+//                                 { name: "bal", color: "black" },
+//                                 { name: "shal", color: "green" },
+//                             ],
+//                             date: "27-02-2022",
+//                             status: "STUCK",
+//                             priority: "LOW",
+//                             timeline: 'late',
+//                             file: '11',
+//                             text: 'Something'
+//                         },
+//                         {
+//                             id: "t103",
+//                             side: "null",
+//                             taskTitle: "learn js",
+//                             person: [
+//                                 { name: "tal", color: "red" },
+//                                 { name: "bal", color: "black" },
+//                                 { name: "shal", color: "green" },
+//                             ],
+//                             date: "27-02-2022",
+//                             status: "DONE",
+//                             priority: "LOW",
+//                             timeline: 'late',
+//                             file: '11',
+//                             text: 'Something'
+//                         },
+//                     ],
+//                 }
+//             ]
+//         }
+//     )
+// })();

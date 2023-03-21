@@ -1,8 +1,12 @@
 <template>
   <div>
-    <span class="status" @click="showDropdown = !showDropdown">{{status}}</span>
+    <span class="status" @click="showDropdown = !showDropdown">{{
+      status
+    }}</span>
     <select v-if="showDropdown" v-model="selectedStatus" @change="updateStatus">
-      <option v-for="status in statusOptions" :value="status">{{ option }}</option>
+      <option v-for="status in statusOptions" :value="status">
+        {{ option }}
+      </option>
     </select>
   </div>
 </template>
@@ -34,5 +38,14 @@ export default {
       return this.task.status
     },
   },
+  created() {
+    console.log('islam')
+  },
 }
 </script>
+
+<style>
+.status {
+  background-color: blueviolet;
+}
+</style>
