@@ -3,7 +3,7 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
-const STORAGE_KEY = 'board'
+const STORAGE_KEY = 'boards'
 
 export const boardService = {
     query,
@@ -16,15 +16,15 @@ export const boardService = {
 window.cs = boardService
 
 
-async function query(filterBy = { txt: '', price: 0 }) {
+async function query(filterBy = {}) {
     var boards = await storageService.query(STORAGE_KEY)
-    if (filterBy.txt) {
-        const regex = new RegExp(filterBy.txt, 'i')
-        boards = boards.filter(board => regex.test(board.vendor) || regex.test(board.description))
-    }
-    if (filterBy.price) {
-        boards = boards.filter(board => board.price <= filterBy.price)
-    }
+    // if (filterBy.txt) {
+    //     const regex = new RegExp(filterBy.txt, 'i')
+    //     boards = boards.filter(board => regex.test(board.vendor) || regex.test(board.description))
+    // }
+    // if (filterBy.price) {
+    //     boards = boards.filter(board => board.price <= filterBy.price)
+    // }
     return boards
 }
 
@@ -66,14 +66,126 @@ async function addBoardMsg(boardId, txt) {
 
 function getEmptyBoard() {
     return {
-        vendor: 'Susita-' + (Date.now() % 1000),
-        price: utilService.getRandomIntInclusive(1000, 9000),
+        title: 'Susita-' + (Date.now() % 1000),
+        date: utilService.getRandomIntInclusive(1000, 9000),
     }
 }
 
-
-// TEST DATA
-// ;(async ()=>{
-//     await storageService.post(STORAGE_KEY, {vendor: 'Subali Karov 1', price: 180})
-//     await storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 240})
-// })()
+// ; (async () => {
+//     await storageService.post(STORAGE_KEY,
+//         {
+//             groups: [
+//                 {
+//                     title: 'First task',
+//                     _id: Math.random().toString(36).slice(2),
+//                     color: "red",
+//                     tasks: [
+//                         {
+//                             id: "t101",
+//                             side: "null",
+//                             taskTitle: "learn CSS",
+//                             person: [
+//                                 { name: "tal", color: "red" },
+//                                 { name: "bal", color: "black" },
+//                                 { name: "shal", color: "green" },
+//                             ],
+//                             date: "27-02-2022",
+//                             status: "IN WORK",
+//                             priority: "LOW",
+//                             timeline: 'late',
+//                             file: '11',
+//                             text: 'Something'
+//                         },
+//                         {
+//                             id: "t102",
+//                             side: "null",
+//                             taskTitle: "learn vue",
+//                             person: [
+//                                 { name: "tal", color: "red" },
+//                                 { name: "bal", color: "black" },
+//                                 { name: "shal", color: "green" },
+//                             ],
+//                             date: "27-02-2022",
+//                             status: "STUCK",
+//                             priority: "LOW",
+//                             timeline: 'late',
+//                             file: '11',
+//                             text: 'Something'
+//                         },
+//                         {
+//                             id: "t103",
+//                             side: "null",
+//                             taskTitle: "learn js",
+//                             person: [
+//                                 { name: "tal", color: "red" },
+//                                 { name: "bal", color: "black" },
+//                                 { name: "shal", color: "green" },
+//                             ],
+//                             date: "27-02-2022",
+//                             status: "DONE",
+//                             priority: "LOW",
+//                             timeline: 'late',
+//                             file: '11',
+//                             text: 'Something'
+//                         },
+//                     ],
+//                 },
+//                 {
+//                     title: 'First task',
+//                     _id: Math.random().toString(36).slice(2),
+//                     color: "red",
+//                     tasks: [
+//                         {
+//                             id: "t101",
+//                             side: "null",
+//                             taskTitle: "learn CSS",
+//                             person: [
+//                                 { name: "tal", color: "red" },
+//                                 { name: "bal", color: "black" },
+//                                 { name: "shal", color: "green" },
+//                             ],
+//                             date: "27-02-2022",
+//                             status: "IN WORK",
+//                             priority: "LOW",
+//                             timeline: 'late',
+//                             file: '11',
+//                             text: 'Something'
+//                         },
+//                         {
+//                             id: "t102",
+//                             side: "null",
+//                             taskTitle: "learn vue",
+//                             person: [
+//                                 { name: "tal", color: "red" },
+//                                 { name: "bal", color: "black" },
+//                                 { name: "shal", color: "green" },
+//                             ],
+//                             date: "27-02-2022",
+//                             status: "STUCK",
+//                             priority: "LOW",
+//                             timeline: 'late',
+//                             file: '11',
+//                             text: 'Something'
+//                         },
+//                         {
+//                             id: "t103",
+//                             side: "null",
+//                             taskTitle: "learn js",
+//                             person: [
+//                                 { name: "tal", color: "red" },
+//                                 { name: "bal", color: "black" },
+//                                 { name: "shal", color: "green" },
+//                             ],
+//                             date: "27-02-2022",
+//                             status: "DONE",
+//                             priority: "LOW",
+//                             timeline: 'late',
+//                             file: '11',
+//                             text: 'Something'
+//                         },
+//                     ],
+//                 }
+//             ]
+//         }
+//     )
+// })();
