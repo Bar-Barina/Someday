@@ -1,29 +1,20 @@
 <template>
-  <header>
-    <nav>
-      <RouterLink to="/">
-        <span role="img" aria-label="logo">🙏</span>
-      </RouterLink>
-      <RouterLink to="/car">Cars</RouterLink>
-      <RouterLink to="/review">Reviews</RouterLink>
-      <RouterLink to="/chat">Chat</RouterLink>
-      <RouterLink to="/login">Login / Signup</RouterLink>
-    </nav>
-    <section class="loggedin-user" v-if="loggedInUser">
-      <RouterLink :to="`/user/${loggedInUser._id}`">
-        {{ loggedInUser.fullname }}
-      </RouterLink>
-      <span>{{ loggedInUser.score.toLocaleString() }}</span>
-      <img :src="loggedInUser.imgUrl" />
-    </section>
-  </header>
+   <header class="home-page-header">
+      <div class="home-logo">
+      <img src="https://res.cloudinary.com/boaz-sunday-proj/image/upload/v1670843553/l37uhxjpyxwwaxw6ifnp.png" alt="logo">
+        <span class="logo-name">Someday
+         <span class="logo-at">.com</span>
+        </span>
+      </div>
+        <button class="login">Login / Signup</button>
+    </header>
 </template>
+
 <script>
+
 export default {
-  computed: {
-    loggedInUser() {
-      return this.$store.getters.loggedinUser
-    },
-  }
+ name: 'AppHeader',
+ components: {
+ }
 }
 </script>

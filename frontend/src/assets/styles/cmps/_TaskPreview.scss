@@ -1,0 +1,40 @@
+.task-row {
+    .task-title {
+        padding-inline-start: 30px;
+
+        .title-sub {
+            padding: 12px 5px;
+            height: 20px;
+            width: 30px;
+            min-width: fit-content;
+            transition: width .2s ease;
+        }
+
+        .task-title-sub {
+            width: 100%;
+            padding-inline-end: 16px;
+        }
+    }
+
+    .open-con {
+        opacity: 0;
+    }
+
+    &:hover {
+        .open-con {
+            opacity: 1;
+        }
+    }
+
+    .conversation-wrapper {
+        height: 100%;
+        width: 65px;
+        border-left: 1px solid #d0d4e6;
+    }
+
+    button.svg {
+        border: none;
+        background: fixed;
+        cursor: pointer;
+    }
+}

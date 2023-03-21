@@ -1,0 +1,39 @@
+.group-container {
+
+
+    .sticky {
+        position: sticky;
+        z-index: 50;
+    }
+
+    .group-title {
+        align-items: center;
+
+        .title-input:focus {
+            outline: 1px solid rgb(0, 134, 192);
+            border-radius: 3px;
+        }
+    }
+
+    .group-grid.labels-grid {
+        text-align: center;
+        grid-template-columns: 40px 6px 32px 364px 980px;
+
+        .task-border {
+            border-top-left-radius: 6px;
+        }
+    }
+
+    .group-content {
+
+        .labels-grid {
+            &>*:not(:first-child) {
+                border-top: 1px solid $clr014;
+            }
+        }
+
+        .label {
+            width: 140px;
+        }
+    }
+}

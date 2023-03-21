@@ -1,0 +1,42 @@
+.home-page-header {
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+  font-weight: 600;
+  font-family: Roboto-bold;
+  color: #333;
+  align-items: center;
+  margin: 0 65px;
+}
+
+.home-logo {
+  display: flex;
+  align-items: center;
+  img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 4px;
+  }
+
+  .logo-name {
+    line-height: 70px;
+    font-size: 24px;
+  }
+  .logo-at {
+    font-size: 12px;
+    margin-left: -8px;
+    font-family: Poppins-light;
+  }
+}
+
+.login {
+  padding: 8px 10px;
+  border-radius: 4px;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  &:hover {
+    color: $clr1;
+    background-color: rgb(234, 238, 243);
+  }
+}

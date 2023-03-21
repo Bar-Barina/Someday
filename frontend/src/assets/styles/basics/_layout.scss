@@ -1,42 +1,31 @@
-.container {
-    max-width: 1500px;
-    padding: 10px;
+.main-layout {
+    display: grid;
+    grid-template-columns: 67px auto 1fr;
+    grid-template-rows: 180px 1fr;
+    grid-template-areas:
+        "side-nav workspace board-header"
+        "side-nav workspace board-content";
 }
 
-.main-container {
-    display: grid;
-    grid-template-columns: 20px 1fr 20px;
-
-    > * {
-        grid-column: 2;
-
-        &.full {
-            grid-column: 1 /-1;
-        }
-    }
-
-    @include for-narrow-layout {
-        grid-template-columns: 
-            minmax(20px, 1fr)
-            minmax(auto, $mobile-breakpoint)
-            minmax(20px, 1fr);
-    }
-    @include for-normal-layout {
-        grid-template-columns: 
-            minmax(20px, 1fr)
-            minmax(auto, $narrow-breakpoint)
-            minmax(20px, 1fr);
-    }
-    @include for-wide-layout {
-        grid-template-columns: 
-            minmax(20px, 1fr)
-            minmax(auto, $normal-breakpoint)
-            minmax(20px, 1fr);
-    }
+.group-grid {
+    display: grid !important;
+    grid-template-columns: 40px 6px 32px 364px repeat(7,140px);
+    grid-template-rows: 2.25rem;
+    grid-auto-flow: column;
 }
 
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 20px;
+.side-nav {
+    grid-area: side-nav;
+}
+
+.workspace {
+    grid-area: workspace;
+}
+
+.board-header {
+    grid-area: board-header;
+}
+
+.main-table , .kanban , .chart {
+    grid-area: board-content;
 }

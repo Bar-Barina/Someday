@@ -2,9 +2,13 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 import Home from './views/Home.vue'
 import Chat from './views/Chat.vue'
-import CarIndex from './views/CarIndex.vue'
+// import CarIndex from './views/CarIndex.vue'
 import ReviewIndex from './views/ReviewIndex.vue'
-import LoginSignup from './views/LoginSignup.vue'
+import BoardIndex from './views/BoardIndex.vue'
+import Kanban from './cmps/Kanban.vue'
+import MainTable from './cmps/MainTable.vue'
+// import LoginSignup from './views/LoginSignup.vue'
+import Login from './views/Login.vue'
 import UserDetails from './views/UserDetails.vue'
 
 const routes = [
@@ -14,30 +18,45 @@ const routes = [
     component: Home
   },
   {
-    path: '/car',
-    name: 'CarIndex',
-    component: CarIndex
+    path: '/boards',
+    redirect: '/boards/main-table',
+    name: 'boards',
+    component: BoardIndex,
+    children: [
+      {
+        path: 'main-table',
+        component: MainTable
+      },
+      {
+        path: 'kanban',
+        component: Kanban
+      },
+      {
+        path: 'dashboard',
+        component: Kanban
+      },
+    ]
   },
-  {
-    path: '/review',
-    name: 'ReviewIndex',
-    component: ReviewIndex
-  },
-  {
-    path: '/chat',
-    name: 'Chat',
-    component: Chat
-  },
+  // {
+  //   path: '/review',
+  //   name: 'ReviewIndex',
+  //   component: ReviewIndex
+  // },
+  // {
+  //   path: '/chat',
+  //   name: 'Chat',
+  //   component: Chat
+  // },
   {
     path: '/login',
-    name: 'LoginSignup',
-    component: LoginSignup
+    name: 'Login',
+    component: Login
   },
-  {
-    path: '/user/:id',
-    name: 'UserDetails',
-    component: UserDetails
-  }
+  // {
+  //   path: '/user/:id',
+  //   name: 'UserDetails',
+  //   component: UserDetails
+  // }
 ]
 
 

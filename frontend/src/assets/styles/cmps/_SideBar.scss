@@ -1,0 +1,80 @@
+.side-nav {
+    background-color: $clr6;
+    height: 100%;
+    display: grid;
+    grid-template-rows:98px auto 178px 110px;
+    justify-items: center;
+    padding-top: 7px;
+    position: relative;
+    // .logo-icons-pattern {
+    //     height: 92px;
+    // }
+        .monday-icon {
+            display: flex;
+            align-items: center;
+        justify-content: center;
+        height: 46px;
+        width: 50px;
+        border-bottom:1px solid grey ;
+        margin-bottom: 8px;
+        img {
+            width: 40px;
+            height: 40px;
+        }
+    }
+    .work-management {
+        width: 50px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 8px;
+        border-radius: 6px;
+        // &:hover {
+            // background-color: ;
+        // }
+    }
+    .icon-wrapper {
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 8px;
+          // &:hover {
+            // background-color: ;
+        // }
+    }
+    .icon-pattern-bottom {
+        border-bottom: 1px solid grey;
+        width: 50px;
+        margin-bottom: 7px;
+    }
+    .icon-pattern-top {
+      padding-top: 5px;
+    }
+    .workspace-arrow-left-div {
+        border-style: solid;
+        border-width: 0.5rem 6px 0.5rem 0;
+        transition: opacity .1s ease-in-out;
+        border-color: transparent #f6f7fb transparent transparent;
+        position: absolute;
+        top: 74px;
+        left: 61px;
+    }
+    .member-wrapper {
+        height: 42px;
+        width: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: $clr2;
+        .member-preview {
+            height: 40px;
+            width: 40px;
+        }
+    }
+    
+    
+}
