@@ -11,7 +11,8 @@ export const boardService = {
     save,
     remove,
     getEmptyBoard,
-    addBoardMsg
+    addBoardMsg,
+    saveTask
 }
 window.cs = boardService
 
@@ -71,6 +72,23 @@ function getEmptyBoard() {
     }
 }
 
+function saveTask(board, groupId, task) {
+    console.log('task', task)
+    const boardToSave = JSON.parse(JSON.stringify(board))
+    const groupIdx = boardToSave.groups.findIndex(g => g._id === groupId)
+    const taskIdx = boardToSave.groups[groupIdx].tasks.findIndex(t => t.id === task.id)
+    // console.log('taskIdx', taskIdx)
+    // boardToSave.groups[groupIdx].tasks.splice(taskIdx , 1 , task)
+    // PUT /api/board/b123/task/t678
+
+    // TODO: find the task, and update
+    console.log('boardToSave', boardToSave)
+    // board.activities.unshift(activity)
+    save(boardToSave)
+    return boardToSave
+    // return task
+}
+
 // ; (async () => {
 //     await storageService.post(STORAGE_KEY,
 //         {
@@ -91,8 +109,8 @@ function getEmptyBoard() {
 //                                 { name: "shal", color: "green" },
 //                             ],
 //                             date: "27-02-2022",
-//                             status: "IN WORK",
-//                             priority: "LOW",
+//                             status: "Working on it",
+//                             priority: "Low",
 //                             timeline: 'late',
 //                             file: '11',
 //                             text: 'Something'
@@ -107,8 +125,8 @@ function getEmptyBoard() {
 //                                 { name: "shal", color: "green" },
 //                             ],
 //                             date: "27-02-2022",
-//                             status: "STUCK",
-//                             priority: "LOW",
+//                             status: "Stuck",
+//                             priority: "Low",
 //                             timeline: 'late',
 //                             file: '11',
 //                             text: 'Something'
@@ -123,8 +141,8 @@ function getEmptyBoard() {
 //                                 { name: "shal", color: "green" },
 //                             ],
 //                             date: "27-02-2022",
-//                             status: "DONE",
-//                             priority: "LOW",
+//                             status: "Done",
+//                             priority: "Low",
 //                             timeline: 'late',
 //                             file: '11',
 //                             text: 'Something'
@@ -146,8 +164,8 @@ function getEmptyBoard() {
 //                                 { name: "shal", color: "green" },
 //                             ],
 //                             date: "27-02-2022",
-//                             status: "IN WORK",
-//                             priority: "LOW",
+//                             status: "Working on it",
+//                             priority: "Low",
 //                             timeline: 'late',
 //                             file: '11',
 //                             text: 'Something'
@@ -162,8 +180,8 @@ function getEmptyBoard() {
 //                                 { name: "shal", color: "green" },
 //                             ],
 //                             date: "27-02-2022",
-//                             status: "STUCK",
-//                             priority: "LOW",
+//                             status: "Stuck",
+//                             priority: "Low",
 //                             timeline: 'late',
 //                             file: '11',
 //                             text: 'Something'
@@ -178,8 +196,8 @@ function getEmptyBoard() {
 //                                 { name: "shal", color: "green" },
 //                             ],
 //                             date: "27-02-2022",
-//                             status: "DONE",
-//                             priority: "LOW",
+//                             status: "Done",
+//                             priority: "Low",
 //                             timeline: 'late',
 //                             file: '11',
 //                             text: 'Something'

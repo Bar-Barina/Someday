@@ -37,10 +37,12 @@ import Timeline from './Timeline.vue'
 import Date from './Date.vue'
 
 
+
 export default {
   props: {
     labels: Array,
     task: Object,
+    group: Object
   },
   data() {
     return {};
@@ -50,12 +52,13 @@ export default {
       return svgService.getSvg(iconName);
     },
     updateTask({ cmpType, data }) {
-      task[cmpType] = data;
+      const taskToSave = {...this.task}
+      taskToSave[cmpType] = data;
       //    activity = boardService.getEmptyActivity()
       //    activity.txt = `Members changed for task ${}`
       //    activity.task = '{mini-task}'
-
-      this.$store.dispatch({ type: "updateTask", task });
+      const toUpdate = {taskToSave , groupId: this.group._id}
+      this.$store.dispatch({ type: "saveTask", toUpdate });
     },
   },
   components: {
