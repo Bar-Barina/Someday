@@ -77,12 +77,8 @@ function saveTask(board, groupId, task) {
     const boardToSave = JSON.parse(JSON.stringify(board))
     const groupIdx = boardToSave.groups.findIndex(g => g._id === groupId)
     const taskIdx = boardToSave.groups[groupIdx].tasks.findIndex(t => t.id === task.id)
-    // console.log('taskIdx', taskIdx)
-    // boardToSave.groups[groupIdx].tasks.splice(taskIdx , 1 , task)
+    boardToSave.groups[groupIdx].tasks.splice(taskIdx , 1 , task)
     // PUT /api/board/b123/task/t678
-
-    // TODO: find the task, and update
-    console.log('boardToSave', boardToSave)
     // board.activities.unshift(activity)
     save(boardToSave)
     return boardToSave
