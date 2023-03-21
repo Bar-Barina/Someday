@@ -36,8 +36,8 @@ export default {
         this.$store
           .dispatch({ type: "getBoardById", boardId })
           .then((board) => {
-            this.board = board;
-            this.groups = board.groups
+            this.board = JSON.parse(JSON.stringify(board));
+            this.groups = JSON.parse(JSON.stringify(board.groups));
           });
       },
       immediate: true,

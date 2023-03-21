@@ -52,6 +52,13 @@
       class="smooth-dnd-container"
       orientation="vertical"
       group-name="tasks"
+      drag-class="bg-primary dark:bg-primary 
+            border-2 border-primary-hover text-white 
+            transition duration-100 ease-in z-50
+            transform rotate-6 scale-110"
+      drop-class="transition duration-100 
+            ease-in z-50 transform 
+            -rotate-2 scale-90"
       tag="div"
       @drop="onTaskDrop($event)"
     >
