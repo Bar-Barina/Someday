@@ -1,10 +1,11 @@
 <template>
-  <div class="priority" @click="toggleModal">
+  <div class="priority" :class="priorityClass" @click="toggleModal">
     {{ priority }}
     <TaskDropdown
       v-if="showDropdown"
       :options="priorityOptions"
       @updateOption="updatePriority"
+      optionClass="priority-option"
     />
   </div>
 </template>
@@ -18,7 +19,12 @@ export default {
   name: '',
   data() {
     return {
-      priorityOptions: ['Critical', 'High', 'Medium', 'Low'],
+      priorityOptions: [
+        { name: 'Critical', class: 'priority-critical' },
+        { name: 'High', class: 'priority-high' },
+        { name: 'Medium', class: 'priority-medium' },
+        { name: 'Low', class: 'priority-low' },
+      ],
       showDropdown: false,
       selectedPriority: this.task.priority,
     }
@@ -37,6 +43,21 @@ export default {
   computed: {
     priority() {
       return this.selectedPriority
+    },
+    priorityClass() {
+      console.log(this.selectedPriority)
+      switch (this.selectedPriority) {
+        case 'Critical':
+          return 'priority-critical'
+        case 'High':
+          return 'priority-high'
+        case 'Medium':
+          return 'priority-medium'
+        case 'Low':
+          return 'priority-low'
+        default:
+          break
+      }
     },
   },
   components: {

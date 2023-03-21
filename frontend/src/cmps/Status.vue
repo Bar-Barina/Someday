@@ -54,12 +54,6 @@ export default {
         default:
           break
       }
-      // const statusClasses = [
-      //   { 'status-working': this.selectedStatus === 'Working on it' },
-      //   { 'status-stuck': this.selectedStatus === 'Stuck' },
-      //   { 'status-done': this.selectedStatus === 'Done' },
-      // ]
-      // return statusClasses[this.selectedStatus]
     },
   },
   components: {
