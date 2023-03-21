@@ -10,7 +10,7 @@
   <hr />
   <form @submit.prevent="addBoard()">
     <h2>Add board</h2>
-    <input type="text" v-model="boardToAdd.vendor" />
+    <input type="text" v-model="boardToAdd.title" />
     <button>Save</button>
   </form>
   <button @click="removeBoard(board._id)">x</button>

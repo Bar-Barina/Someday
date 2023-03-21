@@ -67,7 +67,7 @@
         v-for="(task, idx) in group.tasks"
         :key="idx"
       >
-        <TaskPreview :task="task" :labels="labelsOrder" />
+        <TaskPreview :task="task" :labels="labelsOrder" :group="group" />
       </Draggable>
     </Container>
   </section>
