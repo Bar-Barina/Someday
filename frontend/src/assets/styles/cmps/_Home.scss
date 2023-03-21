@@ -1,4 +1,3 @@
-
 .main-home {
   display: flex;
   flex-direction: column;
@@ -8,6 +7,7 @@
   width: 100%;
   padding: 62px 20px 20px;
   background: linear-gradient(rgb(0, 1, 51) 0%, rgb(15, 16, 72) 100%);
+
   h1 {
     display: block;
     text-align: center;
@@ -19,6 +19,7 @@
     padding-top: 10px;
     margin-bottom: -2px;
   }
+
   .sub-line {
     font-size: 24px;
     line-height: 35px;
@@ -27,6 +28,7 @@
     color: #fff;
     margin-bottom: -1px;
   }
+
   .underline {
     transform: rotate(0);
     width: 125px;
@@ -34,6 +36,7 @@
     height: 1px;
     background: linear-gradient(90deg, transparent, #fff);
   }
+
   .start-btn {
     background: linear-gradient(90deg, #5034ff 25.69%, #b4b4ff 100%);
     border-radius: 30px;
@@ -53,6 +56,7 @@
       background: linear-gradient(90deg, #513be4 30.69%, #b4b4ff 120%);
     }
   }
+
   img {
     border-top: 200px solid inherit;
     margin-top: 50px;
@@ -183,6 +187,7 @@
   top: 180px;
   position: absolute;
 }
+
 .star14 {
   width: 5.55173px;
   height: 5.55173px;
@@ -220,10 +225,12 @@
     transform: scale(1);
     opacity: 1;
   }
+
   50% {
     transform: scale(0.8);
     opacity: 0.5;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;

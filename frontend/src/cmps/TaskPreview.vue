@@ -8,7 +8,7 @@
     <section class="task-title cell1 flex align-items-center space-between">
       <div class="task-title-sub flex align-items-center space-between">
         <div class="flex align-items-center" contenteditable="true">
-          <pre>{{ task.taskTitle }}</pre>
+          {{ task.taskTitle }}
         </div>
         <span class="open-con flex align-items-center space-between">
           <button class="svg">
