@@ -1,16 +1,22 @@
 <template>
   <section class="board-header">
-    <h1>Board header</h1>
+    <div class="editable-div-hover" contenteditable="true">
+      Board header
+    </div>
   </section>
 </template>
 
 <script>
 export default {
-  
-  components:{
+  name: 'BoardHeader', 
+  props: [],
+components:{},
+created() {},
+  data() {
+    return {}
+  },
+  methods: {},
+  computed: {},
 }
-}
-</script>
 
-<style>
-</style>
+</script>
