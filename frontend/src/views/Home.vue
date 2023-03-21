@@ -15,7 +15,7 @@
       class="star"
       :class="`star${index + 1}`"
     ></div>
-    <RouterLink to="/board"
+    <RouterLink :to="`/board/${firstBoard}`"
       ><button class="start-btn">
         Get Started
         <span class="arrow"
@@ -38,6 +38,11 @@ export default {
     getSvg(iconName) {
       return svgService.getSvg(iconName)
     },
+  },
+  computed: {
+    firstBoard() {
+      return this.$store.getters.boards[0]._id
+    }
   },
   components: {
     AppHeader,
