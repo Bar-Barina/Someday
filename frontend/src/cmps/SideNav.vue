@@ -12,7 +12,7 @@
       </div>
       </router-link>
       <div class="work-management">
-        <div class="side-bar-btn" v-html="getSvg('wm')"></div>
+        <div v-html="getSvg('wm')"></div>
       </div>
     </section>
     <!-- <hr/> -->
@@ -21,33 +21,33 @@
         <span v-html="getSvg('bell')"></span>
       </div>
       <div class="icon-wrapper">
-        <span class="side-bar-btn" v-html="getSvg('inbox')"></span>
+        <span v-html="getSvg('inbox')"></span>
       </div>
       <div class="icon-wrapper">
-        <span class="side-bar-btn" v-html="getSvg('date')"></span>
+        <span v-html="getSvg('date')"></span>
       </div>
       <div class="icon-wrapper">
-      <span class="side-bar-btn" v-html="getSvg('star')"></span>
+      <span v-html="getSvg('star')"></span>
       </div>
     </section>
 
     <section class="icon-pattern-bottom flex column justify-center align-center">
         <div class="icon-wrapper">
-      <span class="side-bar-btn" v-html="getSvg('pazel')"></span>
+      <span v-html="getSvg('pazel')"></span>
         </div>
         <div class="icon-wrapper">
-      <span class="side-bar-btn" v-html="getSvg('addpeople')"></span>
+      <span v-html="getSvg('addpeople')"></span>
         </div>
         <div class="icon-wrapper">
-      <span class="side-bar-btn" v-html="getSvg('search')"></span>
+      <span v-html="getSvg('search')"></span>
         </div>
         <div class="icon-wrapper">
-      <span class="side-bar-btn" v-html="getSvg('info')"></span>
+      <span v-html="getSvg('info')"></span>
         </div>
     </section>
     <section class="flex justify-center align-center column">
     <div class="icon-wrapper">
-    <div class="side-bar-btn" v-html="getSvg('apps')"></div>
+    <div v-html="getSvg('apps')"></div>
     </div>
     <div class="member-wrapper flex justify-center align-center">
         <img class="member-preview" src="../assets/img/profile-icon.png" alt="">
