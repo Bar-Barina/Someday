@@ -74,6 +74,7 @@ function getEmptyBoard() {
 // ; (async () => {
 //     await storageService.post(STORAGE_KEY,
 //         {
+//             title: 'First board',
 //             groups: [
 //                 {
 //                     title: 'First task',
