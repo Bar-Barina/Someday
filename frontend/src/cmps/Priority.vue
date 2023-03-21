@@ -34,7 +34,7 @@ export default {
       console.log('from priority', priority)
       this.selectedPriority = priority
       this.toggleModal()
-      this.$emit('updateTask', { ...this.task, priority: priority })
+      this.$emit('updateTask', { cmpType: 'priority', data: priority })
     },
     toggleModal() {
       this.showDropdown = !this.showDropdown

@@ -32,7 +32,7 @@ export default {
     updateStatus(status) {
       this.selectedStatus = status
       this.toggleModal()
-      this.$emit('updateTask', { ...this.task, status: status })
+      this.$emit('updateTask', { cmpType: 'status', data: status })
     },
     toggleModal() {
       this.showDropdown = !this.showDropdown
