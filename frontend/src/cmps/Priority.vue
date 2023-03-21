@@ -1,5 +1,5 @@
 <template>
-  <div class="priority" :class="priorityClass" @click="toggleModal">
+  <div class="priority full-cell" :class="priorityClass" @click="toggleModal">
     {{ priority }}
     <TaskDropdown
       v-if="showDropdown"
