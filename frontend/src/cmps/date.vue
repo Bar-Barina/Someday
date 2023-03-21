@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     changeDate() {
-      this.$emit("updateTask", this.value);
+      this.$emit("updateTask", {cmpType:'date',data:this.value});
     },
   },
   computed: {},

@@ -1,6 +1,7 @@
 <template>
   <div class="demo-date-picker">
     <label class="picker-wrapper">
+      AAAAAA
       <el-date-picker
         class="hide"
         v-model="value"
@@ -29,7 +30,7 @@ export default {
   },
   methods: {
     changeDate() {
-      this.$emit("updateTask", this.value);
+      this.$emit("updateTask", {cmpType:'timeLine',data:this.value});
     },
   },
   computed: {},

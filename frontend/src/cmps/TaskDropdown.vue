@@ -1,7 +1,13 @@
 <template>
   <section class="task-dropdown">
-    <div v-for="(option, idx) in options" class="option" :key="idx"
-   @click="changeOption(option)">{{ option }}
+    <div
+      v-for="(option, idx) in options"
+      class="option"
+      :class="option.class"
+      :key="idx"
+      @click.stop="changeOption(option.name)"
+    >
+      {{ option.name }}
     </div>
   </section>
 </template>
@@ -13,12 +19,11 @@ export default {
   },
   name: '',
   data() {
-    return {
-    }
+    return {}
   },
   methods: {
-    changeOption(option) {
-      this.$emit('updateOption', option)
+    changeOption(optionName) {
+      this.$emit('updateOption', optionName)
     },
   },
   computed: {},
