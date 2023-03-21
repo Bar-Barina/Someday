@@ -1,5 +1,4 @@
 <template>
-  <Draggable class="group-grid task-row smooth-dnd-draggable-wrapper">
     <div></div>
     <div class="task-border" style="background-color: rgb(0, 134, 192)"></div>
     <div class="flex align-items-center cell1 flex-justify">
@@ -26,7 +25,6 @@
     <section class="cell2" v-for="(cmp , idx) in labels" :key="idx">
       <component :is="cmp" :task="task"></component>
     </section>
-  </Draggable>
 </template>
 
 <script>

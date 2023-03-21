@@ -35,9 +35,6 @@ export default {
       return this.selectedStatus
     },
   },
-  created() {
-    console.log('islam')
-  },
 }
 </script>
 

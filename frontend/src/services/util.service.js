@@ -5,7 +5,8 @@ export const utilService = {
     debounce,
     randomPastTime,
     saveToStorage,
-    loadFromStorage
+    loadFromStorage,
+    applyDrag
 }
 
 function makeId(length = 6) {
@@ -45,11 +46,11 @@ function randomPastTime() {
     return Date.now() - pastTime
 }
 
-function debounce(func, timeout = 300){
+function debounce(func, timeout = 300) {
     let timer
     return (...args) => {
-      clearTimeout(timer)
-      timer = setTimeout(() => { func.apply(this, args) }, timeout)
+        clearTimeout(timer)
+        timer = setTimeout(() => { func.apply(this, args) }, timeout)
     }
 }
 
@@ -61,3 +62,18 @@ function loadFromStorage(key) {
     const data = localStorage.getItem(key)
     return (data) ? JSON.parse(data) : undefined
 }
+
+function applyDrag(arr, dragResult) {
+    const { removedIndex, addedIndex, payload } = dragResult;
+    if (removedIndex === null && addedIndex === null) return arr;
+    const result = [...arr];
+    let itemToAdd = payload;
+    if (removedIndex !== null) {
+        itemToAdd = result.splice(removedIndex, 1)[0];
+    }
+    if (addedIndex !== null) {
+        result.splice(addedIndex, 0, itemToAdd);
+    }
+    return result;
+}
+

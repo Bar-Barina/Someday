@@ -1,7 +1,7 @@
 <template>
-  <Container v-if="board" orientation="vertical" @drop="onGroupDrop($event)">
-    <Draggable class="smooth-dnd-draggable-wrapper group-container" v-for="group in board.groups" :key="group">
-      <GroupPreview :group="group"></GroupPreview>
+  <Container orientation="vertical" @drop="onGroupDrop($event)">
+    <Draggable class="group-container" v-for="group in groups" :key="group">
+      <GroupPreview :group="group" :labelsOrder="labelsOrder" @labelDrop="labelDrop"></GroupPreview>
     </Draggable>
   </Container>
 </template>
@@ -9,11 +9,23 @@
 <script>
 import { Container, Draggable } from "vue3-smooth-dnd";
 import GroupPreview from "./GroupPreview.vue";
+import { utilService } from '../services/util.service';
 
 export default {
+  emits: ['labelDrop'],
   data() {
     return {
       board: null,
+      groups: null,
+      labelsOrder: [
+        "Date",
+        "Text",
+        "Priority",
+        "Person",
+        "File",
+        "Status",
+        "Timeline",
+      ],
     };
   },
   watch: {
@@ -25,12 +37,8 @@ export default {
           .dispatch({ type: "getBoardById", boardId })
           .then((board) => {
             this.board = board;
-            console.log("this.board", this.board);
+            this.groups = board.groups
           });
-        // this.$store
-        //   .dispatch({ type: 'getById', todoId })
-        //   .then(todo => (this.todo = todo))
-        // this.$store.dispatch({type:'loadReviews'})
       },
       immediate: true,
     },
@@ -40,6 +48,11 @@ export default {
       let scene = [...this.groups];
       scene = utilService.applyDrag(scene, dropResult);
       this.groups = scene;
+    },
+    labelDrop(dropResult) {
+      let scene = [...this.labelsOrder];
+      scene = utilService.applyDrag(scene, dropResult);
+      this.labelsOrder = scene;
     },
   },
   components: {
