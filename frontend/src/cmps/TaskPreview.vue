@@ -5,11 +5,11 @@
     v-html="getSvg('Dots')"
   ></div>
   <EditMenu v-if="isEditOpen" :groupId="group._id" :taskId="task.id" />
-  <div class="task-border" :style="{ 'background-color': group.color }"></div>
-  <div class="flex align-items-center cell1 flex-justify">
+  <div class="task-border sticky" :style="{ 'background-color': group.color }"></div>
+  <div class="flex sticky align-items-center cell1 flex-justify third">
     <input type="checkbox" />
   </div>
-  <section class="task-title cell1 flex align-items-center space-between">
+  <section class="task-title cell1 sticky flex align-items-center space-between">
     <div class="task-title-sub flex align-items-center space-between">
       <div class="flex align-items-center" contenteditable="true">
         {{ task.taskTitle }}
