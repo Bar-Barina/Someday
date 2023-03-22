@@ -49,7 +49,6 @@ export default {
   methods: {
     updatePerson(member) {
       if (this.person.length < this.members.length) return
-      console.log('members from preview', this.members)
       this.$emit('updatePerson', { ...member })
     },
     updateMember(idx) {

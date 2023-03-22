@@ -10,17 +10,16 @@
         @change="changeDate"
       />
     </label>
-  <div v-if="value" class="date-preview flex justify-center align-center">
-    {{ value }}
+    <div v-if="value" class="date-preview flex justify-center align-center">
+      {{ value }}
+    </div>
   </div>
-  </div>
-
 </template>
 
 <script>
 export default {
-  name: "date",
-  emit:['updateTask'],
+  name: 'date',
+  emit: ['updateTask'],
   props: {
     task: Object,
   },
@@ -28,16 +27,14 @@ export default {
   created() {},
   data() {
     return {
-      value: "",
+      value: '',
     }
   },
   methods: {
     changeDate() {
-      console.log("formattedDate", this.value)
-      this.$emit("updateTask", { cmpType: "date", data: this.value })
+      this.$emit('updateTask', { cmpType: 'date', data: this.value })
     },
   },
   computed: {},
 }
 </script>
-
