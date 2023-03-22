@@ -27,7 +27,14 @@ const routes = [
     children: [
       {
         path: ':boardId',
-        component: MainTable
+        component: MainTable,
+        children: [
+          {
+            path: 'conversation/:taskId',
+            name: 'conversation',
+            component: Conversation
+          },
+        ]
       },
       {
         path: ':boardId/kanban',
@@ -36,11 +43,6 @@ const routes = [
       {
         path: ':boardId/dashboard',
         component: Kanban
-      },
-      {
-        path: 'conversation/:taskId',
-        name: 'conversation',
-        component: Conversation
       },
     ]
   },

@@ -2,6 +2,7 @@
   <Container orientation="vertical" @drop="onGroupDrop($event)">
     <Draggable class="group-container" v-for="group in groups" :key="group">
       <GroupPreview :group="group" :labelsOrder="labelsOrder" @labelDrop="labelDrop"></GroupPreview>
+      <RouterView />
     </Draggable>
   </Container>
 </template>

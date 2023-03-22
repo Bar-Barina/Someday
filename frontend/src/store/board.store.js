@@ -34,6 +34,7 @@ export const boardStore = {
     },
     getters: {
         boards({ boards }) { return boards },
+        currBoard({currBoard}) { return currBoard }
     },
     mutations: {
         setBoards(state, { boards }) {
