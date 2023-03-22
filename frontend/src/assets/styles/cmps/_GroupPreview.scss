@@ -4,14 +4,22 @@
     margin-bottom: 20px;
     position: relative;
 
+
     .sticky {
         position: sticky;
         z-index: 50;
     }
 
     .more {
+        opacity: 0;
+        width: 24px;
+        max-width: 24px;
+        height: 24px;
+        padding-bottom: 2px;
+        border-radius: 4px;
         left: 10px;
         position: relative;
+        cursor: pointer;
 
         &:hover {
             background-color: $clr016;
@@ -20,6 +28,12 @@
 
     .group-title {
         align-items: center;
+
+        &:hover {
+            .more {
+                opacity: 1;
+            }
+        }
 
         .title-input:focus {
             outline: 1px solid rgb(0, 134, 192);
@@ -41,6 +55,14 @@
 
             .task-border {
                 border-top-left-radius: 6px;
+            }
+        }
+
+        .task-row {
+            &:hover {
+                .more {
+                    opacity: 1;
+                }
             }
         }
 
