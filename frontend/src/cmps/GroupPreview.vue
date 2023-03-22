@@ -147,6 +147,10 @@ export default {
       const toUpdate = { task, groupId: this.group._id };
       this.$store.dispatch({ type: "saveTask", toUpdate });
     },
+    updateColor(color) {
+      console.log('from preview',color)
+      this.$emit('updateTask', { cmpType: 'color', data: color })
+    }
   },
   computed: {
     isTitleFocused() {
