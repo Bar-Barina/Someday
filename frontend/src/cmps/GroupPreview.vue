@@ -19,7 +19,7 @@
     <div class="title-wrapper flex align-center sticky">
       <div v-show="isTitleFocused" class="color-icon span-color">
         <ColorPicker v-if="showColorPicker" :groupColor="group.color" 
-        @updateColor="updateColor" />
+        @updateColor="updateGroup" />
       </div>
       <div
         class="title-input editable-div"
@@ -144,9 +144,12 @@ export default {
       //    activity = boardService.getEmptyActivity()
       //    activity.txt = `Members changed for task ${}`
       //    activity.task = '{mini-task}'
-      const toUpdate = { task, groupId: this.group._id };
+      const toUpdate = { task, group: this.group };
       this.$store.dispatch({ type: "saveTask", toUpdate });
     },
+    remove(toRemove) {
+      this.$store.dispatch({type: 'remove' , toRemove})
+    }
   },
   computed: {
     isTitleFocused() {
