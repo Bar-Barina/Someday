@@ -146,7 +146,7 @@ export default {
       //    activity = boardService.getEmptyActivity()
       //    activity.txt = `Members changed for task ${}`
       //    activity.task = '{mini-task}'
-      const toUpdate = { task, groupId: this.group._id };
+      const toUpdate = { task, group: this.group };
       this.$store.dispatch({ type: "saveTask", toUpdate });
     },
   },
