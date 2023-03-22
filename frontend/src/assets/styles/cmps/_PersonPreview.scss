@@ -1,22 +1,62 @@
 .person-preview {
-  position: fixed;
-  top: 0px;
-  right: 50px;
+  width: 400px;
+  height: 300px;
+  background-color: white;
+  border: 1px solid black;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  position: absolute;
+  border: none;
+  border-radius: 6px;
+  top: 50px;
+  right: 270px;
   z-index: 60;
+  padding-left: 16px;
+  padding-top: 8px;
+  font-size: 14px;
   input {
     width: 320px;
     height: 32px;
     border: 1px solid rgb(163, 163, 163);
     border-radius: 3px;
+    margin-top:20px;
+    margin-left: 1.8em;
   }
-}
+  .member {
+    height: 40px;
+    width: 100%;
+    padding: 15px;
+    &:hover {
+      background-color:$clr39;
+      border-radius: 4px;
+    }
+    .member-img {
+      width: 26px;
+      border-radius: 50%;
+    }
+    .member-mail {
+      margin-left: 10px;
+    }
+  }
+  .invite {
+    height: 40px;
+    width: 100%;
+    padding: 15px;
+      p {
+        margin-left: 15px;
+      }
+      &:hover {
+        background-color:$clr39;
+        border-radius: 4px;
+      }
+  }
 
+}
 .onTask-person {
-  padding: 7px;
   font-size: 12px;
   .onTask-person-div {
     display: flex;
     align-items: left;
+    justify-content: space-between;
     height: 22px;
     background: rgb(229, 244, 255);
     border-radius: 24px;
@@ -24,6 +64,11 @@
     img {
       margin-left: 0px;
       width: 22px;
+    }
+    button {
+      background-color: inherit;
+      border: none;
+      font-size: 10px;
     }
   }
 }

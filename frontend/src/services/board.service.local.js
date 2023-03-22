@@ -130,15 +130,16 @@ function getEmptyTask() {
   }
 }
 
+
 // ; (async () => {
 //     await storageService.post(STORAGE_KEY,
 //         {
 //             title: 'Sprint 4 Monday',
 //             members: [
-//                 { name: "Tal", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                 { name: "Dor", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                 { name: "Bar", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                 { name: "Ofek", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                 { name: "Tal", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04HWCV61T3-224de62cdd30-512' },
+//                 { name: "Dor", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04C1V8MCT0-3405b9727a5c-512' },
+//                 { name: "Bar", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512' },
+//                 { name: "Ofek", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04FAC6TULV-3a2724e5957b-512' },
 //             ],
 //             groups: [
 //                 {
@@ -151,8 +152,8 @@ function getEmptyTask() {
 //                             side: "null",
 //                             taskTitle: "Navbar",
 //                             person: [
-//                                 { name: "Tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                                 { name: "Ofek", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "Tal", color: "red", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04HWCV61T3-224de62cdd30-512' },
+//                                 { name: "Ofek", color: "green", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04FAC6TULV-3a2724e5957b-512' },
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Working on it",
@@ -166,7 +167,7 @@ function getEmptyTask() {
 //                             side: "null",
 //                             taskTitle: "Making header",
 //                             person: [
-//                                 { name: "Ofek", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "Bar", color: "green", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512' },
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Stuck",
@@ -180,8 +181,8 @@ function getEmptyTask() {
 //                             side: "null",
 //                             taskTitle: "Pixel perfect",
 //                             person: [
-//                                 { name: "Ofek", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                                 { name: "Bar", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "Ofek", color: "green", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04FAC6TULV-3a2724e5957b-512' },
+//                                 { name: "Bar", color: "green", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512' },
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Done",
@@ -202,9 +203,9 @@ function getEmptyTask() {
 //                             side: "null",
 //                             taskTitle: "Full crud",
 //                             person: [
-//                                   { name: "Tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                                 { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                                 { name: "Ofek", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                   { name: "Tal", color: "red", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04HWCV61T3-224de62cdd30-512' },
+//                                 { name: "Dor", color: "black", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04C1V8MCT0-3405b9727a5c-512' },
+//                                 { name: "Ofek", color: "green", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04FAC6TULV-3a2724e5957b-512' },
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Working on it",
@@ -218,7 +219,7 @@ function getEmptyTask() {
 //                             side: "null",
 //                             taskTitle: "Check postman",
 //                             person: [
-//                                 { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "Dor", color: "black", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04C1V8MCT0-3405b9727a5c-512' },
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Stuck",
@@ -232,8 +233,8 @@ function getEmptyTask() {
 //                             side: "null",
 //                             taskTitle: "Connect sockets",
 //                             person: [
-//                                 { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                                 { name: "Bar", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "Dor", color: "black", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04C1V8MCT0-3405b9727a5c-512' },
+//                                 { name: "Bar", color: "green", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512' },
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Done",
@@ -248,3 +249,7 @@ function getEmptyTask() {
 //         }
 //     )
 // })();
+
+
+// Use for no logged in users only!
+// { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
