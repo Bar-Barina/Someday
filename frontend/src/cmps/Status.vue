@@ -43,7 +43,6 @@ export default {
       return this.selectedStatus
     },
     statusClass() {
-      console.log(this.selectedStatus)
       switch (this.selectedStatus) {
         case 'Working on it':
           return 'status-working'

@@ -9,18 +9,22 @@
       <div class="flex align-items-center" contenteditable="true">
         {{ task.taskTitle }}
       </div>
+      <RouterLink :to="`conversation/${task.id}`">
       <span class="open-con flex align-items-center space-between">
         <button class="svg">
           <div className="icon" v-html="getSvg('openCon')"></div>
         </button>
         open
       </span>
+    </RouterLink>
     </div>
+    <RouterLink :to="`conversation/${task.id}`">
     <div class="conversation-wrapper flex align-items-center flex-justify">
       <button class="svg">
         <div className="icon" v-html="getSvg('con')"></div>
       </button>
     </div>
+  </RouterLink>
   </section>
   <section class="cell2" v-for="(cmp, idx) in labels" :key="idx">
     <component :is="cmp" :task="task" @updateTask="updateTask"></component>

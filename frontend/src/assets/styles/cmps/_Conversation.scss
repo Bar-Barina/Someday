@@ -1,0 +1,50 @@
+.conversation-container {
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 500px;
+  height: 100vh;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  .conversation-img {
+    width: 26px;
+  }
+  .conversation-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .conversation-img-section {
+    display: flex;
+  }
+  input {
+    margin-top: 20px;
+    width: 534px;
+    height: 144px;
+    border-radius: 8px;
+    border: 1px solid #0073ea;
+  }
+  .nav-btn {
+    margin-top: 15px;
+    .update-btn {
+      background-color: #0073ea;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      width: 62px;
+      height: 32px;
+    }
+  }
+  .hands {
+    width: 290px;
+    height: 150px;
+    margin-left: 20%;
+    margin-top: 15%;
+  }
+  h2 {
+    text-align: center;
+  }
+  p {
+    text-align: center;
+  }
+}

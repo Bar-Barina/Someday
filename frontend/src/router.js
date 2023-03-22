@@ -11,6 +11,7 @@ import MainTable from './cmps/MainTable.vue'
 import Login from './views/Login.vue'
 import UserDetails from './views/UserDetails.vue'
 import DropDown from './cmps/DropDown.vue'
+import Conversation from './cmps/Conversation.vue'
 
 const routes = [
   {
@@ -35,6 +36,11 @@ const routes = [
       {
         path: ':boardId/dashboard',
         component: Kanban
+      },
+      {
+        path: 'conversation/:taskId',
+        name: 'conversation',
+        component: Conversation
       },
     ]
   },

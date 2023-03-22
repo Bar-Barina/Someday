@@ -45,7 +45,6 @@ export default {
       return this.selectedPriority
     },
     priorityClass() {
-      console.log(this.selectedPriority)
       switch (this.selectedPriority) {
         case 'Critical':
           return 'priority-critical'
