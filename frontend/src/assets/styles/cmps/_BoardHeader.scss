@@ -1,7 +1,8 @@
 .board-header {
     height: 100%;
     width: 100%;
-    padding-inline: 30px;
+    padding-inline: 38px;
+    padding-top: 16px;
 
     .icon {
         height: em(32px);
@@ -55,16 +56,30 @@
     .board-view-change {
         height: em(36px);
         margin-top: 5px;
+
         .view-option-container {
             height: em(38px);
             margin-bottom: 1px;
+            position: relative;
+
+            &:not(:hover):before {
+                content: "";
+                height: 16px;
+                border-right: 1px solid;
+                border-color: $clr016;
+                position: absolute;
+                top: 8px;
+                right: 0;
+            }
+
             .view-option {
                 padding: 4px 8px;
                 height: em(34px);
                 gap: 3px;
+
                 .icon {
-                    width: em(18px);
-                    height: em(18px);
+                    width: em(16px);
+                    height: em(16px);
                 }
             }
         }
@@ -72,21 +87,28 @@
 
     .bottom-header {
         border-top: 1px solid $clr014;
-        padding-block:15px;
+        padding-block: 15px;
         gap: 5px;
+
         .new-item {
             padding: 4px 8px;
             margin-right: 3px;
             background-color: #0073ea;
             color: white;
-            font-size:14px;
+            font-size: 14px;
             width: max-content;
             height: em(36px);
             border-radius: 4px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $primary-hover;
+            }
         }
+
         .bottom-header-btn {
             font-size: 14px;
-            color:#676879;
+            color: #676879;
             padding: 4px 8px;
             height: em(34px);
             display: flex;

@@ -106,7 +106,6 @@ function saveTask(board, groupId, task) {
 //                             taskTitle: "Navbar",
 //                             person: [
 //                                 { name: "Tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                                 { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
 //                                 { name: "Ofek", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
 //                             ],
 //                             date: "27-02-2022",
@@ -121,8 +120,6 @@ function saveTask(board, groupId, task) {
 //                             side: "null",
 //                             taskTitle: "Making header",
 //                             person: [
-//                                   { name: "Tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                                 { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
 //                                 { name: "Ofek", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
 //                             ],
 //                             date: "27-02-2022",
@@ -137,9 +134,8 @@ function saveTask(board, groupId, task) {
 //                             side: "null",
 //                             taskTitle: "Pixel perfect",
 //                             person: [
-//                                  { name: "Tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                                 { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
 //                                 { name: "Ofek", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "Bar", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Done",
@@ -176,9 +172,7 @@ function saveTask(board, groupId, task) {
 //                             side: "null",
 //                             taskTitle: "Check postman",
 //                             person: [
-//                                  { name: "Tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
 //                                 { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                                 { name: "Ofek", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Stuck",
@@ -192,9 +186,8 @@ function saveTask(board, groupId, task) {
 //                             side: "null",
 //                             taskTitle: "Connect sockets",
 //                             person: [
-//                                  { name: "Tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
 //                                 { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                                 { name: "Ofek", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "Bar", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Done",
