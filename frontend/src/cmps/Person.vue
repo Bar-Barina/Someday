@@ -1,12 +1,12 @@
 <template>
-  <section class="persons-list">
+  <div class="person">
+    <img src="task.person.url" />
     <person-preview
       v-for="(person, idx) in task"
       :key="idx"
       :person="task.person"
-      @click="updatePerson(person)"
-    />
-  </section>
+      @click="updatePerson(person)"/>
+  </div>
 </template>
 
 <script>
@@ -32,22 +32,3 @@ export default {
   },
 }
 </script>
-
-<style>
-p {
-  margin: 0;
-}
-
-.persons-list {
-  display: inline-flex;
-  justify-items: center;
-  flex-direction: row;
-  background-color: lightseagreen;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-.persons {
-  background-color: lightseagreen;
-}
-</style>
