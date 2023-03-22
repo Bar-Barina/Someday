@@ -1,10 +1,11 @@
 <template>
   <section class="group-grid group-title flex align-center">
-    <div class="more sticky" v-html="getSvg('more')"></div>
+    <div class="more sticky" v-html="getSvg('Dots')"></div>
+    <!-- <div class="more sticky" v-html="getSvg('more')"></div> -->
     <!-- TODO color task border -->
     <div
       class="task-border sticky"
-      :style="{ 'background-color': group.color }"
+      :style="{'background-color': group.color }"
     ></div>
     <!-- TODO computed arrow for colors -->
     <div class="arrow-down sticky" v-html="getSvg('arrowDownB')"></div>
@@ -26,7 +27,7 @@
       <div></div>
       <div
         class="task-border sticky"
-        style="background-color: rgb(0, 134, 192)"
+        :style="{'background-color': group.color}"
       ></div>
       <div class="sticky cell1">
         <input type="checkbox" class="checkbox" />

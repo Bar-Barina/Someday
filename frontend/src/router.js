@@ -10,7 +10,6 @@ import MainTable from './cmps/MainTable.vue'
 // import LoginSignup from './views/LoginSignup.vue'
 import Login from './views/Login.vue'
 import UserDetails from './views/UserDetails.vue'
-import DropDown from './cmps/DropDown.vue'
 
 const routes = [
   {
@@ -52,11 +51,6 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
-  },
-  {
-    path: '/drop',
-    name: 'drop',
-    component: DropDown
   },
   // {
   //   path: '/user/:id',
