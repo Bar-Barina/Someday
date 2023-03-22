@@ -21,23 +21,31 @@
             line-height: 40px;
             font-size: 24px;
             margin-right: 2px;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.5px;
+            // font-weight: 600;
         }
     }
-    .logged-in-user {
-        padding: 4px 6px;
+    .right-up-header {
+        gap: 5px;
+        .logged-in-user {
+            padding: 4px 8px;
+        font-size: em(14px);
         gap: 4px;
         img {
-            height: em(24px);
-            width: em(24px);
+            height: em(28px);
+            width: em(28px);
         }
     }
     .invite {
+        padding: 2px 6px;
+        padding-right: 9px;
         border: 1px solid $clr014;
-        border-radius: 4px;
-        padding-right: 4px;
         font-size: em(14px);
     }
+}
     .btn-hover {
+        border-radius: 4px;
         &:hover {
             background-color: $clr39;
         }
