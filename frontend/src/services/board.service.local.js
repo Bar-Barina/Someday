@@ -89,10 +89,10 @@ function saveTask(board, groupId, task) {
 //         {
 //             title: 'Sprint 4 Monday',
 //             members: [
-//                 { name: "Tal", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                 { name: "Dor", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                 { name: "Bar", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                 { name: "Ofek", url: 'https://cdn1.monday.com/dapulse_default_photo.png' }
+//                 { name: "Tal", url: 'https://cdn.monday.com/icons/dapulse-person-column.svg' },
+//                 { name: "Dor", url: 'https://cdn.monday.com/icons/dapulse-person-column.svg' },
+//                 { name: "Bar", url: 'https://cdn.monday.com/icons/dapulse-person-column.svg' },
+//                 { name: "Ofek", url: 'https://cdn.monday.com/icons/dapulse-person-column.svg' }
 //             ],
 //             groups: [
 //                 {
@@ -105,9 +105,9 @@ function saveTask(board, groupId, task) {
 //                             side: "null",
 //                             taskTitle: "Navbar",
 //                             person: [
-//                                 { name: "tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                                 { name: "bal", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                                 { name: "shal", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "tal", color: "red", url: 'https://cdn.monday.com/icons/dapulse-person-column.svg' },
+//                                 { name: "bal", color: "black", url: 'https://cdn.monday.com/icons/dapulse-person-column.svg' },
+//                                 { name: "shal", color: "green", url: 'https://cdn.monday.com/icons/dapulse-person-column.svg' },
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Working on it",
@@ -121,9 +121,9 @@ function saveTask(board, groupId, task) {
 //                             side: "null",
 //                             taskTitle: "Making header",
 //                             person: [
-//                                 { name: "tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                                 { name: "bal", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                                 { name: "shal", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "tal", color: "red", url: 'https://cdn.monday.com/icons/dapulse-person-column.svg' },
+//                                 { name: "bal", color: "black", url: 'https://cdn.monday.com/icons/dapulse-person-column.svg' },
+//                                 { name: "shal", color: "green", url: 'https://cdn.monday.com/icons/dapulse-person-column.svg' },
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Stuck",
@@ -137,9 +137,9 @@ function saveTask(board, groupId, task) {
 //                             side: "null",
 //                             taskTitle: "Pixel perfect",
 //                             person: [
-//                                 { name: "tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                                 { name: "bal", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                                 { name: "shal", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "tal", color: "red", url: 'https://cdn.monday.com/icons/dapulse-person-column.svg' },
+//                                 { name: "bal", color: "black", url: 'https://cdn.monday.com/icons/dapulse-person-column.svg' },
+//                                 { name: "shal", color: "green", url: 'https://cdn.monday.com/icons/dapulse-person-column.svg' },
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Done",
@@ -160,9 +160,9 @@ function saveTask(board, groupId, task) {
 //                             side: "null",
 //                             taskTitle: "Full crud",
 //                             person: [
-//                                 { name: "tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                                 { name: "bal", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                                 { name: "shal", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "tal", color: "red", url: 'https://cdn.monday.com/icons/dapulse-person-column.svg' },
+//                                 { name: "bal", color: "black", url: 'https://cdn.monday.com/icons/dapulse-person-column.svg' },
+//                                 { name: "shal", color: "green", url: 'https://cdn.monday.com/icons/dapulse-person-column.svg' },
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Working on it",
@@ -176,9 +176,9 @@ function saveTask(board, groupId, task) {
 //                             side: "null",
 //                             taskTitle: "Check postman",
 //                             person: [
-//                                 { name: "tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                                 { name: "bal", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                                 { name: "shal", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "tal", color: "red", url: 'https://cdn.monday.com/icons/dapulse-person-column.svg' },
+//                                 { name: "bal", color: "black", url: 'https://cdn.monday.com/icons/dapulse-person-column.svg' },
+//                                 { name: "shal", color: "green", url: 'https://cdn.monday.com/icons/dapulse-person-column.svg' },
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Stuck",
@@ -192,9 +192,9 @@ function saveTask(board, groupId, task) {
 //                             side: "null",
 //                             taskTitle: "Connect sockets",
 //                             person: [
-//                                 { name: "tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                                 { name: "bal", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-//                                 { name: "shal", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "tal", color: "red", url: 'https://cdn.monday.com/icons/dapulse-person-column.svg' },
+//                                 { name: "bal", color: "black", url: 'https://cdn.monday.com/icons/dapulse-person-column.svg' },
+//                                 { name: "shal", color: "green", url: 'https://cdn.monday.com/icons/dapulse-person-column.svg' },
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Done",
