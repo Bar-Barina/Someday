@@ -27,10 +27,7 @@ export default {
   },
   methods: {
     updatePerson(person) {
-      console.log('person from person', person)
       this.taskPersons.push(person)
-      console.log('this.taskPersons', this.taskPersons)
-    //   this.isOpen = false
       this.$emit('updateTask', { cmpType: 'person', data: {...this.taskPersons} })
     },
   },

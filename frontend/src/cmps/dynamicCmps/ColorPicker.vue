@@ -40,7 +40,6 @@ export default {
   },
   methods: {
     updateColor(color) {
-      console.log('color from colorPicker', color)
       this.$emit('updateColor', { toChange: 'color', data: color })
     },
   },
