@@ -6,7 +6,7 @@
       @click="toggleEdit"
       v-html="getSvg('Dots')"
     ></div>
-    <EditMenu v-if="isEditOpen" :groupId="group._id" @remove="remove"/>
+    <EditMenu v-if="isEditOpen" :groupId="group._id" @remove="remove" />
     <div
       class="task-border sticky"
       :style="{ 'background-color': group.color }"
@@ -18,14 +18,19 @@
     ></div>
     <div class="title-wrapper flex align-center sticky">
       <div v-show="isTitleFocused" class="color-icon span-color">
-        <ColorPicker v-if="showColorPicker" :groupColor="group.color" 
-        @updateColor="updateGroup" />
+        <ColorPicker
+          v-if="showColorPicker"
+          :groupColor="group.color"
+          @updateColor="updateGroup"
+        />
       </div>
       <div
         class="title-input editable-div"
         contenteditable="true"
+        ref="groupTitle"
+        @focusout="updateGroup"
         :style="{ color: group.color }"
-        @click="titleFocus = !titleFocus"
+        @focusin="titleFocus = !titleFocus"
         :class="{ focused: isTitleFocused }"
       >
         {{ group.title }}
@@ -98,17 +103,17 @@
 </template>
 
 <script>
-import { Container, Draggable } from 'vue3-smooth-dnd'
-import { svgService } from '../services/svg.service.js'
-import { utilService } from '../services/util.service'
-import TaskPreview from './TaskPreview.vue'
-import EditMenu from './EditMenu.vue'
-import AddTask from './AddTask.vue'
-import ProgressBar from './ProgressBar.vue'
-import ColorPicker from '../cmps/dynamicCmps/ColorPicker.vue'
+import { Container, Draggable } from "vue3-smooth-dnd";
+import { svgService } from "../services/svg.service.js";
+import { utilService } from "../services/util.service";
+import TaskPreview from "./TaskPreview.vue";
+import EditMenu from "./EditMenu.vue";
+import AddTask from "./AddTask.vue";
+import ProgressBar from "./ProgressBar.vue";
+import ColorPicker from "../cmps/dynamicCmps/ColorPicker.vue";
 
 export default {
-  emits: ['labelDrop','updateTask'],
+  emits: ["labelDrop", "updateTask"],
   props: {
     group: Object,
     labelsOrder: Array,
@@ -118,28 +123,26 @@ export default {
       titleFocus: false,
       isEditOpen: false,
       showColorPicker: true,
-    }
+    };
   },
   methods: {
     getSvg(iconName) {
-      return svgService.getSvg(iconName)
+      return svgService.getSvg(iconName);
     },
     onLabelDrop(dropResult) {
-      this.$emit('labelDrop', dropResult)
+      this.$emit("labelDrop", dropResult);
     },
     onTaskDrop(dropResult) {
-      let scene = JSON.parse(JSON.stringify(this.group.tasks))
-      scene = utilService.applyDrag(scene, dropResult)
-      this.group.tasks = scene
+      let scene = JSON.parse(JSON.stringify(this.group.tasks));
+      scene = utilService.applyDrag(scene, dropResult);
+      this.group.tasks = scene;
     },
     toggleEdit() {
-      this.isEditOpen = !this.isEditOpen
+      this.isEditOpen = !this.isEditOpen;
     },
     updateGroup({ toChange, data }) {
-      console.log(toChange)
-      console.log(data)
-      const groupToSave = { ...this.group };
-      groupToSave[toChange] = data;
+      if (!toChange) this.group.title = this.$refs.groupTitle.innerText;
+      else this.group[toChange] = data;
       this.saveGroup();
     },
     saveGroup(task) {
@@ -150,13 +153,13 @@ export default {
       this.$store.dispatch({ type: "saveTask", toUpdate });
     },
     remove(toRemove) {
-      this.$store.dispatch({type: 'remove' , toRemove})
-    }
+      this.$store.dispatch({ type: "remove", toRemove });
+    },
   },
   computed: {
     isTitleFocused() {
-      if (this.titleFocus) return true
-      else return false
+      if (this.titleFocus) return true;
+      else return false;
     },
   },
   components: {
@@ -168,5 +171,5 @@ export default {
     ProgressBar,
     ColorPicker,
   },
-}
+};
 </script>
