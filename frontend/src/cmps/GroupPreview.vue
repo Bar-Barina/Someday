@@ -2,11 +2,11 @@
   <!-- Group title section-->
   <section class="group-grid group-title flex align-center">
     <div
-      @click="toggleEdit"
       class="more more-group sticky flex justify-center"
+      @click="toggleEdit"
       v-html="getSvg('Dots')"
     ></div>
-    <EditMenu v-if="isEditOpen" :groupId="group._id" />
+    <EditMenu v-if="isEditOpen" :groupId="group._id" @remove="remove" />
     <div
       class="task-border sticky"
       :style="{ 'background-color': group.color }"
@@ -17,12 +17,20 @@
       :style="{ fill: group.color }"
     ></div>
     <div class="title-wrapper flex align-center sticky">
-      <span v-show="isTitleFocused" class="color-icon span-color"></span>
+      <div v-show="isTitleFocused" class="color-icon span-color">
+        <ColorPicker
+          v-if="showColorPicker"
+          :groupColor="group.color"
+          @updateColor="updateGroup"
+        />
+      </div>
       <div
         class="title-input editable-div"
         contenteditable="true"
+        ref="groupTitle"
+        @focusout="updateGroup"
         :style="{ color: group.color }"
-        @click="titleFocus = !titleFocus"
+        @focusin="titleFocus = !titleFocus"
         :class="{ focused: isTitleFocused }"
       >
         {{ group.title }}
@@ -85,9 +93,10 @@
           :labels="labelsOrder"
           :group="group"
           @saveTask="saveGroup"
+          @remove="remove"
         />
       </Draggable>
-      <AddTask :group="group" @addTask="saveGroup"/>
+      <AddTask :group="group" @addTask="saveGroup" />
       <ProgressBar :labelsOrder="labelsOrder" />
     </Container>
   </section>
@@ -104,7 +113,7 @@ import ProgressBar from "./ProgressBar.vue";
 import ColorPicker from "../cmps/dynamicCmps/ColorPicker.vue";
 
 export default {
-  emits: ["labelDrop"],
+  emits: ["labelDrop", "updateTask"],
   props: {
     group: Object,
     labelsOrder: Array,
@@ -113,6 +122,7 @@ export default {
     return {
       titleFocus: false,
       isEditOpen: false,
+      showColorPicker: true,
     };
   },
   methods: {
@@ -131,9 +141,9 @@ export default {
       this.isEditOpen = !this.isEditOpen;
     },
     updateGroup({ toChange, data }) {
-      const groupToSave = {...this.group}
-      groupToSave[toChange] = data
-      saveGroup()
+      if (!toChange) this.group.title = this.$refs.groupTitle.innerText;
+      else this.group[toChange] = data;
+      this.saveGroup();
     },
     saveGroup(task) {
       //    activity = boardService.getEmptyActivity()
@@ -141,6 +151,9 @@ export default {
       //    activity.task = '{mini-task}'
       const toUpdate = { task, group: this.group };
       this.$store.dispatch({ type: "saveTask", toUpdate });
+    },
+    remove(toRemove) {
+      this.$store.dispatch({ type: "remove", toRemove });
     },
   },
   computed: {
