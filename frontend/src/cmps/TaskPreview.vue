@@ -9,7 +9,9 @@
   </div>
   <section class="task-title cell1 sticky flex align-center space-between">
     <div class="task-title-sub flex align-center space-between">
-      <div class="flex align-center" contenteditable="true">
+      <div class="flex align-center content-edit editable-div"
+       @click="(activeTask = true)" contenteditable="true"
+       :class="{active: activeTask}">
         {{ task.taskTitle }}
       </div>
       <span
@@ -22,7 +24,7 @@
         open
       </span>
     </div>
-    <div class="conversation-wrapper flex align-center flex-justify">
+    <div class="conversation-wrapper flex align-center justify-center">
       <button @click="openCon" class="svg">
         <div className="icon" v-html="getSvg('con')"></div>
       </button>
@@ -54,6 +56,7 @@ export default {
   data() {
     return {
       isEditOpen: false,
+      activeTask: false
     };
   },
   methods: {

@@ -5,7 +5,7 @@
         v-model="value"
         type="date"
         placeholder="Pick a date"
-        :default-value="new Date(2010, 9, 1)"
+        :default-value="new Date(Date.now())"
         @change="changeDate"
       />
     </label>
@@ -22,15 +22,16 @@ export default {
   created() {},
   data() {
     return {
-      value: []
+      value: [],
     };
   },
   methods: {
     changeDate() {
-      this.$emit("updateTask", {cmpType:'date',data:this.value});
+      console.log('formattedDate', this.values)
+      this.$emit("updateTask", { cmpType: "date", data: this.value });
     },
   },
   computed: {},
-}
+};
 </script>
 

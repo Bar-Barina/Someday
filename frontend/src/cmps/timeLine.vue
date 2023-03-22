@@ -7,7 +7,7 @@
         type="daterange"
         start-placeholder="Start Date"
         end-placeholder="End Date"
-        :default-value="[new Date(2010, 9, 1), new Date(2010, 10, 1)]"
+        :default-value="[new Date(Date.now()), new Date(Date.now())]"
         @change="changeDate"
       />
     </label>
