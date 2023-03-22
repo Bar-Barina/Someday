@@ -74,7 +74,9 @@
   margin: 0;
 }
 
-.editable-div-hover {
+.editable-div {
+  width: max-content;
+  padding: 0 4px;
   &:hover {
     border-radius: 4px;
     border: 1px solid $clr38;
