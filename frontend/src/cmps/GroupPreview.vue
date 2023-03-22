@@ -140,7 +140,7 @@ export default {
       console.log(data)
       const groupToSave = { ...this.group };
       groupToSave[toChange] = data;
-      saveGroup();
+      this.saveGroup();
     },
     saveGroup(task) {
       //    activity = boardService.getEmptyActivity()
