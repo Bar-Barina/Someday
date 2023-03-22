@@ -17,7 +17,7 @@
       :style="{ fill: group.color }"
     ></div>
     <div class="title-wrapper flex align-center sticky">
-      <div v-show="isTitleFocused" class="color-icon span-color">
+      <div v-show="titleFocus" class="color-icon span-color" @click.stop="toggleModal">
         <ColorPicker
           v-if="showColorPicker"
           :groupColor="group.color"
@@ -31,8 +31,7 @@
         @focusout="updateGroup"
         :style="{ color: group.color }"
         @focusin="titleFocus = !titleFocus"
-        :class="{ focused: isTitleFocused }"
-      >
+        :class="{ focused: isTitleFocused }">
         {{ group.title }}
       </div>
     </div>
@@ -141,6 +140,7 @@ export default {
       this.isEditOpen = !this.isEditOpen;
     },
     updateGroup({ toChange, data }) {
+      this.titleFocus = false
       if (!toChange) this.group.title = this.$refs.groupTitle.innerText;
       else this.group[toChange] = data;
       this.saveGroup();
@@ -155,6 +155,9 @@ export default {
     remove(toRemove) {
       this.$store.dispatch({ type: "remove", toRemove });
     },
+    toggleModal() {
+      this.showColorPicker = !this.showColorPicker
+    }
   },
   computed: {
     isTitleFocused() {

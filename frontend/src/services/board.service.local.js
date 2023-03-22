@@ -98,13 +98,12 @@ async function saveTask(board, group, task) {
 }
 
 async function removeItem(board , groupId , taskId) {
+  const groupIdx = currBoard.groups.findIndex((g) => g._id === groupId)
   const currBoard = JSON.parse(JSON.stringify(board))
   if(taskId) {
-    const groupIdx = currBoard.groups.findIndex((g) => g._id === groupId)
     const taskIdx = currBoard.groups[groupIdx].tasks.findIndex((t) => t.id === taskId)
     currBoard.groups[groupIdx].tasks.splice(taskIdx , 1)
   } else {
-    const groupIdx = currBoard.groups.findIndex((g) => g._id === groupId)
     currBoard.groups.splice(groupIdx , 1)
   }
   save(currBoard)
@@ -112,7 +111,7 @@ async function removeItem(board , groupId , taskId) {
 
 function getEmptyBoard() {
   return {
-    title: 'Susita-' + (Date.now() % 1000),
+    title: 'Full Stack' + (Date.now() % 1000),
     date: utilService.getRandomIntInclusive(1000, 9000),
   }
 }
