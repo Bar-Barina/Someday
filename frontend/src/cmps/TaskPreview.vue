@@ -2,7 +2,7 @@
 <div @click="toggleEdit" class="align-center more-task sticky flex justify-center">
   <div class="more" v-html="getSvg('Dots')"></div>
   </div>
-  <EditMenu v-if="isEditOpen" :groupId="group._id" :taskId="task.id" />
+  <EditMenu v-if="isEditOpen" :groupId="group._id" :taskId="task.id" @remove="removeTask"/>
   <div class="task-border sticky" :style="{ 'background-color': group.color }"></div>
   <div class="flex sticky align-center cell1 flex-justify third">
     <input type="checkbox" />
@@ -47,7 +47,7 @@ import Date from "./Date.vue";
 import Person from "./Person.vue";
 
 export default {
-  emits: ["saveTask"],
+  emits: ["saveTask" , 'remove'],
   props: {
     labels: Array,
     task: Object,
@@ -80,6 +80,9 @@ export default {
     toggleEdit() {
       this.isEditOpen = !this.isEditOpen;
     },
+    removeTask(toRemove) {
+      this.$emit('remove' , toRemove)
+    }
   },
   computed: {
     currBoardId() {

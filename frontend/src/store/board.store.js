@@ -34,7 +34,7 @@ export const boardStore = {
     },
     getters: {
         boards({ boards }) { return boards },
-        currBoard({currBoard}) { return currBoard }
+        currBoard({ currBoard }) { return currBoard }
     },
     mutations: {
         setBoards(state, { boards }) {
@@ -112,11 +112,16 @@ export const boardStore = {
                 throw err
             }
         },
-        async saveTask({state , commit} , { toUpdate }) {
+        async saveTask({ state, commit }, { toUpdate }) {
             const board = state.currBoard
             // commit(ACTION) // dispatch(ACTION)
-            if(!toUpdate.task) toUpdate.task = null
-            boardService.saveTask(board, toUpdate.groupId, toUpdate.task)
+            if (!toUpdate.task) toUpdate.task = null
+            boardService.saveTask(board, toUpdate.group, toUpdate.task)
+        },
+        async remove({ state, commit }, { toRemove }) {
+            console.log('toRemove', toRemove)
+            const board = state.currBoard
+            await boardService.removeItem(board, toRemove.groupId, toRemove.taskId)
         }
     }
 }

@@ -13,6 +13,7 @@ export const boardService = {
   addBoardMsg,
   saveTask,
   getEmptyTask,
+  removeItem
 }
 window.cs = boardService
 
@@ -64,6 +65,51 @@ async function addBoardMsg(boardId, txt) {
   return msg
 }
 
+async function saveTask(board, group, task) {
+  const boardToSave = JSON.parse(JSON.stringify(board))
+  if (task) {
+    const groupIdx = boardToSave.groups.findIndex((g) => g._id === group._id)
+    if (task.id) {
+      const taskIdx = boardToSave.groups[groupIdx].tasks.findIndex((t) => t.id === task.id)
+      boardToSave.groups[groupIdx].tasks.splice(taskIdx, 1, task)
+    } else {
+      task.id = utilService.makeId()
+      boardToSave.groups[groupIdx].tasks.push(task)
+    }
+    await save(boardToSave)
+    return task
+  }
+  if (group) {
+    if (group._id) {
+      const groupIdx = boardToSave.groups.findIndex((g) => g._id === group._id)
+      boardToSave.groups.splice(groupIdx, 1, group)
+    } else {
+      group.id = utilService.makeId()
+      boardToSave.groups.push(group)
+    }
+    await save(boardToSave)
+    return group
+  }
+  await save(boardToSave)
+  return boardToSave
+
+    // PUT /api/board/b123/task/t678
+  // board.activities.unshift(activity)
+}
+
+async function removeItem(board , groupId , taskId) {
+  const currBoard = JSON.parse(JSON.stringify(board))
+  if(taskId) {
+    const groupIdx = currBoard.groups.findIndex((g) => g._id === groupId)
+    const taskIdx = currBoard.groups[groupIdx].tasks.findIndex((t) => t.id === taskId)
+    currBoard.groups[groupIdx].tasks.splice(taskIdx , 1)
+  } else {
+    const groupIdx = currBoard.groups.findIndex((g) => g._id === groupId)
+    currBoard.groups.splice(groupIdx , 1)
+  }
+  save(currBoard)
+}
+
 function getEmptyBoard() {
   return {
     title: 'Susita-' + (Date.now() % 1000),
@@ -83,20 +129,6 @@ function getEmptyTask() {
     files: '',
     text: ''
   }
-}
-
-function saveTask(board, groupId, task) {
-  const boardToSave = JSON.parse(JSON.stringify(board))
-  const groupIdx = boardToSave.groups.findIndex((g) => g._id === groupId)
-  const taskIdx = boardToSave.groups[groupIdx].tasks.findIndex(
-    (t) => t.id === task.id
-  )
-  boardToSave.groups[groupIdx].tasks.splice(taskIdx, 1, task)
-  // PUT /api/board/b123/task/t678
-  // board.activities.unshift(activity)
-  save(boardToSave)
-  return boardToSave
-  // return task
 }
 
 // ; (async () => {

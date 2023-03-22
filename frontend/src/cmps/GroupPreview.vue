@@ -2,11 +2,11 @@
   <!-- Group title section-->
   <section class="group-grid group-title flex align-center">
     <div
-      @click="toggleEdit"
       class="more more-group sticky flex justify-center"
+      @click="toggleEdit"
       v-html="getSvg('Dots')"
     ></div>
-    <EditMenu v-if="isEditOpen" :groupId="group._id" />
+    <EditMenu v-if="isEditOpen" :groupId="group._id" @remove="remove"/>
     <div
       class="task-border sticky"
       :style="{ 'background-color': group.color }"
@@ -87,10 +87,11 @@
           :task="task"
           :labels="labelsOrder"
           :group="group"
-          @saveTask="updateTask"
+          @saveTask="saveGroup"
+          @remove="remove"
         />
       </Draggable>
-      <AddTask :group="group" @addTask="updateTask" />
+      <AddTask :group="group" @addTask="saveGroup" />
       <ProgressBar :labelsOrder="labelsOrder" />
     </Container>
   </section>
@@ -134,17 +135,18 @@ export default {
     toggleEdit() {
       this.isEditOpen = !this.isEditOpen
     },
-    updateTask(task) {
+    updateGroup({ toChange, data }) {
+      const groupToSave = { ...this.group };
+      groupToSave[toChange] = data;
+      saveGroup();
+    },
+    saveGroup(task) {
       //    activity = boardService.getEmptyActivity()
       //    activity.txt = `Members changed for task ${}`
       //    activity.task = '{mini-task}'
-      const toUpdate = { task, groupId: this.group._id }
-      this.$store.dispatch({ type: 'saveTask', toUpdate })
+      const toUpdate = { task, groupId: this.group._id };
+      this.$store.dispatch({ type: "saveTask", toUpdate });
     },
-    updateColor(color) {
-      console.log('color from preview', color)
-      this.$emit('updateTask', { cmpType: 'color', data: color })
-    }
   },
   computed: {
     isTitleFocused() {
