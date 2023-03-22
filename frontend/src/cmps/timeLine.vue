@@ -4,6 +4,7 @@
       <el-date-picker
         v-model="value"
         type="daterange"
+        value-format="MMM-DD"
         start-placeholder="Start Date"
         end-placeholder="End Date"
         :default-value="[new Date(Date.now()), new Date(Date.now())]"
@@ -28,7 +29,7 @@ export default {
   },
   methods: {
     changeDate() {
-      console.log('this.value',this.value)
+      console.log('this.value', this.value)
       this.$emit("updateTask", {cmpType:'timeLine',data:this.value});
     },
   },

@@ -4,6 +4,7 @@
       <el-date-picker
         v-model="value"
         type="date"
+        value-format="MMM-DD"
         placeholder="Pick a date"
         :default-value="new Date(2010, 9, 1)"
         @change="changeDate"
@@ -28,7 +29,7 @@ export default {
   methods: {
     changeDate() {
       console.log('formattedDate', this.value)
-      // this.$emit("updateTask", { cmpType: "date", data: this.value });
+      this.$emit("updateTask", { cmpType: "date", data: this.value });
     },
   },
   computed: {},
