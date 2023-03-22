@@ -1,7 +1,7 @@
 <template>
   <div @click="isOpen = !isOpen" class="person">
     <span v-for="(person, idx) in task.person" :key="idx">
-      <img :src="person.url" />
+      <img :src="person.url" class="person-img" />
     </span>
   </div>
   <PersonPreview
@@ -28,6 +28,7 @@ export default {
   methods: {
     updatePerson(person) {
       this.selectedPerson = person
+      this.isOpen = false
       this.$emit('updateTask', { cmpType: 'person', data: person })
     },
   },
