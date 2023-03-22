@@ -12,7 +12,7 @@
     <div class="title-wrapper flex align-center sticky">
       <button v-show="isTitleFocused" class="color-icon btn-color"></button>
       <div
-        class="title-input"
+        class="title-input editable-div"
         contenteditable="true"
         :style="{ color: group.color }"
         @click="titleFocus = !titleFocus"
