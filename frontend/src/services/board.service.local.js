@@ -87,17 +87,17 @@ function saveTask(board, groupId, task) {
 // ; (async () => {
 //     await storageService.post(STORAGE_KEY,
 //         {
-//             title: 'First board',
+//             title: 'Sprint 4 Monday',
 //             groups: [
 //                 {
-//                     title: 'First task',
+//                     title: 'Frontend',
 //                     _id: Math.random().toString(36).slice(2),
-//                     color: "red",
+//                     color: "rgb(0, 134, 192)",
 //                     tasks: [
 //                         {
 //                             id: "t101",
 //                             side: "null",
-//                             taskTitle: "learn CSS",
+//                             taskTitle: "Navbar",
 //                             person: [
 //                                 { name: "tal", color: "red" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
 //                                 { name: "bal", color: "black" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
@@ -113,7 +113,7 @@ function saveTask(board, groupId, task) {
 //                         {
 //                             id: "t102",
 //                             side: "null",
-//                             taskTitle: "learn vue",
+//                             taskTitle: "Making header",
 //                             person: [
 //                                 { name: "tal", color: "red" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
 //                                 { name: "bal", color: "black" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
@@ -129,7 +129,7 @@ function saveTask(board, groupId, task) {
 //                         {
 //                             id: "t103",
 //                             side: "null",
-//                             taskTitle: "learn js",
+//                             taskTitle: "Pixel perfect",
 //                             person: [
 //                                 { name: "tal", color: "red" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
 //                                 { name: "bal", color: "black" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
@@ -145,14 +145,14 @@ function saveTask(board, groupId, task) {
 //                     ],
 //                 },
 //                 {
-//                     title: 'First task',
+//                     title: 'Backend',
 //                     _id: Math.random().toString(36).slice(2),
-//                     color: "red",
+//                     color: "rgb(255, 21, 138)",
 //                     tasks: [
 //                         {
 //                             id: "t101",
 //                             side: "null",
-//                             taskTitle: "learn CSS",
+//                             taskTitle: "Full crud",
 //                             person: [
 //                                 { name: "tal", color: "red" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
 //                                 { name: "bal", color: "black" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
@@ -168,7 +168,7 @@ function saveTask(board, groupId, task) {
 //                         {
 //                             id: "t102",
 //                             side: "null",
-//                             taskTitle: "learn vue",
+//                             taskTitle: "Check postman",
 //                             person: [
 //                                 { name: "tal", color: "red" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
 //                                 { name: "bal", color: "black" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
@@ -184,7 +184,7 @@ function saveTask(board, groupId, task) {
 //                         {
 //                             id: "t103",
 //                             side: "null",
-//                             taskTitle: "learn js",
+//                             taskTitle: "Connect sockets",
 //                             person: [
 //                                 { name: "tal", color: "red" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
 //                                 { name: "bal", color: "black" , url: 'https://cdn.monday.com/icons/dapulse-person-column.svg'},
