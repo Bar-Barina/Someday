@@ -136,6 +136,8 @@ export default {
       this.isEditOpen = !this.isEditOpen
     },
     updateGroup({ toChange, data }) {
+      console.log(toChange)
+      console.log(data)
       const groupToSave = { ...this.group };
       groupToSave[toChange] = data;
       saveGroup();
