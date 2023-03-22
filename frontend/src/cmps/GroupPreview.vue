@@ -1,14 +1,21 @@
 <template>
+  <!-- Group title section-->
   <section class="group-grid group-title flex align-center">
-    <div @click="toggleEdit" class="more more-group sticky flex justify-center" v-html="getSvg('Dots')"></div>
-    <EditMenu v-if="isEditOpen" :groupId="group._id"/>
-    <!-- TODO color task border -->
+    <div
+      @click="toggleEdit"
+      class="more more-group sticky flex justify-center"
+      v-html="getSvg('Dots')"
+    ></div>
+    <EditMenu v-if="isEditOpen" :groupId="group._id" />
     <div
       class="task-border sticky"
-      :style="{'background-color': group.color }"
+      :style="{ 'background-color': group.color }"
     ></div>
-    <!-- TODO computed arrow for colors -->
-    <div class="arrow-down sticky" v-html="getSvg('arrowDownB')" :style="{color: group.color }"></div>
+    <div
+      class="arrow-down sticky"
+      v-html="getSvg('arrowDownB')"
+      :style="{ fill: group.color }"
+    ></div>
     <div class="title-wrapper flex align-center sticky">
       <button v-show="isTitleFocused" class="color-icon btn-color"></button>
       <div
@@ -22,17 +29,21 @@
       </div>
     </div>
   </section>
+
+  <!-- Group content -->
   <section class="group-content">
     <section class="group-grid labels-grid">
       <div class="empty sticky"></div>
       <div
         class="task-border sticky"
-        :style="{'background-color': group.color}"
+        :style="{ 'background-color': group.color }"
       ></div>
       <div class="sticky check-box cell1">
         <input type="checkbox" class="checkbox" />
       </div>
       <div class="sticky task cell1">Tasks</div>
+
+      <!-- Labels drag container -->
       <Container
         class="horizontal labels-container"
         orientation="horizontal"
@@ -49,6 +60,7 @@
         </Draggable>
       </Container>
     </section>
+    <!-- Tasks drag container -->
     <Container
       class="smooth-dnd-container"
       orientation="vertical"
@@ -68,10 +80,15 @@
         v-for="(task, idx) in group.tasks"
         :key="idx"
       >
-        <TaskPreview :task="task" :labels="labelsOrder" :group="group" @saveTask="updateTask" />
+        <TaskPreview
+          :task="task"
+          :labels="labelsOrder"
+          :group="group"
+          @saveTask="updateTask"
+        />
       </Draggable>
-      <AddTask :group="group"/>
-      <ProgressBar :labelsOrder="labelsOrder"/>
+      <AddTask :group="group" />
+      <ProgressBar :labelsOrder="labelsOrder" />
     </Container>
   </section>
 </template>
@@ -81,9 +98,9 @@ import { Container, Draggable } from "vue3-smooth-dnd";
 import { svgService } from "../services/svg.service.js";
 import { utilService } from "../services/util.service";
 import TaskPreview from "./TaskPreview.vue";
-import EditMenu from './EditMenu.vue';
-import AddTask from './AddTask.vue';
-import ProgressBar from './ProgressBar.vue'
+import EditMenu from "./EditMenu.vue";
+import AddTask from "./AddTask.vue";
+import ProgressBar from "./ProgressBar.vue";
 
 export default {
   emits: ["labelDrop"],
@@ -110,13 +127,13 @@ export default {
       this.group.tasks = scene;
     },
     toggleEdit() {
-      this.isEditOpen = !this.isEditOpen
+      this.isEditOpen = !this.isEditOpen;
     },
     updateTask(task) {
       //    activity = boardService.getEmptyActivity()
       //    activity.txt = `Members changed for task ${}`
       //    activity.task = '{mini-task}'
-      const toUpdate = {task , groupId: this.group._id}
+      const toUpdate = { task, groupId: this.group._id };
       this.$store.dispatch({ type: "saveTask", toUpdate });
     },
   },
@@ -132,7 +149,7 @@ export default {
     TaskPreview,
     EditMenu,
     AddTask,
-    ProgressBar
+    ProgressBar,
   },
 };
 </script>
