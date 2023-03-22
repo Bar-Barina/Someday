@@ -20,6 +20,7 @@
 </template>
 
 <script>
+
 import BoardHeader from "../cmps/BoardHeader.vue";
 import SideNav from "../cmps/SideNav.vue";
 import Workspace from "../cmps/Workspace.vue";
