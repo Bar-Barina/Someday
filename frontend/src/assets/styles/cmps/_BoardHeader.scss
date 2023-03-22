@@ -1,0 +1,24 @@
+.board-header {
+    height: 100%;
+    width: 100%;
+    .board-name {
+        height: 45px;
+        width: max-content;
+        gap:1px;
+        .icon {
+            height: 32px;
+            width: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: em(30px);
+            line-height: 40px;
+            font-size: 24px;
+        }
+    }
+}

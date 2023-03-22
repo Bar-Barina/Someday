@@ -1,6 +1,6 @@
 <template>
   <div></div>
-  <div class="task-border" style="background-color: rgb(0, 134, 192)"></div>
+  <div class="task-border" :style="{'background-color': group.color}"></div>
   <div class="flex align-items-center cell1 flex-justify">
     <input type="checkbox" />
   </div>

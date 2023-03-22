@@ -1,16 +1,35 @@
 <template>
   <section class="board-header">
-    <h1>Board header</h1>
+    <section class="board-name flex align-center justify-center">
+    <div class="title editable-div" contenteditable="true">
+      Board header
+    </div>
+    <div class="icon">
+  <div className="icon" v-html="getSvg('descrip')"></div>
+    </div>
+    <div class="icon">
+  <div className="icon" v-html="getSvg('headerStar')"></div>
+    </div>
+    </section>
   </section>
 </template>
 
 <script>
+import {svgService} from '../services/svg.service.js'
 export default {
-  
-  components:{
+  name: 'BoardHeader', 
+  props: [],
+components:{},
+created() {},
+  data() {
+    return {}
+  },
+  methods: {
+    getSvg(iconName) {
+    return svgService.getSvg(iconName)
+  }
+  },
+  computed: {},
 }
-}
-</script>
 
-<style>
-</style>
+</script>

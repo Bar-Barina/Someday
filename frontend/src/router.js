@@ -59,11 +59,6 @@ const routes = [
     name: 'Login',
     component: Login
   },
-  {
-    path: '/drop',
-    name: 'drop',
-    component: DropDown
-  },
   // {
   //   path: '/user/:id',
   //   name: 'UserDetails',
