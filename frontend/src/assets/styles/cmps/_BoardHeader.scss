@@ -2,6 +2,7 @@
     height: 100%;
     width: 100%;
     padding-inline: 30px;
+
     .icon {
         height: em(32px);
         width: em(32px);
@@ -10,42 +11,95 @@
         align-items: center;
         color: #676879;
     }
+
     .board-name {
         height: 45px;
         width: max-content;
+
         .title {
             display: flex;
             align-items: center;
             justify-content: center;
             height: em(24px);
             line-height: 40px;
-            font-size: 24px;
+            font-size: 22px;
             margin-right: 2px;
             font-family: 'Poppins', sans-serif;
             letter-spacing: 0.5px;
             // font-weight: 600;
         }
     }
+
     .right-up-header {
         gap: 5px;
+
         .logged-in-user {
             padding: 4px 8px;
-        font-size: em(14px);
-        gap: 4px;
-        img {
-            height: em(28px);
-            width: em(28px);
+            font-size: em(14px);
+            gap: 4px;
+
+            img {
+                height: em(28px);
+                width: em(28px);
+            }
+        }
+
+        .invite {
+            padding: 2px 6px;
+            padding-right: 9px;
+            border: 1px solid $clr014;
+            font-size: em(14px);
         }
     }
-    .invite {
-        padding: 2px 6px;
-        padding-right: 9px;
-        border: 1px solid $clr014;
-        font-size: em(14px);
+
+    .board-view-change {
+        height: em(36px);
+        margin-top: 5px;
+        .view-option-container {
+            height: em(38px);
+            margin-bottom: 1px;
+            .view-option {
+                padding: 4px 8px;
+                height: em(34px);
+                gap: 3px;
+                .icon {
+                    width: em(18px);
+                    height: em(18px);
+                }
+            }
+        }
     }
-}
+
+    .bottom-header {
+        border-top: 1px solid $clr014;
+        padding-block:15px;
+        gap: 5px;
+        .new-item {
+            padding: 4px 8px;
+            margin-right: 3px;
+            background-color: #0073ea;
+            color: white;
+            font-size:14px;
+            width: max-content;
+            height: em(36px);
+            border-radius: 4px;
+        }
+        .bottom-header-btn {
+            font-size: 14px;
+            color:#676879;
+            padding: 4px 8px;
+            height: em(34px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+        }
+    }
+
     .btn-hover {
         border-radius: 4px;
+        cursor: pointer;
+
         &:hover {
             background-color: $clr39;
         }
