@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import PersonPreview from '../cmps/PersonPreview.vue'
+import PersonPreview from '../PersonPreview.vue'
 export default {
   emits: ['updateTask'],
   name: 'person',

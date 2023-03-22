@@ -40,11 +40,11 @@ import { svgService } from "../services/svg.service";
 import { Container, Draggable } from "vue3-smooth-dnd";
 import { utilService } from "../services/util.service";
 import EditMenu from "./EditMenu.vue";
-import Status from "./Status.vue";
-import Priority from "./Priority.vue";
-import Timeline from "./Timeline.vue";
-import Date from "./Date.vue";
-import Person from "./Person.vue";
+import Status from "./dynamicCmps/Status.vue";
+import Priority from "./dynamicCmps/Priority.vue";
+import Timeline from "./dynamicCmps/Timeline.vue";
+import Date from "./dynamicCmps/Date.vue";
+import Person from "./dynamicCmps/Person.vue";
 
 export default {
   emits: ["saveTask" , 'remove'],
