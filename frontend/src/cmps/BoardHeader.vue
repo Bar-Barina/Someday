@@ -1,6 +1,6 @@
 <template>
   <section class="board-header">
-    <section class="board-name">
+    <section class="board-name flex align-center justify-center">
     <div class="title editable-div" contenteditable="true">
       Board header
     </div>
@@ -8,7 +8,7 @@
   <div className="icon" v-html="getSvg('descrip')"></div>
     </div>
     <div class="icon">
-  <div className="icon" v-html="getSvg('descrip')"></div>
+  <div className="icon" v-html="getSvg('headerStar')"></div>
     </div>
     </section>
   </section>
