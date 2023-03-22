@@ -26,3 +26,8 @@
         margin-bottom: 20px;
     }
 }
+.el-date-editor.el-input, .el-date-editor.el-input__wrapper { 
+    opacity: 0;
+    width: max-content;
+    z-index: -1;
+}
