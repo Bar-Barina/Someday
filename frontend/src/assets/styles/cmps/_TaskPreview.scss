@@ -2,17 +2,24 @@
     .task-title {
         padding-inline-start: 30px;
 
-        .title-sub {
-            padding: 12px 5px;
-            height: 20px;
-            width: 30px;
-            min-width: fit-content;
-            transition: width .2s ease;
-        }
-
         .task-title-sub {
             width: 100%;
             padding-inline-end: 16px;
+        }
+
+        .content-edit {
+            cursor: auto;
+            height: 20px;
+            padding: 12px 5px;
+            width: 30px;
+            min-width: fit-content;
+            transition: width .2s ease;
+            border-radius: 4px;
+
+            &.active {
+                width: 100%;
+                border: 1px solid transparent;
+            }
         }
     }
 
