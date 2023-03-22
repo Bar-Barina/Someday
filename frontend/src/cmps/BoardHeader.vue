@@ -42,7 +42,6 @@
           Main Table
         </div>
       </div>
-        |
       <div class="view-option-container">
         <div class="view-option flex align-center btn-hover">
           Dashboard
