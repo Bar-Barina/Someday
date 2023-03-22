@@ -36,13 +36,18 @@
       Add your board's description here 
     </div>
     <section class="board-view-change flex align-center">
-      <div class="view-option-container">
-        <div class="view-option  flex align-center btn-hover">
+      <div :class="{'active':active===''}" class="view-option-container" >
+        <div class="view-option flex align-center btn-hover" @click="switchBoardView('')">
           <div v-html="getSvg('headerHome')"></div>
           Main Table
         </div>
       </div>
-      <div class="view-option-container">
+      <div :class="{'active':active==='kanban'}" class="view-option-container" @click="switchBoardView('kanban')">
+        <div class="view-option flex align-center btn-hover">
+          Kanban
+        </div>
+      </div>
+      <div :class="{'active':active==='dashboard'}" class="view-option-container" @click="switchBoardView('dashboard')">
         <div class="view-option flex align-center btn-hover">
           Dashboard
         </div>
@@ -50,7 +55,7 @@
     </section>
       <section class="bottom-header flex align-center">
         <div class="new-item flex justify-center align-center">
-          New item
+          New task
         </div>
         <div class="bottom-header-btn btn-hover">
           <div class="flex justify-center align-center" v-html="getSvg('headerSearch')"></div>
@@ -80,24 +85,29 @@
 import {svgService} from '../services/svg.service.js'
 export default {
   name: 'BoardHeader', 
-  props: {  },
+  props: {},
 components:{},
 created() {
   
 },
   data() {
     return {
+      active:''
     }
   },
   methods: {
     getSvg(iconName) {
     return svgService.getSvg(iconName)
+  },
+  switchBoardView(routerName) {
+    this.active = routerName
+    this.$router.push(`/board/${this.currBoard._id}/${routerName}`)
   }
   },
   computed: {
     currBoard() {
       return this.$store.getters.currBoard;
-    }
+    },
   },
 }
 

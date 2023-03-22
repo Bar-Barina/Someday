@@ -9,7 +9,7 @@
         <input type="checkbox">
     </div>
     <div class="input-wrapper cell1 sticky">
-        <input v-model="task" type="text" class="flex align-center" placeholder="+ Add task">
+        <input v-model="task.taskTitle" type="text" class="flex align-center" placeholder="+ Add task">
     </div>
   </section>
 </template>
@@ -25,5 +25,10 @@ export default {
         task: boardService.getEmptyTask
     };
   },
+  methods: {
+    addTask() {
+      this.$emit('addTask' , )
+    }
+  }
 };
 </script>

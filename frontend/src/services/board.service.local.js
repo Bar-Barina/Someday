@@ -12,6 +12,7 @@ export const boardService = {
   getEmptyBoard,
   addBoardMsg,
   saveTask,
+  getEmptyTask,
 }
 window.cs = boardService
 
@@ -67,6 +68,20 @@ function getEmptyBoard() {
   return {
     title: 'Susita-' + (Date.now() % 1000),
     date: utilService.getRandomIntInclusive(1000, 9000),
+  }
+}
+
+function getEmptyTask() {
+  return {
+    side: "null",
+    taskTitle: "",
+    person: [],
+    date: "",
+    status: "",
+    priority: "",
+    timeline: '',
+    files: '',
+    text: ''
   }
 }
 
