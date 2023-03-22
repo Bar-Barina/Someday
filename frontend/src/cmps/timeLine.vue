@@ -17,6 +17,7 @@
 <script>
 export default {
   name: "timeline",
+  emit:['updateTask'],
   props: {
     task: Object,
   },
