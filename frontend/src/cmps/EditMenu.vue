@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import { svgService } from "../services/svg.service";
+import { svgService } from '../services/svg.service'
 
 export default {
-  emits:['remove'],
+  emits: ['remove'],
   props: {
     taskId: String,
     groupId: String,
@@ -20,22 +20,21 @@ export default {
     return {
       task: null,
       group: null,
-    };
+    }
   },
-  created() {
-  },
+  created() {},
   methods: {
     getSvg(iconName) {
-      return svgService.getSvg(iconName);
+      return svgService.getSvg(iconName)
     },
     remove() {
       if (!this.taskId) {
-        this.$emit("remove" , {groupId: this.groupId});
+        this.$emit('remove', { groupId: this.groupId })
       } else {
-        const toRemove = {groupId: this.groupId , taskId: this.taskId}
-        this.$emit( "remove" , toRemove);
+        const toRemove = { groupId: this.groupId, taskId: this.taskId }
+        this.$emit('remove', toRemove)
       }
     },
   },
-};
+}
 </script>
