@@ -7,7 +7,7 @@
       :style="{'background-color': group.color }"
     ></div>
     <!-- TODO computed arrow for colors -->
-    <div class="arrow-down sticky" v-html="getSvg('arrowDownB')"></div>
+    <div class="arrow-down sticky" v-html="getSvg('arrowDownB')" :style="{color: group.color }"></div>
     <div class="title-wrapper flex align-center sticky">
       <button v-show="isTitleFocused" class="color-icon btn-color"></button>
       <div
