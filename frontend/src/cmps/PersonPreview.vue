@@ -2,8 +2,7 @@
   <section v-if="person" class="person-preview">
     <img :src="person.url" alt="person-img" />
     <article>
-      {{ person}}
-      <!-- {{ person.name.substring(0, 1).toUpperCase() }} -->
+      {{ person.name }}
       <input type="text" placeholder="Search names, roles or teams" />
       <p>Suggested people</p>
       <!-- <ul>
@@ -37,13 +36,11 @@ export default {
 
 <style>
 .person-preview {
-  color: #fff;
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-inline-start: -10px;
+  position: absolute;
+  background-color: white;
+  width: 400px;
+  height: 300px;
+  border: 1px solid black;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 </style>
