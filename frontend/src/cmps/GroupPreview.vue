@@ -6,7 +6,7 @@
       @click="toggleEdit"
       v-html="getSvg('Dots')"
     ></div>
-    <EditMenu v-if="isEditOpen" :groupId="group._id" />
+    <EditMenu v-if="isEditOpen" :groupId="group._id" @remove="remove"/>
     <div
       class="task-border sticky"
       :style="{ 'background-color': group.color }"
@@ -85,6 +85,7 @@
           :labels="labelsOrder"
           :group="group"
           @saveTask="saveGroup"
+          @remove="remove"
         />
       </Draggable>
       <AddTask :group="group" @addTask="saveGroup" />
@@ -142,6 +143,9 @@ export default {
       const toUpdate = { task, group: this.group };
       this.$store.dispatch({ type: "saveTask", toUpdate });
     },
+    remove(toRemove) {
+      this.$store.dispatch({type: 'remove' , toRemove})
+    }
   },
   computed: {
     isTitleFocused() {

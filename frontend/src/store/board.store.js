@@ -117,6 +117,11 @@ export const boardStore = {
             // commit(ACTION) // dispatch(ACTION)
             if (!toUpdate.task) toUpdate.task = null
             boardService.saveTask(board, toUpdate.group, toUpdate.task)
+        },
+        async remove({ state, commit }, { toRemove }) {
+            console.log('toRemove', toRemove)
+            const board = state.currBoard
+            await boardService.removeItem(board, toRemove.groupId, toRemove.taskId)
         }
     }
 }

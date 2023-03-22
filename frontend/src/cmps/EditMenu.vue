@@ -11,6 +11,7 @@
 import { svgService } from "../services/svg.service";
 
 export default {
+  emits:['remove'],
   props: {
     taskId: String,
     groupId: String,
@@ -22,8 +23,6 @@ export default {
     };
   },
   created() {
-    if (this.task) this.task = this.taskId;
-    this.group = this.groupId;
   },
   methods: {
     getSvg(iconName) {
@@ -31,11 +30,10 @@ export default {
     },
     remove() {
       if (!this.taskId) {
-        const toRemove = {removeType: 'group' , groupId: this.groupId}
-        this.$store.dispatch({type: "remove" , toRemove});
+        this.$emit("remove" , {groupId: this.groupId});
       } else {
-        const toRemove = {removeType: 'task' , groupId: this.groupId , taskId: this.taskId}
-        this.$store.dispatch({type: "remove" , toRemove});
+        const toRemove = {groupId: this.groupId , taskId: this.taskId}
+        this.$emit( "remove" , toRemove);
       }
     },
   },
