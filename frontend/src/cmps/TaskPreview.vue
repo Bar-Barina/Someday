@@ -22,7 +22,7 @@
         open
       </span>
     </div>
-    <div class="conversation-wrapper flex align-center flex-justify">
+    <div class="conversation-wrapper flex align-center justify-center">
       <button @click="openCon" class="svg">
         <div className="icon" v-html="getSvg('con')"></div>
       </button>

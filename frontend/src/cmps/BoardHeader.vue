@@ -1,10 +1,10 @@
 <template>
-  <section class="board-header">
+  <section class="board-header" v-if="currBoard">
     <section class="up-header flex align-center space-between">
 
     <section class="board-name flex align-center justify-center">
     <h1 class="title editable-div" contenteditable="true">
-      Board header
+      {{ currBoard.title }}
     </h1>
     <div class="icon btn-hover">
   <div className="icon" v-html="getSvg('descrip')"></div>
@@ -42,7 +42,6 @@
           Main Table
         </div>
       </div>
-        |
       <div class="view-option-container">
         <div class="view-option flex align-center btn-hover">
           Dashboard
@@ -81,18 +80,25 @@
 import {svgService} from '../services/svg.service.js'
 export default {
   name: 'BoardHeader', 
-  props: [],
+  props: {  },
 components:{},
-created() {},
+created() {
+  
+},
   data() {
-    return {}
+    return {
+    }
   },
   methods: {
     getSvg(iconName) {
     return svgService.getSvg(iconName)
   }
   },
-  computed: {},
+  computed: {
+    currBoard() {
+      return this.$store.getters.currBoard;
+    }
+  },
 }
 
 </script>
