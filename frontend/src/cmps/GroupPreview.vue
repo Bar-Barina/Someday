@@ -17,7 +17,7 @@
       :style="{ fill: group.color }"
     ></div>
     <div class="title-wrapper flex align-center sticky">
-      <button v-show="isTitleFocused" class="color-icon btn-color"></button>
+      <span v-show="isTitleFocused" class="color-icon span-color"></span>
       <div
         class="title-input editable-div"
         contenteditable="true"
@@ -101,6 +101,7 @@ import TaskPreview from "./TaskPreview.vue";
 import EditMenu from "./EditMenu.vue";
 import AddTask from "./AddTask.vue";
 import ProgressBar from "./ProgressBar.vue";
+import ColorPicker from "../cmps/dynamicCmps/ColorPicker.vue";
 
 export default {
   emits: ["labelDrop"],
@@ -150,6 +151,7 @@ export default {
     EditMenu,
     AddTask,
     ProgressBar,
+    ColorPicker,
   },
 };
 </script>
