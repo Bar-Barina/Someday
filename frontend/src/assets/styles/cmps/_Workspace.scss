@@ -9,10 +9,17 @@
   padding-top: 12px;
   border-right: 1.2px solid #d0d4e6;
   .workspace-header {
-    display: flex;
-    align-items: center;
     justify-content: space-around;
-    width: 100%;
+    width: 224px;
+    height: 40px;
+    margin-bottom: 18px;
+    border: 1px solid #676879;
+    border-radius: 4px;
+  }
+  .workspace-title {
+    padding-bottom: 2px;
+    margin-top: 15px;
+    color: #676879;
   }
   .pink-div {
     width: 20px;
@@ -31,32 +38,28 @@
   h1 {
     margin-left: 8px;
   }
-  input {
-    margin: 0;
-    background-color: inherit;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    border-radius: 4px;
-    padding: 0 6px;
-    font-weight: 400;
-    padding-right: 3px;
-    border: 1px solid;
-    border-color: #d0d4e4;
-    height: 32px;
+  .workspace-icon {
+    margin-right: 10px;
+    margin-top: 5px;
   }
-  button {
-    background-color: #0085ff;
-    border: none;
-    padding: 5px;
-    width: 32px;
-    height: 32px;
-    font-size: 20px;
-    color: white;
-    border-radius: 4px;
-    margin-right: -5px;
+  .workspace-line {
+    border-bottom: 1px solid #d0d4e6;
+    margin-bottom: 22px;
+    margin-inline-start: 6px;
+    width: 214px;
+    height: 1px;
   }
-  .workspace-input-btn {
-    justify-content: space-between;
+
+  .workspace-container > *:not(.workspace-line) {
+    height: 32px;
+    width: 100%;
+    padding: 0 8px;
+    &:hover {
+      background-color: $clr39;
+      border-radius: 4px;
+    }
+    .add {
+     margin-left: -4px;
+    }
   }
 }
