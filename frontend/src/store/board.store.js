@@ -116,7 +116,7 @@ export const boardStore = {
             const board = state.currBoard
             // commit(ACTION) // dispatch(ACTION)
             if(!toUpdate.task) toUpdate.task = null
-            boardService.saveTask(board, toUpdate.groupId, toUpdate.task)
+            boardService.saveTask(board, toUpdate.group, toUpdate.task)
         }
     }
 }

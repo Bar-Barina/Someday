@@ -85,18 +85,26 @@ function getEmptyTask() {
   }
 }
 
-function saveTask(board, groupId, task) {
+function saveTask(board, group, task) {
   const boardToSave = JSON.parse(JSON.stringify(board))
-  const groupIdx = boardToSave.groups.findIndex((g) => g._id === groupId)
-  const taskIdx = boardToSave.groups[groupIdx].tasks.findIndex(
-    (t) => t.id === task.id
-  )
-  boardToSave.groups[groupIdx].tasks.splice(taskIdx, 1, task)
+  const groupIdx = boardToSave.groups.findIndex((g) => g._id === group._id)
+  if (groupIdx < 0) {
+    save(boardToSave)
+    return boardToSave
+  }
+  const taskIdx = boardToSave.groups[groupIdx].tasks.findIndex((t) => t.id === task.id)
+  if (taskIdx < 0) {
+    if (group._id) boardToSave.groups.splice(groupIdx, 1, group)
+    else boardToSave.groups.push(group)
+    save(boardToSave)
+    return group
+  }
+  if(task.id) boardToSave.groups[groupIdx].tasks.splice(taskIdx, 1, task)
+  else boardToSave.groups[groupIdx].tasks.push(task)
+  save(boardToSave)
+  return task
   // PUT /api/board/b123/task/t678
   // board.activities.unshift(activity)
-  save(boardToSave)
-  return boardToSave
-  // return task
 }
 
 // ; (async () => {

@@ -84,10 +84,10 @@
           :task="task"
           :labels="labelsOrder"
           :group="group"
-          @saveTask="updateTask"
+          @saveTask="saveGroup"
         />
       </Draggable>
-      <AddTask :group="group" @addTask="updateTask"/>
+      <AddTask :group="group" @addTask="saveGroup"/>
       <ProgressBar :labelsOrder="labelsOrder" />
     </Container>
   </section>
@@ -130,11 +130,16 @@ export default {
     toggleEdit() {
       this.isEditOpen = !this.isEditOpen;
     },
-    updateTask(task) {
+    updateGroup({ toChange, data }) {
+      const groupToSave = {...this.group}
+      groupToSave[toChange] = data
+      saveGroup()
+    },
+    saveGroup(task) {
       //    activity = boardService.getEmptyActivity()
       //    activity.txt = `Members changed for task ${}`
       //    activity.task = '{mini-task}'
-      const toUpdate = { task, groupId: this.group._id };
+      const toUpdate = { task, group: this.group };
       this.$store.dispatch({ type: "saveTask", toUpdate });
     },
   },
