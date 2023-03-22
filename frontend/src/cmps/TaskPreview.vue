@@ -35,6 +35,7 @@ import Status from './Status.vue'
 import Priority from './Priority.vue'
 import Timeline from './Timeline.vue'
 import Date from './Date.vue'
+import Person from './Person.vue'
 
 
 
