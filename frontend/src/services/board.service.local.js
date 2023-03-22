@@ -87,25 +87,41 @@ function getEmptyTask() {
 
 function saveTask(board, group, task) {
   const boardToSave = JSON.parse(JSON.stringify(board))
-  const groupIdx = boardToSave.groups.findIndex((g) => g._id === group._id)
-  if (groupIdx < 0) {
+  if (task) {
+    const groupIdx = boardToSave.groups.findIndex((g) => g._id === group._id)
+    if (task.id) {
+      const taskIdx = boardToSave.groups[groupIdx].tasks.findIndex((t) => t.id === task.id)
+      boardToSave.groups[groupIdx].tasks.splice(taskIdx, 1, task)
+    } else {
+      task.id = utilService.makeId()
+      boardToSave.groups[groupIdx].tasks.push(task)
+    }
     save(boardToSave)
-    return boardToSave
+    return task
   }
-  const taskIdx = boardToSave.groups[groupIdx].tasks.findIndex((t) => t.id === task.id)
-  if (taskIdx < 0) {
-    if (group._id) boardToSave.groups.splice(groupIdx, 1, group)
-    else boardToSave.groups.push(group)
+  if (group) {
+    if (group._id) {
+      const groupIdx = boardToSave.groups.findIndex((g) => g._id === group._id)
+      boardToSave.groups.splice(groupIdx, 1, group)
+    } else {
+      group.id = utilService.makeId()
+      boardToSave.groups.push(group)
+    }
     save(boardToSave)
     return group
   }
-  if(task.id) boardToSave.groups[groupIdx].tasks.splice(taskIdx, 1, task)
-  else boardToSave.groups[groupIdx].tasks.push(task)
   save(boardToSave)
-  return task
+  return boardToSave
+}
+  //   save(boardToSave)
+  //   return boardToSave
+  // }
+  // if(group) {
+  //   const groupIdx = boardToSave.groups.findIndex((g) => g._id === group._id)
+  //   if(group.id)
+  // }
   // PUT /api/board/b123/task/t678
   // board.activities.unshift(activity)
-}
 
 // ; (async () => {
 //     await storageService.post(STORAGE_KEY,

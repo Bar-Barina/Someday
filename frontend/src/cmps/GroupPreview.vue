@@ -2,8 +2,8 @@
   <!-- Group title section-->
   <section class="group-grid group-title flex align-center">
     <div
-      @click="toggleEdit"
       class="more more-group sticky flex justify-center"
+      @click="toggleEdit"
       v-html="getSvg('Dots')"
     ></div>
     <EditMenu v-if="isEditOpen" :groupId="group._id" />
@@ -87,7 +87,7 @@
           @saveTask="saveGroup"
         />
       </Draggable>
-      <AddTask :group="group" @addTask="saveGroup"/>
+      <AddTask :group="group" @addTask="saveGroup" />
       <ProgressBar :labelsOrder="labelsOrder" />
     </Container>
   </section>
@@ -131,9 +131,9 @@ export default {
       this.isEditOpen = !this.isEditOpen;
     },
     updateGroup({ toChange, data }) {
-      const groupToSave = {...this.group}
-      groupToSave[toChange] = data
-      saveGroup()
+      const groupToSave = { ...this.group };
+      groupToSave[toChange] = data;
+      saveGroup();
     },
     saveGroup(task) {
       //    activity = boardService.getEmptyActivity()
