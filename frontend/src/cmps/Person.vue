@@ -1,6 +1,8 @@
 <template>
   <div @click="isOpen = !isOpen" class="person">
-    <img src="task.person.url" />
+    <span v-for="(person, idx) in task.person" :key="idx">
+      <img :src="person.url" class="person-img" />
+    </span>
   </div>
   <PersonPreview
     v-if="isOpen"
@@ -10,10 +12,10 @@
 </template>
 
 <script>
-import PersonPreview from "../cmps/PersonPreview.vue";
+import PersonPreview from '../cmps/PersonPreview.vue'
 export default {
   emits: ['updateTask'],
-  name: "person",
+  name: 'person',
   props: {
     task: Object,
   },
@@ -21,16 +23,17 @@ export default {
     return {
       isOpen: false,
       selectedPerson: this.task.person,
-    };
+    }
   },
   methods: {
     updatePerson(person) {
-      this.selectedPerson = person;
-      this.$emit("updateTask", { cmpType: "person", data: person });
+      this.selectedPerson = person
+      this.isOpen = false
+      this.$emit('updateTask', { cmpType: 'person', data: person })
     },
   },
   components: {
     PersonPreview,
   },
-};
+}
 </script>

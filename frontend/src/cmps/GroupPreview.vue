@@ -1,6 +1,7 @@
 <template>
   <section class="group-grid group-title flex align-center">
-    <div class="more sticky" v-html="getSvg('Dots')"></div>
+    <div @click="toggleEdit" class="more sticky" v-html="getSvg('Dots')"></div>
+    <EditMenu v-if="isEditOpen"/>
     <!-- TODO color task border -->
     <div
       class="task-border sticky"
@@ -78,6 +79,7 @@ import { Container, Draggable } from "vue3-smooth-dnd";
 import { svgService } from "../services/svg.service.js";
 import TaskPreview from "./TaskPreview.vue";
 import { utilService } from "../services/util.service";
+import EditMenu from './EditMenu.vue';
 
 export default {
   emits: ["labelDrop"],
@@ -88,6 +90,7 @@ export default {
   data() {
     return {
       titleFocus: false,
+      isEditOpen: false,
     };
   },
   methods: {
@@ -102,6 +105,9 @@ export default {
       scene = utilService.applyDrag(scene, dropResult);
       this.group.tasks = scene;
     },
+    toggleEdit() {
+      this.isEditOpen = !this.isEditOpen
+    }
   },
   computed: {
     isTitleFocused() {
@@ -113,6 +119,7 @@ export default {
     Container,
     Draggable,
     TaskPreview,
+    EditMenu
   },
 };
 </script>
