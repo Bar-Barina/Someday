@@ -2,7 +2,6 @@
   <div class="demo-date-picker">
     <label class="picker-wrapper">
       <el-date-picker
-        class="hide"
         v-model="value"
         type="daterange"
         start-placeholder="Start Date"
@@ -29,6 +28,7 @@ export default {
   },
   methods: {
     changeDate() {
+      console.log('this.value',this.value)
       this.$emit("updateTask", {cmpType:'timeLine',data:this.value});
     },
   },
