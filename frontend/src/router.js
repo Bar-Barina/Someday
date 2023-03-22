@@ -10,7 +10,7 @@ import MainTable from './cmps/MainTable.vue'
 import Login from './views/Login.vue'
 import UserDetails from './views/UserDetails.vue'
 import Conversation from './cmps/Conversation.vue'
-
+import DashBoard from './cmps/DashBoard.vue'
 const routes = [
   {
     path: '/',
@@ -40,7 +40,7 @@ const routes = [
       },
       {
         path: ':boardId/dashboard',
-        component: Kanban
+        component: DashBoard
       },
     ]
   },
