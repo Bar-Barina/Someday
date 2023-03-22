@@ -84,128 +84,128 @@ function saveTask(board, groupId, task) {
   // return task
 }
 
-; (async () => {
-    await storageService.post(STORAGE_KEY,
-        {
-            title: 'Sprint 4 Monday',
-            members: [
-                { name: "Tal", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-                { name: "Dor", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-                { name: "Bar", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-                { name: "Ofek", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-            ],
-            groups: [
-                {
-                    title: 'Frontend',
-                    _id: Math.random().toString(36).slice(2),
-                    color: "rgb(0, 134, 192)",
-                    tasks: [
-                        {
-                            id: "t101",
-                            side: "null",
-                            taskTitle: "Navbar",
-                            person: [
-                                { name: "Tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-                                { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-                                { name: "Ofek", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-                            ],
-                            date: "27-02-2022",
-                            status: "Working on it",
-                            priority: "High",
-                            timeline: 'late',
-                            file: '11',
-                            text: 'Something'
-                        },
-                        {
-                            id: "t102",
-                            side: "null",
-                            taskTitle: "Making header",
-                            person: [
-                                  { name: "Tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-                                { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-                                { name: "Ofek", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-                            ],
-                            date: "27-02-2022",
-                            status: "Stuck",
-                            priority: "Low",
-                            timeline: 'late',
-                            file: '11',
-                            text: 'Something'
-                        },
-                        {
-                            id: "t103",
-                            side: "null",
-                            taskTitle: "Pixel perfect",
-                            person: [
-                                 { name: "Tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-                                { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-                                { name: "Ofek", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-                            ],
-                            date: "27-02-2022",
-                            status: "Done",
-                            priority: "Critical",
-                            timeline: 'late',
-                            file: '11',
-                            text: 'Something'
-                        },
-                    ],
-                },
-                {
-                    title: 'Backend',
-                    _id: Math.random().toString(36).slice(2),
-                    color: "rgb(255, 21, 138)",
-                    tasks: [
-                        {
-                            id: "t101",
-                            side: "null",
-                            taskTitle: "Full crud",
-                            person: [
-                                  { name: "Tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-                                { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-                                { name: "Ofek", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-                            ],
-                            date: "27-02-2022",
-                            status: "Working on it",
-                            priority: "High",
-                            timeline: 'late',
-                            file: '11',
-                            text: 'Something'
-                        },
-                        {
-                            id: "t102",
-                            side: "null",
-                            taskTitle: "Check postman",
-                            person: [
-                                 { name: "Tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-                                { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-                                { name: "Ofek", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-                            ],
-                            date: "27-02-2022",
-                            status: "Stuck",
-                            priority: "High",
-                            timeline: 'late',
-                            file: '11',
-                            text: 'Something'
-                        },
-                        {
-                            id: "t103",
-                            side: "null",
-                            taskTitle: "Connect sockets",
-                            person: [
-                                 { name: "Tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-                                { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-                                { name: "Ofek", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
-                            ],
-                            date: "27-02-2022",
-                            status: "Done",
-                            priority: "Low",
-                            timeline: 'late',
-                            file: '11',
-                            text: 'Something'
-                        },
-                    ],
-                }
-            ]
-        }
-    )
-})();
+// ; (async () => {
+//     await storageService.post(STORAGE_KEY,
+//         {
+//             title: 'Sprint 4 Monday',
+//             members: [
+//                 { name: "Tal", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                 { name: "Dor", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                 { name: "Bar", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                 { name: "Ofek", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//             ],
+//             groups: [
+//                 {
+//                     title: 'Frontend',
+//                     _id: Math.random().toString(36).slice(2),
+//                     color: "rgb(0, 134, 192)",
+//                     tasks: [
+//                         {
+//                             id: "t101",
+//                             side: "null",
+//                             taskTitle: "Navbar",
+//                             person: [
+//                                 { name: "Tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "Ofek", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                             ],
+//                             date: "27-02-2022",
+//                             status: "Working on it",
+//                             priority: "High",
+//                             timeline: 'late',
+//                             file: '11',
+//                             text: 'Something'
+//                         },
+//                         {
+//                             id: "t102",
+//                             side: "null",
+//                             taskTitle: "Making header",
+//                             person: [
+//                                   { name: "Tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "Ofek", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                             ],
+//                             date: "27-02-2022",
+//                             status: "Stuck",
+//                             priority: "Low",
+//                             timeline: 'late',
+//                             file: '11',
+//                             text: 'Something'
+//                         },
+//                         {
+//                             id: "t103",
+//                             side: "null",
+//                             taskTitle: "Pixel perfect",
+//                             person: [
+//                                  { name: "Tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "Ofek", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                             ],
+//                             date: "27-02-2022",
+//                             status: "Done",
+//                             priority: "Critical",
+//                             timeline: 'late',
+//                             file: '11',
+//                             text: 'Something'
+//                         },
+//                     ],
+//                 },
+//                 {
+//                     title: 'Backend',
+//                     _id: Math.random().toString(36).slice(2),
+//                     color: "rgb(255, 21, 138)",
+//                     tasks: [
+//                         {
+//                             id: "t101",
+//                             side: "null",
+//                             taskTitle: "Full crud",
+//                             person: [
+//                                   { name: "Tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "Ofek", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                             ],
+//                             date: "27-02-2022",
+//                             status: "Working on it",
+//                             priority: "High",
+//                             timeline: 'late',
+//                             file: '11',
+//                             text: 'Something'
+//                         },
+//                         {
+//                             id: "t102",
+//                             side: "null",
+//                             taskTitle: "Check postman",
+//                             person: [
+//                                  { name: "Tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "Ofek", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                             ],
+//                             date: "27-02-2022",
+//                             status: "Stuck",
+//                             priority: "High",
+//                             timeline: 'late',
+//                             file: '11',
+//                             text: 'Something'
+//                         },
+//                         {
+//                             id: "t103",
+//                             side: "null",
+//                             taskTitle: "Connect sockets",
+//                             person: [
+//                                  { name: "Tal", color: "red", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                                 { name: "Ofek", color: "green", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
+//                             ],
+//                             date: "27-02-2022",
+//                             status: "Done",
+//                             priority: "Low",
+//                             timeline: 'late',
+//                             file: '11',
+//                             text: 'Something'
+//                         },
+//                     ],
+//                 }
+//             ]
+//         }
+//     )
+// })();

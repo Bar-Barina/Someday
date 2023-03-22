@@ -29,12 +29,12 @@
         class="task-border sticky"
         :style="{'background-color': group.color}"
       ></div>
-      <div class="sticky cell1">
+      <div class="sticky check-box cell1">
         <input type="checkbox" class="checkbox" />
       </div>
-      <div class="sticky cell1">Tasks</div>
+      <div class="sticky task cell1">Tasks</div>
       <Container
-        class="smooth-dnd-container horizontal"
+        class="horizontal labels-container"
         orientation="horizontal"
         group-name="labels"
         tag="div"
@@ -70,6 +70,8 @@
       >
         <TaskPreview :task="task" :labels="labelsOrder" :group="group" @saveTask="updateTask" />
       </Draggable>
+      <AddTask :group="group"/>
+      <ProgressBar :labelsOrder="labelsOrder"/>
     </Container>
   </section>
 </template>
@@ -77,9 +79,11 @@
 <script>
 import { Container, Draggable } from "vue3-smooth-dnd";
 import { svgService } from "../services/svg.service.js";
-import TaskPreview from "./TaskPreview.vue";
 import { utilService } from "../services/util.service";
+import TaskPreview from "./TaskPreview.vue";
 import EditMenu from './EditMenu.vue';
+import AddTask from './AddTask.vue';
+import ProgressBar from './ProgressBar.vue'
 
 export default {
   emits: ["labelDrop"],
@@ -126,7 +130,9 @@ export default {
     Container,
     Draggable,
     TaskPreview,
-    EditMenu
+    EditMenu,
+    AddTask,
+    ProgressBar
   },
 };
 </script>

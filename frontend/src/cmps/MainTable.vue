@@ -23,7 +23,7 @@ export default {
         "Text",
         "Priority",
         "Person",
-        "File",
+        "Files",
         "Status",
         "Timeline",
       ],

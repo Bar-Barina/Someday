@@ -1,0 +1,16 @@
+.progress-grid {
+    margin-top: -1px;
+
+    > *:not(:first-child,.empty) {
+        border-top: 1px solid #d0d4e6;
+    }
+
+    > *:nth-child(5) {
+        border-left: 1px solid #d0d4e6;
+        border-bottom-left-radius: 6px;
+    }
+
+    .third {
+        background-color: transparent;
+    }
+}

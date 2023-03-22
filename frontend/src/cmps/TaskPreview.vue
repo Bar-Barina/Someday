@@ -1,22 +1,20 @@
 <template>
-  <div
-    @click="toggleEdit"
-    class="more more-task sticky flex justify-center"
-    v-html="getSvg('Dots')"
-  ></div>
+<div @click="toggleEdit" class="align-center more-task sticky flex justify-center">
+  <div class="more" v-html="getSvg('Dots')"></div>
+  </div>
   <EditMenu v-if="isEditOpen" :groupId="group._id" :taskId="task.id" />
   <div class="task-border sticky" :style="{ 'background-color': group.color }"></div>
-  <div class="flex sticky align-items-center cell1 flex-justify third">
+  <div class="flex sticky align-center cell1 flex-justify third">
     <input type="checkbox" />
   </div>
-  <section class="task-title cell1 sticky flex align-items-center space-between">
-    <div class="task-title-sub flex align-items-center space-between">
-      <div class="flex align-items-center" contenteditable="true">
+  <section class="task-title cell1 sticky flex align-center space-between">
+    <div class="task-title-sub flex align-center space-between">
+      <div class="flex align-center" contenteditable="true">
         {{ task.taskTitle }}
       </div>
       <span
         @click="openCon"
-        class="open-con flex align-items-center space-between"
+        class="open-con flex align-center space-between"
       >
         <button class="svg">
           <div className="icon" v-html="getSvg('openCon')"></div>
@@ -24,7 +22,7 @@
         open
       </span>
     </div>
-    <div class="conversation-wrapper flex align-items-center flex-justify">
+    <div class="conversation-wrapper flex align-center flex-justify">
       <button @click="openCon" class="svg">
         <div className="icon" v-html="getSvg('con')"></div>
       </button>

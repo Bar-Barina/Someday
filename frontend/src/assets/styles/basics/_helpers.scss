@@ -61,6 +61,14 @@
   display: none;
 }
 
+.cell {
+  cursor: pointer;
+  border-bottom: 1px solid $clr014;
+  border-right: 1px solid $clr014;
+  font-size: 0.875em;
+  position: relative;
+}
+
 .cell1 {
   font-size: 0.875rem;
 }
