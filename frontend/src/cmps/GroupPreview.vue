@@ -87,7 +87,7 @@
           @saveTask="updateTask"
         />
       </Draggable>
-      <AddTask :group="group" />
+      <AddTask :group="group" @addTask="updateTask"/>
       <ProgressBar :labelsOrder="labelsOrder" />
     </Container>
   </section>
