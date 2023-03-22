@@ -2,7 +2,6 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 import Home from './views/Home.vue'
 import Chat from './views/Chat.vue'
-// import CarIndex from './views/CarIndex.vue'
 import ReviewIndex from './views/ReviewIndex.vue'
 import BoardIndex from './views/BoardIndex.vue'
 import Kanban from './cmps/Kanban.vue'
@@ -10,7 +9,6 @@ import MainTable from './cmps/MainTable.vue'
 // import LoginSignup from './views/LoginSignup.vue'
 import Login from './views/Login.vue'
 import UserDetails from './views/UserDetails.vue'
-// import DropDown from './cmps/DropDown.vue'
 import Conversation from './cmps/Conversation.vue'
 
 const routes = [

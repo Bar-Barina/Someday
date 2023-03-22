@@ -105,7 +105,7 @@ function saveTask(board, groupId, task) {
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Working on it",
-//                             priority: "Low",
+//                             priority: "High",
 //                             timeline: 'late',
 //                             file: '11',
 //                             text: 'Something'
@@ -137,7 +137,7 @@ function saveTask(board, groupId, task) {
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Done",
-//                             priority: "Low",
+//                             priority: "Critical",
 //                             timeline: 'late',
 //                             file: '11',
 //                             text: 'Something'
@@ -160,7 +160,7 @@ function saveTask(board, groupId, task) {
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Working on it",
-//                             priority: "Low",
+//                             priority: "High",
 //                             timeline: 'late',
 //                             file: '11',
 //                             text: 'Something'
@@ -176,7 +176,7 @@ function saveTask(board, groupId, task) {
 //                             ],
 //                             date: "27-02-2022",
 //                             status: "Stuck",
-//                             priority: "Low",
+//                             priority: "High",
 //                             timeline: 'late',
 //                             file: '11',
 //                             text: 'Something'
