@@ -1,5 +1,13 @@
 <template>
-  <section class="workspace">
+  <section class="workspace" :class="{ 'is-open': isWorkspaceOpen }">
+    <button class="workspace-open-btn" @click="openWorkspace">
+      <span
+        v-html="getSvg('arrowLeft')"
+        class="workspace-icon arrowLeft"
+      ></span>
+    </button>
+    <section v-if="isWorkspaceOpen">
+
     <div class="workspace-title flex space-between">
       <span>Workspace</span>
       <span v-html="getSvg('Dots')"></span>
@@ -38,15 +46,24 @@
       </div>
     </section>
   </section>
+  </section>
 </template>
 
 <script>
 import { takeWhile } from 'lodash'
 import { svgService } from '../services/svg.service.js'
 export default {
+  data() {
+    return {
+      isWorkspaceOpen: false,
+    }
+  },
   methods: {
     getSvg(iconName) {
       return svgService.getSvg(iconName)
+    },
+    openWorkspace() {
+      this.isWorkspaceOpen = !this.isWorkspaceOpen
     },
   },
   computed: {
