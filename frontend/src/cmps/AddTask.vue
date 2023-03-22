@@ -27,7 +27,6 @@ export default {
   },
   methods: {
     addTask() {
-      console.log('this.task.taskTitle', this.task.taskTitle)
       if(!this.task.taskTitle) return
       this.$emit('addTask' , this.task)
     }

@@ -149,6 +149,9 @@ export default {
       const toUpdate = { task, group: this.group };
       this.$store.dispatch({ type: "saveTask", toUpdate });
     },
+    remove(toRemove) {
+      this.$store.dispatch({type: 'remove' , toRemove})
+    }
   },
   computed: {
     isTitleFocused() {
