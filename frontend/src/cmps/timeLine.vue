@@ -2,7 +2,6 @@
   <div class="demo-date-picker">
     <label class="picker-wrapper">
       <el-date-picker
-        class="hide"
         v-model="value"
         type="daterange"
         value-format="MMM-DD"
@@ -18,6 +17,7 @@
 <script>
 export default {
   name: "timeline",
+  emit:['updateTask'],
   props: {
     task: Object,
   },
