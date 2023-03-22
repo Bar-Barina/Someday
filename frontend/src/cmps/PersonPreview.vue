@@ -23,7 +23,7 @@ export default {
   },
   data() {
     return {
-      board : this.currentBoard()
+      board: this.currentBoard(),
     }
   },
   computed: {
