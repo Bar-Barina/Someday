@@ -19,7 +19,7 @@
     <div class="title-wrapper flex align-center sticky">
       <div v-show="isTitleFocused" class="color-icon span-color">
         <ColorPicker v-if="showColorPicker" :groupColor="group.color" 
-        @updateColor="updateColor" />
+        @updateColor="updateGroup" />
       </div>
       <div
         class="title-input editable-div"
@@ -136,6 +136,8 @@ export default {
       this.isEditOpen = !this.isEditOpen
     },
     updateGroup({ toChange, data }) {
+      console.log(toChange)
+      console.log(data)
       const groupToSave = { ...this.group };
       groupToSave[toChange] = data;
       saveGroup();
@@ -147,10 +149,6 @@ export default {
       const toUpdate = { task, groupId: this.group._id };
       this.$store.dispatch({ type: "saveTask", toUpdate });
     },
-    updateColor(color) {
-      console.log('from preview',color)
-      this.$emit('updateTask', { cmpType: 'color', data: color })
-    }
   },
   computed: {
     isTitleFocused() {
