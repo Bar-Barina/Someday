@@ -1,0 +1,27 @@
+.person-preview {
+  position: fixed;
+  top: 0px;
+  input {
+    width: 320px;
+    height: 32px;
+    border: 1px solid rgb(163, 163, 163);
+    border-radius: 3px;
+  }
+}
+
+.onTask-person {
+  padding: 7px;
+  font-size: 12px;
+  .onTask-person-div {
+    display: flex;
+    align-items: left;
+    height: 22px;
+    background: rgb(229, 244, 255);
+    border-radius: 24px;
+    width: 100px;
+    img {
+      margin-left: 0px;
+      width: 22px;
+    }
+  }
+}
