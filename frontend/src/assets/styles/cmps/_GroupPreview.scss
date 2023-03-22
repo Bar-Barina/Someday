@@ -1,14 +1,17 @@
+
+// .smooth-dnd-container.vertical > .smooth-dnd-draggable-wrapper {
+//     overflow-x: auto;
+// }
+
+.main-table {
+    overflow-x: auto;
+}
+
 .group-container {
 
     width: max-content;
     margin-bottom: 20px;
     position: relative;
-
-
-    .sticky {
-        position: sticky;
-        z-index: 50;
-    }
 
     .more {
         opacity: 0;
@@ -18,12 +21,27 @@
         padding-bottom: 2px;
         border-radius: 4px;
         left: 10px;
-        position: relative;
         cursor: pointer;
 
         &:hover {
             background-color: $clr016;
         }
+    }
+
+    .task-title {
+        left: 78px;
+    }
+
+    .title-wrapper {
+        left: 78px;
+    }
+
+    .third {
+        left: 46px;
+    }
+
+    .arrow-down {
+        left: 46px;
     }
 
     .group-title {
@@ -41,6 +59,14 @@
         }
     }
 
+    .task-border {
+        left: 40px;
+    }
+
+    .empty {
+        left: 0;
+    }
+
     .group-content {
 
         .labels-grid {
@@ -55,6 +81,7 @@
 
             .task-border {
                 border-top-left-radius: 6px;
+                left: 0;
             }
         }
 

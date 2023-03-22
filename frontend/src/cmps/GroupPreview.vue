@@ -24,7 +24,7 @@
   </section>
   <section class="group-content">
     <section class="group-grid labels-grid">
-      <div></div>
+      <div class="empty sticky"></div>
       <div
         class="task-border sticky"
         :style="{'background-color': group.color}"
