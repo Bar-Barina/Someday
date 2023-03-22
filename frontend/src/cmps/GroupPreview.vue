@@ -1,7 +1,6 @@
 <template>
   <section class="group-grid group-title flex align-center">
     <div class="more sticky" v-html="getSvg('Dots')"></div>
-    <!-- <div class="more sticky" v-html="getSvg('more')"></div> -->
     <!-- TODO color task border -->
     <div
       class="task-border sticky"
