@@ -1,7 +1,7 @@
 <template>
   <section class="group-grid group-title flex align-center">
-    <div @click="toggleEdit" class="more sticky" v-html="getSvg('Dots')"></div>
-    <EditMenu v-if="isEditOpen"/>
+    <div @click="toggleEdit" class="more more-group sticky flex justify-center" v-html="getSvg('Dots')"></div>
+    <EditMenu v-if="isEditOpen" :groupId="group._id"/>
     <!-- TODO color task border -->
     <div
       class="task-border sticky"
@@ -68,7 +68,7 @@
         v-for="(task, idx) in group.tasks"
         :key="idx"
       >
-        <TaskPreview :task="task" :labels="labelsOrder" :group="group" />
+        <TaskPreview :task="task" :labels="labelsOrder" :group="group" @saveTask="updateTask" />
       </Draggable>
     </Container>
   </section>
@@ -107,7 +107,14 @@ export default {
     },
     toggleEdit() {
       this.isEditOpen = !this.isEditOpen
-    }
+    },
+    updateTask(task) {
+      //    activity = boardService.getEmptyActivity()
+      //    activity.txt = `Members changed for task ${}`
+      //    activity.task = '{mini-task}'
+      const toUpdate = {task , groupId: this.group._id}
+      this.$store.dispatch({ type: "saveTask", toUpdate });
+    },
   },
   computed: {
     isTitleFocused() {

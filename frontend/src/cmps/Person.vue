@@ -7,7 +7,7 @@
   <PersonPreview
     v-if="isOpen"
     :person="task.person"
-    @click="updatePerson(person)"
+    @updatePerson="updatePerson"
   />
 </template>
 
@@ -22,14 +22,16 @@ export default {
   data() {
     return {
       isOpen: false,
-      selectedPerson: this.task.person,
+      taskPersons: this.task.person,
     }
   },
   methods: {
     updatePerson(person) {
-      this.selectedPerson = person
+      console.log('person from person', person)
+      this.taskPersons.push(person)
+      console.log('this.taskPersons', this.taskPersons)
       this.isOpen = false
-      this.$emit('updateTask', { cmpType: 'person', data: person })
+      this.$emit('updateTask', { cmpType: 'person', data: {...this.taskPersons} })
     },
   },
   components: {

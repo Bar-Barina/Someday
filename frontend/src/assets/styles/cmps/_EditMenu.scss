@@ -4,12 +4,20 @@
     width: rem(264px);
     border-radius: rem(8px);
     position: absolute;
-    top: 24px;
-    padding: 8;
+    top: 30px;
+    left: 10px;
+    padding: 8px;
+    z-index: 100;
     box-shadow: 0 4px 17px 6px rgba(0,0,0,.1);
     .edit-cell {
-        display: grid;
-        grid-template-columns: 30px auto;
-        align-content: center;
+        padding: 4px 8px;
+        line-height: 24px;
+        font-weight: 400px;
+        font-size: 14px;
+        border-radius: rem(4px);
+        &:hover {
+            cursor: pointer;
+            background-color: $edit-hover;
+        }
     }
 }

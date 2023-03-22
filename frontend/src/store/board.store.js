@@ -115,7 +115,8 @@ export const boardStore = {
         async saveTask({state , commit} , { toUpdate }) {
             const board = state.currBoard
             // commit(ACTION) // dispatch(ACTION)
-            boardService.saveTask(board, toUpdate.groupId, toUpdate.taskToSave)
+            if(!toUpdate.task) toUpdate.task = null
+            boardService.saveTask(board, toUpdate.groupId, toUpdate.task)
         }
     }
 }

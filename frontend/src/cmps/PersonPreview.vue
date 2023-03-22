@@ -1,17 +1,27 @@
 <template>
   <section v-if="person" class="person-preview">
-    <img :src="person.url" alt="person-img" />
-    <article>
-      {{ person.name }}
-      <input type="text" placeholder="Search names, roles or teams" />
-      <p>Suggested people</p>
-      <!-- <ul>
-        <li v-for="(member, idx) in board.members" :key="idx">
-          {{ member }}
-        </li>
-      </ul> -->
-      <p>Invite a new member by email</p>
-    </article>
+    <section class="onTask-person flex space-between">
+      <div
+        class="onTask-person-div flex align-center"
+        v-for="(p, idx) in person"
+        :key="idx"
+      >
+        <img :src="p.url" alt="person-img" class="person-img" />
+        <span class="person-name">{{ p.name }}</span>
+      </div>
+    </section>
+    <input type="text" placeholder="Search names, roles or teams" />
+    <p>Suggested people</p>
+    <ul>
+      <li
+        v-for="(member, idx) in members"
+        :key="idx"
+        @click="updatePerson(member)"
+      >
+        {{ member.name }}
+      </li>
+    </ul>
+    <p>Invite a new member by email</p>
   </section>
 </template>
 
@@ -19,16 +29,25 @@
 export default {
   name: 'person-preview',
   props: {
-    person: Object,
+    person: Array,
   },
   data() {
-    return {
-      board : null
-    }
+    return {}
   },
   computed: {
     members() {
-      return this.$store.getters.currentBoard.members
+      console.log('this.person', this.person)
+      let taskPersons = JSON.parse(JSON.stringify(this.person))
+      console.log('taskPresons', taskPersons)
+      return this.$store.getters.currBoard.members.filter((member) => {
+        return !taskPersons.some((p) => p.name === member.name)
+      })
+    },
+  },
+  methods: {
+    updatePerson(member) {
+      console.log('member from preview', member)
+      this.$emit('updatePerson', { ...member })
     },
   },
 }
