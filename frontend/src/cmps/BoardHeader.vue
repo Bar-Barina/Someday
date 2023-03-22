@@ -1,9 +1,9 @@
 <template>
   <section class="board-header">
     <section class="board-name flex align-center justify-center">
-    <div class="title editable-div" contenteditable="true">
+    <h1 class="title editable-div" contenteditable="true">
       Board header
-    </div>
+    </h1>
     <div class="icon">
   <div className="icon" v-html="getSvg('descrip')"></div>
     </div>
