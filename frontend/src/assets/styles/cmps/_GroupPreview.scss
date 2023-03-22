@@ -1,171 +1,168 @@
-.smooth-dnd-container.vertical>.smooth-dnd-draggable-wrapper {
-    overflow: visible;
+.smooth-dnd-container.vertical > .smooth-dnd-draggable-wrapper {
+  overflow: visible;
 }
 
 .main-table {
-    overflow-x: auto;
+  overflow-x: auto;
 }
 
 .group-container {
+  cursor: grab;
+  position: relative;
 
-    cursor: grabbing;
+  .labels-container {
+    display: flex !important;
 
-    .labels-container {
-        display: flex!important;
+    .label {
+      display: flex !important;
+    }
+  }
 
-        .label {
-            display: flex!important;
-        }
+  width: max-content;
+  margin-bottom: 20px;
+  position: relative;
+
+  .more {
+    opacity: 0;
+    padding-bottom: 2px;
+    border-radius: 4px;
+    width: 24px;
+    max-width: 24px;
+    left: 10px;
+    &:hover {
+      background-color: $clr016;
+    }
+  }
+
+  .task-title {
+    left: 78px;
+    background-color: #fff;
+  }
+
+  .title-wrapper {
+    left: 78px;
+    background-color: #fff;
+  }
+
+  .third {
+    left: 46px;
+    background-color: #fff;
+  }
+
+  .arrow-down {
+    left: 46px;
+    background-color: #fff;
+  }
+
+  .group-title {
+    align-items: center;
+
+    &:hover {
+      .more {
+        opacity: 1;
+      }
     }
 
-    width: max-content;
-    margin-bottom: 20px;
-    position: relative;
+    .title-input:focus {
+      outline: 1px solid rgb(0, 134, 192);
+      border-radius: 3px;
+    }
+  }
 
-    .more {
+  .task-border {
+    left: 40px;
+  }
+
+  .empty {
+    left: 0;
+  }
+
+  .group-content {
+    .labels-grid {
+      & > *:not(:first-child) {
+        border-top: 1px solid $clr014;
+      }
+    }
+
+    .group-grid.labels-grid {
+      text-align: center;
+      grid-template-columns: 40px 6px 32px 364px 980px;
+
+      .task-border {
+        border-top-left-radius: 6px;
+      }
+
+      .empty {
+        left: 0;
+        background-color: #fff;
+      }
+
+      .task-border {
+        left: 40px;
+        background-color: #fff;
+      }
+
+      .check-box {
+        left: 46px;
+        background-color: #fff;
+      }
+
+      .task {
+        background-color: #fff;
+        left: 78px;
+      }
+    }
+
+    .task-row {
+      .more {
         opacity: 0;
         padding-bottom: 2px;
         border-radius: 4px;
         width: 24px;
         max-width: 24px;
-        left: 10px;
-        &:hover {
+      }
+
+      .more-task {
+        opacity: 1;
+        background-color: #fff;
+      }
+
+      &:hover {
+        .more {
+          opacity: 1;
+
+          &:hover {
             background-color: $clr016;
+          }
         }
+      }
     }
 
-    .task-title {
-        left: 78px;
-        background-color: #fff;
+    .label {
+      width: 140px;
     }
+  }
 
-    .title-wrapper {
-        left: 78px;
-        background-color: #fff;
-    }
-
-    .third {
-        left: 46px;
-        background-color: #fff;
-    }
-
-    .arrow-down {
-        left: 46px;
-        background-color: #fff;
-    }
-
-    .group-title {
-        align-items: center;
-
-        &:hover {
-            .more {
-                opacity: 1;
-            }
-        }
-
-        .title-input:focus {
-            outline: 1px solid rgb(0, 134, 192);
-            border-radius: 3px;
-        }
-    }
-
-    .task-border {
-        left: 40px;
-    }
-
-    .empty {
-        left: 0;
-    }
-
-    .group-content {
-
-        .labels-grid {
-            &>*:not(:first-child) {
-                border-top: 1px solid $clr014;
-            }
-        }
-
-        .group-grid.labels-grid {
-            text-align: center;
-            grid-template-columns: 40px 6px 32px 364px 980px;
-
-            .task-border {
-                border-top-left-radius: 6px;
-            }
-
-            .empty {
-                left: 0;
-                background-color: #fff;
-            }
-
-            .task-border {
-                left: 40px;
-                background-color: #fff;
-            }
-
-            .check-box {
-                left: 46px;
-                background-color: #fff;
-            }
-
-            .task {
-                background-color: #fff;
-                left: 78px;
-            }
-        }
-
-        .task-row {
-
-            .more {
-                opacity: 0;
-                padding-bottom: 2px;
-                border-radius: 4px;
-                width: 24px;
-                max-width: 24px;
-            }
-
-            .more-task {
-                opacity: 1;
-                background-color: #fff;
-            }
-
-
-            &:hover {
-                .more {
-                    opacity: 1;
-
-                    &:hover {
-                        background-color: $clr016;
-                    }
-                }
-            }
-        }
-
-        .label {
-            width: 140px;
-        }
-    }
-
-    .el-menu {
-        height: 0;
-        border: none;
-    }
+  .el-menu {
+    height: 0;
+    border: none;
+  }
 }
 
 .more-task {
-    height: 100%;
-    left: 0;
-    background-color: #fff;
-    cursor: pointer;
+  height: 100%;
+  left: 0;
+  background-color: #fff;
+  cursor: pointer;
 
-    div {
-        opacity: 0;
-    }
+  div {
+    opacity: 0;
+  }
 }
 
 .color-icon {
-    width: 21px;
-    height: 21px;
-    background-color: rgb(87, 155, 252);
-    border-radius: 50%;
+  width: 21px;
+  height: 21px;
+  background-color: rgb(87, 155, 252);
+  border-radius: 50%;
 }

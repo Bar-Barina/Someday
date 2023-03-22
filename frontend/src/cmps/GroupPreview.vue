@@ -17,7 +17,10 @@
       :style="{ fill: group.color }"
     ></div>
     <div class="title-wrapper flex align-center sticky">
-      <span v-show="isTitleFocused" class="color-icon span-color"></span>
+      <div v-show="isTitleFocused" class="color-icon span-color">
+        <ColorPicker v-if="showColorPicker" :groupColor="group.color" 
+        @updateColor="updateColor" />
+      </div>
       <div
         class="title-input editable-div"
         contenteditable="true"
@@ -87,24 +90,24 @@
           @saveTask="updateTask"
         />
       </Draggable>
-      <AddTask :group="group" @addTask="updateTask"/>
+      <AddTask :group="group" @addTask="updateTask" />
       <ProgressBar :labelsOrder="labelsOrder" />
     </Container>
   </section>
 </template>
 
 <script>
-import { Container, Draggable } from "vue3-smooth-dnd";
-import { svgService } from "../services/svg.service.js";
-import { utilService } from "../services/util.service";
-import TaskPreview from "./TaskPreview.vue";
-import EditMenu from "./EditMenu.vue";
-import AddTask from "./AddTask.vue";
-import ProgressBar from "./ProgressBar.vue";
-import ColorPicker from "../cmps/dynamicCmps/ColorPicker.vue";
+import { Container, Draggable } from 'vue3-smooth-dnd'
+import { svgService } from '../services/svg.service.js'
+import { utilService } from '../services/util.service'
+import TaskPreview from './TaskPreview.vue'
+import EditMenu from './EditMenu.vue'
+import AddTask from './AddTask.vue'
+import ProgressBar from './ProgressBar.vue'
+import ColorPicker from '../cmps/dynamicCmps/ColorPicker.vue'
 
 export default {
-  emits: ["labelDrop"],
+  emits: ['labelDrop','updateTask'],
   props: {
     group: Object,
     labelsOrder: Array,
@@ -113,35 +116,40 @@ export default {
     return {
       titleFocus: false,
       isEditOpen: false,
-    };
+      showColorPicker: true,
+    }
   },
   methods: {
     getSvg(iconName) {
-      return svgService.getSvg(iconName);
+      return svgService.getSvg(iconName)
     },
     onLabelDrop(dropResult) {
-      this.$emit("labelDrop", dropResult);
+      this.$emit('labelDrop', dropResult)
     },
     onTaskDrop(dropResult) {
-      let scene = JSON.parse(JSON.stringify(this.group.tasks));
-      scene = utilService.applyDrag(scene, dropResult);
-      this.group.tasks = scene;
+      let scene = JSON.parse(JSON.stringify(this.group.tasks))
+      scene = utilService.applyDrag(scene, dropResult)
+      this.group.tasks = scene
     },
     toggleEdit() {
-      this.isEditOpen = !this.isEditOpen;
+      this.isEditOpen = !this.isEditOpen
     },
     updateTask(task) {
       //    activity = boardService.getEmptyActivity()
       //    activity.txt = `Members changed for task ${}`
       //    activity.task = '{mini-task}'
-      const toUpdate = { task, groupId: this.group._id };
-      this.$store.dispatch({ type: "saveTask", toUpdate });
+      const toUpdate = { task, groupId: this.group._id }
+      this.$store.dispatch({ type: 'saveTask', toUpdate })
     },
+    updateColor(color) {
+      console.log('color from preview', color)
+      this.$emit('updateTask', { cmpType: 'color', data: color })
+    }
   },
   computed: {
     isTitleFocused() {
-      if (this.titleFocus) return true;
-      else return false;
+      if (this.titleFocus) return true
+      else return false
     },
   },
   components: {
@@ -153,5 +161,5 @@ export default {
     ProgressBar,
     ColorPicker,
   },
-};
+}
 </script>

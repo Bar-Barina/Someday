@@ -1,0 +1,23 @@
+
+.color-picker {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-items: center;
+  width: 142px;
+  height: 116px;
+  position: absolute;
+  top:  200px;
+  left: 200px;
+//   top:  37px;
+//   left: 70px;
+  padding: 5px;
+  z-index: 10000;
+  background-color: white;
+  border: 1px solid rgb(197, 195, 195);
+  border-radius: 4px;
+  .color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+}
