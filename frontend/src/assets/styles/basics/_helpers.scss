@@ -86,10 +86,10 @@
 }
 
 .editable-div {
-  width: max-content;
   padding: 0 4px;
-
+  
   &:hover {
+    width: max-content;
     border-radius: 4px;
     outline: 1px solid $clr38;
   }
