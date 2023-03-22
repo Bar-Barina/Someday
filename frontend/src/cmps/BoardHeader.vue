@@ -35,18 +35,45 @@
     <div contenteditable="true" class="description editable-div">
       Add your board's description here 
     </div>
-    <section class="board-view-change">
+    <section class="board-view-change flex align-center">
       <div class="view-option-container">
-        <div class="view-option">
-          
+        <div class="view-option  flex align-center btn-hover">
+          <div v-html="getSvg('headerHome')"></div>
+          Main Table
         </div>
       </div>
+        |
       <div class="view-option-container">
-        <div class="view-option">
-          
+        <div class="view-option flex align-center btn-hover">
+          Dashboard
         </div>
       </div>
     </section>
+      <section class="bottom-header flex align-center">
+        <div class="new-item flex justify-center align-center">
+          New item
+        </div>
+        <div class="bottom-header-btn btn-hover">
+          <div class="flex justify-center align-center" v-html="getSvg('headerSearch')"></div>
+          Search
+        </div>
+        <div class="bottom-header-btn btn-hover">
+          <div class="flex justify-center align-center" v-html="getSvg('headerPerson')"></div>
+          Person
+        </div>
+        <div class="bottom-header-btn btn-hover">
+          <div class="flex justify-center align-center" v-html="getSvg('filter')"></div>
+          Filter
+        </div>
+        <div class="bottom-header-btn btn-hover">
+          <div class="flex justify-center align-center" v-html="getSvg('sort')"></div>
+          Sort
+        </div>
+        <div class="bottom-header-btn btn-hover">
+          <div class="flex justify-center align-center" v-html="getSvg('hide')"></div>
+          Hide
+        </div>
+      </section>
   </section>
 </template>
 

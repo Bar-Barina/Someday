@@ -1,5 +1,5 @@
 <template>
-  <Container orientation="vertical" @drop="onGroupDrop($event)">
+  <Container class="main-table" orientation="vertical" @drop="onGroupDrop($event)">
     <Draggable class="group-container" v-for="group in groups" :key="group">
       <GroupPreview :group="group" :labelsOrder="labelsOrder" @labelDrop="labelDrop"></GroupPreview>
       <RouterView />
@@ -23,7 +23,7 @@ export default {
         "Text",
         "Priority",
         "Person",
-        "File",
+        "Files",
         "Status",
         "Timeline",
       ],

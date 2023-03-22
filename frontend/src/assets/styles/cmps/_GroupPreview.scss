@@ -1,29 +1,55 @@
+.smooth-dnd-container.vertical>.smooth-dnd-draggable-wrapper {
+    overflow: visible;
+}
+
+.main-table {
+    overflow-x: auto;
+}
+
 .group-container {
+
+    .labels-container {
+        display: flex!important;
+
+        .label {
+            display: flex!important;
+        }
+    }
 
     width: max-content;
     margin-bottom: 20px;
     position: relative;
 
-
-    .sticky {
-        position: sticky;
-        z-index: 50;
-    }
-
     .more {
         opacity: 0;
-        width: 24px;
-        max-width: 24px;
-        height: 24px;
         padding-bottom: 2px;
         border-radius: 4px;
+        width: 24px;
+        max-width: 24px;
         left: 10px;
-        position: relative;
-        cursor: pointer;
-
         &:hover {
             background-color: $clr016;
         }
+    }
+
+    .task-title {
+        left: 78px;
+        background-color: #fff;
+    }
+
+    .title-wrapper {
+        left: 78px;
+        background-color: #fff;
+    }
+
+    .third {
+        left: 46px;
+        background-color: #fff;
+    }
+
+    .arrow-down {
+        left: 46px;
+        background-color: #fff;
     }
 
     .group-title {
@@ -41,6 +67,14 @@
         }
     }
 
+    .task-border {
+        left: 40px;
+    }
+
+    .empty {
+        left: 0;
+    }
+
     .group-content {
 
         .labels-grid {
@@ -56,12 +90,51 @@
             .task-border {
                 border-top-left-radius: 6px;
             }
+
+            .empty {
+                left: 0;
+                background-color: #fff;
+            }
+
+            .task-border {
+                left: 40px;
+                background-color: #fff;
+            }
+
+            .check-box {
+                left: 46px;
+                background-color: #fff;
+            }
+
+            .task {
+                background-color: #fff;
+                left: 78px;
+            }
         }
 
         .task-row {
+
+            .more {
+                opacity: 0;
+                padding-bottom: 2px;
+                border-radius: 4px;
+                width: 24px;
+                max-width: 24px;
+            }
+
+            .more-task {
+                opacity: 1;
+                background-color: #fff;
+            }
+
+
             &:hover {
                 .more {
                     opacity: 1;
+
+                    &:hover {
+                        background-color: $clr016;
+                    }
                 }
             }
         }
@@ -74,5 +147,16 @@
     .el-menu {
         height: 0;
         border: none;
+    }
+}
+
+.more-task {
+    height: 100%;
+    left: 0;
+    background-color: #fff;
+    cursor: pointer;
+
+    div {
+        opacity: 0;
     }
 }

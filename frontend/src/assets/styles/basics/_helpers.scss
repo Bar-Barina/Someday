@@ -61,6 +61,14 @@
   display: none;
 }
 
+.cell {
+  cursor: pointer;
+  border-bottom: 1px solid $clr014;
+  border-right: 1px solid $clr014;
+  font-size: 0.875em;
+  position: relative;
+}
+
 .cell1 {
   font-size: 0.875rem;
 }
@@ -87,10 +95,9 @@
 
 .editable-div {
   padding: 0 4px;
-  
+  border-radius: 4px;
   &:hover {
     width: max-content;
-    border-radius: 4px;
     outline: 1px solid $clr38;
   }
 
