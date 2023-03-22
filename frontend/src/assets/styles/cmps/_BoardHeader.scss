@@ -23,7 +23,7 @@
             justify-content: center;
             height: em(24px);
             line-height: 40px;
-            font-size: 22px;
+            font-size: 24px;
             margin-right: 2px;
             font-family: 'Poppins', sans-serif;
             letter-spacing: 0.5px;
@@ -55,12 +55,15 @@
 
     .board-view-change {
         height: em(36px);
-        margin-top: 5px;
+        margin-top: 10px;
 
         .view-option-container {
             height: em(38px);
             margin-bottom: 1px;
             position: relative;
+            &.active {
+                border-bottom:2px solid #0073ea;    
+            }
 
             &:not(:hover):before {
                 content: "";
@@ -75,8 +78,9 @@
             .view-option {
                 padding: 4px 8px;
                 height: em(34px);
-                gap: 3px;
-
+                gap: 8px;
+                font-size:14px;
+              
                 .icon {
                     width: em(16px);
                     height: em(16px);
