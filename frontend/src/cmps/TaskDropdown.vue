@@ -1,4 +1,6 @@
 <template>
+  <Popper>
+    <template #content>
   <section class="task-dropdown">
     <div
       v-for="(option, idx) in options"
@@ -11,9 +13,14 @@
     </div>
   </section>
 </template>
+</Popper>
+</template>
 
 <script>
-export default {
+import { popper } from "@popperjs/core";
+import Popper from "vue3-popper";
+import { defineComponent } from "vue";
+export default defineComponent({
   props: {
     options: Array,
   },
@@ -26,6 +33,9 @@ export default {
       this.$emit('updateOption', optionName)
     },
   },
-  computed: {},
-}
+  components: {
+    Popper,
+    popper
+  },
+});
 </script>
