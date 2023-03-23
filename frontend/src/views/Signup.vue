@@ -36,7 +36,7 @@
 <script>
 import {svgService} from '../services/svg.service.js'
 export default {
-  name: 'Singup', 
+  name: 'Signup', 
   props: [],
 components:{},
 created() {},

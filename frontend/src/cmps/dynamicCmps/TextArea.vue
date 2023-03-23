@@ -12,6 +12,7 @@
 <script>
 export default {
   name: 'Text', 
+  emits:['updateTask'],
   props: {
     task:Object
   },
