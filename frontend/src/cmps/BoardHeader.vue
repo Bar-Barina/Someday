@@ -11,7 +11,8 @@
           {{ currBoard.title }}
         </h1>
         <div class="icon btn-hover">
-          <div className="icon" v-html="getSvg('descrip')"></div>
+          <!-- <div className="icon" v-html="getSvg('descrip')"></div> -->
+          <span v-icon="'descrip'" className="icon"></span>
         </div>
         <div class="icon btn-hover">
           <div className="icon" v-html="getSvg('headerStar')"></div>

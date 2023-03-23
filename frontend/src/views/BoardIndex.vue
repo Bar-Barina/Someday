@@ -39,8 +39,6 @@ export default {
       return this.$store.getters.boards;
     },
   },
-  created() {
-},
   methods: {
     async addBoard() {
       try {

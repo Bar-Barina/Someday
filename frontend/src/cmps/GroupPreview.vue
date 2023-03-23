@@ -173,15 +173,10 @@ export default {
 
         // check if element was ADDED in current column
         if (dropResult.removedIndex == null && dropResult.addedIndex >= 0) {
-          // your action / api call
+          
           newGroup.tasks = utilService.applyDrag(newGroup.tasks, dropResult);
           board.groups.splice(groupIdx, 1, newGroup);
           this.$store.dispatch({ type: "updateBoard", board });
-          return;
-          // board.groups[groupIdx] = group
-          // dropResult.payload.loading = true
-          // simulate api call
-          // setTimeout(function(){ dropResult.payload.loading = false }, (Math.random() * 5000) + 1000);
         }
         newGroup.tasks = utilService.applyDrag(newGroup.tasks, dropResult);
         board.groups.splice(groupIdx, 1, newGroup);
@@ -190,9 +185,7 @@ export default {
     },
     getGroupPayload(groupId) {
       return (index) => {
-        return this.currBoard.groups.filter((g) => g._id === groupId)[0].tasks[
-          index
-        ];
+        return this.currBoard.groups.filter((g) => g._id === groupId)[0].tasks[index];
       };
     },
   },

@@ -2,6 +2,7 @@
   <div class="priority full-cell" :class="priorityClass" @click="toggleModal">
     {{ priority }}
     <TaskDropdown
+    v-clickOutside="test"
       v-if="showDropdown"
       :options="priorityOptions"
       @updateOption="updatePriority"
@@ -42,6 +43,9 @@ export default defineComponent ({
     toggleModal() {
       this.showDropdown = !this.showDropdown
     },
+    test() {
+      console.log('sss')
+    }
   },
   computed: {
     priority() {
