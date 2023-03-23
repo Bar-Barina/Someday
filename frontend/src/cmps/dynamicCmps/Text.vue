@@ -1,7 +1,10 @@
 <template>
-  <section class="task-text">
-    <div ref="cmpText" class="text" contenteditable="true" @focusout="updateTask">
+  <section class="task-text flex justify-center align-center">
+    <div ref="cmpText" class="text editable-div flex align-center" contenteditable="true" @focusout="updateTask">
         {{ task.text }}
+    </div>
+    <div class="reset-text" @click="resetText">
+        x
     </div>
   </section>
 </template>
@@ -21,6 +24,9 @@ created() {},
     updateTask() {
         this.task.text = this.$refs.cmpText.innerText
         this.$emit('updateTask',{cmptype: 'text' ,data:this.$refs.cmpText.innerText})
+    },
+    resetText() {
+        this.$refs.cmpText.innerText = 'Text here'
     }
   },
   computed: {},

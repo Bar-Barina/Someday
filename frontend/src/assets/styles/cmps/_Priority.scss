@@ -1,3 +1,6 @@
+.option {
+  margin-bottom: 10px;
+}
 .priority-critical {
   background-color: $clr34;
 }
@@ -12,4 +15,8 @@
 
 .priority-low {
   background-color: $clr37;
+}
+
+.priority-empty {
+  background-color:#C4C4C4;
 }
