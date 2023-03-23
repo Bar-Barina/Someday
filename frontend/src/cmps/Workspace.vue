@@ -34,12 +34,17 @@
         </div>
         <div class="workspace-search flex align-center pointer">
           <span v-html="getSvg('searchGray')" class="workspace-icon"></span>
-          <span>Search</span>
+          <input
+            type="text"
+            placeholder="Search"
+            class="workspace-input"
+            v-model="searchTerm"
+          />
         </div>
         <br />
         <div class="workspace-line"></div>
-        <div 
-          v-for="(board, idx) in boards"
+        <div
+          v-for="(board, idx) in filteredBoards"
           :key="idx"
           @click="this.$router.push(`${board._id}`)"
           class="flex align-center workspace-boards pointer"
@@ -61,6 +66,7 @@ export default {
     return {
       isWorkspaceOpen: false,
       newBoard: boardService.getEmptyBoard(),
+      searchTerm: '',
     }
   },
   methods: {
@@ -77,6 +83,10 @@ export default {
   computed: {
     boards() {
       return this.$store.getters.boards
+    },
+    filteredBoards() {
+      const regex = new RegExp(this.searchTerm, 'i')
+      return this.boards.filter((board) => regex.test(board.title))
     },
   },
 }
