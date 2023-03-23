@@ -12,8 +12,9 @@
   </section>
 </template>
 
+
 <script>
-export default {
+  export default {
   props: {
     options: Array,
   },
@@ -26,6 +27,5 @@ export default {
       this.$emit('updateOption', optionName)
     },
   },
-  computed: {},
 }
 </script>
