@@ -12,6 +12,9 @@
       />
     </label>
   </div>
+  <div class="timeline-progress-bar">
+    
+  </div>
 </template>
 
 <script>
