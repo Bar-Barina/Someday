@@ -1,14 +1,12 @@
 <template>
-  <div v-if="value.length === 0" class="timeline-progress-bar text-center" :style="{'background-color': '#c4c4c4'}">
-    -
-  </div>
-  <div v-if="value.length > 0" class="timeline-progress-bar">
+  <div v-if="value !== []" class="timeline-progress-bar">
     <div
-      :style="{ width: widthPrecent + '%' }"
+       v-if="value !== []"
+      :style="{ width: widthPrecent + '%', 'background-color': group.color }"
       class="bar-precent flex justify-center align-center"
       :class=" borderRadiusEnd"
     >
-      <div class="date-diff">
+      <div  v-if="value !== []" class="date-diff">
         {{ dateDiff }}
       </div>
       <div class="day-diff">{{ dayDiff }}d</div>
@@ -36,10 +34,11 @@ export default {
   emits: ["updateTask"],
   props: {
     task: Object,
+    group:Object,
   },
   components: {},
   created() {
-    if(this.task.timeline) this.value = this.task.timeline
+    if(this.task.timeline !== []) this.value = this.task.timeline
   },
   data() {
     return {
@@ -54,6 +53,7 @@ export default {
   },
   computed: {
     dayDiff() {
+        if(this.value===[]) return 'set dates'
       var currentDate = new Date();
       var currentYear = currentDate.getFullYear();
       var date1 = new Date(`${this.value[0]}, ${currentYear}`);
@@ -63,6 +63,7 @@ export default {
       return parseInt(diffInDays);
     },
     dateDiff() {
+      if(this.value===[]) return '-'
       return (
         this.value[0].split("-")[0] +
         " " +
@@ -92,6 +93,11 @@ export default {
         'border-radius-end' : this.widthPrecent>90 
       }
     },
+    emptyboard() {
+      return {
+        
+      }
+    }
   },
 };
 </script>
