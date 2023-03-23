@@ -11,17 +11,19 @@
         cursor: auto;
     }
     .reset-text {   
+        background-color: $clr016;
         opacity: 0;
         display: flex;
         justify-content: center;
         align-items: center;
         cursor: pointer;
-        height: 25px;
-        width: em(25px);
+        height: em(16px);
+        width: em(16px);
         position: absolute;
-        right: 0px;
-        top:4px;
+        right: 8px;
+        top:9px;
         padding: 3px;
+        padding-bottom: 6px;
         z-index: 1;
         &:hover {
             color: $clr8;
