@@ -1,17 +1,4 @@
 <template>
-  <div v-if="value !== []" class="timeline-progress-bar">
-    <div
-       v-if="value !== []"
-      :style="{ width: widthPrecent + '%', 'background-color': group.color }"
-      class="bar-precent flex justify-center align-center"
-      :class=" borderRadiusEnd"
-    >
-      <div  v-if="value !== []" class="date-diff">
-        {{ dateDiff }}
-      </div>
-      <div class="day-diff">{{ dayDiff }}d</div>
-    </div>
-  </div>
 
   <div class="demo-date-picker">
     <label class="picker-wrapper">
@@ -25,6 +12,19 @@
         @change="changeDate"
       />
     </label>
+  </div>
+  <div v-if="value !== []" class="timeline-progress-bar">
+    <div
+       v-if="value !== []"
+      :style="{ width: widthPrecent + '%', 'background-color': group.color }"
+      class="bar-precent flex justify-center align-center"
+      :class=" borderRadiusEnd"
+    >
+      <div  v-if="value !== []" class="date-diff">
+        {{ dateDiff }}
+      </div>
+      <div class="day-diff">{{ dayDiff }}d</div>
+    </div>
   </div>
 </template>
 
