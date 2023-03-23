@@ -30,6 +30,7 @@ export default {
   },
   methods: {
     changeDate() {
+      console.log('date', this.value)
       this.$emit("updateTask", {cmpType:'timeLine',data:this.value});
     },
   },
