@@ -77,7 +77,7 @@ export default {
     },
     openCon() {
       this.$router.push(
-        "/board/" + this.currBoardId + "/conversation/" + this.task.id
+        "/board/" + this.currBoardId + "/taskDetails/" + this.task.id
       );
     },
     toggleEdit() {

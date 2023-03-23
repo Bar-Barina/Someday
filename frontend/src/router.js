@@ -11,7 +11,7 @@ import Login from './views/Login.vue'
 import UserDetails from './views/UserDetails.vue'
 import TaskDetails from './cmps/TaskDetails.vue'
 import Dashboard from './cmps/Dashboard.vue'
-import Singup from './views/Singup.vue'
+import Signup from './views/Signup.vue'
 
 const routes = [
   {
@@ -46,6 +46,16 @@ const routes = [
       },
     ]
   },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: Signup
+  },
   // {
   //   path: '/review',
   //   name: 'ReviewIndex',
@@ -56,16 +66,6 @@ const routes = [
   //   name: 'Chat',
   //   component: Chat
   // },
-  {
-    path: '/login',
-    name: 'Login',
-    component: Login
-  },
-  {
-    path: '/singup',
-    name: 'Singup',
-    component: Singup
-  },
   // {
   //   path: '/user/:id',
   //   name: 'UserDetails',
