@@ -38,7 +38,7 @@
         @focusin="titleFocus = !titleFocus"
         :class="{ focused: isTitleFocused }"
       >
-        {{ group.title }}
+        <h4>{{ group.title }}</h4>
       </div>
     </div>
   </section>
