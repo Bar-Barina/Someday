@@ -80,8 +80,8 @@
       group-name="tasks"
       tag="div"
       :shouldAcceptDrop="(e, payload) => e.groupName === 'tasks'"
-      :get-child-payload="getGroupPayload(group._id)"
-      @drop="onTaskDrop(group._id, $event)"
+      :get-child-payload="getGroupPayload"
+      @drop="onTaskDrop(group.tasks, $event)"
     >
       <Draggable
         class="group-grid task-row"
@@ -133,11 +133,12 @@ export default {
     onLabelDrop(dropResult) {
       this.$emit("labelDrop", dropResult);
     },
-    // onTaskDrop(dropResult) {
-    //   let tasks = JSON.parse(JSON.stringify(this.group.tasks))
-    //   tasks = utilService.applyDrag(tasks, dropResult)
-    //   this.group.tasks = tasks
-    // },
+    taskDrop(dropResult) {
+      console.log('here')
+      let group = JSON.parse(JSON.stringify(this.group))
+      group.tasks = utilService.applyDrag(group.tasks, dropResult)
+      this.group.tasks = group.tasks
+    },
     toggleEdit() {
       this.isEditOpen = !this.isEditOpen;
     },
@@ -163,30 +164,24 @@ export default {
     toggleModal() {
       this.showColorPicker = !this.showColorPicker;
     },
-    onTaskDrop(groupId, dropResult) {
-      // check if element where ADDED or REMOVED in current collumn
+    onTaskDrop(tasks, dropResult) {
       if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
         const board = JSON.parse(JSON.stringify(this.currBoard));
-        const group = board.groups.filter((g) => g._id === groupId)[0];
-        const groupIdx = board.groups.indexOf(group);
-        const newGroup = JSON.parse(JSON.stringify(group));
-
-        // check if element was ADDED in current column
-        if (dropResult.removedIndex == null && dropResult.addedIndex >= 0) {
-          
-          newGroup.tasks = utilService.applyDrag(newGroup.tasks, dropResult);
-          board.groups.splice(groupIdx, 1, newGroup);
-          this.$store.dispatch({ type: "updateBoard", board });
-        }
-        newGroup.tasks = utilService.applyDrag(newGroup.tasks, dropResult);
-        board.groups.splice(groupIdx, 1, newGroup);
+        const groupIdx = board.groups.findIndex(
+          (g) => g._id === this.group._id
+        );
+        tasks = utilService.applyDrag(tasks, dropResult);
+        console.log('tasks', tasks)
+        board.groups[groupIdx].tasks = tasks;
+        console.log('board', board)
         this.$store.dispatch({ type: "updateBoard", board });
+      } else {
+        this.taskDrop(dropResult)
       }
     },
-    getGroupPayload(groupId) {
-      return (index) => {
-        return this.currBoard.groups.filter((g) => g._id === groupId)[0].tasks[index];
-      };
+    getGroupPayload(index) {
+      console.log("payload");
+      return this.group.tasks[index];
     },
   },
   computed: {
