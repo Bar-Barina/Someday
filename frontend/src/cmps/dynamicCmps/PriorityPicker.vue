@@ -14,7 +14,6 @@
 <script>
 import TaskDropdown from '../TaskDropdown.vue'
 import { defineComponent } from "vue";
-  import Popper from "vue3-popper";
 export default defineComponent ({
   emits:['updateTask'],
   props: {
@@ -70,7 +69,6 @@ export default defineComponent ({
   },
   components: {
     TaskDropdown,
-    Popper,
   },
 });
 </script>
