@@ -19,7 +19,7 @@
 <script>
 export default {
   name: "date",
-  emit: ["updateTask"],
+  emits: ["updateTask"],
   props: {
     task: Object,
   },
