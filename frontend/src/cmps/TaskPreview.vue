@@ -47,6 +47,8 @@ import Timeline from "./dynamicCmps/Timeline.vue";
 import Date from "./dynamicCmps/Date.vue";
 import Person from "./dynamicCmps/Person.vue";
 
+
+
 export default {
   emits: ["saveTask" , 'remove'],
   props: {
