@@ -14,12 +14,13 @@
         <button @click.stop="updateMember(idx)">X</button>
       </div>
     </section>
-    <input type="text" placeholder="Search names, roles or teams" />
+    <input type="text" placeholder="Search names, roles or teams"
+    v-model="searchTerm" />
     <p>Suggested people</p>
     <section>
       <div class="flex align-center member"
         v-if="members"
-        v-for="(member, idx) in members"
+        v-for="(member, idx) in filteredMembers"
         :key="idx"
         @click.stop="updatePerson(member)"
       >
@@ -42,7 +43,9 @@ export default {
     person: Array,
   },
   data() {
-    return {}
+    return {
+      searchTerm: '',
+    }
   },
   computed: {
     members() {
@@ -51,7 +54,10 @@ export default {
         return !taskPersons.some((p) => p.name === member.name)
       })
     },
-    filteredMembers() {},
+    filteredMembers() {
+      const regex = new RegExp(this.searchTerm, 'i')
+      return this.members.filter((member) => regex.test(member.name))
+    },
   },
   methods: {
     updatePerson(member) {
