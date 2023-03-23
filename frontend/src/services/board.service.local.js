@@ -13,7 +13,7 @@ export const boardService = {
   addBoardMsg,
   saveTask,
   getEmptyTask,
-  removeItem
+  removeItem,
 }
 window.cs = boardService
 
@@ -70,7 +70,9 @@ async function saveTask(board, group, task) {
   if (task) {
     const groupIdx = boardToSave.groups.findIndex((g) => g._id === group._id)
     if (task.id) {
-      const taskIdx = boardToSave.groups[groupIdx].tasks.findIndex((t) => t.id === task.id)
+      const taskIdx = boardToSave.groups[groupIdx].tasks.findIndex(
+        (t) => t.id === task.id
+      )
       boardToSave.groups[groupIdx].tasks.splice(taskIdx, 1, task)
     } else {
       task.id = utilService.makeId()
@@ -93,43 +95,156 @@ async function saveTask(board, group, task) {
   await save(boardToSave)
   return boardToSave
 
-    // PUT /api/board/b123/task/t678
+  // PUT /api/board/b123/task/t678
   // board.activities.unshift(activity)
 }
 
-async function removeItem(board , groupId , taskId) {
+async function removeItem(board, groupId, taskId) {
   const currBoard = JSON.parse(JSON.stringify(board))
   const groupIdx = currBoard.groups.findIndex((g) => g._id === groupId)
-  if(taskId) {
-    const taskIdx = currBoard.groups[groupIdx].tasks.findIndex((t) => t.id === taskId)
-    currBoard.groups[groupIdx].tasks.splice(taskIdx , 1)
+  if (taskId) {
+    const taskIdx = currBoard.groups[groupIdx].tasks.findIndex(
+      (t) => t.id === taskId
+    )
+    currBoard.groups[groupIdx].tasks.splice(taskIdx, 1)
   } else {
-    currBoard.groups.splice(groupIdx , 1)
+    currBoard.groups.splice(groupIdx, 1)
   }
   save(currBoard)
 }
 
 function getEmptyBoard() {
   return {
-    title: 'Full Stack' + (Date.now() % 1000),
-    date: utilService.getRandomIntInclusive(1000, 9000),
+    title: 'New Board',
+    members: [],
+    groups: [
+      {
+        title: 'Frontend',
+        _id: Math.random().toString(36).slice(2),
+        color: 'rgb(0, 134, 192)',
+        tasks: [
+          {
+            id: 't101',
+            side: 'null',
+            taskTitle: 'Task 1',
+            person: [],
+            date: utilService.getRandomIntInclusive(1000, 9000),
+            status: 'Working on it',
+            priority: 'High',
+            timeline: '',
+            file: '',
+            text: '',
+          },
+          {
+            id: 't102',
+            side: 'null',
+            taskTitle: 'Task 2',
+            person: [
+              {
+                name: 'Bar',
+                color: 'green',
+                url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512',
+              },
+            ],
+            date: utilService.getRandomIntInclusive(1000, 9000),
+            status: 'Done',
+            priority: 'Critical',
+            timeline: '',
+            file: '',
+            text: '',
+          },
+          {
+            id: 't102',
+            side: 'null',
+            taskTitle: 'Task 3',
+            person: [
+              {
+                name: 'Bar',
+                color: 'green',
+                url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512',
+              },
+            ],
+            date: utilService.getRandomIntInclusive(1000, 9000),
+            status: 'Null',
+            priority: 'High',
+            timeline: '',
+            file: '',
+            text: '',
+          },
+        ],
+      },
+      {
+        title: 'Backend',
+        _id: Math.random().toString(36).slice(2),
+        color: 'rgb(0, 134, 192)',
+        tasks: [
+          {
+            id: 't101',
+            side: 'null',
+            taskTitle: 'Task 1',
+            person: [],
+            date: utilService.getRandomIntInclusive(1000, 9000),
+            status: 'Done',
+            priority: 'Low',
+            timeline: 'late',
+            file: '11',
+            text: 'Something',
+          },
+          {
+            id: 't102',
+            side: 'null',
+            taskTitle: 'Task 2',
+            person: [
+              {
+                name: 'Bar',
+                color: 'green',
+                url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512',
+              },
+            ],
+            date: utilService.getRandomIntInclusive(1000, 9000),
+            status: 'Working on it',
+            priority: 'Medium',
+            timeline: 'late',
+            file: '11',
+            text: 'Something',
+          },
+          {
+            id: 't102',
+            side: 'null',
+            taskTitle: 'Task 3',
+            person: [
+              {
+                name: 'Bar',
+                color: 'green',
+                url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512',
+              },
+            ],
+            date: utilService.getRandomIntInclusive(1000, 9000),
+            status: 'null',
+            priority: 'Low',
+            timeline: 'late',
+            file: '11',
+            text: 'Something',
+          },
+        ],
+      },
+    ],
   }
 }
 
 function getEmptyTask() {
   return {
-    side: "null",
-    taskTitle: "",
+    side: 'null',
+    taskTitle: '',
     person: [],
-    date: "",
-    status: "",
-    priority: "",
+    date: '',
+    status: '',
+    priority: '',
     timeline: '',
     files: '',
-    text: ''
+    text: '',
   }
 }
-
 
 // ; (async () => {
 //     await storageService.post(STORAGE_KEY,
@@ -249,7 +364,6 @@ function getEmptyTask() {
 //         }
 //     )
 // })();
-
 
 // Use for no logged in users only!
 // { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
