@@ -12,9 +12,9 @@
       />
     </label>
   </div>
-  <!-- :style="{width:}" -->
+  
   <div v-if="value.length>0" class="timeline-progress-bar">
-    <div class="bar-precent flex justify-center align-center">
+    <div :style="{width:widthPrecent+'%'}" class="bar-precent flex justify-center align-center">
       <div class="date-diff">
         {{ dateDiff }}
       </div>
@@ -57,8 +57,19 @@ export default {
     },
     dateDiff() {
       return this.value[0].split("-")[0] +" "+this.value[0].split("-")[1] +" " +"-" +" " +this.value[1].split("-")[0] +" " + this.value[1].split("-")[1]
+    },
+    widthPrecent() {
+      var currentDate = new Date();
+      var currentYear = currentDate.getFullYear();
+      var date = new Date(`${this.value[0]}, ${currentYear}`);
+      var todayDate = new Date(Date.now());
+      var diffInMs = todayDate.getTime() - date.getTime();
+      var diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+      console.log('daysInDiff',diffInDays)
+      var precent = (diffInDays/this.dayDiff)*100
+      console.log('precent',precent)
+      return parseInt(precent);
     }
-
   },
 };
 </script>
