@@ -79,7 +79,9 @@
       orientation="vertical"
       group-name="tasks"
       tag="div"
-      @drop="onTaskDrop($event)"
+      :shouldAcceptDrop="(e, payload) => e.groupName === 'tasks'"
+      :get-child-payload="getGroupPayload(group._id)"
+      @drop="onTaskDrop(group._id, $event)"
     >
       <Draggable
         class="group-grid task-row"
@@ -101,17 +103,17 @@
 </template>
 
 <script>
-import { Container, Draggable } from 'vue3-smooth-dnd'
-import { svgService } from '../services/svg.service.js'
-import { utilService } from '../services/util.service'
-import TaskPreview from './TaskPreview.vue'
-import EditMenu from './EditMenu.vue'
-import AddTask from './AddTask.vue'
-import ProgressBar from './ProgressBar.vue'
-import ColorPicker from '../cmps/dynamicCmps/ColorPicker.vue'
+import { Container, Draggable } from "vue3-smooth-dnd";
+import { svgService } from "../services/svg.service.js";
+import { utilService } from "../services/util.service";
+import TaskPreview from "./TaskPreview.vue";
+import EditMenu from "./EditMenu.vue";
+import AddTask from "./AddTask.vue";
+import ProgressBar from "./ProgressBar.vue";
+import ColorPicker from "../cmps/dynamicCmps/ColorPicker.vue";
 
 export default {
-  emits: ['labelDrop', 'updateTask'],
+  emits: ["labelDrop", "updateTask"],
   props: {
     group: Object,
     labelsOrder: Array,
@@ -121,78 +123,80 @@ export default {
       titleFocus: false,
       isEditOpen: false,
       showColorPicker: true,
-      board: this.board
-    }
+    };
   },
   methods: {
     getSvg(iconName) {
-      return svgService.getSvg(iconName)
+      return svgService.getSvg(iconName);
     },
     onLabelDrop(dropResult) {
-      this.$emit('labelDrop', dropResult)
+      this.$emit("labelDrop", dropResult);
     },
-    onTaskDrop(dropResult) {
-      let tasks = JSON.parse(JSON.stringify(this.group.tasks))
-      tasks = utilService.applyDrag(tasks, dropResult)
-      this.group.tasks = tasks
-    },
+    // onTaskDrop(dropResult) {
+    //   let tasks = JSON.parse(JSON.stringify(this.group.tasks))
+    //   tasks = utilService.applyDrag(tasks, dropResult)
+    //   this.group.tasks = tasks
+    // },
     toggleEdit() {
-      this.isEditOpen = !this.isEditOpen
+      this.isEditOpen = !this.isEditOpen;
     },
     updateGroup({ toChange, data }) {
-      if (!toChange) this.group.title = this.$refs.groupTitle.innerText
-      else this.group[toChange] = data
-      this.saveGroup()
+      if (!toChange) this.group.title = this.$refs.groupTitle.innerText;
+      else this.group[toChange] = data;
+      this.saveGroup();
     },
     saveGroup(task) {
       //    activity = boardService.getEmptyActivity()
       //    activity.txt = `Members changed for task ${}`
       //    activity.task = '{mini-task}'
-      const toUpdate = { task, group: this.group }
-      this.$store.dispatch({ type: 'saveTask', toUpdate })
+      const toUpdate = { task, group: this.group };
+      this.$store.dispatch({ type: "saveTask", toUpdate });
     },
     remove(toRemove) {
-      this.$store.dispatch({ type: 'remove', toRemove })
+      this.$store.dispatch({ type: "remove", toRemove });
     },
     toggleModal() {
-      this.showColorPicker = !this.showColorPicker
+      this.showColorPicker = !this.showColorPicker;
     },
-    // onTaskDrop (groupId, dropResult) {
-    //   console.log('dropResult', dropResult)
-      
-    //   // check if element where ADDED or REMOVED in current collumn
-    //   if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
-        
-    //     const board = JSON.parse(JSON.stringify(this.board))
-    //     const group = board.groups.filter(g => g._id === groupId)[0]
-    //     const groupIdx = board.groups.indexOf(group)
-    //     const newGroup = JSON.parse(JSON.stringify(group))
-        
-    //     // check if element was ADDED in current column
-    //     if((dropResult.removedIndex == null && dropResult.addedIndex >= 0)){
-    //       // your action / api call
-    //       // dropResult.payload.loading = true
-    //       // simulate api call
-    //       // setTimeout(function(){ dropResult.payload.loading = false }, (Math.random() * 5000) + 1000); 
-    //     }
-    //     newGroup.tasks = utilService.applyDrag(newGroup.tasks, dropResult)
-    //     board.groups.splice(groupIdx, 1, newGroup)
-    //     console.log('newGroup', newGroup)
-    //     console.log('groupIdx', groupIdx)
-    //     console.log('board', board)
-    //     this.board = board
-    //   }
-    // },
-    // getGroupPayload (groupId) {
-    //   return index => {
-    //     return this.board.groups.filter(g => g._id === groupId)[0].tasks[index]
-    //   }
-    // },
+    onTaskDrop(groupId, dropResult) {
+      // check if element where ADDED or REMOVED in current collumn
+      if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
+        const board = JSON.parse(JSON.stringify(this.currBoard));
+        const group = board.groups.filter(g => g._id === groupId)[0]
+        const groupIdx = board.groups.indexOf(group);
+        const newGroup = JSON.parse(JSON.stringify(group));
+
+        // check if element was ADDED in current column
+        if (dropResult.removedIndex == null && dropResult.addedIndex >= 0) {
+          // your action / api call
+          newGroup.tasks = utilService.applyDrag(newGroup.tasks, dropResult);
+          board.groups.splice(groupIdx, 1, newGroup);
+          this.$store.dispatch({type: 'updateBoard' , board})
+          return
+          // board.groups[groupIdx] = group
+          // dropResult.payload.loading = true
+          // simulate api call
+          // setTimeout(function(){ dropResult.payload.loading = false }, (Math.random() * 5000) + 1000);
+          
+        }
+        newGroup.tasks = utilService.applyDrag(newGroup.tasks, dropResult);
+        board.groups.splice(groupIdx, 1, newGroup);
+        this.$store.dispatch({type: 'updateBoard' , board})
+      }
+    },
+    getGroupPayload(groupId) {
+      return (index) => {
+        return this.currBoard.groups.filter(g => g._id === groupId)[0].tasks[index]
+      };
+    },
   },
   computed: {
     isTitleFocused() {
-      if (this.titleFocus) return true
-      else return false
+      if (this.titleFocus) return true;
+      else return false;
+    },
+    currBoard() {
+      return this.$store.getters.currBoard;
     },
   },
   components: {
@@ -204,5 +208,5 @@ export default {
     ProgressBar,
     ColorPicker,
   },
-}
+};
 </script>
