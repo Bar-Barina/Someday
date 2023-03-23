@@ -49,7 +49,7 @@
 //     sendMsg() {
 //       console.log('Sending', {...this.msg})
 //       // setTimeout(()=>this.addMsg({from: 'Dummy', txt: 'Yey'}), 2000)
-//       const user = userService.getLoggedinUser()
+//       const user = userService.getLoggedInUser()
 //       const from = (user && user.fullname) || 'Guest'
 //       this.msg.from = from
 //       socketService.emit(SOCKET_EMIT_SEND_MSG, this.msg)

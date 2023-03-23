@@ -50,14 +50,26 @@
     width: 214px;
     height: 1px;
   }
-
+  .dots {
+    display: none;
+  }
+  .selected-board {
+    background-color: $clr7;
+  }
   .workspace-container > *:not(.workspace-line) {
     height: 32px;
     width: 100%;
     padding: 0 8px;
+    border-radius: 4px;
+    .dots {
+      display: none;
+      margin-left: 60px;
+    }
     &:hover {
       background-color: $clr39;
-      border-radius: 4px;
+      .dots {
+        display: block;
+      }
     }
     .add {
       margin-left: -4px;
@@ -88,17 +100,19 @@
       width: 33px;
       border-radius: 40px;
       background-color: $clr8;
+      svg {
+        fill: $clr2;
+      }
     }
+  }
+  .workspace-input {
+    width: 100%;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    background-color: inherit;
   }
 }
 .is-open {
   width: 254px;
-}
-
-.workspace-input {
-  width: 100%;
-  font-size: 16px;
-  outline: none;
-  border: none;
-  background-color: inherit;
 }
