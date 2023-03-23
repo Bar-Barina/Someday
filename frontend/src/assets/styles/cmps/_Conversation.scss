@@ -4,7 +4,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 500px;
+  width: 582px;
   height: 100vh;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   z-index: 100;
@@ -48,5 +48,9 @@
   }
   p {
     text-align: center;
+  }
+  .conversation-exit-btn {
+    background-color: inherit;
+    border: none;
   }
 }

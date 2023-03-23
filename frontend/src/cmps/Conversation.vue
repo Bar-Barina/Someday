@@ -1,18 +1,19 @@
 <template>
   <section class="conversation-container">
     <div class="conversation-action-wrapper">
-      <button>X</button>
+      <button class="conversation-exit-btn">X</button>
     </div>
     <div class="conversation-title">
       <h3>Item 1</h3>
       <div class="conversation-img-section">
         <img src="../assets/img/profile-icon.png" class="conversation-img" /> |
-        <span v-html="getSvg('dots')"></span>
+        <span v-html="getSvg('Dots')"></span>
       </div>
     </div>
     <div class="conversation-up-nav">
       <span><span v-html="getSvg('noFillHome')"></span>Updates</span> |
       <span>Files</span> | <span>Activity Log</span> |
+      <hr>
     </div>
     <input placeholder="Write an update..." />
     <section class="nav-btn flex space-between align-center">
@@ -39,7 +40,8 @@ import { svgService } from '../services/svg.service.js'
 export default {
   name: '',
   data() {
-    return {}
+    return {
+    }
   },
   methods: {
     getSvg(iconName) {
@@ -52,4 +54,3 @@ export default {
 }
 </script>
 
-<style></style>
