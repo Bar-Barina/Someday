@@ -10,8 +10,8 @@
   <section class="task-title cell1 sticky flex align-center space-between">
     <div class="task-title-sub flex align-center space-between">
       <div class="flex align-center content-edit editable-div"
-       @click="(activeTask = true)" contenteditable="true"
-       :class="{active: activeTask}" ref="taskTitle"
+       @click="(isActive = true)" contenteditable="true"
+       :class="{active: isActive}" ref="taskTitle"
        @focusout="updateTask">
         <span>{{ task.taskTitle }}</span>
       </div>
@@ -58,7 +58,7 @@ export default {
   data() {
     return {
       isEditOpen: false,
-      activeTask: false
+      isActive: false
     };
   },
   methods: {
