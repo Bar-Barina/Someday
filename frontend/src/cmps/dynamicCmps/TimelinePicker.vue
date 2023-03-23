@@ -10,9 +10,6 @@
         :default-value="[new Date(Date.now()), new Date(Date.now())]"
         @change="changeDate"
       />
-    </label>
-  </div>
-  
   <div v-if="value.length>0" class="timeline-progress-bar">
     <div :style="{width:widthPrecent+'%'}" class="bar-precent flex justify-center align-center">
       <div class="date-diff">
@@ -23,6 +20,9 @@
       </div>
     </div>
   </div>
+    </label>
+  </div>
+  
 </template>
 
 <script>
