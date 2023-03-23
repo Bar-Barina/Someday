@@ -11,9 +11,9 @@ import App from './App.vue'
 
 const app = createApp(App)
 
+app.component("Popper", Popper);
 app.use(ElementPlus)
 app.use(router)
 app.use(store)
-app.component("Popper", Popper);
 
 app.mount('#app')
