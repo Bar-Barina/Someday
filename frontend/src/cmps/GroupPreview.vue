@@ -111,6 +111,7 @@ import EditMenu from "./EditMenu.vue";
 import AddTask from "./AddTask.vue";
 import ProgressBar from "./ProgressBar.vue";
 import ColorPicker from "../cmps/dynamicCmps/ColorPicker.vue";
+import { showErrorMsg } from "../services/event-bus.service.js";
 
 export default {
   emits: ["labelDrop", "updateTask"],
@@ -145,12 +146,17 @@ export default {
       else this.group[toChange] = data;
       this.saveGroup();
     },
-    saveGroup(task) {
+    async saveGroup(task) {
       //    activity = boardService.getEmptyActivity()
       //    activity.txt = `Members changed for task ${}`
       //    activity.task = '{mini-task}'
-      const toUpdate = { task, group: this.group };
-      this.$store.dispatch({ type: "saveTask", toUpdate });
+      try {
+        this.group.tasks.push(task);
+        const toUpdate = { task, group: this.group };
+        this.$store.dispatch({ type: "saveTask", toUpdate });
+      } catch (err) {
+        showErrorMsg("Couldnt add task");
+      }
     },
     remove(toRemove) {
       this.$store.dispatch({ type: "remove", toRemove });
@@ -162,7 +168,7 @@ export default {
       // check if element where ADDED or REMOVED in current collumn
       if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
         const board = JSON.parse(JSON.stringify(this.currBoard));
-        const group = board.groups.filter(g => g._id === groupId)[0]
+        const group = board.groups.filter((g) => g._id === groupId)[0];
         const groupIdx = board.groups.indexOf(group);
         const newGroup = JSON.parse(JSON.stringify(group));
 
@@ -171,22 +177,23 @@ export default {
           // your action / api call
           newGroup.tasks = utilService.applyDrag(newGroup.tasks, dropResult);
           board.groups.splice(groupIdx, 1, newGroup);
-          this.$store.dispatch({type: 'updateBoard' , board})
-          return
+          this.$store.dispatch({ type: "updateBoard", board });
+          return;
           // board.groups[groupIdx] = group
           // dropResult.payload.loading = true
           // simulate api call
           // setTimeout(function(){ dropResult.payload.loading = false }, (Math.random() * 5000) + 1000);
-          
         }
         newGroup.tasks = utilService.applyDrag(newGroup.tasks, dropResult);
         board.groups.splice(groupIdx, 1, newGroup);
-        this.$store.dispatch({type: 'updateBoard' , board})
+        this.$store.dispatch({ type: "updateBoard", board });
       }
     },
     getGroupPayload(groupId) {
       return (index) => {
-        return this.currBoard.groups.filter(g => g._id === groupId)[0].tasks[index]
+        return this.currBoard.groups.filter((g) => g._id === groupId)[0].tasks[
+          index
+        ];
       };
     },
   },

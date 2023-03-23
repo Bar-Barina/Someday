@@ -79,7 +79,7 @@ async function saveTask(board, group, task) {
       boardToSave.groups[groupIdx].tasks.push(task)
     }
     await save(boardToSave)
-    return task
+    return boardToSave
   }
   if (group) {
     if (group._id) {
@@ -90,7 +90,7 @@ async function saveTask(board, group, task) {
       boardToSave.groups.push(group)
     }
     await save(boardToSave)
-    return group
+    return boardToSave
   }
   await save(boardToSave)
   return boardToSave

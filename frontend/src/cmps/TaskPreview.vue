@@ -84,6 +84,8 @@ export default {
       this.isEditOpen = !this.isEditOpen;
     },
     removeTask(toRemove) {
+      const idx = this.group.tasks.findIndex(t => t.id === toRemove.taskId)
+      this.group.tasks.splice(idx , 1)
       this.$emit('remove' , toRemove)
     }
   },
