@@ -1,5 +1,4 @@
 <template>
-  <h1>test</h1>
   <section class="task-dropdown">
     <div
       v-for="(option, idx) in options"
