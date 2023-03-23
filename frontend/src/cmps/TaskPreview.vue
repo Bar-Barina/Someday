@@ -41,12 +41,12 @@ import { svgService } from "../services/svg.service";
 import { Container, Draggable } from "vue3-smooth-dnd";
 import { utilService } from "../services/util.service";
 import EditMenu from "./EditMenu.vue";
-import Status from "./dynamicCmps/Status.vue";
-import Priority from "./dynamicCmps/Priority.vue";
-import Timeline from "./dynamicCmps/Timeline.vue";
-import Date from "./dynamicCmps/Date.vue";
-import Person from "./dynamicCmps/Person.vue";
-import Text from './dynamicCmps/Text.vue'
+import Status from "./dynamicCmps/StatusPicker.vue";
+import Priority from "./dynamicCmps/PriorityPicker.vue";
+import Timeline from "./dynamicCmps/TimelinePicker.vue";
+import Date from "./dynamicCmps/DatePicker.vue";
+import Person from "./dynamicCmps/PersonPicker.vue";
+import Text from './dynamicCmps/TextArea.vue'
 
 export default {
   emits: ["saveTask" , 'remove'],
@@ -84,6 +84,8 @@ export default {
       this.isEditOpen = !this.isEditOpen;
     },
     removeTask(toRemove) {
+      const idx = this.group.tasks.findIndex(t => t.id === toRemove.taskId)
+      this.group.tasks.splice(idx , 1)
       this.$emit('remove' , toRemove)
     }
   },

@@ -11,15 +11,15 @@
       />
     </label>
     <div v-if="value" class="date-preview flex justify-center align-center">
-      {{ value }}
+      {{ value.split("-")[0] + " " + value.split("-")[1] }}
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'date',
-  emit: ['updateTask'],
+  name: "date",
+  emit: ["updateTask"],
   props: {
     task: Object,
   },
@@ -27,14 +27,18 @@ export default {
   created() {},
   data() {
     return {
-      value: '',
-    }
+      value: "",
+    };
   },
   methods: {
     changeDate() {
-      this.$emit('updateTask', { cmpType: 'date', data: this.value })
+      console.log(
+        "this.value",
+        this.value.split("-")[0] + " " + this.value.split("-")[1]
+      );
+      this.$emit("updateTask", { cmpType: "date", data: this.value });
     },
   },
   computed: {},
-}
+};
 </script>

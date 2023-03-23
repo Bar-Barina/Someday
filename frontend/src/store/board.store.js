@@ -113,10 +113,15 @@ export const boardStore = {
             }
         },
         async saveTask({ state, commit }, { toUpdate }) {
-            const board = state.currBoard
+            const currBoard = state.currBoard
             // commit(ACTION) // dispatch(ACTION)
             if (!toUpdate.task) toUpdate.task = null
-            boardService.saveTask(board, toUpdate.group, toUpdate.task)
+            try {
+                const board = await boardService.saveTask(currBoard, toUpdate.group, toUpdate.task)
+                commit({type: 'updateBoard' , board})
+            } catch(err) {
+                throw new Error(err)
+            }
         },
         async remove({ state, commit }, { toRemove }) {
             const board = state.currBoard
