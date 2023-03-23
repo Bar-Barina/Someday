@@ -46,8 +46,7 @@ import Priority from "./dynamicCmps/Priority.vue";
 import Timeline from "./dynamicCmps/Timeline.vue";
 import Date from "./dynamicCmps/Date.vue";
 import Person from "./dynamicCmps/Person.vue";
-
-
+import Text from './dynamicCmps/Text.vue'
 
 export default {
   emits: ["saveTask" , 'remove'],
@@ -102,6 +101,7 @@ export default {
     Priority,
     Person,
     EditMenu,
+    Text
   },
 };
 </script>
