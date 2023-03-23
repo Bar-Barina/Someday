@@ -134,7 +134,6 @@ export default {
       this.$emit("labelDrop", dropResult);
     },
     taskDrop(dropResult) {
-      console.log('here')
       let group = JSON.parse(JSON.stringify(this.group))
       group.tasks = utilService.applyDrag(group.tasks, dropResult)
       this.group.tasks = group.tasks
@@ -143,16 +142,17 @@ export default {
       this.isEditOpen = !this.isEditOpen;
     },
     updateGroup({ toChange, data }) {
-      if (!toChange) this.group.title = this.$refs.groupTitle.innerText;
-      else this.group[toChange] = data;
-      this.saveGroup();
+      const newGroup = JSON.parse(JSON.stringify(this.group))
+      if (!toChange) newGroup.title = this.$refs.groupTitle.innerText;
+      else newGroup[toChange] = data;
+      this.saveGroup(null , newGroup);
     },
-    async saveGroup(task) {
+    async saveGroup(task , group) {
       //    activity = boardService.getEmptyActivity()
       //    activity.txt = `Members changed for task ${}`
       //    activity.task = '{mini-task}'
       try {
-        const toUpdate = { task, group: this.group };
+        const toUpdate = { task, group };
         this.$store.dispatch({ type: "saveTask", toUpdate });
       } catch (err) {
         showErrorMsg("Couldnt add task");
@@ -166,21 +166,16 @@ export default {
     },
     onTaskDrop(tasks, dropResult) {
       if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
-        const board = JSON.parse(JSON.stringify(this.currBoard));
-        const groupIdx = board.groups.findIndex(
-          (g) => g._id === this.group._id
-        );
-        tasks = utilService.applyDrag(tasks, dropResult);
         console.log('tasks', tasks)
-        board.groups[groupIdx].tasks = tasks;
-        console.log('board', board)
-        this.$store.dispatch({ type: "updateBoard", board });
+        let newTasks = [...tasks]
+        newTasks = utilService.applyDrag(newTasks, dropResult);
+        console.log('newTasks', newTasks)
+        this.updateGroup({toChange: 'tasks' , data: newTasks})
       } else {
         this.taskDrop(dropResult)
       }
     },
     getGroupPayload(index) {
-      console.log("payload");
       return this.group.tasks[index];
     },
   },

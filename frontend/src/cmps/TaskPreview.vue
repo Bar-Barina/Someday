@@ -32,7 +32,7 @@
     </div>
   </section>
   <section class="cell2" v-for="(cmp, idx) in labels" :key="idx">
-    <component :is="cmp" :task="task" @updateTask="updateTask"></component>
+    <component :is="cmp" :task="task" :group="group" @updateTask="updateTask"></component>
   </section>
 </template>
 
