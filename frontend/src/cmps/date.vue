@@ -10,9 +10,9 @@
         @change="changeDate"
       />
     </label>
+  </div>
   <div v-if="value" class="date-preview flex justify-center align-center">
     {{ value }}
-  </div>
   </div>
 
 </template>

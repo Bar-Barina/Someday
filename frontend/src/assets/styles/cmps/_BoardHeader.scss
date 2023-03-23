@@ -24,6 +24,7 @@
             height: em(24px);
             line-height: 40px;
             font-size: 24px;
+            font-weight: 400;
             margin-right: 2px;
             font-family: 'Poppins', sans-serif;
             letter-spacing: 0.5px;
@@ -61,8 +62,9 @@
             height: em(36px);
             margin-bottom: 1px;
             position: relative;
+
             &.active {
-                border-bottom:2px solid #0073ea;    
+                border-bottom: 2px solid #0073ea;
             }
 
             &:not(:hover):before {
@@ -79,8 +81,8 @@
                 padding: 4px 8px;
                 height: em(36px);
                 gap: 8px;
-                font-size:14px;
-              
+                font-size: 14px;
+
                 .icon {
                     width: em(16px);
                     height: em(16px);
@@ -119,6 +121,23 @@
             justify-content: center;
             align-items: center;
             gap: 4px;
+
+            .filter-input {
+                cursor: pointer;
+                background-color: unset;
+                padding-left: 5px;
+                width: 60px;
+                transition: background-color .1s cubic-bezier(0, 0, 0.35, 1), width .1s cubic-bezier(0, 0, 0.35, 1);
+                border: unset;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                &:focus {
+                    cursor: auto;
+                    width: 200px;
+                }
+                
+            }
         }
     }
 

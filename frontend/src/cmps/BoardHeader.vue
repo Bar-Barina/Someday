@@ -59,7 +59,7 @@
         </div>
         <div class="bottom-header-btn btn-hover">
           <div class="flex justify-center align-center" v-html="getSvg('headerSearch')"></div>
-          Search
+          <input type="text" placeholder="Search" class="filter-input">
         </div>
         <div class="bottom-header-btn btn-hover">
           <div class="flex justify-center align-center" v-html="getSvg('headerPerson')"></div>
