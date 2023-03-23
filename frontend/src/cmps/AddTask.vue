@@ -29,6 +29,7 @@ export default {
     addTask() {
       if(!this.task.taskTitle) return
       this.$emit('addTask' , this.task)
+      this.task = boardService.getEmptyTask()
     }
   }
 };
