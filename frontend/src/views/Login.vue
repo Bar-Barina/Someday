@@ -24,7 +24,7 @@
       <img src="https://cdn.monday.com/images/logo_google_v2.svg" />Google
     </button>
     <div class="suggest-signup">
-      <div>Don't have an account yet? <button>Sign up</button></div>
+      <div>Don't have an account yet? <RouterLink :to="`/singup`"><button>Sign up</button></RouterLink></div>
     </div>
   </section>
 </template>

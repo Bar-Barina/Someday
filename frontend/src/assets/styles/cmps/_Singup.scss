@@ -1,0 +1,45 @@
+.singup {
+    height: 100vh;
+    padding: 40px 64px 60px 64px;
+    .validation {
+        height: em(514px);
+        .input-wrapper {
+            h2 {
+                font-size: 16px;
+                font-weight: 200;
+            }
+            input {
+                height: em(48px);
+                width: 60%;
+                padding: 8px 16px;
+                border: none;
+                outline: 1px solid $clr014;
+                border-radius: 4px;
+                transition: 0.25s;
+                &:focus {
+                    outline: 1px solid $clr8;
+                }
+                &:hover {
+                    outline: 1px solid #323338;
+                }
+            }
+        }
+    }
+    .continue-btn {
+        border: none;
+        color: white;
+        background-color: $clr8;
+        width: em(126px);
+        height: em(40px);
+        padding: 8px 16px;
+        border-radius: 3px;
+        gap: 5px;
+        font-size:16px;
+        &:hover {
+            background-color: $primary-hover;
+        }
+        div {
+            padding-top: 3px;
+        }
+    }
+}
