@@ -7,30 +7,36 @@
         v-for="(p, idx) in person"
         :key="idx"
       >
-      <div class="flex align-center">
-        <img :src="p.url" alt="person-img" class="person-img" />
-        <span class="person-name">{{ p.name }}</span>
-      </div>
+        <div class="flex align-center">
+          <img :src="p.url" alt="person-img" class="person-img" />
+          <span class="person-name">{{ p.name }}</span>
+        </div>
         <button @click.stop="updateMember(idx)">X</button>
       </div>
     </section>
-    <input type="text" placeholder="Search names, roles or teams" />
+    <input
+      type="text"
+      placeholder="     Search names, roles or teams"
+      v-model="searchTerm"
+    />
+    <!-- <span v-html="getSvg('search')" class="workspace-icon"></span> -->
     <p>Suggested people</p>
     <section>
-      <div class="flex align-center member"
+      <div
+        class="flex align-center member"
         v-if="members"
-        v-for="(member, idx) in members"
+        v-for="(member, idx) in filteredMembers"
         :key="idx"
         @click.stop="updatePerson(member)"
       >
-       <img :src="member.url" class="member-img">
+        <img :src="member.url" class="member-img" />
         <span class="member-mail">{{ member.name }}@gmail.com</span>
       </div>
     </section>
     <div class="invite flex align-center">
       <span v-html="getSvg('invite')" class="workspace-icon"></span>
       <p>Invite a new member by email</p>
-  </div>
+    </div>
   </section>
 </template>
 
@@ -42,7 +48,9 @@ export default {
     person: Array,
   },
   data() {
-    return {}
+    return {
+      searchTerm: '',
+    }
   },
   computed: {
     members() {
@@ -51,7 +59,10 @@ export default {
         return !taskPersons.some((p) => p.name === member.name)
       })
     },
-    filteredMembers() {},
+    filteredMembers() {
+      const regex = new RegExp(this.searchTerm, 'i')
+      return this.members.filter((member) => regex.test(member.name))
+    },
   },
   methods: {
     updatePerson(member) {

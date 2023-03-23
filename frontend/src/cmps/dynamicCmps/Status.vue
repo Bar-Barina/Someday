@@ -23,6 +23,7 @@ export default {
         { name: 'Working on it', class: 'status-working' },
         { name: 'Stuck', class: 'status-stuck' },
         { name: 'Done', class: 'status-done' },
+        { name: '', class: 'status-empty' },
       ],
       showDropdown: false,
       selectedStatus: this.task.status,
@@ -50,6 +51,8 @@ export default {
           return 'status-stuck'
         case 'Done':
           return 'status-done'
+        case '':
+          return 'status-empty'
         default:
           break
       }
