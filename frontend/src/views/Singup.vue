@@ -30,6 +30,7 @@
             <div className="icon" v-html="getSvg('arrowRight')"></div>
         </button>
   </section>
+  
 </template>
 
 <script>
