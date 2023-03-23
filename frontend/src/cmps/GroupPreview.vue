@@ -151,7 +151,6 @@ export default {
       //    activity.txt = `Members changed for task ${}`
       //    activity.task = '{mini-task}'
       try {
-        this.group.tasks.push(task);
         const toUpdate = { task, group: this.group };
         this.$store.dispatch({ type: "saveTask", toUpdate });
       } catch (err) {
