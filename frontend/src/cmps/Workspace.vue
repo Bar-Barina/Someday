@@ -46,12 +46,16 @@
         <div
           v-for="(board, idx) in filteredBoards"
           :key="idx"
-          @click="this.$router.push(`${board._id}`)"
+          @click="moveToBoard(board,idx)"
+          :class="{ 'selected-board': selectedBoard === idx }"
           class="flex align-center workspace-boards pointer"
         >
           <span v-html="getSvg('board')" class="workspace-icon"></span>
           <span>{{ board.title }}</span>
-        </div>
+        <span v-html="getSvg('Dots')" class="workspace-icon dots"
+        @click.stop="removeBoard(board._id)"></span>
+     
+      </div>
       </section>
     </section>
   </section>
@@ -67,6 +71,7 @@ export default {
       isWorkspaceOpen: false,
       newBoard: boardService.getEmptyBoard(),
       searchTerm: '',
+      selectedBoard: null,
     }
   },
   methods: {
@@ -78,6 +83,13 @@ export default {
     },
     addBoard(board) {
       this.$store.dispatch({ type: 'addBoard', board })
+    },
+    removeBoard(boardId) {
+      this.$store.dispatch({ type: 'removeBoard', boardId })
+    },
+    moveToBoard(board,idx) {
+      this.$router.push(`${board._id}`)
+      this.selectedBoard = idx;
     },
   },
   computed: {
