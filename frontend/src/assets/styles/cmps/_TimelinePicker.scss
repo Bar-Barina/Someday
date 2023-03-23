@@ -1,0 +1,35 @@
+.timeline-progress-bar {
+    position: absolute;
+    height: 22px;
+    text-align: center;
+    color: white;
+    width: em(145px);
+    border-radius: 10px;
+    font-size: 14px;
+    background-color: #383838;
+    z-index: 1;
+        .day-diff {
+            position: absolute;
+            top: 3px;
+            right: 55px;
+            display: none;
+        }
+        &:hover .day-diff {
+            display: block;    
+        }
+        &:hover .date-diff {
+            display: none;    
+        }
+
+    .date-diff {
+        font-size: 13px;
+        position: absolute;
+        top: 3px;
+        right: 20px;
+    }
+    .bar-precent {
+        height: 22px;
+        border-bottom-left-radius: 10px;
+        border-top-left-radius: 10px;
+    }
+}

@@ -13,6 +13,7 @@
 <script>
 import TaskDropdown from '../TaskDropdown.vue'
 export default {
+  emits:['updateTask'],
   props: {
     task: Object,
   },

@@ -30,12 +30,13 @@
             <div className="icon" v-html="getSvg('arrowRight')"></div>
         </button>
   </section>
+  
 </template>
 
 <script>
 import {svgService} from '../services/svg.service.js'
 export default {
-  name: 'Singup', 
+  name: 'Signup', 
   props: [],
 components:{},
 created() {},
