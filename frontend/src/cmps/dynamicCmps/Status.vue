@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import TaskDropdown from './TaskDropdown.vue'
+import TaskDropdown from '../TaskDropdown.vue'
 export default {
   props: {
     task: Object,

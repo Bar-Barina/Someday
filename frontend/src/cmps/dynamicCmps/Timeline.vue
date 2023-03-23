@@ -1,25 +1,22 @@
 <template>
   <div class="demo-date-picker">
-    <label class="block">
+    <label class="picker-wrapper">
       <el-date-picker
         v-model="value"
-        type="date"
+        type="daterange"
         value-format="MMM-DD"
-        placeholder="Pick a date"
-        :default-value="new Date(Date.now())"
+        start-placeholder="Start Date"
+        end-placeholder="End Date"
+        :default-value="[new Date(Date.now()), new Date(Date.now())]"
         @change="changeDate"
       />
     </label>
   </div>
-  <div v-if="value" class="date-preview flex justify-center align-center">
-    {{ value }}
-  </div>
-
 </template>
 
 <script>
 export default {
-  name: "date",
+  name: "timeline",
   emit:['updateTask'],
   props: {
     task: Object,
@@ -28,16 +25,15 @@ export default {
   created() {},
   data() {
     return {
-      value: "",
-    }
+      value: [],
+    };
   },
   methods: {
     changeDate() {
-      console.log("formattedDate", this.value)
-      this.$emit("updateTask", { cmpType: "date", data: this.value })
+      this.$emit("updateTask", {cmpType:'timeLine',data:this.value});
     },
   },
   computed: {},
-}
+};
 </script>
 

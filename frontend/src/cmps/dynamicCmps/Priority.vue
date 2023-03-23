@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import TaskDropdown from './TaskDropdown.vue'
+import TaskDropdown from '../TaskDropdown.vue'
 export default {
   props: {
     task: Object,
@@ -31,7 +31,6 @@ export default {
   },
   methods: {
     updatePriority(priority) {
-      console.log('from priority', priority)
       this.selectedPriority = priority
       this.toggleModal()
       this.$emit('updateTask', { cmpType: 'priority', data: priority })
