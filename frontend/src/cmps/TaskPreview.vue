@@ -47,6 +47,7 @@ import Timeline from "./dynamicCmps/TimelinePicker.vue";
 import Date from "./dynamicCmps/DatePicker.vue";
 import Person from "./dynamicCmps/PersonPicker.vue";
 import Text from './dynamicCmps/TextArea.vue'
+import Files from './dynamicCmps/FilesPicker.vue'
 
 export default {
   emits: ["saveTask" , 'remove'],
@@ -84,8 +85,6 @@ export default {
       this.isEditOpen = !this.isEditOpen;
     },
     removeTask(toRemove) {
-      const idx = this.group.tasks.findIndex(t => t.id === toRemove.taskId)
-      this.group.tasks.splice(idx , 1)
       this.$emit('remove' , toRemove)
     }
   },
@@ -103,7 +102,8 @@ export default {
     Priority,
     Person,
     EditMenu,
-    Text
+    Text,
+    Files
   },
 };
 </script>
