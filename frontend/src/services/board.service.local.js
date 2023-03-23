@@ -135,6 +135,7 @@ function getEmptyTask() {
 //     await storageService.post(STORAGE_KEY,
 //         {
 //             title: 'Sprint 4 Monday',
+//             description: 'Add your board\'s description here',
 //             members: [
 //                 { name: "Tal", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04HWCV61T3-224de62cdd30-512' },
 //                 { name: "Dor", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04C1V8MCT0-3405b9727a5c-512' },
