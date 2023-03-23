@@ -111,6 +111,7 @@ async function removeItem(board, groupId, taskId) {
     currBoard.groups.splice(groupIdx, 1)
   }
   save(currBoard)
+  return currBoard
 }
 
 function getEmptyBoard() {

@@ -1,19 +1,27 @@
 <template>
   <div class="status full-cell" :class="statusClass" @click="toggleModal">
     {{ status }}
-    <TaskDropdown
-      v-if="showDropdown"
-      :options="statusOptions"
-      @updateOption="updateStatus"
-      optionClass="status-option"
-    />
+    <Popper>
+      <button class="popper-btn">Pop</button>
+      <template #content>
+        <TaskDropdown
+          v-if="showDropdown"
+          :options="statusOptions"
+          @updateOption="updateStatus"
+          optionClass="status-option"
+        />
+      </template>
+    </Popper>
   </div>
 </template>
 
 <script>
+import { defineComponent } from 'vue'
+import Popper from 'vue3-popper'
 import TaskDropdown from '../TaskDropdown.vue'
-export default {
-  emits:['updateTask'],
+
+export default defineComponent({
+  emits: ['updateTask'],
   props: {
     task: Object,
   },
@@ -61,6 +69,7 @@ export default {
   },
   components: {
     TaskDropdown,
+    Popper,
   },
-}
+})
 </script>

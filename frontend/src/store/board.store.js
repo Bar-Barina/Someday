@@ -49,6 +49,7 @@ export const boardStore = {
         updateBoard(state, { board }) {
             const idx = state.boards.findIndex(c => c._id === board._id)
             state.boards.splice(idx, 1, board)
+            state.currBoard = board
         },
         removeBoard(state, { boardId }) {
             state.boards = state.boards.filter(board => board._id !== boardId)
@@ -89,6 +90,7 @@ export const boardStore = {
             try {
                 const boards = await boardService.query()
                 context.commit({ type: 'setBoards', boards })
+                context.commit({ type: 'setCurrBoard', board: boards[0] })
             } catch (err) {
                 console.log('boardStore: Error in loadBoards', err)
                 throw err
@@ -124,8 +126,8 @@ export const boardStore = {
             }
         },
         async remove({ state, commit }, { toRemove }) {
-            const board = state.currBoard
-            await boardService.removeItem(board, toRemove.groupId, toRemove.taskId)
+            const board = await boardService.removeItem(state.currBoard, toRemove.groupId, toRemove.taskId)
+            commit({type: 'updateBoard' , board})
         }
     }
 }
