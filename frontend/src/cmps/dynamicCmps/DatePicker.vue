@@ -24,7 +24,9 @@ export default {
     task: Object,
   },
   components: {},
-  created() {},
+  created() {
+    if(this.task.date) this.value = this.task.date
+  },
   data() {
     return {
       value: "",
