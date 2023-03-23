@@ -46,7 +46,7 @@
         <div
           v-for="(board, idx) in filteredBoards"
           :key="idx"
-          @click="moveToBoard(board,idx)"
+          @click="moveToBoard(board, idx)"
           :class="{ 'selected-board': selectedBoard === idx }"
           class="flex align-center workspace-boards pointer"
         >
@@ -87,7 +87,8 @@ export default {
     removeBoard(boardId) {
       this.$store.dispatch({ type: 'removeBoard', boardId })
     },
-    moveToBoard(board,idx) {
+    moveToBoard(board, idx) {
+      this.$store.commit({type: 'setCurrBoard' , board})
       this.$router.push(`${board._id}`)
       this.selectedBoard = idx;
     },
