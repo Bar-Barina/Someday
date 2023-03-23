@@ -132,9 +132,9 @@ export default {
       this.$emit('labelDrop', dropResult)
     },
     onTaskDrop(dropResult) {
-      let scene = JSON.parse(JSON.stringify(this.group.tasks))
-      scene = utilService.applyDrag(scene, dropResult)
-      this.group.tasks = scene
+      let tasks = JSON.parse(JSON.stringify(this.group.tasks))
+      tasks = utilService.applyDrag(tasks, dropResult)
+      this.group.tasks = tasks
     },
     toggleEdit() {
       this.isEditOpen = !this.isEditOpen

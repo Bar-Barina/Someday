@@ -234,7 +234,6 @@ function getEmptyBoard() {
 
 function getEmptyTask() {
   return {
-    side: 'null',
     taskTitle: '',
     person: [],
     date: '',
