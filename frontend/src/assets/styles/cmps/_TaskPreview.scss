@@ -44,6 +44,12 @@
         height: 100%;
         width: 65px;
         border-left: 1px solid #d0d4e6;
+
+        &:hover {
+            svg {
+                fill: $clr8;
+            }
+        }
     }
 
     button.svg {
