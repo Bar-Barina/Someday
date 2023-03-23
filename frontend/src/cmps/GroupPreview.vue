@@ -79,7 +79,6 @@
       orientation="vertical"
       group-name="tasks"
       tag="div"
-      :shouldAcceptDrop="(e, payload) =>  (e.groupName === 'tasks')"
       @drop="onTaskDrop($event)"
     >
       <Draggable
@@ -122,11 +121,7 @@ export default {
       titleFocus: false,
       isEditOpen: false,
       showColorPicker: true,
-      upperDropPlaceholderOptions: {
-        class: 'cards-drop-preview',
-        animationDuration: '150',
-        showOnTop: true
-      },
+      board: this.board
     }
   },
   methods: {
@@ -162,6 +157,37 @@ export default {
     toggleModal() {
       this.showColorPicker = !this.showColorPicker
     },
+    // onTaskDrop (groupId, dropResult) {
+    //   console.log('dropResult', dropResult)
+      
+    //   // check if element where ADDED or REMOVED in current collumn
+    //   if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
+        
+    //     const board = JSON.parse(JSON.stringify(this.board))
+    //     const group = board.groups.filter(g => g._id === groupId)[0]
+    //     const groupIdx = board.groups.indexOf(group)
+    //     const newGroup = JSON.parse(JSON.stringify(group))
+        
+    //     // check if element was ADDED in current column
+    //     if((dropResult.removedIndex == null && dropResult.addedIndex >= 0)){
+    //       // your action / api call
+    //       // dropResult.payload.loading = true
+    //       // simulate api call
+    //       // setTimeout(function(){ dropResult.payload.loading = false }, (Math.random() * 5000) + 1000); 
+    //     }
+    //     newGroup.tasks = utilService.applyDrag(newGroup.tasks, dropResult)
+    //     board.groups.splice(groupIdx, 1, newGroup)
+    //     console.log('newGroup', newGroup)
+    //     console.log('groupIdx', groupIdx)
+    //     console.log('board', board)
+    //     this.board = board
+    //   }
+    // },
+    // getGroupPayload (groupId) {
+    //   return index => {
+    //     return this.board.groups.filter(g => g._id === groupId)[0].tasks[index]
+    //   }
+    // },
   },
   computed: {
     isTitleFocused() {
