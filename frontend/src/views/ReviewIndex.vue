@@ -53,7 +53,7 @@ export default {
       return this.$store.getters.users
     },
     loggedInUser() {
-      return this.$store.getters.loggedinUser
+      return this.$store.getters.loggedInUser
     }
   },
   created() {
