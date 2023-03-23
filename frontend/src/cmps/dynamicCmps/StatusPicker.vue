@@ -17,7 +17,6 @@
 
 <script>
 import { defineComponent } from 'vue'
-import Popper from 'vue3-popper'
 import TaskDropdown from '../TaskDropdown.vue'
 
 export default defineComponent({
@@ -69,7 +68,6 @@ export default defineComponent({
   },
   components: {
     TaskDropdown,
-    Popper,
   },
 })
 </script>

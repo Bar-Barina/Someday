@@ -1,8 +1,12 @@
 <template>
+  <div v-if="value.length === 0" class="timeline-progress-bar text-center" :style="{'background-color': '#c4c4c4'}">
+    -
+  </div>
   <div v-if="value.length > 0" class="timeline-progress-bar">
     <div
       :style="{ width: widthPrecent + '%' }"
       class="bar-precent flex justify-center align-center"
+      :class=" borderRadiusEnd"
     >
       <div class="date-diff">
         {{ dateDiff }}
@@ -34,7 +38,9 @@ export default {
     task: Object,
   },
   components: {},
-  created() {},
+  created() {
+    if(this.task.timeline) this.value = this.task.timeline
+  },
   data() {
     return {
       value: [],
@@ -43,7 +49,7 @@ export default {
   methods: {
     changeDate() {
       console.log("date", this.value);
-      this.$emit("updateTask", { cmpType: "timeLine", data: this.value });
+      this.$emit("updateTask", { cmpType: "timeline", data: this.value });
     },
   },
   computed: {
@@ -80,6 +86,11 @@ export default {
       var precent = (diffInDays / this.dayDiff) * 100;
       console.log("precent", precent);
       return parseInt(precent);
+    },
+    borderRadiusEnd() {
+      return {
+        'border-radius-end' : this.widthPrecent>90 
+      }
     },
   },
 };
