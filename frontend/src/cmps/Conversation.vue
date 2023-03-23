@@ -41,7 +41,6 @@ export default {
   name: '',
   data() {
     return {
-      // showConversation: false
     }
   },
   methods: {
@@ -55,4 +54,3 @@ export default {
 }
 </script>
 
-<style></style>
