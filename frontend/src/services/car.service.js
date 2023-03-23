@@ -49,7 +49,7 @@ async function save(car) {
 
     } else {
         // Later, owner is set by the backend
-        car.owner = userService.getLoggedinUser()
+        car.owner = userService.getLoggedInUser()
         // savedCar = await storageService.post(STORAGE_KEY, car)
         savedCar = await httpService.post('car', car)
     }
