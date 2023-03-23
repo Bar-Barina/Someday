@@ -31,11 +31,11 @@ export default {
   },
   methods: {
     onGroupDrop(dropResult) {
-      let scene = [...this.groups];
-      scene = utilService.applyDrag(scene, dropResult);
-      this.groups = scene;
-      this.board.groups = this.groups
-      this.$store.dispatch({type: 'updateBoard' , board: this.board})
+      const board = JSON.parse(JSON.stringify(this.currBoard))
+      let groups = board.groups;
+      groups = utilService.applyDrag(groups, dropResult);
+      board.groups = groups
+      this.$store.dispatch({type: 'updateBoard' , board})
     },
     labelDrop(dropResult) {
       let scene = [...this.labelsOrder];
