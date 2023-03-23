@@ -24,6 +24,7 @@ export default {
         { name: 'High', class: 'priority-high' },
         { name: 'Medium', class: 'priority-medium' },
         { name: 'Low', class: 'priority-low' },
+        { name: '', class: 'priority-empty' },
       ],
       showDropdown: false,
       selectedPriority: this.task.priority,
@@ -53,6 +54,8 @@ export default {
           return 'priority-medium'
         case 'Low':
           return 'priority-low'
+        case '':
+          return 'priority-empty'
         default:
           break
       }
