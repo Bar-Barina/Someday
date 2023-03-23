@@ -98,8 +98,8 @@ async function saveTask(board, group, task) {
 }
 
 async function removeItem(board , groupId , taskId) {
-  const groupIdx = currBoard.groups.findIndex((g) => g._id === groupId)
   const currBoard = JSON.parse(JSON.stringify(board))
+  const groupIdx = currBoard.groups.findIndex((g) => g._id === groupId)
   if(taskId) {
     const taskIdx = currBoard.groups[groupIdx].tasks.findIndex((t) => t.id === taskId)
     currBoard.groups[groupIdx].tasks.splice(taskIdx , 1)

@@ -11,8 +11,9 @@
     <div class="task-title-sub flex align-center space-between">
       <div class="flex align-center content-edit editable-div"
        @click="(activeTask = true)" contenteditable="true"
-       :class="{active: activeTask}">
-        {{ task.taskTitle }}
+       :class="{active: activeTask}" ref="taskTitle"
+       @focusout="updateTask">
+        <span>{{ task.taskTitle }}</span>
       </div>
       <span
         @click="openCon"
@@ -65,7 +66,8 @@ export default {
     },
     updateTask({ cmpType, data }) {
       const taskToSave = { ...this.task };
-      taskToSave[cmpType] = data;
+      if(!cmpType) taskToSave.taskTitle = this.$refs.taskTitle.innerText
+      else taskToSave[cmpType] = data;
       //    activity = boardService.getEmptyActivity()
       //    activity.txt = `Members changed for task ${}`
       //    activity.task = '{mini-task}'
