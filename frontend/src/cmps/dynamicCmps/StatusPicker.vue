@@ -1,17 +1,13 @@
 <template>
   <div class="status full-cell" :class="statusClass" @click="toggleModal">
     {{ status }}
-    <Popper>
       <button class="popper-btn">Pop</button>
-      <template #content>
         <TaskDropdown
           v-if="showDropdown"
           :options="statusOptions"
           @updateOption="updateStatus"
           optionClass="status-option"
         />
-      </template>
-    </Popper>
   </div>
 </template>
 
