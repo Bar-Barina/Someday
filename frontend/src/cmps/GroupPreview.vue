@@ -166,11 +166,11 @@ export default {
     },
     onTaskDrop(tasks, dropResult) {
       if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
-        console.log('tasks', tasks)
         let newTasks = [...tasks]
         newTasks = utilService.applyDrag(newTasks, dropResult);
-        console.log('newTasks', newTasks)
-        this.updateGroup({toChange: 'tasks' , data: newTasks})
+        this.group.tasks = newTasks
+        console.log('this.group.tasks', this.group.tasks)
+        this.saveGroup(null , this.group)
       } else {
         this.taskDrop(dropResult)
       }

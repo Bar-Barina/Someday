@@ -1,7 +1,7 @@
 <template>
   <Container v-if="currBoard" class="main-table" orientation="vertical" @drop="onGroupDrop($event)">
     <Draggable class="group-container" v-for="group in currBoard.groups" :key="group">
-      <GroupPreview :group="group" :labelsOrder="labelsOrder" @labelDrop="labelDrop"></GroupPreview>
+      <GroupPreview @taskDrop="taskDrop" :group="group" :labelsOrder="labelsOrder" @labelDrop="labelDrop"></GroupPreview>
       <RouterView />
     </Draggable>
   </Container>
@@ -45,7 +45,7 @@ export default {
   },
   computed: {
     currBoard() {
-      return this.$store.getters.currBoard
+      return JSON.parse(JSON.stringify(this.$store.getters.currBoard))
     }
   },
   components: {
