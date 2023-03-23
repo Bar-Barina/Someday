@@ -12,6 +12,7 @@
         <input @focusout="addTask" v-model="task.taskTitle" type="text" class="flex align-center" placeholder="+ Add task">
     </div>
   </section>
+  <h1>test</h1>
 </template>
 
 <script>
