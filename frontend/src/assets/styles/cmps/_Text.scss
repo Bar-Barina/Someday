@@ -2,12 +2,16 @@
     height: 100%;
     width: 100%;
     position: relative;
+    &:hover .reset-text {
+        opacity: 1;
+    }
     .text {
         height: 25px;
         width: 130px;
         cursor: auto;
     }
     .reset-text {   
+        opacity: 0;
         display: flex;
         justify-content: center;
         align-items: center;
