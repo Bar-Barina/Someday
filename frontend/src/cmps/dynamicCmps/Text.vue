@@ -26,7 +26,8 @@ created() {},
         this.$emit('updateTask',{cmptype: 'text' ,data:this.$refs.cmpText.innerText})
     },
     resetText() {
-        this.$refs.cmpText.innerText = 'Text here'
+        this.$refs.cmpText.innerText = ''
+        this.updateTask()
     }
   },
   computed: {},
