@@ -1,0 +1,27 @@
+.task-text {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    .text {
+        height: 25px;
+        width: 130px;
+        cursor: auto;
+    }
+    .reset-text {   
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        height: 25px;
+        width: em(25px);
+        position: absolute;
+        right: 0px;
+        top:4px;
+        padding: 3px;
+        z-index: 1;
+        &:hover {
+            color: $clr8;
+        }
+    }
+}
+

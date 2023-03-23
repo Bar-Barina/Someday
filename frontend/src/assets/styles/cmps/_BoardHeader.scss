@@ -20,7 +20,7 @@
         .title {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: start;
             height: em(24px);
             line-height: 40px;
             font-size: 24px;
@@ -29,6 +29,9 @@
             font-family: 'Poppins', sans-serif;
             letter-spacing: 0.5px;
             font-weight: 500;
+            &:focus {
+                width: 500px;
+            }
         }
     }
 
@@ -64,7 +67,7 @@
             position: relative;
 
             &.active {
-                border-bottom: 2px solid #0073ea;
+                border-bottom: 2px solid $clr8;
             }
 
             &:not(:hover):before {
@@ -99,7 +102,7 @@
         .new-item {
             padding: 4px 8px;
             margin-right: 3px;
-            background-color: #0073ea;
+            background-color: $clr8;
             color: white;
             font-size: 14px;
             width: max-content;

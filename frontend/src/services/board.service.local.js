@@ -276,7 +276,7 @@ function getEmptyTask() {
 //                             priority: "High",
 //                             timeline: 'late',
 //                             file: '11',
-//                             text: 'Something'
+//                             text: ''
 //                         },
 //                         {
 //                             id: "t102",
@@ -290,7 +290,7 @@ function getEmptyTask() {
 //                             priority: "Low",
 //                             timeline: 'late',
 //                             file: '11',
-//                             text: 'Something'
+//                             text: ''
 //                         },
 //                         {
 //                             id: "t103",
@@ -305,7 +305,7 @@ function getEmptyTask() {
 //                             priority: "Critical",
 //                             timeline: 'late',
 //                             file: '11',
-//                             text: 'Something'
+//                             text: ''
 //                         },
 //                     ],
 //                 },
@@ -328,7 +328,7 @@ function getEmptyTask() {
 //                             priority: "High",
 //                             timeline: 'late',
 //                             file: '11',
-//                             text: 'Something'
+//                             text: ''
 //                         },
 //                         {
 //                             id: "t102",
@@ -342,7 +342,7 @@ function getEmptyTask() {
 //                             priority: "High",
 //                             timeline: 'late',
 //                             file: '11',
-//                             text: 'Something'
+//                             text: ''
 //                         },
 //                         {
 //                             id: "t103",
@@ -357,7 +357,7 @@ function getEmptyTask() {
 //                             priority: "Low",
 //                             timeline: 'late',
 //                             file: '11',
-//                             text: 'Something'
+//                             text: ''
 //                         },
 //                     ],
 //                 }

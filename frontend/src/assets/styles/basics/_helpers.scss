@@ -96,8 +96,14 @@
 .editable-div {
   padding: 0 4px;
   border-radius: 4px;
+  &:focus {
+    outline: 1px solid $clr8;
+    &:hover {
+      outline: 1px solid $clr8;
+    }
+  }
   &:hover {
-    width: max-content;
+    // width: max-content;
     outline: 1px solid $clr38;
   }
 
