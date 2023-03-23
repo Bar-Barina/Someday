@@ -1,12 +1,12 @@
 <template>
-  <section class="dashBoard">
-    <h1>DashBoard</h1>
+  <section class="dashboard">
+    <h1>Dashboard</h1>
   </section>
 </template>
 
 <script>
 export default {
-  name: "DashBoard",
+  name: "Dashboard",
   props: [],
   components: {},
   created() {},

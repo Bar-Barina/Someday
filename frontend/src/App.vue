@@ -18,8 +18,8 @@ export default {
 
   created() {
     this.$store.dispatch({ type: "loadBoards" });
-    const user = userService.getLoggedinUser()
-    if (user)  store.commit({type: 'setLoggedinUser', user})
+    const user = userService.getLoggedInUser()
+    if (user)  store.commit({type: 'setLoggedInUser', user})
   },
   components: {
     UserMsg

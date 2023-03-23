@@ -2,10 +2,10 @@
   <div class="container about">
     <p>{{ msg }}</p>
 
-    <div v-if="loggedinUser">
+    <div v-if="loggedInUser">
       <h3>
         Loggedin User:
-        {{ loggedinUser.fullname }}
+        {{ loggedInUser.fullname }}
         <button @click="doLogout">Logout</button>
       </h3>
     </div>
@@ -77,8 +77,8 @@ export default {
     users() {
       return this.$store.getters.users
     },
-    loggedinUser() {
-      return this.$store.getters.loggedinUser
+    loggedInUser() {
+      return this.$store.getters.loggedInUser
     },
   },
   created() {

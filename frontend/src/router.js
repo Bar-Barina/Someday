@@ -9,8 +9,8 @@ import MainTable from './cmps/MainTable.vue'
 // import LoginSignup from './views/LoginSignup.vue'
 import Login from './views/Login.vue'
 import UserDetails from './views/UserDetails.vue'
-import Conversation from './cmps/Conversation.vue'
-import DashBoard from './cmps/DashBoard.vue'
+import TaskDetails from './cmps/TaskDetails.vue'
+import Dashboard from './cmps/Dashboard.vue'
 const routes = [
   {
     path: '/',
@@ -28,9 +28,9 @@ const routes = [
         component: MainTable,
         children: [
           {
-            path: 'conversation/:taskId',
-            name: 'conversation',
-            component: Conversation
+            path: 'taskDetails/:taskId',
+            name: 'taskDetails',
+            component: TaskDetails
           },
         ]
       },
@@ -40,7 +40,7 @@ const routes = [
       },
       {
         path: ':boardId/dashboard',
-        component: DashBoard
+        component: Dashboard
       },
     ]
   },

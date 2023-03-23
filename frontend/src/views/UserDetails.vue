@@ -51,7 +51,7 @@ export default {
       return this.$route.params.id
     },
     isMe() {
-      return this.userId === this.$store.getters.loggedinUser._id
+      return this.userId === this.$store.getters.loggedInUser._id
     },
   },
 }

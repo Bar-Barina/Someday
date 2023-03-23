@@ -6,19 +6,19 @@ import { userService } from '../services/user.service'
 
 export const userStore = {
     state: {
-        loggedinUser: null,
+        loggedInUser: null,
         users: [],
         watchedUser: null
     },
     getters: {
         users({ users }) { return users },
-        loggedinUser({ loggedinUser }) { return loggedinUser },
+        loggedInUser({ loggedInUser }) { return loggedInUser },
         watchedUser({ watchedUser }) { return watchedUser }
     },
     mutations: {
         setLoggedinUser(state, { user }) {
             // Yaron: needed this workaround as for score not reactive from birth
-            state.loggedinUser = (user)? {...user} : null
+            state.loggedInUser = (user)? {...user} : null
         },
         setWatchedUser(state, { user }) {
             state.watchedUser = user
@@ -30,7 +30,7 @@ export const userStore = {
             state.users = state.users.filter(user => user._id !== userId)
         },
         setUserScore(state, { score }) {
-            state.loggedinUser.score = score
+            state.loggedInUser.score = score
         },
     },
     actions: {
