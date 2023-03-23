@@ -2,8 +2,12 @@
   <section class="board-header" v-if="currBoard">
     <section class="up-header flex align-center space-between">
       <section class="board-name flex align-center justify-center">
-        <h1 class="title editable-div" contenteditable="true"
-        ref="boardTitle" @focusout="updateBoard">
+        <h1
+          class="title editable-div"
+          contenteditable="true"
+          ref="boardTitle"
+          @focusout="updateBoard"
+        >
           {{ currBoard.title }}
         </h1>
         <div class="icon btn-hover">
@@ -23,7 +27,7 @@
           <div class="icon">
             <span v-html="getSvg('invitePeople')"></span>
           </div>
-          Invite / 1
+          Invite / {{ this.currBoard.members.length }}
         </div>
 
         <div class="dots flex align-center justify-center icon btn-hover">
@@ -65,7 +69,9 @@
       </div>
     </section>
     <section class="bottom-header flex align-center">
-      <div class="new-item flex justify-center align-center">New task</div>
+      <div class="new-item flex justify-center align-center" @click="addTask">
+        New task
+      </div>
       <div class="bottom-header-btn btn-hover">
         <div
           class="flex justify-center align-center"
@@ -106,7 +112,9 @@
 </template>
 
 <script>
+import { boardService } from "../services/board.service.local.js";
 import { svgService } from "../services/svg.service.js";
+
 export default {
   name: "BoardHeader",
   props: {},
@@ -115,6 +123,7 @@ export default {
   data() {
     return {
       active: "",
+      task: boardService.getEmptyTask(),
     };
   },
   methods: {
@@ -126,10 +135,17 @@ export default {
       this.$router.push(`/board/${this.currBoard._id}/${routerName}`);
     },
     updateBoard() {
-      const board = JSON.parse(JSON.stringify(this.currBoard))
-      board.description = this.$refs.boardDesc.innerText
-      board.title = this.$refs.boardTitle.innerText
-      this.$store.dispatch({type: 'updateBoard' , board})
+      const board = JSON.parse(JSON.stringify(this.currBoard));
+      board.description = this.$refs.boardDesc.innerText;
+      board.title = this.$refs.boardTitle.innerText;
+      this.$store.dispatch({ type: "updateBoard", board });
+    },
+    addTask() {
+      const group = JSON.parse(JSON.stringify(this.currBoard)).groups[0]
+      group.tasks.unshift({...this.task});
+      const toUpdate = { task: this.task, group};
+      this.$store.dispatch({ type: "saveTask", toUpdate });
+      this.task = boardService.getEmptyTask()
     },
   },
   computed: {
