@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import { eventBus } from '../services/event-bus.service';
 export default {
   props: {
     selectedTasks: Object,
@@ -59,8 +60,22 @@ export default {
       this.$store.dispatch({type: 'updateBoard' , board})
       this.clearSelected()
     },
+    duplicateTasks() {
+      const board = JSON.parse(JSON.stringify(this.currBoard))
+      Object.keys(this.selectedTasks).forEach(key => {
+        const groupIdx = board.groups.findIndex(g => g._id === key)
+        this.selectedTasks[key].forEach(task => {
+          const taskIdx = board.groups[groupIdx].tasks.
+          findIndex(t => t.id === task.id)
+          board.groups[groupIdx].tasks.splice(taskIdx , 1)
+        })
+      })
+      this.$store.dispatch({type: 'updateBoard' , board})
+      this.clearSelected()
+    },
     clearSelected() {
       this.$emit('clearSelected')
+      eventBus.emit('clearChecked')
     }
   }
 };
