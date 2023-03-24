@@ -16,11 +16,8 @@
     "socket.io-client": "^4.5.1",
     "vue": "^3.2.37",
     "vue-router": "^4.1.2",
-<<<<<<< HEAD
     "vue3-emoji-picker": "^1.1.7",
     "vue3-popper": "^1.5.0",
-=======
->>>>>>> 86c34dc72ac146774d76f5e20ee9aa51d74bd562
     "vue3-smooth-dnd": "^0.0.2",
     "vuex": "^4.0.2"
   },
