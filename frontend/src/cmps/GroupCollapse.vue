@@ -22,12 +22,12 @@
 
 <script>
 import ProgressBar from './ProgressBar.vue'
-import DateProgress from './dynamicCmps/DateProgress.vue';
+import DateProgress from './dynamicCmps/EmptyProgress.vue';
 import FilesProgress from './dynamicCmps/FilesProgress.vue';
-import PersonProgress from './dynamicCmps/PersonProgress.vue';
-import PriorityProgress from './dynamicCmps/PriorityProgress.vue';
+import PersonProgress from './dynamicCmps/EmptyProgress.vue';
+import PriorityProgress from './dynamicCmps/StatusProgress.vue';
 import StatusProgress from './dynamicCmps/StatusProgress.vue';
-import TextProgress from './dynamicCmps/TextProgress.vue';
+import TextProgress from './dynamicCmps/EmptyProgress.vue';
 import TimelineProgress from './dynamicCmps/TimelineProgress.vue';
 
 export default {

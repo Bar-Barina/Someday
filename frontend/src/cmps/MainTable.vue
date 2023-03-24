@@ -49,6 +49,7 @@ export default {
     addSelected({group , task}) {
       if(!this.selectedTasks[group._id]) this.selectedTasks[group._id] = []
       this.selectedTasks[group._id].push(task)
+      console.log('this.selectedTask', this.selectedTasks)
     },
     removeSelected({group , taskId}) {
       const taskIdx = this.selectedTasks[group._id].findIndex(t => t.id === taskId)

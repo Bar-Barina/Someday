@@ -6,7 +6,7 @@
       :style="{ 'background-color': group.color }"
     ></div>
     <div class="cell1 sticky third">
-        <input type="checkbox">
+        <input disabled type="checkbox">
     </div>
     <div class="input-wrapper cell1 sticky">
         <input @focusout="addTask" v-model="task.taskTitle" type="text" class="flex align-center" placeholder="+ Add task">
