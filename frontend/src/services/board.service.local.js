@@ -276,7 +276,8 @@ function getEmptyTask() {
 //                             priority: "High",
 //                             timeline: '[]',
 //                             file: '11',
-//                             text: ''
+//                             text: '',
+//                             isSelected: false
 //                         },
 //                         {
 //                             id: "t102",
@@ -290,7 +291,8 @@ function getEmptyTask() {
 //                             priority: "Low",
 //                             timeline: '[]',
 //                             file: '11',
-//                             text: ''
+//                             text: '',
+//                             isSelected: false
 //                         },
 //                         {
 //                             id: "t103",
@@ -305,7 +307,8 @@ function getEmptyTask() {
 //                             priority: "Critical",
 //                             timeline: '[]',
 //                             file: '11',
-//                             text: ''
+//                             text: '',
+//                             isSelected: false
 //                         },
 //                     ],
 //                 },
@@ -328,7 +331,8 @@ function getEmptyTask() {
 //                             priority: "High",
 //                             timeline: '[]',
 //                             file: '11',
-//                             text: ''
+//                             text: '',
+//                             isSelected: false
 //                         },
 //                         {
 //                             id: "t102",
@@ -342,7 +346,8 @@ function getEmptyTask() {
 //                             priority: "High",
 //                             timeline: '[]',
 //                             file: '11',
-//                             text: ''
+//                             text: '',
+//                             isSelected: false
 //                         },
 //                         {
 //                             id: "t103",
@@ -357,7 +362,8 @@ function getEmptyTask() {
 //                             priority: "Low",
 //                             timeline: '[]',
 //                             file: '11',
-//                             text: ''
+//                             text: '',
+//                             isSelected: false
 //                         },
 //                     ],
 //                 }
