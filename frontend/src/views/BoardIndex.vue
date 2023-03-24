@@ -5,11 +5,6 @@
     <BoardHeader />
     <RouterView />
   </section>
-  <!-- <button @click="removeBoard(board._id)">x</button>
-  <button @click="updateBoard(board)">Update</button>
-  <hr />
-  <button @click="addBoardMsg(board._id)">Add board msg</button>
-  <button @click="printBoardToConsole(board)">Print msgs to console</button> --> -->
 </template>
 
 <script>
