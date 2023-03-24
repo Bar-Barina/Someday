@@ -41,7 +41,6 @@ export default {
   },
   components: {},
   created() {
-    console.log('msg',this.msg)
   },
   data() {
     return {};

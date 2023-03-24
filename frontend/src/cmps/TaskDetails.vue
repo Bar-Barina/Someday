@@ -93,7 +93,6 @@ export default {
     },
     addMsg() {
       const msgToAdd ={...this.msg}
-      console.log('msgToAdd',msgToAdd)
       this.task.msgs.unshift(msgToAdd)
       this.group.tasks.splice(this.taskIdx,1,this.task)
       this.updateTask()
