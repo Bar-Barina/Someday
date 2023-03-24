@@ -11,11 +11,11 @@
         <span v-icon="'duplicate'" class="icon"></span>
         <span>Duplicate</span>
       </div>
-      <div class="trash-wrapper item flex column align-center">
+      <div @click="removeTasks()" class="trash-wrapper item flex column align-center">
         <span v-icon="'menuTrash'" class="icon"></span>
         <span>Delete</span>
       </div>
-      <div class="action-delete flex justify-center align-center">
+      <div @click="clearSelected" class="action-delete flex justify-center align-center">
         <span class="icon-delete"></span>
       </div>
     </div>
@@ -45,5 +45,23 @@ export default {
       return tasksCount
     },
   },
+  methods: {
+    removeTasks() {
+      const board = JSON.parse(JSON.stringify(this.currBoard))
+      Object.keys(this.selectedTasks).forEach(key => {
+        const groupIdx = board.groups.findIndex(g => g._id === key)
+        this.selectedTasks[key].forEach(task => {
+          const taskIdx = board.groups[groupIdx].tasks.
+          findIndex(t => t.id === task.id)
+          board.groups[groupIdx].tasks.splice(taskIdx , 1)
+        })
+      })
+      this.$store.dispatch({type: 'updateBoard' , board})
+      this.clearSelected()
+    },
+    clearSelected() {
+      this.$emit('clearSelected')
+    }
+  }
 };
 </script>

@@ -5,7 +5,7 @@
       @addSelected="addSelected" @removeSelected="removeSelected"></GroupPreview>
       <RouterView />
     </Draggable>
-    <Menu v-if="isSelected > 0" :selectedTasks="selectedTasks"/>
+    <Menu v-if="isSelected > 0" :selectedTasks="selectedTasks" @clearSelected="clearSelected"/>
   </Container>
 </template>
 
@@ -54,6 +54,9 @@ export default {
       const taskIdx = this.selectedTasks[group._id].findIndex(t => t.id === taskId)
       this.selectedTasks[group._id].splice(taskIdx , 1)
       if(this.selectedTasks[group._id].length === 0)  delete this.selectedTasks[group._id]
+    },
+    clearSelected() {
+      this.selectedTasks = {}
     }
   },
   computed: {

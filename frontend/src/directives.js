@@ -16,7 +16,6 @@ const clickOutside = {
         el.clickOutside = (ev) => {
             if (!el.contains(ev.target)) {
                 cb()
-                console.log('closing')
             }
         }
         setTimeout(() => {
