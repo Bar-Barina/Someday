@@ -73,10 +73,10 @@ import Date from "./dynamicCmps/DatePicker.vue";
 import Person from "./dynamicCmps/PersonPicker.vue";
 import Text from "./dynamicCmps/TextArea.vue";
 import Files from "./dynamicCmps/FilesPicker.vue";
-import { eventBus } from '../services/event-bus.service';
+import { eventBus } from "../services/event-bus.service";
 
 export default {
-  emits: ["saveTask", "remove" , 'addSelected' , 'removeSelected'],
+  emits: ["saveTask", "remove", "addSelected", "removeSelected"],
   props: {
     labels: Array,
     task: Object,
@@ -86,14 +86,26 @@ export default {
     return {
       isEditOpen: false,
       isActive: false,
-      isSelected: false
+      isSelected: false,
     };
   },
   created() {
-    eventBus.on('clearChecked' , () => {
-      console.log('clearing')
-      this.isSelected = false
-      })
+    eventBus.on("clearChecked", () => {
+      console.log("clearing");
+      this.isSelected = false;
+    });
+    eventBus.on("addSelected", (groupId) => {
+      if (groupId === this.group._id) {
+        this.isSelected = true;
+        this.$emit("addSelected", this.task);
+      }
+    });
+    eventBus.on("removeSelected", (groupId) => {
+      if (groupId === this.group._id) {
+        this.isSelected = false;
+        this.$emit("addSelected", this.task);
+      }
+    });
   },
   methods: {
     getSvg(iconName) {
@@ -113,7 +125,7 @@ export default {
       this.$router.push(
         "/board/" + this.currBoardId + "/taskDetails/" + this.task.id
       );
-      this.$store.commit({type: 'setCurrGroup' , group: this.group})
+      this.$store.commit({ type: "setCurrGroup", group: this.group });
     },
     toggleEdit() {
       this.isEditOpen = !this.isEditOpen;
@@ -122,12 +134,12 @@ export default {
       this.$emit("remove", toRemove);
     },
     selectTask() {
-      if(this.$refs.checkbox.checked) {
-        this.task.isSelected = true
-        this.$emit('addSelected' , this.task)
+      if (this.$refs.checkbox.checked) {
+        this.task.isSelected = true;
+        this.$emit("addSelected", this.task);
       } else {
-        this.task.isSelected = false
-        this.$emit('removeSelected' , this.task.id)
+        this.task.isSelected = false;
+        this.$emit("removeSelected", this.task.id);
       }
     },
   },
@@ -136,11 +148,11 @@ export default {
       return this.$store.getters.currBoard._id;
     },
     currBoard() {
-      return this.$store.getters.currBoard
+      return this.$store.getters.currBoard;
     },
     isChecked() {
-      return this.isSelected
-    }
+      return this.isSelected;
+    },
   },
   components: {
     Draggable,
