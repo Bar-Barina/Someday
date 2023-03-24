@@ -19,12 +19,7 @@ import SideNav from "../cmps/SideNav.vue";
 import Workspace from "../cmps/Workspace.vue";
 // import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service";
 import { boardService } from "../services/board.service.local";
-
-import {
-  getActionRemoveBoard,
-  getActionUpdateBoard,
-  getActionAddBoardMsg,
-} from "../store/board.store";
+import { getActionRemoveBoard,getActionUpdateBoard,getActionAddBoardMsg,} from "../store/board.store";
 export default {
   data() {
     return {
