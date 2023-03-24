@@ -135,6 +135,7 @@ function getEmptyBoard() {
             timeline: [],
             files: [],
             text: '',
+            msgs:[]
           },
           {
             id: 't102',
@@ -153,6 +154,7 @@ function getEmptyBoard() {
             timeline: [],
             files: [],
             text: '',
+            msgs:[]
           },
           {
             id: 't102',
@@ -171,6 +173,7 @@ function getEmptyBoard() {
             timeline: [],
             files: [],
             text: '',
+            msgs:[]
           },
         ],
       },
@@ -189,7 +192,8 @@ function getEmptyBoard() {
             priority: 'Low',
             timeline: [],
             files: [],
-            text: 'Something',
+            text: '',
+            msgs:[]
           },
           {
             id: 't102',
@@ -207,7 +211,8 @@ function getEmptyBoard() {
             priority: 'Medium',
             timeline: [],
             files: [],
-            text: 'Something',
+            text: '',
+            msgs:[]
           },
           {
             id: 't102',
@@ -225,7 +230,8 @@ function getEmptyBoard() {
             priority: 'Low',
             timeline: [],
             files: [],
-            text: 'Something',
+            text: '',
+            msgs:[]
           },
         ],
       },
@@ -243,6 +249,7 @@ function getEmptyTask() {
     timeline: [],
     files: '',
     text: '',
+    msgs:[]
   }
 }
 
@@ -280,7 +287,8 @@ function getEmptyTask() {
 //                             isSelected: false,
 //                             timeline: [],
 //                             file: [],
-//                             text: ''
+//                             text: '',
+//                             msgs:[]
 //                         },
 //                         {
 //                             id: "t102",
@@ -298,7 +306,8 @@ function getEmptyTask() {
 //                             isSelected: false,
 //                             timeline: [],
 //                             file: [],
-//                             text: ''
+//                             text: '',
+//                             msgs:[]
 //                         },
 //                         {
 //                             id: "t103",
@@ -317,7 +326,8 @@ function getEmptyTask() {
 //                             isSelected: false,
 //                             timeline: [],
 //                             file: [],
-//                             text: ''
+//                             text: '',
+//                             msgs:[]
 //                         },
 //                     ],
 //                 },
@@ -344,7 +354,8 @@ function getEmptyTask() {
 //                             isSelected: false,
 //                             timeline: [],
 //                             file: [],
-//                             text: ''
+//                             text: '',
+//                             msgs:[]
 //                         },
 //                         {
 //                             id: "t102",
@@ -362,7 +373,8 @@ function getEmptyTask() {
 //                             isSelected: false,
 //                             timeline: [],
 //                             file: [],
-//                             text: ''
+//                             text: '',
+//                             msgs:[]
 //                         },
 //                         {
 //                             id: "t103",
@@ -381,7 +393,8 @@ function getEmptyTask() {
 //                             isSelected: false,
 //                             timeline: [],
 //                             file: [],
-//                             text: ''
+//                             text: '',
+//                             msgs:[]
 //                         },
 //                     ],
 //                 }

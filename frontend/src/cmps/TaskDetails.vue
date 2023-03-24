@@ -39,7 +39,7 @@
         </div>       
     </div>
     <section class="bottom-chat">
-    <input placeholder="Write an update..." />
+    <input v-model="msg.txt" placeholder="Write an update..." />
     </section>
     <section class="nav-btn flex space-between align-center">
       <div class="conversation-middle-nav">
@@ -48,9 +48,12 @@
           <div>Emoji</div> 
        </div> 
         </div>
-      <button class="update-btn">Update</button>
+      <button class="update-btn" @click="addMsg">Update</button>
     </section>
-    <section>
+    <section v-if="task.msgs.length>0" class="task-msgs">
+        <MsgPreview v-for="msg in task.msgs" :key="msg" :msg="msg"/>
+    </section>
+    <section v-else>
     <img
       src="https://cdn.monday.com/images/pulse-page-empty-state.svg"
       class="hands"
@@ -66,12 +69,17 @@
 
 <script>
 import { svgService } from '../services/svg.service.js'
+import MsgPreview from './MsgPreview.vue'
 export default {
   name: '',
   data() {
     return {
       active:'',
       task:null,
+      msg:{
+        txt:'',
+        from:'guest'
+      }
     }
   },
   methods: {
@@ -80,13 +88,17 @@ export default {
     },
     updateTaskTitle() {
       this.task.taskTitle = this.$refs.taskTitle.innerText
-      const group = JSON.parse(JSON.stringify(this.currGroup))
-      const taskIdx = group.tasks.findIndex(t=>t.id===this.task.id)
-      group.tasks.splice(taskIdx,1,this.task)
-      this.updateTask(group)
+      this.group.tasks.splice(this.taskIdx,1,this.task)
+      this.updateTask()
     },
-    updateTask(group) {
-      const toUpdate = {group, task:this.task}
+    addMsg() {
+      this.task.msgs.push(this.msg)
+      this.group.tasks.splice(this.taskIdx,1,this.task)
+      this.updateTask()
+      this.msg.txt = ''
+    },
+    updateTask() {
+      const toUpdate = {group:this.group, task:this.task}
       this.$store.dispatch({type:'saveTask', toUpdate})
     }
   },
@@ -95,7 +107,8 @@ export default {
       async handler() {
         const { taskId } = this.$route.params
         if(!taskId) return
-          this.task =JSON.parse(JSON.stringify(this.currGroup.tasks.find(t=>t.id === taskId)))
+          this.group = JSON.parse(JSON.stringify(this.currGroup))
+          this.task = JSON.parse(JSON.stringify(this.group.tasks.find(t=>t.id === taskId)))
       },
       immediate: true,
     },
@@ -107,9 +120,14 @@ export default {
     currGroup() {
       return this.$store.getters.currGroup
     },
+    taskIdx() {
+      return this.group.tasks.findIndex(t=>t.id===this.task.id)
+    }
   },
   created() {},
-  components: {},
+  components: {
+    MsgPreview,
+  },
 }
 </script>
 
