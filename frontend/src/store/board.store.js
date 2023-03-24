@@ -32,11 +32,15 @@ export const boardStore = {
         boards: [],
         currBoard: null,
         currGroup: null,
+        filterBy:{
+            activeFilters:[],
+        }
     },
     getters: {
         boards({ boards }) { return boards },
         currBoard({ currBoard }) { return currBoard },
-        currGroup({ currGroup }) { return currGroup }
+        currGroup({ currGroup }) { return currGroup },
+        currActiveFilters({filterBy}) {return filterBy.activeFilters},
     },
     mutations: {
         setBoards(state, { boards }) {
@@ -63,6 +67,13 @@ export const boardStore = {
         },
         setCurrGroup(state, { group }) {
             state.currGroup = group
+        },
+        updateActiveFilters(state,{label}) {
+            // if(label === 'Empty status' || 'Empty priority') label = ''
+            if(state.filterBy.activeFilters.includes(label)) {
+                const labelIdx = state.filterBy.activeFilters.findIndex(l=>l===label)
+                state.filterBy.activeFilters.splice(labelIdx,1)
+            } else state.filterBy.activeFilters.push(label)
         }
     },
     actions: {
@@ -134,6 +145,14 @@ export const boardStore = {
         async remove({ state, commit }, { toRemove }) {
             const board = await boardService.removeItem(state.currBoard, toRemove.groupId, toRemove.taskId)
             commit({type: 'updateBoard' , board})
+        },
+        FilterBoard({state,commit}) {
+            try {
+                const FilteredBoard = boardService.filterBoard(state.currBoard,state.filterBy)
+                commit(getActionUpdateBoard(FilteredBoard))
+            } catch(err) {
+                throw new Error(err)
+            }
         }
     }
 }
