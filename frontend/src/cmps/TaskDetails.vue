@@ -92,14 +92,16 @@ export default {
       this.updateTask()
     },
     addMsg() {
-      this.task.msgs.push(this.msg)
+      const msgToAdd ={...this.msg}
+      console.log('msgToAdd',msgToAdd)
+      this.task.msgs.unshift(msgToAdd)
       this.group.tasks.splice(this.taskIdx,1,this.task)
       this.updateTask()
-      this.msg.txt = ''
     },
     updateTask() {
       const toUpdate = {group:this.group, task:this.task}
       this.$store.dispatch({type:'saveTask', toUpdate})
+      this.msg.txt = ''
     }
   },
   watch: {
