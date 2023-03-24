@@ -4,6 +4,7 @@
       <GroupPreview :group="group" :labelsOrder="labelsOrder" @labelDrop="labelDrop"></GroupPreview>
       <RouterView />
     </Draggable>
+    <Menu />
   </Container>
 </template>
 
@@ -11,6 +12,7 @@
 import { Container, Draggable } from "vue3-smooth-dnd";
 import GroupPreview from "./GroupPreview.vue";
 import { utilService } from '../services/util.service';
+import Menu from '../cmps/Menu.vue';
 
 export default {
   emits: ['labelDrop'],
@@ -46,12 +48,19 @@ export default {
   computed: {
     currBoard() {
       return JSON.parse(JSON.stringify(this.$store.getters.currBoard))
-    }
+    },
+    // selected() {
+    //   const length = this.currBoard.groups.filter((g) => g.tasks.filter((t) => t.isSelected))
+    //     .length;
+    //     console.log('length', length)
+    //     return length
+    // },
   },
   components: {
     GroupPreview,
     Container,
     Draggable,
+    Menu
   },
 };
 </script>
