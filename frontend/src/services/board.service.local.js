@@ -277,6 +277,7 @@ function getEmptyTask() {
 //                             timeline: '[]',
 //                             file: '11',
 //                             text: '',
+//                             isSelected: false,
 //                             timeline: [],
 //                             file: [],
 //                             text: ''
@@ -294,6 +295,7 @@ function getEmptyTask() {
 //                             timeline: '[]',
 //                             file: '11',
 //                             text: '',
+//                             isSelected: false,
 //                             timeline: [],
 //                             file: [],
 //                             text: ''
@@ -312,6 +314,7 @@ function getEmptyTask() {
 //                             timeline: '[]',
 //                             file: '11',
 //                             text: '',
+//                             isSelected: false,
 //                             timeline: [],
 //                             file: [],
 //                             text: ''
@@ -338,6 +341,7 @@ function getEmptyTask() {
 //                             timeline: '[]',
 //                             file: '11',
 //                             text: '',
+//                             isSelected: false,
 //                             timeline: [],
 //                             file: [],
 //                             text: ''
@@ -355,6 +359,7 @@ function getEmptyTask() {
 //                             timeline: '[]',
 //                             file: '11',
 //                             text: '',
+//                             isSelected: false,
 //                             timeline: [],
 //                             file: [],
 //                             text: ''
@@ -373,6 +378,7 @@ function getEmptyTask() {
 //                             timeline: '[]',
 //                             file: '11',
 //                             text: '',
+//                             isSelected: false,
 //                             timeline: [],
 //                             file: [],
 //                             text: ''
