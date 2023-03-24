@@ -62,7 +62,7 @@
       height: em(28px);
       width: em(28px);
         margin-right:15px ;
-        &:not(:hover):before {
+        &::before {
         content: "";
         height: 16px;
         border-right: 1px solid;
@@ -154,6 +154,14 @@
     fill:#757575;
     background-color: inherit;
     border: none;
+  }
+  .emoji-picker {
+    position: absolute;
+    height: 400px;
+    width: 300px;
+    top: 295px;
+    right: 30px;
+    z-index: 10;
   }
   .btn-hover {
     cursor: pointer;

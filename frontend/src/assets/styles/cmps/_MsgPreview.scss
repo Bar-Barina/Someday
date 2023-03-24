@@ -41,27 +41,53 @@
     }
 
     .msg-bottom-btns {
+        position: relative;
         height: 50px;
         width: 100%;
         border-top: 1px solid $clr014;
         margin-top: 18px;
-        .like::before {
+        .like {
+            border-radius: 4px;
+            cursor: pointer;
+            &:hover {
+                    background-color: $clr016;
+            }
+            .bottom-btn {
+                height: 40px;
+                &.liked {
+                    color: $clr8;
+                }
+            }
+            &::before {
                 content: "";
                 height: 48px;
                 border-right: 1px solid;
                 border-color: $clr016;
                 position: absolute;
-                top: -13px;
+                top: -6px;
                 right: 0;
             }
-
+        }
+        .liked-users {
+            width: 490px;
+            position: absolute;
+            top: -33px;
+            left: 17px;
+            .user {
+                gap: 5px;
+                img {
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+        }
+            
         .btn-container {
             position: relative;
             width: 250px;
 
             .bottom-btn {
                 gap: 5px;
-
                 .icon {
                     margin-top: 3px;
                 }

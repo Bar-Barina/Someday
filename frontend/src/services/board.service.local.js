@@ -51,19 +51,36 @@ async function save(board) {
 }
 
 function filterBoard(board,filterBy) {
+  if(filterBy.activeFilters.length===0) return getById(board._id)
+  // console.log('filterBy',filterBy)
+  // let filteredBoard = JSON.parse(JSON.stringify(board)) 
+  // filteredBoard = filteredBoard.groups.filter(group=>{
+  //   return group.tasks.filter(task=>{
+  //       return filterBy.activeFilters.some(label=> {
+  //         if(task.status===label) return true
+  //         if(task.priority===label) return true
+  //         if(task.person.some(p=>p.name===label)) return true
+  //         return false
+  //       })
+  //   })
+  // })
+  // console.log('filteredBoard',filteredBoard)
+  // return filteredBoard
   console.log('filterBy',filterBy)
-  const filteredBoard = JSON.parse(JSON.stringify(board)) 
-  filteredBoard = filteredBoard.groups.filter(group=>{
-    return group.tasks.filter(task=>{
-        filterBy.activeFilters.some(label=> {
-          if(task.status===label) return true
-          if(task.priority===label) return true
-          if(task.person.some(p=>p.name===label)) return true
-          return false
-        })
+let filteredBoard = JSON.parse(JSON.stringify(board)) 
+filteredBoard.groups = filteredBoard.groups.filter(group=>{
+  return group.tasks = group.tasks.filter(task=>{
+    return filterBy.activeFilters.some(label=> {
+      if(task.status===label) return true
+      if(task.priority===label) return true
+      if(task.person.some(p=>p.name===label)) return true
+      return false
     })
   })
-  return filteredBoard
+  return group.tasks.length > 0
+})
+console.log('filteredBoard',filteredBoard)
+return filteredBoard
 }
 
 async function addBoardMsg(boardId, txt) {

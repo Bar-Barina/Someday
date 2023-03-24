@@ -147,12 +147,9 @@ export const boardStore = {
             commit({type: 'updateBoard' , board})
         },
         FilterBoard({state,commit}) {
-            try {
                 const FilteredBoard = boardService.filterBoard(state.currBoard,state.filterBy)
-                commit(getActionUpdateBoard(FilteredBoard))
-            } catch(err) {
-                throw new Error(err)
-            }
+                commit({type:'setCurrBoard',board:FilteredBoard})
+                // commit(getActionUpdateBoard(FilteredBoard))
         }
     }
 }

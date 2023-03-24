@@ -42,16 +42,17 @@
     <input v-model="msg.txt" placeholder="Write an update..." />
     </section>
     <section class="nav-btn flex space-between align-center">
-      <div class="conversation-middle-nav">
-        <div class="middle-nav-btn btn-hover flex align-center">
+      <div class="conversation-middle-nav" v-clickOutside="closeEmojiPick">
+        <div class="middle-nav-btn btn-hover flex align-center" @click.stop="emojiPick">
           <span v-html="getSvg('emoji')"></span>
           <div>Emoji</div> 
        </div> 
         </div>
-      <button class="update-btn" @click="addMsg">Update</button>
+       <EmojiPicker v-if="isEmoji" :native="true" @select="onSelectEmoji" class="emoji-picker"/>
+      <button class="update-btn" @click.stop="addMsg">Update</button>
     </section>
     <section v-if="task.msgs.length>0" class="task-msgs">
-        <MsgPreview v-for="msg in task.msgs" :key="msg" :msg="msg"/>
+        <MsgPreview v-for="msg in task.msgs" :key="msg" :msg="msg" @updateTask="updateTask"/>
     </section>
     <section v-else>
     <img
@@ -70,15 +71,21 @@
 <script>
 import { svgService } from '../services/svg.service.js'
 import MsgPreview from './MsgPreview.vue'
+import EmojiPicker from 'vue3-emoji-picker'
+import 'vue3-emoji-picker/css'
+import {clickOutside} from '../directives.js'
+
 export default {
   name: '',
   data() {
     return {
       active:'',
       task:null,
+      isEmoji:false,
       msg:{
         txt:'',
-        from:'guest'
+        from:'guest',
+        liked:[]
       }
     }
   },
@@ -101,7 +108,17 @@ export default {
       const toUpdate = {group:this.group, task:this.task}
       this.$store.dispatch({type:'saveTask', toUpdate})
       this.msg.txt = ''
-    }
+    },
+    emojiPick() {
+      this.isEmoji = !this.isEmoji
+    },
+    onSelectEmoji(emoji) {
+      console.log('emoji',emoji)
+      this.msg.txt += emoji.i
+    },
+    closeEmojiPick() {
+      this.isEmoji = false
+    },
   },
   watch: {
     '$route.params': {
@@ -128,6 +145,7 @@ export default {
   created() {},
   components: {
     MsgPreview,
+    EmojiPicker
   },
 }
 </script>
