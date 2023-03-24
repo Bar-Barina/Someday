@@ -5,6 +5,7 @@
     </span>
   </div>
   <PersonPreview
+    v-clickOutside="closeModal"
     v-if="isOpen"
     :person="task.person"
     @updatePerson="updatePerson"
@@ -31,6 +32,9 @@ export default {
       this.taskPersons.push(person)
       this.$emit('updateTask', { cmpType: 'person', data: {...this.taskPersons} })
     },
+    closeModal() {
+      this.isOpen = false
+    }
   },
   components: {
     PersonPreview,

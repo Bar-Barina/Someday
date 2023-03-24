@@ -92,7 +92,7 @@
           class="flex justify-center align-center"
           v-html="getSvg('filter')"
         ></div>
-        <MainFilter v-if="showFilter" />
+        <MainFilter v-if="showFilter"  v-clickOutside="closeModal" />
         Filter
       </div>
       <div class="bottom-header-btn btn-hover">
@@ -154,6 +154,9 @@ export default {
     toggleModal() {
       this.showFilter = !this.showFilter
     },
+    closeModal() {
+      this.showFilter = false
+    }
   },
   computed: {
     currBoard() {
