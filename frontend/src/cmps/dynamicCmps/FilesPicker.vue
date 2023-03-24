@@ -6,6 +6,9 @@
 
 <script>
 export default {
-
+  props: {
+    task: Object,
+    group: Object
+  }
 }
 </script>

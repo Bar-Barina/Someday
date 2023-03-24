@@ -22,6 +22,7 @@ export default {
   emits: ["updateTask"],
   props: {
     task: Object,
+    group: Object
   },
   components: {},
   created() {

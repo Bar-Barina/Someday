@@ -1,8 +1,8 @@
 <template>
   <!-- Group title section-->
-  <section class="group-grid group-title flex align-center">
+  <section class="group-grid group-title flex align-center" v-if="!group.isCollapse">
     <div
-      class="more more-group sticky flex justify-center"
+      class="more more-group sticky flex justify-center align-center"
       @click="toggleEdit"
       v-html="getSvg('Dots')"
     ></div>
@@ -12,6 +12,7 @@
       :style="{ 'background-color': group.color }"
     ></div>
     <div
+    @click="collapse(true)"
       class="arrow-down sticky"
       v-html="getSvg('arrowDownB')"
       :style="{ fill: group.color }"
@@ -40,11 +41,12 @@
       >
         <h4>{{ group.title }}</h4>
       </div>
+      <span class="tasks-count">{{ tasksCount }} tasks</span>
     </div>
   </section>
 
   <!-- Group content -->
-  <section class="group-content">
+  <section class="group-content" v-if="!group.isCollapse">
     <section class="group-grid labels-grid">
       <div class="empty sticky"></div>
       <div
@@ -80,8 +82,8 @@
       group-name="tasks"
       tag="div"
       :shouldAcceptDrop="(e, payload) => e.groupName === 'tasks'"
-      :get-child-payload="getGroupPayload"
-      @drop="onTaskDrop(group.tasks, $event)"
+      :get-child-payload="getTaskPayload(group._id)"
+      @drop="onTaskDrop(group._id, $event)"
     >
       <Draggable
         class="group-grid task-row"
@@ -100,6 +102,7 @@
       <ProgressBar :labelsOrder="labelsOrder" />
     </Container>
   </section>
+  <GroupCollapse v-if="group.isCollapse" :group="group" :labelsOrder="labelsOrder" @collapse="collapse"/>
 </template>
 
 <script>
@@ -112,6 +115,7 @@ import AddTask from "./AddTask.vue";
 import ProgressBar from "./ProgressBar.vue";
 import ColorPicker from "../cmps/dynamicCmps/ColorPicker.vue";
 import { showErrorMsg } from "../services/event-bus.service.js";
+import GroupCollapse from './GroupCollapse.vue';
 
 export default {
   emits: ["labelDrop", "updateTask"],
@@ -124,7 +128,11 @@ export default {
       titleFocus: false,
       isEditOpen: false,
       showColorPicker: true,
+      board: null
     };
+  },
+  created() {
+    this.board = JSON.parse(JSON.stringify(this.$store.getters.currBoard))
   },
   methods: {
     getSvg(iconName) {
@@ -147,6 +155,10 @@ export default {
       else newGroup[toChange] = data;
       this.saveGroup(null , newGroup);
     },
+    collapse(isCollapse) {
+      this.group.isCollapse = isCollapse
+      this.updateGroup({toChange: 'isCollapse' , data: isCollapse})
+    },
     async saveGroup(task , group) {
       //    activity = boardService.getEmptyActivity()
       //    activity.txt = `Members changed for task ${}`
@@ -164,19 +176,29 @@ export default {
     toggleModal() {
       this.showColorPicker = !this.showColorPicker;
     },
-    onTaskDrop(tasks, dropResult) {
+    onTaskDrop(groupId, dropResult) {
       if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
-        let newTasks = [...tasks]
-        newTasks = utilService.applyDrag(newTasks, dropResult);
-        this.group.tasks = newTasks
-        console.log('this.group.tasks', this.group.tasks)
-        this.saveGroup(null , this.group)
+        const group = JSON.parse(JSON.stringify(this.group))
+        const groupIdx = this.board.groups.findIndex(g => g._id === groupId)
+        const newGroup = group
+
+        newGroup.tasks = utilService.applyDrag(newGroup.tasks, dropResult);
+        this.board.groups.splice(groupIdx , 1 , newGroup)
+        if(groupIdx === this.board.groups.length - 1) {
+          this.$store.dispatch({type: 'updateBoard' , board: this.board})
+        }
+        // this.board.groups.splice(groupIdx , 1 , newGroup)
+        // newTasks = utilService.applyDrag(newTasks, dropResult);
+        // console.log('newTasks', newTasks)
+        // this.group.tasks = newTasks
       } else {
         this.taskDrop(dropResult)
       }
     },
-    getGroupPayload(index) {
-      return this.group.tasks[index];
+    getTaskPayload(groupId) {
+      return index => {
+        return this.board.groups.filter(g => g._id === groupId)[0].tasks[index]
+      }
     },
   },
   computed: {
@@ -187,6 +209,9 @@ export default {
     currBoard() {
       return this.$store.getters.currBoard;
     },
+    tasksCount() {
+      return this.group.tasks.length
+    }
   },
   components: {
     Container,
@@ -196,6 +221,7 @@ export default {
     AddTask,
     ProgressBar,
     ColorPicker,
+    GroupCollapse
   },
 };
 </script>
