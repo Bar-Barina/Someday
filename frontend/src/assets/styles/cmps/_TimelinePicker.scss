@@ -8,6 +8,22 @@
     font-size: 14px;
     background-color: #383838;
     z-index: 6;
+    &.emptyTimeline {
+        background-color: #c4c4c4;
+        .day-diff {
+            position: absolute;
+            top: 2px;
+            right: 35px;
+            display: none;
+        }
+    
+        .date-diff {
+            font-size: 13px;
+            position: absolute;
+            top: 3px;
+            right: 60px;
+        }
+    }
     .day-diff {
         position: absolute;
         top: 3px;

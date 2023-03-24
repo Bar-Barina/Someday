@@ -1,5 +1,23 @@
 <template>
-
+  <div v-if="value.length===0" class="timeline-progress-bar emptyTimeline">
+    <div  class="date-diff">
+        {{ dateDiff }}
+      </div>
+      <div class="day-diff">{{ dayDiff }}</div>
+  </div>
+  <div  v-if="value.length>0" :class="emptyTimeline" class="timeline-progress-bar">
+    <div
+      
+      :style="{ width: widthPrecent + '%', 'background-color': group.color }"
+      class="bar-precent flex justify-center align-center"
+      :class=" borderRadiusEnd"
+    >
+      <div  class="date-diff">
+        {{ dateDiff }}
+      </div>
+      <div class="day-diff">{{ dayDiff }}d</div>
+    </div>
+  </div>
   <div class="demo-date-picker">
     <label class="picker-wrapper">
       <el-date-picker
@@ -13,19 +31,6 @@
       />
     </label>
   </div>
-  <div v-if="value !== []" class="timeline-progress-bar">
-    <div
-       v-if="value !== []"
-      :style="{ width: widthPrecent + '%', 'background-color': group.color }"
-      class="bar-precent flex justify-center align-center"
-      :class=" borderRadiusEnd"
-    >
-      <div  v-if="value !== []" class="date-diff">
-        {{ dateDiff }}
-      </div>
-      <div class="day-diff">{{ dayDiff }}d</div>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -38,7 +43,7 @@ export default {
   },
   components: {},
   created() {
-    if(this.task.timeline !== []) this.value = this.task.timeline
+    if(this.task.timeline.length > 0) this.value = this.task.timeline
   },
   data() {
     return {
@@ -53,7 +58,7 @@ export default {
   },
   computed: {
     dayDiff() {
-        if(this.value===[]) return 'set dates'
+        if(this.value.length === 0) return 'set dates'
       var currentDate = new Date();
       var currentYear = currentDate.getFullYear();
       var date1 = new Date(`${this.value[0]}, ${currentYear}`);
@@ -63,7 +68,7 @@ export default {
       return parseInt(diffInDays);
     },
     dateDiff() {
-      if(this.value===[]) return '-'
+      if(this.value.length === 0) return '-'
       return (
         this.value[0].split("-")[0] +
         " " +
@@ -91,9 +96,9 @@ export default {
         'border-radius-end' : this.widthPrecent>90 
       }
     },
-    emptyboard() {
+    emptyTimeline() {
       return {
-        
+        emptyTimeline : this.value.length === 0
       }
     }
   },
