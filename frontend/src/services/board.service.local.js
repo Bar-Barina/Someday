@@ -14,6 +14,7 @@ export const boardService = {
   saveTask,
   getEmptyTask,
   removeItem,
+  filterBoard
 }
 window.cs = boardService
 
@@ -47,6 +48,22 @@ async function save(board) {
     savedBoard = await storageService.post(STORAGE_KEY, board)
   }
   return savedBoard
+}
+
+function filterBoard(board,filterBy) {
+  console.log('filterBy',filterBy)
+  const filteredBoard = JSON.parse(JSON.stringify(board)) 
+  filteredBoard = filteredBoard.groups.filter(group=>{
+    return group.tasks.filter(task=>{
+        filterBy.activeFilters.some(label=> {
+          if(task.status===label) return true
+          if(task.priority===label) return true
+          if(task.person.some(p=>p.name===label)) return true
+          return false
+        })
+    })
+  })
+  return filteredBoard
 }
 
 async function addBoardMsg(boardId, txt) {

@@ -13,7 +13,8 @@
           v-for="(member, idx) in currBoard.members"
           :key="idx"
           class="filter-div flex align-center"
-          @click="filterTasksByMember(member)"
+          @click.stop="ChangeActive(member.name)"
+          :class="{active:isActive(member.name)}"
         >
           <img :src="member.url" class="filter-member-img" />
           <span>{{ member.name }}</span>
@@ -26,6 +27,8 @@
           v-for="(status, idx) in statusLabels"
           :key="idx"
           class="filter-div flex align-center"
+          @click.stop="ChangeActive(status.name)"
+          :class="{active:isActive(status.name)}"
         >
           <div
             :style="{ 'background-color': status.color }"
@@ -41,6 +44,8 @@
           v-for="(priority, idx) in priorityLabels"
           :key="idx"
           class="filter-div flex align-center"
+          @click.stop="ChangeActive(priority.name)"
+          :class="{active:isActive(priority.name)}"
         >
           <div
             :style="{ 'background-color': priority.color }"
@@ -50,6 +55,7 @@
         </div>
       </article>
     </section>
+    <div class="triangle"></div>
   </section>
 </template>
 
@@ -61,16 +67,16 @@ export default {
       selectedMember: null,
       statusLabels: [
         { name: 'Done', class: 'status-done', color: '#00c875' },
-        { name: 'Working', class: 'status-working', color: '#fdab3d' },
+        { name: 'Working on it', class: 'status-working', color: '#fdab3d' },
         { name: 'Stuck', class: 'status-stuck', color: '#e2445c' },
-        { name: 'Empty', class: 'status-empty', color: '#c4c4c4' },
+        { name: 'Empty status', class: 'status-empty', color: '#c4c4c4' },
       ],
       priorityLabels: [
         { name: 'Critical', class: 'priority-critical', color: '#333333' },
         { name: 'High', class: 'priority-high', color: '#401794' },
         { name: 'Medium', class: 'priority-medium', color: '#5559df' },
         { name: 'Low', class: 'priority-low', color: '#579bfc' },
-        { name: 'Empty', class: 'priority-empty', color: '#c4c4c4' },
+        { name: 'Empty priority', class: 'priority-empty', color: '#c4c4c4' },
       ],
     }
   },
@@ -94,10 +100,23 @@ export default {
       //   console.log('filteredTasks from filter', filteredTasks)
       //   this.$store.dispatch('filterTasks', filteredTasks)
     },
+    ChangeActive(label) {
+      this.$store.commit({type:'updateActiveFilters',label})
+      // this.$store.dispatch({type:'FilterBoard'})
+    },
+    isActive(label) {
+      // if(label === 'Empty status' || 'Empty priority') label = ''
+      if (this.currActiveFilters.includes(label)) return true
+      else return false
+      
+    }
   },
   computed: {
     currBoard() {
       return this.$store.getters.currBoard
+    },
+    currActiveFilters() {
+      return this.$store.getters.currActiveFilters
     },
   },
   created() {},
