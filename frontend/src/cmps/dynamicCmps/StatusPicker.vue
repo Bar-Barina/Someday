@@ -1,25 +1,27 @@
 <template>
-  <div class="status full-cell" :class="statusClass" @click="toggleModal">
+  <div
+    class="status full-cell"
+    :class="statusClass"
+    v-clickOutside="closeModal"
+    @click="toggleModal"
+  >
     {{ status }}
-      <button class="popper-btn">Pop</button>
-        <TaskDropdown
-          v-if="showDropdown"
-          :options="statusOptions"
-          @updateOption="updateStatus"
-          optionClass="status-option"
-        />
+    <TaskDropdown
+      v-if="showDropdown"
+      :options="statusOptions"
+      @updateOption="updateStatus"
+      optionClass="status-option"
+    />
   </div>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
 import TaskDropdown from '../TaskDropdown.vue'
 
-export default defineComponent({
+export default {
   emits: ['updateTask'],
   props: {
     task: Object,
-    group: Object
   },
   name: '',
   data() {
@@ -42,6 +44,9 @@ export default defineComponent({
     },
     toggleModal() {
       this.showDropdown = !this.showDropdown
+    },
+    closeModal() {
+      this.showDropdown = false
     },
   },
   computed: {
@@ -66,5 +71,5 @@ export default defineComponent({
   components: {
     TaskDropdown,
   },
-})
+}
 </script>

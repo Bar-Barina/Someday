@@ -1,5 +1,6 @@
 <template>
   <section class="task-dropdown">
+    <div class="arrow-up-div"></div>
     <div
       v-for="(option, idx) in options"
       class="option"
@@ -12,9 +13,8 @@
   </section>
 </template>
 
-
 <script>
-  export default {
+export default {
   props: {
     options: Array,
   },

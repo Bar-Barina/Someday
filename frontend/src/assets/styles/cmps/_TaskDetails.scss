@@ -1,4 +1,5 @@
 .conversation-container {
+  cursor: auto;
   background-color: rgb(255, 255, 255);
   padding: 20px;
   position: fixed;
@@ -11,30 +12,120 @@
   .conversation-img {
     width: 26px;
   }
+  .up-nav {
+    gap:3px
+  }
   .conversation-title {
+    .editable-div {
+      font-size: 20px;
+      color: black;
+      font-weight: 400;
+    }
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 13px;
   }
+  .view-option-container {
+    height: em(36px);
+    position: relative;
+
+    &.active {
+        border-bottom: 2px solid $clr8;
+    }
+
+    &:not(:hover):before {
+        content: "";
+        height: 16px;
+        border-right: 1px solid;
+        border-color: $clr016;
+        position: absolute;
+        top: 8px;
+        right: 0;
+    }
+
+    .view-option {
+        padding: 4px 12px;
+        height: em(36px);
+        gap: 8px;
+        font-size: 14px;
+        .icon {
+            font-size: 16px;
+        }
+    }
+}
   .conversation-img-section {
-    display: flex;
+    gap: 5px;
+    margin-right: 7px;
+    .img-container {
+      position: relative;
+      height: em(28px);
+      width: em(28px);
+        margin-right:15px ;
+        &:not(:hover):before {
+        content: "";
+        height: 16px;
+        border-right: 1px solid;
+        border-color: $clr016;
+        position: absolute;
+        top: 5px;
+        right: -12px;
+    }
+    }
+    .menu {
+      width: em(26px);
+      height: em(26px);
+      padding: 6px;
+    }
   }
-  input {
-    margin-top: 20px;
-    width: 534px;
-    height: 144px;
-    border-radius: 8px;
-    border: 1px solid #0073ea;
+  .bottom-chat {
+    border-top: 1px solid $clr014;
+    text-align: center;
+    input {
+      margin-top: 20px;
+      width: 522px;
+      height: 41px;
+      padding: 7px 8px;
+      border-radius: 8px;
+      border: 1px solid #0073ea;
+      &:hover {
+        background-color: $clr014;
+      }
+      &:focus {
+        &::placeholder {
+          color: transparent;
+        }
+        height: 144px;
+        outline: none;
+        border: 0.5px solid $clr8;
+      }
+    }
   }
   .nav-btn {
-    margin-top: 15px;
+    margin-top: 8px;
     .update-btn {
-      background-color: #0073ea;
+      background-color: $clr8;
       color: white;
       border: none;
-      border-radius: 3px;
+      border-radius: 5px;
       width: 62px;
       height: 32px;
+      margin-right: 10px;
+      &:hover {
+        background-color: $primary-hover;
+      }
+    }
+  }
+  .conversation-middle-nav {
+    .middle-nav-btn {
+      padding: 4px 10px;
+      height: em(36px);
+      gap:3px;
+      margin-left: 8px;
+      margin-top: 2px;
+      span {
+        padding-top: 4px;
+      }
     }
   }
   .hands {
@@ -52,15 +143,16 @@
   .conversation-exit-btn {
     height: em(24px);
     width: em(24px);
+    padding: 13px;
+    fill:#757575;
     background-color: inherit;
     border: none;
   }
-  .hover-btn {
+  .btn-hover {
     cursor: pointer;
-    color:#777;
     border-radius: 4px;
     &:hover {
-      background-color: $clr014;
+      background-color: $clr016;
     }
   }
 }
