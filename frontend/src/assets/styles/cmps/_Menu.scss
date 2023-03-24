@@ -44,12 +44,25 @@
                 font-size: 40px;
                 font-weight: 100;
             }
+
+            &:hover {
+                cursor: pointer;
+                .icon-delete::before {
+                    color: $clr8;
+                }
+            }
         }
 
         .item {
             padding-top: 8px;
             margin-right: 20px;
             font-size: 12px;
+
+            & .icon:hover {
+                 svg {
+                    fill: $clr8;
+                 }
+            }
         }
     }
 }
