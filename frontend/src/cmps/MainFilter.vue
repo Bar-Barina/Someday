@@ -82,14 +82,15 @@ export default {
   },
   methods: {
     filterTasksByMember(member) {
-      console.log(member)
+      //console.log(member)
       const board = JSON.parse(JSON.stringify(this.currBoard))
-      const filtered = board.groups.filter((group) =>
-        group.tasks.filter((task) => {
+      const filtered = board.groups.filter((group) => {
+        const array = group.tasks.filter((task) => {
           return task.person.some((p) => p.name === member.name)
         })
-      )
-      console.log(filtered)
+        console.log(array)
+      })
+      //console.log(filtered)
       //   console.log('member from filter', member)
       //   const groupsIds = Object.keys(board.groups)
       //   console.log('tasks from filter', tasks)

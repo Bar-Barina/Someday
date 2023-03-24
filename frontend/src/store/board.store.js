@@ -2,29 +2,29 @@ import { boardService } from '../services/board.service.local'
 // import { boardService } from '../services/board.service'
 
 export function getActionRemoveBoard(boardId) {
-    return {
-        type: 'removeBoard',
-        boardId
-    }
+  return {
+    type: 'removeBoard',
+    boardId,
+  }
 }
 export function getActionAddBoard(board) {
-    return {
-        type: 'addBoard',
-        board
-    }
+  return {
+    type: 'addBoard',
+    board,
+  }
 }
 export function getActionUpdateBoard(board) {
-    return {
-        type: 'updateBoard',
-        board
-    }
+  return {
+    type: 'updateBoard',
+    board,
+  }
 }
 export function getActionAddBoardMsg(boardId) {
-    return {
-        type: 'addBoardMsg',
-        boardId,
-        txt: 'Stam txt'
-    }
+  return {
+    type: 'addBoardMsg',
+    boardId,
+    txt: 'Stam txt',
+  }
 }
 
 export const boardStore = {
