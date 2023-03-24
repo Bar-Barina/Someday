@@ -80,19 +80,20 @@
         ></div>
         Search
       </div>
-      <div class="bottom-header-btn btn-hover">
+      <div class="bottom-header-btn btn-hover" @click="togglePersonModal">
         <div
           class="flex justify-center align-center"
           v-html="getSvg('headerPerson')"
         ></div>
+        <MainPersonFilter v-if="showPersonFilter" v-clickOutside="closeModal" />
         Person
       </div>
-      <div class="bottom-header-btn btn-hover" @click="toggleModal">
+      <div class="bottom-header-btn btn-hover" @click="toggleFilterModal">
         <div
           class="flex justify-center align-center"
           v-html="getSvg('filter')"
         ></div>
-        <MainFilter v-if="showFilter"  v-clickOutside="closeModal" />
+        <MainFilter v-if="showFilter" v-clickOutside="closeModal" />
         Filter
       </div>
       <div class="bottom-header-btn btn-hover">
@@ -117,17 +118,22 @@
 import { boardService } from '../services/board.service.local.js'
 import { svgService } from '../services/svg.service.js'
 import MainFilter from './MainFilter.vue'
+import MainPersonFilter from './MainPersonFilter.vue'
 
 export default {
   name: 'BoardHeader',
   props: {},
-  components: { MainFilter },
+  components: {
+    MainFilter,
+    MainPersonFilter,
+  },
   created() {},
   data() {
     return {
       active: '',
       task: boardService.getEmptyTask(),
       showFilter: false,
+      showPersonFilter: false,
     }
   },
   methods: {
@@ -151,12 +157,16 @@ export default {
       this.$store.dispatch({ type: 'saveTask', toUpdate })
       this.task = boardService.getEmptyTask()
     },
-    toggleModal() {
+    toggleFilterModal() {
       this.showFilter = !this.showFilter
+    },
+    togglePersonModal() {
+      this.showPersonFilter = !this.showPersonFilter
     },
     closeModal() {
       this.showFilter = false
-    }
+      this.showPersonFilter = false
+    },
   },
   computed: {
     currBoard() {
