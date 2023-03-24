@@ -4,7 +4,7 @@
     <div class="sticky empty second"></div>
     <div class="sticky empty third"></div>
     <div class="sticky empty fourth"></div>
-    <component v-for="(label , idx) in labelsOrder" :key="idx" :is="`${label}Progress`" :group="group"></component>
+    <component v-for="(label , idx) in labelsOrder" :key="idx" :is="`${label}Progress`" :group="group" :label="label"></component>
   </section>
 </template>
 
