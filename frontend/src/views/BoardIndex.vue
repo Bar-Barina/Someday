@@ -2,7 +2,7 @@
   <section class="main-layout board-index">
     <SideNav />
     <Workspace />
-    <BoardHeader />
+    <BoardHeader/>
     <RouterView />
   </section>
 </template>

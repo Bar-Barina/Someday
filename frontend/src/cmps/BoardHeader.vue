@@ -88,11 +88,11 @@
         Person
       </div>
       <div class="bottom-header-btn btn-hover" @click="toggleModal">
-        <div 
+        <div
           class="flex justify-center align-center"
           v-html="getSvg('filter')"
         ></div>
-        <MainFilter v-if="showFilter"/>
+        <MainFilter v-if="showFilter" />
         Filter
       </div>
       <div class="bottom-header-btn btn-hover">
@@ -114,51 +114,51 @@
 </template>
 
 <script>
-import { boardService } from "../services/board.service.local.js";
-import { svgService } from "../services/svg.service.js";
-import MainFilter from "./MainFilter.vue";
+import { boardService } from '../services/board.service.local.js'
+import { svgService } from '../services/svg.service.js'
+import MainFilter from './MainFilter.vue'
 
 export default {
-  name: "BoardHeader",
+  name: 'BoardHeader',
   props: {},
-  components: {MainFilter,},
+  components: { MainFilter },
   created() {},
   data() {
     return {
-      active: "",
+      active: '',
       task: boardService.getEmptyTask(),
-      showFilter: false
-    };
+      showFilter: false,
+    }
   },
   methods: {
     getSvg(iconName) {
-      return svgService.getSvg(iconName);
+      return svgService.getSvg(iconName)
     },
     switchBoardView(routerName) {
-      this.active = routerName;
-      this.$router.push(`/board/${this.currBoard._id}/${routerName}`);
+      this.active = routerName
+      this.$router.push(`/board/${this.currBoard._id}/${routerName}`)
     },
     updateBoard() {
-      const board = JSON.parse(JSON.stringify(this.currBoard));
-      board.description = this.$refs.boardDesc.innerText;
-      board.title = this.$refs.boardTitle.innerText;
-      this.$store.dispatch({ type: "updateBoard", board });
+      const board = JSON.parse(JSON.stringify(this.currBoard))
+      board.description = this.$refs.boardDesc.innerText
+      board.title = this.$refs.boardTitle.innerText
+      this.$store.dispatch({ type: 'updateBoard', board })
     },
     addTask() {
       const group = JSON.parse(JSON.stringify(this.currBoard)).groups[0]
-      group.tasks.unshift({...this.task});
-      const toUpdate = { task: this.task, group};
-      this.$store.dispatch({ type: "saveTask", toUpdate });
+      group.tasks.unshift({ ...this.task })
+      const toUpdate = { task: this.task, group }
+      this.$store.dispatch({ type: 'saveTask', toUpdate })
       this.task = boardService.getEmptyTask()
     },
     toggleModal() {
       this.showFilter = !this.showFilter
-    }
+    },
   },
   computed: {
     currBoard() {
-      return this.$store.getters.currBoard;
+      return this.$store.getters.currBoard
     },
   },
-};
+}
 </script>
