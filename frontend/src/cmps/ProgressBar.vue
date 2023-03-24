@@ -10,8 +10,8 @@
 
 <script>
 import DateProgress from './dynamicCmps/EmptyProgress.vue';
-import FilesProgress from './dynamicCmps/FilesProgress.vue';
-import PersonProgress from './dynamicCmps/PersonProgress.vue';
+import FilesProgress from './dynamicCmps/EmptyProgress.vue';
+import PersonProgress from './dynamicCmps/EmptyProgress.vue';
 import PriorityProgress from './dynamicCmps/StatusProgress.vue';
 import StatusProgress from './dynamicCmps/StatusProgress.vue';
 import TextProgress from './dynamicCmps/EmptyProgress.vue';
