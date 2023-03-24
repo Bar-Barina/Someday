@@ -159,7 +159,7 @@ export default {
       this.group.isCollapse = isCollapse
       this.updateGroup({toChange: 'isCollapse' , data: isCollapse})
     },
-    async saveGroup(task , group) {
+    async saveGroup(task , group = this.group) {
       //    activity = boardService.getEmptyActivity()
       //    activity.txt = `Members changed for task ${}`
       //    activity.task = '{mini-task}'

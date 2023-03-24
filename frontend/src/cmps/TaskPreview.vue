@@ -1,24 +1,44 @@
 <template>
-<div @click="toggleEdit" class="align-center more-task sticky flex justify-center">
-  <div class="more flex justify-center align-center" v-html="getSvg('Dots')"></div>
+  <div
+    @click="toggleEdit"
+    class="align-center more-task sticky flex justify-center"
+  >
+    <div
+      class="more flex justify-center align-center"
+      v-html="getSvg('Dots')"
+    ></div>
   </div>
-  <EditMenu v-if="isEditOpen" :groupId="group._id" :taskId="task.id" @remove="removeTask"/>
-  <div class="task-border sticky" :style="{ 'background-color': group.color }"></div>
+  <EditMenu
+    v-if="isEditOpen"
+    :groupId="group._id"
+    :taskId="task.id"
+    @remove="removeTask"
+  />
+  <div
+    class="task-border sticky"
+    :style="{ 'background-color': group.color }"
+  ></div>
   <div class="flex sticky align-center cell1 flex-justify third">
-    <input type="checkbox" />
+    <input
+      type="checkbox"
+      ref="checkbox"
+      :checked="task.isSelected"
+      @change="selectTask"
+    />
   </div>
   <section class="task-title cell1 sticky flex align-center space-between">
     <div class="task-title-sub flex align-center space-between">
-      <div class="flex align-center content-edit editable-div"
-       @click="(isActive = true)" contenteditable="true"
-       :class="{active: isActive}" ref="taskTitle"
-       @focusout="updateTask">
+      <div
+        class="flex align-center content-edit editable-div"
+        @click="isActive = true"
+        contenteditable="true"
+        :class="{ active: isActive }"
+        ref="taskTitle"
+        @focusout="updateTask"
+      >
         <span>{{ task.taskTitle }}</span>
       </div>
-      <span
-        @click="openCon"
-        class="open-con flex align-center space-between"
-      >
+      <span @click="openCon" class="open-con flex align-center space-between">
         <button class="svg">
           <div className="icon" v-html="getSvg('openCon')"></div>
         </button>
@@ -32,7 +52,12 @@
     </div>
   </section>
   <section class="cell2" v-for="(cmp, idx) in labels" :key="idx">
-    <component :is="cmp" :task="task" :group="group" @updateTask="updateTask"></component>
+    <component
+      :is="cmp"
+      :task="task"
+      :group="group"
+      @updateTask="updateTask"
+    ></component>
   </section>
 </template>
 
@@ -46,11 +71,11 @@ import Priority from "./dynamicCmps/PriorityPicker.vue";
 import Timeline from "./dynamicCmps/TimelinePicker.vue";
 import Date from "./dynamicCmps/DatePicker.vue";
 import Person from "./dynamicCmps/PersonPicker.vue";
-import Text from './dynamicCmps/TextArea.vue'
-import Files from './dynamicCmps/FilesPicker.vue'
+import Text from "./dynamicCmps/TextArea.vue";
+import Files from "./dynamicCmps/FilesPicker.vue";
 
 export default {
-  emits: ["saveTask" , 'remove'],
+  emits: ["saveTask", "remove"],
   props: {
     labels: Array,
     task: Object,
@@ -59,7 +84,7 @@ export default {
   data() {
     return {
       isEditOpen: false,
-      isActive: false
+      isActive: false,
     };
   },
   methods: {
@@ -68,7 +93,7 @@ export default {
     },
     updateTask({ cmpType, data }) {
       const taskToSave = { ...this.task };
-      if(!cmpType) taskToSave.taskTitle = this.$refs.taskTitle.innerText
+      if (!cmpType) taskToSave.taskTitle = this.$refs.taskTitle.innerText;
       else taskToSave[cmpType] = data;
       //    activity = boardService.getEmptyActivity()
       //    activity.txt = `Members changed for task ${}`
@@ -85,8 +110,15 @@ export default {
       this.isEditOpen = !this.isEditOpen;
     },
     removeTask(toRemove) {
-      this.$emit('remove' , toRemove)
-    }
+      this.$emit("remove", toRemove);
+    },
+    selectTask() {
+      this.task.isSelected = this.$refs.checkbox.checked;
+      this.updateTask({
+        cmpType: "isSelected",
+        data: this.$refs.checkbox.checked,
+      });
+    },
   },
   computed: {
     currBoardId() {
@@ -103,7 +135,7 @@ export default {
     Person,
     EditMenu,
     Text,
-    Files
+    Files,
   },
 };
 </script>
