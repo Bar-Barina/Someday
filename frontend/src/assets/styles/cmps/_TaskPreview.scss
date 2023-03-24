@@ -41,6 +41,7 @@
     }
 
     .conversation-wrapper {
+        position: relative;
         height: 100%;
         width: 65px;
         border-left: 1px solid #d0d4e6;
@@ -49,6 +50,25 @@
             svg {
                 fill: $clr8;
             }
+        }
+
+        .multi-con {
+            svg {
+                fill: $clr8;
+            }
+        }
+
+        .updates-count {
+            position: absolute;
+            color: #fff;
+            background-color: $clr8;
+            line-height: 9px;
+            top: 15px;
+            font-size: 10px;
+            font-weight: 400;
+            border-radius: 10px;
+            text-align: center;
+            padding: 2px 4px;
         }
     }
 
