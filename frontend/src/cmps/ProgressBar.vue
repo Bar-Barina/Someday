@@ -4,7 +4,7 @@
     <div class="sticky empty second"></div>
     <div class="sticky empty third"></div>
     <div class="sticky empty fourth"></div>
-    <component v-for="(label , idx) in labelsOrder" :key="idx" :is="`${label}Progress`"></component>
+    <component v-for="(label , idx) in labelsOrder" :key="idx" :is="`${label}Progress`" :group="group"></component>
   </section>
 </template>
 
@@ -16,10 +16,12 @@ import PriorityProgress from './dynamicCmps/StatusProgress.vue';
 import StatusProgress from './dynamicCmps/StatusProgress.vue';
 import TextProgress from './dynamicCmps/EmptyProgress.vue';
 import TimelineProgress from './dynamicCmps/TimelineProgress.vue';
+import { groupBy } from 'lodash';
 
 export default {
     props: {
-        labelsOrder: Array
+        labelsOrder: Array,
+        group: Object,
     },
     components: {
         PriorityProgress,

@@ -4,9 +4,17 @@
 </template>
 
 <script>
+
 export default {
   data() {
-    return {}
+    return {
+      group: Object,
+    }
   },
+  methods: {
+    tasks() {
+      return this.group.tasks
+    }
+  }
 }
 </script>
