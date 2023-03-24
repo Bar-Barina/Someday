@@ -77,6 +77,11 @@ export const boardStore = {
         }
     },
     actions: {
+        filterBoard({commit} ,{filteredBoard}) {
+            console.log('from store',filteredBoard)
+            commit({type: 'setCurrBoard', board:filteredBoard})
+        //    state.currBoard = filteredBoard
+        },
         async addBoard(context, { board }) {
             try {
                 board = await boardService.save(board)

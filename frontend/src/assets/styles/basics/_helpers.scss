@@ -122,6 +122,26 @@
 .pointer {
   cursor: pointer;
 }
+
+[data-title] {
+  position: relative;
+}
+
+[data-title]:hover::after {
+  content: attr(data-title);
+  position: absolute;
+  z-index: 150;
+  font-size: 12px;
+  background: #333;
+  color: #fff;
+  padding: 0.2em 0.3em;
+  border-radius: 0.2em;
+  text-transform: capitalize;
+  width: 50px;
+  height: 30px;
+  width: max-content;
+  left: 50px;
+}
 // Media helpers
 
 // .square-ratio {
