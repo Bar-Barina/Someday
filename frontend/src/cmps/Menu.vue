@@ -7,11 +7,11 @@
       <div class="action-title flex justify-center column">
         <div class="title">Tasks selected</div>
       </div>
-      <div class="duplicate-wrapper item flex column align-center">
+      <div @click="handleTasks('duplicate')" class="duplicate-wrapper item flex column align-center">
         <span v-icon="'duplicate'" class="icon"></span>
         <span>Duplicate</span>
       </div>
-      <div @click="removeTasks()" class="trash-wrapper item flex column align-center">
+      <div @click="handleTasks('remove')" class="trash-wrapper item flex column align-center">
         <span v-icon="'menuTrash'" class="icon"></span>
         <span>Delete</span>
       </div>
@@ -24,6 +24,7 @@
 
 <script>
 import { eventBus } from '../services/event-bus.service';
+import { utilService } from '../services/util.service';
 export default {
   props: {
     selectedTasks: Object,
@@ -47,27 +48,21 @@ export default {
     },
   },
   methods: {
-    removeTasks() {
+    handleTasks(todo) {
       const board = JSON.parse(JSON.stringify(this.currBoard))
       Object.keys(this.selectedTasks).forEach(key => {
         const groupIdx = board.groups.findIndex(g => g._id === key)
         this.selectedTasks[key].forEach(task => {
           const taskIdx = board.groups[groupIdx].tasks.
           findIndex(t => t.id === task.id)
-          board.groups[groupIdx].tasks.splice(taskIdx , 1)
-        })
-      })
-      this.$store.dispatch({type: 'updateBoard' , board})
-      this.clearSelected()
-    },
-    duplicateTasks() {
-      const board = JSON.parse(JSON.stringify(this.currBoard))
-      Object.keys(this.selectedTasks).forEach(key => {
-        const groupIdx = board.groups.findIndex(g => g._id === key)
-        this.selectedTasks[key].forEach(task => {
-          const taskIdx = board.groups[groupIdx].tasks.
-          findIndex(t => t.id === task.id)
-          board.groups[groupIdx].tasks.splice(taskIdx , 1)
+          if(todo === 'remove') {
+            board.groups[groupIdx].tasks.splice(taskIdx , 1)
+          } else {
+            const copy = JSON.parse(JSON.stringify(task))
+            copy.id = utilService.makeId()
+            copy.taskTitle = task.taskTitle + '(copy)'
+            board.groups[groupIdx].tasks.splice(taskIdx + 1 , 0 , copy)
+          }
         })
       })
       this.$store.dispatch({type: 'updateBoard' , board})

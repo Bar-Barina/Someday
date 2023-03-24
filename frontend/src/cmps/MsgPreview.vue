@@ -40,7 +40,9 @@ export default {
     msg: Object,
   },
   components: {},
-  created() {},
+  created() {
+    console.log('msg',this.msg)
+  },
   data() {
     return {};
   },
