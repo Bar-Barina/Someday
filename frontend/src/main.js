@@ -4,7 +4,7 @@ import { router } from './router.js'
 import { store } from './store/store.js'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-import {clickOutside , icon} from './directives.js'
+import {clickOutside , icon, tooltipDirective} from './directives.js'
 // import Popper from "vue3-popper";
 
 import './assets/styles/styles.scss'
@@ -15,6 +15,7 @@ const app = createApp(App)
 // app.component("Popper", Popper);
 app.directive('icon' , icon)
 app.directive('clickOutside' , clickOutside)
+app.directive('tooltipDirective' , tooltipDirective)
 app.use(ElementPlus)
 app.use(router)
 app.use(store)
