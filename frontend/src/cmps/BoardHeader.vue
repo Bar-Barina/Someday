@@ -73,12 +73,17 @@
       <div class="new-item flex justify-center align-center" @click="addTask">
         New task
       </div>
-      <div class="bottom-header-btn btn-hover">
-        <div
+      <div class="bottom-header-btn btn-hover search-div">
+        <span
           class="flex justify-center align-center"
           v-html="getSvg('headerSearch')"
-        ></div>
-        Search
+        ></span>
+        <input
+          type="text"
+          placeholder="Search"
+          class="header-search"
+          v-model="searchQuery"
+        />
       </div>
       <div class="bottom-header-btn btn-hover" @click="togglePersonModal">
         <div
@@ -134,6 +139,7 @@ export default {
       task: boardService.getEmptyTask(),
       showFilter: false,
       showPersonFilter: false,
+      searchQuery: '',
     }
   },
   methods: {
@@ -167,10 +173,34 @@ export default {
       this.showFilter = false
       this.showPersonFilter = false
     },
+    filterBoard() {
+      if (this.searchQuery === '') {
+        this.$store.dispatch({type: 'filterBoard',
+          filteredBoard: this.currBoard,})
+        return
+      }
+      const regex = new RegExp(this.searchQuery, 'i')
+      const filteredGroups = this.currBoard.groups
+        .map((group) => {
+          const filteredTasks = group.tasks.filter((task) => {
+            return JSON.stringify(task).match(regex)
+          })
+          return { ...group, tasks: filteredTasks }
+        })
+        .filter((group) => group.tasks.length > 0)
+      const filteredBoard = { ...this.currBoard, groups: filteredGroups }
+      console.log('filteredBoard from boardHeader', filteredBoard)
+      this.$store.dispatch({ type: 'filterBoard', filteredBoard })
+    },
   },
   computed: {
     currBoard() {
       return this.$store.getters.currBoard
+    },
+  },
+  watch: {
+    searchQuery() {
+      this.filterBoard()
     },
   },
 }

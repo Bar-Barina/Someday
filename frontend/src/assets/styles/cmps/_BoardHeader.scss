@@ -1,155 +1,171 @@
 .board-header {
-    height: 100%;
-    width: 100%;
-    padding-inline: 38px;
-    padding-top: 16px;
+  height: 100%;
+  width: 100%;
+  padding-inline: 38px;
+  padding-top: 16px;
 
-    .icon {
-        height: em(32px);
-        width: em(32px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #676879;
+  .icon {
+    height: em(32px);
+    width: em(32px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #676879;
+  }
+
+  .board-name {
+    height: 45px;
+    width: max-content;
+
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      height: em(24px);
+      line-height: 40px;
+      font-size: 24px;
+      font-weight: 400;
+      margin-right: 2px;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+      &:focus {
+        width: 500px;
+      }
+    }
+  }
+
+  .right-up-header {
+    gap: 5px;
+
+    .logged-in-user {
+      padding: 4px 8px;
+      font-size: em(14px);
+      gap: 4px;
+
+      img {
+        height: em(28px);
+        width: em(28px);
+      }
     }
 
-    .board-name {
-        height: 45px;
-        width: max-content;
-
-        .title {
-            display: flex;
-            align-items: center;
-            justify-content: start;
-            height: em(24px);
-            line-height: 40px;
-            font-size: 24px;
-            font-weight: 400;
-            margin-right: 2px;
-            font-family: 'Poppins', sans-serif;
-            letter-spacing: 0.5px;
-            font-weight: 500;
-            &:focus {
-                width: 500px;
-            }
-        }
+    .invite {
+      padding: 2px 6px;
+      padding-right: 9px;
+      border: 1px solid $clr014;
+      font-size: em(14px);
     }
+  }
 
-    .right-up-header {
-        gap: 5px;
+  .board-view-change {
+    height: em(36px);
+    margin-top: 10px;
 
-        .logged-in-user {
-            padding: 4px 8px;
-            font-size: em(14px);
-            gap: 4px;
+    .view-option-container {
+      height: em(36px);
+      margin-bottom: 1px;
+      position: relative;
 
-            img {
-                height: em(28px);
-                width: em(28px);
-            }
-        }
+      &.active {
+        border-bottom: 2px solid $clr8;
+      }
 
-        .invite {
-            padding: 2px 6px;
-            padding-right: 9px;
-            border: 1px solid $clr014;
-            font-size: em(14px);
-        }
-    }
+      &:not(:hover):before {
+        content: '';
+        height: 16px;
+        border-right: 1px solid;
+        border-color: $clr016;
+        position: absolute;
+        top: 8px;
+        right: 0;
+      }
 
-    .board-view-change {
+      .view-option {
+        padding: 4px 8px;
         height: em(36px);
-        margin-top: 10px;
+        gap: 8px;
+        font-size: 14px;
 
-        .view-option-container {
-            height: em(36px);
-            margin-bottom: 1px;
-            position: relative;
-
-            &.active {
-                border-bottom: 2px solid $clr8;
-            }
-
-            &:not(:hover):before {
-                content: "";
-                height: 16px;
-                border-right: 1px solid;
-                border-color: $clr016;
-                position: absolute;
-                top: 8px;
-                right: 0;
-            }
-
-            .view-option {
-                padding: 4px 8px;
-                height: em(36px);
-                gap: 8px;
-                font-size: 14px;
-
-                .icon {
-                    width: em(16px);
-                    height: em(16px);
-                }
-            }
+        .icon {
+          width: em(16px);
+          height: em(16px);
         }
+      }
+    }
+  }
+
+  .bottom-header {
+    border-top: 1px solid $clr014;
+    padding-block: 15px;
+    gap: 5px;
+
+    .new-item {
+      padding: 4px 8px;
+      margin-right: 3px;
+      background-color: $clr8;
+      color: white;
+      font-size: 14px;
+      width: max-content;
+      height: em(36px);
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $primary-hover;
+      }
     }
 
-    .bottom-header {
-        border-top: 1px solid $clr014;
-        padding-block: 15px;
-        gap: 5px;
-
-        .new-item {
-            padding: 4px 8px;
-            margin-right: 3px;
-            background-color: $clr8;
-            color: white;
-            font-size: 14px;
-            width: max-content;
-            height: em(36px);
-            border-radius: 4px;
-            cursor: pointer;
-
-            &:hover {
-                background-color: $primary-hover;
-            }
-        }
-
-        .bottom-header-btn {
-            font-size: 14px;
-            color: #676879;
-            padding: 4px 8px;
-            height: em(34px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 4px;
-
-            .filter-input {
-                cursor: pointer;
-                background-color: unset;
-                padding-left: 5px;
-                width: 60px;
-                transition: background-color .1s cubic-bezier(0, 0, 0.35, 1), width .1s cubic-bezier(0, 0, 0.35, 1);
-                border: unset;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                &:focus {
-                    cursor: auto;
-                    width: 200px;
-                }
-                
-            }
-        }
+    .header-search {
+      border: none;
+      width: 50px;
+      background-color: inherit;
+      &:focus {
+        width: 170px;
+        outline: none;
+      }
+      &:hover {
+        background-color: inherit;
+      }
+    }
+    .search-div:focus-within {
+      border: 1px solid $clr8;
     }
 
-    .btn-hover {
-        border-radius: 4px;
+    .bottom-header-btn {
+      font-size: 14px;
+      color: #676879;
+      padding: 4px 8px;
+      height: em(34px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+
+      .filter-input {
         cursor: pointer;
-
-        &:hover {
-            background-color: $clr39;
+        background-color: unset;
+        padding-left: 5px;
+        width: 60px;
+        transition: background-color 0.1s cubic-bezier(0, 0, 0.35, 1),
+          width 0.1s cubic-bezier(0, 0, 0.35, 1);
+        border: unset;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        &:focus {
+          cursor: auto;
+          width: 200px;
         }
+      }
     }
+  }
+
+  .btn-hover {
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $clr39;
+    }
+  }
 }
