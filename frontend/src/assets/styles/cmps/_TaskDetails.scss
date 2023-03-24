@@ -50,7 +50,17 @@
     text-align: center;
   }
   .conversation-exit-btn {
+    height: em(24px);
+    width: em(24px);
     background-color: inherit;
     border: none;
+  }
+  .hover-btn {
+    cursor: pointer;
+    color:#777;
+    border-radius: 4px;
+    &:hover {
+      background-color: $clr014;
+    }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <section class="conversation-container">
     <div class="conversation-action-wrapper">
-      <button class="conversation-exit-btn">X</button>
+      <button class="conversation-exit-btn flex justify-center align-center hover-btn">X</button>
     </div>
     <div class="conversation-title">
       <h3>Item 1</h3>
@@ -18,11 +18,11 @@
     <input placeholder="Write an update..." />
     <section class="nav-btn flex space-between align-center">
       <div class="conversation-middle-nav">
-        <span>Add files</span> | <span>GIF</span> | <span>Emoji</span> |
-        <span>Mention</span> |
+       <span>Emoji</span> 
       </div>
       <button class="update-btn">Update</button>
     </section>
+    <section>
     <img
       src="https://cdn.monday.com/images/pulse-page-empty-state.svg"
       class="hands"
@@ -32,6 +32,7 @@
       Be the first one to update about progress, mention someone or upload files
       to share with your team members
     </p>
+    </section>
   </section>
 </template>
 
@@ -48,7 +49,27 @@ export default {
       return svgService.getSvg(iconName)
     },
   },
-  computed: {},
+  // watch: {
+  //   '$route.params': {
+  //     async handler() {
+  //       const { taskId } = this.$route.params
+  //       if(!taskId) return
+  //       try {
+  //         const task = await this.$store.dispatch({type:'getTaskById', taskId})
+
+  //       } catch(err) {
+  //         throw new Error(err)
+  //       }
+  //       // this.$store.dispatch({type:'loadReviews',filterBy:{toyId}})
+  //     },
+  //     immediate: true,
+  //   },
+  // }
+  computed: {
+    currTask() {
+      return this.$store.getters.currBoard.groups[0].tasks[0]
+    }
+  },
   created() {},
   components: {},
 }

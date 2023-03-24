@@ -129,11 +129,11 @@ function getEmptyBoard() {
             side: 'null',
             taskTitle: 'Task 1',
             person: [],
-            date: utilService.getRandomIntInclusive(1000, 9000),
+            date: '',
             status: 'Working on it',
             priority: 'High',
-            timeline: '',
-            file: '',
+            timeline: [],
+            files: [],
             text: '',
           },
           {
@@ -147,11 +147,11 @@ function getEmptyBoard() {
                 url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512',
               },
             ],
-            date: utilService.getRandomIntInclusive(1000, 9000),
+            date: '',
             status: 'Done',
             priority: 'Critical',
-            timeline: '',
-            file: '',
+            timeline: [],
+            files: [],
             text: '',
           },
           {
@@ -165,11 +165,11 @@ function getEmptyBoard() {
                 url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512',
               },
             ],
-            date: utilService.getRandomIntInclusive(1000, 9000),
+            date: '',
             status: 'Null',
             priority: 'High',
-            timeline: '',
-            file: '',
+            timeline: [],
+            files: [],
             text: '',
           },
         ],
@@ -184,11 +184,11 @@ function getEmptyBoard() {
             side: 'null',
             taskTitle: 'Task 1',
             person: [],
-            date: utilService.getRandomIntInclusive(1000, 9000),
+            date: '',
             status: 'Done',
             priority: 'Low',
-            timeline: 'late',
-            file: '11',
+            timeline: [],
+            files: [],
             text: 'Something',
           },
           {
@@ -202,11 +202,11 @@ function getEmptyBoard() {
                 url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512',
               },
             ],
-            date: utilService.getRandomIntInclusive(1000, 9000),
+            date: '',
             status: 'Working on it',
             priority: 'Medium',
-            timeline: 'late',
-            file: '11',
+            timeline: [],
+            files: [],
             text: 'Something',
           },
           {
@@ -220,11 +220,11 @@ function getEmptyBoard() {
                 url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512',
               },
             ],
-            date: utilService.getRandomIntInclusive(1000, 9000),
+            date: '',
             status: 'null',
             priority: 'Low',
-            timeline: 'late',
-            file: '11',
+            timeline: [],
+            files: [],
             text: 'Something',
           },
         ],
@@ -240,7 +240,7 @@ function getEmptyTask() {
     date: '',
     status: '',
     priority: '',
-    timeline: '',
+    timeline: [],
     files: '',
     text: '',
   }
@@ -278,6 +278,9 @@ function getEmptyTask() {
 //                             file: '11',
 //                             text: '',
 //                             isSelected: false
+//                             timeline: [],
+//                             file: [],
+//                             text: ''
 //                         },
 //                         {
 //                             id: "t102",
@@ -293,6 +296,9 @@ function getEmptyTask() {
 //                             file: '11',
 //                             text: '',
 //                             isSelected: false
+//                             timeline: [],
+//                             file: [],
+//                             text: ''
 //                         },
 //                         {
 //                             id: "t103",
@@ -309,6 +315,9 @@ function getEmptyTask() {
 //                             file: '11',
 //                             text: '',
 //                             isSelected: false
+//                             timeline: [],
+//                             file: [],
+//                             text: ''
 //                         },
 //                     ],
 //                 },
@@ -333,6 +342,9 @@ function getEmptyTask() {
 //                             file: '11',
 //                             text: '',
 //                             isSelected: false
+//                             timeline: [],
+//                             file: [],
+//                             text: ''
 //                         },
 //                         {
 //                             id: "t102",
@@ -348,6 +360,9 @@ function getEmptyTask() {
 //                             file: '11',
 //                             text: '',
 //                             isSelected: false
+//                             timeline: [],
+//                             file: [],
+//                             text: ''
 //                         },
 //                         {
 //                             id: "t103",
@@ -364,6 +379,9 @@ function getEmptyTask() {
 //                             file: '11',
 //                             text: '',
 //                             isSelected: false
+//                             timeline: [],
+//                             file: [],
+//                             text: ''
 //                         },
 //                     ],
 //                 }
