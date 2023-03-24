@@ -103,7 +103,7 @@ export default {
     eventBus.on("removeSelected", (groupId) => {
       if (groupId === this.group._id) {
         this.isSelected = false;
-        this.$emit("addSelected", this.task);
+        this.$emit("removeSelected", this.task);
       }
     });
   },
