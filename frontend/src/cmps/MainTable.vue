@@ -1,10 +1,11 @@
 <template>
   <Container v-if="currBoard" class="main-table" orientation="vertical" @drop="onGroupDrop($event)">
     <Draggable class="group-container" v-for="group in currBoard.groups" :key="group">
-      <GroupPreview :group="group" :labelsOrder="labelsOrder" @labelDrop="labelDrop"></GroupPreview>
+      <GroupPreview :group="group" :labelsOrder="labelsOrder" @labelDrop="labelDrop"
+      @addSelected="addSelected" @removeSelected="removeSelected"></GroupPreview>
       <RouterView />
     </Draggable>
-    <Menu />
+    <Menu v-if="isSelected > 0" :selectedTasks="selectedTasks"/>
   </Container>
 </template>
 
@@ -29,6 +30,7 @@ export default {
         "Status",
         "Timeline",
       ],
+      selectedTasks: {}
     };
   },
   methods: {
@@ -44,17 +46,23 @@ export default {
       scene = utilService.applyDrag(scene, dropResult);
       this.labelsOrder = scene;
     },
+    addSelected({group , task}) {
+      if(!this.selectedTasks[group._id]) this.selectedTasks[group._id] = []
+      this.selectedTasks[group._id].push(task)
+    },
+    removeSelected({group , taskId}) {
+      const taskIdx = this.selectedTasks[group._id].findIndex(t => t.id === taskId)
+      this.selectedTasks[group._id].splice(taskIdx , 1)
+      if(this.selectedTasks[group._id].length === 0)  delete this.selectedTasks[group._id]
+    }
   },
   computed: {
     currBoard() {
       return JSON.parse(JSON.stringify(this.$store.getters.currBoard))
     },
-    // selected() {
-    //   const length = this.currBoard.groups.filter((g) => g.tasks.filter((t) => t.isSelected))
-    //     .length;
-    //     console.log('length', length)
-    //     return length
-    // },
+    isSelected() {
+      return Object.keys(this.selectedTasks).length
+    }
   },
   components: {
     GroupPreview,

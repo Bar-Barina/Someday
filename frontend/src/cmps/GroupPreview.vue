@@ -96,6 +96,8 @@
           :group="group"
           @saveTask="saveGroup"
           @remove="remove"
+          @addSelected="addSelected"
+          @removeSelected="removeSelected"
         />
       </Draggable>
       <AddTask :group="group" @addTask="saveGroup" />
@@ -118,7 +120,7 @@ import { showErrorMsg } from "../services/event-bus.service.js";
 import GroupCollapse from './GroupCollapse.vue';
 
 export default {
-  emits: ["labelDrop", "updateTask"],
+  emits: ["labelDrop", "updateTask" ,'addSelected' , 'removeSelected'],
   props: {
     group: Object,
     labelsOrder: Array,
@@ -200,6 +202,12 @@ export default {
         return this.board.groups.filter(g => g._id === groupId)[0].tasks[index]
       }
     },
+    addSelected(task) {
+      this.$emit('addSelected' , {group: this.group , task})
+    },
+    removeSelected(taskId) {
+      this.$emit('removeSelected' , {group: this.group , taskId})
+    }
   },
   computed: {
     isTitleFocused() {

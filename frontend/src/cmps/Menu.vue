@@ -1,7 +1,9 @@
 <template>
   <div class="menu-component-wrapper flex justify-center">
     <div class="actions flex">
-      <div class="num flex justify-center align-center">{{ tasksSelected }}</div>
+      <div class="num flex justify-center align-center">
+        {{ tasksCount }}
+      </div>
       <div class="action-title flex justify-center column">
         <div class="title">Tasks selected</div>
       </div>
@@ -23,24 +25,24 @@
 <script>
 export default {
   props: {
+    selectedTasks: Object,
   },
   data() {
-    return {
-    };
+    return {};
   },
-  created() {
-  },
-  copmuted: {
+  created() {},
+  computed: {
     currBoard() {
-      return this.$store.getters.currBoard
+      return this.$store.getters.currBoard;
     },
-    tasksSelected() {
-      const tasks = this.currBoard.groups.map(group => {
-        return group.tasks.filter(t => t.isSelected)
-      }) 
-      const combinedTasks = [...tasks[0], ...tasks[1]]
-      console.log('combinedTasks',combinedTasks )
-      return combinedTasks
+    tasksCount() {
+      const tasksCount = Object.keys(this.selectedTasks).reduce((acc, key) => {
+        if (Array.isArray(this.selectedTasks[key])) {
+          return acc + this.selectedTasks[key].length;
+        }
+        return acc;
+      }, 0);
+      return tasksCount
     },
   },
 };
