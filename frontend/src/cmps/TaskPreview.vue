@@ -1,6 +1,6 @@
 <template>
 <div @click="toggleEdit" class="align-center more-task sticky flex justify-center">
-  <div class="more" v-html="getSvg('Dots')"></div>
+  <div class="more flex justify-center align-center" v-html="getSvg('Dots')"></div>
   </div>
   <EditMenu v-if="isEditOpen" :groupId="group._id" :taskId="task.id" @remove="removeTask"/>
   <div class="task-border sticky" :style="{ 'background-color': group.color }"></div>
