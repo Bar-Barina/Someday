@@ -1,0 +1,53 @@
+.filter-container {
+  width: 522px;
+  height: fit-content;
+  position: absolute;
+  top: 180px;
+  z-index: 150;
+  margin-left: 40px;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
+  background-color: $clr2;
+  .filter-div {
+    background-color: $clr42;
+    padding: 5px 10px;
+    border-radius: 4px;
+    height: 34px;
+    gap: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    .filter-member-img {
+      width: 25px;
+      border-radius: 50%;
+    }
+    .filter-status-clr {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+  }
+  .filter-title {
+    padding: 18px;
+    align-items: baseline;
+    span {
+      color: $clr3;
+      font-size: 16px;
+    }
+    .filter-task-count {
+      font-size: 14px;
+      margin-left: 10px;
+      color: $clr43;
+    }
+  }
+  .filter-recent-title {
+    padding: 0px 18px;
+    color: $clr3;
+  }
+}
+.filter-list-container {
+  article {
+    padding: 18px;
+    width: 100%;
+    height: fit-content;
+    gap: 6px;
+  }
+}

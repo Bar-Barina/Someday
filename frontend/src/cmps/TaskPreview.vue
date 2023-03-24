@@ -75,7 +75,7 @@ import Text from "./dynamicCmps/TextArea.vue";
 import Files from "./dynamicCmps/FilesPicker.vue";
 
 export default {
-  emits: ["saveTask", "remove"],
+  emits: ["saveTask", "remove" , 'addSelected' , 'removeSelected'],
   props: {
     labels: Array,
     task: Object,
@@ -115,9 +115,9 @@ export default {
     },
     selectTask() {
       if(this.$refs.checkbox.checked) {
-        this.$emit('addSelected' , task)
+        this.$emit('addSelected' , this.task)
       } else {
-        this.$emit('removeSelected' , task.id)
+        this.$emit('removeSelected' , this.task.id)
       }
     },
   },
