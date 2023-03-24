@@ -25,7 +25,7 @@
         class="color-icon span-color"
         v-show="titleFocus"
         :style="{ 'background-color': group.color }"
-        @click="!showColorPicker"
+        @click.stop="!showColorPicker"
       ></button>
       <div
         class="title-input editable-div"
