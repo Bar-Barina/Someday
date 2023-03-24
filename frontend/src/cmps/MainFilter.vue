@@ -10,9 +10,10 @@
       <article class="filter-members flex column">
         <p>Members</p>
         <div
-          v-for="(member, idx) in members"
+          v-for="(member, idx) in currBoard.members"
           :key="idx"
           class="filter-div flex align-center"
+          @click="filterTasksByMember(member)"
         >
           <img :src="member.url" class="filter-member-img" />
           <span>{{ member.name }}</span>
@@ -57,6 +58,7 @@ export default {
   name: 'mainFilter',
   data() {
     return {
+      selectedMember: null,
       statusLabels: [
         { name: 'Done', class: 'status-done', color: '#00c875' },
         { name: 'Working', class: 'status-working', color: '#fdab3d' },
@@ -72,10 +74,29 @@ export default {
       ],
     }
   },
-  methods: {},
+  methods: {
+    filterTasksByMember(member) {
+      console.log(member)
+      const board = JSON.parse(JSON.stringify(this.currBoard))
+      const filtered = board.groups.filter((group) =>
+        group.tasks.filter((task) => {
+          return task.person.some((p) => p.name === member.name)
+        })
+      )
+      console.log(filtered)
+      //   console.log('member from filter', member)
+      //   const groupsIds = Object.keys(board.groups)
+      //   console.log('tasks from filter', tasks)
+      //   const filteredTasks = tasks.filter((task) => {
+      //     return task.person.some((p) => p.name === member.name)
+      //   })
+      //   console.log('filteredTasks from filter', filteredTasks)
+      //   this.$store.dispatch('filterTasks', filteredTasks)
+    },
+  },
   computed: {
-    members() {
-      return this.$store.getters.currBoard.members
+    currBoard() {
+      return this.$store.getters.currBoard
     },
   },
   created() {},
