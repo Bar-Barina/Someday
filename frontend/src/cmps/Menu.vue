@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import { eventBus } from '../services/event-bus.service';
 export default {
   props: {
     selectedTasks: Object,
@@ -61,6 +62,7 @@ export default {
     },
     clearSelected() {
       this.$emit('clearSelected')
+      eventBus.emit('clearChecked')
     }
   }
 };

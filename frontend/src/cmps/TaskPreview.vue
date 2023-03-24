@@ -22,7 +22,7 @@
     <input
       type="checkbox"
       ref="checkbox"
-      :checked="task.isSelected"
+      :checked="isChecked"
       @change="selectTask"
     />
   </div>
@@ -73,6 +73,7 @@ import Date from "./dynamicCmps/DatePicker.vue";
 import Person from "./dynamicCmps/PersonPicker.vue";
 import Text from "./dynamicCmps/TextArea.vue";
 import Files from "./dynamicCmps/FilesPicker.vue";
+import { eventBus } from '../services/event-bus.service';
 
 export default {
   emits: ["saveTask", "remove" , 'addSelected' , 'removeSelected'],
@@ -85,7 +86,14 @@ export default {
     return {
       isEditOpen: false,
       isActive: false,
+      isSelected: false
     };
+  },
+  created() {
+    eventBus.on('clearChecked' , () => {
+      console.log('clearing')
+      this.isSelected = false
+      })
   },
   methods: {
     getSvg(iconName) {
@@ -115,8 +123,10 @@ export default {
     },
     selectTask() {
       if(this.$refs.checkbox.checked) {
+        this.task.isSelected = true
         this.$emit('addSelected' , this.task)
       } else {
+        this.task.isSelected = false
         this.$emit('removeSelected' , this.task.id)
       }
     },
@@ -127,6 +137,9 @@ export default {
     },
     currBoard() {
       return this.$store.getters.currBoard
+    },
+    isChecked() {
+      return this.isSelected
     }
   },
   components: {
