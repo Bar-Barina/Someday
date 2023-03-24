@@ -100,7 +100,7 @@
         />
       </Draggable>
       <AddTask :group="group" @addTask="saveGroup" />
-      <ProgressBar :labelsOrder="labelsOrder" />
+      <ProgressBar :labelsOrder="labelsOrder" :group="group" />
     </Container>
   </section>
   <GroupCollapse
