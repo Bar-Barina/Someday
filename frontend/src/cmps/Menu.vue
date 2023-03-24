@@ -1,16 +1,18 @@
 <template>
   <div class="menu-component-wrapper flex justify-center">
     <div class="actions flex">
-      <div class="num flex justify-center align-center">1</div>
+      <div class="num flex justify-center align-center">
+        {{ tasksCount }}
+      </div>
       <div class="action-title flex justify-center column">
         <div class="title">Tasks selected</div>
       </div>
       <div class="duplicate-wrapper item flex column align-center">
-        <span v-icon="'duplicate'"></span>
+        <span v-icon="'duplicate'" class="icon"></span>
         <span>Duplicate</span>
       </div>
       <div class="trash-wrapper item flex column align-center">
-        <span v-icon="'menuTrash'"></span>
+        <span v-icon="'menuTrash'" class="icon"></span>
         <span>Delete</span>
       </div>
       <div class="action-delete flex justify-center align-center">
@@ -22,22 +24,26 @@
 
 <script>
 export default {
-  created() {
-    this.board = this.$store.getters.currBoard;
+  props: {
+    selectedTasks: Object,
   },
   data() {
-    return {
-      board: null,
-    };
+    return {};
   },
-  copmuted: {
+  created() {},
+  computed: {
     currBoard() {
       return this.$store.getters.currBoard;
     },
-    // selected() {
-    //   return this.board.groups.filter((g) => g.tasks.filter((t) => t.isSelected))
-    //     .length;
-    // },
+    tasksCount() {
+      const tasksCount = Object.keys(this.selectedTasks).reduce((acc, key) => {
+        if (Array.isArray(this.selectedTasks[key])) {
+          return acc + this.selectedTasks[key].length;
+        }
+        return acc;
+      }, 0);
+      return tasksCount
+    },
   },
 };
 </script>

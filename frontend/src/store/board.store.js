@@ -30,7 +30,8 @@ export function getActionAddBoardMsg(boardId) {
 export const boardStore = {
     state: {
         boards: [],
-        currBoard: null
+        currBoard: null,
+        currGroup: null,
     },
     getters: {
         boards({ boards }) { return boards },
@@ -59,6 +60,9 @@ export const boardStore = {
             if (!board.msgs) board.msgs = []
             board.msgs.push(msg)
         },
+        setCurrGroup(state, { group }) {
+            state.currGroup = group
+        }
     },
     actions: {
         async addBoard(context, { board }) {

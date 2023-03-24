@@ -75,7 +75,7 @@ import Text from "./dynamicCmps/TextArea.vue";
 import Files from "./dynamicCmps/FilesPicker.vue";
 
 export default {
-  emits: ["saveTask", "remove"],
+  emits: ["saveTask", "remove" , 'addSelected' , 'removeSelected'],
   props: {
     labels: Array,
     task: Object,
@@ -105,6 +105,7 @@ export default {
       this.$router.push(
         "/board/" + this.currBoardId + "/taskDetails/" + this.task.id
       );
+      this.$store.commit({type: 'setCurrGroup' , group: this.group})
     },
     toggleEdit() {
       this.isEditOpen = !this.isEditOpen;
@@ -113,17 +114,20 @@ export default {
       this.$emit("remove", toRemove);
     },
     selectTask() {
-      this.task.isSelected = this.$refs.checkbox.checked;
-      this.updateTask({
-        cmpType: "isSelected",
-        data: this.$refs.checkbox.checked,
-      });
+      if(this.$refs.checkbox.checked) {
+        this.$emit('addSelected' , this.task)
+      } else {
+        this.$emit('removeSelected' , this.task.id)
+      }
     },
   },
   computed: {
     currBoardId() {
       return this.$store.getters.currBoard._id;
     },
+    currBoard() {
+      return this.$store.getters.currBoard
+    }
   },
   components: {
     Draggable,
