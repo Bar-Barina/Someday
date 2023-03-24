@@ -35,7 +35,8 @@ export const boardStore = {
     },
     getters: {
         boards({ boards }) { return boards },
-        currBoard({ currBoard }) { return currBoard }
+        currBoard({ currBoard }) { return currBoard },
+        currGroup({ currGroup }) { return currGroup }
     },
     mutations: {
         setBoards(state, { boards }) {
@@ -125,6 +126,7 @@ export const boardStore = {
             try {
                 const board = await boardService.saveTask(currBoard, toUpdate.group, toUpdate.task)
                 commit({type: 'updateBoard' , board})
+                commit({type: 'setCurrGroup', group:toUpdate.group})
             } catch(err) {
                 throw new Error(err)
             }

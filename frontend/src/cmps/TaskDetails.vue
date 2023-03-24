@@ -1,5 +1,5 @@
 <template>
-  <section class="conversation-container">
+  <section v-if="task" class="conversation-container">
     <div class="conversation-action-wrapper">
       <RouterLink :to="`/board/${currBoard._id}`">
       <button class="conversation-exit-btn flex justify-center align-center btn-hover">
@@ -8,7 +8,7 @@
       </RouterLink>
     </div>
     <div class="conversation-title">
-      <div contenteditable="true" class="editable-div">{{ currTask.taskTitle }}</div>
+      <div contenteditable="true" class="editable-div" ref="taskTitle" @focusout="updateTaskTitle">{{ task.taskTitle }}</div>
       <div class="conversation-img-section flex align-center">
         <div class="img-container">
         <img src="../assets/img/profile-icon.png" class="conversation-img" /> 
@@ -70,37 +70,43 @@ export default {
   name: '',
   data() {
     return {
-      active:''
+      active:'',
+      task:null,
     }
   },
   methods: {
     getSvg(iconName) {
       return svgService.getSvg(iconName)
     },
-  },
-  // watch: {
-  //   '$route.params': {
-  //     async handler() {
-  //       const { taskId } = this.$route.params
-  //       if(!taskId) return
-  //       try {
-  //         const task = await this.$store.dispatch({type:'getTaskById', taskId})
-
-  //       } catch(err) {
-  //         throw new Error(err)
-  //       }
-  //       // this.$store.dispatch({type:'loadReviews',filterBy:{toyId}})
-  //     },
-  //     immediate: true,
-  //   },
-  // }
-  computed: {
-    currTask() {
-      return this.$store.getters.currBoard.groups[0].tasks[0]
+    updateTaskTitle() {
+      this.task.taskTitle = this.$refs.taskTitle.innerText
+      const group = JSON.parse(JSON.stringify(this.currGroup))
+      const taskIdx = group.tasks.findIndex(t=>t.id===this.task.id)
+      group.tasks.splice(taskIdx,1,this.task)
+      this.updateTask(group)
     },
+    updateTask(group) {
+      const toUpdate = {group, task:this.task}
+      this.$store.dispatch({type:'saveTask', toUpdate})
+    }
+  },
+  watch: {
+    '$route.params': {
+      async handler() {
+        const { taskId } = this.$route.params
+        if(!taskId) return
+          this.task =JSON.parse(JSON.stringify(this.currGroup.tasks.find(t=>t.id === taskId)))
+      },
+      immediate: true,
+    },
+  },
+  computed: {
     currBoard() {
       return this.$store.getters.currBoard
-    }
+    },
+    currGroup() {
+      return this.$store.getters.currGroup
+    },
   },
   created() {},
   components: {},
