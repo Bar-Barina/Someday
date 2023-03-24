@@ -52,7 +52,6 @@ export default {
   },
   methods: {
     changeDate() {
-      console.log("date", this.value);
       this.$emit("updateTask", { cmpType: "timeline", data: this.value });
     },
   },
@@ -89,6 +88,7 @@ export default {
       var diffInMs = todayDate.getTime() - date.getTime();
       var diffInDays = diffInMs / (1000 * 60 * 60 * 24);
       var precent = (diffInDays / this.dayDiff) * 100;
+      if(precent > 100) return 100
       return parseInt(precent);
     },
     borderRadiusEnd() {

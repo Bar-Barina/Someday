@@ -1,6 +1,6 @@
 <template>
   <div class="priority full-cell" :class="priorityClass" @click="toggleModal">
-    {{ priority }}
+    {{ priority }} <span v-if="priority==='Critical'" v-icon="'critical'" class="icon"></span>
     <TaskDropdown
     v-clickOutside="closeModal"
       v-if="showDropdown"
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import {icon} from '../../directives.js'
 import TaskDropdown from '../TaskDropdown.vue'
 import { defineComponent } from "vue";
 export default defineComponent ({
