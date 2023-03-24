@@ -7,8 +7,8 @@
   position: absolute;
   border: none;
   border-radius: 6px;
-  top: 50px;
-  right: 270px;
+  top: 70px;
+  right: 291.6px;
   z-index: 60;
   padding-left: 16px;
   padding-top: 8px;
@@ -18,7 +18,7 @@
     height: 32px;
     border: 1px solid rgb(163, 163, 163);
     border-radius: 3px;
-    margin-top:20px;
+    margin-top: 20px;
     margin-left: 1.8em;
   }
   .member {
@@ -26,7 +26,7 @@
     width: 100%;
     padding: 15px;
     &:hover {
-      background-color:$clr39;
+      background-color: $clr39;
       border-radius: 4px;
     }
     .member-img {
@@ -41,15 +41,14 @@
     height: 40px;
     width: 100%;
     padding: 15px;
-      p {
-        margin-left: 15px;
-      }
-      &:hover {
-        background-color:$clr39;
-        border-radius: 4px;
-      }
+    p {
+      margin-left: 15px;
+    }
+    &:hover {
+      background-color: $clr39;
+      border-radius: 4px;
+    }
   }
-
 }
 .onTask-person {
   font-size: 12px;
@@ -71,4 +70,15 @@
       font-size: 10px;
     }
   }
+}
+
+.arrow-up-div-person {
+  position: absolute;
+  height: 12px;
+  width: 12px;
+  background-color: $clr2;
+  top: -5px;
+  margin-left: 44%;
+  z-index: 52;
+  rotate: 45deg;
 }

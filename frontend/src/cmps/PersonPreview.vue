@@ -1,5 +1,6 @@
 <template>
   <section class="person-preview">
+    <div class="arrow-up-div-person"></div>
     <section class="onTask-person flex space-between">
       <div
         v-if="person"
