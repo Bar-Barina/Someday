@@ -2,7 +2,7 @@
   <!-- Group title section-->
   <section class="group-grid group-title flex align-center" v-if="!group.isCollapse">
     <div
-      class="more more-group sticky flex justify-center"
+      class="more more-group sticky flex justify-center align-center"
       @click="toggleEdit"
       v-html="getSvg('Dots')"
     ></div>
