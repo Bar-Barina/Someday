@@ -83,9 +83,7 @@ export default {
       var todayDate = new Date(Date.now());
       var diffInMs = todayDate.getTime() - date.getTime();
       var diffInDays = diffInMs / (1000 * 60 * 60 * 24);
-      console.log("daysInDiff", diffInDays);
       var precent = (diffInDays / this.dayDiff) * 100;
-      console.log("precent", precent);
       return parseInt(precent);
     },
     borderRadiusEnd() {

@@ -18,6 +18,7 @@ export default {
   name: 'person',
   props: {
     task: Object,
+    group: Object
   },
   data() {
     return {

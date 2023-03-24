@@ -1,0 +1,39 @@
+.collapsed-group {
+    &.group-grid {
+        grid-template-rows: 3.75rem;
+    }
+
+    padding-bottom: 20px;
+
+    >* {
+        padding-bottom: 8px;
+        padding-top: 4px;
+        border-top: 1px solid $clr014;
+        border-bottom: 1px solid $clr014;
+    }
+
+    .more {
+        background-color: #fff;
+        width: 100%;
+        left: 0;
+    }
+
+    .task-border {
+        left: 40px;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+    }
+
+    .arrow {
+        left: 46px;
+    }
+
+    .title-wrapper {
+        border-right: 1px solid $clr014;
+        flex-direction: column;
+
+        .title-input {
+            font-size: 18px;
+        }
+    }
+}

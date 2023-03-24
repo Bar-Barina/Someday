@@ -14,7 +14,8 @@ export default {
   name: 'Text', 
   emits:['updateTask'],
   props: {
-    task:Object
+    task:Object,
+    group: Object
   },
 components:{},
 created() {},

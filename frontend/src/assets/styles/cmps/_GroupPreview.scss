@@ -41,6 +41,20 @@
   .title-wrapper {
     left: 78px;
     background-color: #fff;
+
+    .title-input {
+      padding: 2px 4px;
+    }
+
+    .tasks-count {
+      opacity: 0;
+    }
+
+    &:hover {
+      .tasks-count {
+        opacity: 1;
+      }
+    }
   }
 
   .third {

@@ -19,6 +19,7 @@ export default defineComponent({
   emits: ['updateTask'],
   props: {
     task: Object,
+    group: Object
   },
   name: '',
   data() {
