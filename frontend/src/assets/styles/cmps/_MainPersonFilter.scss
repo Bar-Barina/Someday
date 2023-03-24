@@ -1,0 +1,22 @@
+.person-filter-container {
+  position: absolute;
+  gap: 20px;
+  z-index: 100;
+  border-radius: 8px;
+  background-color: $clr2;
+  color: var(--primary-text-color);
+  box-shadow: 0 4px 17px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin-top: 200px;
+  box-sizing: content-box;
+  width: 280px;
+  height: 120px;
+  .subiteams-title {
+    margin: 20px 0px;
+  }
+  img {
+    width: 30px;
+    margin-left: 15px;
+    border-radius: 50%;
+  }
+}

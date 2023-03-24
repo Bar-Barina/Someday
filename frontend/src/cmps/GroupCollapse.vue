@@ -15,8 +15,8 @@
         </div>
         <div class="tasks-count">{{ tasksCount}} tasks</div>
     </div>
-    <component v-for="(label , idx) in labelsOrder" :key="idx" :is="`${label}Progress`"></component>
-    <!-- <ProgressBar :labelsOrder="labelsOrder"/> -->
+    
+    <component v-for="(label , idx) in labelsOrder" :key="idx" :is="`${label}Progress`" :group="group" :label="label" :cmp="'collapse'"></component>
   </section>
 </template>
 

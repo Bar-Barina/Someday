@@ -1,11 +1,29 @@
 <template>
-  <Container v-if="currBoard" class="main-table" orientation="vertical" @drop="onGroupDrop($event)">
-    <Draggable class="group-container" v-for="group in currBoard.groups" :key="group">
-      <GroupPreview :group="group" :labelsOrder="labelsOrder" @labelDrop="labelDrop"
-      @addSelected="addSelected" @removeSelected="removeSelected"></GroupPreview>
+  <Container
+    v-if="currBoard"
+    class="main-table"
+    orientation="vertical"
+    @drop="onGroupDrop($event)"
+  >
+    <Draggable
+      class="group-container"
+      v-for="group in currBoard.groups"
+      :key="group"
+    >
+      <GroupPreview
+        :group="group"
+        :labelsOrder="labelsOrder"
+        @labelDrop="labelDrop"
+        @addSelected="addSelected"
+        @removeSelected="removeSelected"
+      ></GroupPreview>
       <RouterView />
     </Draggable>
-    <Menu v-if="isSelected > 0" :selectedTasks="selectedTasks" @clearSelected="clearSelected"/>
+    <Menu
+      v-if="isSelected > 0"
+      :selectedTasks="selectedTasks"
+      @clearSelected="clearSelected"
+    />
   </Container>
 </template>
 
@@ -30,8 +48,9 @@ export default {
         'Status',
         'Timeline',
       ],
-      selectedTasks: {}
-    };
+      selectedTasks: {},
+      newBoard: this.currBoard,
+    }
   },
   methods: {
     onGroupDrop(dropResult) {
@@ -46,19 +65,21 @@ export default {
       scene = utilService.applyDrag(scene, dropResult)
       this.labelsOrder = scene
     },
-    addSelected({group , task}) {
-      if(!this.selectedTasks[group._id]) this.selectedTasks[group._id] = []
+    addSelected({ group, task }) {
+      if (!this.selectedTasks[group._id]) this.selectedTasks[group._id] = []
       this.selectedTasks[group._id].push(task)
-      console.log('this.selectedTask', this.selectedTasks)
     },
-    removeSelected({group , taskId}) {
-      const taskIdx = this.selectedTasks[group._id].findIndex(t => t.id === taskId)
-      this.selectedTasks[group._id].splice(taskIdx , 1)
-      if(this.selectedTasks[group._id].length === 0)  delete this.selectedTasks[group._id]
+    removeSelected({ group, taskId }) {
+      const taskIdx = this.selectedTasks[group._id].findIndex(
+        (t) => t.id === taskId
+      )
+      this.selectedTasks[group._id].splice(taskIdx, 1)
+      if (this.selectedTasks[group._id].length === 0)
+        delete this.selectedTasks[group._id]
     },
     clearSelected() {
       this.selectedTasks = {}
-    }
+    },
   },
   computed: {
     currBoard() {
@@ -66,7 +87,7 @@ export default {
     },
     isSelected() {
       return Object.keys(this.selectedTasks).length
-    }
+    },
   },
   components: {
     GroupPreview,
