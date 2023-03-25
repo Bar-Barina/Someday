@@ -1,7 +1,16 @@
 .task-row {
 
     &.active-row {
-        >* {
+
+        .third {
+            background-color: rgb(204, 229, 255);
+        }
+
+        .task-title {
+            background-color: rgb(204, 229, 255);
+        }
+        
+        > * {
             background-color: rgb(204, 229, 255);
         }
     }
