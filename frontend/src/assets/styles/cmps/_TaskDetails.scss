@@ -125,6 +125,7 @@
   }
   .conversation-middle-nav {
     .middle-nav-btn {
+      position: relative;
       padding: 4px 10px;
       height: em(36px);
       gap:3px;
@@ -159,7 +160,7 @@
     position: absolute;
     height: 400px;
     width: 300px;
-    top: 295px;
+    top: 250px;
     right: 30px;
     z-index: 10;
   }
