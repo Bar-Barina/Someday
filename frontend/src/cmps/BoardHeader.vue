@@ -2,19 +2,18 @@
   <section class="board-header" v-if="currBoard">
     <section class="up-header flex align-center space-between">
       <section class="board-name flex align-center justify-center">
-        <h1
+        <h1 v-tippy="{ content:'Click to edit', theme : 'classic', placement: 'bottom', arrow: true }"
           class="title editable-div"
           contenteditable="true"
           ref="boardTitle"
-          @focusout="updateBoard"
-        >
+          @focusout="updateBoard">
           {{ currBoard.title }}
         </h1>
-        <div class="icon btn-hover">
+        <div v-tippy="{ content:'Show board description', theme : 'classic', placement: 'top', arrow: true }" class="icon btn-hover">
           <!-- <div className="icon" v-html="getSvg('descrip')"></div> -->
           <span v-icon="'descrip'" className="icon"></span>
         </div>
-        <div class="icon btn-hover">
+        <div v-tippy="{ content:'Add to favorites', theme : 'classic', placement: 'top', arrow: true }" class="icon btn-hover">
           <div className="icon" v-html="getSvg('headerStar')"></div>
         </div>
       </section>
@@ -46,7 +45,7 @@
     </div>
     <section class="board-view-change flex align-center">
       <div :class="{ active: active === '' }" class="view-option-container">
-        <div
+        <div v-tippy="{ content:'Main Table', theme : 'classic', placement: 'top', arrow: true }"
           class="view-option flex align-center btn-hover"
           @click="switchBoardView('')"
         >
@@ -59,14 +58,14 @@
         class="view-option-container"
         @click="switchBoardView('kanban')"
       >
-        <div class="view-option flex align-center btn-hover">Kanban</div>
+        <div v-tippy="{ content:'Kanban', theme : 'classic', placement: 'top', arrow: true }" class="view-option flex align-center btn-hover">Kanban</div>
       </div>
       <div
         :class="{ active: active === 'dashboard' }"
         class="view-option-container"
         @click="switchBoardView('dashboard')"
       >
-        <div class="view-option flex align-center btn-hover">Dashboard</div>
+        <div v-tippy="{ content:'Dashboard', theme : 'classic', placement: 'top', arrow: true }" class="view-option flex align-center btn-hover">Dashboard</div>
       </div>
     </section>
     <section class="bottom-header flex align-center">
@@ -85,15 +84,15 @@
           v-model="searchQuery"
         />
       </div>
-      <div class="bottom-header-btn btn-hover" @click="togglePersonModal">
-        <div
+      <div v-tippy="{ content:'Filter by person', theme : 'classic', placement: 'top', arrow: true }" class="bottom-header-btn btn-hover" @click="togglePersonModal">
+        <div 
           class="flex justify-center align-center"
           v-html="getSvg('headerPerson')"
         ></div>
         <MainPersonFilter v-if="showPersonFilter" v-clickOutside="closeModal" />
         Person
       </div>
-      <div class="bottom-header-btn btn-hover" @click="toggleFilterModal">
+      <div v-tippy="{ content:'Filter by anything', theme : 'classic', placement: 'top', arrow: true }" class="bottom-header-btn btn-hover" @click="toggleFilterModal">
         <div
           class="flex justify-center align-center"
           v-html="getSvg('filter')"
@@ -101,14 +100,14 @@
         <MainFilter v-if="showFilter" v-clickOutside="closeModal" />
         Filter
       </div>
-      <div class="bottom-header-btn btn-hover">
+      <div v-tippy="{ content:'Sort by any column', theme : 'classic', placement: 'top', arrow: true }" class="bottom-header-btn btn-hover">
         <div
           class="flex justify-center align-center"
           v-html="getSvg('sort')"
         ></div>
         Sort
       </div>
-      <div class="bottom-header-btn btn-hover">
+      <div v-tippy="{ content:'Hidden columns', theme : 'classic', placement: 'top', arrow: true }" class="bottom-header-btn btn-hover">
         <div
           class="flex justify-center align-center"
           v-html="getSvg('hide')"

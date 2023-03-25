@@ -1,6 +1,15 @@
 <template>
   <section class="workspace" :class="{ 'is-open': isWorkspaceOpen }">
-    <button class="workspace-open-btn" @click="openWorkspace">
+    <button
+      v-tippy="{
+        content: isWorkspaceOpen ? 'Close navigation' : 'Open navigation',
+        theme: 'classic',
+        placement: 'right',
+        arrow: true,
+      }"
+      class="workspace-open-btn"
+      @click="openWorkspace"
+    >
       <span
         v-html="getSvg('arrowLeft')"
         class="workspace-icon arrowLeft"
@@ -52,10 +61,12 @@
         >
           <span v-html="getSvg('board')" class="workspace-icon"></span>
           <span>{{ board.title }}</span>
-        <span v-html="getSvg('Dots')" class="workspace-icon dots"
-        @click.stop="removeBoard(board._id)"></span>
-     
-      </div>
+          <span
+            v-html="getSvg('Dots')"
+            class="workspace-icon dots"
+            @click.stop="removeBoard(board._id)"
+          ></span>
+        </div>
       </section>
     </section>
   </section>
@@ -88,9 +99,9 @@ export default {
       this.$store.dispatch({ type: 'removeBoard', boardId })
     },
     moveToBoard(board, idx) {
-      this.$store.commit({type: 'setCurrBoard' , board})
+      this.$store.commit({ type: 'setCurrBoard', board })
       this.$router.push(`${board._id}`)
-      this.selectedBoard = idx;
+      this.selectedBoard = idx
     },
   },
   computed: {

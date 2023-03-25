@@ -14,7 +14,12 @@
       class="task-border sticky"
       :style="{ 'background-color': group.color }"
     ></div>
-    <div
+    <div v-tippy="{
+        content: 'Collapse group',
+        theme: 'classic',
+        placement: 'top',
+        arrow: true,
+      }"
       @click="collapse(true)"
       class="arrow-down sticky"
       v-html="getSvg('arrowDownB')"
@@ -27,7 +32,7 @@
         :style="{ 'background-color': group.color }"
         @click.stop="!showColorPicker"
       ></button>
-      <div
+      <div v-tippy="{ content:'Click to edit', theme : 'classic', placement: 'top', arrow: true }"
         class="title-input editable-div"
         contenteditable="true"
         ref="groupTitle"

@@ -38,14 +38,14 @@
       >
         <span>{{ task.taskTitle }}</span>
       </div>
-      <span @click="openCon" class="open-con flex align-center space-between">
+      <span @click="openCon" v-tippy="{ content:'Open task page', theme : 'classic', placement: 'top', arrow: true }" class="open-con flex align-center space-between">
         <button class="svg">
           <div className="icon" v-html="getSvg('openCon')"></div>
         </button>
         open
       </span>
     </div>
-    <div class="conversation-wrapper flex align-center justify-center">
+    <div v-tippy="{ content:'Start conversation', theme : 'classic', placement: 'top', arrow: true }" class="conversation-wrapper flex align-center justify-center">
       <button v-if="task.msgs.length === 0" @click="openCon" class="svg">
         <div v-html="getSvg('con')"></div>
       </button>

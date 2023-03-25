@@ -6,7 +6,12 @@
     <div class="task-border sticky" :style="{ 'background-color': group.color }"></div>
     <div @click="collapse" class="arrow sticky flex justify-center" :style="{ fill : group.color }">
         <div></div>
-        <span v-icon="'arrowRightG'"></span>
+        <span v-tippy="{
+        content: 'Expand group',
+        theme: 'classic',
+        placement: 'top',
+        arrow: true,
+      }" v-icon="'arrowRightG'"></span>
     </div>
     <div class="title-wrapper sticky flex">
         <button class="color-icon" :style="{'background-color': group.color}" v-if="false"></button>
