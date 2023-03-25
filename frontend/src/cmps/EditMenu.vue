@@ -11,7 +11,7 @@
 import { svgService } from '../services/svg.service'
 
 export default {
-  emits: ['remove'],
+  emits: ['remove','removeBoard'],
   props: {
     taskId: String,
     groupId: String,
@@ -34,6 +34,12 @@ export default {
         const toRemove = { groupId: this.groupId, taskId: this.taskId }
         this.$emit('remove', toRemove)
       }
+      this.$emit('removeBoard', this.currBoard._id)
+    },
+  },
+  computed: {
+    currBoard() {
+      return this.$store.getters.currBoard
     },
   },
 }

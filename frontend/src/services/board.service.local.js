@@ -14,7 +14,7 @@ export const boardService = {
   saveTask,
   getEmptyTask,
   removeItem,
-  filterBoard
+  filterBoard,
 }
 window.cs = boardService
 
@@ -50,7 +50,7 @@ async function save(board) {
   return savedBoard
 }
 
-function filterBoard(board,filterBy) {
+function filterBoard(board, filterBy) {
   const filteredBoard = board
   const regex = new RegExp(filterBy.txt, 'i')
   filteredBoard.groups = filteredBoard.groups
@@ -62,18 +62,18 @@ function filterBoard(board,filterBy) {
     })
     .filter((group) => group.tasks.length > 0)
 
-filteredBoard.groups = filteredBoard.groups.filter(group=>{
-  return group.tasks = group.tasks.filter(task=>{
-    return filterBy.activeFilters.some(label=> {
-      if(task.status===label) return true
-      if(task.priority===label) return true
-      if(task.person.some(p=>p.name===label)) return true
-      return false
-    })
+  filteredBoard.groups = filteredBoard.groups.filter((group) => {
+    return (group.tasks = group.tasks.filter((task) => {
+      return filterBy.activeFilters.some((label) => {
+        if (task.status === label) return true
+        if (task.priority === label) return true
+        if (task.person.some((p) => p.name === label)) return true
+        return false
+      })
+    }))
+    return group.tasks.length > 0
   })
-  return group.tasks.length > 0
-})
-return filteredBoard
+  return filteredBoard
 }
 
 async function addBoardMsg(boardId, txt) {
@@ -162,7 +162,7 @@ function getEmptyBoard() {
             timeline: [],
             files: [],
             text: '',
-            msgs:[]
+            msgs: [],
           },
           {
             id: 't102',
@@ -181,7 +181,7 @@ function getEmptyBoard() {
             timeline: [],
             files: [],
             text: '',
-            msgs:[]
+            msgs: [],
           },
           {
             id: 't102',
@@ -200,7 +200,7 @@ function getEmptyBoard() {
             timeline: [],
             files: [],
             text: '',
-            msgs:[]
+            msgs: [],
           },
         ],
       },
@@ -220,7 +220,7 @@ function getEmptyBoard() {
             timeline: [],
             files: [],
             text: '',
-            msgs:[]
+            msgs: [],
           },
           {
             id: 't102',
@@ -239,7 +239,7 @@ function getEmptyBoard() {
             timeline: [],
             files: [],
             text: '',
-            msgs:[]
+            msgs: [],
           },
           {
             id: 't102',
@@ -258,7 +258,7 @@ function getEmptyBoard() {
             timeline: [],
             files: [],
             text: '',
-            msgs:[]
+            msgs: [],
           },
         ],
       },
@@ -276,7 +276,7 @@ function getEmptyTask() {
     timeline: [],
     files: '',
     text: '',
-    msgs:[]
+    msgs: [],
   }
 }
 
