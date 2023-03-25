@@ -1,3 +1,7 @@
+.priority {
+  position: relative;
+}
+
 .priority-critical {
   background-color: $clr34;
   &:hover {

@@ -1,3 +1,7 @@
+.status {
+  position: relative;
+}
+
 .status-working {
   background-color: $clr10;
   &:hover {

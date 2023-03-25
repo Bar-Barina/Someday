@@ -9,6 +9,7 @@
     v-if="isOpen"
     :person="task.person"
     @updatePerson="updatePerson"
+    @removeMember="removePerson"
   />
 </template>
 
@@ -29,11 +30,12 @@ export default {
   },
   methods: {
     updatePerson(person) {
-      console.log('from personPicker',person)
-      console.log('before',this.taskPersons)
       this.task.person.push(person)
-      console.log('after',this.taskPersons)
       this.$emit('updateTask', { cmpType: 'person', data: this.task.person })
+    },
+    removePerson(idx) {
+      this.task.person.splice(idx , 1)
+      this.$emit('updateTask' , {cmpType: 'person' , data: this.task.person})
     },
     closeModal() {
       this.isOpen = false

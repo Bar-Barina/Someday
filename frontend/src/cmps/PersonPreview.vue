@@ -11,7 +11,7 @@
           <img :src="p.url" alt="person-img" class="person-img" />
           <span class="person-name">{{ p.name }}</span>
         </div>
-        <button @click.stop="updateMember(idx)">X</button>
+        <button @click.stop="removeMember(idx)">X</button>
       </div>
     </section>
     <input
@@ -70,17 +70,10 @@ export default {
   },
   methods: {
     updatePerson(member) {
-      // console.log('personPreview member' ,member)
-      // console.log('persons',this.person.length)
-      // console.log('members',this.members.length)
-      if (this.person.length < this.members.length) return
-      this.$emit('updatePerson', { ...member })
+      this.$emit('updatePerson', member)
     },
-    updateMember(idx) {
-      console.log('before this.person from personPreview', this.person)
-      console.log('idx from personPreview',idx)
-      this.person.splice(idx, 1)
-      console.log('after this.person from personPreview', this.person)
+    removeMember(idx) {
+      this.$emit('removeMember' , idx)
     },
     getSvg(iconName) {
       return svgService.getSvg(iconName)
