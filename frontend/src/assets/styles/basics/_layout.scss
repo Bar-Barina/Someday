@@ -9,7 +9,7 @@
 
 .group-grid {
     display: grid !important;
-    grid-template-columns: 40px 6px 32px 364px repeat(7,140px);
+    grid-template-columns: 40px 6px 32px 364px repeat(7,140px); //TODO 1 more cell
     grid-template-rows: 2.25rem;
     grid-auto-flow: column;
 

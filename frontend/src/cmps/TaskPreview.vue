@@ -1,69 +1,88 @@
 <template>
-<section class="group-grid task-row" :class="{'active-row': isSelected}">
-  <div
-    @click="toggleEdit"
-    class="align-center more-task sticky flex justify-center"
-  >
+  <section class="group-grid task-row" :class="{ 'active-row': isSelected }">
     <div
-      class="more flex justify-center align-center"
-      v-html="getSvg('Dots')"
-    ></div>
-  </div>
-  <EditMenu
-    v-if="isEditOpen"
-    :groupId="group._id"
-    :taskId="task.id"
-    @remove="removeTask"
-  />
-  <div
-    class="task-border sticky"
-    :style="{ 'background-color': group.color }"
-  ></div>
-  <div class="flex sticky align-center cell1 flex-justify third">
-    <input
-      type="checkbox"
-      ref="checkbox"
-      :checked="isChecked"
-      @change="selectTask"
-    />
-  </div>
-  <section class="task-title cell1 sticky flex align-center space-between">
-    <div class="task-title-sub flex align-center space-between">
+      @click="toggleEdit"
+      class="align-center more-task sticky flex justify-center"
+    >
       <div
-        class="flex align-center content-edit editable-div"
-        @click="isActive = true"
-        contenteditable="true"
-        :class="{ active: isActive }"
-        ref="taskTitle"
-        @focusout="updateTask"
-      >
-        <span>{{ task.taskTitle }}</span>
+        class="more flex justify-center align-center"
+        v-html="getSvg('Dots')"
+      ></div>
+    </div>
+    <EditMenu
+      v-clickOutside="toggleEdit"
+      v-if="isEditOpen"
+      :groupId="group._id"
+      :taskId="task.id"
+      @remove="removeTask"
+    />
+    <div
+      class="task-border sticky"
+      :style="{ 'background-color': group.color }"
+    ></div>
+    <div class="flex sticky align-center cell1 flex-justify third">
+      <input
+        type="checkbox"
+        ref="checkbox"
+        :checked="isChecked"
+        @change="selectTask"
+      />
+    </div>
+    <section class="task-title cell1 sticky flex align-center space-between">
+      <div class="task-title-sub flex align-center space-between">
+        <div
+          class="flex align-center content-edit editable-div"
+          @click="isActive = true"
+          contenteditable="true"
+          :class="{ active: isActive }"
+          ref="taskTitle"
+          @focusout="updateTask"
+        >
+          <span>{{ task.taskTitle }}</span>
+        </div>
+        <span
+          @click="openCon"
+          v-tippy="{
+            content: 'Open task page',
+            theme: 'classic',
+            placement: 'top',
+            arrow: true,
+          }"
+          class="open-con flex align-center space-between"
+        >
+          <button class="svg">
+            <div className="icon" v-html="getSvg('openCon')"></div>
+          </button>
+          Open
+        </span>
       </div>
-      <span @click="openCon" v-tippy="{ content:'Open task page', theme : 'classic', placement: 'top', arrow: true }" class="open-con flex align-center space-between">
-        <button class="svg">
-          <div className="icon" v-html="getSvg('openCon')"></div>
+      <div
+        v-tippy="{
+          content: 'Start conversation',
+          theme: 'classic',
+          placement: 'top',
+          arrow: true,
+        }"
+        class="conversation-wrapper flex align-center justify-center"
+      >
+        <button v-if="task.msgs.length === 0" @click="openCon" class="svg">
+          <div v-html="getSvg('con')"></div>
         </button>
-        Open
-      </span>
-    </div>
-    <div v-tippy="{ content:'Start conversation', theme : 'classic', placement: 'top', arrow: true }" class="conversation-wrapper flex align-center justify-center">
-      <button v-if="task.msgs.length === 0" @click="openCon" class="svg">
-        <div v-html="getSvg('con')"></div>
-      </button>
-      <button v-if="task.msgs.length > 0" @click="openCon" class="svg">
-        <div class="multi-con" v-html="getSvg('multiCon')"></div>
-        <span class="updates-count">{{ task.msgs.length }}</span>
-      </button>
-    </div>
-  </section>
-  <section class="cell2" v-for="(cmp, idx) in labels" :key="idx">
-    <component
-      :is="cmp"
-      :task="task"
-      :group="group"
-      @updateTask="updateTask"
-    ></component>
-  </section>
+        <button v-if="task.msgs.length > 0" @click="openCon" class="svg">
+          <div class="multi-con" v-html="getSvg('multiCon')"></div>
+          <span class="updates-count">{{ task.msgs.length }}</span>
+        </button>
+      </div>
+    </section>
+    <section class="cell2" v-for="(cmp, idx) in labels" :key="idx">
+      <component
+        :is="cmp"
+        :task="task"
+        :group="group"
+        @updateTask="updateTask"
+      ></component>
+    </section>
+    <EmptyProgress :style="{width: 'auto'}"/>
   </section>
 </template>
 
@@ -80,6 +99,7 @@ import Person from "./dynamicCmps/PersonPicker.vue";
 import Text from "./dynamicCmps/TextArea.vue";
 import Files from "./dynamicCmps/FilesPicker.vue";
 import { eventBus } from "../services/event-bus.service";
+import EmptyProgress from './dynamicCmps/EmptyProgress.vue';
 
 export default {
   emits: ["saveTask", "remove", "addSelected", "removeSelected"],
@@ -128,7 +148,7 @@ export default {
       this.$emit("saveTask", taskToSave);
     },
     openCon() {
-      this.isSelected = true
+      this.isSelected = true;
       this.$router.push(
         "/board/" + this.currBoardId + "/taskDetails/" + this.task.id
       );
@@ -172,6 +192,7 @@ export default {
     EditMenu,
     Text,
     Files,
+    EmptyProgress
   },
 };
 </script>
