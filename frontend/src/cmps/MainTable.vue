@@ -64,7 +64,6 @@ export default {
       ],
       selectedTasks: {},
       newBoard: this.currBoard,
-      drag: false,
     };
   },
   methods: {
