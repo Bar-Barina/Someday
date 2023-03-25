@@ -176,20 +176,6 @@ export default {
       this.showFilter = false
       this.showPersonFilter = false
     },
-    // filterBoard() {
-    //   const regex = new RegExp(this.searchQuery, 'i')
-    //   const filteredGroups = this.currBoard.groups
-    //     .map((group) => {
-    //       const filteredTasks = group.tasks.filter((task) => {
-    //         return JSON.stringify(task).match(regex)
-    //       })
-    //       return { ...group, tasks: filteredTasks }
-    //     })
-    //     .filter((group) => group.tasks.length > 0)
-    //   const filteredBoard = { ...this.currBoard, groups: filteredGroups }
-    //   console.log('filteredBoard from boardHeader', filteredBoard)
-    //   this.$store.dispatch({ type: 'filterBoard', filteredBoard })
-    // },
     onSearch() {
       this.$store.commit({ type: 'setFilterBy', searchQuery:this.searchQuery })
     }

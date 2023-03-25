@@ -45,7 +45,7 @@ export const boardStore = {
       if (filterBy.txt || filterBy.activeFilters.length > 0) {
         const boardToFilter = JSON.parse(JSON.stringify(currBoard))
         const filteredBoard = boardService.filterBoard(boardToFilter, filterBy)
-        return boardToFilter
+        return filteredBoard
       } else {
         return currBoard
       }

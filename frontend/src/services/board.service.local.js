@@ -62,25 +62,17 @@ function filterBoard(board,filterBy) {
     })
     .filter((group) => group.tasks.length > 0)
 
-
-  // const filteredBoard = { ...board, groups: filteredGroups }
-  // console.log('filteredBoard from boardHeader', filteredBoard)
-  
-
-//   if(filterBy.activeFilters.length===0) return getById(board._id)
-// let filteredBoard = JSON.parse(JSON.stringify(board)) 
-// filteredBoard.groups = filteredBoard.groups.filter(group=>{
-//   return group.tasks = group.tasks.filter(task=>{
-//     return filterBy.activeFilters.some(label=> {
-//       if(task.status===label) return true
-//       if(task.priority===label) return true
-//       if(task.person.some(p=>p.name===label)) return true
-//       return false
-//     })
-//   })
-//   return group.tasks.length > 0
-// })
-// console.log('filteredBoard',filteredBoard)
+filteredBoard.groups = filteredBoard.groups.filter(group=>{
+  return group.tasks = group.tasks.filter(task=>{
+    return filterBy.activeFilters.some(label=> {
+      if(task.status===label) return true
+      if(task.priority===label) return true
+      if(task.person.some(p=>p.name===label)) return true
+      return false
+    })
+  })
+  return group.tasks.length > 0
+})
 return filteredBoard
 }
 
