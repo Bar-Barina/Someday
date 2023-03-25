@@ -95,6 +95,7 @@
       :get-child-payload="getTaskPayload(group._id)"
       @drop="onTaskDrop(group._id, $event)"
       :drag-class="'task-drag'"
+      :drop-placeholder="{className: 'task-placeholder' , animationDuration: '200' , showOnTop: true}"
     >
       <Draggable
         v-for="(task, idx) in group.tasks"
