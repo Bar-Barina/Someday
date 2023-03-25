@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import {icon} from '../../directives.js'
 import TaskDropdown from '../TaskDropdown.vue'
 import { defineComponent } from "vue";
 export default defineComponent ({
