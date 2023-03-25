@@ -46,8 +46,12 @@
       </span>
     </div>
     <div class="conversation-wrapper flex align-center justify-center">
-      <button @click="openCon" class="svg">
-        <div className="icon" v-html="getSvg('con')"></div>
+      <button v-if="task.msgs.length === 0" @click="openCon" class="svg">
+        <div v-html="getSvg('con')"></div>
+      </button>
+      <button v-if="task.msgs.length > 0" @click="openCon" class="svg">
+        <div class="multi-con" v-html="getSvg('multiCon')"></div>
+        <span class="updates-count">{{ task.msgs.length }}</span>
       </button>
     </div>
   </section>

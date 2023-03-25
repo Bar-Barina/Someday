@@ -1,0 +1,15 @@
+.Add-new-group {
+    position: sticky;
+    left: 46px;
+    margin-top: 8px;
+    width: 142px;
+    height: 32px;
+    max-width: 300px;
+    cursor: pointer;
+    border: 2px solid #e6e9ef;
+    border-radius: 4px;
+    button {
+        border: none;
+        background-color: inherit;
+    }
+}
