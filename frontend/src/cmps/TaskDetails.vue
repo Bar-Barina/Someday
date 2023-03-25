@@ -1,13 +1,13 @@
 <template>
-  <section v-if="task" class="conversation-container">
+  <section v-if="task" class="conversation-container" >
     <div class="conversation-action-wrapper">
       <RouterLink :to="`/board/${currBoard._id}`">
-      <button class="conversation-exit-btn flex justify-center align-center btn-hover">
+      <button class="conversation-exit-btn flex justify-center align-center btn-hover" @click="updateTask">
          <span className="icon" v-html="getSvg('x')"></span>
          </button>
       </RouterLink>
     </div>
-    <div class="conversation-title">
+    <div class="conversation-title" >
       <div contenteditable="true" class="editable-div" ref="taskTitle" @focusout="updateTaskTitle">{{ task.taskTitle }}</div>
       <div class="conversation-img-section flex align-center">
         <div class="img-container">
@@ -38,17 +38,17 @@
         </div>
         </div>       
     </div>
-    <section class="bottom-chat">
+    <section class="bottom-chat" >
     <input v-model="msg.txt" placeholder="Write an update..." />
     </section>
     <section class="nav-btn flex space-between align-center">
-      <div class="conversation-middle-nav" v-clickOutside="closeEmojiPick">
+      <div class="conversation-middle-nav" >
         <div class="middle-nav-btn btn-hover flex align-center" @click.stop="emojiPick">
           <span v-html="getSvg('emoji')"></span>
           <div>Emoji</div> 
        </div> 
+       <EmojiPicker v-if="isEmoji" :native="true" @select="onSelectEmoji" class="emoji-picker" />
         </div>
-       <EmojiPicker v-if="isEmoji" :native="true" @select="onSelectEmoji" class="emoji-picker"/>
       <button class="update-btn" @click.stop="addMsg">Update</button>
     </section>
     <section v-if="task.msgs.length>0" class="task-msgs">
