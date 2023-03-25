@@ -157,19 +157,19 @@
 }
 .tippy-box[data-theme~='classic'][data-placement^='top'] 
 > .tippy-arrow::before {
-  border-top-color:  blue;
+  border-top-color:  rgb(0, 0, 0);
 }
 .tippy-box[data-theme~='classic'][data-placement^='bottom']
   > .tippy-arrow::before {
-  border-bottom-color:  blue;
+  border-bottom-color:  rgb(0, 0, 0);
 }
 .tippy-box[data-theme~='classic'][data-placement^='left']
   > .tippy-arrow::before {
-  border-left-color:  blue;
+  border-left-color:  rgb(0, 0, 0);
 }
 .tippy-box[data-theme~='classic'][data-placement^='right']
   > .tippy-arrow::before {
-  border-right-color:  blue;
+  border-right-color:  rgb(0, 0, 0);
 }
 // Media helpers
 
