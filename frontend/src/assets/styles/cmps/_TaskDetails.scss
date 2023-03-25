@@ -81,15 +81,29 @@
   .bottom-chat {
     border-top: 1px solid $clr014;
     text-align: center;
-    input {
+    .editable-text {
+      text-align: start;
+      margin-left: 7px;
       margin-top: 20px;
       width: 522px;
       height: 41px;
-      padding: 7px 8px;
+      padding: 10px 8px;
       border-radius: 8px;
       border: 1px solid #0073ea;
+      &[placeholder]:empty:before {
+        content: attr(placeholder);
+        color: #555; 
+    }
       &:hover {
         background-color: $clr014;
+      }
+      &.open {
+        &::placeholder {
+          color: transparent;
+        }
+        height: 144px;
+        outline: none;
+        border: 0.5px solid $clr8;
       }
       &:focus {
         &::placeholder {

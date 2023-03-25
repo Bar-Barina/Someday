@@ -38,8 +38,11 @@
         </div>
         </div>       
     </div>
-    <section class="bottom-chat" >
-    <input v-model="msg.txt" placeholder="Write an update..." />
+    <section class="bottom-chat">
+    <!-- <input v-model="msg.txt" placeholder="Write an update..." /> -->
+
+    <div @input="updateContent" ref="textArea" class="editable-text" :class="{open:openTextArea}" placeholder="Write an update..." contenteditable="true"></div>
+
     </section>
     <section class="nav-btn flex space-between align-center">
       <div class="conversation-middle-nav" >
@@ -86,7 +89,8 @@ export default {
         txt:'',
         from:'guest',
         liked:[]
-      }
+      },
+      textArea:''
     }
   },
   methods: {
@@ -99,10 +103,12 @@ export default {
       this.updateTask()
     },
     addMsg() {
+      this.msg.txt = this.$refs.textArea.innerText
       const msgToAdd ={...this.msg}
       this.task.msgs.unshift(msgToAdd)
       this.group.tasks.splice(this.taskIdx,1,this.task)
       this.updateTask()
+      this.$refs.textArea.innerText = ''
     },
     updateTask() {
       const toUpdate = {group:this.group, task:this.task}
@@ -113,12 +119,14 @@ export default {
       this.isEmoji = !this.isEmoji
     },
     onSelectEmoji(emoji) {
-      console.log('emoji',emoji)
-      this.msg.txt += emoji.i
+      this.$refs.textArea.innerText += emoji.i
     },
     closeEmojiPick() {
       this.isEmoji = false
     },
+    updateContent() {
+      this.textArea = this.$refs.textArea.innerText
+    }
   },
   watch: {
     '$route.params': {
@@ -140,9 +148,14 @@ export default {
     },
     taskIdx() {
       return this.group.tasks.findIndex(t=>t.id===this.task.id)
-    }
+    },
+    openTextArea() {
+      return this.textArea !== ''
+    },
   },
-  created() {},
+  created() {
+ 
+  },
   components: {
     MsgPreview,
     EmojiPicker
