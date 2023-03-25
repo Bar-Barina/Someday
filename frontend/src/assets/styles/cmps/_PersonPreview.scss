@@ -19,7 +19,12 @@
     border: 1px solid rgb(163, 163, 163);
     border-radius: 3px;
     margin-top: 20px;
-    margin-left: 1.8em;
+    &:hover {
+      border: 1px solid black;
+    }
+    &:focus {
+      outline: 1px solid $clr8;
+    }
   }
   .member {
     height: 40px;

@@ -29,7 +29,10 @@ export default {
   },
   methods: {
     updatePerson(person) {
+      console.log('from personPicker',person)
+      console.log('before',this.taskPersons)
       this.taskPersons.push(person)
+      console.log('after',this.taskPersons)
       this.$emit('updateTask', { cmpType: 'person', data: {...this.taskPersons} })
     },
     closeModal() {
