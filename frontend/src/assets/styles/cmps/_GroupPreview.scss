@@ -40,7 +40,20 @@
     }
   }
 
-  
+  .title-wrapper-container {
+
+    .tasks-count {
+      opacity: 0;
+      padding-left: 5px;
+      font-size: 14px;
+    }
+
+    &:hover {
+      .tasks-count {
+        opacity: 1;
+      }
+    }
+  }
 
   .title-wrapper {
     cursor: grab;

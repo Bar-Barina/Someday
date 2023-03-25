@@ -13,50 +13,62 @@
   padding-left: 16px;
   padding-top: 8px;
   font-size: 14px;
+
   input {
     width: 320px;
     height: 32px;
     border: 1px solid rgb(163, 163, 163);
     border-radius: 3px;
     margin-top: 20px;
+
     &:hover {
       border: 1px solid black;
     }
+
     &:focus {
       outline: 1px solid $clr8;
     }
   }
+
   .member {
     height: 40px;
     width: 100%;
     padding: 15px;
+
     &:hover {
       background-color: $clr39;
       border-radius: 4px;
     }
+
     .member-img {
       width: 26px;
       border-radius: 50%;
     }
+
     .member-mail {
       margin-left: 10px;
     }
   }
+
   .invite {
     height: 40px;
     width: 100%;
     padding: 15px;
+
     p {
       margin-left: 15px;
     }
+
     &:hover {
       background-color: $clr39;
       border-radius: 4px;
     }
   }
 }
+
 .onTask-person {
   font-size: 12px;
+
   .onTask-person-div {
     display: flex;
     align-items: left;
@@ -65,10 +77,12 @@
     background: rgb(229, 244, 255);
     border-radius: 24px;
     width: 100px;
+
     img {
       margin-left: 0px;
       width: 22px;
     }
+
     button {
       background-color: inherit;
       border: none;

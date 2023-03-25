@@ -25,7 +25,7 @@
       v-html="getSvg('arrowDownB')"
       :style="{ fill: group.color }"
     ></div>
-    <section class="title-wrapper-container flex">
+    <section class="title-wrapper-container flex align-center">
     <div 
       class="title-wrapper flex align-center sticky title-input editable-div"
       contenteditable="true"
