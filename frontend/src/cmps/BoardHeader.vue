@@ -82,6 +82,7 @@
           placeholder="Search"
           class="header-search"
           v-model="searchQuery"
+          @input="onSearchDeb"
         />
       </div>
       <div v-tippy="{ content:'Filter by person', theme : 'classic', placement: 'top', arrow: true }" class="bottom-header-btn btn-hover" @click="togglePersonModal">
@@ -123,6 +124,7 @@ import { boardService } from '../services/board.service.local.js'
 import { svgService } from '../services/svg.service.js'
 import MainFilter from './MainFilter.vue'
 import MainPersonFilter from './MainPersonFilter.vue'
+import { utilService } from '../services/util.service.js'
 
 export default {
   name: 'BoardHeader',
@@ -131,7 +133,9 @@ export default {
     MainFilter,
     MainPersonFilter,
   },
-  created() {},
+  created() {
+    this.onSearchDeb = utilService.debounce(this.onSearch, 800) 
+  },
   data() {
     return {
       active: '',
@@ -172,34 +176,27 @@ export default {
       this.showFilter = false
       this.showPersonFilter = false
     },
-    filterBoard() {
-      if (this.searchQuery === '') {
-        this.$store.dispatch({type: 'filterBoard',
-          filteredBoard: this.currBoard,})
-        return
-      }
-      const regex = new RegExp(this.searchQuery, 'i')
-      const filteredGroups = this.currBoard.groups
-        .map((group) => {
-          const filteredTasks = group.tasks.filter((task) => {
-            return JSON.stringify(task).match(regex)
-          })
-          return { ...group, tasks: filteredTasks }
-        })
-        .filter((group) => group.tasks.length > 0)
-      const filteredBoard = { ...this.currBoard, groups: filteredGroups }
-      console.log('filteredBoard from boardHeader', filteredBoard)
-      this.$store.dispatch({ type: 'filterBoard', filteredBoard })
-    },
+    // filterBoard() {
+    //   const regex = new RegExp(this.searchQuery, 'i')
+    //   const filteredGroups = this.currBoard.groups
+    //     .map((group) => {
+    //       const filteredTasks = group.tasks.filter((task) => {
+    //         return JSON.stringify(task).match(regex)
+    //       })
+    //       return { ...group, tasks: filteredTasks }
+    //     })
+    //     .filter((group) => group.tasks.length > 0)
+    //   const filteredBoard = { ...this.currBoard, groups: filteredGroups }
+    //   console.log('filteredBoard from boardHeader', filteredBoard)
+    //   this.$store.dispatch({ type: 'filterBoard', filteredBoard })
+    // },
+    onSearch() {
+      this.$store.commit({ type: 'setFilterBy', searchQuery:this.searchQuery })
+    }
   },
   computed: {
     currBoard() {
       return this.$store.getters.currBoard
-    },
-  },
-  watch: {
-    searchQuery() {
-      this.filterBoard()
     },
   },
 }
