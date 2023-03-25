@@ -5,11 +5,18 @@
     width: 142px;
     height: 32px;
     max-width: 300px;
+    padding: 5px;
     cursor: pointer;
     border: 2px solid #e6e9ef;
     border-radius: 4px;
+    &:hover {
+        background-color: #dcdfec;
+    }
     button {
         border: none;
         background-color: inherit;
+    }
+    svg {
+        margin-top: 4px;
     }
 }

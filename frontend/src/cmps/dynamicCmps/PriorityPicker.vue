@@ -1,6 +1,6 @@
 <template>
   <div class="priority full-cell" :class="priorityClass" @click="toggleModal">
-    {{ priority }} <span v-if="priority==='Critical'" v-icon="'critical'" class="icon"></span>
+    {{ priority }} <span v-if="priority==='Critical'" v-icon="'critical'" class="critical-icon"></span>
     <TaskDropdown
     v-clickOutside="closeModal"
       v-if="showDropdown"
