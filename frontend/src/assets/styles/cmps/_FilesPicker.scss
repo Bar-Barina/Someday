@@ -4,9 +4,7 @@
 
     .file-label {
         width: 100%;
-    }
-
-    input[type="file"] {
-        display: none;
+        height: 100%;
+        display: block;
     }
 }

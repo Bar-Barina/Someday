@@ -1,4 +1,5 @@
 <template>
+<section class="group-grid task-row" :class="{'active-row': isSelected}">
   <div
     @click="toggleEdit"
     class="align-center more-task sticky flex justify-center"
@@ -63,6 +64,7 @@
       @updateTask="updateTask"
     ></component>
   </section>
+  </section>
 </template>
 
 <script>
@@ -126,6 +128,7 @@ export default {
       this.$emit("saveTask", taskToSave);
     },
     openCon() {
+      this.isSelected = true
       this.$router.push(
         "/board/" + this.currBoardId + "/taskDetails/" + this.task.id
       );
@@ -139,10 +142,10 @@ export default {
     },
     selectTask() {
       if (this.$refs.checkbox.checked) {
-        this.task.isSelected = true;
+        this.isSelected = true;
         this.$emit("addSelected", this.task);
       } else {
-        this.task.isSelected = false;
+        this.isSelected = false;
         this.$emit("removeSelected", this.task.id);
       }
     },

@@ -1,7 +1,7 @@
 <template>
   <section class="files-picker">
     <label class="file-label">
-      <input type="file" @change="readFile(this.files[0])" />
+      <input ref="file" type="file" @change="readFile($event)" hidden/>
     </label>
   </section>
 </template>
@@ -12,16 +12,22 @@ export default {
     task: Object,
     group: Object,
   },
+  data() {
+    return {
+      files: this.task.files
+    }
+  },
   methods: {
-    readFile(file) {
-      let reader = new FileReader();
-
-      reader.onload = function (event) {
-        let contents = event.target.result;
-        console.log(contents); // Do something with the file contents
-      };
-      reader.readAsText(file);
+    readFile(e) {
+      const file = e.target.files[0]
+      console.log('file', file)
+      console.log('this.task.files', this.task.files)
+      this.task.files.push(file)
+      this.saveFile()
     },
+    saveFile() {
+      this.$emit('updateTask' , {cmpType: 'files' , data: this.files})
+    }
   },
 };
 </script>
