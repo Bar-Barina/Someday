@@ -93,7 +93,6 @@
       <Draggable
         v-for="(task, idx) in group.tasks"
         :key="idx"
-        :class="{ selected: isSelected }"
       >
         <TaskPreview
           :task="task"
