@@ -43,7 +43,7 @@
         <button class="svg">
           <div className="icon" v-html="getSvg('openCon')"></div>
         </button>
-        open
+        Open
       </span>
     </div>
     <div v-tippy="{ content:'Start conversation', theme : 'classic', placement: 'top', arrow: true }" class="conversation-wrapper flex align-center justify-center">
