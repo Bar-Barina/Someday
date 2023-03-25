@@ -25,17 +25,22 @@
       v-html="getSvg('arrowDownB')"
       :style="{ fill: group.color }"
     ></div>
-    <div
-      class="title-wrapper flex align-center sticky"
+    <div 
+      class="title-wrapper flex align-center sticky title-input editable-div"
+      contenteditable="true"
+      ref="groupTitle"
+      @focusout="updateGroup"
       :class="{ focused: isTitleFocused }"
+      :style="{ color: group.color }"
+      @focusin="titleFocus = !titleFocus"
     >
-      <button
+      <span
         class="color-icon span-color"
         v-show="titleFocus"
         :style="{ 'background-color': group.color }"
-        @click.stop="!showColorPicker"
-      ></button>
-      <div v-tippy="{ content:'Click to edit', theme : 'classic', placement: 'top', arrow: true }"
+        @click.stop="toggleModal"
+      ></span>
+      <!-- <div v-tippy="{ content:'Click to edit', theme : 'classic', placement: 'top', arrow: true }"
         class="title-input editable-div"
         contenteditable="true"
         ref="groupTitle"
@@ -43,11 +48,15 @@
         :style="{ color: group.color }"
         @focusin="titleFocus = !titleFocus"
         :class="{ focused: isTitleFocused }"
-      >
+      > -->
         <h4>{{ group.title }}</h4>
       </div>
       <span class="tasks-count">{{ tasksCount }} tasks</span>
-    </div>
+      <ColorPicker
+    v-if="showColorPicker"
+    :groupColor="group.color"
+    @updateColor="updateGroup"
+  />
   </section>
 
   <!-- Group content -->
@@ -74,7 +83,6 @@
         orientation="horizontal"
         group-name="labels"
         tag="div"
-        :drag-class="'label-drag'"
         @drop="onLabelDrop($event)"
       >
         <Draggable
@@ -82,7 +90,7 @@
           v-for="(label, idx) in labelsOrder"
           :key="idx"
         >
-          <div><span>{{ label }}</span></div>
+          {{ label }}
         </Draggable>
       </Container>
     </section>
@@ -121,11 +129,6 @@
     :group="group"
     :labelsOrder="labelsOrder"
     @collapse="collapse"
-  />
-  <ColorPicker
-    v-if="showColorPicker"
-    :groupColor="group.color"
-    @updateColor="updateGroup"
   />
 </template>
 
