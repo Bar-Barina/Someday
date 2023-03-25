@@ -67,11 +67,17 @@ export default {
   },
   methods: {
     updatePerson(member) {
+      // console.log('personPreview member' ,member)
+      // console.log('persons',this.person.length)
+      // console.log('members',this.members.length)
       if (this.person.length < this.members.length) return
       this.$emit('updatePerson', { ...member })
     },
     updateMember(idx) {
+      console.log('before this.person from personPreview', this.person)
+      console.log('idx from personPreview',idx)
       this.person.splice(idx, 1)
+      console.log('after this.person from personPreview', this.person)
     },
     getSvg(iconName) {
       return svgService.getSvg(iconName)
