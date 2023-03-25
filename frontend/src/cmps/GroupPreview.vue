@@ -74,6 +74,7 @@
         orientation="horizontal"
         group-name="labels"
         tag="div"
+        :drag-class="'label-drag'"
         @drop="onLabelDrop($event)"
       >
         <Draggable
@@ -81,7 +82,7 @@
           v-for="(label, idx) in labelsOrder"
           :key="idx"
         >
-          {{ label }}
+          <div><span>{{ label }}</span></div>
         </Draggable>
       </Container>
     </section>
