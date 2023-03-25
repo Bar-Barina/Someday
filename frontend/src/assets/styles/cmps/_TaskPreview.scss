@@ -1,5 +1,11 @@
 .task-row {
 
+    &.active-row {
+        >* {
+            background-color: rgb(204, 229, 255);
+        }
+    }
+
     &:hover {
         box-shadow: 4px 3px 6px -3px $clr38;
     }

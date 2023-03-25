@@ -20,7 +20,10 @@
       v-html="getSvg('arrowDownB')"
       :style="{ fill: group.color }"
     ></div>
-    <div class="title-wrapper flex align-center sticky" :class="{ focused: isTitleFocused }">
+    <div
+      class="title-wrapper flex align-center sticky"
+      :class="{ focused: isTitleFocused }"
+    >
       <button
         class="color-icon span-color"
         v-show="titleFocus"
@@ -51,9 +54,12 @@
         :style="{ 'background-color': group.color }"
       ></div>
       <div class="sticky check-box cell1">
-        <input @change="selectGroup"
-        ref="groupCheckbox"
-         type="checkbox" class="checkbox" />
+        <input
+          @change="selectGroup"
+          ref="groupCheckbox"
+          type="checkbox"
+          class="checkbox"
+        />
       </div>
       <div class="sticky task cell1">Tasks</div>
 
@@ -85,9 +91,9 @@
       @drop="onTaskDrop(group._id, $event)"
     >
       <Draggable
-        class="group-grid task-row"
         v-for="(task, idx) in group.tasks"
         :key="idx"
+        :class="{ selected: isSelected }"
       >
         <TaskPreview
           :task="task"
@@ -191,13 +197,10 @@ export default {
       if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
         const group = JSON.parse(JSON.stringify(this.group));
         const groupIdx = this.board.groups.findIndex((g) => g._id === groupId);
-        const newGroup = group;
+        const newGroup = JSON.parse(JSON.stringify(group));
 
         newGroup.tasks = utilService.applyDrag(newGroup.tasks, dropResult);
         this.board.groups.splice(groupIdx, 1, newGroup);
-        if (groupIdx === this.board.groups.length - 1) {
-          this.$store.dispatch({ type: "updateBoard", board: this.board });
-        }
         // this.board.groups.splice(groupIdx , 1 , newGroup)
         // newTasks = utilService.applyDrag(newTasks, dropResult);
         // console.log('newTasks', newTasks)
@@ -220,12 +223,12 @@ export default {
       this.$emit("removeSelected", { group: this.group, taskId });
     },
     selectGroup() {
-      if(this.$refs.groupCheckbox.checked) {
-        eventBus.emit('addSelected' , this.group._id)
+      if (this.$refs.groupCheckbox.checked) {
+        eventBus.emit("addSelected", this.group._id);
       } else {
-        eventBus.emit('removeSelected' , this.group._id)
+        eventBus.emit("removeSelected", this.group._id);
       }
-    }
+    },
   },
   computed: {
     isTitleFocused() {
