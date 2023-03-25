@@ -51,11 +51,11 @@
     width: 214px;
     height: 1px;
   }
-  .dots {
-    display: none;
-  }
   .selected-board {
     background-color: $clr7;
+  }
+  .workspace-boards {
+    position: relative;
   }
   .workspace-container > *:not(.workspace-line) {
     height: 32px;
@@ -64,7 +64,7 @@
     border-radius: 4px;
     .dots {
       display: none;
-      margin-left: 60px;
+      margin: auto;
     }
     &:hover {
       background-color: $clr39;

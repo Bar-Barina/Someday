@@ -52,7 +52,7 @@
         </div>
         <br />
         <div class="workspace-line"></div>
-        <div
+        <div 
           v-for="(board, idx) in filteredBoards"
           :key="idx"
           @click="moveToBoard(board, idx)"
@@ -61,11 +61,13 @@
         >
           <span v-html="getSvg('board')" class="workspace-icon"></span>
           <span>{{ board.title }}</span>
-          <span
+          <span 
             v-html="getSvg('Dots')"
             class="workspace-icon dots"
-            @click.stop="removeBoard(board._id)"
+            @click.stop="ToggleEditMenu"
           ></span>
+          <EditMenu v-if="isEditMenuOpen" @removeBoard="removeBoard"
+          v-clickOutside="closeModal"/>
         </div>
       </section>
     </section>
@@ -76,6 +78,7 @@
 import { takeWhile } from 'lodash'
 import { svgService } from '../services/svg.service.js'
 import { boardService } from '../services/board.service.local.js'
+import  EditMenu  from '../cmps/EditMenu.vue'
 export default {
   data() {
     return {
@@ -83,6 +86,7 @@ export default {
       newBoard: boardService.getEmptyBoard(),
       searchTerm: '',
       selectedBoard: null,
+      isEditMenuOpen: false
     }
   },
   methods: {
@@ -103,6 +107,12 @@ export default {
       this.$router.push(`${board._id}`)
       this.selectedBoard = idx
     },
+    ToggleEditMenu() {
+      this.isEditMenuOpen = !this.isEditMenuOpen
+    },
+    closeModal() {
+      this.isEditMenuOpen = false
+    }
   },
   computed: {
     boards() {
@@ -113,5 +123,8 @@ export default {
       return this.boards.filter((board) => regex.test(board.title))
     },
   },
+  components : {
+    EditMenu,
+  }
 }
 </script>
