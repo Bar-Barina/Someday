@@ -82,6 +82,7 @@
         @updateTask="updateTask"
       ></component>
     </section>
+    <EmptyProgress :style="{width: 'auto'}"/>
   </section>
 </template>
 
@@ -98,6 +99,7 @@ import Person from "./dynamicCmps/PersonPicker.vue";
 import Text from "./dynamicCmps/TextArea.vue";
 import Files from "./dynamicCmps/FilesPicker.vue";
 import { eventBus } from "../services/event-bus.service";
+import EmptyProgress from './dynamicCmps/EmptyProgress.vue';
 
 export default {
   emits: ["saveTask", "remove", "addSelected", "removeSelected"],
@@ -190,6 +192,7 @@ export default {
     EditMenu,
     Text,
     Files,
+    EmptyProgress
   },
 };
 </script>
