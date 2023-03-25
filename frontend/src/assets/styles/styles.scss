@@ -13,6 +13,9 @@
 @import "basics/links";
 
 // Components
+@import 'cmps/KanbanCard';
+@import 'cmps/KanbanCol';
+@import 'cmps/Kanabn';
 @import 'cmps/StatusProgress';
 @import 'cmps/Menu';
 @import 'cmps/GroupCollapse';

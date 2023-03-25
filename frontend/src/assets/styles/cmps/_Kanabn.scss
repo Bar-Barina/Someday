@@ -1,0 +1,28 @@
+.kanban {
+    border-top: 1px solid #c3c6d4;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding-bottom: 20px;
+
+    .kanban-content {
+        gap: 12px;
+        padding: 16px 0 20px 20px;
+        height: 100%;
+        overflow-x: scroll;
+        overflow-y: scroll;
+
+        .smooth-dnd-container {
+            min-height: 30px;
+            min-width: 30px;
+        }
+
+        .smooth-dnd-container.horizontal {
+            display: flex!important;
+        }
+    }
+}
