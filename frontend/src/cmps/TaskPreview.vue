@@ -128,6 +128,7 @@ export default {
       this.$emit("saveTask", taskToSave);
     },
     openCon() {
+      this.isSelected = true
       this.$router.push(
         "/board/" + this.currBoardId + "/taskDetails/" + this.task.id
       );
