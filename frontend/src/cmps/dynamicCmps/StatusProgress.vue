@@ -59,7 +59,7 @@ export default {
       });
       const values = Object.values(this.map);
       const total = values.filter((v) => v > 0);
-      const stats = values.map((stat) => (stat / total.length) * 100);
+      const stats = values.map((stat) => ((stat / total.length) * 100).toFixed(1));
       return stats;
     },
   },

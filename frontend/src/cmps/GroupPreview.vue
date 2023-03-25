@@ -139,7 +139,7 @@ import { eventBus, showErrorMsg } from "../services/event-bus.service.js";
 import GroupCollapse from "./GroupCollapse.vue";
 
 export default {
-  emits: ["labelDrop", "updateTask", "addSelected", "removeSelected"],
+  emits: ["labelDrop", "updateTask", "addSelected", "removeSelected", 'updateDragGroup'],
   props: {
     group: Object,
     labelsOrder: Array,
@@ -200,11 +200,10 @@ export default {
     onTaskDrop(groupId, dropResult) {
       if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
         const group = JSON.parse(JSON.stringify(this.group));
-        const groupIdx = this.board.groups.findIndex((g) => g._id === groupId);
         const newGroup = JSON.parse(JSON.stringify(group));
 
         newGroup.tasks = utilService.applyDrag(newGroup.tasks, dropResult);
-        this.board.groups.splice(groupIdx, 1, newGroup);
+        this.$emit('updateDragGroup' , newGroup)
         // this.board.groups.splice(groupIdx , 1 , newGroup)
         // newTasks = utilService.applyDrag(newTasks, dropResult);
         // console.log('newTasks', newTasks)

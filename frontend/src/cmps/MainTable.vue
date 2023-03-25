@@ -16,6 +16,7 @@
         @labelDrop="labelDrop"
         @addSelected="addSelected"
         @removeSelected="removeSelected"
+        @updateDragGroup="updateDragGroup"
       ></GroupPreview>
       <RouterView />
     </Draggable>
@@ -96,6 +97,12 @@ export default {
       }
       this.$store.dispatch({ type: 'saveTask', toUpdate: { group: newGroup } })
     },
+    updateDragGroup(group) {
+      const board = this.currBoard
+      const groupIdx = board.groups.findIndex(g => g._id === group._id)
+      board.groups.splice(groupIdx , 1 , group)
+      this.$store.dispatch({type: 'updateBoard' , board})
+    }
   },
   computed: {
     currBoard() {
