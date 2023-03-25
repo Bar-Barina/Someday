@@ -158,6 +158,7 @@
 .tippy-box[data-theme~='classic'][data-placement^='top'] 
 > .tippy-arrow::before {
   border-top-color:  blue;
+  // width: auto;
 }
 .tippy-box[data-theme~='classic'][data-placement^='bottom']
   > .tippy-arrow::before {
