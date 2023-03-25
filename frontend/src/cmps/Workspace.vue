@@ -59,15 +59,8 @@
           :class="{ 'selected-board': selectedBoard === idx }"
           class="flex align-center workspace-boards pointer"
         >
-          <span v-html="getSvg('board')" class="workspace-icon"></span>
-          <span>{{ board.title }}</span>
-          <span 
-            v-html="getSvg('Dots')"
-            class="workspace-icon dots"
-            @click.stop="ToggleEditMenu"
-          ></span>
-          <EditMenu v-if="isEditMenuOpen" @removeBoard="removeBoard"
-          v-clickOutside="closeModal"/>
+          <BoardTitlePreview :board="board" @removeBoard="removeBoard"/>
+   
         </div>
       </section>
     </section>
@@ -78,7 +71,7 @@
 import { takeWhile } from 'lodash'
 import { svgService } from '../services/svg.service.js'
 import { boardService } from '../services/board.service.local.js'
-import  EditMenu  from '../cmps/EditMenu.vue'
+import BoardTitlePreview from '../cmps/BoardTitlePreview.vue'
 export default {
   data() {
     return {
@@ -86,7 +79,6 @@ export default {
       newBoard: boardService.getEmptyBoard(),
       searchTerm: '',
       selectedBoard: null,
-      isEditMenuOpen: false
     }
   },
   methods: {
@@ -107,12 +99,7 @@ export default {
       this.$router.push(`${board._id}`)
       this.selectedBoard = idx
     },
-    ToggleEditMenu() {
-      this.isEditMenuOpen = !this.isEditMenuOpen
-    },
-    closeModal() {
-      this.isEditMenuOpen = false
-    }
+  
   },
   computed: {
     boards() {
@@ -124,7 +111,7 @@ export default {
     },
   },
   components : {
-    EditMenu,
+    BoardTitlePreview
   }
 }
 </script>
