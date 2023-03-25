@@ -94,6 +94,7 @@
       :shouldAcceptDrop="(e, payload) => e.groupName === 'tasks'"
       :get-child-payload="getTaskPayload(group._id)"
       @drop="onTaskDrop(group._id, $event)"
+      :drag-class="'task-drag'"
     >
       <Draggable
         v-for="(task, idx) in group.tasks"

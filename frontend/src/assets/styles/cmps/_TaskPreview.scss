@@ -2,11 +2,7 @@
 
     &.active-row {
 
-        .third {
-            background-color: rgb(204, 229, 255);
-        }
-
-        .task-title {
+        .third , .task-title{
             background-color: rgb(204, 229, 255);
         }
         
@@ -16,7 +12,14 @@
     }
 
     &:hover {
-        box-shadow: 4px 3px 6px -3px $clr38;
+
+        > * {
+            background-color: rgb(245,246,248);
+        }
+
+        .third , .task-title {
+            background-color: rgb(245,246,248);
+        }
     }
 
     .task-title {
@@ -91,5 +94,19 @@
         border: none;
         background: fixed;
         cursor: pointer;
+    }
+}
+
+.task-drag {
+    z-index: 0;
+    transform: rotate(1deg);
+    cursor: grabbing;
+
+    > * {
+        background-color: rgb(245,246,248);
+    }
+
+    .third , .task-title {
+        background-color: rgb(245,246,248);
     }
 }
