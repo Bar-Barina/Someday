@@ -91,6 +91,7 @@ export default {
     addGroup() {
       const newGroup = {
         title: 'Full Stack',
+        color: '#e2445c',
         tasks: [],
       }
       this.$store.dispatch({ type: 'saveTask', toUpdate: { group: newGroup } })

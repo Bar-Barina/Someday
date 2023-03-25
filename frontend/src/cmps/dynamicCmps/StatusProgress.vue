@@ -5,6 +5,12 @@
       v-for="(stat, idx) in getPercent"
       :key="idx"
       :style="{ 'background-color': colors[idx], width: stat + '%' }"
+       v-tippy="{
+        content: `${stat}%` ,
+        theme: 'classic',
+        placement: 'top',
+        arrow: true,
+      }"
     ></div>
   </section>
 </template>
