@@ -98,7 +98,6 @@
 }
 
 .task-drag {
-    z-index: 0;
     transform: rotate(1deg);
     cursor: grabbing;
 
@@ -107,6 +106,11 @@
     }
 
     .third , .task-title {
-        background-color: rgb(245,246,248);
+        background-color: rgb(245,246,248)!important;
     }
+}
+
+.task-placeholder {
+    background-color: #fff;
+    border: 1px dashed $clr38;
 }

@@ -70,7 +70,7 @@
     </section>
     <section class="bottom-header flex align-center">
       <div class="new-item flex justify-center align-center" @click="addTask">
-        New task
+        New Task
       </div>
       <div class="bottom-header-btn btn-hover search-div">
         <span

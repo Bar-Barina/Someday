@@ -4,6 +4,7 @@
 
 .main-table {
   overflow-x: auto;
+  margin-top: 22px;
   // overflow-y: hidden;
 }
 
@@ -202,4 +203,13 @@
   height: 21px;
   background-color: rgb(87, 155, 252);
   border-radius: 50%;
+}
+
+.group-drag {
+  
+}
+
+.group-placeholder {
+    background-color: #fff;
+    border: 1px dashed $clr38;
 }
