@@ -69,7 +69,14 @@
     &:hover {
       background-color: $clr39;
       .dots {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 1px;
+        right: 5px;
+        height: 30px;
+        width: 30px;
       }
     }
     .add {
