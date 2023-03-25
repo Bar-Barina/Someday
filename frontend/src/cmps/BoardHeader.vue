@@ -162,6 +162,7 @@ export default {
     addTask() {
       const group = JSON.parse(JSON.stringify(this.currBoard)).groups[0]
       group.tasks.unshift({ ...this.task })
+      this.task.taskTitle = 'New Task'
       const toUpdate = { task: this.task, group }
       this.$store.dispatch({ type: 'saveTask', toUpdate })
       this.task = boardService.getEmptyTask()

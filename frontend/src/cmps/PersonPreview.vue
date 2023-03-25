@@ -3,7 +3,6 @@
     <div class="arrow-up-div-person"></div>
     <section class="onTask-person flex space-between">
       <div
-        v-if="person"
         class="onTask-person-div flex align-center"
         v-for="(p, idx) in person"
         :key="idx"
@@ -25,7 +24,6 @@
     <section>
       <div
         class="flex align-center member"
-        v-if="members"
         v-for="(member, idx) in filteredMembers"
         :key="idx"
         @click.stop="updatePerson(member)"
