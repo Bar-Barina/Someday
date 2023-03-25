@@ -24,6 +24,10 @@
       :selectedTasks="selectedTasks"
       @clearSelected="clearSelected"
     />
+    <div class="Add-new-group flex align-center" @click="addGroup">
+      <span v-html="getSvg('plus')"></span>
+      <button>Add new group</button>
+    </div>
   </Container>
 </template>
 
@@ -32,6 +36,7 @@ import { Container, Draggable } from 'vue3-smooth-dnd'
 import GroupPreview from './GroupPreview.vue'
 import { utilService } from '../services/util.service'
 import Menu from '../cmps/Menu.vue'
+import { svgService } from '../services/svg.service.js'
 
 export default {
   emits: ['labelDrop'],
@@ -79,6 +84,16 @@ export default {
     },
     clearSelected() {
       this.selectedTasks = {}
+    },
+    getSvg(iconName) {
+      return svgService.getSvg(iconName)
+    },
+    addGroup() {
+      const newGroup = {
+        title: 'Full Stack',
+        tasks: [],
+      }
+      this.$store.dispatch({ type: 'saveTask', toUpdate: { group: newGroup } })
     },
   },
   computed: {
