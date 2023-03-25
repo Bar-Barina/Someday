@@ -1,8 +1,16 @@
 <template>
   <section class="files-picker">
     <label class="file-label">
-      <input ref="file" type="file" @change="readFile($event)" hidden/>
+      <div class="file-wrapper flex justify-center align-center">
+      <img v-if="task.files.url" class="file-image" :src="task.files.url" />
+      <div v-if="!task.files.url" class="empty-file-icon" >
+      <img  class="empty-file-icon" src="https://cdn.monday.com/images/file-types/empty.svg" alt="No File">
+      <span class="plus" >+</span>
+      </div>
+      </div>
+      <input type="file" @change="readFile($event)" hidden />
     </label>
+    <span class="remove" v-if="task.files.url"  @click.stop="removeFile">x</span>
   </section>
 </template>
 
@@ -14,20 +22,32 @@ export default {
   },
   data() {
     return {
-      files: this.task.files
-    }
+      files: this.task.files,
+      imageUrl: "",
+    };
   },
   methods: {
     readFile(e) {
-      const file = e.target.files[0]
-      console.log('file', file)
-      console.log('this.task.files', this.task.files)
-      this.task.files.push(file)
-      this.saveFile()
+      const reader = new FileReader();
+      const file = e.target.files[0];
+
+      reader.addEventListener("load", () => {
+        const dataURL = reader.result;
+        this.imageUrl = dataURL;
+        console.log('dataURL', dataURL)
+        this.$emit("updateTask", {
+          cmpType: "files",
+          data: { file, url: dataURL },
+        });
+      });
+      reader.readAsDataURL(file);
     },
-    saveFile() {
-      this.$emit('updateTask' , {cmpType: 'files' , data: this.files})
-    }
+    removeFile() {
+      this.$emit("updateTask", {
+        cmpType: "files",
+        data: [],
+      });
+    },
   },
 };
 </script>
