@@ -46,6 +46,11 @@
     cursor: grab;
     left: 78px;
     background-color: #fff;
+    width: fit-content;
+
+    &:focus {
+      width: 300px;
+    }
 
     .tasks-count {
       opacity: 0;

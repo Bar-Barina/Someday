@@ -25,6 +25,7 @@
       v-html="getSvg('arrowDownB')"
       :style="{ fill: group.color }"
     ></div>
+    <section class="title-wrapper-container flex">
     <div 
       class="title-wrapper flex align-center sticky title-input editable-div"
       contenteditable="true"
@@ -50,8 +51,9 @@
         :class="{ focused: isTitleFocused }"
       > -->
         <h4>{{ group.title }}</h4>
-      </div>
-      <span class="tasks-count">{{ tasksCount }} tasks</span>
+        </div>
+        <span class="tasks-count">{{ tasksCount }} tasks</span>
+      </section>
       <ColorPicker
     v-if="showColorPicker"
     :groupColor="group.color"

@@ -59,7 +59,7 @@ export default {
       // return this.$store.getters.currBoard.members.filter((member) => {
       //   return !taskPersons.some((p) => p.name === member.name)
       console.log(this.person)
-        let taskPersons =  Object.values(this.person)
+        let taskPersons = Object.values(this.person)
         console.log(taskPersons)
       return this.$store.getters.currBoard.members.filter((member) => {
       return !taskPersons.some((p) => p.name === member.name)
