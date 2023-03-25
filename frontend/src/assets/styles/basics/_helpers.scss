@@ -142,6 +142,35 @@
   width: max-content;
   left: 50px;
 }
+
+.tippy-box[data-theme~='classic'] {
+  position: absolute;
+  z-index: 150;
+  font-size: 12px;
+  background: #333;
+  color: #fff;
+  width: 70px;
+  height: 30px;
+  font-size: 12px;
+  padding: 0.2em 0.3em;
+  border-radius: 4px;
+}
+.tippy-box[data-theme~='classic'][data-placement^='top'] 
+> .tippy-arrow::before {
+  border-top-color:  blue;
+}
+.tippy-box[data-theme~='classic'][data-placement^='bottom']
+  > .tippy-arrow::before {
+  border-bottom-color:  blue;
+}
+.tippy-box[data-theme~='classic'][data-placement^='left']
+  > .tippy-arrow::before {
+  border-left-color:  blue;
+}
+.tippy-box[data-theme~='classic'][data-placement^='right']
+  > .tippy-arrow::before {
+  border-right-color:  blue;
+}
 // Media helpers
 
 // .square-ratio {
