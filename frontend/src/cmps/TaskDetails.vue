@@ -64,6 +64,7 @@
           <div>Emoji</div>
         </div>
         <EmojiPicker
+          v-clickOutside="closeEmojiPick"
           v-if="isEmoji"
           :native="true"
           @select="onSelectEmoji"
