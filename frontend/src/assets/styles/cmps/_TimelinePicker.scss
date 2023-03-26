@@ -8,7 +8,7 @@
     font-size: 14px;
     background-color: #383838;
     z-index: 6;
-    &:hover .reset-timeline {
+    &:hover .reset-date {
         opacity: 1;
     }
     &.emptyTimeline {
@@ -27,23 +27,46 @@
             right: 60px;
         }
     }
-    .reset-timeline {   
-        background-color: $clr016;
-        color: gray;
+    // .reset-timeline {   
+    //     background-color: $clr016;
+    //     color: gray;
+    //     opacity: 0;
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     cursor: pointer;
+    //     height: em(16px);
+    //     width: em(16px);
+    //     position: absolute;
+    //     right: -2px;
+    //     top:4px;
+    //     padding: 3px;
+    //     padding-bottom: 6px;
+    //     z-index: 1;
+    // }
+    .reset-date {
+        box-shadow: 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
+        background-color: $clr39;
         opacity: 0;
         display: flex;
         justify-content: center;
         align-items: center;
         cursor: pointer;
-        height: em(16px);
-        width: em(16px);
+        border: none;
+        height: 16px;
+        width: 16px;
         position: absolute;
-        right: -2px;
-        top:4px;
-        padding: 3px;
-        padding-bottom: 6px;
+        right: 10px;
+        top: 9px;
+        border-radius: 2px;
+        position: absolute;
+        top: 3px;
+        right: -3px;
         z-index: 1;
-        border-radius: 3px;
+        .x-icon {
+            height: 16px;
+            color: rgb(83, 83, 83);
+        }
     }
     .day-diff {
         position: absolute;
