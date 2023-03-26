@@ -6,6 +6,12 @@
            &:hover .date-placeholder{
             opacity: 1;
         }
+        &:hover .date-preview {
+            border: 1px solid $clr014;
+        }
+        &:hover .reset-date {
+            opacity: 1;
+        }
     }
 
     :root {
@@ -61,11 +67,35 @@
         color:#666;
         opacity: 1;
         position: absolute;
-        top: 7px;
-        left: 48px;
-        font-size: 14px;
+        top: 2px;
+        left: 5px;
+        font-size: 13px;
+        width: 129px;
+        height: 28px;
         // padding-bottom:30px ;
         
+    }
+
+    .reset-date {
+        box-shadow: 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
+        background-color: $clr39;
+        opacity: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border: none;
+        height: 16px;
+        width: 16px;
+        position: absolute;
+        right: 10px;
+        top: 9px;
+        border-radius: 2px;
+        position: absolute;
+        top: 8px;
+        .x-icon {
+            height: 16px
+        }
     }
 
     .date-placeholder {
