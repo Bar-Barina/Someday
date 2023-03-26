@@ -57,6 +57,10 @@
 
         .title-input {
             font-size: 18px;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .tasks-count {
@@ -64,4 +68,6 @@
             padding-left: 4px;
         }
     }
+
+    .collapse-progress-label {}
 }
