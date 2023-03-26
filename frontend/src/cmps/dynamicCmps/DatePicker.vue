@@ -42,6 +42,5 @@ export default {
       this.$emit("updateTask", { cmpType: "date", data: this.value });
     },
   },
-  computed: {},
 };
 </script>

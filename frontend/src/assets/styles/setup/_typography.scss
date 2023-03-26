@@ -11,6 +11,11 @@
     font-family: Poppins;
     src: url('./fonts/Poppins-Medium.ttf')
 }
+@font-face {
+    font-family: PoppinsSemiBold;
+    src: url('./fonts/Poppins-SemiBold.ttf')
+}
 
 $mainFont: 'Figtree', sans-serif;
+$Poppins: 'PoppinsSemiBold', sans-serif;
 $secondaryFont: arial;

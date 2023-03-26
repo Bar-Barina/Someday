@@ -1,11 +1,10 @@
 import { httpService } from './http.service'
 // import { storageService } from './async-storage.service'
-import {userService} from './user.service'
+import { userService } from './user.service'
 // import {showErrorMsg, showSuccessMsg} from '../services/event-bus.service'
 
 import { store } from '../store/store'
 // import { socketService, SOCKET_EVENT_REVIEW_ADDED, SOCKET_EVENT_REVIEW_ABOUT_YOU } from './socket.service'
-
 
 // ;(() => {
 //   setTimeout(()=>{
@@ -20,15 +19,11 @@ import { store } from '../store/store'
 
 // })()
 
-
-
 // export const reviewService = {
 //   add,
 //   query,
 //   remove
 // }
-
-
 
 // function query(filterBy) {
 //   var queryStr = (!filterBy) ? '' : `?name=${filterBy.name}&sort=anaAref`
@@ -44,7 +39,7 @@ import { store } from '../store/store'
 
 // async function add({txt, aboutUserId}) {
 //   const addedReview = await httpService.post(`review`, {txt, aboutUserId})
-  
+
 //   const aboutUser = await userService.getById(aboutUserId)
 
 //   const reviewToAdd = {

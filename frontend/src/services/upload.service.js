@@ -1,9 +1,9 @@
 export const uploadService = {
-  uploadImg
+  uploadImg,
 }
 async function uploadImg(ev) {
-  const CLOUD_NAME = "dcwibf9o5"
-  const UPLOAD_PRESET = "vt0iqgff"
+  const CLOUD_NAME = 'dcwibf9o5'
+  const UPLOAD_PRESET = 'vt0iqgff'
   const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
 
   try {
@@ -13,7 +13,7 @@ async function uploadImg(ev) {
 
     const res = await fetch(UPLOAD_URL, {
       method: 'POST',
-      body: formData
+      body: formData,
     })
     const imgUrl = await res.json()
     return imgUrl
@@ -22,4 +22,3 @@ async function uploadImg(ev) {
     throw err
   }
 }
-

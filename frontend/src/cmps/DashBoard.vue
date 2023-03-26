@@ -6,14 +6,9 @@
 
 <script>
 export default {
-  name: "Dashboard",
-  props: [],
-  components: {},
-  created() {},
+  name: 'Dashboard',
   data() {
-    return {};
+    return {}
   },
-  methods: {},
-  computed: {},
-};
+}
 </script>

@@ -1,18 +1,21 @@
 <template>
-  <div v-if="value.length===0" class="timeline-progress-bar emptyTimeline">
-    <div  class="date-diff">
-        {{ dateDiff }}
-      </div>
-      <div class="day-diff">{{ dayDiff }}</div>
+  <div v-if="value.length === 0" class="timeline-progress-bar emptyTimeline">
+    <div class="date-diff">
+      {{ dateDiff }}
+    </div>
+    <div class="day-diff">{{ dayDiff }}</div>
   </div>
-  <div  v-if="value.length>0" :class="emptyTimeline" class="timeline-progress-bar">
+  <div
+    v-if="value.length > 0"
+    :class="emptyTimeline"
+    class="timeline-progress-bar"
+  >
     <div
-      
       :style="{ width: widthPrecent + '%', 'background-color': group.color }"
       class="bar-precent flex justify-center align-center"
-      :class=" borderRadiusEnd"
+      :class="borderRadiusEnd"
     >
-      <div  class="date-diff">
+      <div class="date-diff">
         {{ dateDiff }}
       </div>
       <div class="day-diff">{{ dayDiff }}d</div>
@@ -35,73 +38,71 @@
 
 <script>
 export default {
-  name: "timeline",
-  emits: ["updateTask"],
+  name: 'timeline',
+  emits: ['updateTask'],
   props: {
     task: Object,
-    group:Object,
+    group: Object,
   },
-  components: {},
   created() {
-    if(this.task.timeline.length > 0) this.value = this.task.timeline
+    if (this.task.timeline.length > 0) this.value = this.task.timeline
   },
   data() {
     return {
       value: [],
-    };
+    }
   },
   methods: {
     changeDate() {
-      this.$emit("updateTask", { cmpType: "timeline", data: this.value });
+      this.$emit('updateTask', { cmpType: 'timeline', data: this.value })
     },
   },
   computed: {
     dayDiff() {
-        if(this.value.length === 0) return 'set dates'
-      var currentDate = new Date();
-      var currentYear = currentDate.getFullYear();
-      var date1 = new Date(`${this.value[0]}, ${currentYear}`);
-      var date2 = new Date(`${this.value[1]}, ${currentYear}`);
-      var diffInMs = date2.getTime() - date1.getTime();
-      var diffInDays = diffInMs / (1000 * 60 * 60 * 24);
-      return parseInt(diffInDays);
+      if (this.value.length === 0) return 'set dates'
+      var currentDate = new Date()
+      var currentYear = currentDate.getFullYear()
+      var date1 = new Date(`${this.value[0]}, ${currentYear}`)
+      var date2 = new Date(`${this.value[1]}, ${currentYear}`)
+      var diffInMs = date2.getTime() - date1.getTime()
+      var diffInDays = diffInMs / (1000 * 60 * 60 * 24)
+      return parseInt(diffInDays)
     },
     dateDiff() {
-      if(this.value.length === 0) return '-'
+      if (this.value.length === 0) return '-'
       return (
-        this.value[0].split("-")[0] +
-        " " +
-        this.value[0].split("-")[1] +
-        " " +
-        "-" +
-        " " +
-        this.value[1].split("-")[0] +
-        " " +
-        this.value[1].split("-")[1]
-      );
+        this.value[0].split('-')[0] +
+        ' ' +
+        this.value[0].split('-')[1] +
+        ' ' +
+        '-' +
+        ' ' +
+        this.value[1].split('-')[0] +
+        ' ' +
+        this.value[1].split('-')[1]
+      )
     },
     widthPrecent() {
-      var currentDate = new Date();
-      var currentYear = currentDate.getFullYear();
-      var date = new Date(`${this.value[0]}, ${currentYear}`);
-      var todayDate = new Date(Date.now());
-      var diffInMs = todayDate.getTime() - date.getTime();
-      var diffInDays = diffInMs / (1000 * 60 * 60 * 24);
-      var precent = (diffInDays / this.dayDiff) * 100;
-      if(precent > 100) return 100
-      return parseInt(precent);
+      var currentDate = new Date()
+      var currentYear = currentDate.getFullYear()
+      var date = new Date(`${this.value[0]}, ${currentYear}`)
+      var todayDate = new Date(Date.now())
+      var diffInMs = todayDate.getTime() - date.getTime()
+      var diffInDays = diffInMs / (1000 * 60 * 60 * 24)
+      var precent = (diffInDays / this.dayDiff) * 100
+      if (precent > 100) return 100
+      return parseInt(precent)
     },
     borderRadiusEnd() {
       return {
-        'border-radius-end' : this.widthPrecent>90 
+        'border-radius-end': this.widthPrecent > 90,
       }
     },
     emptyTimeline() {
       return {
-        emptyTimeline : this.value.length === 0
+        emptyTimeline: this.value.length === 0,
       }
-    }
+    },
   },
-};
+}
 </script>
-

@@ -17,7 +17,11 @@
     </div>
     <section class="msg-bottom-btns flex align-center">
       <div class="like btn-container">
-        <div class="bottom-btn flex align-center justify-center" :class="isLiked" @click="toggleLike">
+        <div
+          class="bottom-btn flex align-center justify-center"
+          :class="isLiked"
+          @click="toggleLike"
+        >
           <span v-if="isLikedIcon" v-icon="'msgLiked'" className="icon"></span>
           <span v-else v-icon="'msgLike'" className="icon"></span>
           Like
@@ -29,10 +33,10 @@
           Reply
         </div>
       </div>
-      <div v-if="msg.liked.length>0" class="liked-users">
+      <div v-if="msg.liked.length > 0" class="liked-users">
         <div class="user flex align-center">
-        <img src="../assets/img/profile-icon.png" alt=""/>
-        Liked
+          <img src="../assets/img/profile-icon.png" alt="" />
+          Liked
         </div>
       </div>
     </section>
@@ -40,37 +44,36 @@
 </template>
 
 <script>
-import { icon } from "../directives.js";
+import { icon } from '../directives.js'
 export default {
-  name: "MsgPreview",
+  name: 'MsgPreview',
   props: {
     msg: Object,
   },
-  components: {},
-  created() {
-  },
   data() {
-    return {};
+    return {}
   },
   methods: {
     toggleLike() {
-      if(this.msg.liked.includes(this.msg.from)) {
-        console.log('this.msg',this.msg)
-        const likedIdx = this.msg.liked.findIndex(from=>from===this.msg.from) 
-        console.log('likedIdx',likedIdx)
-        this.msg.liked.splice(likedIdx,1)
+      if (this.msg.liked.includes(this.msg.from)) {
+        console.log('this.msg', this.msg)
+        const likedIdx = this.msg.liked.findIndex(
+          (from) => from === this.msg.from
+        )
+        console.log('likedIdx', likedIdx)
+        this.msg.liked.splice(likedIdx, 1)
       } else this.msg.liked.push(this.msg.from)
-    }
+    },
   },
   computed: {
     isLiked() {
       return {
-        liked:this.msg.liked.includes(this.msg.from)
+        liked: this.msg.liked.includes(this.msg.from),
       }
     },
     isLikedIcon() {
       return this.msg.liked.includes(this.msg.from)
-    }
+    },
   },
-};
+}
 </script>

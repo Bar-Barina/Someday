@@ -84,6 +84,7 @@ export const boardStore = {
       state.currGroup = group
     },
     updateActiveFilters(state, { label }) {
+      // FOR LATER USE!!!
       // if(label === 'Empty status' || 'Empty priority') label = ''
       if (state.filterBy.activeFilters.includes(label)) {
         const labelIdx = state.filterBy.activeFilters.findIndex(
@@ -156,7 +157,6 @@ export const boardStore = {
     },
     async saveTask({ state, commit }, { toUpdate }) {
       const currBoard = state.currBoard
-      // commit(ACTION) // dispatch(ACTION)
       if (!toUpdate.task) toUpdate.task = null
       try {
         const board = await boardService.saveTask(

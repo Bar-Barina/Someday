@@ -42,7 +42,7 @@ export default {
   computed: {
     firstBoard() {
       return this.$store.getters.boards[0]._id
-    }
+    },
   },
   components: {
     AppHeader,

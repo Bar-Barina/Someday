@@ -43,8 +43,5 @@ export default {
       this.$emit('updateColor', { toChange: 'color', data: color })
     },
   },
-  computed: {},
-  created() {},
-  components: {},
 }
 </script>

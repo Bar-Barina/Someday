@@ -2,23 +2,28 @@
   <div class="container">
     <h1>About Us</h1>
     <p>We like You</p>
-    <h2>Lets Chat About {{topic}}</h2>
+    <h2>Lets Chat About {{ topic }}</h2>
     <label>
-      <input type="radio" value="Politics" v-model="topic" @change="changeTopic" /> 
+      <input
+        type="radio"
+        value="Politics"
+        v-model="topic"
+        @change="changeTopic"
+      />
       Politics
     </label>
     <label>
-      <input type="radio" value="Love" v-model="topic" @change="changeTopic" /> 
+      <input type="radio" value="Love" v-model="topic" @change="changeTopic" />
       Love
     </label>
     <ul>
       <li v-for="(msg, idx) in msgs" :key="idx">
-        <span>{{msg.from}}:</span>{{msg.txt}}
+        <span>{{ msg.from }}:</span>{{ msg.txt }}
       </li>
     </ul>
     <hr />
     <form @submit.prevent="sendMsg">
-      <input type="text" v-model="msg.txt" placeholder="Your msg"/>
+      <input type="text" v-model="msg.txt" placeholder="Your msg" />
       <button>Send</button>
     </form>
   </div>

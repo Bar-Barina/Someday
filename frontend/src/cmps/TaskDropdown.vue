@@ -18,7 +18,6 @@ export default {
   props: {
     options: Array,
   },
-  name: '',
   data() {
     return {}
   },

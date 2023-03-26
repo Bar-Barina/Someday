@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import EmptyProgress from "./dynamicCmps/EmptyProgress.vue";
+import EmptyProgress from './dynamicCmps/EmptyProgress.vue'
 export default {
   props: {
     group: Object,
@@ -59,5 +59,5 @@ export default {
   components: {
     EmptyProgress,
   },
-};
+}
 </script>
