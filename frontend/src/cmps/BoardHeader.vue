@@ -275,7 +275,7 @@ export default {
     },
     toggleBoardDesc() {
       this.showBoardDesc = !this.showBoardDesc
-      this.$store.commit({type:'isBlackScreen'})
+      this.$store.commit({type:'toggleBlackScreen'})
     } 
   },
   computed: {
