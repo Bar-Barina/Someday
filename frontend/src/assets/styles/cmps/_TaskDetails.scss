@@ -1,7 +1,8 @@
 .conversation-container {
+  overflow-y: scroll;
   cursor: auto;
   background-color: rgb(255, 255, 255);
-  padding: 20px;
+  padding: 0 20px 20px 10px;
   position: fixed;
   top: 0;
   right: 0;
@@ -9,6 +10,17 @@
   height: 100vh;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   z-index: 100;
+  .app-header {
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid $clr014;
+    background-color: white;
+    z-index: 3;
+    margin-top: 15px;
+    width: 540px;
+    padding-inline: 10px;
+    padding-top:10px;
+  }
   .conversation-img {
     width: 26px;
   }
@@ -24,7 +36,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 13px;
+    margin-bottom: 5px;
   }
   .view-option-container {
     height: em(36px);
@@ -79,17 +91,16 @@
     }
   }
   .bottom-chat {
-    border-top: 1px solid $clr014;
     text-align: center;
     .editable-text {
       text-align: start;
-      margin-left: 7px;
+      margin-left: 9px;
       margin-top: 20px;
-      width: 522px;
+      width: 520px;
       height: 41px;
       padding: 10px 8px;
       border-radius: 8px;
-      border: 1px solid #0073ea;
+      border: 1px solid $clr8;
       &[placeholder]:empty:before {
         content: attr(placeholder);
         color: #555; 
@@ -104,6 +115,7 @@
         height: 144px;
         outline: none;
         border: 0.5px solid $clr8;
+        background-color: white;
       }
       &:focus {
         &::placeholder {
@@ -112,6 +124,7 @@
         height: 144px;
         outline: none;
         border: 0.5px solid $clr8;
+        background-color: white;
       }
     }
   }
@@ -119,8 +132,6 @@
     margin-left: 8px;
     margin-top: 10px;
     max-height: 400px;
-    overflow-y: auto;
-    overflow-x: hidden;
   }
   .nav-btn {
     margin-top: 8px;
@@ -131,7 +142,7 @@
       border-radius: 5px;
       width: 62px;
       height: 32px;
-      margin-right: 10px;
+      margin-right: 6px;
       &:hover {
         background-color: $primary-hover;
       }

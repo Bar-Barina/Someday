@@ -6,7 +6,7 @@
       :style="{ 'background-color': group.color }"
     ></div>
     <div class="cell1 sticky third">
-      <input disabled type="checkbox" />
+      <input disabled type="checkbox" class="input-checkbox" />
     </div>
     <div class="input-wrapper cell1 sticky">
       <input
