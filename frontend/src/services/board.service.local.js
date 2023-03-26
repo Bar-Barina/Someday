@@ -287,8 +287,8 @@ function makeMembers() {
     { name: "Bar", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512' },
     { name: "Ofek", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04FAC6TULV-3a2724e5957b-512' },
   ]
-  const total = utilService.getRandomIntInclusive(1 , 4)
-  console.log('members.slice()', members.slice(0 ,total))
+  const total = utilService.getRandomIntInclusive(1, 4)
+  return members.slice(0, total)
 }
 
 // ; (async () => {
@@ -314,7 +314,7 @@ function makeMembers() {
 //               person: makeMembers(),
 //               date: "",
 //               status: "Done",
-//               priority: "Low",
+//               priority: "High",
 //               text: '',
 //               isSelected: false,
 //               timeline: ["Mar-26" , "Apr-10"],
@@ -327,8 +327,8 @@ function makeMembers() {
 //               taskTitle: "Develop landing page design",
 //               person: makeMembers(),
 //               date: "",
-//               status: "Stuck",
-//               priority: "Low",
+//               status: "Working on it",
+//               priority: "Medium",
 //               text: '',
 //               isSelected: false,
 //               timeline: ["Mar-26" , "Apr-10"],
@@ -341,7 +341,7 @@ function makeMembers() {
 //               taskTitle: "Build database schema",
 //               person: makeMembers(),
 //               date: "",
-//               status: "Done",
+//               status: "Working on it",
 //               priority: "Critical",
 //               text: '',
 //               isSelected: false,
@@ -356,7 +356,7 @@ function makeMembers() {
 //               person: makeMembers(),
 //               date: "",
 //               status: "Done",
-//               priority: "Critical",
+//               priority: "Low",
 //               text: '',
 //               isSelected: false,
 //               timeline: ["Mar-26" , "Apr-10"],
@@ -366,11 +366,10 @@ function makeMembers() {
 //             },
 //             {
 //               id: "t239408",
-//               side: "null",
 //               taskTitle: "Develop front-end UI components",
 //               person: makeMembers(),
 //               date: "",
-//               status: "Done",
+//               status: "Stuck",
 //               priority: "Critical",
 //               timeline: '[]',
 //               text: '',
@@ -385,8 +384,8 @@ function makeMembers() {
 //               taskTitle: "Implement search functionality",
 //               person: makeMembers(),
 //               date: "",
-//               status: "Done",
-//               priority: "Critical",
+//               status: "Working on it",
+//               priority: "High",
 //               text: '',
 //               isSelected: false,
 //               timeline: ["Mar-26" , "Apr-10"],
@@ -400,7 +399,7 @@ function makeMembers() {
 //               person: makeMembers(),
 //               date: "",
 //               status: "Done",
-//               priority: "Critical",
+//               priority: "Low",
 //               text: '',
 //               isSelected: false,
 //               timeline: ["Mar-26" , "Apr-10"],
@@ -593,7 +592,10 @@ function makeMembers() {
 //           ],
 //         }
 //       ]
-//     },
+//     }
+//   )
+//   await storageService.post(STORAGE_KEY,
+
 //     {
 //       title: 'Human Resources',
 //       description: 'Add your board\'s description here',
@@ -618,7 +620,7 @@ function makeMembers() {
 //               priority: "High",
 //               text: '',
 //               isSelected: false,
-//               timeline: ["Mar-26" , "Apr-10"],
+//               timeline: ["Mar-26", "Apr-10"],
 //               files: [],
 //               text: '',
 //               msgs: []
@@ -632,7 +634,7 @@ function makeMembers() {
 //               priority: "High",
 //               text: '',
 //               isSelected: false,
-//               timeline: ["Mar-26" , "Apr-10"],
+//               timeline: ["Mar-26", "Apr-10"],
 //               files: [],
 //               text: '',
 //               msgs: []
@@ -646,7 +648,7 @@ function makeMembers() {
 //               priority: "Critical",
 //               text: '',
 //               isSelected: false,
-//               timeline: ["Mar-26" , "Apr-10"],
+//               timeline: ["Mar-26", "Apr-10"],
 //               files: [],
 //               text: '',
 //               msgs: []
@@ -660,7 +662,7 @@ function makeMembers() {
 //               priority: "Medium",
 //               text: '',
 //               isSelected: false,
-//               timeline: ["Mar-26" , "Apr-10"],
+//               timeline: ["Mar-26", "Apr-10"],
 //               files: [],
 //               text: '',
 //               msgs: []
@@ -674,7 +676,7 @@ function makeMembers() {
 //               priority: "Critical",
 //               text: '',
 //               isSelected: false,
-//               timeline: ["Mar-26" , "Apr-10"],
+//               timeline: ["Mar-26", "Apr-10"],
 //               files: [],
 //               text: '',
 //               msgs: []
@@ -695,7 +697,7 @@ function makeMembers() {
 //               priority: "Low",
 //               text: '',
 //               isSelected: false,
-//               timeline: ["Mar-26" , "Apr-10"],
+//               timeline: ["Mar-26", "Apr-10"],
 //               files: [],
 //               text: '',
 //               msgs: []
@@ -709,7 +711,7 @@ function makeMembers() {
 //               priority: "High",
 //               text: '',
 //               isSelected: false,
-//               timeline: ["Mar-26" , "Apr-10"],
+//               timeline: ["Mar-26", "Apr-10"],
 //               files: [],
 //               text: '',
 //               msgs: []
@@ -723,7 +725,7 @@ function makeMembers() {
 //               priority: "Medium",
 //               text: '',
 //               isSelected: false,
-//               timeline: ["Mar-26" , "Apr-10"],
+//               timeline: ["Mar-26", "Apr-10"],
 //               files: [],
 //               text: '',
 //               msgs: []
@@ -737,7 +739,7 @@ function makeMembers() {
 //               priority: "Low",
 //               text: '',
 //               isSelected: false,
-//               timeline: ["Mar-26" , "Apr-10"],
+//               timeline: ["Mar-26", "Apr-10"],
 //               files: [],
 //               text: '',
 //               msgs: []
@@ -751,7 +753,7 @@ function makeMembers() {
 //               priority: "High",
 //               text: '',
 //               isSelected: false,
-//               timeline: ["Mar-26" , "Apr-10"],
+//               timeline: ["Mar-26", "Apr-10"],
 //               files: [],
 //               text: '',
 //               msgs: []
@@ -772,7 +774,7 @@ function makeMembers() {
 //               priority: "Medium",
 //               text: '',
 //               isSelected: false,
-//               timeline: ["Mar-26" , "Apr-10"],
+//               timeline: ["Mar-26", "Apr-10"],
 //               files: [],
 //               text: '',
 //               msgs: []
@@ -786,7 +788,7 @@ function makeMembers() {
 //               priority: "Low",
 //               text: '',
 //               isSelected: false,
-//               timeline: ["Mar-26" , "Apr-10"],
+//               timeline: ["Mar-26", "Apr-10"],
 //               files: [],
 //               text: '',
 //               msgs: []
@@ -800,7 +802,7 @@ function makeMembers() {
 //               priority: "Critical",
 //               text: '',
 //               isSelected: false,
-//               timeline: ["Mar-26" , "Apr-10"],
+//               timeline: ["Mar-26", "Apr-10"],
 //               files: [],
 //               text: '',
 //               msgs: []
@@ -814,7 +816,7 @@ function makeMembers() {
 //               priority: "High",
 //               text: '',
 //               isSelected: false,
-//               timeline: ["Mar-22" , "Mar-29"],
+//               timeline: ["Mar-22", "Mar-29"],
 //               files: [],
 //               text: '',
 //               msgs: []
@@ -828,7 +830,7 @@ function makeMembers() {
 //               priority: "Low",
 //               text: '',
 //               isSelected: false,
-//               timeline: ["Mar-26" , "Apr-10"],
+//               timeline: ["Mar-26", "Apr-10"],
 //               files: [],
 //               text: '',
 //               msgs: []
@@ -839,6 +841,257 @@ function makeMembers() {
 //     }
 //   )
 // })();
+
+// ; (async () => {
+//   await storageService.post(STORAGE_KEY,
+
+//     {
+//       title: 'Human Resources',
+//       description: 'Add your board\'s description here',
+//       members: [
+//         { name: "Tal", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04HWCV61T3-224de62cdd30-512' },
+//         { name: "Dor", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04C1V8MCT0-3405b9727a5c-512' },
+//         { name: "Bar", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512' },
+//         { name: "Ofek", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04FAC6TULV-3a2724e5957b-512' },
+//       ],
+//       groups: [
+//         {
+//           title: 'Recruitment and Hiring',
+//           _id: Math.random().toString(36).slice(2),
+//           color: "#fdab3d",
+//           tasks: [
+//             {
+//               id: "t20484",
+//               taskTitle: "Creating job postings",
+//               person: makeMembers(),
+//               date: "",
+//               status: "Done",
+//               priority: "High",
+//               text: '',
+//               isSelected: false,
+//               timeline: ["Mar-26", "Apr-10"],
+//               files: [],
+//               text: '',
+//               msgs: []
+//             },
+//             {
+//               id: "t33948",
+//               taskTitle: "Reviewing resumes and applications",
+//               person: makeMembers(),
+//               date: "",
+//               status: "Working on it",
+//               priority: "High",
+//               text: '',
+//               isSelected: false,
+//               timeline: ["Mar-26", "Apr-10"],
+//               files: [],
+//               text: '',
+//               msgs: []
+//             },
+//             {
+//               id: "t67586",
+//               taskTitle: "Scheduling and conducting interviews",
+//               person: makeMembers(),
+//               date: "",
+//               status: "Done",
+//               priority: "Critical",
+//               text: '',
+//               isSelected: false,
+//               timeline: ["Mar-26", "Apr-10"],
+//               files: [],
+//               text: '',
+//               msgs: []
+//             },
+//             {
+//               id: "t01012",
+//               taskTitle: "Extending job offers",
+//               person: makeMembers(),
+//               date: "",
+//               status: "Stuck",
+//               priority: "Medium",
+//               text: '',
+//               isSelected: false,
+//               timeline: ["Mar-26", "Apr-10"],
+//               files: [],
+//               text: '',
+//               msgs: []
+//             },
+//             {
+//               id: "t00022",
+//               taskTitle: "Conducting background checks",
+//               person: makeMembers(),
+//               date: "",
+//               status: "Done",
+//               priority: "Critical",
+//               text: '',
+//               isSelected: false,
+//               timeline: ["Mar-26", "Apr-10"],
+//               files: [],
+//               text: '',
+//               msgs: []
+//             },
+//           ],
+//         },
+//         {
+//           title: 'Employee Training and Development',
+//           _id: Math.random().toString(36).slice(2),
+//           color: "#808080",
+//           tasks: [
+//             {
+//               id: "t211032",
+//               taskTitle: "Assessing employee training needs",
+//               person: makeMembers(),
+//               date: "",
+//               status: "Done",
+//               priority: "Low",
+//               text: '',
+//               isSelected: false,
+//               timeline: ["Mar-26", "Apr-10"],
+//               files: [],
+//               text: '',
+//               msgs: []
+//             },
+//             {
+//               id: "t203823",
+//               taskTitle: "Designing and delivering training programs",
+//               person: makeMembers(),
+//               date: "",
+//               status: "Stuck",
+//               priority: "High",
+//               text: '',
+//               isSelected: false,
+//               timeline: ["Mar-26", "Apr-10"],
+//               files: [],
+//               text: '',
+//               msgs: []
+//             },
+//             {
+//               id: "t11111",
+//               taskTitle: "Facilitating workshops and seminars",
+//               person: makeMembers(),
+//               date: "",
+//               status: "Working on it",
+//               priority: "Medium",
+//               text: '',
+//               isSelected: false,
+//               timeline: ["Mar-26", "Apr-10"],
+//               files: [],
+//               text: '',
+//               msgs: []
+//             },
+//             {
+//               id: "t22302",
+//               taskTitle: "Creating e-learning modules",
+//               person: makeMembers(),
+//               date: "",
+//               status: "",
+//               priority: "Low",
+//               text: '',
+//               isSelected: false,
+//               timeline: ["Mar-26", "Apr-10"],
+//               files: [],
+//               text: '',
+//               msgs: []
+//             },
+//             {
+//               id: "t01239",
+//               taskTitle: "Providing on-the-job training",
+//               person: makeMembers(),
+//               date: "",
+//               status: "Done",
+//               priority: "High",
+//               text: '',
+//               isSelected: false,
+//               timeline: ["Mar-26", "Apr-10"],
+//               files: [],
+//               text: '',
+//               msgs: []
+//             },
+//           ],
+//         },
+//         {
+//           title: 'Employee Relations and Compliance',
+//           _id: Math.random().toString(36).slice(2),
+//           color: "#037f4c",
+//           tasks: [
+//             {
+//               id: "t10384",
+//               taskTitle: "Resolving employee complaints",
+//               person: makeMembers(),
+//               date: "",
+//               status: "Done",
+//               priority: "Medium",
+//               text: '',
+//               isSelected: false,
+//               timeline: ["Mar-26", "Apr-10"],
+//               files: [],
+//               text: '',
+//               msgs: []
+//             },
+//             {
+//               id: "t2947",
+//               taskTitle: "Maintaining employee files",
+//               person: makeMembers(),
+//               date: "",
+//               status: "Working on it",
+//               priority: "Low",
+//               text: '',
+//               isSelected: false,
+//               timeline: ["Mar-26", "Apr-10"],
+//               files: [],
+//               text: '',
+//               msgs: []
+//             },
+//             {
+//               id: "t8435",
+//               taskTitle: "Administering employee surveys",
+//               person: makeMembers(),
+//               date: "",
+//               status: "Stuck",
+//               priority: "Critical",
+//               text: '',
+//               isSelected: false,
+//               timeline: ["Mar-26", "Apr-10"],
+//               files: [],
+//               text: '',
+//               msgs: []
+//             },
+//             {
+//               id: "t1153",
+//               taskTitle: "Enforcing company policies and procedures",
+//               person: makeMembers(),
+//               date: "",
+//               status: "Working on it",
+//               priority: "High",
+//               text: '',
+//               isSelected: false,
+//               timeline: ["Mar-22", "Mar-29"],
+//               files: [],
+//               text: '',
+//               msgs: []
+//             },
+//             {
+//               id: "t234",
+//               taskTitle: "Ensuring compliance with labor laws",
+//               person: makeMembers(),
+//               date: "",
+//               status: "Done",
+//               priority: "Low",
+//               text: '',
+//               isSelected: false,
+//               timeline: ["Mar-26", "Apr-10"],
+//               files: [],
+//               text: '',
+//               msgs: []
+//             },
+//           ],
+//         }
+//       ]
+//     }
+//   )
+// })();
+
+
 
 // Use for no logged in users only!
 // { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },

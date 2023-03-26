@@ -82,7 +82,7 @@
         @updateTask="updateTask"
       ></component>
     </section>
-    <EmptyProgress :style="{ width: 'auto' }" />
+    <!-- <EmptyProgress :style="{ width: 'auto' }" /> -->
   </section>
 </template>
 

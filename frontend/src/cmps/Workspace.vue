@@ -95,7 +95,7 @@ export default {
     },
     moveToBoard(board, idx) {
       this.$store.commit({ type: 'setCurrBoard', board })
-      this.$router.push(`${board._id}`)
+      this.$router.replace(`${board._id}`)
       this.selectedBoard = idx
     },
   },

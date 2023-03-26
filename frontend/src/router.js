@@ -21,7 +21,6 @@ const routes = [
   },
   {
     path: '/board',
-    redirect: '/board',
     name: 'board',
     component: BoardIndex,
     children: [

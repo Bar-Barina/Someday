@@ -1,7 +1,8 @@
 <template>
-  <div @click="isOpen = !isOpen" class="person">
+  <div @click="isOpen = !isOpen" class="person flex align-center justify-center">
     <span v-for="(person, idx) in task.person" :key="idx">
       <img :src="person.url" class="person-img" />
+      <!-- <img src="https://cdn.monday.com/icons/dapulse-person-column.svg" class="person-bullet-image person-bullet-component" title="" alt="" aria-hidden="true"> -->
     </span>
   </div>
   <PersonPreview

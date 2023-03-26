@@ -34,7 +34,6 @@ export default {
       reader.addEventListener("load", () => {
         const dataURL = reader.result;
         this.imageUrl = dataURL;
-        console.log('dataURL', dataURL)
         this.$emit("updateTask", {
           cmpType: "files",
           data: { file, url: dataURL },
