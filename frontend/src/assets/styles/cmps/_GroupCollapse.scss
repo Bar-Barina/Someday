@@ -1,4 +1,5 @@
 .collapsed-group {
+    font-family: Figtree;
     &.group-grid {
         grid-template-rows: 3.75rem;
     }
@@ -48,6 +49,7 @@
     .arrow {
         cursor: pointer;
         left: 46px;
+        padding-top: 4px;
     }
 
     .title-wrapper {
@@ -57,6 +59,10 @@
 
         .title-input {
             font-size: 18px;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .tasks-count {
@@ -64,4 +70,6 @@
             padding-left: 4px;
         }
     }
+
+    .collapse-progress-label {}
 }

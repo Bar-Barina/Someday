@@ -1,13 +1,40 @@
 .progress-grid {
     margin-top: -1px;
 
-    > *:not(:first-child,.empty) {
+    >*:not(:first-child, .empty, .second, .third, .fourth) {
+        box-shadow: 0 8px 8px -8px rgba(0, 0, 0, 0.1);
+    }
+
+    >*:not(:first-child, .empty) {
         border-top: 1px solid #d0d4e6;
     }
 
-    > *:nth-child(5) {
-        border-left: 1px solid #d0d4e6;
+    > *:nth-child(4)::after {
+        content: "";
+        pointer-events: none;
+        position: absolute;
+        width: 8px;
+        height: 97%;
+        left: 100%;
         border-bottom-left-radius: 6px;
+        background-color: rgb(255, 255, 255);
+        border-bottom: 1px solid $clr014;
+        border-left: 1px solid $clr014;
+    }
+
+    > *:nth-child(4)::before {
+        content: "";
+        pointer-events: none;
+        position: absolute;
+        width: 8px;
+        height: 100%;
+        left: 100%;
+        background-color: #fff;
+        box-shadow: 0 6px 2px -2px #fff;
+    }
+
+    .empty {
+        box-shadow: 1px 8px 0 -1px #fff;
     }
 
     .second {
@@ -22,5 +49,7 @@
     .fourth {
         border-top: 1px solid #d0d4e6;
         left: 78px;
+        z-index: 10000;
+        height: 100%;
     }
 }

@@ -4,16 +4,24 @@
     width: 100%;
     position: relative;
     font-size: 13px;
-    
+ 
     &:hover {
         .text {
             outline: 1px solid $clr38;
+        }
+        .text-placeholder {
+            opacity: 1;
         }
 
         .reset-text {
             opacity: 1;
         }
     }
+        .text {
+            &:focus {
+                outline: 1px solid $clr8;
+            }
+        }
 
 
     .reset-text {
@@ -42,20 +50,26 @@
         font-size: 13px;
         font-weight: 400;
         height: 100%;
-
+     
         .text {
-            padding-top: 5px;
+            border: none;
             text-align: center;
             height: 25px;
             width: 100%;
             cursor: auto;
         }
     }
-
-    .plus {
-        z-index: 1;
-        display: flex;
-        justify-content: center;
+    .text-placeholder {
+        opacity: 0;
+        .t-icon {
+            position: absolute;
+            top: 11px;
+            right: 50px;
+        }
+        .plus {
+            z-index: 1;
+            display: flex;
+            justify-content: center;
         align-items: center;
         background-color: $clr8;
         color: #fff;
@@ -64,8 +78,9 @@
         border-radius: 50%;
         position: absolute;
         bottom: 10px;
-        left: 15px;
+        left: 50px;
         padding-bottom: 2px;
     }
+        }
     
 }
