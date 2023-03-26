@@ -57,6 +57,10 @@
 
         .title-input {
             font-size: 18px;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .tasks-count {
@@ -65,7 +69,5 @@
         }
     }
 
-    .collapse-progress-label {
-        
-    }
+    .collapse-progress-label {}
 }
