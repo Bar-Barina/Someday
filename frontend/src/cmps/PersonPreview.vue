@@ -1,27 +1,23 @@
 <template>
   <section class="person-preview">
     <div class="arrow-up-div-person"></div>
-    <section class="onTask-person flex space-between align-center">
-      <div
-        class="onTask-person-div flex align-center"
-        v-for="(p, idx) in person"
-        :key="idx"
-      >
-        <div class="flex align-center">
+    <section class="active-person flex align-center">
+        <div v-for="(p, idx) in person"
+        :key="idx" class="person-card flex align-center">
           <img :src="p.url" alt="person-img" class="person-img" />
           <span class="person-name">{{ p.name }}</span>
+          <button @click.stop="removeMember(idx)">X</button>
         </div>
-        <button @click.stop="removeMember(idx)">X</button>
-      </div>
     </section>
+    <section class="suggest-person">
       <input
+      class="person-input"
       type="search"
-      placeholder="     Search names, roles or teams"
+      placeholder="Search names"
       v-model="searchTerm"
       />
       <span v-html="getSvg('searchGray')" class="workspace-icon-search"></span>
-    <p>Suggested people</p>
-    <section>
+    <p class="suggest-txt">Suggested people</p>
       <div
         class="flex align-center member"
         v-for="(member, idx) in filteredMembers"
@@ -31,11 +27,11 @@
         <img :src="member.url" class="member-img" />
         <span class="member-mail">{{ member.name }}@gmail.com</span>
       </div>
-    </section>
     <div class="invite flex align-center">
-      <span v-html="getSvg('invite')" class="workspace-icon"></span>
+      <span v-html="getSvg('invite')" class="workspace-icon-invite"></span>
       <p>Invite a new member by email</p>
     </div>
+    </section>
   </section>
 </template>
 
