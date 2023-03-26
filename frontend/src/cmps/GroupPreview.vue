@@ -87,7 +87,7 @@
           {{ label }}
         </Draggable>
       </Container>
-      <EmptyProgress class="cell1 last" :style="{width: auto}"/>
+      <EmptyProgress class="cell1 last" :style="{width: 'auto'}"/>
     </section>
     <!-- Tasks drag container -->
     <Container
