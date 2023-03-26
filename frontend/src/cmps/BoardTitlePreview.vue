@@ -1,7 +1,7 @@
 <template>
            <span v-html="getSvg('board')" class="workspace-icon"></span>
           <div v-show="!editable">{{ board.title }}</div>
-          <input class="title-input" ref="boardInput" @focusout="updateBoard" type="text" v-show="editable" v-model="boardTitle"/>
+          <input class="board-title-input" ref="boardInput" @focusout="updateBoard" type="text" v-show="editable" v-model="boardTitle"/>
           <span 
             v-html="getSvg('Dots')"
             class="workspace-icon dots"
