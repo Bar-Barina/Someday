@@ -1,5 +1,6 @@
 .edit-menu {
     display: grid;
+    align-content: center;
     background-color: #fff;
     width: rem(264px);
     border-radius: rem(8px);
@@ -10,14 +11,27 @@
     z-index: 100;
     box-shadow: 0 4px 17px 6px rgba(0,0,0,.1);
     .edit-cell {
+        gap: 7px;
         padding: 4px 8px;
         line-height: 24px;
-        font-weight: 400px;
+        font-weight: 40px;
         font-size: 14px;
         border-radius: rem(4px);
         &:hover {
             cursor: pointer;
             background-color: $edit-hover;
         }
+    }
+
+    .icon-wrapper {
+        width: 20px;
+        height: 20px;
+        
+        .icon {
+            display: block;
+            height: 22px;
+            width: 20px;
+        }
+
     }
 }

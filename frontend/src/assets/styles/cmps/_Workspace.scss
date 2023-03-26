@@ -29,11 +29,13 @@
     margin-left: 50px;
     margin-top: 4px;
   }
+
   .workspace-title {
     padding-bottom: 5px;
     margin-top: 15px;
     color: #676879;
   }
+
   .pink-div {
     width: 20px;
     height: 20px;
@@ -42,20 +44,24 @@
     margin-right: 13px;
     margin-left: 5px;
   }
+
   .Main-letter {
     color: white;
     margin-left: 3px;
   }
+
   .home-svg {
     margin-top: 9px;
     margin-left: -4px;
   }
+
   .main-workspace {
     margin-left: -7px;
     margin-top: -1px;
     font-size: 16px;
     font-weight: bold;
   }
+
   .workspace-icon {
     margin-right: 10px;
     margin-top: 5px;
@@ -68,23 +74,29 @@
     width: 214px;
     height: 1px;
   }
+
   .selected-board {
     background-color: $clr7;
   }
+
   .workspace-boards {
     position: relative;
   }
-  .workspace-container > *:not(.workspace-line) {
+
+  .workspace-container>*:not(.workspace-line) {
     height: 32px;
     width: 100%;
     padding: 0 8px;
     border-radius: 4px;
+
     .dots {
       display: none;
       margin: auto;
     }
+
     &:hover {
       background-color: $clr39;
+
       .dots {
         display: flex;
         align-items: center;
@@ -97,14 +109,17 @@
       }
     }
   }
+
   .add {
     margin-left: -2px;
   }
+
   &.is-open {
     .workspace-open-btn {
       transform: rotate(0deg);
     }
   }
+
   .workspace-open-btn {
     transform: rotate(180deg);
     width: 23px;
@@ -121,26 +136,31 @@
     border: 1px solid #c3c6d4;
     transition: width 0.15s ease, padding-inline-end 0.15s ease,
     padding-inline-start 0.15s ease, background-color 0.15s ease;
+
     &:hover {
       width: 33px;
       border-radius: 40px;
       background-color: $clr8;
+
       svg {
         fill: $clr2;
       }
     }
   }
+
   .workspace-input {
     width: 100%;
     font-size: 14px;
     outline: none;
     border: none;
     background-color: inherit;
+
     &::placeholder {
       color: #323338;
     }
   }
 }
+
 .is-open {
   width: 254px;
 }
@@ -149,4 +169,11 @@
   svg {
     margin-left: -2px;
   }
+
+}
+
+.board-title-input {
+  padding: 3px;
+  outline: 1px solid $clr8;
+  border: none;
 }

@@ -19,7 +19,6 @@ export default {
   },
   methods: {
     clearSearch() {
-        console.log('entered')
         this.$emit('clearSearch')
     }
   },
