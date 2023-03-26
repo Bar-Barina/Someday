@@ -1,33 +1,74 @@
 .task-text {
+    padding: 0 5px;
     height: 100%;
     width: 100%;
     position: relative;
-    &:hover .reset-text {
-        opacity: 1;
+    
+    &:hover {
+        .text {
+            outline: 1px solid $clr38;
+        }
+
+        .reset-text {
+            opacity: 1;
+        }
     }
-    .text {
-        height: 25px;
-        width: 130px;
-        cursor: auto;
-    }
-    .reset-text {   
-        background-color: $clr016;
+
+
+    .reset-text {
+        box-shadow: 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
+        background-color: $clr39;
         opacity: 0;
         display: flex;
         justify-content: center;
         align-items: center;
         cursor: pointer;
-        height: em(16px);
-        width: em(16px);
+        border: none;
+        height: 16px;
+        width: 16px;
         position: absolute;
-        right: 8px;
-        top:9px;
-        padding: 3px;
-        padding-bottom: 6px;
-        z-index: 1;
-        &:hover {
-            color: $clr8;
+        right: 10px;
+        top: 9px;
+        border-radius: 2px;
+
+        .x-icon {
+            height: 16px
         }
     }
-}
 
+    .txt-content {
+        white-space: nowrap;
+        font-size: 13px;
+        font-weight: 400;
+
+        .text {
+            padding-top: 5px;
+            text-align: center;
+            height: 25px;
+            width: 130px;
+            cursor: auto;
+        }
+    }
+
+    .plus {
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $clr8;
+        color: #fff;
+        height: 14px;
+        width: 14px;
+        border-radius: 50%;
+        position: absolute;
+        bottom: 10px;
+        left: 15px;
+        padding-bottom: 2px;
+        opacity: 0;
+    }
+
+    .text:empty .plus {
+        opacity: 1;
+    }
+    
+}

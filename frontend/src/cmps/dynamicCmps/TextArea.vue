@@ -1,5 +1,6 @@
 <template>
   <section class="task-text flex justify-center align-center">
+    <div></div>
     <div
       ref="cmpText"
       class="text editable-div flex align-center"
