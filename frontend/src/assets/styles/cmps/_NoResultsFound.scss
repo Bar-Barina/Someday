@@ -1,0 +1,31 @@
+.no-results-container {
+  position: relative;
+  left: 500px;
+  top: 70px;
+  text-align: center;
+  width: 445px;
+  height: fit-content;
+  img {
+    width: 217px;
+  }
+  h3 {
+    color: $clr44;
+    margin: -5px;
+  }
+  p {
+    color: $clr44;
+  }
+  button {
+    width: 189.891px;
+    height: 40px;
+    background-color: $clr8;
+    color: $clr2;
+    border: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 4px;
+    &:hover {
+      background-color: #0060b9;
+    }
+  }
+}

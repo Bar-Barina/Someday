@@ -125,11 +125,16 @@ import { svgService } from '../services/svg.service.js'
 import MainFilter from './MainFilter.vue'
 import MainPersonFilter from './MainPersonFilter.vue'
 import { utilService } from '../services/util.service.js'
+import { eventBus } from '../services/event-bus.service'
 
 export default {
   name: 'BoardHeader',
   created() {
     this.onSearchDeb = utilService.debounce(this.onSearch, 800) 
+    eventBus.on('clearSearch', () => {
+    this.searchQuery = ''
+    this.$store.commit('setFilterBy' , this.searchQuery)
+  })
   },
   data() {
     return {
