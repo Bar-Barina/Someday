@@ -1,5 +1,10 @@
 .add-task {
+
+    box-shadow: 0 8px 8px -8px rgba(0, 0, 0, 0.1);
+    z-index: 60;
+
     .empty {
+        box-shadow: 1px 8px 0 -1px #fff;
         left: 0;
     }
 
