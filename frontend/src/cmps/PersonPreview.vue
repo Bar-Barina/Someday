@@ -6,7 +6,7 @@
         :key="idx" class="person-card flex align-center">
           <img :src="p.url" alt="person-img" class="person-img" />
           <span class="person-name">{{ p.name }}</span>
-          <button @click.stop="removeMember(idx)">X</button>
+          <button @click.stop="removeMember(idx)"><span class="x-icon" v-icon="'closeTxt'"></span></button>
         </div>
     </section>
     <section class="suggest-person">

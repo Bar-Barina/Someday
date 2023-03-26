@@ -73,10 +73,10 @@
         New Task
       </div>
       <div class="bottom-header-btn btn-hover search-div">
-        <span
-          class="flex justify-center align-center"
+        <div
+          class="search-icon flex justify-center align-center"
           v-html="getSvg('headerSearch')"
-        ></span>
+        ></div>
         <input
           type="text"
           placeholder="Search"

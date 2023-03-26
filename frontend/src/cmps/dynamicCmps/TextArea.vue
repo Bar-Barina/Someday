@@ -9,7 +9,7 @@
       >
         {{ task.text }}
       </div>
-      <div class="reset-text">
+      <div class="reset-text" @click="resetText">
         <span class="x-icon" v-icon="'closeTxt'"></span>
       </div>
     </div>
