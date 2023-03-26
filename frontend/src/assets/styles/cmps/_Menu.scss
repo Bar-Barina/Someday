@@ -3,7 +3,7 @@
     bottom: 35px;
     left: 0;
     z-index: 3000;
-    min-width: 800px;
+    min-width: 600px;
     height: 63px;
 span {
     font-size: 14px;
@@ -31,6 +31,17 @@ span {
                 font-size: 24px;
                 padding-left: 20px;
                 font-weight: 100;
+            }
+
+            .colors-container {
+                height: 20px;
+                padding-left: 20px;
+                .color-div {
+                    margin-inline-end: 5px;
+                    height: 10px;
+                    width: 10px;
+                    border-radius: 50%;
+                }
             }
         }
 
