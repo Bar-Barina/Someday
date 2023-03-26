@@ -40,15 +40,14 @@
       </div>
       <div class="tasks-count">{{ tasksCount }} Tasks</div>
     </div>
-
     <component
       v-for="(label, idx) in labelsOrder"
       :key="idx"
       :is="`${label}Progress`"
       :group="group"
       :label="label"
-      :cmp="'collapse'"
-    ></component>
+      :cmp="'collapse'">
+    </component>
   </section>
 </template>
 

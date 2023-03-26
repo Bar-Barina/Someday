@@ -12,11 +12,12 @@
     <section class="suggest-person">
       <input
       class="person-input"
-      type="search"
+      type="text"
       placeholder="Search names"
       v-model="searchTerm"
       />
-      <span v-html="getSvg('searchGray')" class="workspace-icon-search"></span>
+      <span v-if="!searchTerm" v-html="getSvg('searchGray')" class="workspace-icon-search"></span>
+      <span v-else><span @click="this.searchTerm =' '" v-html="getSvg('x')" class="workspace-icon-search"></span></span>
     <p class="suggest-txt">Suggested people</p>
       <div
         class="flex align-center member"
