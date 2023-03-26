@@ -3,23 +3,25 @@
 
     &.active-row {
 
-        .third , .task-title{
+        .third,
+        .task-title {
             background-color: rgb(204, 229, 255);
         }
-        
-        > * {
+
+        >* {
             background-color: rgb(204, 229, 255);
         }
     }
 
     &:hover {
 
-        > * {
-            background-color: rgb(245,246,248);
+        >* {
+            background-color: rgb(245, 246, 248);
         }
 
-        .third , .task-title {
-            background-color: rgb(245,246,248);
+        .third,
+        .task-title {
+            background-color: rgb(245, 246, 248);
         }
     }
 
@@ -34,6 +36,9 @@
         }
 
         .content-edit {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
             cursor: auto;
             height: 20px;
             padding: 12px 5px;
@@ -51,6 +56,7 @@
 
     .open-con {
         opacity: 0;
+        min-width: 67px;
     }
 
     &:hover {
@@ -102,12 +108,13 @@
     transform: rotate(1deg);
     cursor: grabbing;
 
-    > * {
-        background-color: rgb(245,246,248);
+    >* {
+        background-color: rgb(245, 246, 248);
     }
 
-    .third , .task-title {
-        background-color: rgb(245,246,248)!important;
+    .third,
+    .task-title {
+        background-color: rgb(245, 246, 248) !important;
     }
 }
 

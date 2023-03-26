@@ -44,7 +44,7 @@
         ></span>
         <h4>{{ group.title }}</h4>
       </div>
-      <span class="tasks-count">{{ tasksCount }} tasks</span>
+      <span class="tasks-count">{{ tasksCount }} Tasks</span>
     </section>
     <ColorPicker
       v-if="showColorPicker"
@@ -87,6 +87,7 @@
           {{ label }}
         </Draggable>
       </Container>
+      <EmptyProgress class="cell1 last" :style="{width: auto}"/>
     </section>
     <!-- Tasks drag container -->
     <Container
@@ -138,6 +139,7 @@ import ProgressBar from './ProgressBar.vue'
 import ColorPicker from '../cmps/dynamicCmps/ColorPicker.vue'
 import { eventBus, showErrorMsg } from '../services/event-bus.service.js'
 import GroupCollapse from './GroupCollapse.vue'
+import EmptyProgress from './dynamicCmps/EmptyProgress.vue'
 
 export default {
   emits: [
@@ -261,6 +263,7 @@ export default {
     ProgressBar,
     ColorPicker,
     GroupCollapse,
+    EmptyProgress
   },
 }
 </script>
