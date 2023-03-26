@@ -19,6 +19,7 @@
         {{ dateDiff }}
       </div>
       <div class="day-diff">{{ dayDiff }}d</div>
+      <div class="reset-timeline" @click="resetTimeline">x</div>
     </div>
   </div>
   <div class="demo-date-picker">
@@ -56,6 +57,9 @@ export default {
     changeDate() {
       this.$emit('updateTask', { cmpType: 'timeline', data: this.value })
     },
+    resetTimeline() {
+      this.value = []
+    }
   },
   computed: {
     dayDiff() {
