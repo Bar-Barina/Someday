@@ -1,5 +1,6 @@
 <template>
   <section v-if="task" class="conversation-container">
+    <section class="app-header">
     <div class="conversation-action-wrapper">
       <RouterLink :to="`/board/${currBoard._id}`">
         <button
@@ -44,6 +45,7 @@
         <div class="view-option btn-hover flex align-center">Activity Log</div>
       </div>
     </div>
+  </section>
     <section class="bottom-chat">
       <div
         @input="updateContent"
