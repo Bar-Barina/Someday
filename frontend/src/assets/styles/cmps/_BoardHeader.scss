@@ -140,6 +140,9 @@
       border: none;
       width: 50px;
       background-color: inherit;
+      .search-icon {
+        font-size: 16px;
+      }
       &:focus {
         width: 170px;
         outline: none;

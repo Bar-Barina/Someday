@@ -13,6 +13,9 @@
     <div v-if="value" class="date-preview flex justify-center align-center">
       {{ value.split("-")[0] + " " + value.split("-")[1] }}
     </div>
+      <div v-if="value" class="reset-date" @click="resetDate">
+        <span class="x-icon" v-icon="'closeTxt'"></span>
+      </div>
     <div v-if="!value" class="date-placeholder flex align-center justify-center">
       <span class="plus">+</span>
         <span v-icon="'datePlaceholder'" class="date-icon"></span>
@@ -46,6 +49,9 @@ export default {
       );
       this.$emit("updateTask", { cmpType: "date", data: this.value });
     },
+    resetDate() {
+      this.value = ''
+    }
   },
 };
 </script>

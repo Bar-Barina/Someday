@@ -19,7 +19,9 @@
         {{ dateDiff }}
       </div>
       <div class="day-diff">{{ dayDiff }}d</div>
-      <div class="reset-timeline" @click="resetTimeline">x</div>
+      <div v-if="value" class="reset-date" @click="resetTimeline">
+        <span class="x-icon" v-icon="'closeTxt'"></span>
+      </div>
     </div>
   </div>
   <div class="demo-date-picker">
@@ -99,7 +101,7 @@ export default {
     },
     borderRadiusEnd() {
       return {
-        'border-radius-end': this.widthPrecent > 90,
+        'border-radius-end': this.widthPrecent > 95,
       }
     },
     emptyTimeline() {
