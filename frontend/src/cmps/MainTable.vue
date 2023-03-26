@@ -37,10 +37,9 @@
       <button>Add new group</button>
     </div>
   </Container>
-  <NoResultsFound
-    v-if="currBoard.groups.length === 0"
+  <!-- <NoResultsFound
     @clearSearch="clearSearch"
-  />
+  /> -->
 </template>
 
 <script>
