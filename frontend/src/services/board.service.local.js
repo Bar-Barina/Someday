@@ -51,9 +51,9 @@ async function save(board) {
 }
 
 function filterBoard(board, filterBy) {
-  console.log('filterBy',filterBy)
-  console.log('board',board)
-  const filteredBoard = board
+  console.log('filterBy', filterBy)
+  console.log('board', board)
+  const filteredBoard = JSON.parse(JSON.stringify(board))
   const regex = new RegExp(filterBy.txt, 'i')
   filteredBoard.groups = filteredBoard.groups
     .map((group) => {
@@ -63,18 +63,19 @@ function filterBoard(board, filterBy) {
       return { ...group, tasks: filteredTasks }
     })
     .filter((group) => group.tasks.length > 0)
-
-  filteredBoard.groups = filteredBoard.groups.filter((group) => {
-    return (group.tasks = group.tasks.filter((task) => {
-      return filterBy.activeFilters.some((label) => {
-        if (task.status === label) return true
-        if (task.priority === label) return true
-        if (task.person.some((p) => p.name === label)) return true
-        return false
-      })
-    }))
-    return group.tasks.length > 0
-  })
+  if (filterBy.activeFilters.length > 0) {
+    filteredBoard.groups = filteredBoard.groups.filter((group) => {
+      return (group.tasks = group.tasks.filter((task) => {
+        return filterBy.activeFilters.some((label) => {
+          if (task.status === label) return true
+          if (task.priority === label) return true
+          if (task.person.some((p) => p.name === label)) return true
+          return false
+        })
+      }))
+      return group.tasks.length > 0
+    })
+  }
   return filteredBoard
 }
 
@@ -284,10 +285,22 @@ function getEmptyTask() {
 
 function makeMembers() {
   const members = [
-    { name: "Tal", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04HWCV61T3-224de62cdd30-512' },
-    { name: "Dor", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04C1V8MCT0-3405b9727a5c-512' },
-    { name: "Bar", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512' },
-    { name: "Ofek", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04FAC6TULV-3a2724e5957b-512' },
+    {
+      name: 'Tal',
+      url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04HWCV61T3-224de62cdd30-512',
+    },
+    {
+      name: 'Dor',
+      url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04C1V8MCT0-3405b9727a5c-512',
+    },
+    {
+      name: 'Bar',
+      url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512',
+    },
+    {
+      name: 'Ofek',
+      url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04FAC6TULV-3a2724e5957b-512',
+    },
   ]
   const total = utilService.getRandomIntInclusive(1, 4)
   return members.slice(0, total)
@@ -1043,8 +1056,6 @@ function makeMembers() {
 //     }
 //   )
 // })();
-
-
 
 // Use for no logged in users only!
 // { name: "Dor", color: "black", url: 'https://cdn1.monday.com/dapulse_default_photo.png' },
