@@ -25,7 +25,7 @@
           <span class="Main-letter">M</span>
           <span class="home-svg" v-html="getSvg('home')"></span>
         </p>
-        <h1>Main workspace</h1>
+        <span>Main workspace</span>
         <span v-html="getSvg('arrowDownReg')"></span>
         <span v-html="getSvg('dots')"></span>
       </div>
@@ -95,7 +95,7 @@ export default {
     },
     moveToBoard(board, idx) {
       this.$store.commit({ type: 'setCurrBoard', board })
-      this.$router.replace(`${board._id}`)
+      this.$router.push(`/board/${board._id}`)
       this.selectedBoard = idx
     },
   },

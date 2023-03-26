@@ -19,7 +19,7 @@
     border-radius: 4px;
   }
   .workspace-title {
-    padding-bottom: 2px;
+    padding-bottom: 5px;
     margin-top: 15px;
     color: #676879;
   }
@@ -39,6 +39,8 @@
   }
   h1 {
     margin-left: 8px;
+    font-size: 16px;
+    font-weight: 600;
   }
   .workspace-icon {
     margin-right: 10px;
@@ -95,7 +97,7 @@
     border-radius: 50%;
     background-color: $clr2;
     position: absolute;
-    top: 23px;
+    top: 30px;
     right: -12px;
     background-color: #fff;
     border-radius: 50%;
