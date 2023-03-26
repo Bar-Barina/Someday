@@ -12,9 +12,9 @@
         <div class="person-count flex align-center justify-content">+{{(task.person.length - 1)}}</div>
     </div>
     <div class="empty-container flex justify-center align-center" v-if="task.person.length === 0">
-      <span class="plus" >+</span>
       <img class="empty-person" src="https://cdn.monday.com/icons/dapulse-person-column.svg" aria-hidden="true">
     </div>
+    <span class="plus" >+</span>
   </div>
   <PersonPreview
     v-clickOutside="closeModal"
