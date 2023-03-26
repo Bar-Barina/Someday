@@ -12,4 +12,20 @@
             scale: 1.1;
         }
     }
+    .progress-wrapper {
+        width: 100%;
+    }
 }
+
+.collapsed-group {
+
+    .status-progress {
+        flex-direction: column;
+        gap: 8px;
+        .progress-wrapper {
+            margin-bottom: -3px;
+            width: 100%;
+        }
+    }
+
+ }

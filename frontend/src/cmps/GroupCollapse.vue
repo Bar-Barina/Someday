@@ -45,6 +45,7 @@
       :key="idx"
       :is="`${label}Progress`"
       :group="group"
+      :isCollapse="'true'"
       :label="label"
       :cmp="'collapse'">
     </component>
