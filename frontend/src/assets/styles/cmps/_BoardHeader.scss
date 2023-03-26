@@ -23,14 +23,25 @@
       justify-content: start;
       height: em(24px);
       line-height: 40px;
-      font-size: 30px;
-      font-weight: 400;
       margin-right: 2px;
       font-family: $Poppins;
-      letter-spacing: 0.5px;
+      letter-spacing: -0.2px;
       font-weight: 500;
+      color: rgb(50,51,56);
       &:focus {
         width: 500px;
+      }
+
+      @include for-mobile-layout {
+        font-size: 24px;
+      }
+
+      @include for-narrow-layout {
+        font-size: 24px;
+      }
+      
+      @include for-wide-layout {
+        font-size: 30px;
       }
     }
   }
@@ -50,6 +61,7 @@
     }
 
     .invite {
+      min-width: fit-content;
       padding: 2px 6px;
       padding-right: 9px;
       border: 1px solid $clr014;
