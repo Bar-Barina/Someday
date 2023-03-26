@@ -1,6 +1,6 @@
 <template>
   <Container
-    v-if="currBoard"
+    v-if="currBoard && currBoard.groups.length"
     class="main-table"
     orientation="vertical"
     @drop="onGroupDrop($event)"
@@ -36,6 +36,7 @@
       <button>Add new group</button>
     </div>
   </Container>
+  <NoResultsFound v-else  @clearSearch="clearSearch"/>
 </template>
 
 <script>
@@ -46,6 +47,7 @@ import Menu from '../cmps/Menu.vue'
 import { svgService } from '../services/svg.service.js'
 import { eventBus } from '../services/event-bus.service'
 import GroupDrag from './GroupDrag.vue'
+import NoResultsFound from './NoResultsFound.vue'
 
 export default {
   emits: ['labelDrop'],
@@ -111,6 +113,9 @@ export default {
       board.groups.splice(groupIdx, 1, group)
       this.$store.dispatch({ type: 'updateBoard', board })
     },
+    clearSearch() {
+      eventBus.emit('clearSearch')
+    }
   },
   computed: {
     currBoard() {
@@ -126,6 +131,7 @@ export default {
     Draggable,
     Menu,
     GroupDrag,
+    NoResultsFound,
   },
 }
 </script>
