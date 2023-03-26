@@ -32,6 +32,9 @@ export default {
     boards() {
       return this.$store.getters.boards
     },
+    isBlackScreen() {
+      return this.$store.getters.isBlackScreen
+    }
   },
   methods: {
     async addBoard() {
@@ -75,11 +78,6 @@ export default {
     printBoardToConsole(board) {
       console.log('Board msgs:', board.msgs)
     },
-  },
-  computed: {
-    isBlackScreen() {
-      return this.$store.getters.isBlackScreen
-    }
   },
   components: {
     SideNav,

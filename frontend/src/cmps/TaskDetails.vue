@@ -1,11 +1,12 @@
 <template>
-  <section v-if="task" class="conversation-container">
+  <section v-if="task" class="conversation-container" v-clickOutside="closeBlackScreen">
     <section class="app-header">
     <div class="conversation-action-wrapper">
       <RouterLink :to="`/board/${currBoard._id}`">
         <button
           class="conversation-exit-btn flex justify-center align-center btn-hover"
           @click="updateTask"
+          
         >
           <span className="icon" v-html="getSvg('x')"></span>
         </button>
@@ -153,6 +154,10 @@ export default {
     updateContent() {
       this.textArea = this.$refs.textArea.innerText
     },
+    closeBlackScreen() {
+      this.$store.commit({type:'toggleBlackScreen'})
+      this.$router.push(`/board/${this.currBoard._id}`)
+    }
   },
   watch: {
     '$route.params': {
