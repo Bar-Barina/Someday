@@ -1,7 +1,9 @@
 <template>
   <section class="collapsed-group group-grid">
+    <div class="first sticky">
     <div class="more more-group sticky flex align-center justify-center">
       <span v-icon="'Dots'"></span>
+    </div>
     </div>
     <div
       class="task-border sticky"

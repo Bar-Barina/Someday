@@ -12,7 +12,16 @@
         border-bottom: 1px solid $clr014;
     }
 
+    .first {
+        left: 0;
+        border: none;
+        height: 100%;
+        background-color: #fff;
+        padding: 0;
+    }
+
     .more {
+        cursor: pointer;
         background-color: #fff;
         width: 100%;
         left: 0;
@@ -42,6 +51,7 @@
     }
 
     .title-wrapper {
+        left: 78px;
         border-right: 1px solid $clr014;
         flex-direction: column;
 
@@ -50,6 +60,7 @@
         }
 
         .tasks-count {
+            margin-top: 6px;
             padding-left: 4px;
         }
     }
