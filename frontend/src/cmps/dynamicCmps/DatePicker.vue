@@ -13,6 +13,9 @@
     <div v-if="value" class="date-preview flex justify-center align-center">
       {{ value.split("-")[0] + " " + value.split("-")[1] }}
     </div>
+    <!-- <div class="date-placeholder">
+
+    </div> -->
   </div>
 </template>
 
