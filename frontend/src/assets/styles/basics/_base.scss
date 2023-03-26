@@ -21,3 +21,14 @@ input[type="checkbox" i] {
     width: 16px;
     border: 1px solid #c3c6d4 !important;
 }
+
+.black-screen {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(41, 47, 76, 0.7);
+    pointer-events: none;
+    z-index: 10000;
+  }
