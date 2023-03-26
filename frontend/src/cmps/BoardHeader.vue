@@ -32,6 +32,7 @@
             @click="toggleBoardDesc"
           ></span>
           <BoardDesc v-if="showBoardDesc" v-clickOutside="closeModal" />
+          <!-- <BlackScreen/> -->
         </div>
         <div
           v-tippy="{
