@@ -4,6 +4,7 @@
     <Workspace :boards="boards" />
     <BoardHeader />
     <RouterView />
+    <div class="black-screen" v-if="isBlackScreen"></div>
   </section>
 </template>
 
@@ -74,6 +75,11 @@ export default {
     printBoardToConsole(board) {
       console.log('Board msgs:', board.msgs)
     },
+  },
+  computed: {
+    isBlackScreen() {
+      return this.$store.getters.isBlackScreen
+    }
   },
   components: {
     SideNav,

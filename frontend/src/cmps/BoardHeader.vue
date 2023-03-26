@@ -33,6 +33,7 @@
           ></span>
           <BoardDesc v-if="showBoardDesc" v-clickOutside="closeModal" />
           <!-- <BlackScreen/> -->
+          
         </div>
         <div
           v-tippy="{
@@ -274,6 +275,7 @@ export default {
     },
     toggleBoardDesc() {
       this.showBoardDesc = !this.showBoardDesc
+      this.$store.commit({type:'isBlackScreen'})
     } 
   },
   computed: {

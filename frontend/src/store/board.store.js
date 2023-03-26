@@ -36,6 +36,7 @@ export const boardStore = {
       activeFilters: [],
       txt: '',
     },
+    isBlackScreen:false
   },
   getters: {
     boards({ boards }) {
@@ -56,6 +57,9 @@ export const boardStore = {
     currActiveFilters({ filterBy }) {
       return filterBy.activeFilters
     },
+    isBlackScreen({isBlackScreen}) {
+      return isBlackScreen
+    }
   },
   mutations: {
     setBoards(state, { boards }) {
@@ -100,6 +104,9 @@ export const boardStore = {
       const filteredBoard = boardService.filterBoard(board, filterBy)
       return filteredBoard
     },
+    toggleBlackScreen(state) {
+      state.isBlackScreen = !state.isBlackScreen 
+    }
   },
   actions: {
     async addBoard(context, { board }) {
