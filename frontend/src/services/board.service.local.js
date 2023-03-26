@@ -51,6 +51,8 @@ async function save(board) {
 }
 
 function filterBoard(board, filterBy) {
+  console.log('filterBy',filterBy)
+  console.log('board',board)
   const filteredBoard = board
   const regex = new RegExp(filterBy.txt, 'i')
   filteredBoard.groups = filteredBoard.groups
