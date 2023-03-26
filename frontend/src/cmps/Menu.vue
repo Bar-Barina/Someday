@@ -7,20 +7,22 @@
       <div class="action-title flex justify-center column">
         <div class="title">{{ title }}</div>
       </div>
+      <section class="action-btns flex">
       <div
         @click="handleTasks('duplicate')"
-        class="duplicate-wrapper item flex column align-center"
+        class="duplicate-wrapper item flex column align-center pointer"
       >
         <span v-icon="'duplicate'" class="icon"></span>
         <span>Duplicate</span>
       </div>
       <div
         @click="handleTasks('remove')"
-        class="trash-wrapper item flex column align-center"
+        class="trash-wrapper item flex column align-center pointer"
       >
         <span v-icon="'menuTrash'" class="icon"></span>
         <span>Delete</span>
       </div>
+    </section>
       <div
         @click="clearSelected"
         class="action-delete flex justify-center align-center"

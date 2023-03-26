@@ -12,22 +12,28 @@
   z-index: 60;
   padding: 15px;
   font-size: 14px;
+
   .person-img {
     border-radius: 50%;
   }
+
   input {
     width: 320px;
     height: 32px;
     border: 1px solid rgb(163, 163, 163);
     border-radius: 5px;
     margin-top: 20px;
+    padding: 8px 24px 8px 16px;
+
     &:hover {
       border: 1px solid black;
     }
+
     &:focus {
       outline: 1px solid $clr8;
     }
   }
+
   .workspace-icon-search {
     width: 30px;
     height: 24px;
@@ -35,12 +41,14 @@
     margin-top: 24px;
     margin-left: -28px;
     cursor: pointer;
+
     svg {
       width: 24px;
       border-radius: 5px;
       height: 24px;
       padding: 3px;
     }
+
     :hover {
       background-color: #dcdfec;
     }
@@ -68,9 +76,12 @@
   }
 
   .invite {
+    align-items: center;
     height: 40px;
     width: 100%;
-    padding: 15px;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
 
     p {
       margin-left: 15px;
@@ -78,17 +89,25 @@
 
     &:hover {
       background-color: $clr39;
-      border-radius: 4px;
     }
   }
 }
 
-.onTask-person {
+.workspace-icon-invite {
+  margin-top: 3px;
+  margin-left: 13px;
+}
+
+.active-person {
   font-size: 12px;
-  .onTask-person-div {
-    display: flex;
-    justify-content: space-between;
-    height: 22px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  .person-card {
+    margin: 4px;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
     background: rgb(229, 244, 255);
     border-radius: 24px;
 
@@ -96,15 +115,18 @@
       margin-left: 0px;
       width: 22px;
     }
+
     span {
       padding: 4px;
     }
+
     button {
       background-color: inherit;
       border: none;
       border-radius: 50px;
       font-size: 10px;
       margin: 3px;
+
       &:hover {
         background-color: $clr2;
       }

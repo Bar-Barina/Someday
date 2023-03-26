@@ -1,9 +1,20 @@
 <template>
   <div @click="isOpen = !isOpen" class="person flex align-center justify-center">
-    <span v-for="(person, idx) in task.person" :key="idx">
-      <img :src="person.url" class="person-img" />
-      <!-- <img src="https://cdn.monday.com/icons/dapulse-person-column.svg" class="person-bullet-image person-bullet-component" title="" alt="" aria-hidden="true"> -->
-    </span>
+    <div v-if="task.person.length > 0 && task.person.length < 3" class="person-container flex align-center justify-center">
+      <span v-for="(person, idx) in task.person" :key="idx">
+        <div class="full-person">
+          <img :src="person.url" class="person-img" />
+        </div>
+      </span>
+    </div>
+    <div class="mini-person flex justify-center align-center" v-if="task.person.length > 2">
+        <img :src="task.person[0].url" class="person-img" />
+        <div class="person-count flex align-center justify-content">+{{(task.person.length - 1)}}</div>
+    </div>
+    <div class="empty-container flex justify-center align-center" v-if="task.person.length === 0">
+      <span class="plus" >+</span>
+      <img class="empty-person" src="https://cdn.monday.com/icons/dapulse-person-column.svg" aria-hidden="true">
+    </div>
   </div>
   <PersonPreview
     v-clickOutside="closeModal"
