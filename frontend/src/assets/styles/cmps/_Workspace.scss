@@ -18,6 +18,11 @@
     border: 1px solid #676879;
     border-radius: 4px;
   }
+
+  .arrowDown-workspace {
+    margin-left: 50px;
+    margin-top: 4px;
+  }
   .workspace-title {
     padding-bottom: 5px;
     margin-top: 15px;
@@ -28,6 +33,8 @@
     height: 20px;
     background-color: #ed7aef;
     border-radius: 6px;
+    margin-right: 13px;
+    margin-left: 5px;
   }
   .Main-letter {
     color: white;
@@ -37,15 +44,17 @@
     margin-top: 9px;
     margin-left: -4px;
   }
-  h1 {
-    margin-left: 8px;
+  .main-workspace {
+    margin-left: -7px;
+    margin-top: -1px;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: bold;
   }
   .workspace-icon {
     margin-right: 10px;
     margin-top: 5px;
   }
+
   .workspace-line {
     border-bottom: 1px solid #d0d4e6;
     margin-bottom: 22px;
@@ -81,9 +90,9 @@
         width: 30px;
       }
     }
-    .add {
-      margin-left: -4px;
-    }
+  }
+  .add {
+    margin-left: -2px;
   }
   &.is-open {
     .workspace-open-btn {
@@ -121,8 +130,17 @@
     outline: none;
     border: none;
     background-color: inherit;
+    &::placeholder {
+      color: #323338;
+    }
   }
 }
 .is-open {
   width: 254px;
+}
+
+.workspace-add {
+  svg {
+    margin-left: -2px;
+  }
 }
