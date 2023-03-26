@@ -75,12 +75,15 @@ import { svgService } from '../services/svg.service.js'
 import { boardService } from '../services/board.service.local.js'
 import BoardTitlePreview from '../cmps/BoardTitlePreview.vue'
 export default {
+  props:{
+    boards:Array
+  },
   data() {
     return {
       isWorkspaceOpen: false,
       newBoard: boardService.getEmptyBoard(),
       searchTerm: '',
-      selectedBoard: null,
+      selectedBoard: 0,
     }
   },
   methods: {
@@ -103,16 +106,26 @@ export default {
     },
   },
   computed: {
-    boards() {
-      return this.$store.getters.boards
-    },
+    // boards() {
+    //   return this.$store.getters.boards
+    // },
     filteredBoards() {
       const regex = new RegExp(this.searchTerm, 'i')
       return this.boards.filter((board) => regex.test(board.title))
     },
+    currBoard() {
+      return this.$store.getters.currBoard
+    }
   },
   components: {
     BoardTitlePreview,
   },
+  mounted() {
+    const {boardId} = this.$route.params
+    console.log('boardId',boardId)
+    console.log('this.boards',this.boards)
+    this.selectedBoard = this.boards.findIndex(b=>b._id === boardId)
+    console.log('this.selectedBoard',this.selectedBoard)
+  }
 }
 </script>

@@ -38,7 +38,7 @@
       >
         {{ group.title }}
       </div>
-      <div class="tasks-count">{{ tasksCount }} tasks</div>
+      <div class="tasks-count">{{ tasksCount }} Tasks</div>
     </div>
 
     <component
