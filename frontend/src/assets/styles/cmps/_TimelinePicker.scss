@@ -29,7 +29,8 @@
     }
     .reset-timeline {   
         background-color: $clr016;
-        opacity: 1;
+        color: gray;
+        opacity: 0;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -42,9 +43,6 @@
         padding: 3px;
         padding-bottom: 6px;
         z-index: 1;
-        &:hover {
-            color: $clr8;
-        }
     }
     .day-diff {
         position: absolute;

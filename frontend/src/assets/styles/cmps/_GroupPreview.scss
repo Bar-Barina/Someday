@@ -220,11 +220,16 @@
 }
 
 .color-icon {
+  cursor: pointer;
   width: 21px;
   height: 21px;
   // background-color: rgb(87, 155, 252);
   border-radius: 50%;
   // position: absolute;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .label-drag {
