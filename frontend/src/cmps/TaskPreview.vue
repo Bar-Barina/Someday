@@ -150,6 +150,7 @@ export default {
     },
     openCon() {
       this.isSelected = true
+      this.$store.commit({type:'toggleBlackScreen'})
       this.$router.push(
         '/board/' + this.currBoardId + '/taskDetails/' + this.task.id
       )
