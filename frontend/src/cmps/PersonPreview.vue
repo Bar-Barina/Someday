@@ -1,7 +1,7 @@
 <template>
   <section class="person-preview">
     <div class="arrow-up-div-person"></div>
-    <section class="onTask-person flex space-between">
+    <section class="onTask-person flex space-between align-center">
       <div
         class="onTask-person-div flex align-center"
         v-for="(p, idx) in person"
@@ -14,12 +14,12 @@
         <button @click.stop="removeMember(idx)">X</button>
       </div>
     </section>
-    <input
-      type="text"
+      <input
+      type="search"
       placeholder="     Search names, roles or teams"
       v-model="searchTerm"
-    />
-    <!-- <span v-html="getSvg('search')" class="workspace-icon"></span> -->
+      />
+      <span v-html="getSvg('searchGray')" class="workspace-icon-search"></span>
     <p>Suggested people</p>
     <section>
       <div

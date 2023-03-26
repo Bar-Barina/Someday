@@ -1,6 +1,6 @@
 .person-preview {
-  width: 400px;
-  height: 300px;
+  width: fit-content;
+  height: fit-content;
   background-color: white;
   border: 1px solid black;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -10,23 +10,39 @@
   top: 70px;
   right: 291.6px;
   z-index: 60;
-  padding-left: 16px;
-  padding-top: 8px;
+  padding: 15px;
   font-size: 14px;
-
+  .person-img {
+    border-radius: 50%;
+  }
   input {
     width: 320px;
     height: 32px;
     border: 1px solid rgb(163, 163, 163);
-    border-radius: 3px;
+    border-radius: 5px;
     margin-top: 20px;
-
     &:hover {
       border: 1px solid black;
     }
-
     &:focus {
       outline: 1px solid $clr8;
+    }
+  }
+  .workspace-icon-search {
+    width: 30px;
+    height: 24px;
+    position: absolute;
+    margin-top: 24px;
+    margin-left: -28px;
+    cursor: pointer;
+    svg {
+      width: 24px;
+      border-radius: 5px;
+      height: 24px;
+      padding: 3px;
+    }
+    :hover {
+      background-color: #dcdfec;
     }
   }
 
@@ -69,25 +85,29 @@
 
 .onTask-person {
   font-size: 12px;
-
   .onTask-person-div {
     display: flex;
-    align-items: left;
     justify-content: space-between;
     height: 22px;
     background: rgb(229, 244, 255);
     border-radius: 24px;
-    width: 100px;
 
     img {
       margin-left: 0px;
       width: 22px;
     }
-
+    span {
+      padding: 4px;
+    }
     button {
       background-color: inherit;
       border: none;
+      border-radius: 50px;
       font-size: 10px;
+      margin: 3px;
+      &:hover {
+        background-color: $clr2;
+      }
     }
   }
 }
