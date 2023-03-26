@@ -27,7 +27,4 @@ const clickOutside = {
   },
 }
 
-export { 
-    clickOutside, 
-    icon 
-}
+export { clickOutside, icon }

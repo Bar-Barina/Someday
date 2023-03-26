@@ -8,13 +8,6 @@ import 'element-plus/dist/index.css'
 import VueTippy from 'vue-tippy'
 import 'tippy.js/dist/tippy.css'
 import 'tippy.js/themes/light.css'
-// import { setDefaultProps } from 'vue-tippy'
-
-// setDefaultProps({
-//   placement: 'right',
-//   appendTo: 'parent',
-//   arrow: true,
-// })
 
 import { clickOutside, icon } from './directives.js'
 

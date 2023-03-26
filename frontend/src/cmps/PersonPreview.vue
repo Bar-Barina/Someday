@@ -53,14 +53,9 @@ export default {
   },
   computed: {
     members() {
-      // let taskPersons = JSON.parse(JSON.stringify(this.person))
-      // return this.$store.getters.currBoard.members.filter((member) => {
-      //   return !taskPersons.some((p) => p.name === member.name)
-      console.log(this.person)
-        let taskPersons = Object.values(this.person)
-        console.log(taskPersons)
+      let taskPersons = Object.values(this.person)
       return this.$store.getters.currBoard.members.filter((member) => {
-      return !taskPersons.some((p) => p.name === member.name)
+        return !taskPersons.some((p) => p.name === member.name)
       })
     },
     filteredMembers() {
@@ -73,7 +68,7 @@ export default {
       this.$emit('updatePerson', member)
     },
     removeMember(idx) {
-      this.$emit('removeMember' , idx)
+      this.$emit('removeMember', idx)
     },
     getSvg(iconName) {
       return svgService.getSvg(iconName)

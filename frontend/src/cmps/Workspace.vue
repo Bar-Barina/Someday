@@ -52,15 +52,14 @@
         </div>
         <br />
         <div class="workspace-line"></div>
-        <div 
+        <div
           v-for="(board, idx) in filteredBoards"
           :key="idx"
           @click="moveToBoard(board, idx)"
           :class="{ 'selected-board': selectedBoard === idx }"
           class="flex align-center workspace-boards pointer"
         >
-          <BoardTitlePreview :board="board" @removeBoard="removeBoard"/>
-   
+          <BoardTitlePreview :board="board" @removeBoard="removeBoard" />
         </div>
       </section>
     </section>
@@ -99,7 +98,6 @@ export default {
       this.$router.push(`${board._id}`)
       this.selectedBoard = idx
     },
-  
   },
   computed: {
     boards() {
@@ -110,10 +108,8 @@ export default {
       return this.boards.filter((board) => regex.test(board.title))
     },
   },
-  components : {
-    BoardTitlePreview
-  }
+  components: {
+    BoardTitlePreview,
+  },
 }
 </script>
-
-

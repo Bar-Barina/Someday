@@ -100,30 +100,17 @@ export default {
   },
   methods: {
     filterTasksByMember(member) {
-      //console.log(member)
       const board = JSON.parse(JSON.stringify(this.currBoard))
       const filtered = board.groups.filter((group) => {
         const array = group.tasks.filter((task) => {
           return task.person.some((p) => p.name === member.name)
         })
-        console.log(array)
       })
-      //console.log(filtered)
-      //   console.log('member from filter', member)
-      //   const groupsIds = Object.keys(board.groups)
-      //   console.log('tasks from filter', tasks)
-      //   const filteredTasks = tasks.filter((task) => {
-      //     return task.person.some((p) => p.name === member.name)
-      //   })
-      //   console.log('filteredTasks from filter', filteredTasks)
-      //   this.$store.dispatch('filterTasks', filteredTasks)
     },
     ChangeActive(label) {
       this.$store.commit({ type: 'updateActiveFilters', label })
-      // this.$store.dispatch({type:'FilterBoard'})
     },
     isActive(label) {
-      // if(label === 'Empty status' || 'Empty priority') label = ''
       if (this.currActiveFilters.includes(label)) return true
       else return false
     },
@@ -136,7 +123,5 @@ export default {
       return this.$store.getters.currActiveFilters
     },
   },
-  created() {},
-  components: {},
 }
 </script>

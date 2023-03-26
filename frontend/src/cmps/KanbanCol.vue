@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import { Container, Draggable } from "vue3-smooth-dnd";
-import KanbanCard from "./KanbanCard.vue";
+import { Container, Draggable } from 'vue3-smooth-dnd'
+import KanbanCard from './KanbanCard.vue'
 export default {
   props: {
     status: String,
@@ -33,29 +33,29 @@ export default {
   data() {
     return {
       board: this.$store.getters.currBoard,
-    };
+    }
   },
   methods: {
     getColPayload(id) {
       return (index) => {
         return this.board.groups.filter((g) => g._id === groupId)[0].tasks[
           index
-        ];
-      };
+        ]
+      }
     },
     onTaskDrop() {},
   },
   computed: {
     tasks() {
-      const board = JSON.parse(JSON.stringify(this.board));
+      const board = JSON.parse(JSON.stringify(this.board))
       const filteredGroups = board.groups.map((group) => {
-        return group.tasks.filter((task) => task.status === this.status);
-      });
+        return group.tasks.filter((task) => task.status === this.status)
+      })
       const tasks = filteredGroups.reduce((acc, group) => {
-        acc = [...acc, ...group];
-        return acc;
-      }, []);
-      return tasks;
+        acc = [...acc, ...group]
+        return acc
+      }, [])
+      return tasks
     },
   },
   components: {
@@ -63,5 +63,5 @@ export default {
     Container,
     Draggable,
   },
-};
+}
 </script>

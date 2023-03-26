@@ -43,7 +43,5 @@ created() {},
       this.isEditMenuOpen = false
     }
   },
-  computed: {},
 }
-
 </script>

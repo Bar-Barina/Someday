@@ -128,11 +128,6 @@ import { utilService } from '../services/util.service.js'
 
 export default {
   name: 'BoardHeader',
-  props: {},
-  components: {
-    MainFilter,
-    MainPersonFilter,
-  },
   created() {
     this.onSearchDeb = utilService.debounce(this.onSearch, 800) 
   },
@@ -185,6 +180,10 @@ export default {
     currBoard() {
       return this.$store.getters.currBoard
     },
+  },
+  components: {
+    MainFilter,
+    MainPersonFilter,
   },
 }
 </script>

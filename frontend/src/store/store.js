@@ -9,12 +9,9 @@ export const store = Vuex.createStore({
   modules: {
     userStore,
     boardStore,
-    reviewStore
+    reviewStore,
   },
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  }
+  state: {},
+  mutations: {},
+  actions: {},
 })

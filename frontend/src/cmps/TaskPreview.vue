@@ -82,27 +82,27 @@
         @updateTask="updateTask"
       ></component>
     </section>
-    <EmptyProgress :style="{width: 'auto'}"/>
+    <EmptyProgress :style="{ width: 'auto' }" />
   </section>
 </template>
 
 <script>
-import { svgService } from "../services/svg.service";
-import { Container, Draggable } from "vue3-smooth-dnd";
-import { utilService } from "../services/util.service";
-import EditMenu from "./EditMenu.vue";
-import Status from "./dynamicCmps/StatusPicker.vue";
-import Priority from "./dynamicCmps/PriorityPicker.vue";
-import Timeline from "./dynamicCmps/TimelinePicker.vue";
-import Date from "./dynamicCmps/DatePicker.vue";
-import Person from "./dynamicCmps/PersonPicker.vue";
-import Text from "./dynamicCmps/TextArea.vue";
-import Files from "./dynamicCmps/FilesPicker.vue";
-import { eventBus } from "../services/event-bus.service";
-import EmptyProgress from './dynamicCmps/EmptyProgress.vue';
+import { svgService } from '../services/svg.service'
+import { Container, Draggable } from 'vue3-smooth-dnd'
+import { utilService } from '../services/util.service'
+import EditMenu from './EditMenu.vue'
+import Status from './dynamicCmps/StatusPicker.vue'
+import Priority from './dynamicCmps/PriorityPicker.vue'
+import Timeline from './dynamicCmps/TimelinePicker.vue'
+import Date from './dynamicCmps/DatePicker.vue'
+import Person from './dynamicCmps/PersonPicker.vue'
+import Text from './dynamicCmps/TextArea.vue'
+import Files from './dynamicCmps/FilesPicker.vue'
+import { eventBus } from '../services/event-bus.service'
+import EmptyProgress from './dynamicCmps/EmptyProgress.vue'
 
 export default {
-  emits: ["saveTask", "remove", "addSelected", "removeSelected"],
+  emits: ['saveTask', 'remove', 'addSelected', 'removeSelected'],
   props: {
     labels: Array,
     task: Object,
@@ -113,72 +113,73 @@ export default {
       isEditOpen: false,
       isActive: false,
       isSelected: false,
-    };
+    }
   },
   created() {
-    eventBus.on("clearChecked", () => {
-      console.log("clearing");
-      this.isSelected = false;
-    });
-    eventBus.on("addSelected", (groupId) => {
+    eventBus.on('clearChecked', () => {
+      console.log('clearing')
+      this.isSelected = false
+    })
+    eventBus.on('addSelected', (groupId) => {
       if (groupId === this.group._id) {
-        this.isSelected = true;
-        this.$emit("addSelected", this.task);
+        this.isSelected = true
+        this.$emit('addSelected', this.task)
       }
-    });
-    eventBus.on("removeSelected", (groupId) => {
+    })
+    eventBus.on('removeSelected', (groupId) => {
       if (groupId === this.group._id) {
-        this.isSelected = false;
-        this.$emit("removeSelected", this.task);
+        this.isSelected = false
+        this.$emit('removeSelected', this.task)
       }
-    });
+    })
   },
   methods: {
     getSvg(iconName) {
-      return svgService.getSvg(iconName);
+      return svgService.getSvg(iconName)
     },
     updateTask({ cmpType, data }) {
-      const taskToSave = { ...this.task };
-      if (!cmpType) taskToSave.taskTitle = this.$refs.taskTitle.innerText;
-      else taskToSave[cmpType] = data;
+      const taskToSave = { ...this.task }
+      if (!cmpType) taskToSave.taskTitle = this.$refs.taskTitle.innerText
+      else taskToSave[cmpType] = data
+      // FOR LATER USE!!!
       //    activity = boardService.getEmptyActivity()
       //    activity.txt = `Members changed for task ${}`
       //    activity.task = '{mini-task}'
       // const toUpdate = {taskToSave , groupId: this.group._id}
-      this.$emit("saveTask", taskToSave);
+      this.$emit('saveTask', taskToSave)
     },
     openCon() {
-      this.isSelected = true;
+      this.isSelected = true
       this.$router.push(
-        "/board/" + this.currBoardId + "/taskDetails/" + this.task.id
-      );
-      this.$store.commit({ type: "setCurrGroup", group: this.group });
+        '/board/' + this.currBoardId + '/taskDetails/' + this.task.id
+      )
+      this.$store.commit({ type: 'setCurrGroup', group: this.group })
     },
     toggleEdit() {
-      this.isEditOpen = !this.isEditOpen;
+      this.isEditOpen = !this.isEditOpen
     },
     removeTask(toRemove) {
-      this.$emit("remove", toRemove);
+      this.$emit('remove', toRemove)
     },
     selectTask() {
       if (this.$refs.checkbox.checked) {
-        this.isSelected = true;
-        this.$emit("addSelected", this.task);
+        this.isSelected = true
+        this.$emit('addSelected', this.task)
       } else {
-        this.isSelected = false;
-        this.$emit("removeSelected", this.task.id);
+        this.isSelected = false
+        this.$emit('removeSelected', this.task.id)
       }
     },
   },
   computed: {
     currBoardId() {
-      return this.$store.getters.currBoard._id;
+      return this.$store.getters.currBoard._id
     },
     currBoard() {
-      return this.$store.getters.currBoard;
+      return this.$store.getters.currBoard
     },
     isChecked() {
-      return this.isSelected;
+      return this.isSelected
     },
   },
   components: {
@@ -192,7 +193,7 @@ export default {
     EditMenu,
     Text,
     Files,
-    EmptyProgress
+    EmptyProgress,
   },
-};
+}
 </script>

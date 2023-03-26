@@ -12,7 +12,6 @@
 // const SOCKET_EMIT_LOGIN = 'set-user-socket'
 // const SOCKET_EMIT_LOGOUT = 'unset-user-socket'
 
-
 // const baseUrl = (process.env.NODE_ENV === 'production') ? '' : '//localhost:3030'
 // export const socketService = createSocketService()
 // // export const socketService = createDummySocketService()
@@ -21,7 +20,6 @@
 // window.socketService = socketService
 
 // socketService.setup()
-
 
 // function createSocketService() {
 //   var socket = null
@@ -71,9 +69,9 @@
 //     terminate() {
 //       this.setup()
 //     },
-//     login() {   
+//     login() {
 //     },
-//     logout() {   
+//     logout() {
 //     },
 //     on(eventName, cb) {
 //       listenersMap[eventName] = [...(listenersMap[eventName]) || [], cb]
@@ -106,7 +104,6 @@
 //   window.listenersMap = listenersMap
 //   return socketService
 // }
-
 
 // Basic Tests
 // function cb(x) {console.log('Socket Test - Expected Puk, Actual:', x)}

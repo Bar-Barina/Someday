@@ -32,60 +32,59 @@
 </template>
 
 <script>
-import { eventBus } from "../services/event-bus.service";
-import { utilService } from "../services/util.service";
+import { eventBus } from '../services/event-bus.service'
+import { utilService } from '../services/util.service'
 export default {
   props: {
     selectedTasks: Object,
   },
   data() {
-    return {};
+    return {}
   },
-  created() {},
   computed: {
     currBoard() {
-      return this.$store.getters.currBoard;
+      return this.$store.getters.currBoard
     },
     tasksCount() {
       const tasksCount = Object.keys(this.selectedTasks).reduce((acc, key) => {
         if (Array.isArray(this.selectedTasks[key])) {
-          return acc + this.selectedTasks[key].length;
+          return acc + this.selectedTasks[key].length
         }
-        return acc;
-      }, 0);
-      return tasksCount;
+        return acc
+      }, 0)
+      return tasksCount
     },
     title() {
-      if (this.tasksCount === 1) return "Task selected";
-      else return "Tasks selected";
+      if (this.tasksCount === 1) return 'Task selected'
+      else return 'Tasks selected'
     },
   },
   methods: {
     handleTasks(todo) {
-      const board = JSON.parse(JSON.stringify(this.currBoard));
+      const board = JSON.parse(JSON.stringify(this.currBoard))
       Object.keys(this.selectedTasks).forEach((key) => {
-        const groupIdx = board.groups.findIndex((g) => g._id === key);
+        const groupIdx = board.groups.findIndex((g) => g._id === key)
         this.selectedTasks[key].forEach((task) => {
           const taskIdx = board.groups[groupIdx].tasks.findIndex(
             (t) => t.id === task.id
-          );
-          if (todo === "remove") {
-            board.groups[groupIdx].tasks.splice(taskIdx, 1);
+          )
+          if (todo === 'remove') {
+            board.groups[groupIdx].tasks.splice(taskIdx, 1)
           } else {
-            const copy = JSON.parse(JSON.stringify(task));
-            copy.id = utilService.makeId();
-            copy.taskTitle = task.taskTitle + " (copy)";
-            board.groups[groupIdx].tasks.splice(taskIdx + 1, 0, copy);
+            const copy = JSON.parse(JSON.stringify(task))
+            copy.id = utilService.makeId()
+            copy.taskTitle = task.taskTitle + ' (copy)'
+            board.groups[groupIdx].tasks.splice(taskIdx + 1, 0, copy)
           }
-        });
-      });
-      this.$store.dispatch({ type: "updateBoard", board });
-      this.clearSelected();
+        })
+      })
+      this.$store.dispatch({ type: 'updateBoard', board })
+      this.clearSelected()
     },
     clearSelected() {
-      this.$emit("clearSelected");
-      eventBus.emit("clearChecked");
+      this.$emit('clearSelected')
+      eventBus.emit('clearChecked')
     },
   },
-};
+}
 </script>
