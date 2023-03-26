@@ -59,7 +59,7 @@
           v-for="(board, idx) in filteredBoards"
           :key="idx"
           @click="moveToBoard(board, idx)"
-          :class="{ 'selected-board': selectedBoard === idx }"
+          :class="{ 'selected-board': currBoard._id === board._id }"
           class="flex align-center workspace-boards pointer"
         >
           <BoardTitlePreview :board="board" @removeBoard="removeBoard" />
@@ -115,7 +115,7 @@ export default {
     },
     currBoard() {
       return this.$store.getters.currBoard
-    }
+    },
   },
   components: {
     BoardTitlePreview,
