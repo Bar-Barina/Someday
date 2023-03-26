@@ -1,7 +1,7 @@
 <template>
   <section class="main-layout board-index">
     <SideNav />
-    <Workspace />
+    <Workspace :boards="boards" />
     <BoardHeader />
     <RouterView />
   </section>
