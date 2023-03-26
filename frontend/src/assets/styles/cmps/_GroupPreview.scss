@@ -3,6 +3,7 @@
 }
 
 .main-table {
+  width: 100%;
   overflow-x: auto;
   padding-top: 25px;
   // overflow-y: hidden;
@@ -22,7 +23,7 @@
   }
   
 
-  width: max-content;
+  // width: max-content;
   margin-bottom: 20px;
   position: relative;
 
@@ -144,7 +145,7 @@
 
     .group-grid.labels-grid {
       text-align: center;
-      grid-template-columns: 40px 6px 32px 364px 980px;
+      grid-template-columns: 40px 6px 32px 364px 980px 1fr;
 
       .task-border {
         border-top-left-radius: 6px;
