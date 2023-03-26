@@ -3,6 +3,9 @@
         padding: 0;
         flex-wrap: wrap;
         position: relative;
+           &:hover .date-placeholder{
+            opacity: 1;
+        }
     }
 
     :root {
@@ -22,12 +25,14 @@
     .el-input {
         padding: 5px;
         --el-input-border-radius: 0%;
+       
     }
 
     .el-input__wrapper {
         opacity: 0;
         padding: 0;
         background-image: none;
+     
     }
 
     .el-input__prefix {
@@ -41,6 +46,7 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
+    
     }
 
     .el-input_inner {
@@ -48,7 +54,7 @@
         height: 27px;
         background-color: white;
         width: 100%;
-
+      
     }
 
     .date-preview {
@@ -59,8 +65,34 @@
         left: 48px;
         font-size: 14px;
         // padding-bottom:30px ;
+        
     }
 
-    // .date-placeholder {
-
-    // }
+    .date-placeholder {
+        opacity: 0;
+        margin-left: 5px;
+        gap: 4px;
+        width: 128px;
+        height: 26px ;
+        border: 1px solid $clr014;
+        position: absolute;
+        top: 2px;
+        .date-icon {
+            color: #666;
+            margin-top: 3px;
+        }
+        .plus {
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $clr8;
+            color: #fff;
+            height: 14px;
+            width: 14px;
+            border-radius: 50%;
+            // position: absolute;
+            // bottom: 5px;
+            // left: 30px;
+        }
+    }

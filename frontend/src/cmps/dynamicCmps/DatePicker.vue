@@ -13,13 +13,15 @@
     <div v-if="value" class="date-preview flex justify-center align-center">
       {{ value.split("-")[0] + " " + value.split("-")[1] }}
     </div>
-    <!-- <div class="date-placeholder">
-
-    </div> -->
+    <div v-if="!value" class="date-placeholder flex align-center justify-center">
+      <span class="plus">+</span>
+        <span v-icon="'datePlaceholder'" class="date-icon"></span>
+    </div>
   </div>
 </template>
 
 <script>
+import {icon} from '../../directives.js'
 export default {
   name: "date",
   emits: ["updateTask"],
