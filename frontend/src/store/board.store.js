@@ -94,7 +94,10 @@ export const boardStore = {
       } else state.filterBy.activeFilters.push(label)
     },
     setFilterBy(state, { searchQuery }) {
+      console.log('from store',searchQuery)
+      console.log('before state.filterBy.txt',state.filterBy.txt)
       state.filterBy.txt = searchQuery
+      console.log('after state.filterBy.txt',state.filterBy.txt)
     },
     filterBoard({ board, filterBy }) {
       const filteredBoard = boardService.filterBoard(board, filterBy)

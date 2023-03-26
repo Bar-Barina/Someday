@@ -25,8 +25,11 @@
           <span class="Main-letter">M</span>
           <span class="home-svg" v-html="getSvg('home')"></span>
         </p>
-        <span>Main workspace</span>
-        <span v-html="getSvg('arrowDownReg')"></span>
+        <span class="main-workspace">Main workspace</span>
+        <span
+          v-html="getSvg('workspaceArrow')"
+          class="arrowDown-workspace"
+        ></span>
         <span v-html="getSvg('dots')"></span>
       </div>
       <section class="flex column workspace-container">
@@ -39,7 +42,7 @@
         </div>
         <div class="workspace-filter flex align-center pointer">
           <span v-html="getSvg('filter')" class="workspace-icon"></span>
-          <span>Filter</span>
+          <span>Filters</span>
         </div>
         <div class="workspace-search flex align-center pointer">
           <span v-html="getSvg('searchGray')" class="workspace-icon"></span>
