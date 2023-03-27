@@ -3,17 +3,17 @@
 //     // src: url(../../fonts/Caveat/Caveat-Regular.ttf);
 // }
 @font-face {
-    font-family: Figtree;
-    src: url('https://fonts.googleapis.com/css2?family=Figtree&display=swap');
+  font-family: Figtree;
+  src: url('https://fonts.googleapis.com/css2?family=Figtree&display=swap');
 }
 
 @font-face {
-    font-family: Poppins;
-    src: url('./fonts/Poppins-Medium.ttf')
+  font-family: Poppins;
+  src: url('./fonts/Poppins-Medium.ttf');
 }
 @font-face {
-    font-family: 'PoppinsSemiBold';
-    src: url('./fonts/Poppins-SemiBold.ttf')
+  font-family: 'PoppinsSemiBold';
+  src: url('./fonts/Poppins-SemiBold.ttf');
 }
 
 $mainFont: 'Figtree', sans-serif;
