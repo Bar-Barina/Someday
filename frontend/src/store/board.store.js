@@ -36,7 +36,17 @@ export const boardStore = {
       activeFilters: [],
       txt: '',
     },
-    isBlackScreen:false
+    isBlackScreen:false,
+    statuses: ['Working on it' , 'Stuck' , 'Done' , 'Blank'],
+    labelsOrder: [
+      "Date",
+      "Text",
+      "Priority",
+      "Person",
+      "Files",
+      "Status",
+      "Timeline",
+    ],
   },
   getters: {
     boards({ boards }) {
@@ -59,6 +69,12 @@ export const boardStore = {
     },
     isBlackScreen({isBlackScreen}) {
       return isBlackScreen
+    },
+    kanbanStatuses({statuses}) {
+      return statuses
+    },
+    currLabelsOrder({labelsOrder}) {
+      return labelsOrder
     }
   },
   mutations: {
@@ -86,6 +102,9 @@ export const boardStore = {
     },
     setCurrGroup(state, { group }) {
       state.currGroup = group
+    },
+    setStatuses(state, { statuses }) {
+      state.statuses = statuses
     },
     updateActiveFilters(state, { label }) {
       // FOR LATER USE!!!
@@ -166,6 +185,7 @@ export const boardStore = {
       }
     },
     async saveTask({ state, commit }, { toUpdate }) {
+      console.log('toUpdate', toUpdate)
       const currBoard = state.currBoard
       if (!toUpdate.task) toUpdate.task = null
       try {
