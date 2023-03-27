@@ -55,54 +55,70 @@
         </div>
         <br />
         <div class="workspace-line"></div>
-        <div
-          v-for="(board, idx) in filteredBoards"
-          :key="idx"
-          @click="moveToBoard(board, idx)"
-          :class="{ 'selected-board': currBoard._id === board._id }"
-          class="flex align-center workspace-boards pointer"
-        >
-          <BoardTitlePreview :board="board" @removeBoard="removeBoard" />
-        </div>
+        <Container
+        class="vertical boards-container"
+        orientation="vertical"
+        group-name="boards"
+        tag="div"
+        @drop="onBoardDrop($event)">
+            <Draggable v-for="(board, idx) in filteredBoards"
+            :key="idx"
+            @click="moveToBoard(board, idx)"
+            :class="{ 'selected-board': currBoard._id === board._id }"
+            class="flex align-center workspace-boards pointer">
+              <BoardTitlePreview :board="board" @removeBoard="removeBoard" />
+            </Draggable>
+        </Container>
       </section>
     </section>
   </section>
 </template>
 
 <script>
-import { takeWhile } from 'lodash'
-import { svgService } from '../services/svg.service.js'
-import { boardService } from '../services/board.service.local.js'
-import BoardTitlePreview from '../cmps/BoardTitlePreview.vue'
+import { Container, Draggable } from "vue3-smooth-dnd";
+import { takeWhile } from "lodash";
+import { svgService } from "../services/svg.service.js";
+import { boardService } from "../services/board.service.local.js";
+import BoardTitlePreview from "../cmps/BoardTitlePreview.vue";
+import { utilService } from '../services/util.service.js';
 export default {
-  props:{
-    boards:Array
+  props: {
+    boards: Array,
+  },
+  created() {
+    this.currBoards = this.boards
   },
   data() {
     return {
       isWorkspaceOpen: false,
       newBoard: boardService.getEmptyBoard(),
-      searchTerm: '',
+      searchTerm: "",
       selectedBoard: null,
-    }
+      currBoards: null,
+    };
   },
   methods: {
     getSvg(iconName) {
-      return svgService.getSvg(iconName)
+      return svgService.getSvg(iconName);
     },
     openWorkspace() {
-      this.isWorkspaceOpen = !this.isWorkspaceOpen
+      this.isWorkspaceOpen = !this.isWorkspaceOpen;
     },
     addBoard(board) {
-      this.$store.dispatch({ type: 'addBoard', board })
+      this.$store.dispatch({ type: "addBoard", board });
     },
     removeBoard(boardId) {
-      this.$store.dispatch({ type: 'removeBoard', boardId })
+      this.$store.dispatch({ type: "removeBoard", boardId });
     },
     moveToBoard(board, idx) {
-      this.$store.commit({ type: 'setCurrBoard', board })
-      this.$router.push(`/board/${board._id}`)
-      this.selectedBoard = idx
+      this.$store.commit({ type: "setCurrBoard", board });
+      this.$router.push(`/board/${board._id}`);
+      this.selectedBoard = idx;
+    },
+    onBoardDrop(dropResult) {
+      let boards = JSON.parse(JSON.stringify(this.currBoards))
+      boards = utilService.applyDrag(boards, dropResult)
+      this.currBoards = boards
     },
   },
   computed: {
@@ -110,24 +126,26 @@ export default {
     //   return this.$store.getters.boards
     // },
     filteredBoards() {
-      const regex = new RegExp(this.searchTerm, 'i')
-      return this.boards.filter((board) => regex.test(board.title))
+      const regex = new RegExp(this.searchTerm, "i");
+      return this.currBoards.filter((board) => regex.test(board.title));
     },
     currBoard() {
-      return this.$store.getters.currBoard
+      return this.$store.getters.currBoard;
     },
   },
   components: {
     BoardTitlePreview,
+    Container,
+    Draggable,
   },
   mounted() {
-    setTimeout(()=>{
-    const {boardId} = this.$route.params
-    // console.log('boardId',boardId)
-    // console.log('this.boards',this.boards)
-    this.selectedBoard = this.boards.findIndex(b=>b._id === boardId)
-    // console.log('this.selectedBoard',this.selectedBoard)
-  },0)
-  }
-}
+    setTimeout(() => {
+      const { boardId } = this.$route.params;
+      // console.log('boardId',boardId)
+      // console.log('this.boards',this.boards)
+      this.selectedBoard = this.boards.findIndex((b) => b._id === boardId);
+      // console.log('this.selectedBoard',this.selectedBoard)
+    }, 0);
+  },
+};
 </script>
