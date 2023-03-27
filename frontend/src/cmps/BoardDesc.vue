@@ -10,6 +10,7 @@
     </section>
     <!-- INFO -->
     <section class="board-info">
+      <span v-icon="'x'"></span>
       <div class="board-info-title">Board info</div>
       <!-- WORKSPACE -->
       <div class="workspace-info-div">

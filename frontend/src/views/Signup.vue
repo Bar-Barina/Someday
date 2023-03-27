@@ -48,7 +48,7 @@ export default {
   name: 'Signup',
   data() {
     return {
-      signupCred: this.signupCred,
+      signUpCred: this.signupCred,
     }
   },
   methods: {
@@ -57,15 +57,15 @@ export default {
     },
     async doSignup() {
       if (
-        !this.signupCred.fullname ||
-        !this.signupCred.password ||
-        !this.signupCred.accountName ||
-        !this.signupCred.email
+        !this.signUpCred.fullname ||
+        !this.signUpCred.password ||
+        !this.signUpCred.accountName ||
+        !this.signUpCred.email
       ) {
         this.msg = 'Please fill up the form'
         return
       }
-      await this.$store.dispatch({ type: 'signup', userCred: this.signupCred })
+      await this.$store.dispatch({ type: 'signup', userCred: this.signUpCred })
       this.$router.push('/')
     },
   },
