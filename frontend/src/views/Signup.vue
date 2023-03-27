@@ -1,6 +1,7 @@
 <template>
   <section class="signup">
     <section class="setup">
+      <RouterLink to="/login">Back</RouterLink>
     <div class="home-logo">
       <img
         src="https://res.cloudinary.com/boaz-sunday-proj/image/upload/v1670843553/l37uhxjpyxwwaxw6ifnp.png"
