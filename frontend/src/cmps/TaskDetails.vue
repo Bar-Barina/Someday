@@ -1,6 +1,7 @@
 <template>
-  <section v-if="task" class="conversation-container">
-      <div class="chat-black-screen"></div>
+  <section v-if="task" class="conversation-container" @mouseover="overlayVisible = true"
+  @mouseleave="overlayVisible = false">
+      <div class="chat-black-screen" :class="{visible: overlayVisible}"></div>
     <section class="app-header">
     <div class="conversation-action-wrapper">
       <RouterLink :to="`/board/${currBoard._id}`">
@@ -119,6 +120,7 @@ export default {
         liked: [],
       },
       textArea: '',
+      overlayVisible: false
     }
   },
   methods: {

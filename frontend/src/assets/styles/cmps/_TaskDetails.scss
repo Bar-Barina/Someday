@@ -9,10 +9,8 @@
   width: 582px;
   height: 100vh;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  z-index: 13000;
-  &:hover .chat-black-screen {
-      opacity: 1;
-  }
+  z-index: 10000;
+
   .app-header {
     position: sticky;
     top: 0;
@@ -231,16 +229,21 @@
       background-color: $clr016;
     }
   }
-.chat-black-screen {
-opacity: 0;
-height: 100vh;
-width: 100vw;
-position: absolute;
-top: 0;
-right: 0;
-background-color: rgba(41, 47, 76, 0.5);
-pointer-events: none;
-z-index: 100;
-transition: 0.3s;
-}
+
+  .chat-black-screen {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 100%;
+    width: 1000px;
+    pointer-events: none;
+    z-index: 12000;
+    transition: 0.3s;
+
+    &.visible {
+      background-color: rgba(41, 47, 76, 0.5);
+      pointer-events: all;
+    }
+  }
 }
