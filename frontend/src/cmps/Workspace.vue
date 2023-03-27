@@ -123,10 +123,10 @@ export default {
   mounted() {
     setTimeout(()=>{
     const {boardId} = this.$route.params
-    console.log('boardId',boardId)
-    console.log('this.boards',this.boards)
+    // console.log('boardId',boardId)
+    // console.log('this.boards',this.boards)
     this.selectedBoard = this.boards.findIndex(b=>b._id === boardId)
-    console.log('this.selectedBoard',this.selectedBoard)
+    // console.log('this.selectedBoard',this.selectedBoard)
   },0)
   }
 }

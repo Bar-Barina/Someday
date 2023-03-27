@@ -10,7 +10,7 @@
         <span class="logo-at">.com</span>
       </span>
     </div>
-    <router-link to="/login">
+    <router-link to="/Login">
       <button class="login">Login / Signup</button>
     </router-link>
   </header>
