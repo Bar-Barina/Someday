@@ -10,6 +10,9 @@
   height: 100vh;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   z-index: 13000;
+  &:hover .chat-black-screen {
+      opacity: 1;
+  }
   .app-header {
     position: sticky;
     top: 0;
@@ -17,64 +20,74 @@
     background-color: white;
     z-index: 3;
     margin-top: 15px;
-    width: 540px;
+    width: 535px;
     padding-inline: 10px;
-    padding-top:10px;
+    padding-right: 1px;
+    padding-top: 10px;
   }
+
   .conversation-img {
     width: 26px;
   }
+
   .up-nav {
-    gap:3px
+    gap: 3px
   }
+
   .conversation-title {
     .editable-div {
       font-size: 20px;
       color: black;
       font-weight: 400;
     }
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 5px;
   }
+
   .view-option-container {
     height: em(36px);
     position: relative;
 
     &.active {
-        border-bottom: 2px solid $clr8;
+      border-bottom: 2px solid $clr8;
     }
 
     &:not(:hover):before {
-        content: "";
-        height: 16px;
-        border-right: 1px solid;
-        border-color: $clr016;
-        position: absolute;
-        top: 8px;
-        right: 0;
+      content: "";
+      height: 16px;
+      border-right: 1px solid;
+      border-color: $clr016;
+      position: absolute;
+      top: 8px;
+      right: 0;
     }
 
     .view-option {
-        padding: 4px 12px;
-        height: em(36px);
-        gap: 8px;
-        font-size: 14px;
-        .icon {
-            font-size: 16px;
-        }
+      padding: 4px 12px;
+      height: em(36px);
+      gap: 8px;
+      font-size: 14px;
+
+      .icon {
+        font-size: 16px;
+      }
     }
-}
+  }
+
   .conversation-img-section {
     gap: 5px;
     margin-right: 7px;
+
     .img-container {
       position: relative;
       height: em(28px);
       width: em(28px);
-        margin-right:15px ;
-        &::before {
+      margin-right: 15px;
+
+      &::before {
         content: "";
         height: 16px;
         border-right: 1px solid;
@@ -82,16 +95,19 @@
         position: absolute;
         top: 5px;
         right: -12px;
+      }
     }
-    }
+
     .menu {
       width: em(26px);
       height: em(26px);
       padding: 6px;
     }
   }
+
   .bottom-chat {
     text-align: center;
+
     .editable-text {
       text-align: start;
       margin-left: 9px;
@@ -101,26 +117,32 @@
       padding: 10px 8px;
       border-radius: 8px;
       border: 1px solid $clr8;
+
       &[placeholder]:empty:before {
         content: attr(placeholder);
-        color: #555; 
-    }
+        color: #555;
+      }
+
       &:hover {
         background-color: $clr014;
       }
+
       &.open {
         &::placeholder {
           color: transparent;
         }
+
         height: 144px;
         outline: none;
         border: 0.5px solid $clr8;
         background-color: white;
       }
+
       &:focus {
         &::placeholder {
           color: transparent;
         }
+
         height: 144px;
         outline: none;
         border: 0.5px solid $clr8;
@@ -128,13 +150,16 @@
       }
     }
   }
+
   .task-msgs {
     margin-left: 8px;
     margin-top: 10px;
     max-height: 400px;
   }
+
   .nav-btn {
     margin-top: 8px;
+
     .update-btn {
       background-color: $clr8;
       color: white;
@@ -143,44 +168,52 @@
       width: 62px;
       height: 32px;
       margin-right: 6px;
+
       &:hover {
         background-color: $primary-hover;
       }
     }
   }
+
   .conversation-middle-nav {
     .middle-nav-btn {
       position: relative;
       padding: 4px 10px;
       height: em(36px);
-      gap:3px;
+      gap: 3px;
       margin-left: 8px;
       margin-top: 2px;
+
       span {
         padding-top: 4px;
       }
     }
   }
+
   .hands {
     width: 290px;
     height: 150px;
     margin-left: 20%;
     margin-top: 15%;
   }
+
   h2 {
     text-align: center;
   }
+
   p {
     text-align: center;
   }
+
   .conversation-exit-btn {
     height: em(24px);
     width: em(24px);
     padding: 13px;
-    fill:#757575;
+    fill: #757575;
     background-color: inherit;
     border: none;
   }
+
   .emoji-picker {
     position: absolute;
     height: 400px;
@@ -189,11 +222,25 @@
     right: 30px;
     z-index: 10;
   }
+
   .btn-hover {
     cursor: pointer;
     border-radius: 4px;
+
     &:hover {
       background-color: $clr016;
     }
   }
+.chat-black-screen {
+opacity: 0;
+height: 100vh;
+width: 100vw;
+position: absolute;
+top: 0;
+right: 0;
+background-color: rgba(41, 47, 76, 0.5);
+pointer-events: none;
+z-index: 100;
+transition: 0.3s;
+}
 }
