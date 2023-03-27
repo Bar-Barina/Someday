@@ -3,7 +3,12 @@
     <section class="email-signup">
   <h1>Welcome to someday.com</h1>
   <p>Get started - it's free. No credit card needed.</p>
-  <button class="google-btn">Continue with Google</button>
+  <div class="google-btn-div">
+    <button class="google-btn">
+      <img src="https://cdn.monday.com/images/logo_google_v2.svg" />
+      Continue with Google
+  </button>
+</div>
   <div class="email-line flex">
     <div class="empty-line"></div>
     <span class="or-span">Or</span>

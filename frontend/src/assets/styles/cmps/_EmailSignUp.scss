@@ -15,17 +15,28 @@
       margin-bottom: -5px;
     }
     p {
-        margin-bottom: 50px;
+      margin-bottom: 50px;
     }
-    .google-btn {
-      font-size: 16px;
-      width: 100%;
-      padding: 9px;
-      line-height: 20px;
-      border: 1px solid #c3c6d4;
-      border-radius: 4px;
-      background-color: $clr2;
-      color: #323338;
+    .google-btn-div {
+      img {
+        width: 16px;
+        margin-left: -22px;
+        margin-top: 1.3px;
+        position: absolute;
+      }
+      .google-btn {
+        font-size: 16px;
+        width: 100%;
+        padding: 9px;
+        line-height: 20px;
+        border: 1px solid #c3c6d4;
+        border-radius: 4px;
+        background-color: $clr2;
+        color: #323338;
+        &:hover {
+          background-color: #c3c6d4;
+        }
+      }
     }
     .email-line {
       display: grid;
@@ -40,28 +51,40 @@
       }
     }
     input {
-        width: 400px;
-        height: 40px;
-        border: 1px solid #c3c6d4;
-        border-radius: 4px;
-        padding-left: 17px;
-        &::placeholder {
-            font-size: 16px;
-        }
+      width: 400px;
+      height: 40px;
+      border: 1px solid #c3c6d4;
+      border-radius: 4px;
+      padding-left: 17px;
+      &::placeholder {
+        font-size: 16px;
+      }
+      &:hover {
+        border: 1px solid black;
+      }
+
+      &:focus {
+        outline: 1px solid $clr8;
+        border: none;
+      }
     }
     .continue {
-        width: 400px;
-        height: 40px;
-        background-color: $clr8;
-        color: $clr2;
-        border: none;
-        border-radius: 4px;
-        font-size: 16px;
-        margin-bottom: 30px;
+      width: 400px;
+      height: 40px;
+      background-color: $clr8;
+      color: $clr2;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      margin-bottom: 30px;
+
+      &:hover {
+        background-color: #0060b9;
+      }
     }
     .login-route-span {
-        color: $clr8;
-        margin: 5px;
+      color: $clr8;
+      margin: 5px;
     }
   }
   .email-board-img {
