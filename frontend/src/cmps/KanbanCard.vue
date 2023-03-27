@@ -5,24 +5,29 @@
         <div class="flex align-center edit-div" contenteditable="true">
           {{ task.taskTitle }}
         </div>
-        <span v-icon="'con'" class="open-con flex align-center space-between">
-        </span>
-        <div class="conversation-wrapper flex align-center"></div>
+        <div class="conversation-wrapper flex align-center">
+          <span v-icon="'con'" class="open-con flex align-center space-between">
+          </span>
+        </div>
       </section>
       <span v-icon="'Dots'"></span>
     </div>
-    <section class="card-cmp flex align-center" v-for="(cmp , idx) in labelsOrder" :key="idx">
+    <section
+      class="card-cmp flex align-center"
+      v-for="(cmp, idx) in labelsOrder"
+      :key="idx"
+    >
       <div class="cmp-title flex align-items">
         <span v-icon="cmp" class="cmp-icon"></span>
         <div>{{ labelsOrder[idx] }}</div>
       </div>
       <div class="cmp-cell">
-      <component
-        :is="cmp"
-        :task="task"
-        :group="group"
-        @updateTask="updateTask"
-      ></component>
+        <component
+          :is="cmp"
+          :task="task"
+          :group="group"
+          @updateTask="updateTask"
+        ></component>
       </div>
     </section>
   </article>
@@ -53,29 +58,29 @@ export default {
   },
   methods: {
     updateTask({ cmpType, data }) {
-      const taskToSave = { ...this.task }
-      if (!cmpType) taskToSave.taskTitle = this.$refs.taskTitle.innerText
-      else taskToSave[cmpType] = data
+      const taskToSave = { ...this.task };
+      if (!cmpType) taskToSave.taskTitle = this.$refs.taskTitle.innerText;
+      else taskToSave[cmpType] = data;
       // FOR LATER USE!!!
       //    activity = boardService.getEmptyActivity()
       //    activity.txt = `Members changed for task ${}`
       //    activity.task = '{mini-task}'
       // const toUpdate = {taskToSave , groupId: this.group._id}
       try {
-        const toUpdate = { task: taskToSave, group: this.group }
-        this.$store.dispatch({ type: 'saveTask', toUpdate })
+        const toUpdate = { task: taskToSave, group: this.group };
+        this.$store.dispatch({ type: "saveTask", toUpdate });
       } catch (err) {
-        showErrorMsg('Couldnt add task')
+        showErrorMsg("Couldnt add task");
       }
     },
   },
   computed: {
     currBoard() {
-      return this.$store.getters.currBoard
+      return this.$store.getters.currBoard;
     },
     labelsOrder() {
-      return this.$store.getters.currLabelsOrder
-    }
+      return this.$store.getters.currLabelsOrder;
+    },
   },
   components: {
     Status,
