@@ -74,6 +74,7 @@ export default {
     doLogin() {
       let credentials = {
         email: this.email,
+        password: this.password
       }
       console.log('from login', credentials)
       this.$store.dispatch({ type: 'login', userCred: credentials })

@@ -10,7 +10,7 @@
     </section>
     <!-- INFO -->
     <section class="board-info">
-      <span v-icon="'x'"></span>
+      <span v-icon="'x'" class="x-btn-desc"></span>
       <div class="board-info-title">Board info</div>
       <!-- WORKSPACE -->
       <div class="workspace-info-div">
@@ -52,7 +52,8 @@ import { svgService } from '../services/svg.service.js'
 export default {
   name: '',
   data() {
-    return {}
+    return {
+    }
   },
   methods: {
     getSvg(iconName) {
