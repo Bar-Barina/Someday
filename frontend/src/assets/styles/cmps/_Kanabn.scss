@@ -11,7 +11,7 @@
 
     .kanban-content {
         gap: 12px;
-        padding: 16px 0 20px 20px;
+        padding: 8px 0 0 8px;
         height: 100%;
         overflow-x: scroll;
         overflow-y: scroll;
@@ -22,6 +22,7 @@
         }
 
         .smooth-dnd-container.horizontal {
+            padding: 0 4px;
             display: flex!important;
         }
     }

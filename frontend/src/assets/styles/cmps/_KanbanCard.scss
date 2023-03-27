@@ -6,9 +6,67 @@
     padding-inline-start: 5px;
     border-radius: 6px;
     box-shadow: 0 4px 8px #0003;
+    cursor: grab;
 
     .task-title.cell1 {
         border: none;
         height: 38px;
+        min-height: 16px;
     }
+
+    .card-cmp {
+        height: 34px;
+        line-height: 34px;
+        margin-bottom: 8px;
+    }
+
+    .cmp-title {
+        flex: 1;
+        font-size: 13px;
+        margin-right: 8px;
+        color: rgb(103, 104, 121);
+        width: 72px;
+        cursor: pointer;
+    }
+
+    .cmp-cell {
+        max-width: 140px;
+        width: 100%;
+        background-color: $clr42;
+        height: 34px;
+    }
+
+    .cmp-icon {
+        height: 100%;
+        display: block;
+        padding-top: 5px;
+    }
+
+    // TEXT CMP //
+    .text-placeholder {
+        opacity: 1;
+
+        .t-icon {
+            position: absolute;
+            top: 11px;
+            right: 50px;
+        }
+
+        .plus {
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $clr8;
+            color: #fff;
+            height: 14px;
+            width: 14px;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 20px;
+            left: 50px;
+            padding-bottom: 2px;
+        }
+    }
+
 }
