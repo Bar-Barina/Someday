@@ -34,7 +34,10 @@
           <BoardDesc v-if="showBoardDesc" v-clickOutside="closeModal" />
           <!-- <BlackScreen/> -->
         </div>
+
         <div
+          v-if="!isStarred"
+          @click="isStarred = !isStarred"
           v-tippy="{
             content: 'Add to favorites',
             theme: 'classic',
@@ -42,21 +45,22 @@
             arrow: true,
           }"
           class="icon btn-hover"
-        >
-          <div
-            v-if="!isStarred"
-            @click="isStarred = !isStarred"
-            className="icon"
-            v-html="getSvg('headerStar')"
-          ></div>
-          <div
-            v-if="isStarred"
-            @click="isStarred = !isStarred"
-            className="icon"
-            class="filled-star"
-            v-html="getSvg('headerStarFill')"
-          ></div>
-        </div>
+          className="icon"
+          v-html="getSvg('headerStar')"
+        ></div>
+        <div
+          v-if="isStarred"
+          @click="isStarred = !isStarred"
+          v-tippy="{
+            content: 'Remove from favorites',
+            theme: 'classic',
+            placement: 'top',
+            arrow: true,
+          }"
+          className="icon"
+          class="filled-star"
+          v-html="getSvg('headerStarFill')"
+        ></div>
       </section>
       <section class="right-up-header flex align-center justify-center">
         <div class="logged-in-user flex align-center btn-hover">
