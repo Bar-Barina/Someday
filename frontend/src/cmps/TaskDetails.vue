@@ -57,8 +57,9 @@
         placeholder="Write an update..."
         contenteditable="true"
       ></div> -->
-      <div class="quill-editor" :class="{ open: openTextArea }">
-      <QuillEditor theme="snow" toolbar="essential" v-model:content="msg.txt" contentType="text" required placeholder="Write an update..."/>
+        <input v-if="!isEditor" @focus="toggleIsEditor(true)" type="text" placeholder="Write an update..." class="editable-text">
+      <div v-else class="quill-editor">
+      <QuillEditor @focusout="toggleIsEditor()" theme="snow" toolbar="essential" v-model:content="msg.txt" ref="textArea" contentType="text" required placeholder="Write an update..."/>
       </div>
     </section>
     <section class="nav-btn flex space-between align-center">
@@ -124,7 +125,8 @@ export default {
         liked: [],
       },
       textArea: '',
-      overlayVisible: false
+      overlayVisible: false,
+      isEditor:false
     }
   },
   methods: {
@@ -137,12 +139,13 @@ export default {
       this.updateTask()
     },
     addMsg() {
-      // this.msg.txt = this.$refs.textArea.innerText
+      this.msg.txt = this.$refs.textArea.innerHTML
+      // if(this.msg.txt!== "") this.msg.txt.
       const msgToAdd = { ...this.msg }
       this.task.msgs.unshift(msgToAdd)
       this.group.tasks.splice(this.taskIdx, 1, this.task)
       this.updateTask()
-      // this.$refs.textArea.innerText = ''
+      this.$refs.textArea.innerText = ''
       this.msg.txt = ''
     },
     updateTask() {
@@ -154,14 +157,22 @@ export default {
       this.isEmoji = !this.isEmoji
     },
     onSelectEmoji(emoji) {
-      this.msg.txt += emoji.i
+      // this.msg.txt += emoji.i
+      this.$refs.textArea.innerText += emoji
     },
     closeEmojiPick() {
       this.isEmoji = false
     },
     updateContent() {
-      this.textArea = this.$refs.textArea.innerText
+      // this.textArea = this.$refs.textArea.innerHTML
     },
+    toggleIsEditor(value=false) {
+      console.log('hiii')
+       console.log('this.msg.txt',this.msg.txt)
+      if (this.msg.txt) this.isEditor = true
+      else (this.isEditor = value)
+      
+    }
   },
   watch: {
     '$route.params': {
@@ -187,7 +198,8 @@ export default {
       return this.group.tasks.findIndex((t) => t.id === this.task.id)
     },
     openTextArea() {
-      return this.msg.txt !== ''
+      // return this.msg.txt !== ''
+      // return this.$refs.textArea.innerText !== ''
     },
   },
   created() {},
