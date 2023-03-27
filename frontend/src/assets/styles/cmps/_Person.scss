@@ -4,6 +4,10 @@
   height: 100%;
   width: 100%;
 
+  .full-person {
+    height: 30px;
+  }
+
   .plus {
     opacity: 0;
     z-index: 1;
@@ -37,6 +41,10 @@
   .mini-person {
     position: relative;
 
+    .person-img {
+      margin-left: -29px;
+    }
+
     .person-count {
       padding: 0 5px;
       height: 25px;
@@ -46,7 +54,7 @@
       border-radius: 25px;
       flex-shrink: 0;
       position: absolute;
-      left: 10px;
+      left: -6px;
       top: 3px;
       font-size: 12px;
       font-weight: 300;
