@@ -20,6 +20,10 @@ input[type="checkbox" i] {
     height: 16px;
     width: 16px;
     border: 1px solid #c3c6d4 !important;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 2px;
 }
 
 .black-screen {
@@ -31,4 +35,4 @@ input[type="checkbox" i] {
     background-color: rgba(41, 47, 76, 0.7);
     pointer-events: none;
     z-index: 12000;
-  }
+}
