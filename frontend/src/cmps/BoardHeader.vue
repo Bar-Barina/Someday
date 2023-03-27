@@ -33,7 +33,6 @@
           ></span>
           <BoardDesc v-if="showBoardDesc" v-clickOutside="closeModal" />
           <!-- <BlackScreen/> -->
-          
         </div>
         <div
           v-tippy="{
@@ -44,7 +43,19 @@
           }"
           class="icon btn-hover"
         >
-          <div className="icon" v-html="getSvg('headerStar')"></div>
+          <div
+            v-if="!isStarred"
+            @click="isStarred = !isStarred"
+            className="icon"
+            v-html="getSvg('headerStar')"
+          ></div>
+          <div
+            v-if="isStarred"
+            @click="isStarred = !isStarred"
+            className="icon"
+            class="filled-star"
+            v-html="getSvg('headerStarFill')"
+          ></div>
         </div>
       </section>
       <section class="right-up-header flex align-center justify-center">
@@ -235,6 +246,7 @@ export default {
       showPersonFilter: false,
       searchQuery: '',
       showBoardDesc: false,
+      isStarred: false,
     }
   },
   methods: {
@@ -269,15 +281,15 @@ export default {
       this.showFilter = false
       this.showPersonFilter = false
       this.showBoardDesc = false
-      this.$store.commit({type:'toggleBlackScreen'})
+      this.$store.commit({ type: 'toggleBlackScreen' })
     },
     onSearch() {
       this.$store.commit({ type: 'setFilterBy', searchQuery: this.searchQuery })
     },
     toggleBoardDesc() {
       this.showBoardDesc = !this.showBoardDesc
-      this.$store.commit({type:'toggleBlackScreen'})
-    } 
+      this.$store.commit({ type: 'toggleBlackScreen' })
+    },
   },
   computed: {
     currBoard() {
