@@ -1,5 +1,6 @@
 <template>
-  <section class="singup flex column">
+  <section class="signup">
+    <section class="setup">
     <div class="home-logo">
       <img
         src="https://res.cloudinary.com/boaz-sunday-proj/image/upload/v1670843553/l37uhxjpyxwwaxw6ifnp.png"
@@ -10,7 +11,6 @@
         <span class="logo-at">.com</span>
       </span>
     </div>
-    <!-- <section class="validation"> -->
       <h1>Set up your account</h1>
       <form @submit.prevent="doSignup" class="validation">
       <label class="input-wrapper">
@@ -39,13 +39,23 @@
       <div className="icon" v-html="getSvg('arrowRight')"></div>
     </button>
   </form>
-  </section>
+</section>
+<img src="../assets/img/signup-hand.png">
+</section>
 </template>
 
 <script>
 import { svgService } from '../services/svg.service.js'
+import { eventBus } from '../services/event-bus.service'
 export default {
   name: 'Signup',
+  created() {
+    eventBus.on('doSignup', (email) => {
+      console.log('from signup',email)
+      this.signupCred.email = email
+      console.log('from signup',this.signupCred.email)
+    })
+  },
   data() {
     return {
       signupCred: { accountName: '', password: '', fullname: '', email:'',imgUrl: '' },

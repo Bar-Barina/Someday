@@ -6,12 +6,13 @@ import ReviewIndex from './views/ReviewIndex.vue'
 import BoardIndex from './views/BoardIndex.vue'
 import Kanban from './cmps/Kanban.vue'
 import MainTable from './cmps/MainTable.vue'
-import LoginSignup from './views/LoginSignup.vue'
+// import LoginSignup from './views/LoginSignup.vue'
 import Login from './views/Login.vue'
 import UserDetails from './views/UserDetails.vue'
 import TaskDetails from './cmps/TaskDetails.vue'
 import Dashboard from './cmps/Dashboard.vue'
 import Signup from './views/Signup.vue'
+import EmailSignup from './views/EmailSignup.vue'
 
 const routes = [
   {
@@ -49,6 +50,11 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/emailsignup',
+    name: 'EmailSignup',
+    component: EmailSignup
   },
   {
     path: '/signup',

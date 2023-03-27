@@ -41,7 +41,7 @@
       <div class="suggest-signup">
         <div>
           Don't have an account yet?
-          <RouterLink :to="`/signup`"><button>Sign up</button></RouterLink>
+          <RouterLink :to="`/emailsignup`"><button>Sign up</button></RouterLink>
         </div>
       </div>
     </div>

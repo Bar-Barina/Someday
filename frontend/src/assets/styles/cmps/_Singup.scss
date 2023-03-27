@@ -1,8 +1,15 @@
-.singup {
+.signup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     height: 100vh;
-    padding: 40px 64px 60px 64px;
-    .validation {
-        height: em(514px);
+
+
+    .setup {
+        padding: 85px;
+        height: 100vh;
+        h1 {
+            font-size: 32px;
+        }
         .input-wrapper {
             h2 {
                 font-size: 16px;
@@ -22,10 +29,16 @@
                 &:hover {
                     outline: 1px solid #323338;
                 }
+                &::placeholder {
+                    font-size: 15px;
+                }
             }
         }
     }
     .continue-btn {
+        position: absolute;
+        bottom: 7%;
+        right: 58%;
         border: none;
         color: white;
         background-color: $clr8;
@@ -41,5 +54,8 @@
         div {
             padding-top: 3px;
         }
+    }
+    img {
+        height: 80%;
     }
 }
