@@ -20,7 +20,9 @@
         </Draggable>
       </Container>
     </section>
-    <section class="kanban-filter flex column"></section>
+    <section class="kanban-filter flex column">
+      
+    </section>
   </section>
 </template>
 
