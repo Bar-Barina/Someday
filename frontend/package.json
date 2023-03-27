@@ -19,6 +19,7 @@
     "vue-tippy": "^6.0.0",
     "vue3-emoji-picker": "^1.1.7",
     "vue3-popper": "^1.5.0",
+    "vue3-quill": "^0.3.0",
     "vue3-smooth-dnd": "^0.0.2",
     "vuex": "^4.0.2"
   },
