@@ -39,13 +39,13 @@ const routes = [
       {
         path: ':boardId/kanban',
         component: Kanban,
-        children: [
-          {
-            path: 'taskDetails/:taskId',
-            name: 'taskDetails',
-            component: TaskDetails
-          },
-        ]
+        // children: [
+        //   {
+        //     path: 'taskDetails/:taskId',
+        //     name: 'taskDetails',
+        //     component: TaskDetails
+        //   },
+        // ]
       },
       {
         path: ':boardId/dashboard',

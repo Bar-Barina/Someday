@@ -92,6 +92,7 @@ export default {
   },
   created() {
     const board = JSON.parse(JSON.stringify(this.currBoard));
+    if(!board) return
     const statusesMap = this.statuses.reduce((acc, status) => {
       if (!acc[status]) acc[status] = [];
       board.groups.forEach((group) => {
