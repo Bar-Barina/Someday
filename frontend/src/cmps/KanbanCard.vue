@@ -1,16 +1,16 @@
 <template>
   <article class="card-preview flex column">
-    <div class="title-wrapper flex align-center space-between">
-      <section class="task-title cell1 space-between sticky">
-        <div class="flex align-center edit-div" contenteditable="true">
+    <div class="title-wrapper flex space-between">
+      <section class="task-title cell1 flex space-between sticky" :class="{focused: titleFocus}">
+        <div ref="taskTitle" @focus="titleFocus = true" @focusout="updateTask" :class="{focused: titleFocus}" class="flex align-center edit-div" contenteditable="true">
           {{ task.taskTitle }}
         </div>
-        <div class="conversation-wrapper flex align-center">
+      </section>
+      <div class="conversation-wrapper flex align-center">
           <span v-icon="'con'" @click="openCon" class="open-con flex align-center space-between">
           </span>
         </div>
-      </section>
-      <span v-icon="'Dots'"></span>
+      <span class="dots" v-icon="'Dots'"></span>
     </div>
     <section
       class="card-cmp flex align-center"
@@ -49,6 +49,7 @@ export default {
   data() {
     return {
       group: null,
+      titleFocus: false
     };
   },
   created() {
@@ -58,6 +59,7 @@ export default {
   },
   methods: {
     updateTask({ cmpType, data }) {
+      this.titleFocus = false
       const taskToSave = { ...this.task };
       if (!cmpType) taskToSave.taskTitle = this.$refs.taskTitle.innerText;
       else taskToSave[cmpType] = data;

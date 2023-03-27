@@ -4,7 +4,6 @@
     width: 100%;
     position: relative;
     font-size: 13px;
- 
     &:hover {
         .text {
             outline: 1px solid $clr38;
@@ -50,13 +49,17 @@
         font-size: 13px;
         font-weight: 400;
         height: 100%;
-     
+        
         .text {
             border: none;
             text-align: center;
             height: 25px;
             width: 100%;
             cursor: auto;
+            background-color: inherit;
+            &:focus {
+                background-color: white;
+            }
         }
     }
     .text-placeholder {
@@ -64,7 +67,7 @@
         .t-icon {
             position: absolute;
             top: 11px;
-            right: 50px;
+            right: 52px;
         }
         .plus {
             z-index: 1;
@@ -78,7 +81,7 @@
         border-radius: 50%;
         position: absolute;
         bottom: 10px;
-        left: 50px;
+        left: 52px;
         padding-bottom: 2px;
     }
         }

@@ -100,6 +100,7 @@ import Text from './dynamicCmps/TextArea.vue'
 import Files from './dynamicCmps/FilesPicker.vue'
 import { eventBus } from '../services/event-bus.service'
 import EmptyProgress from './dynamicCmps/EmptyProgress.vue'
+import { boardService } from '../services/board.service.local'
 
 export default {
   emits: ['saveTask', 'remove', 'addSelected', 'removeSelected'],
@@ -141,11 +142,12 @@ export default {
       const taskToSave = { ...this.task }
       if (!cmpType) taskToSave.taskTitle = this.$refs.taskTitle.innerText
       else taskToSave[cmpType] = data
-      // FOR LATER USE!!!
-      //    activity = boardService.getEmptyActivity()
-      //    activity.txt = `Members changed for task ${}`
-      //    activity.task = '{mini-task}'
-      // const toUpdate = {taskToSave , groupId: this.group._id}
+      const activity = boardService.getEmptyActivity();
+      activity.from = this.task[cmpType]
+      activity.to = data
+      activity.changed = cmpType
+      activity.taskTitle = this.task.taskTitle
+      this.$store.commit({type: 'setBoardActivity' , activity})
       this.$emit('saveTask', taskToSave)
     },
     openCon() {

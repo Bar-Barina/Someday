@@ -131,6 +131,10 @@ export const boardStore = {
     },
     closeBlackScreen(state) {
       state.isBlackScreen = false
+    },
+    setBoardActivity(state , { activity }) {
+      if(!state.currBoard.activities) state.currBoard.activities = []
+      state.currBoard.activities.push(activity)
     }
   },
   actions: {

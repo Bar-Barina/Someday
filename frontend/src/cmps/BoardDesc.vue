@@ -1,5 +1,5 @@
 <template>
-  <section class="board-desc-container">
+  <section class="board-desc-container" v-clickOutSide="closeDesc">
     <section class="dialog-editable-wrapper">
       <h1 contenteditable="true">{{ currBoard.title }}</h1>
       <div contenteditable="true">
@@ -61,6 +61,7 @@ export default {
     },
     closeDesc() {
       this.$emit('closeDesc')
+      this.$store.commit({type:'closeBlackScreen'})
     }
   },
   computed: {

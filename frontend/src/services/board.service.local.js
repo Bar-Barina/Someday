@@ -15,6 +15,7 @@ export const boardService = {
   getEmptyTask,
   removeItem,
   filterBoard,
+  getEmptyActivity
 }
 window.cs = boardService
 
@@ -77,6 +78,16 @@ function filterBoard(board, filterBy) {
     })
   }
   return filteredBoard
+}
+
+function getEmptyActivity() {
+  return {
+    createdAt: Date.now(),
+    changedBy: userService.getLoggedInUser(),
+    changed: null,
+    from: null,
+    to: null
+  }
 }
 
 async function addBoardMsg(boardId, txt) {
