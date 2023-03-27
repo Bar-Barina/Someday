@@ -87,7 +87,7 @@
           {{ label }}
         </Draggable>
       </Container>
-      <EmptyProgress class="cell1 last" :style="{width: 'auto'}"/>
+      <EmptyProgress class="cell1 last" :style="{ width: 'auto' }" />
     </section>
     <!-- Tasks drag container -->
     <Container
@@ -129,25 +129,25 @@
 </template>
 
 <script>
-import { Container, Draggable } from 'vue3-smooth-dnd'
-import { svgService } from '../services/svg.service.js'
-import { utilService } from '../services/util.service'
-import TaskPreview from './TaskPreview.vue'
-import EditMenu from './EditMenu.vue'
-import AddTask from './AddTask.vue'
-import ProgressBar from './ProgressBar.vue'
-import ColorPicker from '../cmps/dynamicCmps/ColorPicker.vue'
-import { eventBus, showErrorMsg } from '../services/event-bus.service.js'
-import GroupCollapse from './GroupCollapse.vue'
-import EmptyProgress from './dynamicCmps/EmptyProgress.vue'
+import { Container, Draggable } from "vue3-smooth-dnd";
+import { svgService } from "../services/svg.service.js";
+import { utilService } from "../services/util.service";
+import TaskPreview from "./TaskPreview.vue";
+import EditMenu from "./EditMenu.vue";
+import AddTask from "./AddTask.vue";
+import ProgressBar from "./ProgressBar.vue";
+import ColorPicker from "../cmps/dynamicCmps/ColorPicker.vue";
+import { eventBus, showErrorMsg } from "../services/event-bus.service.js";
+import GroupCollapse from "./GroupCollapse.vue";
+import EmptyProgress from "./dynamicCmps/EmptyProgress.vue";
 
 export default {
   emits: [
-    'labelDrop',
-    'updateTask',
-    'addSelected',
-    'removeSelected',
-    'updateDragGroup',
+    "labelDrop",
+    "updateTask",
+    "addSelected",
+    "removeSelected",
+    "updateDragGroup",
   ],
   props: {
     group: Object,
@@ -159,99 +159,96 @@ export default {
       isEditOpen: false,
       showColorPicker: false,
       board: null,
-    }
+    };
   },
   created() {
-    this.board = JSON.parse(JSON.stringify(this.$store.getters.currBoard))
+    this.board = JSON.parse(JSON.stringify(this.$store.getters.currBoard));
   },
   methods: {
     getSvg(iconName) {
-      return svgService.getSvg(iconName)
+      return svgService.getSvg(iconName);
     },
     onLabelDrop(dropResult) {
-      this.$emit('labelDrop', dropResult)
+      this.$emit("labelDrop", dropResult);
     },
     taskDrop(dropResult) {
-      let group = JSON.parse(JSON.stringify(this.group))
-      group.tasks = utilService.applyDrag(group.tasks, dropResult)
-      this.group.tasks = group.tasks
+      let group = JSON.parse(JSON.stringify(this.group));
+      group.tasks = utilService.applyDrag(group.tasks, dropResult);
+      this.group.tasks = group.tasks;
     },
     toggleEdit() {
-      this.isEditOpen = !this.isEditOpen
+      this.isEditOpen = !this.isEditOpen;
     },
     updateGroup({ toChange, data }) {
-      const newGroup = JSON.parse(JSON.stringify(this.group))
-      if (!toChange) newGroup.title = this.$refs.groupTitle.innerText
-      else newGroup[toChange] = data
-      this.saveGroup(null, newGroup)
+      const newGroup = JSON.parse(JSON.stringify(this.group));
+      if (!toChange) newGroup.title = this.$refs.groupTitle.innerText;
+      else newGroup[toChange] = data;
+      this.saveGroup(null, newGroup);
     },
     collapse(isCollapse) {
-      this.group.isCollapse = isCollapse
-      this.updateGroup({ toChange: 'isCollapse', data: isCollapse })
+      this.group.isCollapse = isCollapse;
+      this.updateGroup({ toChange: "isCollapse", data: isCollapse });
     },
     async saveGroup(task, group = this.group) {
-      //    activity = boardService.getEmptyActivity()
-      //    activity.txt = `Members changed for task ${}`
-      //    activity.task = '{mini-task}'
       try {
-        const toUpdate = { task, group }
-        this.$store.dispatch({ type: 'saveTask', toUpdate })
+        const toUpdate = { task, group };
+        this.$store.dispatch({ type: "saveTask", toUpdate });
       } catch (err) {
-        showErrorMsg('Couldnt add task')
+        showErrorMsg("Couldnt add task");
       }
     },
     remove(toRemove) {
-      this.$store.dispatch({ type: 'remove', toRemove })
+      this.$store.dispatch({ type: "remove", toRemove });
     },
     toggleModal() {
-      this.showColorPicker = !this.showColorPicker
+      this.showColorPicker = !this.showColorPicker;
     },
     onTaskDrop(groupId, dropResult) {
       if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
-        const group = JSON.parse(JSON.stringify(this.group))
-        const newGroup = JSON.parse(JSON.stringify(group))
+        const group = JSON.parse(JSON.stringify(this.group));
+        const newGroup = JSON.parse(JSON.stringify(group));
 
-        newGroup.tasks = utilService.applyDrag(newGroup.tasks, dropResult)
-        this.$emit('updateDragGroup', newGroup)
+        newGroup.tasks = utilService.applyDrag(newGroup.tasks, dropResult);
+        this.$emit("updateDragGroup", newGroup);
         // this.board.groups.splice(groupIdx , 1 , newGroup)
         // newTasks = utilService.applyDrag(newTasks, dropResult);
         // console.log('newTasks', newTasks)
         // this.group.tasks = newTasks
       } else {
-        this.taskDrop(dropResult)
+        this.taskDrop(dropResult);
       }
     },
     getTaskPayload(groupId) {
       return (index) => {
         return this.board.groups.filter((g) => g._id === groupId)[0].tasks[
           index
-        ]
-      }
+        ];
+      };
     },
     addSelected(task) {
-      this.$emit('addSelected', { group: this.group, task })
+      this.$emit("addSelected", { group: this.group, task });
     },
     removeSelected(taskId) {
-      this.$emit('removeSelected', { group: this.group, taskId })
+      this.$emit("removeSelected", { group: this.group, taskId });
     },
     selectGroup() {
       if (this.$refs.groupCheckbox.checked) {
-        eventBus.emit('addSelected', this.group._id)
+        eventBus.emit("addSelected", this.group._id);
       } else {
-        eventBus.emit('removeSelected', this.group._id)
+        eventBus.emit("removeSelected", this.group._id);
       }
     },
   },
   computed: {
     isTitleFocused() {
-      if (this.titleFocus) return true
-      else return false
+      if (this.titleFocus) return true;
+      else return false;
     },
     currBoard() {
-      return this.$store.getters.currBoard
+      return this.$store.getters.currBoard;
     },
     tasksCount() {
-      return this.group.tasks.length
+      return this.group.tasks.length;
     },
   },
   components: {
@@ -263,7 +260,7 @@ export default {
     ProgressBar,
     ColorPicker,
     GroupCollapse,
-    EmptyProgress
+    EmptyProgress,
   },
-}
+};
 </script>
