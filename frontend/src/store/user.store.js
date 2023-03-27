@@ -1,8 +1,8 @@
 import { userService } from '../services/user.service'
 // import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from '../services/socket.service'
 
-// var localLoggedinUser = null
-// if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user || null)
+var localLoggedInUser = null
+if (sessionStorage.user) localLoggedInUser = JSON.parse(sessionStorage.user || null)
 
 export const userStore = {
   state: {
@@ -22,7 +22,7 @@ export const userStore = {
     },
   },
   mutations: {
-    setLoggedinUser(state, { user }) {
+    setLoggedInUser(state, { user }) {
       // Yaron: needed this workaround as for score not reactive from birth
       state.loggedInUser = user ? { ...user } : null
     },
@@ -41,9 +41,10 @@ export const userStore = {
   },
   actions: {
     async login({ commit }, { userCred }) {
+      console.log('from store',userCred)
       try {
         const user = await userService.login(userCred)
-        commit({ type: 'setLoggedinUser', user })
+        commit({ type: 'setLoggedInUser', user })
         return user
       } catch (err) {
         console.log('userStore: Error in login', err)
@@ -53,7 +54,7 @@ export const userStore = {
     async signup({ commit }, { userCred }) {
       try {
         const user = await userService.signup(userCred)
-        commit({ type: 'setLoggedinUser', user })
+        commit({ type: 'setLoggedInUser', user })
         return user
       } catch (err) {
         console.log('userStore: Error in signup', err)
@@ -63,7 +64,7 @@ export const userStore = {
     async logout({ commit }) {
       try {
         await userService.logout()
-        commit({ type: 'setLoggedinUser', user: null })
+        commit({ type: 'setLoggedInUser', user: null })
       } catch (err) {
         console.log('userStore: Error in logout', err)
         throw err

@@ -101,3 +101,17 @@
     }
   }
 }
+
+.logged-in {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 10%;
+  button {
+    background-color: #036dd0;
+    color: $clr2;
+    border: none;
+    padding: 10px;
+    width: 100px;
+    border-radius: 5px;
+  }
+}

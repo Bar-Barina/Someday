@@ -1,4 +1,4 @@
 module.exports = {
-  dbURL: 'mongodb://127.0.0.1:27017',
-  dbName : 'tester_db'
+  dbURL: 'mongodb+srv://dovPanda:7185348888o@cluster0.kidgrbc.mongodb.net/?retryWrites=true&w=majority',
+  dbName : 'board_db'
 }

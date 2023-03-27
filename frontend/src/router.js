@@ -12,6 +12,7 @@ import UserDetails from './views/UserDetails.vue'
 import TaskDetails from './cmps/TaskDetails.vue'
 import Dashboard from './cmps/Dashboard.vue'
 import Signup from './views/Signup.vue'
+import EmailSignup from './views/EmailSignup.vue'
 
 const routes = [
   {
@@ -51,10 +52,20 @@ const routes = [
     component: Login
   },
   {
+    path: '/emailsignup',
+    name: 'EmailSignup',
+    component: EmailSignup
+  },
+  {
     path: '/signup',
     name: 'Signup',
     component: Signup
   },
+  // {
+  //   path: '/LoginSignup',
+  //   name: 'LoginSignup',
+  //   component: LoginSignup
+  // },
   // {
   //   path: '/review',
   //   name: 'ReviewIndex',

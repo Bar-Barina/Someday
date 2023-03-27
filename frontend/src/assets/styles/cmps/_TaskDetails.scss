@@ -104,6 +104,37 @@
   }
 
   .bottom-chat {
+    .quill-editor {
+      margin-top: 18px;
+      width: 520px;
+      margin-left: 8px;
+      &.open .ql-editor{
+        height: 100px;
+      }
+      .ql-toolbar.ql-snow {
+        border: 0.5px solid $clr8;
+        border-bottom: 1px solid #d1d5db;
+        padding: 5px;
+        padding-block: 8px;
+        border-top-right-radius: 6px;
+        border-top-left-radius: 6px;
+      }
+      .ql-editor {
+        .ql-align-justify {
+          text-align: justify;
+        }
+        &:focus {
+          height: 100px;
+        }
+      }
+    }
+    .ql-container.ql-snow {
+      border: 0.5px solid $clr8;
+      border-top: 0px;
+      border-bottom-right-radius: 6px;
+      border-bottom-left-radius: 6px;
+    }
+    
     text-align: center;
 
     .editable-text {
