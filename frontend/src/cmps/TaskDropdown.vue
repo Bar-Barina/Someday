@@ -18,6 +18,7 @@
 
 <script>
 import { svgService } from '../services/svg.service.js'
+import ColorPicker from '../cmps/dynamicCmps/ColorPicker.vue'
 export default {
   props: {
     options: Array,
@@ -33,5 +34,8 @@ export default {
       return svgService.getSvg(iconName)
     },
   },
+  components : {
+    ColorPicker
+  }
 }
 </script>
