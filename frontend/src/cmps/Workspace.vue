@@ -83,7 +83,7 @@ export default {
       isWorkspaceOpen: false,
       newBoard: boardService.getEmptyBoard(),
       searchTerm: '',
-      selectedBoard: 0,
+      selectedBoard: null,
     }
   },
   methods: {
