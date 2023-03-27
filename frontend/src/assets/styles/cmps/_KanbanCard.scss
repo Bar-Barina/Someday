@@ -48,9 +48,17 @@
         padding-top: 5px;
     }
 
+    input[type="text"].text {
+        background-color: $clr42;
+
+        &:focus {
+            background-color: #fff;
+        }
+    }
+
     // TEXT CMP //
     .text-placeholder {
-        opacity: 1!important;
+        opacity: 0;
 
         .t-icon {
             position: absolute;
