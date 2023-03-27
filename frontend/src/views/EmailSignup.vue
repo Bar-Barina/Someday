@@ -1,5 +1,5 @@
 <template>
-<section class="email-signup-container">
+<section class="email-signup-container" v-if="!isSignUpOpen">
     <section class="email-signup">
   <h1>Welcome to someday.com</h1>
   <p>Get started - it's free. No credit card needed.</p>
@@ -14,31 +14,32 @@
         v-model="signupCred.email" />
       </label>
       <br>
-      <RouterLink to="/signup">
-        <button class="continue">Continue</button>
-    </RouterLink>
-       <div class="login-route">
-        <span>Already have an account?</span>
-        <RouterLink to="/login">
-        <span class="login-route-span">Log in</span>
-      </RouterLink>
-       </div>
+          <button class="continue" @click="isSignUpOpen = !isSignUpOpen">Continue</button>
+          <div class="login-route">
+              <span>Already have an account?</span>
+              <RouterLink to="/login">
+                  <span class="login-route-span">Log in</span>
+                </RouterLink>
+            </div>
+        </section>
+        <div class="email-board-img">
+            <img src="../assets/img/boardEmail.png" class="board-img"/>
+            <img src="../assets/img/imgShadow.png" class="board-img-shadow"/>
+        </div>
     </section>
- <div class="email-board-img">
-    <img src="../assets/img/boardEmail.png" class="board-img"/>
-    <img src="../assets/img/imgShadow.png" class="board-img-shadow"/>
- </div>
-</section>
+    <Signup v-if="isSignUpOpen" :signupCred="signupCred"/>
 
 </template>
 
 <script>
 // import { eventBus } from '../services/event-bus.service'
+import Signup from './Signup.vue';
 export default {
 name: '',
 data() {
     return {
       signupCred: { accountName: '', password: '', fullname: '', email:'',imgUrl: '' },
+      isSignUpOpen: false
     }
   },
 methods: {
@@ -54,7 +55,7 @@ created() {
 
 },
 components: {
-
+    Signup,
 },
 }
 </script>

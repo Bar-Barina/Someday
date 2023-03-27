@@ -1,11 +1,10 @@
 <template>
   <LoginHeader />
-  <p>{{ msg }}</p>
-
-  <div v-if="loggedInUser">
+  <div v-if="loggedInUser" class="logged-in">
     <h3>
-      Loggedin User:
-      {{ loggedInUser.fullname }}
+      Get things done,
+      {{ loggedInUser.fullname }} !
+      <br>
       <button @click="doLogout">Logout</button>
     </h3>
   </div>
