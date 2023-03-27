@@ -12,9 +12,9 @@
         <span v-icon="'msgDots'" className="icon"></span>
       </div>
     </section>
-    <div class="msg-txt">
+    <pre class="msg-txt">
       {{ msg.txt }}
-    </div>
+    </pre>
     <section class="msg-bottom-btns flex align-center">
       <div class="like btn-container">
         <div

@@ -106,6 +106,9 @@ export const boardStore = {
     },
     toggleBlackScreen(state) {
       state.isBlackScreen = !state.isBlackScreen 
+    },
+    closeBlackScreen(state) {
+      state.isBlackScreen = false
     }
   },
   actions: {

@@ -285,7 +285,7 @@ export default {
       this.showFilter = false
       this.showPersonFilter = false
       this.showBoardDesc = false
-      this.$store.commit({ type: 'toggleBlackScreen' })
+      this.$store.commit({ type: 'closeBlackScreen' })
     },
     onSearch() {
       this.$store.commit({ type: 'setFilterBy', searchQuery: this.searchQuery })
