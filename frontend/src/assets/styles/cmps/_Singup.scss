@@ -5,8 +5,9 @@
 
 
     .setup {
-        padding: 85px;
+        padding: 70px;
         height: 100vh;
+        margin-top: -35px;
         h1 {
             font-size: 32px;
         }
@@ -17,7 +18,8 @@
             }
             input {
                 height: em(48px);
-                width: 60%;
+                width: 528px;
+                height: 48px;
                 padding: 8px 16px;
                 border: none;
                 outline: 1px solid $clr014;
@@ -38,7 +40,7 @@
     .continue-btn {
         position: absolute;
         bottom: 7%;
-        right: 58%;
+        right: 56.5%;
         border: none;
         color: white;
         background-color: $clr8;

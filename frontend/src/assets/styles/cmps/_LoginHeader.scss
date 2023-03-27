@@ -1,21 +1,20 @@
 .login-page-header {
-    display: flex;
-    align-items: center;
-    padding-left: 8px;
-    height: 65px;
-    border-bottom: 1px solid #e0e0e0;
-    background: #f7f7f7;
-    span {
-        font-size: 32px;
-        font-weight: 900;
-        font-family: Helvetica;
-        color: rgb(61, 61, 61);
-        letter-spacing: -2px;
-    }
-    img {
-        width: 47px;
-        height: 47px;
-        margin-top: 4px;
-      }
-
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  height: 65px;
+  border-bottom: 1px solid #e0e0e0;
+  background: #f7f7f7;
+  span {
+    font-size: 32px;
+    font-weight: 900;
+    font-family: system-ui;
+    color: #333333;
+    letter-spacing: -1px;
+  }
+  img {
+    width: 47px;
+    height: 47px;
+    margin-top: 4px;
+  }
 }
