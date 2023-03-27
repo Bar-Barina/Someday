@@ -49,14 +49,17 @@
     </div>
   </section>
     <section class="bottom-chat">
-      <div
+      <!-- <div
         @input="updateContent"
         ref="textArea"
         class="editable-text"
         :class="{ open: openTextArea }"
         placeholder="Write an update..."
         contenteditable="true"
-      ></div>
+      ></div> -->
+      <div class="quill-editor" :class="{ open: openTextArea }">
+      <QuillEditor theme="snow" toolbar="essential" v-model:content="msg.txt" contentType="text" required placeholder="Write an update..."/>
+      </div>
     </section>
     <section class="nav-btn flex space-between align-center">
       <div class="conversation-middle-nav">
@@ -106,9 +109,10 @@ import MsgPreview from './MsgPreview.vue'
 import EmojiPicker from 'vue3-emoji-picker'
 import 'vue3-emoji-picker/css'
 import { clickOutside } from '../directives.js'
-
+import {QuillEditor} from '@vueup/vue-quill'
+import '@vueup/vue-quill/dist/vue-quill.snow.css'
 export default {
-  name: '',
+  name: 'TaskDetails',
   data() {
     return {
       active: '',
@@ -133,12 +137,13 @@ export default {
       this.updateTask()
     },
     addMsg() {
-      this.msg.txt = this.$refs.textArea.innerText
+      // this.msg.txt = this.$refs.textArea.innerText
       const msgToAdd = { ...this.msg }
       this.task.msgs.unshift(msgToAdd)
       this.group.tasks.splice(this.taskIdx, 1, this.task)
       this.updateTask()
-      this.$refs.textArea.innerText = ''
+      // this.$refs.textArea.innerText = ''
+      this.msg.txt = ''
     },
     updateTask() {
       const toUpdate = { group: this.group, task: this.task }
@@ -149,7 +154,7 @@ export default {
       this.isEmoji = !this.isEmoji
     },
     onSelectEmoji(emoji) {
-      this.$refs.textArea.innerText += emoji.i
+      this.msg.txt += emoji.i
     },
     closeEmojiPick() {
       this.isEmoji = false
@@ -182,13 +187,14 @@ export default {
       return this.group.tasks.findIndex((t) => t.id === this.task.id)
     },
     openTextArea() {
-      return this.textArea !== ''
+      return this.msg.txt !== ''
     },
   },
   created() {},
   components: {
     MsgPreview,
     EmojiPicker,
+    QuillEditor
   },
 }
 </script>

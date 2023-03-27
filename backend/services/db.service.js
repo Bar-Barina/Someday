@@ -1,13 +1,16 @@
 const MongoClient = require('mongodb').MongoClient
 
 const config = require('../config')
+const { dbName } = require('../config/prod')
 const logger = require('./logger.service')
 
 module.exports = {
     getCollection
 }
 
+dbName = 'board_db'
 var dbConn = null
+
 
 async function getCollection(collectionName) {
     try {
