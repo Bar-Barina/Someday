@@ -4,7 +4,7 @@
     <h3>
       Get things done,
       {{ loggedInUser.fullname }} !
-      <br>
+      <br />
       <button @click="doLogout">Logout</button>
     </h3>
   </div>
@@ -25,7 +25,9 @@
               class="email-input"
               placeholder="Example@company.com"
             />
-            <button>Next</button>
+            <button>Next
+              <span v-icon="'arrowRightLogin'" class="arrow-right-login"></span>
+            </button>
           </form>
         </div>
       </div>

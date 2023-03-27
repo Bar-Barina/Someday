@@ -23,7 +23,7 @@
     }
     .email-input {
       width: 360px;
-      height: 27px;
+      height: 40px;
       border-radius: 4px;
       border: 1px solid #ccc;
       padding: 6px 12px;
@@ -31,6 +31,9 @@
       color: #555;
       outline: none;
       margin-bottom: 20px;
+      &::placeholder {
+        color: rgba(128, 128, 128, 0.521);
+      }
     }
     button {
       min-width: 100%;
@@ -48,6 +51,10 @@
       background-color: #047bea;
       &:hover {
         background-color: #036dd0;
+      }
+      .arrow-right-login {
+         padding-top:  7px;
+         padding-left:12px;
       }
     }
   }
@@ -96,7 +103,7 @@
       background: transparent;
       font: inherit;
       cursor: pointer;
-      color: #28abe3;
+      color: #0FA2E2;
       text-decoration: none;
     }
   }
