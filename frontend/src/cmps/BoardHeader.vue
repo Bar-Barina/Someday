@@ -31,7 +31,11 @@
             className="icon"
             @click="toggleBoardDesc"
           ></span>
-          <BoardDesc v-if="showBoardDesc" v-clickOutside="closeModal" @closeDesc="closeDesc" />
+          <BoardDesc
+            v-if="showBoardDesc"
+            v-clickOutside="closeModal"
+            @closeDesc="closeDesc"
+          />
           <!-- <BlackScreen/> -->
         </div>
 
@@ -296,7 +300,7 @@ export default {
     },
     closeDesc() {
       this.showBoardDesc = false
-    }
+    },
   },
   computed: {
     currBoard() {
