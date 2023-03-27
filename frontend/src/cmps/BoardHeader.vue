@@ -31,7 +31,11 @@
             className="icon"
             @click="toggleBoardDesc"
           ></span>
-          <BoardDesc v-if="showBoardDesc" v-clickOutside="closeModal" />
+          <BoardDesc
+            v-if="showBoardDesc"
+            v-clickOutside="closeModal"
+            @closeDesc="closeDesc"
+          />
           <!-- <BlackScreen/> -->
         </div>
 
@@ -293,6 +297,9 @@ export default {
     toggleBoardDesc() {
       this.showBoardDesc = !this.showBoardDesc
       this.$store.commit({ type: 'toggleBlackScreen' })
+    },
+    closeDesc() {
+      this.showBoardDesc = false
     },
   },
   computed: {

@@ -20,6 +20,14 @@
     width: 28px;
     border-radius: 50%;
   }
+  .x-btn-desc {
+  position: absolute;
+  right: 10px;
+  top:10px;
+    svg {
+      fill: rgb(65, 65, 65);
+    }
+  }
 
   .board-info-title {
     color: #323338;
@@ -32,6 +40,7 @@
     position: relative;
     padding: 0px 30px 10px;
     width: 62%;
+    margin-top: -25px;
     h1 {
       width: 465px;
       height: 42px;
@@ -106,5 +115,10 @@
   }
   .info-subtitle {
     margin-left: 10px;
+  }
+  .board-type {
+    span {
+      margin-right: 8px;
+    }
   }
 }

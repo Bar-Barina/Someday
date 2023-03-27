@@ -10,6 +10,7 @@
     </section>
     <!-- INFO -->
     <section class="board-info">
+      <span v-icon="'x'" class="x-btn-desc" @click="closeDesc"></span>
       <div class="board-info-title">Board info</div>
       <!-- WORKSPACE -->
       <div class="workspace-info-div">
@@ -51,12 +52,16 @@ import { svgService } from '../services/svg.service.js'
 export default {
   name: '',
   data() {
-    return {}
+    return {
+    }
   },
   methods: {
     getSvg(iconName) {
       return svgService.getSvg(iconName)
     },
+    closeDesc() {
+      this.$emit('closeDesc')
+    }
   },
   computed: {
     currBoard() {
