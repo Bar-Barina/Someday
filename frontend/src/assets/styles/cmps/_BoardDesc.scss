@@ -20,6 +20,14 @@
     width: 28px;
     border-radius: 50%;
   }
+  .x-btn-desc {
+  position: absolute;
+  right: 10px;
+  top:10px;
+    svg {
+      fill: rgb(65, 65, 65);
+    }
+  }
 
   .board-info-title {
     color: #323338;
@@ -107,5 +115,10 @@
   }
   .info-subtitle {
     margin-left: 10px;
+  }
+  .board-type {
+    span {
+      margin-right: 8px;
+    }
   }
 }
