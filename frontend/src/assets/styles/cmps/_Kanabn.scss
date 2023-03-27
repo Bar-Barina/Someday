@@ -22,7 +22,89 @@
 
         .smooth-dnd-container.horizontal {
             padding: 0 4px;
-            display: flex!important;
+            display: flex !important;
         }
     }
+
+    .kanban-filter {
+        padding: 16px;
+        margin-inline-start: auto;
+        height: 100%;
+        z-index: 50;
+        width: 268px;
+        background-color: #fff;
+        border-left: 2px solid #d0d4e6;
+
+        >* {
+            margin-bottom: 16px;
+        }
+
+        .customize {
+            color: #676879;
+            margin-bottom: 16px;
+        }
+
+        .sub-header {
+            padding-inline-end: 8px;
+            font-size: .875em;
+
+            .svg {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+            }
+        }
+
+        .select-wrapper {
+            width: 100%;
+        }
+
+        .el-select {
+            width: 100%;
+            border-radius: 6px;
+            color: #323338;
+            border: 1px solid #c3c6d4 !important;
+            border: 0;
+            padding: 0 !important;
+            cursor: pointer;
+        }
+
+        .card-columns-wrapper {
+            padding-inline-end: 8px;
+            padding-top: 6px;
+
+            >* {
+                font-size: 14px;
+                line-height: 22px;
+            }
+        }
+
+        .sub-header2 {
+            margin-bottom: 8px;
+        }
+
+        .all-columns {
+            margin-bottom: 22px;
+
+            input[type="checkbox"] {
+                margin-inline-end: 8px;
+            }
+        }
+
+        .card-col {
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .sub2 {
+
+            span {
+                width: 150px;
+                margin-inline-start: 8px;
+            }
+        }
+    }
+
+
 }

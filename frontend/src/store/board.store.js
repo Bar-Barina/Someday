@@ -38,7 +38,7 @@ export const boardStore = {
     },
     isBlackScreen:false,
     statuses: ['Working on it' , 'Stuck' , 'Done' , 'Blank'],
-    labelsOrder: [
+    filteredLabels: [
       "Date",
       "Text",
       "Priority",
@@ -73,8 +73,8 @@ export const boardStore = {
     kanbanStatuses({statuses}) {
       return statuses
     },
-    currLabelsOrder({labelsOrder}) {
-      return labelsOrder
+    currLabelsOrder({filteredLabels}) {
+      return filteredLabels
     }
   },
   mutations: {
@@ -102,6 +102,9 @@ export const boardStore = {
     },
     setCurrGroup(state, { group }) {
       state.currGroup = group
+    },
+    setCurrLabels(state, { labelsOrder }) {
+      state.filteredLabels = labelsOrder
     },
     setStatuses(state, { statuses }) {
       state.statuses = statuses
