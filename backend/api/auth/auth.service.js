@@ -15,7 +15,7 @@ async function login(email, password) {
     logger.debug(`auth.service - login with email: ${email}`)
 
     const user = await userService.getByEmail(email)
-    console.log('user',user)
+    console.log('user12331212',user)
     if (!user) return Promise.reject('Invalid email or password')
     // TODO: un-comment for real login
     const match = await bcrypt.compare(password, user.password)
@@ -37,13 +37,13 @@ async function signup({email ,accountName, password, fullname, imgUrl}) {
     if (userExist) return Promise.reject('Username already taken')
 
     const hash = await bcrypt.hash(password, saltRounds)
-    return userService.add({ username: accountName, password: hash, fullname, imgUrl })
+    return userService.add({email, accountName, password: hash, fullname, imgUrl })
 }
 
 
 function getLoginToken(user) {
-    const userInfo = {_id : user._id, fullname: user.fullname,email:user.email, isAdmin: user.isAdmin}
-    console.log('user',user)
+    const userInfo = {_id : user._id, fullname: user.fullname,email:user.email,accountName:user.accountName, isAdmin: user.isAdmin}
+    console.log('use1231231223r',user)
     return cryptr.encrypt(JSON.stringify(userInfo))    
 }
 
