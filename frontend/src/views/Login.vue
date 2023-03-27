@@ -21,9 +21,14 @@
             <input
               type="email"
               v-model="email"
-              id="user_email"
               class="email-input"
               placeholder="Example@company.com"
+            />
+            <input
+              type="password"
+              v-model="password"
+              class="email-input"
+              placeholder="Password"
             />
             <button>Next
               <span v-icon="'arrowRightLogin'" class="arrow-right-login"></span>

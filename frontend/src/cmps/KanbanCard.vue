@@ -6,7 +6,7 @@
           {{ task.taskTitle }}
         </div>
         <div class="conversation-wrapper flex align-center">
-          <span v-icon="'con'" class="open-con flex align-center space-between">
+          <span v-icon="'con'" @click="openCon" class="open-con flex align-center space-between">
           </span>
         </div>
       </section>
@@ -72,6 +72,12 @@ export default {
       } catch (err) {
         showErrorMsg("Couldnt add task");
       }
+    },
+    openCon() {
+      this.$router.push(
+        '/board/' + this.currBoard._id + '/kanban/taskDetails/' + this.task.id
+      )
+      this.$store.commit({ type: 'setCurrGroup', group: this.group })
     },
   },
   computed: {
