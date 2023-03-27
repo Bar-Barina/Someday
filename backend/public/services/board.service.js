@@ -15,8 +15,8 @@ export const boardService = {
 window.cs = boardService
 
 
-async function query(filterBy = { txt: '', price: 0 }) {
-    return httpService.get('board', filterBy)
+async function query() {
+    return httpService.get('board')
 }
 function getById(boardId) {
     return httpService.get(`board/${boardId}`)

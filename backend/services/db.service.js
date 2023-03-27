@@ -8,7 +8,7 @@ module.exports = {
     getCollection
 }
 
-dbName = 'board_db'
+// dbName = 'board_db'
 var dbConn = null
 
 

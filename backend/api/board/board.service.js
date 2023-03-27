@@ -3,13 +3,13 @@ const logger = require('../../services/logger.service')
 const utilService = require('../../services/util.service')
 const ObjectId = require('mongodb').ObjectId
 
-async function query(filterBy={txt:''}) {
+async function query() {
     try {
         // const criteria = {
         //     vendor: { $regex: filterBy.txt, $options: 'i' }
         // }
         const collection = await dbService.getCollection('board')
-        var boards = await collection.find(criteria).toArray()
+        var boards = await collection.find().toArray()
         return boards
     } catch (err) {
         logger.error('cannot find boards', err)
@@ -53,8 +53,10 @@ async function add(board) {
 async function update(board) {
     try {
         const boardToSave = {
-            vendor: board.vendor,
-            price: board.price
+            title: board.title,
+            description: board.description,
+            members:board.members,
+            groups:board.groups,
         }
         const collection = await dbService.getCollection('board')
         await collection.updateOne({ _id: ObjectId(board._id) }, { $set: boardToSave })
