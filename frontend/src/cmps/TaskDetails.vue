@@ -1,12 +1,12 @@
 <template>
-  <section v-if="task" class="conversation-container" v-clickOutside="closeBlackScreen">
+  <section v-if="task" class="conversation-container">
+      <div class="chat-black-screen"></div>
     <section class="app-header">
     <div class="conversation-action-wrapper">
       <RouterLink :to="`/board/${currBoard._id}`">
         <button
           class="conversation-exit-btn flex justify-center align-center btn-hover"
           @click="updateTask"
-          
         >
           <span className="icon" v-html="getSvg('x')"></span>
         </button>
@@ -95,6 +95,7 @@
         files to share with your team members
       </p>
     </section>
+
   </section>
 </template>
 
@@ -154,10 +155,6 @@ export default {
     updateContent() {
       this.textArea = this.$refs.textArea.innerText
     },
-    closeBlackScreen() {
-      this.$store.commit({type:'toggleBlackScreen'})
-      this.$router.push(`/board/${this.currBoard._id}`)
-    }
   },
   watch: {
     '$route.params': {
