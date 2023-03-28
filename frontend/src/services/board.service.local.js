@@ -77,18 +77,16 @@ function filterBoard(board, filterBy) {
       return group.tasks.length > 0
     })
   }
-  // if (filterBy.member) {
-  //   console.log('from service', filterBy.member);
-  //   filteredBoard = filteredBoard.groups.filter(group => {
-  //     return group.tasks.filter(task => {
-  //       return task.person.filter(p => {
-  //         console.log('before filterBy.member',filterBy.member)
-  //         return p.name === filterBy.member
-  //       })
-  //     })
-  //   })
-  //   console.log('after filterBy.member',filterBy.member)
-  // }
+  if (filterBy.member) {
+    console.log('from service', filterBy.member);
+    filteredBoard.groups = filteredBoard.groups.filter(group => {
+      return group.tasks = group.tasks.filter(task => {
+        console.log('task.person',task.person)
+        console.log('filterBy.member',filterBy.member)
+        return task.person.some(p=>p._id===filterBy.member._id)
+      })
+    })
+  }
   return filteredBoard
 }
 
@@ -309,19 +307,22 @@ function getEmptyTask() {
 function makeMembers() {
   const members = [
     {
+      _id:"u101",
       name: 'Bar Barina',
       url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512',
     },
     {
+      _id:"u102",
       name: 'Dor Tayari',
       url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04C1V8MCT0-3405b9727a5c-512',
     },
     {
+      _id:"u103",
       name: 'Ofek Dov',
       url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04FAC6TULV-3a2724e5957b-512',
     },
   ]
-  const total = utilService.getRandomIntInclusive(1, 4)
+  const total = utilService.getRandomIntInclusive(1, 3)
   return members.slice(0, total)
 }
 
@@ -331,9 +332,9 @@ function makeMembers() {
 //       title: 'Development',
 //       description: 'Add your board\'s description here',
 //       members: [
-//         { name: "Dor Tayari", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04C1V8MCT0-3405b9727a5c-512' },
-//         { name: "Bar Barina", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512' },
-//         { name: "Ofek Dov", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04FAC6TULV-3a2724e5957b-512' },
+//         {_id:"u101", name: "Dor Tayari", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04C1V8MCT0-3405b9727a5c-512' },
+//         {_id:"u102", name: "Bar Barina", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512' },
+//         {_id:"u103", name: "Ofek Dov", url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04FAC6TULV-3a2724e5957b-512' },
 //       ],
 //       groups: [
 //         {

@@ -56,9 +56,9 @@
     font-family: 'Poppins';
     svg {
       margin-top: 7px;
-    padding-left: 6px;
-    width: 100%;
-    transition: 400ms;
+      padding-left: 6px;
+      width: 100%;
+      transition: 400ms;
     }
     &:hover {
       background: linear-gradient(90deg, #513be4 30.69%, #b4b4ff 120%);
@@ -68,8 +68,8 @@
     }
     svg {
       margin-top: 7px;
-    padding-left: 6px;
-    width: 100%;
+      padding-left: 6px;
+      width: 100%;
     }
   }
 
@@ -132,8 +132,8 @@
   width: 2.55173px;
   height: 2.55173px;
   left: 1200px;
-    top: 700px;
-    animation-duration: 3s;
+  top: 700px;
+  animation-duration: 3s;
   animation-delay: 3s;
 }
 
@@ -150,7 +150,7 @@
   width: 3.55173px;
   height: 3.55173px;
   left: 1036px;
-    top: 24px;
+  top: 24px;
   animation-duration: 3s;
   animation-delay: 8s;
 }
@@ -168,7 +168,7 @@
   width: 8.55173px;
   height: 8.55173px;
   left: 1522px;
-    top: 202px;
+  top: 202px;
   animation-duration: 2s;
   animation-delay: 6s;
 }
@@ -177,7 +177,7 @@
   width: 3.55173px;
   height: 3.55173px;
   left: 1378px;
-    top: 380px;
+  top: 380px;
   animation-duration: 3s;
   animation-delay: 4s;
 }
@@ -248,7 +248,14 @@
   top: 410px;
   position: absolute;
 }
-
+.star18 {
+  width: 9.55173px;
+  height: 9.55173px;
+  left: 48%;
+  top: 48.9%;
+  animation-duration: 20s;
+  animation-delay: 10s;
+}
 
 @keyframes twinkle {
   0% {
@@ -266,3 +273,32 @@
     opacity: 1;
   }
 }
+
+.unlimited {
+  color: $clr2;
+  font-size: 13px;
+  font-family: 'Poppins';
+  margin-top: 17px;
+  span {
+    margin: 18px;
+  }
+}
+
+.home-footer {
+  text-align: center;
+  margin: 40px;
+  font-size: 22px;
+}
+// .green-try-demo {
+//   height: 30vw;
+//   width: 30vw;
+//   border-radius: 50%;
+//   z-index: 10000000;
+//   background-color: #025231;
+//   position: absolute;
+//   left: calc(100% - 50vw);
+//   top: calc(100% - 36vw);
+//   opacity: 1;
+//   -webkit-transition: opacity 2s;
+//   transition: opacity 2s;
+// }
