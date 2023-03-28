@@ -36,7 +36,6 @@
             @closeDesc="closeDesc"
           />
         </div>
-
         <div
           v-if="!isStarred"
           @click="isStarred = !isStarred"
@@ -176,13 +175,23 @@
         }"
         class="bottom-header-btn btn-hover"
         @click="togglePersonModal"
+        :class="{activePersonFilter:MemberToFilter}"
       >
-        <div
+     
+        <MainPersonFilter v-if="showPersonFilter" v-clickOutside="closeModal" />
+        <div class="member-filter flex justify-center align-center" v-if="MemberToFilter">
+          <img :src="MemberToFilter.url" alt=""/>
+          {{MemberToFilter.name}}
+          <span v-icon="'personX'" @click.stop="removeMemberFilter"></span>
+        </div>
+        <div v-else class="person-palceholder flex align-center">
+          <div
           class="flex justify-center align-center"
           v-html="getSvg('headerPerson')"
-        ></div>
-        <MainPersonFilter v-if="showPersonFilter" v-clickOutside="closeModal" />
-        Person
+        >
+        </div>
+          Person
+        </div>
       </div>
       <div
         v-tippy="{
@@ -316,6 +325,9 @@ export default {
       }
       this.$store.dispatch({ type: 'saveTask', toUpdate: { group: newGroup } })
     },
+    removeMemberFilter() {
+      this.$store.commit({type:'updateActiveMember'})
+    }
   },
   watch: {
     "$route.params": {
@@ -331,6 +343,9 @@ export default {
     currBoard() {
       return this.$store.getters.currBoard
     },
+    MemberToFilter() {
+      return this.$store.getters.currActiveMember
+    }
   },
   components: {
     MainFilter,
