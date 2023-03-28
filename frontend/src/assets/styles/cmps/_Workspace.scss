@@ -80,11 +80,11 @@
   }
 
   .workspace-boards {
-    display: flex!important;
+    display: flex !important;
     position: relative;
   }
 
-  .workspace-container>*:not(.workspace-line) {
+  .workspace-container > *:not(.workspace-line) {
     height: 32px;
     width: 100%;
     padding: 0 8px;
@@ -136,13 +136,15 @@
     padding: 0 0.5px;
     border: 1px solid #c3c6d4;
     transition: width 0.15s ease, padding-inline-end 0.15s ease,
-    padding-inline-start 0.15s ease, background-color 0.15s ease;
+      right 0.15s ease padding-inline-start 0.15s ease,
+      background-color 0.15s ease;
+    transition: 0.1s;
 
     &:hover {
       width: 33px;
       border-radius: 40px;
       background-color: $clr8;
-
+      right: -18px;
       svg {
         fill: $clr2;
       }
@@ -170,7 +172,6 @@
   svg {
     margin-left: -2px;
   }
-
 }
 
 .board-title-input {

@@ -68,7 +68,13 @@ import { Container, Draggable } from "vue3-smooth-dnd";
 import { utilService } from "../services/util.service";
 import KanbanCol from "./KanbanCol.vue";
 import KanbanFilter from "./KanbanFilter.vue";
+import { onUnmounted } from 'vue'
 export default {
+  setup() {
+    onUnmounted(() => {
+      console.log('Component unmounted')
+    })
+  },
   data() {
     return {
       statuses: ["Working on it", "Stuck", "Done", "Blank"],
