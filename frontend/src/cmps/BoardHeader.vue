@@ -35,7 +35,6 @@
             v-clickOutside="closeModal"
             @closeDesc="closeDesc"
           />
-          <!-- <BlackScreen/> -->
         </div>
 
         <div
@@ -84,12 +83,10 @@
       </section>
     </section>
     <div
-      contenteditable="true"
-      class="description editable-div"
-      ref="boardDesc"
-      @focusout="updateBoard"
+      class="description"
+      @click="toggleBoardDesc"
     >
-      {{ currBoard.description }}
+      {{ currBoard.description }} <span class="see-more">See More</span>
     </div>
     <section class="board-view-change flex align-center">
       <div :class="{ active: active === '' }" class="view-option-container">

@@ -32,7 +32,7 @@
       padding-bottom: 3px;
       font-family: 'Poppins Medium';
       font-weight: 100;
-      margin-left: -11px;
+      margin-left: -8px;
       color: rgb(50, 51, 56);
       &:focus {
         width: 500px;
@@ -57,7 +57,27 @@
   }
 
   .description {
+    cursor: pointer;
     margin-left: -2px;
+    max-width: 500px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 22px;
+    color: #676879;
+    font-size: 14px;
+
+    .see-more {
+      color: #1f76c2;;
+      white-space: nowrap;
+      margin-left: 6px;
+      padding-inline: 2px;
+      cursor: pointer;
+      font-size: 14px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   .right-up-header {

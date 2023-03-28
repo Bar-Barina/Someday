@@ -1,5 +1,5 @@
 <template>
-  <div @click="closeChat" class="chat-black-screen" :class="{ visible: overlayVisible }">
+  <div class="chat-black-screen" :class="{ visible: overlayVisible }">
   <section
     v-if="task"
     class="conversation-container"
@@ -59,14 +59,7 @@
       </div>
     </section>
     <section class="bottom-chat">
-      <!-- <div
-        @input="updateContent"
-        ref="textArea"
-        class="editable-text"
-        :class="{ open: openTextArea }"
-        placeholder="Write an update..."
-        contenteditable="true"
-      ></div> -->
+   
       <input
         v-if="!isEditor"
         @focus="toggleIsEditor(true)"
@@ -80,9 +73,8 @@
           theme="snow"
           toolbar="essential"
           v-model:content="msg.txt"
+          
           ref="textArea"
-          contentType="text"
-          required
           placeholder="Write an update..."
         />
       </div>
@@ -164,13 +156,14 @@ export default {
       this.updateTask();
     },
     addMsg() {
-      this.msg.txt = this.$refs.textArea.innerHTML;
+      // this.msg.txt = this.$refs.textArea;
       // if(this.msg.txt!== "") this.msg.txt.
+      console.log('this.msg.txt',this.msg.txt)
       const msgToAdd = { ...this.msg };
       this.task.msgs.unshift(msgToAdd);
       this.group.tasks.splice(this.taskIdx, 1, this.task);
       this.updateTask();
-      this.$refs.textArea.innerText = "";
+      // this.$refs.textArea.innerText = "";
       this.msg.txt = "";
     },
     updateTask() {
@@ -183,7 +176,7 @@ export default {
     },
     onSelectEmoji(emoji) {
       // this.msg.txt += emoji.i
-      this.$refs.textArea.innerText += emoji;
+      this.$refs.textArea.innerText += emoji.i;
     },
     closeEmojiPick() {
       this.isEmoji = false;
@@ -226,7 +219,7 @@ export default {
       return this.group.tasks.findIndex((t) => t.id === this.task.id);
     },
     openTextArea() {
-      // return this.msg.txt !== ''
+      return this.msg.txt !== ''
       // return this.$refs.textArea.innerText !== ''
     },
   },

@@ -1,5 +1,6 @@
 <template>
-  <section class="board-desc-container" v-clickOutSide="closeDesc">
+    <div class="black-screen">
+  <section class="board-desc-container" v-clickOutSide="closeDesc" >
     <section class="dialog-editable-wrapper">
       <h1 contenteditable="true">{{ currBoard.title }}</h1>
       <div contenteditable="true">
@@ -45,6 +46,7 @@
       </div>
     </section>
   </section>
+</div>
 </template>
 
 <script>

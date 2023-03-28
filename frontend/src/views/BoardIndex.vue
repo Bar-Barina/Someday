@@ -5,7 +5,6 @@
     <section :class="mainClass">
       <BoardHeader/>
     <RouterView />
-    <div class="black-screen" v-if="isBlackScreen"></div>
     </section>
     </section>
 </template>
