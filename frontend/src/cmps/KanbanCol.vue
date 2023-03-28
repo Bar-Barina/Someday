@@ -20,6 +20,7 @@
         orientation="vertical"
         group-name="tasks"
         tag="div"
+        :drag-class="'task-kanban-drag'"
         :shouldAcceptDrop="(e, payload) => e.groupName === 'tasks'"
         :get-child-payload="getColPayload()"
         @drop="onTaskDrop($event)"
@@ -39,7 +40,7 @@ import { boardService } from "../services/board.service.local";
 import { utilService } from "../services/util.service";
 import KanbanCard from "./KanbanCard.vue";
 export default {
-  emits: ["addStatusesMap", "removeStatusesMap"],
+  emits: ["addStatusesMap", "removeStatusesMap", 'updateMapOrder'],
   props: {
     status: String,
     tasks: Array,

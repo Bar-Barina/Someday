@@ -66,7 +66,7 @@
       <section class="right-up-header flex align-center justify-center">
         <div class="logged-in-user flex align-center btn-hover">
           Activity
-          <img src="../assets/img/profile-icon.png" alt="" />
+          <img :src="currUser.imgUrl" alt="" />
         </div>
 
         <div class="invite flex align-center btn-hover">
@@ -345,6 +345,9 @@ export default {
     },
     MemberToFilter() {
       return this.$store.getters.currActiveMember
+    },
+    currUser() {
+      return this.$store.getters.loggedInUser
     }
   },
   components: {

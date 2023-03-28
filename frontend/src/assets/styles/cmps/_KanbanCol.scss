@@ -49,6 +49,7 @@
         background-color: #f6f7fb;
         padding: 4px 8px 16px;
         height: 100%;
+        min-height: 100%;
         position: relative;
         transition: background .2s ease, box-shadow .2s ease;
 
@@ -78,4 +79,8 @@
             background-color: $clr39;
         }
     }
+}
+
+.task-kanban-drag {
+    transform: rotate(5deg);
 }

@@ -65,6 +65,7 @@ export default {
   },
   methods: {
     updateTask({ cmpType, data }) {
+      console.log('data', data)
       this.titleFocus = false
       const taskToSave = { ...this.task };
       if (!cmpType) taskToSave.taskTitle = this.$refs.taskTitle.innerText;
