@@ -56,7 +56,7 @@
         <br />
         <div class="workspace-line"></div>
         <Container
-        class="vertical boards-container"
+        class="vertical workspace-container"
         orientation="vertical"
         group-name="boards"
         tag="div"
