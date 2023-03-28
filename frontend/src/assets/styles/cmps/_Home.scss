@@ -38,6 +38,8 @@
   }
 
   .start-btn {
+    display: flex;
+    align-items: baseline;
     background: linear-gradient(90deg, #5034ff 25.69%, #b4b4ff 100%);
     border-radius: 30px;
     color: #fff;
@@ -48,12 +50,26 @@
     font-weight: 400;
     height: 50px;
     width: 175px;
-    margin-top: 44px;
+    margin-top: 40px;
     border: none;
     cursor: pointer;
-
+    font-family: 'Poppins';
+    svg {
+      margin-top: 7px;
+    padding-left: 6px;
+    width: 100%;
+    transition: 400ms;
+    }
     &:hover {
       background: linear-gradient(90deg, #513be4 30.69%, #b4b4ff 120%);
+      svg {
+        padding-left: 12px;
+      }
+    }
+    svg {
+      margin-top: 7px;
+    padding-left: 6px;
+    width: 100%;
     }
   }
 
