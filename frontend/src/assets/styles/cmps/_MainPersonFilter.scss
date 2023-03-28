@@ -22,7 +22,14 @@
   }
   img {
     width: 30px;
-    margin-left: 15px;
     border-radius: 50%;
   }
+}
+.person-filter-img {
+  margin-left: 10px;
+}
+.activePerson {
+  width: 33px;
+  height: 33px;
+  background-color: #cce5ff;
 }

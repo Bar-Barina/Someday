@@ -16,7 +16,7 @@
     height: 34px;
     gap: 5px;
     font-size: 14px;
-    
+
     cursor: pointer;
     &:hover {
       background-color: $clr016;
@@ -50,14 +50,14 @@
     color: $clr3;
   }
   .triangle {
-      border-style: solid;
-      border-width: 0.5rem 6px 0.5rem 0;
-      transition: opacity .1s ease-in-out;
-      border-color: transparent #ffffff transparent transparent;
-      rotate: 90deg;
-      position: absolute;
-      top: -10px;
-      left: 240px;
+    border-style: solid;
+    border-width: 0.5rem 6px 0.5rem 0;
+    transition: opacity 0.1s ease-in-out;
+    border-color: transparent #ffffff transparent transparent;
+    rotate: 90deg;
+    position: absolute;
+    top: -10px;
+    left: 240px;
   }
   .active {
     background-color: $clr016;
