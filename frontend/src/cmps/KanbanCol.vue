@@ -49,8 +49,6 @@ export default {
     }
   },
   created() {
-    console.log('tasks', this.tasks)
-    console.log('status', this.status)
   },
   methods: {
     getColPayload(id) {

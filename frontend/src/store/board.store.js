@@ -35,6 +35,7 @@ export const boardStore = {
     filterBy: {
       activeFilters: [],
       txt: '',
+      member :''
     },
     isBlackScreen:false,
     statuses: ['Working on it' , 'Stuck' , 'Done' , 'Blank'],
@@ -53,7 +54,7 @@ export const boardStore = {
       return boards
     },
     currBoard({ currBoard, filterBy }) {
-      if (filterBy.txt || filterBy.activeFilters.length > 0) {
+      if (filterBy.txt || filterBy.activeFilters.length > 0 || filterBy.member) {
         const boardToFilter = JSON.parse(JSON.stringify(currBoard))
         const filteredBoard = boardService.filterBoard(boardToFilter, filterBy)
         return filteredBoard
@@ -118,6 +119,10 @@ export const boardStore = {
         )
         state.filterBy.activeFilters.splice(labelIdx, 1)
       } else state.filterBy.activeFilters.push(label)
+    },
+    updateActiveMember(state ,{ label }) {
+      console.log('from store' , label)
+     state.filterBy.member = label
     },
     setFilterBy(state, { searchQuery }) {
       state.filterBy.txt = searchQuery

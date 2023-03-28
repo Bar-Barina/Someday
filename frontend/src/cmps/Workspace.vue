@@ -85,16 +85,13 @@ export default {
   props: {
     boards: Array,
   },
-  created() {
-    this.currBoards = this.boards
-  },
+  created() {},
   data() {
     return {
       isWorkspaceOpen: false,
       newBoard: boardService.getEmptyBoard(),
       searchTerm: "",
       selectedBoard: null,
-      currBoards: null,
     };
   },
   methods: {
@@ -127,7 +124,7 @@ export default {
     // },
     filteredBoards() {
       const regex = new RegExp(this.searchTerm, "i");
-      return this.currBoards.filter((board) => regex.test(board.title));
+      return this.boards.filter((board) => regex.test(board.title));
     },
     currBoard() {
       return this.$store.getters.currBoard;
@@ -141,10 +138,7 @@ export default {
   mounted() {
     setTimeout(() => {
       const { boardId } = this.$route.params;
-      // console.log('boardId',boardId)
-      // console.log('this.boards',this.boards)
       this.selectedBoard = this.boards.findIndex((b) => b._id === boardId);
-      // console.log('this.selectedBoard',this.selectedBoard)
     }, 0);
   },
 };

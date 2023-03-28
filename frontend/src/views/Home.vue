@@ -2,7 +2,7 @@
   <AppHeader />
   <section class="main-home">
     <h1>
-      A Platform built for a
+      A platform built for a
       <br />
       new way of working
     </h1>

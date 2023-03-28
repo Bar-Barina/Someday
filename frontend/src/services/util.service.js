@@ -100,7 +100,6 @@ function loadFromStorage(key) {
 
 function applyDrag(arr, dragResult) {
   const { removedIndex, addedIndex, payload } = dragResult
-  console.log('arr', arr)
   if (removedIndex === null && addedIndex === null) return arr
   const result = [...arr]
   let itemToAdd = payload
@@ -110,6 +109,5 @@ function applyDrag(arr, dragResult) {
   if (addedIndex !== null) {
     result.splice(addedIndex, 0, itemToAdd)
   }
-  console.log('result', result)
   return result
 }

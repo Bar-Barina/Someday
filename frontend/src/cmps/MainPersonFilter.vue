@@ -13,6 +13,7 @@
         arrow: true,
       }"
       @click="ChangeActive(member.name)"
+      :class="{ activePerson: isActive(member.name) }"
     >
       <img :src="member.url" />
     </span>
@@ -22,24 +23,25 @@
 <script>
 export default {
   data() {
-    return {}
+    return {
+    }
   },
   methods: {
-    filterTasksByMember(member) {
-      const board = JSON.parse(JSON.stringify(this.currBoard))
-      const filtered = board.groups.filter((group) => {
-        const array = group.tasks.filter((task) => {
-          return task.person.some((p) => p.name === member.name)
-        })
-      })
-    },
     ChangeActive(label) {
-      this.$store.commit({ type: 'updateActiveFilters', label })
+      console.log('from filter',label)
+      this.$store.commit({ type: 'updateActiveMember', label })
+    },
+    isActive(label) {
+      if (this.currActiveFilters.includes(label)) return true
+      else return false
     },
   },
   computed: {
     currBoard() {
       return this.$store.getters.currBoard
+    },
+    currActiveFilters() {
+      return this.$store.getters.currActiveFilters
     },
   },
 }

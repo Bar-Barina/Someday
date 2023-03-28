@@ -27,11 +27,15 @@ export default {
       mainClass: 'main-content-table',
     }
   },
+  created() {
+    this.$store.dispatch('loadBoards')
+  },
   computed: {
     loggedInUser() {
       return this.$store.getters.loggedInUser
     },
     boards() {
+      console.log('this.$store.getters.boards', this.$store.getters.boards)
       return this.$store.getters.boards
     },
     isBlackScreen() {

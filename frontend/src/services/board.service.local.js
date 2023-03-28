@@ -52,9 +52,9 @@ async function save(board) {
 }
 
 function filterBoard(board, filterBy) {
-  console.log('filterBy', filterBy)
-  console.log('board', board)
-  const filteredBoard = JSON.parse(JSON.stringify(board))
+  // console.log('filterBy', filterBy)
+  // console.log('board', board)
+  let filteredBoard = JSON.parse(JSON.stringify(board))
   const regex = new RegExp(filterBy.txt, 'i')
   filteredBoard.groups = filteredBoard.groups
     .map((group) => {
@@ -77,6 +77,18 @@ function filterBoard(board, filterBy) {
       return group.tasks.length > 0
     })
   }
+  // if (filterBy.member) {
+  //   console.log('from service', filterBy.member);
+  //   filteredBoard = filteredBoard.groups.filter(group => {
+  //     return group.tasks.filter(task => {
+  //       return task.person.filter(p => {
+  //         console.log('before filterBy.member',filterBy.member)
+  //         return p.name === filterBy.member
+  //       })
+  //     })
+  //   })
+  //   console.log('after filterBy.member',filterBy.member)
+  // }
   return filteredBoard
 }
 
