@@ -11,7 +11,7 @@
       </span>
     </div>
     <router-link to="/Login">
-      <button class="login">Login / Signup</button>
+      <button class="login">Log in / Sign up</button>
     </router-link>
   </header>
 </template>
