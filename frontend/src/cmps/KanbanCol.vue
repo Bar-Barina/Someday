@@ -1,7 +1,16 @@
 <template>
   <section class="kanban-col" :style="{ 'background-color': color }">
     <div class="col-header flex space-between align-center">
-      <div>{{ status }} / {{ tasksCount }}</div>
+      <div
+        v-tippy="{
+          content: status,
+          theme: 'classic',
+          placement: 'top',
+          arrow: true,
+        }"
+      >
+        {{ status }} / {{ tasksCount }}
+      </div>
     </div>
     <section class="col-content flex column">
       <section class="cards-container">

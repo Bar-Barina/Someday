@@ -113,7 +113,7 @@ export default {
     },
     addGroup() {
       const newGroup = {
-        title: "Full Stack",
+        title: "New Group",
         color: "#e2445c",
         tasks: [],
       };

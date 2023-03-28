@@ -1,4 +1,5 @@
 .conversation-container {
+  pointer-events: auto;
   overflow-y: scroll;
   cursor: auto;
   background-color: rgb(255, 255, 255);
@@ -256,20 +257,25 @@
     }
   }
 
-  .chat-black-screen {
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 100%;
-    width: 1000px;
-    pointer-events: none;
-    z-index: 12000;
-    transition: 0.3s;
-
-    &.visible {
+}
+.chat-black-screen {
+  // opacity: 0;
+  display: block;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+  z-index: 12000;
+  transition: 0.3s;
+  // &:hover {
+  //   pointer-events: none;
+  //   }
+    &:has(> :first-child:hover) {
       background-color: rgba(41, 47, 76, 0.5);
-      pointer-events: all;
-    }
+    // background-color: red;
+      pointer-events: none;
   }
 }

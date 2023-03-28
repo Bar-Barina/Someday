@@ -2,7 +2,9 @@
   <section class="filter-container">
     <div class="filter-title flex">
       <span>Quick filters</span>
-      <span class="filter-task-count">Showing all of 4 tasks</span>
+      <span class="filter-task-count"
+        >Showing all of {{ this.tasksLength }} tasks</span
+      >
     </div>
     <div class="filter-recent-title">Recent filters</div>
     <section class="filter-list-container flex">
@@ -99,14 +101,6 @@ export default {
     }
   },
   methods: {
-    filterTasksByMember(member) {
-      const board = JSON.parse(JSON.stringify(this.currBoard))
-      const filtered = board.groups.filter((group) => {
-        const array = group.tasks.filter((task) => {
-          return task.person.some((p) => p.name === member.name)
-        })
-      })
-    },
     ChangeActive(label) {
       this.$store.commit({ type: 'updateActiveFilters', label })
     },
@@ -121,6 +115,14 @@ export default {
     },
     currActiveFilters() {
       return this.$store.getters.currActiveFilters
+    },
+    tasksLength() {
+      return this.currBoard.groups.reduce((acc, group) => {
+        group.tasks.forEach((task) => {
+          acc++
+        })
+        return acc
+      }, 0)
     },
   },
 }
