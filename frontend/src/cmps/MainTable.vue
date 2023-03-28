@@ -11,6 +11,7 @@
       showOnTop: true,
     }"
   >
+  
   <BoardHeader />
   <section class="table">
     <Draggable
