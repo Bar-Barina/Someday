@@ -6,11 +6,17 @@
           {{ task.taskTitle }}
         </div>
       </section>
-      <div class="conversation-wrapper flex align-center">
+      <div v-tippy="{
+            content: 'Start conversation',
+            theme: 'classic',
+            placement: 'top',
+            arrow: true,
+          }" 
+      class="conversation-wrapper flex align-center">
           <span v-icon="'con'" @click="openCon" class="open-con flex align-center space-between">
           </span>
         </div>
-      <span class="dots" v-icon="'Dots'"></span>
+      <span class="kanban-dots" v-icon="'Dots'"></span>
     </div>
     <section
       class="card-cmp flex align-center"
