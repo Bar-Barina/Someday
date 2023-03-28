@@ -23,8 +23,10 @@
     }
   }
 
-
   width: max-content;
+  @media (min-width:1200px) {
+    width: 100%;
+  }
   margin-bottom: 20px;
   position: relative;
 
