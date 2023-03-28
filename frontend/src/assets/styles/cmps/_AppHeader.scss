@@ -44,3 +44,32 @@
     background-color: rgb(234, 238, 243);
   }
 }
+
+.start-btn {
+  display: flex;
+  background: linear-gradient(90deg, #5034ff 25.69%, #b4b4ff 100%);
+  border-radius: 30px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  height: 40px;
+  width: 130px;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  padding-left: 15px;
+  font-family: 'Poppins';
+  &:hover {
+    background: linear-gradient(90deg, #513be4 30.69%, #b4b4ff 120%);
+    svg {
+      padding-left: 8px;
+    }
+  }
+  svg {
+    margin-top: 5px;
+    padding-left: 2px;
+    width: 100%;
+    transition: 400ms;
+  }
+}
