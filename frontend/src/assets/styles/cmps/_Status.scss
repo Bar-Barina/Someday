@@ -2,31 +2,23 @@
   position: relative;
 }
 
+.status:hover .peeling-span {
+  display: block;
+}
+
+.peeling-span {
+  transition: opacity 0.3s ease-in-out;
+  display: none;
+}
 .status-working {
   background-color: $clr10;
-  &:hover {
-   background: linear-gradient(to top right, $clr10 94%, $clr10 93%, transparent 95%, transparent 100%);
-   transition: 0.5s;
-  }
 }
 .status-stuck {
   background-color: $clr12;
-  &:hover {
-    background: linear-gradient(to top right, $clr12 94%, $clr12 93%, transparent 95%, transparent 100%);
-    transition: 0.5s;
-   }
 }
 .status-done {
   background-color: $clr11;
-  &:hover {
-    background: linear-gradient(to top right, $clr11 94%, $clr11 93%, transparent 95%, transparent 100%);
-    transition: 0.5s;
-   }
 }
 .status-empty {
   background-color: $clr41;
-  &:hover {
-    background: linear-gradient(to top right, $clr41 94%, $clr41 93%, transparent 95%, transparent 100%);
-    transition: 0.5s;
-   }
 }
