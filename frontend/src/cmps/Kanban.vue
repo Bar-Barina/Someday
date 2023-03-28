@@ -1,4 +1,6 @@
 <template>
+<section class="kanban-container">
+  <BoardHeader />
   <section class="kanban">
     <section class="kanban-content flex">
       <Container
@@ -61,9 +63,11 @@
       </section>
     </section>
   </section>
+  </section>
 </template>
 
 <script>
+import BoardHeader from "./BoardHeader.vue";
 import { Container, Draggable } from "vue3-smooth-dnd";
 import { utilService } from "../services/util.service";
 import KanbanCol from "./KanbanCol.vue";
@@ -179,6 +183,7 @@ export default {
     Draggable,
     KanbanCol,
     KanbanFilter,
+    BoardHeader,
   },
 };
 </script>
