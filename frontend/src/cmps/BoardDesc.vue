@@ -1,11 +1,10 @@
 <template>
-    <div class="black-screen">
-  <section class="board-desc-container" v-clickOutSide="closeDesc" >
+    <div class="black-screen" >
+  <section class="board-desc-container"  >
     <section class="dialog-editable-wrapper">
-      <h1 contenteditable="true">{{ currBoard.title }}</h1>
-      <div contenteditable="true">
-        Add a description here to make sure your team is aligned on the purpose
-        of this board
+      <h1 contenteditable="true" ref="boardTitle" @focusout="updateBoard">{{ currBoard.title }}</h1>
+      <div contenteditable="true" ref="boardDesc" @focusout="updateBoard">
+        {{currBoard.description}}
       </div>
       <span class="feedback">Give feedback</span>
     </section>
@@ -64,6 +63,12 @@ export default {
     closeDesc() {
       this.$emit('closeDesc')
       this.$store.commit({type:'closeBlackScreen'})
+    },
+    updateBoard() {
+      const board = JSON.parse(JSON.stringify(this.currBoard))
+      board.description = this.$refs.boardDesc.innerText
+      board.title = this.$refs.boardTitle.innerText
+      this.$store.dispatch({ type: 'updateBoard', board })
     }
   },
   computed: {
