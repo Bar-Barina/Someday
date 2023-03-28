@@ -34,8 +34,11 @@
   .person-img {
     width: 30px;
     border: 2px solid white;
-    margin-left: -10px;
+    margin-left: -5px;
     border-radius: 50%;
+    &.alone {
+      margin-left: 0px;
+    }
   }
 
   .mini-person {
