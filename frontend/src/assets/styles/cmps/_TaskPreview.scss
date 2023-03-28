@@ -1,132 +1,135 @@
 .task-row {
-
-
-    &.active-row {
-
-        .third,
-        .task-title {
-            background-color: rgb(204, 229, 255);
-        }
-
-        >* {
-            background-color: rgb(204, 229, 255);
-        }
-    }
-
-    &:hover {
-
-        >* {
-            background-color: rgb(245, 246, 248);
-        }
-
-        .third,
-        .task-title {
-            background-color: rgb(245, 246, 248);
-        }
-    }
-
+  &.active-row {
+    .third,
     .task-title {
-        padding-inline-start: 30px;
-        left: 78px;
-        background-color: #fff;
-
-        .task-title-sub {
-            max-width: 270px;
-            width: 100%;
-            padding-inline-end: 16px;
-        }
-
-        .content-edit {
-            cursor: auto;
-            height: 20px;
-            padding: 12px 5px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            width: max-content;
-            white-space: nowrap;
-            transition: width .2s ease;
-            border-radius: 4px;
-
-            span {
-                width: auto;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-            }
-
-            &.active {
-                width: 100%;
-                border: 1px solid transparent;
-            }
-        }
+      background-color: rgb(204, 229, 255);
     }
 
-    .open-con {
-        display: none;
-        min-width: 67px;
+    > * {
+      background-color: rgb(204, 229, 255);
     }
+  }
 
-    &:hover {
-        .open-con {
-            display: flex;
-        }
-    }
-
-    .conversation-wrapper {
-        position: relative;
-        height: 100%;
-        width: 65px;
-        border-left: 1px solid #d0d4e6;
-
-        &:hover {
-            svg {
-                fill: $clr8;
-            }
-        }
-
-        .multi-con {
-            svg {
-                fill: $clr8;
-            }
-        }
-
-        .updates-count {
-            position: absolute;
-            color: #fff;
-            background-color: $clr8;
-            line-height: 9px;
-            top: 15px;
-            font-size: 10px;
-            font-weight: 400;
-            border-radius: 10px;
-            text-align: center;
-            padding: 2px 4px;
-        }
-    }
-
-    button.svg {
-        border: none;
-        background: fixed;
-        cursor: pointer;
-    }
-}
-
-.task-drag {
-    transform: rotate(1deg);
-    cursor: grabbing;
-
-    >* {
-        background-color: rgb(245, 246, 248);
+  &:hover {
+    > * {
+      background-color: rgb(245, 246, 248);
     }
 
     .third,
     .task-title {
-        background-color: rgb(245, 246, 248) !important;
+      background-color: rgb(245, 246, 248);
     }
+  }
+
+  .task-title {
+    padding-inline-start: 30px;
+    left: 78px;
+    background-color: #fff;
+
+    .task-title-sub {
+      max-width: 270px;
+      width: 100%;
+      padding-inline-end: 16px;
+    }
+
+    .content-edit {
+      cursor: auto;
+      height: 20px;
+      padding: 12px 5px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: max-content;
+      white-space: nowrap;
+      transition: width 0.2s ease;
+      border-radius: 4px;
+
+      span {
+        width: auto;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      &.active {
+        width: 100%;
+        border: 1px solid transparent;
+      }
+    }
+  }
+
+  .open-con {
+    display: none;
+    min-width: 67px;
+  }
+
+  &:hover {
+    .open-con {
+      display: flex;
+    }
+  }
+
+  .conversation-wrapper {
+    position: relative;
+    height: 100%;
+    width: 65px;
+    border-left: 1px solid #d0d4e6;
+
+    &:hover {
+      svg {
+        fill: $clr8;
+      }
+    }
+
+    .multi-con {
+      svg {
+        fill: $clr8;
+      }
+    }
+
+    .updates-count {
+      position: absolute;
+      color: #fff;
+      background-color: $clr8;
+      line-height: 9px;
+      top: 15px;
+      font-size: 10px;
+      font-weight: 400;
+      border-radius: 10px;
+      text-align: center;
+      padding: 2px 4px;
+    }
+  }
+
+  button.svg {
+    border: none;
+    background: fixed;
+    cursor: pointer;
+    margin-top: 3px;
+    svg {
+        color: #c5c7d0;
+        &:hover {
+            color: #0073ea;
+        }
+    }
+  }
+}
+
+.task-drag {
+  transform: rotate(1deg);
+  cursor: grabbing;
+
+  > * {
+    background-color: rgb(245, 246, 248);
+  }
+
+  .third,
+  .task-title {
+    background-color: rgb(245, 246, 248) !important;
+  }
 }
 
 .task-placeholder {
-    background-color: #fff;
-    border: 1px dashed $clr38;
+  background-color: #fff;
+  border: 1px dashed $clr38;
 }

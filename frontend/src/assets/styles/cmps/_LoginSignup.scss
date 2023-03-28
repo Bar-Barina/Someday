@@ -16,7 +16,7 @@
     display: grid;
     .enter-work-email {
       height: 20px;
-      margin-bottom: 4px;
+      margin-bottom: 7px;
       font-weight: 500;
       font-size: 17px;
       display: inline-block;
@@ -34,10 +34,6 @@
       &::placeholder {
         color: rgba(128, 128, 128, 0.521);
       }
-      &:hover {
-        border: 1px solid black;
-      }
-
       &:focus {
         outline: 1px solid $clr8;
         border: none;
