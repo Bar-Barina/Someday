@@ -42,7 +42,7 @@
           <span class="svg" v-icon="'descrip'"></span>
         </div>
         <div class="all-columns flex align-center">
-          <input :checked="isAllChecked" type="checkbox" @change="checkAll"/>
+          <input :checked="isAllChecked" type="checkbox" @change="checkAll" />
           <span>All-Columns</span>
         </div>
         <div class="flex column">
@@ -68,13 +68,8 @@ import { Container, Draggable } from "vue3-smooth-dnd";
 import { utilService } from "../services/util.service";
 import KanbanCol from "./KanbanCol.vue";
 import KanbanFilter from "./KanbanFilter.vue";
-import { onUnmounted } from 'vue'
+
 export default {
-  setup() {
-    onUnmounted(() => {
-      console.log('Component unmounted')
-    })
-  },
   data() {
     return {
       statuses: ["Working on it", "Stuck", "Done", "Blank"],
@@ -98,23 +93,23 @@ export default {
   },
   created() {
     const board = JSON.parse(JSON.stringify(this.currBoard));
-    if(!board) return
-    const statusesMap = this.statuses.forEach((status , idx) => {
-      var tasks = []
+    if (!board) return;
+    this.statuses.forEach((status, idx) => {
+      var tasks = [];
       board.groups.forEach((group) => {
         group.tasks.forEach((task) => {
-          if (task.status === status) tasks.push(task)
+          if (task.status === status) tasks.push(task);
         });
-      })
-      this.statusesMap[idx] = {title: status , tasks};
-      console.log('this.statusesMap', this.statusesMap)
+      });
+      this.statusesMap[idx] = { title: status, color: this.colors[idx], tasks };
+      console.log("this.statusesMap", this.statusesMap);
     });
   },
   methods: {
     onColumnDrop(dropResult) {
       this.statuses = utilService.applyDrag(this.statuses, dropResult);
       this.colors = utilService.applyDrag(this.colors, dropResult);
-      // this.updateStatusesMap();
+      this.updateStatusesMap();
     },
     addToMap({ task, status }) {
       this.statusesMap[status].push(task);
@@ -130,19 +125,24 @@ export default {
     },
     updateStatusesMap() {
       const board = JSON.parse(JSON.stringify(this.currBoard));
-      const statusesMap = this.statuses.reduce((acc, status) => {
-        if (!acc[status]) acc[status] = [];
+      if (!board) return;
+      this.statuses.forEach((status, idx) => {
+        var tasks = [];
         board.groups.forEach((group) => {
           group.tasks.forEach((task) => {
-            if (task.status === status) acc[status].push(task);
+            if (task.status === status) tasks.push(task);
           });
         });
-        return acc;
-      }, []);
-      this.statusesMap = statusesMap;
+        this.statusesMap[idx] = {
+          title: status,
+          color: this.colors[idx],
+          tasks,
+        };
+        console.log("this.statusesMap", this.statusesMap);
+      });
     },
     addColumn(col) {
-      console.log('hi')
+      console.log("hi");
       const labelsOrder = JSON.parse(JSON.stringify(this.currLabelsOrder));
       labelsOrder.push(col);
       this.$store.commit({ type: "setCurrLabels", labelsOrder });
@@ -154,9 +154,13 @@ export default {
       this.$store.commit({ type: "setCurrLabels", labelsOrder });
     },
     checkAll() {
-      if(!this.isAllChecked) this.$store.commit({ type: "setCurrLabels", labelsOrder: this.columns });
+      if (!this.isAllChecked)
+        this.$store.commit({
+          type: "setCurrLabels",
+          labelsOrder: this.columns,
+        });
       else this.$store.commit({ type: "setCurrLabels", labelsOrder: [] });
-    }
+    },
   },
   computed: {
     currBoard() {
@@ -166,9 +170,9 @@ export default {
       return this.$store.getters.currLabelsOrder;
     },
     isAllChecked() {
-      if(this.currLabelsOrder.length === this.columns.length) return true
-      return false
-    }
+      if (this.currLabelsOrder.length === this.columns.length) return true;
+      return false;
+    },
   },
   components: {
     Container,

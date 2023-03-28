@@ -1,9 +1,13 @@
 .board-header {
-  height: 180px;
+  position: sticky;
+  top: 0;
+  height: 210px;
   width: 100%;
   padding-inline: 38px;
-  // padding-top: 16px;
-  margin-bottom: 10px;
+  padding-top: 20px;
+  background-color: #fff;
+  padding-bottom: 20px;
+  z-index: 3000;
   .icon {
     height: em(32px);
     width: em(32px);
@@ -27,7 +31,7 @@
       padding-bottom: 3px;
       font-family: 'Poppins Medium';
       font-weight: 100;
-      margin-left: -4px;
+      margin-left: -11px;
       color: rgb(50, 51, 56);
       &:focus {
         width: 500px;

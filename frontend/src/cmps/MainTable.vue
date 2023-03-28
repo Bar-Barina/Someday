@@ -12,6 +12,7 @@
     }"
   >
   <BoardHeader />
+  <section class="table">
     <Draggable
       class="group-container"
       v-for="group in currBoard.groups"
@@ -37,6 +38,7 @@
       <span v-html="getSvg('plus')"></span>
       <button>Add new group</button>
     </div>
+    </section>
   </Container>
   <!-- <NoResultsFound
   v-if="currBoard.groups.length === 0"
