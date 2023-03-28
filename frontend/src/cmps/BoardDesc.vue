@@ -13,23 +13,25 @@
       <span v-icon="'x'" class="x-btn-desc" @click="closeDesc"></span>
       <div class="board-info-title">Board info</div>
       <!-- WORKSPACE -->
-      <div class="workspace-info-div">
-          <div class="info-title">Workspace</div>
+      <div>
+      <div class="info-title">Workspace</div>
+      <div class="workspace-info-div flex align-center">
         <p class="pink-div flex">
           <span class="Main-letter">M</span>
           <span class="home-svg" v-html="getSvg('home')"></span>
-          <span class="info-subtitle">Main workspace</span>
         </p>
+        <span class="info-subtitle">Main workspace</span>
       </div>
+    </div>
       <!-- CREATED AT -->
-      <div class="created-info-div">
-        <div class="info-title">Created by</div>
+      <div class="info-title">Created by</div>
+      <div class="created-info-div flex align-center">
         <img :src="currBoard.members[1].url" />
         <span class="info-subtitle"> March 22,2023</span>
       </div>
        <!-- OWNERS -->
-       <div class="owners-info-div">
-        <div class="info-title">Owners</div>
+       <div class="info-title">Owners</div>
+       <div class="owners-info-div flex align-center">
         <img :src="currBoard.members[1].url" />
         <span class="info-subtitle"> {{currBoard.members[1].name}}</span>
       </div>
