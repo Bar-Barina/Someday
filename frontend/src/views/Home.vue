@@ -30,10 +30,16 @@
 </template>
 
 <script>
+import { onUnmounted } from 'vue'
 import AppHeader from '../cmps/AppHeader.vue'
 import { svgService } from '../services/svg.service.js'
 export default {
   name: 'Home',
+  setup() {
+    onUnmounted(() => {
+      console.log('Component unmounted')
+    })
+  },
   methods: {
     getSvg(iconName) {
       return svgService.getSvg(iconName)
