@@ -1,67 +1,73 @@
 <template>
-<section class="kanban-container">
-  <section class="kanban">
-    <section class="kanban-content flex">
-      <Container
-        class="smooth-dnd-container horizontal"
-        orientation="horizontal"
-        group-name="group-kanban"
-        tag="div"
-        @drop="onColumnDrop($event)"
-      >
-        <Draggable v-for="(status, idx) in statusesMap" :key="idx">
-          <KanbanCol
-            :status="status.title"
-            :tasks="status.tasks"
-            :color="colors[idx]"
-            @addStatusesMap="addToMap"
-            @removeStatusesMap="removeFromMap"
-            @updateMapOrder="setOrder"
-          />
-        </Draggable>
-      </Container>
-    </section>
-    <section class="kanban-filter flex column">
-      <span class="customize">Customize View</span>
-      <div class="sub-header flex align-center space-between">
-        <span>Kanban Column</span>
-        <span class="svg" v-icon="'descrip'"></span>
-      </div>
-      <div class="select-wrapper">
-        <el-select v-model="colSelected" class="el-select" placeholder="Select">
-          <el-option
-            v-for="col in options"
-            :key="col.value"
-            :label="col.label"
-            :value="col.value"
-          />
-        </el-select>
-      </div>
-      <section class="card-columns-wrapper">
-        <div class="sub-header2 flex align-center space-between">
-          <span>Card Columns</span>
+  <section class="kanban-container">
+    <section class="kanban">
+      <section class="kanban-content flex">
+        <Container
+          class="smooth-dnd-container horizontal"
+          orientation="horizontal"
+          group-name="group-kanban"
+          tag="div"
+          @drop="onColumnDrop($event)"
+        >
+          <Draggable v-for="(option, idx) in mappedTasks" :key="idx">
+            <KanbanCol
+              :status="option.title"
+              :tasks="option.tasks"
+              :color="option.color"
+              :option="colSelected"
+              @addStatusesMap="addToMap"
+              @removeStatusesMap="removeFromMap"
+              @updateMapOrder="setOrder"
+            />
+          </Draggable>
+        </Container>
+      </section>
+      <section class="kanban-filter flex column">
+        <span class="customize">Customize View</span>
+        <div class="sub-header flex align-center space-between">
+          <span>Kanban Column</span>
           <span class="svg" v-icon="'descrip'"></span>
         </div>
-        <div class="all-columns flex align-center">
-          <input :checked="isAllChecked" type="checkbox" @change="checkAll" />
-          <span>All-Columns</span>
-        </div>
-        <div class="flex column">
-          <div
-            v-for="(col, idx) in columns"
-            :key="idx"
-            class="card-col flex align-center space-between"
+        <div class="select-wrapper">
+          <el-select
+          @change="updateStatusesMap"
+            v-model="colSelected"
+            class="el-select"
+            placeholder="Select"
           >
-            <KanbanFilter
-              :col="col"
-              @addCol="addColumn"
-              @removeCol="removeColumn"
+            <el-option
+              v-for="col in selectOptions"
+              :key="col.value"
+              :label="col.label"
+              :value="col.value"
             />
-          </div>
+          </el-select>
         </div>
+        <section class="card-columns-wrapper">
+          <div class="sub-header2 flex align-center space-between">
+            <span>Card Columns</span>
+            <span class="svg" v-icon="'descrip'"></span>
+          </div>
+          <div class="all-columns flex align-center">
+            <input :checked="isAllChecked" type="checkbox" @change="checkAll" />
+            <span>All-Columns</span>
+          </div>
+          <div class="flex column">
+            <div
+              v-for="(col, idx) in columns"
+              :key="idx"
+              class="card-col flex align-center space-between"
+            >
+              <KanbanFilter
+                :col="col"
+                @addCol="addColumn"
+                @removeCol="removeColumn"
+              />
+            </div>
+          </div>
+        </section>
       </section>
     </section>
-  </section>
   </section>
 </template>
 
@@ -75,14 +81,28 @@ import KanbanFilter from "./KanbanFilter.vue";
 export default {
   data() {
     return {
-      statuses: ["Working on it", "Stuck", "Done", "Blank"],
-      colors: ["#fdab3d", "#e2445c", "#00c875", "#c3c4c3"],
+      options: {
+        status: {
+          labels: ["Working on it", "Stuck", "Done", "Blank"],
+          colors: ["#fdab3d", "#e2445c", "#00c875", "#c3c4c3"],
+        },
+        priority: {
+          labels: ["Critical", "High", "Medium", "Low", ""],
+          colors: [
+            "rgb(51, 51, 51)",
+            "rgb(64, 22, 148)",
+            "rgb(85, 89, 223)",
+            "rgb(87, 155, 252)",
+            "#c3c4c3",
+          ],
+        },
+      },
       statusesMap: [],
-      options: [
-        { value: "Status", label: "Status" },
-        { value: "Priority", label: "Priority" },
+      selectOptions: [
+        { value: "status", label: "Status" },
+        { value: "priority", label: "Priority" },
       ],
-      colSelected: "Status",
+      colSelected: "priority",
       columns: [
         "Date",
         "Text",
@@ -95,22 +115,28 @@ export default {
     };
   },
   created() {
-    const board = this.currBoard
+    const board = this.currBoard;
+    const option = this.colSelected;
     if (!board) return;
-    this.statuses.forEach((status, idx) => {
+    this.options[option].labels.forEach((opt, idx) => {
       var tasks = [];
       board.groups.forEach((group) => {
         group.tasks.forEach((task) => {
-          if (task.status === status) tasks.push(task);
+          if (task[option] === opt) tasks.push(task);
         });
       });
-      this.statusesMap[idx] = { title: status, color: this.colors[idx], tasks };
+      this.statusesMap[idx] = {
+        title: opt,
+        color: this.options[option].colors[idx],
+        tasks,
+      };
     });
+    console.log("this.statusesMap", this.statusesMap);
   },
   methods: {
     onColumnDrop(dropResult) {
-      this.statuses = utilService.applyDrag(this.statuses, dropResult);
-      this.colors = utilService.applyDrag(this.colors, dropResult);
+      this.options[this.colSelected].labels = utilService.applyDrag(this.options[this.colSelected].labels, dropResult);
+      this.options[this.colSelected].colors = utilService.applyDrag(this.options[this.colSelected].colors, dropResult);
       this.updateStatusesMap();
     },
     addToMap({ task, status }) {
@@ -126,24 +152,25 @@ export default {
       );
     },
     updateStatusesMap() {
-      const board = JSON.parse(JSON.stringify(this.currBoard));
+      const board = this.currBoard;
+      const option = this.colSelected;
       if (!board) return;
-      this.statuses.forEach((status, idx) => {
+      this.options[option].labels.forEach((opt, idx) => {
         var tasks = [];
         board.groups.forEach((group) => {
           group.tasks.forEach((task) => {
-            if (task.status === status) tasks.push(task);
+            if (task[option] === opt) tasks.push(task);
           });
         });
         this.statusesMap[idx] = {
-          title: status,
-          color: this.colors[idx],
+          title: opt,
+          color: this.options[option].colors[idx],
           tasks,
         };
       });
+      console.log("this.statusesMap", this.statusesMap);
     },
     addColumn(col) {
-      console.log("hi");
       const labelsOrder = JSON.parse(JSON.stringify(this.currLabelsOrder));
       labelsOrder.push(col);
       this.$store.commit({ type: "setCurrLabels", labelsOrder });
@@ -174,6 +201,12 @@ export default {
       if (this.currLabelsOrder.length === this.columns.length) return true;
       return false;
     },
+    currColSelected() {
+      return this.colSelected;
+    },
+    mappedTasks() {
+      return this.statusesMap
+    }
   },
   components: {
     Container,

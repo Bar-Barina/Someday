@@ -1,5 +1,5 @@
-import { boardService } from '../services/board.service.local'
-// import { boardService } from '../services/board.service'
+// import { boardService } from '../services/board.service.local'
+import { boardService } from '../services/board.service'
 
 export function getActionRemoveBoard(boardId) {
   return {
@@ -35,7 +35,7 @@ export const boardStore = {
     filterBy: {
       activeFilters: [],
       txt: '',
-      member :''
+      member :null
     },
     isBlackScreen:false,
     statuses: ['Working on it' , 'Stuck' , 'Done' , 'Blank'],
@@ -76,7 +76,10 @@ export const boardStore = {
     },
     currLabelsOrder({filteredLabels}) {
       return filteredLabels
-    }
+    },
+    currActiveMember({filterBy}) {
+      return filterBy.member
+    },
   },
   mutations: {
     setBoards(state, { boards }) {
@@ -120,9 +123,9 @@ export const boardStore = {
         state.filterBy.activeFilters.splice(labelIdx, 1)
       } else state.filterBy.activeFilters.push(label)
     },
-    updateActiveMember(state ,{ label }) {
-      console.log('from store' , label)
-     state.filterBy.member = label
+    updateActiveMember(state ,{ member }) {
+      if(!member) state.filterBy.member = ''
+      state.filterBy.member = member
     },
     setFilterBy(state, { searchQuery }) {
       state.filterBy.txt = searchQuery

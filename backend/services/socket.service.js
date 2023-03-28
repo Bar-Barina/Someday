@@ -1,4 +1,6 @@
 const logger = require('./logger.service')
+const userService = require('../api/user/user.service')
+const boardService = require('../api/board/board.service')
 
 var gIo = null
 
@@ -42,7 +44,22 @@ function setupSocketAPI(http) {
             logger.info(`Removing socket.userId for socket [id: ${socket.id}]`)
             delete socket.userId
         })
-
+        socket.on('user-typing', async (userId) => {
+            // TODO: user typing functionality
+            // const collection = await dbService.getCollection('user')
+            console.log('userId',userId)
+            if(!userId)  {
+                socket.broadcast.emit('is-typing', '')
+                return 
+            }
+            var user = await userService.getById(userId)
+            console.log('user',user)
+            // const user = users.find(u => u._id === userId)
+            if (user) {
+                socket.broadcast.emit('is-typing', user.fullname + 'Is typing')
+                return
+            }
+        })
     })
 }
 

@@ -29,12 +29,10 @@
         <input type="text" placeholder="e.g. Acme Corporation"
         v-model="this.signupCred.accountName" />
       </label>
-      <RouterLink to="/login">
     <button class="continue-btn flex align-center justify-center">
       Continue
       <div className="icon" v-html="getSvg('arrowRight')"></div>
     </button>
-  </RouterLink>
   </form>
 </section>
 <img src="../assets/img/signup-hand.png">
@@ -57,7 +55,8 @@ export default {
     getSvg(iconName) {
       return svgService.getSvg(iconName)
     },
-    async doSignup() {
+    doSignup() {
+      console.log('hi')
       if (
         !this.signUpCred.fullname ||
         !this.signUpCred.password ||
@@ -67,8 +66,9 @@ export default {
         this.msg = 'Please fill up the form'
         return
       }
-      await this.$store.dispatch({ type: 'signup', userCred: this.signUpCred })
-      this.$router.push('/')
+      console.log('signing')
+      this.$store.dispatch({ type: 'signup', userCred: this.signUpCred })
+      this.$router.push('/login')
     },
   },
 }

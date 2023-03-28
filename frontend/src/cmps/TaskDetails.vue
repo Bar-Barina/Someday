@@ -73,11 +73,12 @@
           theme="snow"
           toolbar="essential"
           v-model:content="msg.txt"
-          
           ref="textArea"
           placeholder="Write an update..."
+          @input="onUserInput"
         />
       </div>
+      <small v-if="typing">{{ typing }}...</small>
     </section>
     <section class="nav-btn flex space-between align-center">
       <div class="conversation-middle-nav">
@@ -122,6 +123,13 @@
 </template>
 
 <script>
+import {
+  socketService,
+  SOCKET_EMIT_SEND_MSG,
+  SOCKET_EVENT_ADD_MSG,
+  SOCKET_EMIT_SET_TOPIC,
+  SOCKET_EVENT_TYPING,
+} from "../services/socket.service";
 import { svgService } from "../services/svg.service.js";
 import MsgPreview from "./MsgPreview.vue";
 import EmojiPicker from "vue3-emoji-picker";
@@ -129,6 +137,9 @@ import "vue3-emoji-picker/css";
 import { clickOutside } from "../directives.js";
 import { QuillEditor } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
+import {userService} from '../services/user.service'
+import {utilService} from '../services/util.service.js'
+
 export default {
   name: "TaskDetails",
   data() {
@@ -138,12 +149,14 @@ export default {
       isEmoji: false,
       msg: {
         txt: "",
-        from: "guest",
+        from: "",
         liked: [],
       },
       textArea: "",
       overlayVisible: false,
       isEditor: false,
+      typing:'',
+      msgs: [],
     };
   },
   methods: {
@@ -156,8 +169,12 @@ export default {
       this.updateTask();
     },
     addMsg() {
+      const user = userService.getLoggedInUser();
+      const from = (user && user.fullname) || "Guest";
+      this.msg.from = from
       // this.msg.txt = this.$refs.textArea;
       // if(this.msg.txt!== "") this.msg.txt.
+      socketService.emit(SOCKET_EMIT_SEND_MSG, this.msg);
       console.log('this.msg.txt',this.msg.txt)
       const msgToAdd = { ...this.msg };
       this.task.msgs.unshift(msgToAdd);
@@ -165,6 +182,7 @@ export default {
       this.updateTask();
       // this.$refs.textArea.innerText = "";
       this.msg.txt = "";
+      this.msg.from = ""
     },
     updateTask() {
       const toUpdate = { group: this.group, task: this.task };
@@ -193,7 +211,24 @@ export default {
     },
     closeChat() {
       this.$router.push(`/board/${this.currBoard._id}`)
-    }
+    },
+      onUserInput() {
+      const user = userService.getLoggedInUser();
+      if (!user) return;
+      console.log('user',user)
+      socketService.emit("user-typing", user._id);
+      this.onUserStopInputDeb();
+    },
+    onUserStopInput() {
+      console.log("stop typing:");
+      socketService.emit("user-typing", "");
+    },
+    renderTyping(msg) {
+      this.typing = msg;
+    },
+    changeTopic() {
+      socketService.emit(SOCKET_EMIT_SET_TOPIC, this.topic);
+    },
   },
   watch: {
     "$route.params": {
@@ -223,7 +258,16 @@ export default {
       // return this.$refs.textArea.innerText !== ''
     },
   },
-  created() {},
+  created() {
+    socketService.emit(SOCKET_EMIT_SET_TOPIC, this.task.id);
+    socketService.on(SOCKET_EVENT_ADD_MSG, this.addMsg);
+    socketService.on(SOCKET_EVENT_TYPING, this.renderTyping);
+    // socketService.on(SOCKET_EVENT_ADD_MSGS, msgs => msgs.forEach(this.addMsg))
+    this.onUserStopInputDeb = utilService.debounce(this.onUserStopInput, 800)
+  },
+  destroyed() {
+    socketService.off(SOCKET_EVENT_ADD_MSG, this.addMsg);
+  },
   components: {
     MsgPreview,
     EmojiPicker,

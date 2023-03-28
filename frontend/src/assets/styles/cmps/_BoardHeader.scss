@@ -153,7 +153,31 @@
       }
     }
   }
-
+  .activePersonFilter {
+    background-color: $clr014;
+    height: 35px;
+  }
+  .member-filter {
+    gap: 3px;
+    img {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+    }
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 10px;
+      width: 10px;
+      background-color: rgb(31, 31, 31);
+      fill: rgb(255, 255, 255);
+      border-radius: 50%;
+    }
+  }
+  .person-palceholder {
+    gap: 3px;
+  }
   .bottom-header {
     border-top: 1px solid $clr014;
     padding-block: 15px;

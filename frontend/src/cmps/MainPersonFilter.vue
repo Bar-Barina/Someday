@@ -3,7 +3,7 @@
     <div class="quick">Quick person filter</div>
     <div class="subiteams-title">Filter items and subitems by person</div>
     <span
-      v-for="(member, idx) in currBoard.members"
+      v-for="(member, idx) in membersToShow"
       :key="idx"
       class="person-filter-img"
       v-tippy="{
@@ -12,8 +12,7 @@
         placement: 'top',
         arrow: true,
       }"
-      @click="ChangeActive(member.name)"
-      :class="{ activePerson: isActive(member.name) }"
+      @click="ChangeActive(member)"
     >
       <img :src="member.url" />
     </span>
@@ -27,22 +26,31 @@ export default {
     }
   },
   methods: {
-    ChangeActive(label) {
-      console.log('from filter',label)
-      this.$store.commit({ type: 'updateActiveMember', label })
+    ChangeActive(member) {
+      this.$store.commit({ type: 'updateActiveMember', member: member })
     },
-    isActive(label) {
-      if (this.currActiveFilters.includes(label)) return true
-      else return false
-    },
+    // isActive(label) {
+    //   if (this.currActiveFilters.includes(label)) return true
+    //   else return false
+    // },
   },
   computed: {
     currBoard() {
       return this.$store.getters.currBoard
     },
-    currActiveFilters() {
-      return this.$store.getters.currActiveFilters
+    currActiveMember() {
+      return this.$store.getters.currActiveMember
     },
+    membersToShow() {
+      let members = this.currBoard.members
+      if(members.includes(this.currActiveMember)) {
+        const memberIdx = members.findIndex(m=>m.name===this.currActiveMember.name)
+        members.splice(memberIdx,1) 
+        return members
+      }
+      return members
+    }
+
   },
 }
 </script>

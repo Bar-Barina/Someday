@@ -5,6 +5,25 @@
     height: 100%;
     margin-inline-end: 15px;
 
+    &:hover {
+        .add-task-plus {
+            opacity: 1;
+            transition: .230s;
+
+            svg {
+                fill: #fff;
+            }
+
+            &:hover {
+                background-color: $clr014;
+
+                svg {
+                    fill: #000;
+                }
+            }
+        }
+    }
+
     .col-header {
         font-size: 1rem;
         padding-bottom: 9px;
@@ -13,6 +32,15 @@
         color: #fff;
         position: relative;
         cursor: pointer;
+    }
+
+    .add-task-plus {
+        padding-left: 3px;
+        padding-top: 3px;
+        border-radius: 3px;
+        width: 23px;
+        height: 21px;
+        opacity: 0;
     }
 
     .col-content {
