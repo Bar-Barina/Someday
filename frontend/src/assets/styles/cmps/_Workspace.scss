@@ -42,7 +42,7 @@
 
   .Main-letter {
     color: white;
-    margin-left: 3px;
+    margin-left: 4px;
   }
 
   .home-svg {
@@ -72,6 +72,7 @@
 
   .selected-board {
     background-color: $clr7;
+    width: 100%;
   }
 
   .workspace-boards {
@@ -85,7 +86,6 @@
 
     &:hover {
       background-color: $clr39;
-      
 
       .dots {
         display: flex;
@@ -100,11 +100,14 @@
     }
   }
 
-  .workspace-container > *  {
+  .workspace-container > *:not(.workspace-line) {
     height: 32px;
     width: 100%;
     padding: 0 8px;
     border-radius: 4px;
+    &:hover {
+      background-color: $clr39;
+    }
   }
 
   .add {
