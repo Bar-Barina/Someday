@@ -1,6 +1,10 @@
 .main-content-kanban {
     overflow-y: hidden;
 
+    .board-header {
+        height: 195px;
+    }
+
     .kanban-container {
         height: 100%;
 
@@ -18,9 +22,9 @@
                 gap: 12px;
                 padding: 8px 0 0 8px;
                 height: 100%;
-                overflow-x: scroll;
-                overflow-y: hidden;
+                overflow: hidden;
                 flex: 1;
+                white-space: nowrap;
 
                 .smooth-dnd-container {
                     min-height: 30px;
@@ -34,6 +38,7 @@
             }
 
             .kanban-filter {
+                overflow: hidden;
                 padding: 16px;
                 margin-inline-start: auto;
                 height: 100%;
@@ -41,6 +46,7 @@
                 width: 268px;
                 background-color: #fff;
                 border-left: 2px solid #d0d4e6;
+
 
                 >* {
                     margin-bottom: 16px;
