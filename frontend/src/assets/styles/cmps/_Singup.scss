@@ -38,9 +38,6 @@
         }
     }
     .continue-btn {
-        position: absolute;
-        bottom: 7%;
-        right: 56.5%;
         border: none;
         color: white;
         background-color: $clr8;
@@ -50,6 +47,8 @@
         border-radius: 3px;
         gap: 5px;
         font-size:16px;
+        margin-top: 43%;
+        margin-left: 50%;
         &:hover {
             background-color: $primary-hover;
         }
