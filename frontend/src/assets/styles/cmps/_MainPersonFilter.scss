@@ -7,10 +7,16 @@
   color: var(--primary-text-color);
   box-shadow: 0 4px 17px 6px rgba(0, 0, 0, 0.1);
   padding: 16px;
-  margin-top: 200px;
+  margin-top: 180px;
+  margin-left: 20px;
   box-sizing: content-box;
-  width: 280px;
-  height: 120px;
+  width: 270px;
+  height: fit-content;
+  .quick {
+    color: #323338;
+    margin-bottom: -8px;
+    font-size: 15px;
+  }
   .subiteams-title {
     margin: 20px 0px;
   }

@@ -1,6 +1,6 @@
 <template>
   <section class="person-filter-container">
-    <div>Quick person filter</div>
+    <div class="quick">Quick person filter</div>
     <div class="subiteams-title">Filter items and subitems by person</div>
     <span
       v-for="(member, idx) in currBoard.members"
