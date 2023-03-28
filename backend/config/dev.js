@@ -1,4 +1,4 @@
 module.exports = {
-  dbURL: 'mongodb+srv://dovPanda:7185348888o@cluster0.kidgrbc.mongodb.net/?retryWrites=true&w=majority',
+  dbURL: 'mongodb+srv://mister-toy:DOR1505te@mongo.rqczatz.mongodb.net/?retryWrites=true&w=majority',
   dbName : 'board_db'
 }
