@@ -62,7 +62,7 @@
       <div class="member-wrapper flex justify-center align-center">
         <img
           class="member-preview"
-          src="../assets/img/profile-icon.png"
+          :src="currUser.imgUrl"
           alt=""
         />
       </div>
@@ -83,5 +83,10 @@ export default {
       return svgService.getSvg(iconName)
     },
   },
+  computed: {
+    currUser() {
+      return this.$store.getters.loggedInUser
+    }
+  }
 }
 </script>
