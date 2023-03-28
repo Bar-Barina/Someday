@@ -11,6 +11,7 @@
       :group="group"
       :label="label"
     ></component>
+    <EmptyProgress />
   </section>
 </template>
 
@@ -22,6 +23,7 @@ import PriorityProgress from './dynamicCmps/StatusProgress.vue'
 import StatusProgress from './dynamicCmps/StatusProgress.vue'
 import TextProgress from './dynamicCmps/EmptyProgress.vue'
 import TimelineProgress from './dynamicCmps/TimelineProgress.vue'
+import EmptyProgress from './dynamicCmps/EmptyProgress.vue'
 import { groupBy } from 'lodash'
 
 export default {
@@ -37,6 +39,7 @@ export default {
     FilesProgress,
     TextProgress,
     PersonProgress,
+    EmptyProgress
   },
 }
 </script>
