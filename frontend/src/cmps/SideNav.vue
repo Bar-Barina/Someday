@@ -60,11 +60,8 @@
         <div v-html="getSvg('apps')"></div>
       </div>
       <div class="member-wrapper flex justify-center align-center">
-        <img
-          class="member-preview"
-          :src="currUser.imgUrl"
-          alt=""
-        />
+        <img :src= "currUser ? currUser.imgurl : 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512'" 
+        class="member-preview" />
       </div>
     </section>
     <div class="workspace-arrow-left-div"></div>
