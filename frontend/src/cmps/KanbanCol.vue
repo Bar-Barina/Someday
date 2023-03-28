@@ -39,7 +39,10 @@ export default {
       board: this.$store.getters.currBoard,
     };
   },
-  created() {},
+  created() {
+    console.log('tasks', this.tasks)
+    console.log('status', this.status)
+  },
   methods: {
     getColPayload(id) {
       return (index) => {
