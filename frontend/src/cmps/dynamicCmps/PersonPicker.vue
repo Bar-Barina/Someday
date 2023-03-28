@@ -1,20 +1,39 @@
 <template>
-  <div @click="isOpen = !isOpen" class="person flex align-center justify-center">
-    <div v-if="task.person.length > 0 && task.person.length < 3" class="person-container flex align-center justify-center">
+  <div
+    @click="isOpen = !isOpen"
+    class="person flex align-center justify-center"
+  >
+    <div
+      v-if="task.person.length > 0 && task.person.length < 3"
+      class="person-container flex align-center justify-center"
+    >
       <span v-for="(person, idx) in task.person" :key="idx">
         <div class="full-person">
-          <img :src="person.url" class="person-img" />
+          <img :src="person.url" class="person-img"
+          :class="{'alone' : task.person.length === 1}" />
         </div>
       </span>
     </div>
-    <div class="mini-person flex justify-center align-center" v-if="task.person.length > 2">
-        <img :src="task.person[0].url" class="person-img" />
-        <div class="person-count flex align-center justify-content">+{{(task.person.length - 1)}}</div>
+    <div
+      class="mini-person flex justify-center align-center"
+      v-if="task.person.length > 2"
+    >
+      <img :src="task.person[0].url" class="person-img" />
+      <div class="person-count flex align-center justify-content">
+        +{{ task.person.length - 1 }}
+      </div>
     </div>
-    <div class="empty-container flex justify-center align-center" v-if="task.person.length === 0">
-      <img class="empty-person" src="https://cdn.monday.com/icons/dapulse-person-column.svg" aria-hidden="true">
+    <div
+      class="empty-container flex justify-center align-center"
+      v-if="task.person.length === 0"
+    >
+      <img
+        class="empty-person"
+        src="https://cdn.monday.com/icons/dapulse-person-column.svg"
+        aria-hidden="true"
+      />
     </div>
-    <span class="plus" >+</span>
+    <span class="plus">+</span>
   </div>
   <PersonPreview
     v-clickOutside="closeModal"
@@ -32,7 +51,7 @@ export default {
   name: 'person',
   props: {
     task: Object,
-    group: Object
+    group: Object,
   },
   data() {
     return {
@@ -46,12 +65,12 @@ export default {
       this.$emit('updateTask', { cmpType: 'person', data: this.task.person })
     },
     removePerson(idx) {
-      this.task.person.splice(idx , 1)
-      this.$emit('updateTask' , {cmpType: 'person' , data: this.task.person})
+      this.task.person.splice(idx, 1)
+      this.$emit('updateTask', { cmpType: 'person', data: this.task.person })
     },
     closeModal() {
       this.isOpen = false
-    }
+    },
   },
   components: {
     PersonPreview,
