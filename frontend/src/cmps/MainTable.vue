@@ -11,6 +11,7 @@
       showOnTop: true,
     }"
   >
+  <BoardHeader />
     <Draggable
       class="group-container"
       v-for="group in currBoard.groups"
@@ -44,6 +45,7 @@
 </template>
 
 <script>
+import BoardHeader from '../cmps/BoardHeader.vue'
 import { Container, Draggable } from "vue3-smooth-dnd";
 import GroupPreview from "./GroupPreview.vue";
 import { utilService } from "../services/util.service";
@@ -140,6 +142,7 @@ export default {
     Menu,
     GroupDrag,
     NoResultsFound,
+    BoardHeader
   },
 };
 </script>
