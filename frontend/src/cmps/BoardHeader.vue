@@ -83,10 +83,10 @@
       </section>
     </section>
     <div
-      class="description"
+      class="description flex align-items"
       @click="toggleBoardDesc"
     >
-      {{ currBoard.description }} <span class="see-more">See More</span>
+      <span class="header-desc">{{ currBoard.description }}</span> <span class="see-more">See More</span>
     </div>
     <section class="board-view-change flex align-center">
       <div :class="{ active: active === '' }" class="view-option-container">
