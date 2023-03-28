@@ -52,6 +52,7 @@ export default {
     };
   },
   created() {
+    console.log('this.tasks', this.tasks)
   },
   methods: {
     getColPayload(id) {
@@ -69,7 +70,7 @@ export default {
         const group = board.groups.find((group) => {
           return group.tasks.filter((t) => t.id === task.id)[0];
         });
-        task.status = this.status;
+        task[this.option] = this.status;
         this.$emit("addStatusesMap", { task, status: this.status });
         const toUpdate = { group, task };
         this.$store.dispatch({ type: "saveTask", toUpdate });

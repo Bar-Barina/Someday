@@ -140,16 +140,22 @@ export default {
       this.updateStatusesMap();
     },
     addToMap({ task, status }) {
-      this.statusesMap[status].push(task);
+      const statusIdx = this.statusesMap.findIndex(s => s.title === status)
+      this.statusesMap[statusIdx].tasks.push(task);
+      this.updateStatusesMap();
     },
     removeFromMap({ taskIdx, status }) {
-      this.statusesMap[status].splice(taskIdx, 1);
+      const statusIdx = this.statusesMap.findIndex(s => s.title === status)
+      this.statusesMap[statusIdx].tasks.splice(taskIdx, 1);
+      this.updateStatusesMap();
     },
     setOrder({ status, dropResult }) {
-      this.statusesMap[status] = utilService.applyDrag(
-        this.statusesMap[status],
+      const statusIdx = this.statusesMap.findIndex(s => s.title === status)
+      this.statusesMap[statusIdx].tasks = utilService.applyDrag(
+        this.statusesMap[statusIdx].tasks,
         dropResult
       );
+      this.updateStatusesMap();
     },
     updateStatusesMap() {
       const board = this.currBoard;
@@ -168,7 +174,6 @@ export default {
           tasks,
         };
       });
-      console.log("this.statusesMap", this.statusesMap);
     },
     addColumn(col) {
       const labelsOrder = JSON.parse(JSON.stringify(this.currLabelsOrder));
