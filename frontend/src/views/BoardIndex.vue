@@ -28,6 +28,9 @@ export default {
       mainClass: 'main-content-table',
     }
   },
+  created() {
+    this.$store.dispatch('loadBoards')
+  },
   computed: {
     loggedInUser() {
       return this.$store.getters.loggedInUser

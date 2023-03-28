@@ -95,7 +95,7 @@ export default {
     };
   },
   created() {
-    const board = JSON.parse(JSON.stringify(this.currBoard));
+    const board = this.currBoard
     if (!board) return;
     this.statuses.forEach((status, idx) => {
       var tasks = [];
