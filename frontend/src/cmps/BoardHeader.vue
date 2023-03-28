@@ -146,7 +146,7 @@
       <div class="new-item flex justify-center align-center" @click="addTask">
         New Task
       </div>
-      <button
+      <button class="add-group-arrow"
         v-tippy="{
           content: 'New Group',
           theme: 'classic',
