@@ -12,6 +12,7 @@
         placement: 'top',
         arrow: true,
       }"
+      @click="ChangeActive(member.name)"
     >
       <img :src="member.url" />
     </span>
@@ -22,6 +23,19 @@
 export default {
   data() {
     return {}
+  },
+  methods: {
+    filterTasksByMember(member) {
+      const board = JSON.parse(JSON.stringify(this.currBoard))
+      const filtered = board.groups.filter((group) => {
+        const array = group.tasks.filter((task) => {
+          return task.person.some((p) => p.name === member.name)
+        })
+      })
+    },
+    ChangeActive(label) {
+      this.$store.commit({ type: 'updateActiveFilters', label })
+    },
   },
   computed: {
     currBoard() {

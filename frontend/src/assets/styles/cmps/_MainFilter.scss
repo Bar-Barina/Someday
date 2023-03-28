@@ -3,10 +3,11 @@
   height: fit-content;
   position: absolute;
   top: 180px;
-  z-index: 150;
+  z-index: 4000;
   margin-left: 40px;
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
   background-color: $clr2;
+  border-radius: 5px;
   cursor: auto;
   .filter-div {
     background-color: $clr42;

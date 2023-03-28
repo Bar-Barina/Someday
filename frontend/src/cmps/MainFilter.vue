@@ -99,14 +99,14 @@ export default {
     }
   },
   methods: {
-    filterTasksByMember(member) {
-      const board = JSON.parse(JSON.stringify(this.currBoard))
-      const filtered = board.groups.filter((group) => {
-        const array = group.tasks.filter((task) => {
-          return task.person.some((p) => p.name === member.name)
-        })
-      })
-    },
+    // filterTasksByMember(member) {
+    //   const board = JSON.parse(JSON.stringify(this.currBoard))
+    //   const filtered = board.groups.filter((group) => {
+    //     const array = group.tasks.filter((task) => {
+    //       return task.person.some((p) => p.name === member.name)
+    //     })
+    //   })
+    // },
     ChangeActive(label) {
       this.$store.commit({ type: 'updateActiveFilters', label })
     },
