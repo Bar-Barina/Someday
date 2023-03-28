@@ -1,7 +1,7 @@
 <template>
   <section class="email-signup-container" v-if="!isSignUpOpen">
     <section class="email-signup">
-      <RouterLink to="/login">Back</RouterLink>
+      <!-- <RouterLink to="/login">Back</RouterLink> -->
   <h1>Welcome to someday.com</h1>
   <p>Get started - it's free. No credit card needed.</p>
   <div class="google-btn-div">
@@ -49,10 +49,6 @@ data() {
     }
   },
 methods: {
-    // doSignup() {
-    //     console.log('from email',this.signupCred.email)
-    //     eventBus.emit("doSignup", this.signupCred.email);
-    // }
 },
 computed: {
 
