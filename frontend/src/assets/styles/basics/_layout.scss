@@ -1,5 +1,6 @@
 .main-layout {
     display: grid;
+    width: 100vw;
     grid-template-columns: 67px auto 1fr;
     // grid-template-rows: 180px 1fr;
     grid-template-areas:
@@ -30,9 +31,9 @@
 //     grid-area: board-header;
 // }
 
-.main-table , .kanban , .chart {
-    grid-area: board-content;
-}
+// .main-table , .kanban-container , .chart {
+//     grid-area: board-content;
+// }
 
 .last {
     border-right: none;

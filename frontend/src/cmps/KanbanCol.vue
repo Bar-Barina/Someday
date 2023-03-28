@@ -13,7 +13,7 @@
       </div>
     </div>
     <section class="col-content flex column">
-      <section class="cards-container">
+      <!-- <section class="cards-container"> -->
         <Container
           class="smooth-dnd-container"
           orientation="vertical"
@@ -29,7 +29,7 @@
         </Container>
       </section>
     </section>
-  </section>
+  <!-- </section> -->
 </template>
 
 <script>

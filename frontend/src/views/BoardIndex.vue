@@ -2,8 +2,11 @@
   <section class="main-layout board-index">
     <SideNav />
     <Workspace :boards="boards" />
+    <section :class="mainClass">
+      <BoardHeader/>
     <RouterView />
     <div class="black-screen" v-if="isBlackScreen"></div>
+    </section>
     </section>
 </template>
 
@@ -22,6 +25,7 @@ export default {
   data() {
     return {
       boardToAdd: boardService.getEmptyBoard(),
+      mainClass: 'main-content-table',
     }
   },
   computed: {
@@ -29,6 +33,7 @@ export default {
       return this.$store.getters.loggedInUser
     },
     boards() {
+      console.log('this.$store.getters.boards', this.$store.getters.boards)
       return this.$store.getters.boards
     },
     isBlackScreen() {
@@ -76,6 +81,16 @@ export default {
     },
     printBoardToConsole(board) {
       console.log('Board msgs:', board.msgs)
+    },
+  },
+  watch: {
+    "$route.params": {
+      async handler() {
+        const routeName  = this.$route.name
+        if(routeName === 'table') this.mainClass = 'main-content-table'
+        else this.mainClass = 'main-content-kanban'
+      },
+      immediate: true,
     },
   },
   components: {

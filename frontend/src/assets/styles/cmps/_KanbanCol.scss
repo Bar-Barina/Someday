@@ -2,9 +2,9 @@
     font-family: 'Figtree';
     width: 260px;
     border-radius: 8px;
-    height: fit-content;
+    height: 100%;
     margin-inline-end: 15px;
-    overflow-y: hidden;
+
     .col-header {
         font-size: 1rem;
         padding-bottom: 9px;
@@ -16,19 +16,37 @@
     }
 
     .col-content {
+        overflow-y: scroll;
         flex: 1;
         background-color: #f6f7fb;
         padding: 4px 8px 16px;
         height: 100%;
         position: relative;
-        transition: background .2s ease,box-shadow .2s ease;
+        transition: background .2s ease, box-shadow .2s ease;
+
+        &::-webkit-scrollbar {
+            width: 4px;
+            opacity: 0;
+        }
+    
+        &::-webkit-scrollbar-track {
+            background-color: rgb(255, 255, 255);
+        }
+    
+        &::-webkit-scrollbar-thumb {
+            background-color: $clr39;
+            border-radius: 10px;
+        }
 
         div {
             padding-inline: 2px;
         }
 
         &:hover {
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            &::-webkit-scrollbar {
+                opacity: 1;
+            }
+            // box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
             background-color: $clr39;
         }
     }

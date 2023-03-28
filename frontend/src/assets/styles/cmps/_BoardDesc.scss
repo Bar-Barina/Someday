@@ -1,7 +1,7 @@
 .board-desc-container {
   display: grid;
   grid-template-columns: 527px 323px;
-  position: absolute;
+  position: fixed;
   inset: 50% auto auto 50%;
   overflow: hidden;
   border-radius: 8px;
