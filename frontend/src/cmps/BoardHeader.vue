@@ -35,7 +35,6 @@
             v-clickOutside="closeModal"
             @closeDesc="closeDesc"
           />
-          <!-- <BlackScreen/> -->
         </div>
 
         <div
