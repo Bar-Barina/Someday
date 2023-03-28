@@ -12,6 +12,7 @@
       @updateOption="updateStatus"
       optionClass="status-option"
     />
+    <span class="peeling-span scale-up-tr"></span>
   </div>
 </template>
 

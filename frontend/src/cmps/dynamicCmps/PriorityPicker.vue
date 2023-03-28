@@ -8,6 +8,7 @@
       @updateOption="updatePriority"
       optionClass="priority-option"
     />
+    <span class="peeling-span scale-up-tr"></span>
   </div>
 </template>
 

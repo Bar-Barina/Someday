@@ -2,44 +2,32 @@
   position: relative;
 }
 
+.priority:hover .peeling-span {
+  display: block;
+}
+
+.peeling-span {
+  transition: opacity 0.3s ease-in-out;
+  display: none;
+}
 .priority-critical {
   background-color: $clr34;
-  &:hover {
-    background: linear-gradient(to top right, $clr34 94%, $clr34 93%, transparent 95%, transparent 100%);
-    transition: 0.5s;
-   }
 }
 
 .priority-high {
   background-color: $clr35;
-  &:hover {
-    background: linear-gradient(to top right, $clr35 94%, $clr35 93%, transparent 95%, transparent 100%);
-    transition: 0.5s;
-   }
 }
 
 .priority-medium {
   background-color: $clr36;
-  &:hover {
-    background: linear-gradient(to top right, $clr36 94%, $clr36 93%, transparent 95%, transparent 100%);
-    transition: 0.5s;
-   }
 }
 
 .priority-low {
   background-color: $clr37;
-  &:hover {
-    background: linear-gradient(to top right, $clr37 94%, $clr37 93%, transparent 95%, transparent 100%);
-    transition: 0.5s;
-   }
 }
 
 .priority-empty {
   background-color: $clr41;
-  &:hover {
-    background: linear-gradient(to top right, $clr41 94%, $clr41 93%, transparent 95%, transparent 100%);
-    transition: 0.5s;
-   }
 }
 
 .full-cell {
