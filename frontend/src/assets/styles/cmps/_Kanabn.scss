@@ -7,6 +7,7 @@
 
     .kanban-container {
         height: 100%;
+        overflow-x: scroll;
 
         .kanban {
             border-top: 1px solid #c3c6d4;
