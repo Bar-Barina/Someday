@@ -73,7 +73,6 @@
           theme="snow"
           toolbar="essential"
           v-model:content="msg.txt"
-          contentType="text"
           ref="textArea"
           placeholder="Write an update..."
           @input="onUserInput"
@@ -150,7 +149,7 @@ export default {
       isEmoji: false,
       msg: {
         txt: "",
-        from: "",
+        from: null,
         liked: [],
       },
       textArea: "",
@@ -171,12 +170,13 @@ export default {
     },
     addMsg() {
       const user = userService.getLoggedInUser();
-      const from = (user && user.fullname) || "Guest";
+      console.log('user', user)
+      const from = (user) || {accountName: 'Guest' , imgUrl: 'https://cdn1.monday.com/dapulse_default_photo.png'};
       this.msg.from = from
-      this.msg.txt = this.$refs.textArea;
+      this.msg.txt = this.$refs.textArea.getHTML();
+      console.log('this.msg.txtt', this.msg.txt)
       // if(this.msg.txt!== "") this.msg.txt.
       socketService.emit(SOCKET_EMIT_SEND_MSG, this.msg);
-      console.log('this.msg.txt',this.msg.txt)
       const msgToAdd = { ...this.msg };
       this.task.msgs.unshift(msgToAdd);
       this.group.tasks.splice(this.taskIdx, 1, this.task);

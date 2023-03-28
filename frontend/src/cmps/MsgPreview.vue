@@ -2,8 +2,8 @@
   <section class="msg-preview">
     <section class="msg-header flex align-center space-between">
       <div class="title flex align-center">
-        <img src="../assets/img/profile-icon.png" alt="" />
-        {{ msg.from }}
+        <img :src="msg.from.imgUrl" alt="" />
+        {{ msg.from.accountName }}
         <div class="active-dot"></div>
       </div>
       <div class="header-info flex align-center">
