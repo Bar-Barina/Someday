@@ -4,7 +4,6 @@
     border-radius: 8px;
     height: fit-content;
     margin-inline-end: 15px;
-    overflow-y: hidden;
     .col-header {
         font-size: 1rem;
         padding-bottom: 9px;
@@ -16,6 +15,7 @@
     }
 
     .col-content {
+        overflow-y: scroll;
         flex: 1;
         background-color: #f6f7fb;
         padding: 4px 8px 16px;

@@ -320,6 +320,16 @@ export default {
       this.$store.dispatch({ type: 'saveTask', toUpdate: { group: newGroup } })
     },
   },
+  watch: {
+    "$route.params": {
+      async handler() {
+        const routeName  = this.$route.name
+        if(routeName === 'table') this.active = ''
+        else this.active = 'kanban'
+      },
+      immediate: true,
+    },
+  },
   computed: {
     currBoard() {
       return this.$store.getters.currBoard

@@ -1,6 +1,5 @@
 <template>
 <section class="kanban-container">
-  <BoardHeader />
   <section class="kanban">
     <section class="kanban-content flex">
       <Container
@@ -106,7 +105,6 @@ export default {
         });
       });
       this.statusesMap[idx] = { title: status, color: this.colors[idx], tasks };
-      console.log("this.statusesMap", this.statusesMap);
     });
   },
   methods: {
@@ -142,7 +140,6 @@ export default {
           color: this.colors[idx],
           tasks,
         };
-        console.log("this.statusesMap", this.statusesMap);
       });
     },
     addColumn(col) {

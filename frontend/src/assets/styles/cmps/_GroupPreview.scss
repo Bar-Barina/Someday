@@ -2,15 +2,14 @@
   overflow: visible;
 }
 
+.main-content-table {
+  width: 100%;
+  overflow-x: scroll;
+}
+
 .main-table {
   font-family: Figtree;
   width: 100%;
-  // overflow-x: scroll;
-  overflow-y: scroll;
-
-  .table {
-    overflow-x: scroll;
-  }
 }
 
 .group-container {

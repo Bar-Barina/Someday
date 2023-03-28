@@ -26,6 +26,7 @@ const routes = [
     component: BoardIndex,
     children: [
       {
+        name: 'table',
         path: ':boardId',
         component: MainTable,
         children: [
@@ -37,6 +38,7 @@ const routes = [
         ]
       },
       {
+        name: 'kanban',
         path: ':boardId/kanban',
         component: Kanban,
         // children: [
