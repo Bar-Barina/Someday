@@ -11,11 +11,6 @@
   border-right: 1.2px solid #d0d4e6;
   font-size: 14px;
 
-  // &:hover {
-  //   width: 254px;
-
-  // }
-
   .workspace-header {
     justify-content: space-around;
     width: 224px;
@@ -119,6 +114,10 @@
   &.is-open {
     .workspace-open-btn {
       transform: rotate(0deg);
+
+      &:hover {
+        right: -10px;
+      }
     }
   }
 
@@ -134,7 +133,7 @@
     background-color: #fff;
     border-radius: 50%;
     justify-content: center;
-    z-index: 4000;
+    z-index: 2800;
     padding: 0 0.5px;
     border: 1px solid #c3c6d4;
     transition: width 0.15s ease, padding-inline-end 0.15s ease,
@@ -143,10 +142,10 @@
     transition: 0.1s;
 
     &:hover {
-      width: 33px;
+      width: 31px;
       border-radius: 40px;
       background-color: $clr8;
-      right: -18px;
+      right: -23px;
       svg {
         fill: $clr2;
       }
