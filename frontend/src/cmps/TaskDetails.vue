@@ -170,10 +170,9 @@ export default {
     },
     addMsg() {
       const user = userService.getLoggedInUser();
-      console.log('user', user)
       const from = (user) || {accountName: 'Guest' , imgUrl: 'https://cdn1.monday.com/dapulse_default_photo.png'};
       this.msg.from = from
-      this.msg.txt = this.$refs.textArea.getHTML();
+      this.msg.txt = this.$refs.textArea.getText();
       console.log('this.msg.txtt', this.msg.txt)
       // if(this.msg.txt!== "") this.msg.txt.
       socketService.emit(SOCKET_EMIT_SEND_MSG, this.msg);
@@ -204,7 +203,8 @@ export default {
       // this.textArea = this.$refs.textArea.innerHTML
     },
     toggleIsEditor(value = false) {
-      if (this.msg.txt.length > 1) {
+      console.log('this.msg.txt.length', this.$refs.textArea.getText())
+      if (this.$refs.textArea.getText() > 1) {
         this.isEditor = true;
       } else {
         this.isEditor = value;
@@ -228,7 +228,7 @@ export default {
       this.typing = msg;
     },
     changeTopic() {
-      socketService.emit(SOCKET_EMIT_SET_TOPIC, this.topic);
+      socketService.emit(SOCKET_EMIT_SET_TOPIC, this.task.id);
     },
   },
   watch: {
