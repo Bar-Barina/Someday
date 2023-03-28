@@ -63,6 +63,16 @@ function filterBoard(board, filterBy) {
       }))
     })
   }
+  if (filterBy.member) {
+    console.log('from service', filterBy.member);
+    filteredBoard.groups = filteredBoard.groups.filter(group => {
+      return group.tasks = group.tasks.filter(task => {
+        console.log('task.person',task.person)
+        console.log('filterBy.member',filterBy.member)
+        return task.person.some(p=>p._id===filterBy.member._id)
+      })
+    })
+  }
   return filteredBoard
 }
 

@@ -73,12 +73,13 @@
           theme="snow"
           toolbar="essential"
           v-model:content="msg.txt"
+          contentType="text"
           ref="textArea"
           placeholder="Write an update..."
           @input="onUserInput"
         />
       </div>
-      <small v-if="typing">{{ typing }}...</small>
+      <small v-if="typing">{{ getTyping }}...</small>
     </section>
     <section class="nav-btn flex space-between align-center">
       <div class="conversation-middle-nav">
@@ -172,7 +173,7 @@ export default {
       const user = userService.getLoggedInUser();
       const from = (user && user.fullname) || "Guest";
       this.msg.from = from
-      // this.msg.txt = this.$refs.textArea;
+      this.msg.txt = this.$refs.textArea;
       // if(this.msg.txt!== "") this.msg.txt.
       socketService.emit(SOCKET_EMIT_SEND_MSG, this.msg);
       console.log('this.msg.txt',this.msg.txt)
@@ -215,7 +216,6 @@ export default {
       onUserInput() {
       const user = userService.getLoggedInUser();
       if (!user) return;
-      console.log('user',user)
       socketService.emit("user-typing", user._id);
       this.onUserStopInputDeb();
     },
@@ -224,6 +224,7 @@ export default {
       socketService.emit("user-typing", "");
     },
     renderTyping(msg) {
+      console.log('msg!!', msg)
       this.typing = msg;
     },
     changeTopic() {
@@ -257,6 +258,9 @@ export default {
       return this.msg.txt !== ''
       // return this.$refs.textArea.innerText !== ''
     },
+    getTyping() {
+      return this.typing
+    }
   },
   created() {
     socketService.emit(SOCKET_EMIT_SET_TOPIC, this.task.id);
