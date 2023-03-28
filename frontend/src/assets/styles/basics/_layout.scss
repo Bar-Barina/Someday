@@ -1,10 +1,10 @@
 .main-layout {
     display: grid;
     grid-template-columns: 67px auto 1fr;
-    grid-template-rows: 180px 1fr;
+    // grid-template-rows: 180px 1fr;
     grid-template-areas:
-        "side-nav workspace board-header"
-        "side-nav workspace board-content";
+        "side-nav workspace board-content"
+        // "side-nav workspace";
 }
 
 .group-grid {
@@ -26,9 +26,9 @@
     grid-area: workspace;
 }
 
-.board-header {
-    grid-area: board-header;
-}
+// .board-header {
+//     grid-area: board-header;
+// }
 
 .main-table , .kanban , .chart {
     grid-area: board-content;

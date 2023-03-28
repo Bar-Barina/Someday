@@ -2,7 +2,6 @@
   <section class="main-layout board-index">
     <SideNav />
     <Workspace :boards="boards" />
-    <BoardHeader />
     <RouterView />
     <div class="black-screen" v-if="isBlackScreen"></div>
     </section>

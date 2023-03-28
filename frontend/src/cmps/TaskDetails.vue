@@ -1,11 +1,12 @@
 <template>
+  <div @click="closeChat" class="chat-black-screen" :class="{ visible: overlayVisible }">
   <section
     v-if="task"
     class="conversation-container"
     @mouseover="overlayVisible = true"
     @mouseleave="overlayVisible = false"
   >
-    <div class="chat-black-screen" :class="{ visible: overlayVisible }"></div>
+    
     <section class="app-header">
       <div class="conversation-action-wrapper">
         <RouterLink :to="`/board/${currBoard._id}`">
@@ -125,6 +126,7 @@
       </p>
     </section>
   </section>
+</div>
 </template>
 
 <script>
@@ -196,6 +198,9 @@ export default {
         this.isEditor = value;
       }
     },
+    closeChat() {
+      this.$router.push(`/board/${this.currBoard._id}`)
+    }
   },
   watch: {
     "$route.params": {
