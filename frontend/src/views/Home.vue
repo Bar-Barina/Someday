@@ -10,7 +10,7 @@
     <div class="underline"></div>
 
     <div
-      v-for="(star, index) in 30"
+      v-for="(star, index) in 17"
       :key="star"
       class="star"
       :class="`star${index + 1}`"

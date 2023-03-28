@@ -14,9 +14,9 @@
     color: #fff;
     padding-bottom: 12px;
     font-weight: 400;
-    font-size: 70px;
+    font-size: 75px;
     line-height: 74px;
-    padding-top: 10px;
+    margin-top: 20px;
     margin-bottom: -2px;
   }
 
@@ -104,80 +104,91 @@
 .star1 {
   width: 4.55173px;
   height: 4.55173px;
-  left: 300px;
-  top: 150px;
-  position: absolute;
+  left: -20px;
+  top: 20px;
+  animation-duration: 2s;
+  animation-delay: 6s;
 }
 
 .star2 {
-  width: 4.55173px;
-  height: 4.55173px;
-  left: 200px;
-  top: 150px;
-  position: absolute;
+  width: 9.55173px;
+  height: 9.55173px;
+  left: 12px;
+  top: 218px;
+  animation-duration: 2s;
+  animation-delay: 8s;
 }
 
 .star3 {
   width: 8.55173px;
   height: 8.55173px;
-  left: 600px;
-  top: 100px;
-  position: absolute;
+  left: 130px;
+  top: 300px;
+  animation-duration: 2s;
+  animation-delay: 6s;
 }
 
 .star4 {
   width: 2.55173px;
   height: 2.55173px;
-  left: 550px;
-  position: absolute;
+  left: 1200px;
+    top: 700px;
+    animation-duration: 3s;
+  animation-delay: 3s;
 }
 
 .star5 {
   width: 7.55173px;
   height: 7.55173px;
-  left: 350px;
-  top: 250px;
-  position: absolute;
+  left: 1087px;
+  top: 86px;
+  animation-duration: 3s;
+  animation-delay: 7s;
 }
 
 .star6 {
   width: 3.55173px;
   height: 3.55173px;
-  left: 300px;
-  top: 300px;
-  position: absolute;
+  left: 1036px;
+    top: 24px;
+  animation-duration: 3s;
+  animation-delay: 8s;
 }
 
 .star7 {
   width: 2.55173px;
   height: 2.55173px;
-  left: 500px;
-  top: 460px;
-  position: absolute;
+  left: 1138px;
+  top: 59px;
+  animation-duration: 2s;
+  animation-delay: 7s;
 }
 
 .star8 {
   width: 8.55173px;
   height: 8.55173px;
-  left: 280px;
-  top: 100px;
-  position: absolute;
+  left: 1522px;
+    top: 202px;
+  animation-duration: 2s;
+  animation-delay: 6s;
 }
 
 .star9 {
   width: 3.55173px;
   height: 3.55173px;
-  left: 150px;
-  top: 150px;
-  position: absolute;
+  left: 1378px;
+    top: 380px;
+  animation-duration: 3s;
+  animation-delay: 4s;
 }
 
 .star10 {
   width: 5.55173px;
   height: 5.55173px;
-  left: 125px;
-  top: 200px;
-  position: absolute;
+  left: 770px;
+  top: 350px;
+  animation-duration: 3s;
+  animation-delay: 8s;
 }
 
 .star11 {
@@ -185,7 +196,8 @@
   height: 9.55173px;
   left: 366px;
   top: 380px;
-  position: absolute;
+  animation-duration: 3s;
+  animation-delay: 8s;
 }
 
 .star12 {
@@ -193,7 +205,8 @@
   height: 4.55173px;
   left: 460px;
   top: 190px;
-  position: absolute;
+  animation-duration: 3s;
+  animation-delay: 8s;
 }
 
 .star13 {
@@ -223,8 +236,8 @@
 .star16 {
   width: 7.55173px;
   height: 6.55173px;
-  left: 860px;
-  top: 400px;
+  left: 1015px;
+  top: 167px;
   position: absolute;
 }
 
@@ -235,97 +248,7 @@
   top: 410px;
   position: absolute;
 }
-.star18 {
-  width: 5.55173px;
-  height: 5.55173px;
-  left: 1500px;
-  top: 420px;
-  position: absolute;
-}
-.star19 {
-  width: 5.55173px;
-  height: 5.55173px;
-  left: 1700px;
-  top: 460px;
-  position: absolute;
-}
-.star20 {
-  width: 5.55173px;
-  height: 5.55173px;
-  left: 1750px;
-  top: 200px;
-  position: absolute;
-}
-.star21 {
-  width: 5.55173px;
-  height: 5.55173px;
-  left: 1690px;
-  top: 100px;
-  position: absolute;
-}
-.star22 {
-  width: 5.55173px;
-  height: 5.55173px;
-  left: 1140px;
-  top: 100px;
-  position: absolute;
-}
-.star23 {
-  width: 5.55173px;
-  height: 5.55173px;
-  left: 1120px;
-  top: 110px;
-  position: absolute;
-}
-.star24 {
-  width: 5.55173px;
-  height: 5.55173px;
-  left: 1060px;
-  top: 200px;
-  position: absolute;
-}
-.star25 {
-  width: 5.55173px;
-  height: 5.55173px;
-  left: 1000px;
-  top: 100px;
-  position: absolute;
-}
-.star26 {
-  width: 5.55173px;
-  height: 5.55173px;
-  left: 950px;
-  top: 90px;
-  position: absolute;
-}
-.star27 {
-  width: 5.55173px;
-  height: 5.55173px;
-  left: 1500px;
-  top: 100px;
-  position: absolute;
-}
-.star28 {
-  width: 5.55173px;
-  height: 5.55173px;
-  left: 1570px;
-  top: 200px;
-  position: absolute;
-}
-.star29 {
-  width: 5.55173px;
-  height: 5.55173px;
-  left: 1580px;
-  top: 170px;
-  position: absolute;
-}
-.star30 {
-  width: 5.55173px;
-  height: 5.55173px;
-  left: 1580px;
-  top: 350px;
-  position: absolute;
-}
+
 
 @keyframes twinkle {
   0% {
