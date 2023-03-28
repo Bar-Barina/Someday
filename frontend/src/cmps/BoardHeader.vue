@@ -25,7 +25,6 @@
           }"
           class="icon btn-hover"
         >
-          <!-- <div className="icon" v-html="getSvg('descrip')"></div> -->
           <span
             v-icon="'descrip'"
             className="icon"
@@ -147,6 +146,17 @@
       <div class="new-item flex justify-center align-center" @click="addTask">
         New Task
       </div>
+      <button
+        v-tippy="{
+          content: 'New Group',
+          theme: 'classic',
+          placement: 'top',
+          arrow: true,
+        }"
+        @click="addGroup"
+      >
+        <span v-icon="'arrowDownB'"></span>
+      </button>
       <div class="bottom-header-btn btn-hover search-div">
         <div
           class="search-icon flex justify-center align-center"
@@ -300,6 +310,14 @@ export default {
     },
     closeDesc() {
       this.showBoardDesc = false
+    },
+    addGroup() {
+      const newGroup = {
+        title: 'New Group',
+        color: '#e2445c',
+        tasks: [],
+      }
+      this.$store.dispatch({ type: 'saveTask', toUpdate: { group: newGroup } })
     },
   },
   computed: {
