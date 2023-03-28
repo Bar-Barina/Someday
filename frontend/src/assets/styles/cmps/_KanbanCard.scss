@@ -118,6 +118,12 @@
     height: 24px;
     line-height: 28px;
     position: relative;
+    svg {
+      color: #c5c7d0;
+      &:hover {
+        color: #0073ea;
+      }
+    }
   }
 
   .dots {
