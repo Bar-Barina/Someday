@@ -79,7 +79,6 @@
             ref="textArea"
             placeholder="Write an update..."
             @input="onUserInput"
-            :options="editorOptions"
           />
         </div>
         <small v-if="typing">{{ getTyping }}...</small>
@@ -161,11 +160,6 @@ export default {
       isEditor: false,
       typing: "",
       msgs: [],
-      editorOptions: {
-        formats: {
-          align: "left",
-        }
-    }
   }},
   methods: {
     getSvg(iconName) {
