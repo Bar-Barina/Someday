@@ -42,7 +42,7 @@
 
   .Main-letter {
     color: white;
-    margin-left: 3px;
+    margin-left: 4px;
   }
 
   .home-svg {
@@ -72,6 +72,7 @@
 
   .selected-board {
     background-color: $clr7;
+    width: 100%;
   }
 
   .workspace-boards {
@@ -85,7 +86,6 @@
 
     &:hover {
       background-color: $clr39;
-      
 
       .dots {
         display: flex;
@@ -100,7 +100,7 @@
     }
   }
 
-  .workspace-container > *  {
+  .workspace-container > *:not(.workspace-line) {
     height: 32px;
     width: 100%;
     padding: 0 8px;
@@ -123,13 +123,13 @@
 
   .workspace-open-btn {
     transform: rotate(180deg);
-    width: 23px;
-    height: 22px;
+    width: 26px;
+    height: 24px;
     border-radius: 50%;
     background-color: $clr2;
     position: absolute;
     top: 30px;
-    right: -12px;
+    right: -13px;
     background-color: #fff;
     border-radius: 50%;
     justify-content: center;
@@ -140,14 +140,19 @@
       right 0.15s ease padding-inline-start 0.15s ease,
       background-color 0.15s ease;
     transition: 0.1s;
-
+    svg {
+      margin-top: 2px;
+      margin-left: 1.2px;
+    }
     &:hover {
-      width: 31px;
+      width: 35px;
+      height: 24px;
       border-radius: 40px;
       background-color: $clr8;
       right: -23px;
       svg {
         fill: $clr2;
+        margin-top: 1px;
       }
     }
   }

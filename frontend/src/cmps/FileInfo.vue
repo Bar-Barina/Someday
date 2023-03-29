@@ -12,7 +12,7 @@
         <img :src="this.task.files.url" class="file-info-img" />
     </div>
     <div class="side-info flex column align-center">
-        <span v-icon="'info'"></span> 
+        <span v-icon="'fileInfo'"></span> 
        <span>Info</span> 
     </div>
 </div>

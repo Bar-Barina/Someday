@@ -76,7 +76,6 @@ export default {
         email: this.email,
         password: this.password
       }
-      console.log('from login', credentials)
       this.$store.dispatch({ type: 'login', userCred: credentials })
       if (this.loggedInUser) this.$router.push({ path: '/board' })
     },

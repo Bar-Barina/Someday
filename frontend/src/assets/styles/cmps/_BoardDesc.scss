@@ -103,31 +103,33 @@
   }
   .workspace-info-div {
     .pink-div {
-      width: 20px;
-      height: 20px;
+      width: 24px;
+      height: 24px;
       background-color: #ed7aef;
       border-radius: 6px;
-      margin-right: 13px;
       margin-left: 5px;
     }
     .Main-letter {
       color: white;
-      margin-left: 4px;
+      margin-left: 5px;
+      margin-top: 2px;
+      font-size: 16px;
     }
     .home-svg {
-      margin-top: 9px;
-      margin-left: -4px;
+      margin-top: 12px;
+      margin-left: -2px;
     }
   }
   .info-title {
     display: flex;
-    margin: 0 0 10px;
+    // margin: 0 0 10px;
   }
   .info-subtitle {
     margin-left: 10px;
   }
   .board-type {
     span {
+      margin-top: 10px;
       margin-right: 8px;
     }
   }

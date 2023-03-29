@@ -17,7 +17,7 @@
     ></div>
     <RouterLink :to="`/board/${firstBoard}`"
       ><button class="start-btn">
-        Get Started
+        <span class="start-btn-txt">Get Started</span>
         <span class="arrow"
           ><div className="arrow" v-html="getSvg('arrow')"></div
         ></span></button

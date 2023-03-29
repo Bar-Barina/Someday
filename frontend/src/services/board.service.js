@@ -31,6 +31,7 @@ async function remove(boardId) {
 async function save(board) {
   var savedBoard
   if (board._id) {
+    console.log('board._id', board._id)
     savedBoard = await httpService.put(`board/${board._id}`, board)
   } else {
     // Later, owner is set by the backend
@@ -64,11 +65,8 @@ function filterBoard(board, filterBy) {
     })
   }
   if (filterBy.member) {
-    console.log('from service', filterBy.member);
     filteredBoard.groups = filteredBoard.groups.filter(group => {
       return group.tasks = group.tasks.filter(task => {
-        console.log('task.person',task.person)
-        console.log('filterBy.member',filterBy.member)
         return task.person.some(p=>p._id===filterBy.member._id)
       })
     })
