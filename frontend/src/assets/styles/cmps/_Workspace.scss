@@ -73,11 +73,15 @@
   .selected-board {
     background-color: $clr7;
     width: 100%;
+    &:hover {
+      background-color: $clr7;
+    }
   }
 
   .workspace-boards {
     display: flex !important;
     position: relative;
+    padding: 0 8px;
 
     .dots {
       display: none;
@@ -85,7 +89,7 @@
     }
 
     &:hover {
-      background-color: $clr39;
+      // background-color: $clr39;
 
       .dots {
         display: flex;
@@ -99,13 +103,19 @@
       }
     }
   }
+  .workspace-boards:not(.selected-board):hover {
+    background-color: $clr39;
+  }
 
   .workspace-container > *:not(.workspace-line) {
     height: 32px;
     width: 100%;
-    padding: 0 8px;
+    // padding: 0 8px;
     border-radius: 4px;
   }
+  // .workspace-container > *:not(.selected-board):hover {
+  //   background-color: $clr39;
+  // }
 
   .add {
     margin-left: -2px;
@@ -175,8 +185,25 @@
 }
 
 .workspace-add {
+  padding: 0 8px;
   svg {
     margin-left: -2px;
+  }
+  &:hover {
+    background-color: $clr39;
+  }
+}
+
+.workspace-filter {
+  padding: 0 8px;
+  &:hover {
+    background-color: $clr39;
+  }
+}
+.workspace-search {
+  padding: 0 8px;
+  &:hover {
+    background-color: $clr39;
   }
 }
 
