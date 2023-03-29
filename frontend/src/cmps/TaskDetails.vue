@@ -172,15 +172,16 @@ export default {
     },
     addMsg() {
       const user = userService.getLoggedInUser();
-      console.log("user", user);
       const from = user || {
         accountName: "Guest",
-        imgUrl: "../assets/img/default-user-img.png",
+        imgUrl: "https://cdn.monday.com/images/pulse-page-empty-state.svg",
       };
+      console.log("user", user);
       this.msg.from = from;
       this.msg.txt = this.$refs.textArea.getHTML();
-      console.log("this.msg.txtt", this.msg.txt);
       // if(this.msg.txt!== "") this.msg.txt.
+      console.log('here')
+      console.log('this.msg', this.msg)
       socketService.emit(SOCKET_EMIT_SEND_MSG, this.msg);
       const msgToAdd = { ...this.msg };
       this.task.msgs.unshift(msgToAdd);

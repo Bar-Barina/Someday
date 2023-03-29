@@ -49,6 +49,9 @@ export default {
   data() {
     return {}
   },
+  created() {
+    console.log('this.msg from msgprev', this.msg)
+  },
   methods: {
     toggleLike() {
       if (this.msg.liked.includes(this.msg.from)) {
