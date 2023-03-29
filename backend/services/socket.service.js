@@ -59,6 +59,11 @@ function setupSocketAPI(http) {
                 return
             }
         })
+        socket.on('update-groups', (groups) => {
+            console.log('groups', groups)
+            socket.broadcast.emit('update-board' , groups)
+            return
+        })
     })
 }
 

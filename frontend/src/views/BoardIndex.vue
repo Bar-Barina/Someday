@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { socketService } from '../services/socket.service';
 import BoardHeader from '../cmps/BoardHeader.vue'
 import SideNav from '../cmps/SideNav.vue'
 import Workspace from '../cmps/Workspace.vue'
@@ -30,17 +31,20 @@ export default {
   },
   created() {
     this.$store.dispatch('loadBoards')
+    socketService.on('update-board' , this.updateBoard)
   },
   computed: {
     loggedInUser() {
       return this.$store.getters.loggedInUser
     },
     boards() {
-      console.log('this.$store.getters.boards', this.$store.getters.boards)
       return this.$store.getters.boards
     },
     isBlackScreen() {
       return this.$store.getters.isBlackScreen
+    },
+    currBoard() {
+      return JSON.parse(JSON.stringify(this.$store.getters.currBoard))
     }
   },
   methods: {
@@ -82,9 +86,12 @@ export default {
         showErrorMsg('Cannot add board msg')
       }
     },
-    printBoardToConsole(board) {
-      console.log('Board msgs:', board.msgs)
-    },
+    updateBoard(groups) {
+      console.log('groups', groups)
+      const board = this.currBoard
+      board.groups = groups
+      this.$store.commit({type:'setCurrBoard' , board})
+    }
   },
   watch: {
     "$route.params": {
@@ -95,6 +102,9 @@ export default {
       },
       immediate: true,
     },
+  },
+  destroyed() {
+    socketService.off('update-board')
   },
   components: {
     SideNav,

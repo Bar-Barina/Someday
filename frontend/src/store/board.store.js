@@ -1,5 +1,6 @@
 // import { boardService } from '../services/board.service.local'
 import { boardService } from '../services/board.service'
+import { socketService } from '../services/socket.service'
 
 export function getActionRemoveBoard(boardId) {
   return {
@@ -210,6 +211,7 @@ export const boardStore = {
           toUpdate.task
         )
         commit({ type: 'updateBoard', board })
+        socketService.emit('update-groups' , board.groups)
         commit({ type: 'setCurrGroup', group: toUpdate.group })
       } catch (err) {
         throw new Error(err)

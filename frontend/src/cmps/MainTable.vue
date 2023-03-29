@@ -79,6 +79,8 @@ export default {
       newBoard: this.currBoard,
     };
   },
+  created() {
+  },
   methods: {
     onGroupDrop(dropResult) {
       const board = JSON.parse(JSON.stringify(this.currBoard));
@@ -135,7 +137,7 @@ export default {
     },
     onDragStop() {
       // eventBus.emit('dragEnded')
-    }
+    },
   },
   computed: {
     currBoard() {
