@@ -3,7 +3,7 @@
     <span v-icon="'x'" @click="activityCheck"></span>
     <h2>{{ this.currBoard.title }} <span>Log</span></h2>
     <article
-      v-for="(activity, idx) in this.currBoard.activities"
+      v-for="(activity, idx) in activities"
       :key="idx"
       class="board-activity flex align-center space-between"
     >
@@ -106,6 +106,19 @@ export default {
   computed: {
     currBoard() {
       return this.$store.getters.currBoard
+    },
+    activities() {
+      const board = this.$store.getters.currBoard
+      let activities = []
+      if(board.activities) activities.push(...board.activities)
+      board.groups.forEach(group => {
+        if(group.activities) activities.push(...group.activities)
+         group.tasks.forEach(task => {
+          if(task.activities) activities.push(...task.activities)
+        })
+      })
+      console.log('activities', activities)
+      return activities
     },
     loggedInUser() {
       return this.$store.getters.loggedInUser
