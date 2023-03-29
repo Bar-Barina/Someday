@@ -139,17 +139,20 @@ export default {
       return svgService.getSvg(iconName)
     },
     updateTask({ cmpType, data }) {
+      const activity = boardService.getEmptyActivity()
       const taskToSave = { ...this.task }
-      if (!cmpType) taskToSave.taskTitle = this.$refs.taskTitle.innerText
-      else taskToSave[cmpType] = data
-      const activity = boardService.getEmptyActivity();
-      // if (activity.from === '' ) activity.from = 'Blank'
-      // if (activity.to === '' ) activity.at = 'Blank'
+      if (!cmpType) {
+        taskToSave.taskTitle = this.$refs.taskTitle.innerText
+        console.log(taskToSave.taskTitle)
+        cmpType = 'taskTitle'
+      } else taskToSave[cmpType] = data
+      console.log(this.task[cmpType])
       activity.from = this.task[cmpType]
-      activity.to = data
+      if (cmpType === 'taskTitle') activity.to = taskToSave.taskTitle
+      else activity.to = data
       activity.changed = cmpType
       activity.taskTitle = this.task.taskTitle
-      this.$store.commit({type: 'setBoardActivity' , activity})
+      this.$store.commit({ type: 'setBoardActivity', activity })
       this.$emit('saveTask', taskToSave)
     },
     openCon() {
