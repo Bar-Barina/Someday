@@ -66,7 +66,7 @@
       <section class="right-up-header flex align-center justify-center">
         <div class="logged-in-user flex align-center btn-hover">
           Activity
-          <img :src= "currUser ? currUser.imgurl : 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512'"  
+          <img :src= "currUser.imgUrl ? currUser.imgUrl : '../assets/img/default-user-img.png'" 
           class="member-preview"/>
         </div>
 
@@ -243,6 +243,7 @@
       </div>
     </section>
   </section>
+
 </template>
 
 <script>

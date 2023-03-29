@@ -1,5 +1,4 @@
 <template>
-    <div class="black-screen" >
   <section class="board-desc-container"  >
     <section class="dialog-editable-wrapper">
       <h1 contenteditable="true" ref="boardTitle" @focusout="updateBoard">{{ currBoard.title }}</h1>
@@ -45,7 +44,6 @@
       </div>
     </section>
   </section>
-</div>
 </template>
 
 <script>
