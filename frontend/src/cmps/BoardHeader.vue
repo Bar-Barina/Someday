@@ -271,7 +271,7 @@ import BoardActivity from './BoardActivity.vue'
 export default {
   name: 'BoardHeader',
   created() {
-    this.onSearchDeb = utilService.debounce(this.onSearch, 800)
+    this.onSearchDeb = utilService.debounce(this.onSearch, 150)
     eventBus.on('clearSearch', () => {
       this.searchQuery = ''
       this.$store.commit('setFilterBy', this.searchQuery)
