@@ -3,15 +3,16 @@
     <div class="arrow-up-div"></div>
     <div
       v-for="(option, idx) in options"
-      class="option"
+      class="option flex align-center justify-center"
       :class="option.class"
       :key="idx"
       @click.stop="changeOption(option.name)"
     >
       {{ option.name }}
-      <span v-if="option.name === 'Critical'" class="dropdown-critical">
+      <span v-if="option.name === 'Critical'" v-icon="'critical'" class="critical-icon"></span>
+      <!-- <span v-if="option.name === 'Critical'" class="dropdown-critical flex align-center justify-center">
         <span v-html="getSvg('critical')" class="dropdown-critical-icon"></span>
-      </span>
+      </span> -->
     </div>
   </section>
 </template>
