@@ -7,17 +7,16 @@
 //   src: url('https://fonts.googleapis.com/css2?family=Figtree&display=swap');
 // }
 
+// @font-face {
+//   font-family: Poppins;
+//   src: url('./fonts/Poppins-Medium.ttf');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
 @font-face {
   font-family: Poppins;
   src: url('./fonts/Poppins-Medium.ttf');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'PoppinsTitle';
-  src: url('./fonts/Poppins-Medium.ttf');
-  font-weight: 500;
-  font-style: normal;
 }
 
 $mainFont: 'Figtree', sans-serif;
