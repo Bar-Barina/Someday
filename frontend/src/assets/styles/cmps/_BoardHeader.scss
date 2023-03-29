@@ -124,6 +124,7 @@
       height: em(36px);
       margin-bottom: 1px;
       position: relative;
+      cursor: pointer;
 
       &.active {
         border-bottom: 2px solid $clr8;
