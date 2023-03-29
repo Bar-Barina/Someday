@@ -9,6 +9,8 @@
     v-if="value.length > 0"
     :class="emptyTimeline"
     class="timeline-progress-bar"
+    :style="{'background-color':`linear-gradient(to right,${group.color} 0%, ${group.color} ${widthPrecent}%,  #383838 ${100-widthPrecent}%, #383838 100%)`}"
+    
   >
     <div
       :style="{ width: widthPrecent + '%', 'background-color': group.color }"

@@ -29,7 +29,11 @@
           <div class="conversation-img-section flex align-center">
             <div class="img-container">
               <img
-                src="`${user.imgUrl}? imgUrl : ../assets/img/default-user-img.png`"
+                :src="
+                  user
+                    ? user.imgUrl
+                    : 'https://cdn1.monday.com/dapulse_default_photo.png'
+                "
                 class="conversation-img"
               />
             </div>
@@ -71,9 +75,11 @@
             theme="snow"
             toolbar="essential"
             v-model:content="msg.txt"
+            contentType="text"
             ref="textArea"
             placeholder="Write an update..."
             @input="onUserInput"
+            :options="editorOptions"
           />
         </div>
         <small v-if="typing">{{ getTyping }}...</small>
@@ -115,7 +121,6 @@
           Be the first one to update about progress, mention someone or upload
           files to share with your team members
         </p>
-        <img src="../assets/img/default-user-img.png" alt="" />
       </section>
     </section>
   </div>
@@ -156,8 +161,12 @@ export default {
       isEditor: false,
       typing: "",
       msgs: [],
-    };
-  },
+      editorOptions: {
+        formats: {
+          align: "left",
+        }
+    }
+  }},
   methods: {
     getSvg(iconName) {
       return svgService.getSvg(iconName);
@@ -197,7 +206,8 @@ export default {
     },
     onSelectEmoji(emoji) {
       // this.msg.txt += emoji.i
-      this.$refs.textArea.innerText += emoji.i;
+      // this.$refs.textArea.innerText += emoji.i;
+      this.$refs.textArea.getText() += emoji.i
     },
     closeEmojiPick() {
       this.isEmoji = false;
@@ -206,7 +216,9 @@ export default {
       // this.textArea = this.$refs.textArea.innerHTML
     },
     toggleIsEditor(value = false) {
+      console.log('this.msg.txt',this.msg.txt)
       if (this.msg.txt.length > 1 || value) {
+        console.log('true')
         this.isEditor = true;
       } else {
         this.isEditor = value;

@@ -72,6 +72,12 @@
         font-size: 13px;
         width: 129px;
         height: 28px;
+        span {
+            z-index: 4;
+            &:hover {
+                color: $clr8;
+            }
+        }
         // padding-bottom:30px ;
         
     }
