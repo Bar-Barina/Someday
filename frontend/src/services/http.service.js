@@ -30,6 +30,9 @@ async function ajax(endpoint, method = 'GET', data = null) {
       method,
       data,
       params: method === 'GET' ? data : null,
+      headers: {
+        'Content-Type': 'application/json'
+      }
     })
     return res.data
   } catch (err) {

@@ -280,7 +280,7 @@ export default {
       searchQuery: '',
       showBoardDesc: false,
       isStarred: false,
-      showBoardActivity: true,
+      showBoardActivity: false,
     }
   },
   methods: {
