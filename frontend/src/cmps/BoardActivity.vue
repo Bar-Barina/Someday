@@ -1,6 +1,6 @@
 <template>
   <section class="board-activity-container">
-    <span v-icon="'x'"></span>
+    <span v-icon="'x'" @click="activityCheck"></span>
     <h2>{{ this.currBoard.title }} 
         <span>Log</span></h2>
     <article
@@ -22,7 +22,7 @@
       <span>{{ activity.taskTitle }}</span>
     </div>
     <div class="flex align-center">
-    <img src="https://cdn.monday.com/images/color2.png" class="status-img">
+    <img v-if="activity.changed === 'status' || activity.changed === 'priority'" src="https://cdn.monday.com/images/color2.png" class="status-img">
     <span>{{ activity.changed }}</span>
    </div>
     <div class="flex align-center">
@@ -46,11 +46,16 @@ export default {
   name: '',
   data() {
     return {
+        
     }
   },
   methods: {
     timeSince(date) {
       return timeAgo.format(new Date(date))
+    },
+    activityCheck() {
+     let activities = JSON.parse(JSON.stringify(this.currBoard.activities))
+     console.log('activities',activities)
     }
   },
   computed: {
