@@ -66,7 +66,6 @@ function setupSocketAPI(http) {
         socket.on('update-boards', async (board) => {
             // board can ve and id or a board object
             const boards = await boardService.query()
-            console.log('boards', boards)
             if(!board._id) {
                 const boardIdx = boards.findIndex(b => b._id === board)
                 boards.splice(boardIdx , 1)
@@ -74,7 +73,8 @@ function setupSocketAPI(http) {
                 const boardIdx = boards.findIndex(b => b._id === board._id)
                 boards.splice(boardIdx , 1 , board)
             }
-            socket.broadcast.emit('update-boards' , boards)
+            console.log('boards', boards)
+            socket.broadcast.emit('update-boards' , {boards , board})
             return
         })
         // socket.on('update-board', (board) => {
