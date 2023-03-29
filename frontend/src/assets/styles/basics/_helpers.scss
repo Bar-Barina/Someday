@@ -212,6 +212,32 @@
   }
 }
 
+// File loader
+.loader {
+  display: none;
+  position: absolute;
+  top: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #eee;
+  border-top-color: #333;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+
+
+
+
 // Media helpers
 
 // .square-ratio {

@@ -75,6 +75,7 @@
             class="member-preview"
           />
         </div>
+        <BoardActivity v-if="showBoardActivity" />
 
         <div class="invite flex align-center btn-hover">
           <div class="icon">
@@ -259,6 +260,7 @@ import MainPersonFilter from './MainPersonFilter.vue'
 import { utilService } from '../services/util.service.js'
 import { eventBus } from '../services/event-bus.service'
 import BoardDesc from './BoardDesc.vue'
+import BoardActivity from './BoardActivity.vue'
 
 export default {
   name: 'BoardHeader',
@@ -278,6 +280,7 @@ export default {
       searchQuery: '',
       showBoardDesc: false,
       isStarred: false,
+      showBoardActivity: true,
     }
   },
   methods: {
@@ -360,6 +363,7 @@ export default {
     MainFilter,
     MainPersonFilter,
     BoardDesc,
+    BoardActivity,
   },
 }
 </script>

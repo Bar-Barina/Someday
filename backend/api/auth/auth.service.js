@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const userService = require('../user/user.service')
 const logger = require('../../services/logger.service')
 const cryptr = new Cryptr(process.env.SECRET1 || 'Secret-Puk-1234')
+// const cryptr = new Cryptr(process.env.SECRET1)
 
 module.exports = {
     signup,
