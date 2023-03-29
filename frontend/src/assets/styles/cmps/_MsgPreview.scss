@@ -46,9 +46,11 @@
         height: 50px;
         width: 100%;
         border-top: 1px solid $clr014;
-        margin-top: 18px;
+        margin-top: 16px;
         .like {
             border-radius: 4px;
+            width: 270px;
+            margin-left: 7px;
             cursor: pointer;
             &:hover {
                     background-color: $clr016;
@@ -61,12 +63,12 @@
             }
             &::before {
                 content: "";
-                height: 48px;
+                height: 50px;
                 border-right: 1px solid;
                 border-color: $clr016;
                 position: absolute;
                 top: -6px;
-                right: 0;
+                right: -10px;
             }
         }
         .liked-users {

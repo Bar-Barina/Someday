@@ -79,7 +79,6 @@
             ref="textArea"
             placeholder="Write an update..."
             @input="onUserInput"
-            :options="editorOptions"
           />
         </div>
         <small v-if="typing">{{ getTyping }}...</small>
@@ -161,11 +160,6 @@ export default {
       isEditor: false,
       typing: "",
       msgs: [],
-      editorOptions: {
-        formats: {
-          align: "left",
-        }
-    }
   }},
   methods: {
     getSvg(iconName) {
@@ -178,15 +172,16 @@ export default {
     },
     addMsg() {
       const user = userService.getLoggedInUser();
-      console.log("user", user);
       const from = user || {
         accountName: "Guest",
-        imgUrl: "../assets/img/default-user-img.png",
+        imgUrl: "https://cdn.monday.com/images/pulse-page-empty-state.svg",
       };
+      console.log("user", user);
       this.msg.from = from;
       this.msg.txt = this.$refs.textArea.getHTML();
-      console.log("this.msg.txtt", this.msg.txt);
       // if(this.msg.txt!== "") this.msg.txt.
+      console.log('here')
+      console.log('this.msg', this.msg)
       socketService.emit(SOCKET_EMIT_SEND_MSG, this.msg);
       const msgToAdd = { ...this.msg };
       this.task.msgs.unshift(msgToAdd);
@@ -207,7 +202,7 @@ export default {
     onSelectEmoji(emoji) {
       // this.msg.txt += emoji.i
       // this.$refs.textArea.innerText += emoji.i;
-      this.$refs.textArea.getText() += emoji.i
+      // this.$refs.textArea.getText() += emoji.i
     },
     closeEmojiPick() {
       this.isEmoji = false;

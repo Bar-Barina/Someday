@@ -56,7 +56,7 @@ function setupSocketAPI(http) {
             console.log('user',user)
             // const user = users.find(u => u._id === userId)
             if (user) {
-                socket.broadcast.emit('is-typing', user.accountName + 'Is typing')
+                socket.broadcast.emit('is-typing', user.accountName +' '+ 'is typing')
                 return
             }
         })

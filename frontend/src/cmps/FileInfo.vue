@@ -5,7 +5,7 @@
         <img src="https://cdn.monday.com/images/file-types/image_v2.svg"/>
       <span class="file-name">{{ this.task.files.name }}</span>
     </div>
-      <span v-icon="'x'" class="pointer exit-info"></span>
+      <span @click="exitDesc" v-icon="'x'" class="pointer exit-info"></span>
     </div>
     <div class="img-comments-div">
     <div class="file-info-div">
@@ -29,6 +29,9 @@ export default {
     return {}
   },
   methods: {
+    exitDesc() {
+      this.$router.push(`/board/${this.currBoard._id}`)
+    }
   },
   computed: {
     taskFile() {
@@ -42,6 +45,9 @@ export default {
     //   return null;
     // }
   },
+  currBoard() {
+    return this.$store.getters.currBoard
+  }
   },
   created() {},
   components: {},

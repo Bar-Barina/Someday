@@ -4,11 +4,9 @@
       <div class="title flex align-center">
         <img :src="msg.from.imgUrl" alt="" />
         {{ msg.from.accountName }}
-        <div class="active-dot"></div>
       </div>
       <div class="header-info flex align-center">
         <span v-icon="'msgClock'" className="icon"></span>
-        <span v-icon="'msgBell'" className="icon"></span>
         <span v-icon="'msgDots'" className="icon"></span>
       </div>
     </section>
@@ -33,7 +31,7 @@
       </div>
       <div v-if="msg.liked.length > 0" class="liked-users">
         <div class="user flex align-center">
-          <img src="../assets/img/profile-icon.png" alt="" />
+          <img :src="msg.from.imgUrl" alt="" />
           Liked
         </div>
       </div>
@@ -50,6 +48,9 @@ export default {
   },
   data() {
     return {}
+  },
+  created() {
+    console.log('this.msg from msgprev', this.msg)
   },
   methods: {
     toggleLike() {
