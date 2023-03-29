@@ -163,6 +163,12 @@ export default {
   },
   created() {
     this.board = JSON.parse(JSON.stringify(this.$store.getters.currBoard));
+    eventBus.on('dragCollapse' , () => {
+      this.collapse(true)
+    })
+    eventBus.on('dragEnded', () => {
+      this.collapse(false)
+    })
   },
   methods: {
     getSvg(iconName) {
