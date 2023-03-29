@@ -29,7 +29,7 @@
           class="status-img"
         />
         <span v-if="activity.changed === 'timeline'" v-icon="'activityTimeLine'"></span>
-        <span>{{ activity.changed }}</span>
+        <span class="changed-activity">{{ activity.changed }}</span>
       </div>
       <div class="flex align-center">
         <span
