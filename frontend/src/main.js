@@ -11,6 +11,7 @@ import 'tippy.js/themes/light.css'
 
 import { clickOutside, icon } from './directives.js'
 
+
 import './assets/styles/styles.scss'
 import App from './App.vue'
 

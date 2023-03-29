@@ -79,6 +79,7 @@ function getEmptyActivity() {
     createdAt: Date.now(),
     changedBy: userService.getLoggedInUser(),
     changed: null,
+    whatChanged: null,
     from: null,
     to: null
   }
