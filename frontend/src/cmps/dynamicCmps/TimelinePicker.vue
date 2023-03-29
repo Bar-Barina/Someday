@@ -1,4 +1,5 @@
 <template>
+      <label class="picker-wrapper">
   <div v-if="value.length === 0" class="timeline-progress-bar emptyTimeline">
     <div class="date-diff">
       {{ dateDiff }}
@@ -27,7 +28,7 @@
     </div>
   </div>
   <div class="demo-date-picker">
-    <label class="picker-wrapper">
+
       <el-date-picker
         v-model="value"
         type="daterange"
@@ -37,8 +38,8 @@
         :default-value="[new Date(Date.now()), new Date(Date.now())]"
         @change="changeDate"
       />
-    </label>
   </div>
+    </label>
 </template>
 
 <script>
