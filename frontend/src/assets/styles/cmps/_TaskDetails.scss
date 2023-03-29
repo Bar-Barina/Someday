@@ -119,9 +119,11 @@
       }
       .ql-editor {
         height: 100px;
-        .ql-align-justify {
-          text-align: start;
-        }
+        direction: ltr;
+        text-align: left;
+        // .ql-align-justify {
+        //   text-align: start;
+        // }
       }
     }
     .ql-container.ql-snow {
