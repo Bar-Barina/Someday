@@ -143,6 +143,8 @@ export default {
       if (!cmpType) taskToSave.taskTitle = this.$refs.taskTitle.innerText
       else taskToSave[cmpType] = data
       const activity = boardService.getEmptyActivity();
+      // if (activity.from === '' ) activity.from = 'Blank'
+      // if (activity.to === '' ) activity.at = 'Blank'
       activity.from = this.task[cmpType]
       activity.to = data
       activity.changed = cmpType
