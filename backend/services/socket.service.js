@@ -64,6 +64,17 @@ function setupSocketAPI(http) {
             socket.broadcast.emit('update-board' , groups)
             return
         })
+        socket.on('update-boards', (boardId) => {
+            const boards = boardService.query()
+            const boardIdx = boards.findIndex(b => b._id === boardId)
+            boards.splice(boardIdx , 1)
+            socket.broadcast.emit('update-boards' , boards)
+            return
+        })
+        socket.on('update-board', (board) => {
+            socket.broadcast.emit('update-currBoard' , board)
+            return
+        })
     })
 }
 

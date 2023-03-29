@@ -165,6 +165,7 @@ export const boardStore = {
     async updateBoard(context, { board }) {
       try {
         board = await boardService.save(board)
+        socketService.emit('update-board', board)
         context.commit(getActionUpdateBoard(board))
         return board
       } catch (err) {
@@ -184,7 +185,9 @@ export const boardStore = {
     },
     async removeBoard(context, { boardId }) {
       try {
+        console.log('removeeeee' , boardId)
         await boardService.remove(boardId)
+        socketService.emit('update-boards' , boardId)
         context.commit(getActionRemoveBoard(boardId))
       } catch (err) {
         console.log('boardStore: Error in removeBoard', err)
@@ -201,7 +204,6 @@ export const boardStore = {
       }
     },
     async saveTask({ state, commit }, { toUpdate }) {
-      console.log('toUpdate', toUpdate)
       const currBoard = state.currBoard
       if (!toUpdate.task) toUpdate.task = null
       try {
@@ -223,6 +225,7 @@ export const boardStore = {
         toRemove.groupId,
         toRemove.taskId
       )
+      socketService.emit('update-groups' , board.groups)
       commit({ type: 'updateBoard', board })
     },
   },

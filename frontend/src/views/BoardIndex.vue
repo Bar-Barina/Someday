@@ -32,6 +32,8 @@ export default {
   created() {
     this.$store.dispatch('loadBoards')
     socketService.on('update-board' , this.updateBoard)
+    socketService.on('update-boards' , this.updateSocketBoards)
+    socketService.on('update-currBoard' , this.updateSocketBoard)
   },
   computed: {
     loggedInUser() {
@@ -91,6 +93,12 @@ export default {
       const board = this.currBoard
       board.groups = groups
       this.$store.commit({type:'setCurrBoard' , board})
+    },
+    updateSocketBoards(boards) {
+      this.$store.commit({type:'setBoards' , boards})
+    },
+    updateSocketBoard(board) {
+      this.$store.commit({type:'setCurrBoard' , board})
     }
   },
   watch: {
@@ -105,6 +113,8 @@ export default {
   },
   destroyed() {
     socketService.off('update-board')
+    socketService.off('update-boards')
+    socketService.off('update-currBoard')
   },
   components: {
     SideNav,
