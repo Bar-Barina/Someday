@@ -10,10 +10,14 @@
 @font-face {
   font-family: Poppins;
   src: url('./fonts/Poppins-Medium.ttf');
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
-  font-family: 'PoppinsSemiBold';
-  src: url('./fonts/Poppins-SemiBold.ttf');
+  font-family: 'PoppinsTitle';
+  src: url('./fonts/Poppins-Medium.ttf');
+  font-weight: 500;
+  font-style: normal;
 }
 
 $mainFont: 'Figtree', sans-serif;
