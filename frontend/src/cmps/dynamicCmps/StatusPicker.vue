@@ -13,6 +13,10 @@
       optionClass="status-option"
     />
     <span class="peeling-span scale-up-tr"></span>
+    <span
+      v-if="selectedStatus === 'Done'"
+      class="confetti-sprite-animation"
+    ></span>
   </div>
 </template>
 
@@ -61,7 +65,7 @@ export default {
         case 'Stuck':
           return 'status-stuck'
         case 'Done':
-          return 'status-done'
+          return 'status-done animated-status'
         case '':
           return 'status-empty'
         default:
