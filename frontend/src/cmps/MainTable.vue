@@ -113,7 +113,6 @@ export default {
     },
     addGroup() {
       const newGroup = {
-        _id: utilService.makeId(),
         title: "New Group",
         color: "#e2445c",
         tasks: [],

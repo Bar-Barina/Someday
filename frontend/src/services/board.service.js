@@ -105,7 +105,7 @@ async function saveTask(board, group, task) {
       const groupIdx = boardToSave.groups.findIndex((g) => g._id === group._id)
       boardToSave.groups.splice(groupIdx, 1, group)
     } else {
-      group.id = utilService.makeId()
+      group._id = utilService.makeId()
       boardToSave.groups.push(group)
     }
     await save(boardToSave)
