@@ -74,8 +74,14 @@ export default {
       board.groups = groups
       this.$store.commit({type:'setCurrBoard' , board})
     },
-    updateSocketBoards(boards) {
+    updateSocketBoards({boards , board}) {
+      console.log('boards', boards)
+      console.log('board', board)
       this.$store.commit({type:'setBoards' , boards})
+      const currBoard = this.currBoard
+      console.log('currBoard', currBoard)
+      if(currBoard._id === board._id) 
+      this.$store.commit({type: 'setCurrBoard' , board})
     },
   },
   watch: {
