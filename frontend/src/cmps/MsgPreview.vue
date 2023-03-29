@@ -33,7 +33,7 @@
       </div>
       <div v-if="msg.liked.length > 0" class="liked-users">
         <div class="user flex align-center">
-          <img src="../assets/img/default-user-img.png" alt="" />
+          <img :src="msg.from.imgUrl" alt="" />
           Liked
         </div>
       </div>
