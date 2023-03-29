@@ -11,7 +11,7 @@
       <button class="get-started-login">Get started!</button>
     </RouterLink>
   </div>
-  <div v-else></div>
+  <!-- <div v-else></div> -->
   <section v-else>
     <div class="login-signup">
       <h1>Log in to your account</h1>
@@ -46,6 +46,7 @@
         <span class="separator-line"></span>
       </div>
       <button class="google">
+        <GoogleLogin :callback="callback"/>
         <img src="https://cdn.monday.com/images/logo_google_v2.svg" />Google
       </button>
       <div class="suggest-signup">
@@ -90,6 +91,11 @@ export default {
     loadUsers() {
       this.$store.dispatch({ type: 'loadUsers' })
     },
+    callback(response) {
+  // This callback will be triggered when the user selects or login to
+  // his Google account from the popup
+  console.log("Handle the response", response)
+  }
   },
   computed: {
     users() {
