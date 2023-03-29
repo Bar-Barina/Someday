@@ -33,7 +33,6 @@ export default {
     this.$store.dispatch('loadBoards')
     socketService.on('update-board' , this.updateBoard)
     socketService.on('update-boards' , this.updateSocketBoards)
-    socketService.on('update-currBoard' , this.updateSocketBoard)
   },
   computed: {
     loggedInUser() {
@@ -70,26 +69,7 @@ export default {
         showErrorMsg('Cannot remove board')
       }
     },
-    async updateBoard(board) {
-      try {
-        board = { ...board }
-        board.price = +prompt('New price?', board.price)
-        await this.$store.dispatch(getActionUpdateBoard(board))
-        showSuccessMsg('Board updated')
-      } catch (err) {
-        showErrorMsg('Cannot update board')
-      }
-    },
-    async addBoardMsg(boardId) {
-      try {
-        await this.$store.dispatch(getActionAddBoardMsg(boardId))
-        showSuccessMsg('Board msg added')
-      } catch (err) {
-        showErrorMsg('Cannot add board msg')
-      }
-    },
     updateBoard(groups) {
-      console.log('groups', groups)
       const board = this.currBoard
       board.groups = groups
       this.$store.commit({type:'setCurrBoard' , board})
@@ -97,9 +77,6 @@ export default {
     updateSocketBoards(boards) {
       this.$store.commit({type:'setBoards' , boards})
     },
-    updateSocketBoard(board) {
-      this.$store.commit({type:'setCurrBoard' , board})
-    }
   },
   watch: {
     "$route.params": {
