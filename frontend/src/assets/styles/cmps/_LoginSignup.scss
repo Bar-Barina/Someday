@@ -122,7 +122,15 @@
     color: $clr2;
     border: none;
     padding: 5px;
-    width: 70px;
+    width: 60px;
     border-radius: 5px;
+    font-size: 11px;
+  }
+  .get-started-login {
+    background-color: #036dd0;
+    background: linear-gradient(rgb(20, 22, 139) 0%, rgb(140, 141, 201) 100%);
+    width: 100px;
+    height: 70px;
+    font-size: 17px;
   }
 }
