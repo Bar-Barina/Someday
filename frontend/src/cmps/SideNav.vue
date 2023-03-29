@@ -60,14 +60,18 @@
         <div v-html="getSvg('apps')"></div>
       </div>
       <div class="member-wrapper flex justify-center align-center">
-        <img :src= "currUser.imgUrl ? currUser.imgUrl : '../assets/img/default-user-img.png'" 
-        class="member-preview" />
+        <img
+          :src="
+            currUser
+              ? currUser.imgUrl
+              : '../assets/img/default-user-img.png'"
+          class="member-preview"
+        />
       </div>
     </section>
     <div class="workspace-arrow-left-div"></div>
   </section>
   <!-- <div class="black-screen"></div> -->
-
 </template>
 
 <script>
@@ -85,7 +89,7 @@ export default {
   computed: {
     currUser() {
       return this.$store.getters.loggedInUser
-    }
-  }
+    },
+  },
 }
 </script>
