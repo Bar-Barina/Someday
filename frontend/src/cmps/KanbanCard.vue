@@ -64,8 +64,7 @@ export default {
     });
   },
   methods: {
-    updateTask({ cmpType, data }) {
-      console.log('data', data)
+    async updateTask({ cmpType, data }) {
       this.titleFocus = false
       const taskToSave = { ...this.task };
       if (!cmpType) taskToSave.taskTitle = this.$refs.taskTitle.innerText;
@@ -77,9 +76,11 @@ export default {
       // const toUpdate = {taskToSave , groupId: this.group._id}
       try {
         const toUpdate = { task: taskToSave, group: this.group };
-        this.$store.dispatch({ type: "saveTask", toUpdate });
+        await this.$store.dispatch({ type: "saveTask", toUpdate });
+        this.$emit('updateMap')
       } catch (err) {
-        showErrorMsg("Couldnt add task");
+        // showErrorMsg("Couldnt add task");
+        console.error('err', err)
       }
     },
     openCon() {

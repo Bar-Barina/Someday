@@ -98,6 +98,7 @@ async function saveTask(board, group, task) {
       task.id = utilService.makeId()
       boardToSave.groups[groupIdx].tasks.push(task)
     }
+    console.log('task', task)
     await save(boardToSave)
     return boardToSave
   }

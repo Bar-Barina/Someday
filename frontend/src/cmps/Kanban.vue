@@ -18,6 +18,7 @@
               @addStatusesMap="addToMap"
               @removeStatusesMap="removeFromMap"
               @updateMapOrder="setOrder"
+              @updateMap="updateStatusesMap"
             />
           </Draggable>
         </Container>
@@ -150,6 +151,7 @@ export default {
       this.updateStatusesMap();
     },
     setOrder({ status, dropResult }) {
+      console.log('here1111111111111')
       const statusIdx = this.statusesMap.findIndex(s => s.title === status)
       this.statusesMap[statusIdx].tasks = utilService.applyDrag(
         this.statusesMap[statusIdx].tasks,

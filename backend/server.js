@@ -2,11 +2,22 @@ const express = require('express')
 const cors = require('cors')
 const path = require('path')
 const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
+
+const OpenAI = require('openai')
+const { Configuration, OpenAIApi } = OpenAI
 
 const app = express()
 const http = require('http').createServer(app)
 
+const configuration = new Configuration({
+    organization: "org-v9PltONXqwikEb2nUOnNF8cp",
+    apiKey: "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",
+});
+const openai = new OpenAIApi(configuration);
+
 // Express App Config
+app.use(bodyParser.json())
 app.use(cookieParser())
 app.use(express.json())
 app.use(express.static('public'))
@@ -15,7 +26,7 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.resolve(__dirname, 'public')))
 } else {
     const corsOptions = {
-        origin: ['http://127.0.0.1:5173', 'http://localhost:5173','http://127.0.0.1:3030', 'http://localhost:3030'],
+        origin: ['http://127.0.0.1:5173', 'http://localhost:5173', 'http://127.0.0.1:3030', 'http://localhost:3030'],
         credentials: true
     }
     app.use(cors(corsOptions))
@@ -25,7 +36,7 @@ const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
 const reviewRoutes = require('./api/review/review.routes')
 const boardRoutes = require('./api/board/board.routes')
-const {setupSocketAPI} = require('./services/socket.service')
+const { setupSocketAPI } = require('./services/socket.service')
 
 // routes
 const setupAsyncLocalStorage = require('./middlewares/setupAls.middleware')
@@ -36,6 +47,27 @@ app.use('/api/user', userRoutes)
 app.use('/api/review', reviewRoutes)
 app.use('/api/board', boardRoutes)
 setupSocketAPI(http)
+
+app.post('/api/openai', async (req, res) => {
+    const { message } = req.body
+    const response = await openai.createCompletion({
+        model: "text-davinci-003",
+        prompt: `You are a Manager. asnwer with tasks for the person.
+        Person: I need tasks for frontend developers.
+        Manager: 1. Improve User Interface
+        2. Make a login page
+        3. Fix UI.
+        Person: ${message}?`,
+        max_tokens: 60,
+        temperature: 0
+    })
+    console.log('response.data', response.data)
+    if (response.data.choices) {
+        res.json({
+            message: response.data.choices[0].text
+        })
+    }
+})
 
 // Make every server-side-route to match the index.html
 // so when requesting http://localhost:3030/index.html/board/123 it will still respond with

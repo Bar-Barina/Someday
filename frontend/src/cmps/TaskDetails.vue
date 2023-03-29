@@ -129,7 +129,7 @@
 import {
   socketService,
   SOCKET_EMIT_SEND_MSG,
-  SOCKET_EVENT_ADD_MSG,
+  SOCKET_EMIT_ADD_MSG,
   SOCKET_EMIT_SET_TOPIC,
   SOCKET_EVENT_TYPING,
 } from "../services/socket.service";
@@ -178,8 +178,8 @@ export default {
       };
       console.log("user", user);
       this.msg.from = from;
-      const content = this.$refs.textArea.getText()
-      this.msg.txt = content.getHTML();
+      this.msg.txt = this.$refs.textArea.getHTML()
+      // this.msg.txt = content.getHTML();
       console.log("this.msg.txtt", this.msg.txt);
       // if(this.msg.txt!== "") this.msg.txt.
       console.log('here')
@@ -241,6 +241,9 @@ export default {
     changeTopic() {
       socketService.emit(SOCKET_EMIT_SET_TOPIC, this.topic);
     },
+    recieveMsg(msg) {
+      this.task.msgs.unshift(msg)
+    }
   },
   watch: {
     "$route.params": {
@@ -278,7 +281,8 @@ export default {
   },
   created() {
     socketService.emit(SOCKET_EMIT_SET_TOPIC, this.task.id);
-    socketService.on(SOCKET_EVENT_ADD_MSG, this.addMsg);
+    socketService.on(SOCKET_EMIT_SEND_MSG, this.addMsg);
+    socketService.on(SOCKET_EMIT_ADD_MSG, this.recieveMsg);
     socketService.on(SOCKET_EVENT_TYPING, this.renderTyping);
     // socketService.on(SOCKET_EVENT_ADD_MSGS, msgs => msgs.forEach(this.addMsg))
     this.onUserStopInputDeb = utilService.debounce(this.onUserStopInput, 800);

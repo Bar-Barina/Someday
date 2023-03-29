@@ -26,7 +26,7 @@
         @drop="onTaskDrop($event)"
       >
         <Draggable v-for="(task, idx) in tasks" :key="idx">
-          <KanbanCard :task="task" />
+          <KanbanCard :task="task" @updateMap="updateOrder"/>
         </Draggable>
       </Container>
     </section>
@@ -93,6 +93,10 @@ export default {
       const toUpdate = { group, task };
       this.$store.dispatch({ type: "saveTask", toUpdate });
     },
+    updateOrder() {
+      console.log('col')
+      this.$emit('updateMap')
+    }
   },
   computed: {
     currBoard() {

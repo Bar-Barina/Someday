@@ -4,7 +4,7 @@ import { router } from './router.js'
 import { store } from './store/store.js'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-
+import vue3GoogleLogin from 'vue3-google-login'
 import VueTippy from 'vue-tippy'
 import 'tippy.js/dist/tippy.css'
 import 'tippy.js/themes/light.css'
@@ -19,6 +19,9 @@ const app = createApp(App)
 
 app.directive('icon', icon)
 app.directive('clickOutside', clickOutside)
+app.use(vue3GoogleLogin, {
+  clientId: '950878273419-utn5f4pjv58fm7j81bv8qjjp4pvtd0sq.apps.googleusercontent.com'
+})
 app.use(ElementPlus)
 app.use(router)
 app.use(store)
