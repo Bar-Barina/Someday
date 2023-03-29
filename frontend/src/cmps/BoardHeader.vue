@@ -68,7 +68,9 @@
           Activity
           <img
             :src="
-              currUser ? currUser.imgUrl : '../assets/img/default-user-img.png'
+              currUser
+                ? currUser.imgUrl
+                : 'https://cdn1.monday.com/dapulse_default_photo.png'
             "
             class="member-preview"
           />
