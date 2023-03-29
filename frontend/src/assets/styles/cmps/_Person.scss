@@ -34,8 +34,13 @@
   .person-img {
     width: 30px;
     border: 2px solid white;
-    margin-left: -5px;
+    margin-left: -10px;
     border-radius: 50%;
+
+    &.first {
+      margin-left: 1px;
+    }
+
     &.alone {
       margin-left: 0px;
     }
@@ -44,9 +49,9 @@
   .mini-person {
     position: relative;
 
-    .person-img {
-      margin-left: -29px;
-    }
+    // .person-img {
+    //   margin-left: -29px;
+    // }
 
     .person-count {
       padding: 0 5px;
