@@ -153,7 +153,9 @@ export default {
       // console.log('to',activity.to)
       activity.changed = cmpType
       activity.taskTitle = this.task.taskTitle
-      this.$store.commit({ type: 'setBoardActivity', activity })
+      const board = JSON.parse(JSON.stringify(this.$store.getters.currBoard))
+      if(!board.activities) board.activities = []
+      board.activities.push(activity)
       this.$emit('saveTask', taskToSave)
     },
     openCon() {
