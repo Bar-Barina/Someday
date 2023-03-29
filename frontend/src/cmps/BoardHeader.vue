@@ -66,8 +66,12 @@
       <section class="right-up-header flex align-center justify-center">
         <div class="logged-in-user flex align-center btn-hover">
           Activity
-          <img :src= "currUser.imgUrl ? currUser.imgUrl : '../assets/img/default-user-img.png'" 
-          class="member-preview"/>
+          <img
+            :src="
+              currUser ? currUser.imgUrl : '../assets/img/default-user-img.png'
+            "
+            class="member-preview"
+          />
         </div>
 
         <div class="invite flex align-center btn-hover">
@@ -82,11 +86,9 @@
         </div>
       </section>
     </section>
-    <div
-      class="description flex align-items"
-      @click="toggleBoardDesc"
-    >
-      <span class="header-desc">{{ currBoard.description }}</span> <span class="see-more">See More</span>
+    <div class="description flex align-items" @click="toggleBoardDesc">
+      <span class="header-desc">{{ currBoard.description }}</span>
+      <span class="see-more">See More</span>
     </div>
     <section class="board-view-change flex align-center">
       <div :class="{ active: active === '' }" class="view-option-container">
@@ -143,7 +145,8 @@
       <div class="new-item flex justify-center align-center" @click="addTask">
         New Task
       </div>
-      <button class="add-group-arrow"
+      <button
+        class="add-group-arrow"
         v-tippy="{
           content: 'New Group',
           theme: 'classic',
@@ -176,21 +179,22 @@
         }"
         class="bottom-header-btn btn-hover"
         @click="togglePersonModal"
-        :class="{activePersonFilter:MemberToFilter}"
+        :class="{ activePersonFilter: MemberToFilter }"
       >
-     
         <MainPersonFilter v-if="showPersonFilter" v-clickOutside="closeModal" />
-        <div class="member-filter flex justify-center align-center" v-if="MemberToFilter">
-          <img :src="MemberToFilter.url" alt=""/>
-          {{MemberToFilter.name}}
+        <div
+          class="member-filter flex justify-center align-center"
+          v-if="MemberToFilter"
+        >
+          <img :src="MemberToFilter.url" alt="" />
+          {{ MemberToFilter.name }}
           <span v-icon="'personX'" @click.stop="removeMemberFilter"></span>
         </div>
         <div v-else class="person-palceholder flex align-center">
           <div
-          class="flex justify-center align-center"
-          v-html="getSvg('headerPerson')"
-        >
-        </div>
+            class="flex justify-center align-center"
+            v-html="getSvg('headerPerson')"
+          ></div>
           Person
         </div>
       </div>
@@ -243,7 +247,6 @@
       </div>
     </section>
   </section>
-
 </template>
 
 <script>
@@ -328,14 +331,14 @@ export default {
       this.$store.dispatch({ type: 'saveTask', toUpdate: { group: newGroup } })
     },
     removeMemberFilter() {
-      this.$store.commit({type:'updateActiveMember'})
-    }
+      this.$store.commit({ type: 'updateActiveMember' })
+    },
   },
   watch: {
-    "$route.params": {
+    '$route.params': {
       async handler() {
-        const routeName  = this.$route.name
-        if(routeName === 'table') this.active = ''
+        const routeName = this.$route.name
+        if (routeName === 'table') this.active = ''
         else this.active = 'kanban'
       },
       immediate: true,
@@ -350,7 +353,7 @@ export default {
     },
     currUser() {
       return this.$store.getters.loggedInUser
-    }
+    },
   },
   components: {
     MainFilter,
