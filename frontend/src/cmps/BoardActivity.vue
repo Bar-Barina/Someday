@@ -28,17 +28,24 @@
           src="https://cdn.monday.com/images/color2.png"
           class="status-img"
         />
-        <span v-if="activity.changed === 'timeline'" v-icon="'activityTimeLine'"></span>
+        <span
+          v-if="activity.changed === 'timeline'"
+          v-icon="'activityTimeLine'"
+        ></span>
         <span class="changed-activity">{{ activity.changed }}</span>
       </div>
       <div class="flex align-center">
         <span
           class="activity-status"
           :class="{
-            'timeline': activity.changed === 'timeline',
-            'date': activity.changed === 'date',
-            'Blank': activity.from === '' && activity.changed !== 'timeline' && activity.changed !== 'date',
-            [activity.from]: activity.changed === 'status' || activity.changed === 'priority'
+            timeline: activity.changed === 'timeline',
+            date: activity.changed === 'date',
+            Blank:
+              activity.from === '' &&
+              activity.changed !== 'timeline' &&
+              activity.changed !== 'date',
+            [activity.from]:
+              activity.changed === 'status' || activity.changed === 'priority',
           }"
         >
           {{
@@ -51,10 +58,14 @@
         <span
           class="activity-status"
           :class="{
-            'timeline': activity.changed === 'timeline',
-            'date': activity.changed === 'date',
-            'Blank': activity.to === '' && activity.changed !== 'timeline' && activity.changed !== 'date',
-            [activity.to]: activity.changed === 'status' || activity.changed === 'priority'
+            timeline: activity.changed === 'timeline',
+            date: activity.changed === 'date',
+            Blank:
+              activity.to === '' &&
+              activity.changed !== 'timeline' &&
+              activity.changed !== 'date',
+            [activity.to]:
+              activity.changed === 'status' || activity.changed === 'priority',
           }"
         >
           {{
@@ -81,7 +92,8 @@ export default {
   },
   methods: {
     timeSince(date) {
-      return timeAgo.format(new Date(date))
+      const timeAgoInstance = timeAgo.format(new Date(date), 'mini')
+      return timeAgoInstance
     },
     activityCheck() {
       let activities = JSON.parse(JSON.stringify(this.currBoard.activities))
@@ -110,14 +122,16 @@ export default {
     activities() {
       const board = this.$store.getters.currBoard
       let activities = []
-      if(board.activities) activities.push(...board.activities)
-      board.groups.forEach(group => {
-        if(group.activities) activities.push(...group.activities)
-         group.tasks.forEach(task => {
-          if(task.activities) activities.push(...task.activities)
+      if (board.activities) activities.push(...board.activities)
+      board.groups.forEach((group) => {
+        if (group.activities) activities.push(...group.activities)
+        group.tasks.forEach((task) => {
+          if (task.activities) activities.push(...task.activities)
         })
       })
-      console.log('activities', activities)
+      activities.sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt)
+      })
       return activities
     },
     loggedInUser() {
