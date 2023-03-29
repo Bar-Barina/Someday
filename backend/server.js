@@ -12,7 +12,7 @@ const http = require('http').createServer(app)
 
 const configuration = new Configuration({
     organization: "org-v9PltONXqwikEb2nUOnNF8cp",
-    apiKey: "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",
+    apiKey: "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",
 });
 const openai = new OpenAIApi(configuration);
 
