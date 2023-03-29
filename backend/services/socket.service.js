@@ -35,7 +35,6 @@ function setupSocketAPI(http) {
         socket.on('user-watch', userId => {
             logger.info(`user-watch from socket [id: ${socket.id}], on user ${userId}`)
             socket.join('watching:' + userId)
-            
         })
         socket.on('set-user-socket', userId => {
             logger.info(`Setting socket.userId = ${userId} for socket [id: ${socket.id}]`)
@@ -48,9 +47,8 @@ function setupSocketAPI(http) {
         socket.on('user-typing', async (userId) => {
             // TODO: user typing functionality
             // const collection = await dbService.getCollection('user')
-            console.log('userId',userId)
             if(!userId)  {
-                socket.broadcast.emit('is-typing', '')
+                socket.broadcast.emit('is-typing', 'Guest is typing')
                 return 
             }
             var user = await userService.getById(userId)

@@ -225,9 +225,9 @@ export default {
       this.$router.push(`/board/${this.currBoard._id}`);
     },
     onUserInput() {
-      const user = userService.getLoggedInUser();
-      if (!user) return;
-      socketService.emit("user-typing", user._id);
+      let user = userService.getLoggedInUser();
+      if (!user) socketService.emit("user-typing" , '');
+      else socketService.emit("user-typing", user._id);
       this.onUserStopInputDeb();
     },
     onUserStopInput() {
