@@ -11,7 +11,7 @@
   z-index: 10000;
   transition: 2s;
   overflow-y: scroll;
-    overflow-x: hidden;
+  overflow-x: hidden;
 
   h2 {
     color: #323338;
@@ -22,14 +22,12 @@
   }
   .board-activity {
     display: grid;
-    grid-template-columns:340px 1fr 200px;
+    grid-template-columns: 300px 1fr 200px;
     position: relative;
     align-items: center;
-    // height: 60px;
     font-size: 14px;
-    border-bottom: 1px solid lightgray;
-    margin: 20px;
-    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(180, 180, 180);
+    margin: 0 10px;
     text-overflow: ellipsis;
     white-space: nowrap;
     .member-preview {
@@ -61,7 +59,7 @@
   width: fit-content;
   min-width: 89.14px;
   height: 39px;
-  padding: 5px;
+  // padding: 5px;
   border-radius: 3px;
   text-align: center;
   white-space: nowrap;
@@ -115,11 +113,19 @@
 }
 
 .activity-task-title {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 svg {
-    width: 22px;
+  width: 22px;
+}
+
+.activity-time {
+  min-width: 30px;
+}
+
+.activity-icons {
+  margin-left: 45px;
 }

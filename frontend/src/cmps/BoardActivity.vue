@@ -9,7 +9,7 @@
     >
       <div class="flex align-center">
         <span v-icon="'activityTime'" class="time-icon"></span>
-        <span>{{ timeSince(activity.createdAt) }}</span>
+        <span class="activity-time">{{ timeSince(activity.createdAt) }}</span>
         <img
           :src="
             loggedInUser
@@ -20,7 +20,7 @@
         />
         <span class="activity-task-title">{{ activity.taskTitle }}</span>
       </div>
-      <div class="flex align-center">
+      <div class="flex align-center activity-icons">
         <img
           v-if="
             activity.changed === 'status' || activity.changed === 'priority'
@@ -32,7 +32,22 @@
           v-if="activity.changed === 'timeline'"
           v-icon="'activityTimeLine'"
         ></span>
-        <span class="changed-activity">{{ activity.changed }}</span>
+        <span v-if="activity.changed === 'date'" v-icon="'activityDate'"></span>
+        <span
+          v-if="activity.changed === 'person'"
+          v-icon="'activityPerson'"
+        ></span>
+        <span
+          v-if="activity.changed === 'text' || activity.changed === 'taskTitle'"
+          v-icon="'activityText'"
+        ></span>
+        <span
+          v-if="activity.changed === 'files'"
+          v-icon="'activityFiles'"
+        ></span>
+        <span class="changed-activity">{{
+          activity.changed.charAt(0).toUpperCase() + activity.changed.slice(1)
+        }}</span>
       </div>
       <div class="flex align-center">
         <span
@@ -43,7 +58,8 @@
             Blank:
               activity.from === '' &&
               activity.changed !== 'timeline' &&
-              activity.changed !== 'date',
+              activity.changed !== 'date' &&
+              activity.changed !== 'files',
             [activity.from]:
               activity.changed === 'status' || activity.changed === 'priority',
           }"
@@ -54,6 +70,7 @@
               : activity.from
           }}
         </span>
+        <span v-if="activity.changed === 'file'">Added</span>
         <span v-icon="'arrowRightG'" class="arrow-right"></span>
         <span
           class="activity-status"
