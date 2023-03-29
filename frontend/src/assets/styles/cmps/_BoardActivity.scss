@@ -9,6 +9,10 @@
   padding: 10px;
   background-color: $clr2;
   z-index: 10000;
+  transition: 2s;
+  overflow-y: scroll;
+    overflow-x: hidden;
+
   h2 {
     color: #323338;
     font-size: 20px;
@@ -17,12 +21,12 @@
     }
   }
   .board-activity {
-    display: flex;
+    display: grid;
+    grid-template-columns:340px 1fr 200px;
     position: relative;
     align-items: center;
-    height: 39px;
+    // height: 60px;
     font-size: 14px;
-    padding: 0 8px 0 16px;
     border-bottom: 1px solid lightgray;
     margin: 20px;
     padding-bottom: 20px;
@@ -60,6 +64,9 @@
   padding: 5px;
   border-radius: 3px;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .Working.on.it {
@@ -107,5 +114,12 @@
   font-size: 12px;
 }
 
-.changed-activity {
+.activity-task-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+svg {
+    width: 22px;
 }

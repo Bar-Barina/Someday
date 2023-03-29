@@ -18,7 +18,7 @@
           "
           class="member-preview"
         />
-        <span>{{ activity.taskTitle }}</span>
+        <span class="activity-task-title">{{ activity.taskTitle }}</span>
       </div>
       <div class="flex align-center">
         <img
