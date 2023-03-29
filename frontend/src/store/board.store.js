@@ -164,6 +164,7 @@ export const boardStore = {
     },
     async updateBoard(context, { board }) {
       try {
+        console.log('board', board)
         board = await boardService.save(board)
         socketService.emit('update-board', board)
         context.commit(getActionUpdateBoard(board))

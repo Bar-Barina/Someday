@@ -144,20 +144,20 @@ export default {
       if (!cmpType) {
         taskToSave.taskTitle = this.$refs.taskTitle.innerText
         cmpType = 'taskTitle'
-      } else taskToSave[cmpType] = data
-      console.log(taskToSave[cmpType])
-      activity.from = this.task[cmpType]
-      // console.log('from',activity.from)
-      if (cmpType === 'taskTitle') activity.to = taskToSave.taskTitle
-      else activity.to = data
-      // console.log('to',activity.to)
-      activity.changed = cmpType
-      activity.taskTitle = this.task.taskTitle
-      const board = JSON.parse(JSON.stringify(this.$store.getters.currBoard))
-      if(!board.activities) board.activities = []
-      board.activities.push(activity)
-      this.$store.dispatch({type: 'updateBoard' , board})
+        activity.to = taskToSave.taskTitle
+      } else {
+        taskToSave[cmpType] = data
+        activity.to = data
+      } 
       this.$emit('saveTask', taskToSave)
+      activity.from = this.task[cmpType]
+      console.log('activity', activity)
+      activity.changed = cmpType
+      // activity.taskTitle = this.task.taskTitle
+      // const board = JSON.parse(JSON.stringify(this.$store.getters.currBoard))
+      // if(!board.activities) board.activities = []
+      // board.activities.push(activity)
+      // this.$store.dispatch({type: 'updateBoard' , board})
     },
     openCon() {
       this.isSelected = true
