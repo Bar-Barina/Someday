@@ -109,6 +109,9 @@
       margin-top: 18px;
       width: 520px;
       margin-left: 8px;
+      p {
+        text-align: start;
+      }
       .ql-toolbar.ql-snow {
         border: 0.5px solid $clr8;
         border-bottom: 1px solid #d1d5db;
@@ -118,9 +121,10 @@
         border-top-left-radius: 6px;
       }
       .ql-editor {
+       
         height: 100px;
-        direction: ltr;
-        text-align: left;
+        // direction: ltr;
+        // text-align: left;
         // .ql-align-justify {
         //   text-align: start;
         // }
@@ -133,10 +137,10 @@
       border-bottom-left-radius: 6px;
     }
     
-    text-align: center;
+    // text-align: center;
 
     .editable-text {
-      text-align: start;
+      // text-align: start;
       // margin-left: 3px;
       margin-right: 8px;
       margin-top: 20px;

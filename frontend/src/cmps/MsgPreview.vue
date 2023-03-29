@@ -4,11 +4,9 @@
       <div class="title flex align-center">
         <img :src="msg.from.imgUrl" alt="" />
         {{ msg.from.accountName }}
-        <div class="active-dot"></div>
       </div>
       <div class="header-info flex align-center">
         <span v-icon="'msgClock'" className="icon"></span>
-        <span v-icon="'msgBell'" className="icon"></span>
         <span v-icon="'msgDots'" className="icon"></span>
       </div>
     </section>
