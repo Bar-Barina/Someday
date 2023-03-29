@@ -1,15 +1,13 @@
 .board-activity-container {
-  pointer-events: auto;
-  overflow-y: scroll;
-  cursor: auto;
-  background-color: rgb(255, 255, 255);
-  padding: 0 15px 20px 24px;
+  display: grid;
   position: fixed;
   top: 0;
   right: 0;
   width: 750px;
   height: 100vh;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 10px;
+  background-color: $clr2;
   z-index: 10000;
   h2 {
     color: #323338;
@@ -60,36 +58,43 @@
   min-width: 89.14px;
   height: 39px;
   padding: 5px;
-    color: $clr2;
   border-radius: 3px;
   text-align: center;
 }
 
 .Working.on.it {
+  color: $clr2;
   background-color: $clr10;
 }
 .Done {
+  color: $clr2;
   background-color: $clr11;
 }
 .Stuck {
+  color: $clr2;
   background-color: $clr12;
 }
 .Blank {
+  color: $clr2;
   background-color: $clr45;
   width: 89.14px;
   height: 30px;
 }
 
 .Critical {
+  color: $clr2;
   background-color: $clr34;
 }
 .High {
+  color: $clr2;
   background-color: $clr35;
 }
 .Medium {
+  color: $clr2;
   background-color: $clr36;
 }
 .Low {
+  color: $clr2;
   background-color: $clr37;
 }
 
@@ -100,4 +105,7 @@
   color: white;
   border-radius: 10px;
   font-size: 12px;
+}
+
+.changed-activity {
 }
