@@ -5,8 +5,11 @@
       Get things done,
       {{ loggedInUser.fullname }} !
       <br />
-      <button @click="doLogout">Logout</button>
     </h3>
+    <button @click="doLogout" class="logout">Logout</button>
+    <!-- <RouterLink to="/board">
+      <button @click="doLogout">Get your first board right NOW!</button>
+    </RouterLink> -->
   </div>
   <div v-else></div>
   <section v-else>
@@ -30,7 +33,8 @@
               class="email-input"
               placeholder="Password"
             />
-            <button>Next
+            <button>
+              Next
               <span v-icon="'arrowRightLogin'" class="arrow-right-login"></span>
             </button>
           </form>
@@ -55,6 +59,7 @@
 </template>
 
 <script>
+import { Range } from 'quill'
 import LoginHeader from '../cmps/LoginHeader.vue'
 export default {
   data() {
@@ -74,7 +79,7 @@ export default {
     doLogin() {
       let credentials = {
         email: this.email,
-        password: this.password
+        password: this.password,
       }
       this.$store.dispatch({ type: 'login', userCred: credentials })
       if (this.loggedInUser) this.$router.push({ path: '/board' })
@@ -96,6 +101,7 @@ export default {
   },
   components: {
     LoginHeader,
+    Range,
   },
 }
 </script>
