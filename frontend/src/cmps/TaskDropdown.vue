@@ -9,7 +9,7 @@
       @click.stop="changeOption(option.name)"
     >
       {{ option.name }}
-      <span v-if="option.name === 'Critical'">
+      <span v-if="option.name === 'Critical'" class="dropdown-critical">
         <span v-html="getSvg('critical')" class="dropdown-critical-icon"></span>
       </span>
     </div>
