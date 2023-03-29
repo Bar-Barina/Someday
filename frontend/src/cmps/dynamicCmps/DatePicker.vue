@@ -11,7 +11,7 @@
       />
     </label>
     <div v-if="value" class="date-preview flex justify-center align-center">
-      {{ value.split("-")[0] + " " + value.split("-")[1] }}
+     <span>{{ value.split("-")[0] + " " + value.split("-")[1] }}</span> 
     </div>
       <div v-if="value" class="reset-date" @click="resetDate">
         <span class="x-icon" v-icon="'closeTxt'"></span>
