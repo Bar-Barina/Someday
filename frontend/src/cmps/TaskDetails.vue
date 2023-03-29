@@ -201,7 +201,7 @@ export default {
     onSelectEmoji(emoji) {
       // this.msg.txt += emoji.i
       // this.$refs.textArea.innerText += emoji.i;
-      this.$refs.textArea.getText() += emoji.i
+      // this.$refs.textArea.getText() += emoji.i
     },
     closeEmojiPick() {
       this.isEmoji = false;
