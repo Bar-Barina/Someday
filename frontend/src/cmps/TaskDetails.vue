@@ -178,7 +178,8 @@ export default {
         imgUrl: "../assets/img/default-user-img.png",
       };
       this.msg.from = from;
-      this.msg.txt = this.$refs.textArea.getHTML();
+      const content = this.$refs.textArea.getText()
+      this.msg.txt = content.getHTML();
       console.log("this.msg.txtt", this.msg.txt);
       // if(this.msg.txt!== "") this.msg.txt.
       socketService.emit(SOCKET_EMIT_SEND_MSG, this.msg);
