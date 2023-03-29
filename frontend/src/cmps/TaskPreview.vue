@@ -143,13 +143,14 @@ export default {
       const taskToSave = { ...this.task }
       if (!cmpType) {
         taskToSave.taskTitle = this.$refs.taskTitle.innerText
-        console.log(taskToSave.taskTitle)
         cmpType = 'taskTitle'
       } else taskToSave[cmpType] = data
-      console.log(this.task[cmpType])
+      console.log(taskToSave[cmpType])
       activity.from = this.task[cmpType]
+      // console.log('from',activity.from)
       if (cmpType === 'taskTitle') activity.to = taskToSave.taskTitle
       else activity.to = data
+      // console.log('to',activity.to)
       activity.changed = cmpType
       activity.taskTitle = this.task.taskTitle
       this.$store.commit({ type: 'setBoardActivity', activity })

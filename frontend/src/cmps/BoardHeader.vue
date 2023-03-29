@@ -64,7 +64,10 @@
         ></div>
       </section>
       <section class="right-up-header flex align-center justify-center">
-        <div class="logged-in-user flex align-center btn-hover">
+        <div
+          class="logged-in-user flex align-center btn-hover"
+          @click="this.showBoardActivity = !this.showBoardActivity"
+        >
           Activity
           <img
             :src="
@@ -75,7 +78,10 @@
             class="member-preview"
           />
         </div>
-        <BoardActivity v-if="showBoardActivity" />
+        <BoardActivity
+          v-if="showBoardActivity"
+          v-clickOutside="closeActivity"
+        />
 
         <div class="invite flex align-center btn-hover">
           <div class="icon">
@@ -337,6 +343,9 @@ export default {
     removeMemberFilter() {
       this.$store.commit({ type: 'updateActiveMember' })
     },
+    closeActivity() {
+      this.showBoardActivity = false
+    }
   },
   watch: {
     '$route.params': {

@@ -7,17 +7,17 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 500px;
+  width: 750px;
   height: 100vh;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   z-index: 10000;
-h2 {
+  h2 {
     color: #323338;
     font-size: 20px;
     span {
-        font-weight: 500;
+      font-weight: 500;
     }
-}
+  }
   .board-activity {
     display: flex;
     position: relative;
@@ -28,14 +28,16 @@ h2 {
     border-bottom: 1px solid lightgray;
     margin: 20px;
     padding-bottom: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     .member-preview {
       width: 30px;
-     margin: 15px;
+      margin: 15px;
     }
     .time-icon {
-        svg {
-            margin-top: -3px;
-        }
+      svg {
+        margin-top: -3px;
+      }
     }
   }
   .status-img {
@@ -46,7 +48,7 @@ h2 {
   }
   .arrow-right {
     svg {
-        fill: #c4c4c4;
+      fill: #c4c4c4;
     }
   }
 }
@@ -58,7 +60,7 @@ h2 {
   min-width: 89.14px;
   height: 39px;
   padding: 5px;
-//   color: $clr2;
+    color: $clr2;
   border-radius: 3px;
   text-align: center;
 }
@@ -78,15 +80,24 @@ h2 {
   height: 30px;
 }
 
-.Critical{
-    background-color: $clr34;
-  }
-  .High {
-    background-color: $clr35;
-  }
-  .Medium {
-    background-color: $clr36;
-  }
-  .Low {
-    background-color: $clr37;
-  }
+.Critical {
+  background-color: $clr34;
+}
+.High {
+  background-color: $clr35;
+}
+.Medium {
+  background-color: $clr36;
+}
+.Low {
+  background-color: $clr37;
+}
+
+.timeline {
+  width: 117.3px px;
+  height: 22px;
+  background-color: #2188c1;
+  color: white;
+  border-radius: 10px;
+  font-size: 12px;
+}
