@@ -3,16 +3,28 @@
 //     // src: url(../../fonts/Caveat/Caveat-Regular.ttf);
 // }
 // @font-face {
-//   font-family: Figtree;
-//   src: url('https://fonts.googleapis.com/css2?family=Figtree&display=swap');
-// }
-
-// @font-face {
 //   font-family: Poppins;
 //   src: url('./fonts/Poppins-Medium.ttf');
 //   font-weight: normal;
 //   font-style: normal;
 // }
+
+@font-face {
+    font-family: Figtree;
+    src: url('https://fonts.googleapis.com/css2?family=Figtree&display=swap');
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url('../fonts/Poppins-semiBold.ttf');
+}
+
+@font-face {
+    font-family: PoppinsMedium;
+    src: url('../fonts/Poppins-Medium.ttf');
+}
+
+
 
 $mainFont: 'Figtree', sans-serif;
 $Poppins: 'PoppinsSemiBold', sans-serif;

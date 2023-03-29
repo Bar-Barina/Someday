@@ -1,15 +1,15 @@
 <template>
   <LoginHeader />
   <div v-if="loggedInUser" class="logged-in">
+    <button @click="doLogout" class="logout">Log out</button>
     <h3>
       Get things done,
       {{ loggedInUser.fullname }} !
       <br />
     </h3>
-    <button @click="doLogout" class="logout">Logout</button>
-    <!-- <RouterLink to="/board">
-      <button @click="doLogout">Get your first board right NOW!</button>
-    </RouterLink> -->
+    <RouterLink :to="`/board/${firstBoard}`">
+      <button class="get-started-login">Get started!</button>
+    </RouterLink>
   </div>
   <div v-else></div>
   <section v-else>
@@ -97,6 +97,9 @@ export default {
     },
     loggedInUser() {
       return this.$store.getters.loggedInUser
+    },
+    firstBoard() {
+      return this.$store.getters.boards[0]._id
     },
   },
   components: {

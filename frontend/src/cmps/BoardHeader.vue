@@ -290,7 +290,6 @@ export default {
     },
     updateBoard() {
       const board = JSON.parse(JSON.stringify(this.currBoard))
-      board.description = this.$refs.boardDesc.innerText
       board.title = this.$refs.boardTitle.innerText
       this.$store.dispatch({ type: 'updateBoard', board })
     },

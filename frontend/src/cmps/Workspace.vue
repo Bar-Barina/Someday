@@ -64,8 +64,8 @@
             <Draggable v-for="(board, idx) in filteredBoards"
             :key="idx"
             @click="moveToBoard(board, idx)"
-            :class="{ 'selected-board': currBoard._id === board._id }"
-            class="flex align-center workspace-boards pointer">
+            class="flex align-center workspace-boards pointer"
+            :class="{ 'selected-board': currBoard._id === board._id }">
               <BoardTitlePreview :board="board" @removeBoard="removeBoard" />
             </Draggable>
         </Container>
