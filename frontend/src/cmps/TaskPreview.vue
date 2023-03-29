@@ -156,6 +156,7 @@ export default {
       const board = JSON.parse(JSON.stringify(this.$store.getters.currBoard))
       if(!board.activities) board.activities = []
       board.activities.push(activity)
+      this.$store.dispatch({type: 'updateBoard' , board})
       this.$emit('saveTask', taskToSave)
     },
     openCon() {
