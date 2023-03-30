@@ -11,6 +11,7 @@
       :options="labels"
       :type="'status'"
       @updateOption="updateStatus"
+      @updateOptions="updateOptions"
       optionClass="status-option"
     />
     <span class="peeling-span scale-up-tr"></span>
@@ -48,6 +49,9 @@ export default {
     closeModal() {
       this.showDropdown = false
     },
+    updateOptions(options) {
+       this.$emit('updateOptions',options)
+    }
   },
   computed: {
     labels() {

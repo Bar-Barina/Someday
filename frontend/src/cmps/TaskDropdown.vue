@@ -35,20 +35,26 @@
       :key="idx"
       contenteditable="true"
       @click.stop
-      @focusout="changeOption(option.name)"
+      ref="`editableLabel + ${idx}`"
+      @focusout=""
     >
+      <!-- COLOR -->
       <span
-        @click="showColorPicker = !showColorPicker"
+        @click="toggleColorPicker(option, idx)"
         v-icon="'editLabelsColor'"
         class="edit-labels-color"
         :style="{ 'background-color': option.color }"
       ></span>
       {{ option.name }}
     </div>
-    <div v-if="showEditLabels" class="edit-labels" @click.stop="saveLabel">
-      <span>Apply</span>
+    <ColorPicker
+      v-if="showColorPicker"
+      class="edit-color-picker"
+      @updateColor="updateLabelColor"
+    />
+    <div v-if="showEditLabels" class="edit-labels">
+      <span @click="showEditLabels = false">Apply</span>
     </div>
-    <ColorPicker v-if="showColorPicker" class="edit-color-picker" />
   </section>
 </template>
 
@@ -64,18 +70,29 @@ export default {
     return {
       showEditLabels: false,
       showColorPicker: false,
+      currOption: {},
     }
   },
   methods: {
     changeOption(optionName) {
-      console.log('optionName',optionName)
+      console.log('optionName', optionName)
       this.$emit('updateOption', optionName)
     },
     getSvg(iconName) {
       return svgService.getSvg(iconName)
     },
+    updateLabelColor({ data }) {
+      const updatedOptions = JSON.parse(JSON.stringify(this.options))
+      this.currOption.option.color = data
+      updatedOptions[this.type].splice(this.currOption.idx,1,this.currOption)
+      this.$emit('updateOptions',updatedOptions)
+    },
+    toggleColorPicker(option,idx) {
+      this.currOption = { option:{...option}, idx }
+      console.log('this.currOption',this.currOption)
+      this.showColorPicker = !this.showColorPicker
+    },
   },
-  computed: {},
   components: {
     ColorPicker,
   },

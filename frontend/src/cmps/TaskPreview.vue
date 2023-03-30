@@ -80,6 +80,7 @@
         :task="task"
         :group="group"
         @updateTask="updateTask"
+        @updateOptions="updateOptions"
       ></component>
     </section>
     <EmptyProgress class="last" :style="{ width: 'auto' }" />
@@ -148,11 +149,9 @@ export default {
       } else {
         taskToSave[cmpType] = data
         activity.to = data
-        // console.log('to', activity.to)
       }
       if (before) activity.from = before
       else activity.from = this.task[cmpType]
-      // console.log('from', activity.from)
       activity.changed = cmpType
       activity.taskTitle = this.task.taskTitle
       if (!taskToSave.activities) taskToSave.activities = []
@@ -180,6 +179,11 @@ export default {
         this.isSelected = false
         this.$emit('removeSelected', this.task.id)
       }
+    },
+    updateOptions(options) {
+      const board = JSON.parse(JSON.stringify(this.currBoard))
+      board.labels = options
+      this.$store.dispatch({ type: 'updateBoard', board })
     },
   },
   computed: {
