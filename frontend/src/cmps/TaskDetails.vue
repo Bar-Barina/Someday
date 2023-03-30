@@ -43,25 +43,33 @@
           </div>
         </div>
         <div class="up-nav flex align-center">
-          <div class="view-option-container" :class="{ active: active === '' }" @click="changeView()">
+          <div
+            class="view-option-container"
+            :class="{ active: active === '' }"
+            @click="changeView()"
+          >
             <div class="view-option btn-hover flex align-center">
               <span class="icon" v-html="getSvg('noFillHome')"></span>
               Updates
             </div>
           </div>
-<!-- 
+          <!-- 
           <div class="view-option-container">
             <div class="view-option btn-hover flex align-center">Files</div>
           </div> -->
 
-          <div class="view-option-container" :class="{ active: active === 'activities' }" @click="changeView('activities')">
+          <div
+            class="view-option-container"
+            :class="{ active: active === 'activities' }"
+            @click="changeView('activities')"
+          >
             <div class="view-option btn-hover flex align-center">
               Activity Log
             </div>
           </div>
         </div>
       </section>
-      <section v-if="active===''" class="bottom-chat">
+      <section v-if="active === ''" class="bottom-chat">
         <input
           v-if="!isEditor"
           @focus="toggleIsEditor(true)"
@@ -80,10 +88,13 @@
             placeholder="Write an update..."
             @input="onUserInput"
           />
-        <small v-if="typing">{{ getTyping }}...</small>
+          <small v-if="typing">{{ getTyping }}...</small>
         </div>
       </section>
-      <section  v-if="active===''" class="nav-btn flex space-between align-center">
+      <section
+        v-if="active === ''"
+        class="nav-btn flex space-between align-center"
+      >
         <div class="conversation-middle-nav">
           <div
             class="middle-nav-btn btn-hover flex align-center"
@@ -102,7 +113,7 @@
         </div>
         <button class="update-btn" @click.stop="addMsg">Update</button>
       </section>
-      <section v-if="task.msgs.length > 0 && active===''" class="task-msgs">
+      <section v-if="task.msgs.length > 0 && active === ''" class="task-msgs">
         <MsgPreview
           v-for="msg in task.msgs"
           :key="msg"
@@ -110,7 +121,7 @@
           @updateTask="updateTask"
         />
       </section>
-      <section v-if="task.msgs.length === 0 && active===''">
+      <section v-if="task.msgs.length === 0 && active === ''">
         <img
           src="https://cdn.monday.com/images/pulse-page-empty-state.svg"
           class="hands"
@@ -121,8 +132,8 @@
           files to share with your team members
         </p>
       </section>
-      <section v-if="active==='activities'" class="task-activities">
-        <h1>hiiiii bar</h1>
+      <section v-if="active === 'activities'" class="task-activities">
+        <Activity :task="this.task" />
       </section>
     </section>
   </div>
@@ -135,73 +146,75 @@ import {
   SOCKET_EMIT_ADD_MSG,
   SOCKET_EMIT_SET_TOPIC,
   SOCKET_EVENT_TYPING,
-} from "../services/socket.service";
-import { svgService } from "../services/svg.service.js";
-import MsgPreview from "./MsgPreview.vue";
-import EmojiPicker from "vue3-emoji-picker";
-import "vue3-emoji-picker/css";
-import { clickOutside } from "../directives.js";
-import { QuillEditor } from "@vueup/vue-quill";
-import "@vueup/vue-quill/dist/vue-quill.snow.css";
-import { userService } from "../services/user.service";
-import { utilService } from "../services/util.service.js";
+} from '../services/socket.service'
+import { svgService } from '../services/svg.service.js'
+import MsgPreview from './MsgPreview.vue'
+import EmojiPicker from 'vue3-emoji-picker'
+import 'vue3-emoji-picker/css'
+import { clickOutside } from '../directives.js'
+import { QuillEditor } from '@vueup/vue-quill'
+import '@vueup/vue-quill/dist/vue-quill.snow.css'
+import { userService } from '../services/user.service'
+import { utilService } from '../services/util.service.js'
+import Activity from '../cmps/Activity.vue'
 
 export default {
-  name: "TaskDetails",
+  name: 'TaskDetails',
   data() {
     return {
-      active: "",
+      active: '',
       task: null,
       isEmoji: false,
       msg: {
-        txt: "",
+        txt: '',
         from: null,
         liked: [],
       },
-      textArea: "",
+      textArea: '',
       overlayVisible: false,
       isEditor: false,
-      typing: "",
+      typing: '',
       msgs: [],
-  }},
+    }
+  },
   methods: {
     getSvg(iconName) {
-      return svgService.getSvg(iconName);
+      return svgService.getSvg(iconName)
     },
     updateTaskTitle() {
-      this.task.taskTitle = this.$refs.taskTitle.innerText;
-      this.group.tasks.splice(this.taskIdx, 1, this.task);
-      this.updateTask();
+      this.task.taskTitle = this.$refs.taskTitle.innerText
+      this.group.tasks.splice(this.taskIdx, 1, this.task)
+      this.updateTask()
     },
     addMsg() {
-      const user = userService.getLoggedInUser();
+      const user = userService.getLoggedInUser()
       const from = user || {
-        accountName: "Guest",
+        accountName: 'Guest',
         imgUrl: 'https://cdn1.monday.com/dapulse_default_photo.png',
-      };
-      
-      this.msg.from = from;
+      }
+
+      this.msg.from = from
       this.msg.txt = this.$refs.textArea.getHTML()
-      this.msg.createdAt= Date.now()
+      this.msg.createdAt = Date.now()
       // this.msg.txt = content.getHTML();
       // if(this.msg.txt!== "") this.msg.txt.
-      socketService.emit(SOCKET_EMIT_SEND_MSG, this.msg);
-      const msgToAdd = { ...this.msg };
-      this.task.msgs.unshift(msgToAdd);
-      this.group.tasks.splice(this.taskIdx, 1, this.task);
-      this.updateTask();
+      socketService.emit(SOCKET_EMIT_SEND_MSG, this.msg)
+      const msgToAdd = { ...this.msg }
+      this.task.msgs.unshift(msgToAdd)
+      this.group.tasks.splice(this.taskIdx, 1, this.task)
+      this.updateTask()
       // this.$refs.textArea.innerText = "";
-      this.msg.txt = "";
-      this.msg.from = "";
+      this.msg.txt = ''
+      this.msg.from = ''
       this.msg.createdAt = ''
     },
     updateTask() {
-      const toUpdate = { group: this.group, task: this.task };
-      this.$store.dispatch({ type: "saveTask", toUpdate });
-      this.msg.txt = "";
+      const toUpdate = { group: this.group, task: this.task }
+      this.$store.dispatch({ type: 'saveTask', toUpdate })
+      this.msg.txt = ''
     },
     emojiPick() {
-      this.isEmoji = !this.isEmoji;
+      this.isEmoji = !this.isEmoji
     },
     onSelectEmoji(emoji) {
       // this.msg.txt += emoji.i
@@ -209,96 +222,97 @@ export default {
       // this.$refs.textArea.getText() += emoji.i
     },
     closeEmojiPick() {
-      this.isEmoji = false;
+      this.isEmoji = false
     },
     updateContent() {
       // this.textArea = this.$refs.textArea.innerHTML
     },
     toggleIsEditor(value = false) {
-      console.log('this.msg.txt',this.msg.txt)
+      console.log('this.msg.txt', this.msg.txt)
       if (this.msg.txt.length > 1 || value) {
         console.log('true')
-        this.isEditor = true;
+        this.isEditor = true
       } else {
-        this.isEditor = value;
+        this.isEditor = value
       }
     },
     closeChat() {
-      this.$router.push(`/board/${this.currBoard._id}`);
+      this.$router.push(`/board/${this.currBoard._id}`)
     },
     onUserInput() {
-      let user = userService.getLoggedInUser();
-      if (!user) socketService.emit("user-typing" , '');
-      else socketService.emit("user-typing", user._id);
-      this.onUserStopInputDeb();
+      let user = userService.getLoggedInUser()
+      if (!user) socketService.emit('user-typing', '')
+      else socketService.emit('user-typing', user._id)
+      this.onUserStopInputDeb()
     },
     onUserStopInput() {
-      console.log("stop typing:");
-      socketService.emit("user-typing", "");
+      console.log('stop typing:')
+      socketService.emit('user-typing', '')
     },
     renderTyping(msg) {
-      console.log("msg!!", msg);
-      this.typing = msg;
+      console.log('msg!!', msg)
+      this.typing = msg
     },
     changeTopic() {
-      socketService.emit(SOCKET_EMIT_SET_TOPIC, this.topic);
+      socketService.emit(SOCKET_EMIT_SET_TOPIC, this.topic)
     },
     recieveMsg(msg) {
       this.task.msgs.unshift(msg)
     },
-    changeView(view='') {
+    changeView(view = '') {
       this.active = view
-    }
+    },
   },
   watch: {
-    "$route.params": {
+    '$route.params': {
       async handler() {
-        const { taskId } = this.$route.params;
-        if (!taskId) return;
-        this.group = JSON.parse(JSON.stringify(this.currGroup));
+        const { taskId } = this.$route.params
+        if (!taskId) return
+        this.group = JSON.parse(JSON.stringify(this.currGroup))
         this.task = JSON.parse(
           JSON.stringify(this.group.tasks.find((t) => t.id === taskId))
-        );
+        )
       },
       immediate: true,
     },
   },
   computed: {
     currBoard() {
-      return this.$store.getters.currBoard;
+      return this.$store.getters.currBoard
     },
     currGroup() {
-      return this.$store.getters.currGroup;
+      return this.$store.getters.currGroup
     },
     taskIdx() {
-      return this.group.tasks.findIndex((t) => t.id === this.task.id);
+      return this.group.tasks.findIndex((t) => t.id === this.task.id)
     },
     openTextArea() {
-      return this.msg.txt !== "";
+      return this.msg.txt !== ''
       // return this.$refs.textArea.innerText !== ''
     },
     getTyping() {
-      return this.typing;
+      return this.typing
     },
     user() {
       return userService.getLoggedInUser()
-    }
+    },
   },
   created() {
-    socketService.emit(SOCKET_EMIT_SET_TOPIC, this.task.id);
-    socketService.on(SOCKET_EMIT_SEND_MSG, this.addMsg);
-    socketService.on(SOCKET_EMIT_ADD_MSG, this.recieveMsg);
-    socketService.on(SOCKET_EVENT_TYPING, this.renderTyping);
+    socketService.emit(SOCKET_EMIT_SET_TOPIC, this.task.id)
+    socketService.on(SOCKET_EMIT_SEND_MSG, this.addMsg)
+    socketService.on(SOCKET_EMIT_ADD_MSG, this.recieveMsg)
+    socketService.on(SOCKET_EVENT_TYPING, this.renderTyping)
     // socketService.on(SOCKET_EVENT_ADD_MSGS, msgs => msgs.forEach(this.addMsg))
-    this.onUserStopInputDeb = utilService.debounce(this.onUserStopInput, 800);
+    this.onUserStopInputDeb = utilService.debounce(this.onUserStopInput, 800)
   },
   destroyed() {
-    socketService.off(SOCKET_EVENT_ADD_MSG, this.addMsg);
+    socketService.off(SOCKET_EVENT_ADD_MSG, this.addMsg)
   },
   components: {
     MsgPreview,
     EmojiPicker,
     QuillEditor,
+    Activity,
   },
-};
+}
 </script>
