@@ -43,25 +43,25 @@
           </div>
         </div>
         <div class="up-nav flex align-center">
-          <div class="view-option-container" :class="{ active: active === '' }">
+          <div class="view-option-container" :class="{ active: active === '' }" @click="changeView()">
             <div class="view-option btn-hover flex align-center">
               <span class="icon" v-html="getSvg('noFillHome')"></span>
               Updates
             </div>
           </div>
-
+<!-- 
           <div class="view-option-container">
             <div class="view-option btn-hover flex align-center">Files</div>
-          </div>
+          </div> -->
 
-          <div class="view-option-container">
+          <div class="view-option-container" :class="{ active: active === 'activities' }" @click="changeView('activities')">
             <div class="view-option btn-hover flex align-center">
               Activity Log
             </div>
           </div>
         </div>
       </section>
-      <section class="bottom-chat">
+      <section v-if="active===''" class="bottom-chat">
         <input
           v-if="!isEditor"
           @focus="toggleIsEditor(true)"
@@ -80,10 +80,10 @@
             placeholder="Write an update..."
             @input="onUserInput"
           />
-        </div>
         <small v-if="typing">{{ getTyping }}...</small>
+        </div>
       </section>
-      <section class="nav-btn flex space-between align-center">
+      <section  v-if="active===''" class="nav-btn flex space-between align-center">
         <div class="conversation-middle-nav">
           <div
             class="middle-nav-btn btn-hover flex align-center"
@@ -102,7 +102,7 @@
         </div>
         <button class="update-btn" @click.stop="addMsg">Update</button>
       </section>
-      <section v-if="task.msgs.length > 0" class="task-msgs">
+      <section v-if="task.msgs.length > 0 && active===''" class="task-msgs">
         <MsgPreview
           v-for="msg in task.msgs"
           :key="msg"
@@ -110,7 +110,7 @@
           @updateTask="updateTask"
         />
       </section>
-      <section v-else>
+      <section v-if="task.msgs.length === 0 && active===''">
         <img
           src="https://cdn.monday.com/images/pulse-page-empty-state.svg"
           class="hands"
@@ -120,6 +120,9 @@
           Be the first one to update about progress, mention someone or upload
           files to share with your team members
         </p>
+      </section>
+      <section v-if="active==='activities'" class="task-activities">
+        <h1>hiiiii bar</h1>
       </section>
     </section>
   </div>
@@ -174,17 +177,14 @@ export default {
       const user = userService.getLoggedInUser();
       const from = user || {
         accountName: "Guest",
-        imgUrl: "https://cdn.monday.com/images/pulse-page-empty-state.svg",
+        imgUrl: 'https://cdn1.monday.com/dapulse_default_photo.png',
       };
-      console.log("user", user);
+      
       this.msg.from = from;
       this.msg.txt = this.$refs.textArea.getHTML()
-      this.msg.createdAt=Date.now()
+      this.msg.createdAt= Date.now()
       // this.msg.txt = content.getHTML();
-      console.log("this.msg.txtt", this.msg.txt);
       // if(this.msg.txt!== "") this.msg.txt.
-      console.log('here')
-      console.log('this.msg', this.msg)
       socketService.emit(SOCKET_EMIT_SEND_MSG, this.msg);
       const msgToAdd = { ...this.msg };
       this.task.msgs.unshift(msgToAdd);
@@ -193,6 +193,7 @@ export default {
       // this.$refs.textArea.innerText = "";
       this.msg.txt = "";
       this.msg.from = "";
+      this.msg.createdAt = ''
     },
     updateTask() {
       const toUpdate = { group: this.group, task: this.task };
@@ -244,6 +245,9 @@ export default {
     },
     recieveMsg(msg) {
       this.task.msgs.unshift(msg)
+    },
+    changeView(view='') {
+      this.active = view
     }
   },
   watch: {
