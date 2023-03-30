@@ -202,19 +202,19 @@
     }
     
     .top {
-      animation: animateTop 2.2s ease-in-out infinite;
+      animation: animateTop 2.7s ease-in-out infinite;
     }
     
     .bottom {
-      animation: animateBottom 2.2s ease-in-out infinite;
+      animation: animateBottom 2.7s ease-in-out infinite;
     }
     
     .right {
-      animation: animateRight 2.2s ease-in-out infinite;
+      animation: animateRight 2.7s ease-in-out infinite;
     }
     
     .left {
-      animation: animateLeft 2.2s ease-in-out infinite;
+      animation: animateLeft 2.7s ease-in-out infinite;
     }
     
     @keyframes animateTop {
@@ -384,4 +384,15 @@
 
 .openai-container {
   width: 100%;
+}
+
+.component-push-enter-active, .component-push-leave-active {
+  transition: transform 0.5s;
+}
+.component-push-enter {
+  transform: translateY(-400%);
+}
+.component-push-leave-to {
+  transform: translateY(300%);
+  opacity: 0.5;
 }

@@ -1,15 +1,15 @@
 <template>
   <section class="openai-container">
-    <h5>Open Ai Test</h5>
     <div class="chat-container">
       <div class="msg">
         <span class="title">AI:</span><span>What is your board subject?</span>
       </div>
-      <input class="open-ai-input" type="text" v-model="txt" />
-      <button @click="sendQ">Send</button>
+      <div class="send-section flex align-center">
+      <input class="open-ai-input" type="text" placeholder="Write your subject" v-model="txt" />
+      <span class="send" v-icon="'sendOpenAI'" @click="sendQ"></span>
+      </div>
       <span v-if="isLoading">Loading....</span>
     </div>
-    <button @click="closeAI">Close</button>
   </section>
 </template>
 
