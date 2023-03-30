@@ -28,7 +28,7 @@
     overflow-y: scroll;
     overflow-x: hidden;
     .activity-list {
-      padding: 0 8px 0 25px;
+      padding: 0 8px 10px 25px;
     }
     &::-webkit-scrollbar-thumb {
       background-color: rgb(149, 149, 149);
@@ -51,6 +51,9 @@
     margin: 0 10px;
     text-overflow: ellipsis;
     white-space: nowrap;
+    .img-span {
+    min-width: 100px;
+    }
     .member-preview {
       width: 30px;
       margin: 15px;
@@ -146,7 +149,7 @@ svg {
 }
 
 .activity-time {
-  min-width: 22px;
+  min-width: 25px;
 }
 
 .activity-icons {
@@ -162,6 +165,9 @@ svg {
   background-color: $clr2;
   z-index: 10000;
   transition: 0.3s;
+  .activity-list {
+    padding: 0 13px 0 0;
+  }
   .board-activity {
     display: grid;
     grid-template-columns: 180px 1fr 190px;
@@ -202,7 +208,6 @@ svg {
   width: fit-content;
   min-width: 89.14px;
   height: 39px;
-  // padding: 5px;
   border-radius: 3px;
   text-align: center;
   white-space: nowrap;
@@ -210,18 +215,6 @@ svg {
   text-overflow: ellipsis;
 }
 
-.Working.on.it {
-  color: $clr2;
-  background-color: $clr10;
-}
-.Done {
-  color: $clr2;
-  background-color: $clr11;
-}
-.Stuck {
-  color: $clr2;
-  background-color: $clr12;
-}
 .Blank {
   color: $clr2;
   background-color: $clr45;
@@ -229,22 +222,6 @@ svg {
   height: 30px;
 }
 
-.Critical {
-  color: $clr2;
-  background-color: $clr34;
-}
-.High {
-  color: $clr2;
-  background-color: $clr35;
-}
-.Medium {
-  color: $clr2;
-  background-color: $clr36;
-}
-.Low {
-  color: $clr2;
-  background-color: $clr37;
-}
 
 .timeline {
   width: 117.3px px;
@@ -267,7 +244,8 @@ svg {
 }
 
 .activity-time {
-  min-width: 22px;
+  min-width: 26px;
+  max-width: 25px;
 }
 
 .activity-icons {

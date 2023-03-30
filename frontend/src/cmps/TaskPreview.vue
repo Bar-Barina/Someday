@@ -139,23 +139,22 @@ export default {
       return svgService.getSvg(iconName);
     },
     updateTask({ cmpType, data }) {
-      const activity = boardService.getEmptyActivity();
-      const taskToSave = { ...this.task };
+      const activity = boardService.getEmptyActivity()
+      const taskToSave = { ...this.task }
       if (!cmpType) {
-        taskToSave.taskTitle = this.$refs.taskTitle.innerText;
-        cmpType = "taskTitle";
-        activity.to = taskToSave.taskTitle;
+        taskToSave.taskTitle = this.$refs.taskTitle.innerText
+        cmpType = "taskTitle"
+        activity.to = taskToSave.taskTitle
       } else {
-        taskToSave[cmpType] = data;
-        activity.to = data;
+        taskToSave[cmpType] = data
+        activity.to = data
       }
-      activity.from = this.task[cmpType];
-      console.log("activity", activity);
-      activity.changed = cmpType;
+      activity.from = this.task[cmpType]
+      activity.changed = cmpType
       activity.taskTitle = this.task.taskTitle;
       if (!taskToSave.activities) taskToSave.activities = [];
-      taskToSave.activities.push(activity);
-      this.$emit("saveTask", taskToSave);
+      taskToSave.activities.push(activity)
+      this.$emit("saveTask", taskToSave)
     },
     openCon() {
       this.isSelected = true;
