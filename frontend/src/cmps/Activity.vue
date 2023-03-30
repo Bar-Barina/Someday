@@ -98,7 +98,8 @@
                 Blank:
                   activity.to === '' &&
                   activity.changed !== 'timeline' &&
-                  activity.changed !== 'date',
+                  activity.changed !== 'date' && 
+                  activity.changed !== 'taskTitle',
                 [activity.to]:
                   activity.changed === 'status' ||
                   activity.changed === 'priority',
