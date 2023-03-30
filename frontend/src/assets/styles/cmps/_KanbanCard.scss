@@ -178,15 +178,15 @@
     padding-left: -5px !important;
     .day-diff {
       position: absolute;
-      top: -5px;
-      right: 55px;
+      top: -5px !important;
+      right: 53px !important;
       display: none;
     }
     .date-diff {
       font-size: 13px;
       position: absolute;
-      top: -5px;
-      right: 17px;
+      top: -5px !important;
+      right: 18px !important;
     }
 
     .bar-precent {

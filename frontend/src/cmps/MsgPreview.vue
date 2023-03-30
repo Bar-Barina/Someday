@@ -6,7 +6,11 @@
         {{ msg.from.accountName }}
       </div>
       <div class="header-info flex align-center">
+        <div class="flex align-center">
         <span v-icon="'msgClock'" className="icon"></span>
+          <span class="createdAt-preview" >{{ timeSince(msg.createdAt) }}</span>
+        </div>
+
         <span v-icon="'msgDots'" className="icon"></span>
       </div>
     </section>
@@ -41,6 +45,11 @@
 
 <script>
 import { icon } from '../directives.js'
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
+TimeAgo.addDefaultLocale(en)
+const timeAgo = new TimeAgo('en-US')
+
 export default {
   name: 'MsgPreview',
   props: {
@@ -50,18 +59,20 @@ export default {
     return {}
   },
   created() {
-    console.log('this.msg from msgprev', this.msg)
   },
   methods: {
     toggleLike() {
       if (this.msg.liked.includes(this.msg.from)) {
-        console.log('this.msg', this.msg)
         const likedIdx = this.msg.liked.findIndex(
           (from) => from === this.msg.from
         )
         console.log('likedIdx', likedIdx)
         this.msg.liked.splice(likedIdx, 1)
       } else this.msg.liked.push(this.msg.from)
+    },
+    timeSince(date) {
+      const timeAgoInstance = timeAgo.format(new Date(date), 'mini')
+      return timeAgoInstance
     },
   },
   computed: {

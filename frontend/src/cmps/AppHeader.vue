@@ -11,17 +11,17 @@
       </span>
     </div>
     <section class="header-login-started flex align-center">
-    <router-link to="/Login">
-      <button class="login">Log in / Sign up</button>
-    </router-link>
-    <RouterLink :to="`/board/${firstBoard}`"
-      ><button class="start-btn">
-        Get Started
-        <span class="arrow"
-          ><div className="arrow" v-html="getSvg('arrow')"></div
-        ></span></button
-    ></RouterLink>
-  </section>
+      <router-link to="/Login">
+        <button class="login">Log in</button>
+      </router-link>
+      <RouterLink :to="`/board/${firstBoard}`"
+        ><button class="start-btn">
+          Get Started
+          <span class="arrow"
+            ><div className="arrow" v-html="getSvg('arrow')"></div
+          ></span></button
+      ></RouterLink>
+    </section>
   </header>
 </template>
 
