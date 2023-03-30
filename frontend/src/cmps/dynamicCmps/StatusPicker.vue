@@ -32,10 +32,10 @@ export default {
   data() {
     return {
       statusOptions: [
-        { name: 'Working on it', class: 'status-working' },
-        { name: 'Stuck', class: 'status-stuck' },
-        { name: 'Done', class: 'status-done' },
-        { name: '', class: 'status-empty' },
+        { name: 'Working on it', class: 'status-working' ,color: '#fdab3d'},
+        { name: 'Stuck', class: 'status-stuck',color: '#e2445c' },
+        { name: 'Done', class: 'status-done',color: '#00c875' },
+        { name: '', class: 'status-empty',color: '#c3c4c3' },
       ],
       showDropdown: false,
       selectedStatus: this.task.status,
