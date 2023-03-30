@@ -9,6 +9,7 @@
   background-color: $clr2;
   z-index: 10000;
   transition: 0.3s;
+  border-left: 10px solid #999a9c;
   .activity-header {
     margin-top: 27px;
     padding: 0 25px;
@@ -27,7 +28,7 @@
     overflow-y: scroll;
     overflow-x: hidden;
     .activity-list {
-      padding: 0 8px 0 25px;
+      padding: 0 8px 10px 25px;
     }
     &::-webkit-scrollbar-thumb {
       background-color: rgb(149, 149, 149);
@@ -50,6 +51,9 @@
     margin: 0 10px;
     text-overflow: ellipsis;
     white-space: nowrap;
+    .img-span {
+      min-width: 100px;
+    }
     .member-preview {
       width: 30px;
       margin: 15px;
@@ -145,7 +149,101 @@ svg {
 }
 
 .activity-time {
-  min-width: 22px;
+  min-width: 25px;
+}
+
+.activity-icons {
+  margin-left: 35px;
+}
+
+.task-activity-container {
+  display: grid;
+  top: 0;
+  right: 0;
+  width: 550px;
+  height: 100vh;
+  background-color: $clr2;
+  z-index: 10000;
+  transition: 0.3s;
+  .activity-list {
+    padding: 0 13px 0 0;
+  }
+  .board-activity {
+    display: grid;
+    grid-template-columns: 180px 1fr 190px;
+    position: relative;
+    align-items: center;
+    font-size: 14px;
+    border-bottom: 1px solid rgb(180, 180, 180);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    .member-preview {
+      width: 30px;
+      margin: 15px;
+      margin-right: 7px;
+    }
+    .time-icon {
+      svg {
+        margin-top: -3px;
+      }
+    }
+  }
+  .status-img {
+    height: 10px;
+    width: 15px;
+    margin-right: 3px;
+    margin-top: 2px;
+  }
+  .arrow-right {
+    svg {
+      fill: #c4c4c4;
+    }
+  }
+}
+.activity-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-width: 89.14px;
+  height: 39px;
+  border-radius: 3px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.Blank {
+  color: $clr2;
+  background-color: $clr45;
+  width: 89.14px;
+  height: 30px;
+}
+
+.timeline {
+  width: 117.3px px;
+  height: 22px;
+  background-color: #2188c1;
+  color: white;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+.activity-task-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+svg {
+  width: 22px;
+  fill: rgb(65, 65, 65);
+}
+
+.activity-time {
+  min-width: 26px;
+  max-width: 25px;
 }
 
 .activity-icons {

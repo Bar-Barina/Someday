@@ -19,7 +19,7 @@
       </div>
       <input type="file" @change="readFile($event)" hidden />
     </label>
-    <span class="remove" v-if="task.files.url" @click.stop="removeFile">x</span>
+    <span class="remove flex align-center justify-center" v-if="task.files.url" @click.stop="removeFile"><span class="x-icon" v-icon="'fileX'"></span></span>
   </section>
   <FileInfo
     v-if="showFileInfo"

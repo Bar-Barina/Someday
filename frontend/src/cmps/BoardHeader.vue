@@ -78,7 +78,7 @@
             class="member-preview"
           />
         </div>
-        <BoardActivity
+        <Activity
           v-if="showBoardActivity"
           v-clickOutside="closeActivity"
         />
@@ -266,7 +266,7 @@ import MainPersonFilter from './MainPersonFilter.vue'
 import { utilService } from '../services/util.service.js'
 import { eventBus } from '../services/event-bus.service'
 import BoardDesc from './BoardDesc.vue'
-import BoardActivity from './BoardActivity.vue'
+import Activity from './Activity.vue'
 
 export default {
   name: 'BoardHeader',
@@ -372,7 +372,7 @@ export default {
     MainFilter,
     MainPersonFilter,
     BoardDesc,
-    BoardActivity,
+    Activity,
   },
 }
 </script>
