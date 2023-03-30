@@ -78,14 +78,10 @@ export default {
     },
     color() {
       const labels = this.labels
-      console.log(labels)
       const currLabel = []
       labels.status.forEach((label) => {
-        console.log(this.task.status)
-        console.log(label)
         if (label.name === this.task.status) currLabel.push(label)
       })
-      console.log(currLabel[0].color)
       return currLabel[0].color
     },
   },
