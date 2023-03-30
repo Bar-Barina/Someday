@@ -21,3 +21,30 @@
     height: 1fr;
     margin: 0.5rem;
 }
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 1.5fr,1fr;
+    grid-template-rows: repeat(3,1fr);
+    grid-template-areas:
+    "person-bar status"
+    "person-bar priority"
+    "person-bar .";
+
+    gap: 10px;
+    .status-doughtnut {
+        padding: 10px;
+        grid-area: status;
+    }
+    .person-bar {
+        padding: 10px;
+        margin-top: 40px;
+        grid-area: person-bar;
+    }
+    .priority-doughtnut {
+        // height: 200px;
+        padding: 10px;
+        grid-area: priority;
+    }
+
+}
