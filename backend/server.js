@@ -4,6 +4,15 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 
+const OpenAI = require('openai')
+const { Configuration, OpenAIApi } = OpenAI
+
+const configuration = new Configuration({
+    organization: "org-v9PltONXqwikEb2nUOnNF8cp",
+    apiKey: process.env.OPEN_AI_KEY,
+});
+const openai = new OpenAIApi(configuration);
+
 const app = express()
 const http = require('http').createServer(app)
 
@@ -46,6 +55,28 @@ setupSocketAPI(http)
 app.get('/**', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
+
+app.post('/api/openai', async (req, res) => {
+    const { message } = req.body
+    const response = await openai.createCompletion({
+        model: "text-davinci-003",
+        prompt: `You are a Manager. asnwer with tasks for the person.
+        Person: I need tasks for frontend developers.
+        Manager: 1. Improve User Interface
+        2. Make a login page
+        3. Fix UI.
+        Person: ${message}?`,
+        max_tokens: 60,
+        temperature: 0
+    })
+    console.log('response.data', response.data)
+    if (response.data.choices) {
+        res.json({
+            message: response.data.choices[0].text
+        })
+    }
+})
+
 
 const logger = require('./services/logger.service')
 const port = process.env.PORT || 3030

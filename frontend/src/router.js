@@ -13,6 +13,7 @@ import TaskDetails from './cmps/TaskDetails.vue'
 import Dashboard from './cmps/Dashboard.vue'
 import Signup from './views/Signup.vue'
 import EmailSignup from './views/EmailSignup.vue'
+import OpenAI from './cmps/OpenAI.vue'
 
 const routes = [
   {
@@ -69,6 +70,11 @@ const routes = [
     path: '/signup',
     name: 'Signup',
     component: Signup
+  },
+  {
+    path: '/openai',
+    name: 'Openai',
+    component: OpenAI
   },
   // {
   //   path: '/LoginSignup',
