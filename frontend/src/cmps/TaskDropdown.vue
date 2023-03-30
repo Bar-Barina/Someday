@@ -39,7 +39,6 @@
     {{ option.name }}
   </div>
   <div v-if="showEditLabels" class="edit-labels" @click.stop>
-      <!-- <span v-icon="'editLabels'"></span> -->
       <span>Apply</span>
     </div>
   <ColorPicker v-if="showColorPicker" class="edit-color-picker"/>
