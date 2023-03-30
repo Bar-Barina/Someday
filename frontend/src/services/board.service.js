@@ -29,6 +29,7 @@ async function remove(boardId) {
   return httpService.delete(`board/${boardId}`)
 }
 async function save(board) {
+  console.log('board', board)
   var savedBoard
   if (board._id) {
     // console.log('board._id', board._id)
@@ -271,5 +272,6 @@ function getEmptyTask() {
     files: '',
     text: '',
     msgs: [],
+    activities: []
   }
 }

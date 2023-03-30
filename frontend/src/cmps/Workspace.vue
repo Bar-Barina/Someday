@@ -53,13 +53,14 @@
             v-model="searchTerm"
           />
         </div>
-        <div class="workspace-search flex align-center pointer open-ai">
+        <div @click="isAI = true" class="workspace-search flex align-center pointer open-ai">
           <span v-html="getSvg('OpenAI')" class="workspace-icon"></span>
           <span>Open AI</span>
         </div>
         <br />
         <div class="workspace-line"></div>
         <Container
+        v-if="!isAI"
         class="vertical workspace-container"
         orientation="vertical"
         group-name="boards"
@@ -73,6 +74,7 @@
               <BoardTitlePreview :board="board" @removeBoard="removeBoard" />
             </Draggable>
         </Container>
+        <OpenAI v-if="isAI" @AIboard="addAIboard"/>
       </section>
     </section>
   </section>
@@ -85,6 +87,8 @@ import { svgService } from "../services/svg.service.js";
 import { boardService } from "../services/board.service.local.js";
 import BoardTitlePreview from "../cmps/BoardTitlePreview.vue";
 import { utilService } from '../services/util.service.js';
+import OpenAI from './OpenAI.vue';
+
 export default {
   props: {
     boards: Array,
@@ -96,6 +100,7 @@ export default {
       newBoard: boardService.getEmptyBoard(),
       searchTerm: "",
       selectedBoard: null,
+      isAI: false
     };
   },
   methods: {
@@ -121,6 +126,12 @@ export default {
       boards = utilService.applyDrag(boards, dropResult)
       this.currBoards = boards
     },
+    addAIboard(board) {
+      const boards = this.filteredBoards
+      console.log('boards', boards)
+      const boardIdx = boards.findIndex(b => b._id === board._id)
+      this.moveToBoard(board , boardIdx)
+    }
   },
   computed: {
     // boards() {
@@ -138,6 +149,7 @@ export default {
     BoardTitlePreview,
     Container,
     Draggable,
+    OpenAI
   },
   mounted() {
     setTimeout(() => {

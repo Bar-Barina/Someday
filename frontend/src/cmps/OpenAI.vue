@@ -1,35 +1,51 @@
 <template>
-  <h1>Open Ai Test</h1>
-  <input placeholder="Ask Steve anything" type="text" v-model="txt" />
-  <button @click="sendQ">Send</button>
-  <div class="chat-container">
-    <div class="msg"><span class="title">AI:</span><span>What is your board subject?</span></div>
-    <div class="msg"><span class="title">Me:</span><span ref="userMsg"></span></div>
-    <div class="msg"><span v-if="message" class="title">AI:</span><pre>{{ message}}</pre></div>
-  </div>
+  <section class="open-ai">
+    <h5>Open Ai Test</h5>
+    <div class="chat-container">
+      <div class="msg">
+        <span class="title">AI:</span><span>What is your board subject?</span>
+      </div>
+      <input class="open-ai-input" type="text" v-model="txt" />
+      <button @click="sendQ">Send</button>
+      <span v-if="isLoading">Loading....</span>
+    </div>
+  </section>
 </template>
 
 <script>
 import axios from "axios";
 import { httpService } from "../services/http.service";
+import { boardService } from '../services/board.service';
 export default {
   data() {
     return {
       txt: "",
       res: "",
+      isLoading: false,
     };
   },
   methods: {
     async sendQ() {
+      this.res = this.txt;
+      this.txt = ''
+      this.isLoading = true;
       const url = "http://localhost:3030/api/openai";
-      this.userMsg();
-      const res = await axios.post(url, { message: this.txt });
-      this.res = res.data.message;
-      this.txt = "";
+      let res = await axios.post(url, { message: this.res });
+      res = JSON.parse(res.data.message)
+      const boardToCreate = this.createBoard(res)
+      const board = await this.$store.dispatch({type: 'addBoard' , board: boardToCreate})
+      this.$emit('AIboard' , board)
     },
-    userMsg() {
-      this.$refs.userMsg.innerText = this.txt;
-    },
+    createBoard(res) {
+      const taskAI = boardService.getEmptyTask()
+      delete taskAI.taskTitle
+      res.groups.forEach(group => {
+        group.tasks.forEach(task => {
+          Object.assign(task , taskAI)
+        })
+      })
+      return res
+    }
   },
   computed: {
     message() {
@@ -38,20 +54,3 @@ export default {
   },
 };
 </script>
-
-<style>
-
-.chat-container {
-    width: 400px;
-    display: grid;
-}
-
-.title {
-    padding-inline-end: 10px;
-    font-weight: bold;
-}
-
-.msg {
-    margin: 10px 0;
-}
-</style>
