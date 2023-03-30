@@ -30,24 +30,28 @@ export function getActionAddBoardMsg(boardId) {
 
 export const boardStore = {
   state: {
+    labels: {
+      status: [],
+      priority: [],
+    },
     boards: [],
     currBoard: null,
     currGroup: null,
     filterBy: {
       activeFilters: [],
       txt: '',
-      member: null
+      member: null,
     },
     isBlackScreen: false,
     statuses: ['Working on it', 'Stuck', 'Done', 'Blank'],
     filteredLabels: [
-      "Date",
-      "Text",
-      "Priority",
-      "Person",
-      "Files",
-      "Status",
-      "Timeline",
+      'Date',
+      'Text',
+      'Priority',
+      'Person',
+      'Files',
+      'Status',
+      'Timeline',
     ],
   },
   getters: {
@@ -55,7 +59,11 @@ export const boardStore = {
       return boards
     },
     currBoard({ currBoard, filterBy }) {
-      if (filterBy.txt || filterBy.activeFilters.length > 0 || filterBy.member) {
+      if (
+        filterBy.txt ||
+        filterBy.activeFilters.length > 0 ||
+        filterBy.member
+      ) {
         const boardToFilter = JSON.parse(JSON.stringify(currBoard))
         const filteredBoard = boardService.filterBoard(boardToFilter, filterBy)
         return filteredBoard
@@ -80,6 +88,9 @@ export const boardStore = {
     },
     currActiveMember({ filterBy }) {
       return filterBy.member
+    },
+    labels({ labels }) {
+      return labels
     },
   },
   mutations: {
@@ -144,7 +155,7 @@ export const boardStore = {
     setBoardActivity(state, { activity }) {
       if (!state.currBoard.activities) state.currBoard.activities = []
       state.currBoard.activities.push(activity)
-    }
+    },
   },
   actions: {
     async addBoard(context, { board }) {
@@ -164,7 +175,6 @@ export const boardStore = {
     },
     async updateBoard(context, { board }) {
       try {
-        console.log('board', board)
         board = await boardService.save(board)
         socketService.emit('update-boards', board)
         context.commit(getActionUpdateBoard(board))

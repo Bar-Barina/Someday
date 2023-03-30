@@ -14,12 +14,12 @@ export const boardService = {
   saveTask,
   removeItem,
   filterBoard,
-  getEmptyActivity
+  getEmptyActivity,
 }
 window.cs = boardService
 
 async function query() {
-  return httpService.get(STORAGE_KEY+'/')
+  return httpService.get(STORAGE_KEY + '/')
 }
 function getById(boardId) {
   return httpService.get(`board/${boardId}`)
@@ -29,7 +29,7 @@ async function remove(boardId) {
   return httpService.delete(`board/${boardId}`)
 }
 async function save(board) {
-  console.log('board', board)
+  // console.log('board', board)
   var savedBoard
   if (board._id) {
     // console.log('board._id', board._id)
@@ -66,10 +66,10 @@ function filterBoard(board, filterBy) {
     })
   }
   if (filterBy.member) {
-    filteredBoard.groups = filteredBoard.groups.filter(group => {
-      return group.tasks = group.tasks.filter(task => {
-        return task.person.some(p=>p._id===filterBy.member._id)
-      })
+    filteredBoard.groups = filteredBoard.groups.filter((group) => {
+      return (group.tasks = group.tasks.filter((task) => {
+        return task.person.some((p) => p._id === filterBy.member._id)
+      }))
     })
   }
   return filteredBoard
@@ -82,7 +82,7 @@ function getEmptyActivity() {
     changed: null,
     whatChanged: null,
     from: null,
-    to: null
+    to: null,
   }
 }
 
@@ -140,6 +140,21 @@ function getEmptyBoard() {
   return {
     title: 'New Board',
     members: [],
+    labels: {
+      status: [
+        { id: '101', name: 'Working on it', color: '#fdab3d' },
+        { id: '102', name: 'Stuck', color: '#e2445c' },
+        { id: '103', name: 'Done', color: '#00c875' },
+        { id: '104', name: '', color: '#c3c4c3' },
+      ],
+      priority: [
+        { id: '105', name: 'Critical', color: '#333333' },
+        { id: '106', name: 'High', color: '#401694' },
+        { id: '107', name: 'Medium', color: '#5559df' },
+        { id: '108', name: 'Low', color: '#579bfc' },
+        { id: '109', name: '', color: '#c3c4c3' },
+      ],
+    },
     groups: [
       {
         title: 'Frontend',
@@ -272,6 +287,6 @@ function getEmptyTask() {
     files: '',
     text: '',
     msgs: [],
-    activities: []
+    activities: [],
   }
 }
