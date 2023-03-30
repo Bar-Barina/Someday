@@ -143,10 +143,10 @@
   text-overflow: ellipsis;
 }
 
-svg {
-  width: 22px;
-  fill: rgb(65, 65, 65);
-}
+// svg {
+//   width: 22px;
+//   fill: rgb(65, 65, 65);
+// }
 
 .activity-time {
   min-width: 25px;
@@ -188,6 +188,12 @@ svg {
       }
     }
   }
+
+  svg {
+    width: 22px;
+    fill: rgb(65, 65, 65);
+  }
+  
   .status-img {
     height: 10px;
     width: 15px;
@@ -234,11 +240,6 @@ svg {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-svg {
-  width: 22px;
-  fill: rgb(65, 65, 65);
 }
 
 .activity-time {
