@@ -282,6 +282,31 @@
   }
 }
 
+.filterKanbanIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-inline-start: auto;
+  border-radius: 4px;
+  padding: 5px 4px;
+  
+  svg {
+    fill: #fff;
+    stroke: #202020;
+    stroke-width: 5px;
+    width: 20px;
+  }
+
+  &.active {
+    background-color: #cce5ff;
+  }
+
+  &:hover {
+    background-color: $edit-hover;
+  }
+}
+
 .btn-hover {
   border-radius: 4px;
   cursor: pointer;
