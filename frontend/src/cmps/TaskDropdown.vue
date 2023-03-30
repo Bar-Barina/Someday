@@ -40,7 +40,7 @@
     >
       <!-- COLOR -->
       <span
-        @click="toggleColorPicker(option, idx)"
+        @click="toggleColorPicker(option)"
         v-icon="'editLabelsColor'"
         class="edit-labels-color"
         :style="{ 'background-color': option.color }"
@@ -62,6 +62,7 @@
 import { svgService } from '../services/svg.service.js'
 import ColorPicker from '../cmps/dynamicCmps/ColorPicker.vue'
 export default {
+  emits: ['updateOptions','updateOption'],
   props: {
     options: Object,
     type: String,
@@ -81,16 +82,17 @@ export default {
     getSvg(iconName) {
       return svgService.getSvg(iconName)
     },
+    toggleColorPicker(option) {
+      this.currOption = {...option}
+      this.showColorPicker = !this.showColorPicker
+    },
     updateLabelColor({ data }) {
       const updatedOptions = JSON.parse(JSON.stringify(this.options))
-      this.currOption.option.color = data
-      updatedOptions[this.type].splice(this.currOption.idx,1,this.currOption)
+      const optionIdx = updatedOptions[this.type].findIndex(opt => opt.id === this.currOption.id)
+      this.currOption.color = data
+      updatedOptions[this.type].splice(optionIdx,1,this.currOption)
+      console.log('from Dropdown',updatedOptions)
       this.$emit('updateOptions',updatedOptions)
-    },
-    toggleColorPicker(option,idx) {
-      this.currOption = { option:{...option}, idx }
-      console.log('this.currOption',this.currOption)
-      this.showColorPicker = !this.showColorPicker
     },
   },
   components: {

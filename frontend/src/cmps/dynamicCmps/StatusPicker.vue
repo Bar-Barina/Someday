@@ -4,6 +4,7 @@
     :class="statusClass"
     v-clickOutside="closeModal"
     @click="toggleModal"
+    :style="{ 'background-color': color }"
   >
     {{ status }}
     <TaskDropdown
@@ -26,7 +27,7 @@
 import TaskDropdown from '../TaskDropdown.vue'
 
 export default {
-  emits: ['updateTask'],
+  emits: ['updateTask', 'updateOptions'],
   props: {
     task: Object,
   },
@@ -50,11 +51,12 @@ export default {
       this.showDropdown = false
     },
     updateOptions(options) {
-       this.$emit('updateOptions',options)
-    }
+      this.$emit('updateOptions', options)
+    },
   },
   computed: {
     labels() {
+      console.log(this.$store.getters.currBoard.labels)
       return this.$store.getters.currBoard.labels
     },
     status() {
@@ -73,6 +75,18 @@ export default {
         default:
           break
       }
+    },
+    color() {
+      const labels = this.labels
+      console.log(labels)
+      const currLabel = []
+      labels.status.forEach((label) => {
+        console.log(this.task.status)
+        console.log(label)
+        if (label.name === this.task.status) currLabel.push(label)
+      })
+      console.log(currLabel[0].color)
+      return currLabel[0].color
     },
   },
   components: {

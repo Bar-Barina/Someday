@@ -183,6 +183,8 @@ export default {
     updateOptions(options) {
       const board = JSON.parse(JSON.stringify(this.currBoard))
       board.labels = options
+      console.log(board.labels)
+      console.log(options)
       this.$store.dispatch({ type: 'updateBoard', board })
     },
   },
