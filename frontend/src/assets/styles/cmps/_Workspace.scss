@@ -89,8 +89,6 @@
     }
 
     &:hover {
-      // background-color: $clr39;
-
       .dots {
         display: flex;
         align-items: center;
@@ -110,17 +108,15 @@
   .workspace-container > *:not(.workspace-line) {
     height: 32px;
     width: 100%;
-    // padding: 0 8px;
     border-radius: 4px;
   }
-  // .workspace-container > *:not(.selected-board):hover {
-  //   background-color: $clr39;
-  // }
 
   .add {
     margin-left: -2px;
   }
-
+  .open-ai {
+    margin-left: 1.7px;
+  }
   &.is-open {
     .workspace-open-btn {
       transform: rotate(0deg);

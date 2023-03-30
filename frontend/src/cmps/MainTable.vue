@@ -3,8 +3,6 @@
     v-if="currBoard && currBoard.groups.length"
     class="main-table"
     orientation="vertical"
-    @drag-start="onDragStart"
-    @drag-end="onDragStop"
     @drop="onGroupDrop($event)"
     :drag-class="'group-drag'"
     :drop-placeholder="{
@@ -16,6 +14,7 @@
   
   <!-- <section class="table"> -->
     <Draggable
+    :class="{ 'group-drag-collapse': isGroupDrag}"
       class="group-container"
       v-for="group in currBoard.groups"
       :key="group"
@@ -131,12 +130,6 @@ export default {
     },
     clearSearch() {
       eventBus.emit("clearSearch");
-    },
-    onDragStart() {
-      // eventBus.emit('dragCollapse')
-    },
-    onDragStop() {
-      // eventBus.emit('dragEnded')
     },
   },
   computed: {

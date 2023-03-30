@@ -77,6 +77,7 @@
         orientation="horizontal"
         group-name="labels"
         tag="div"
+        :drag-begin-delay="20"
         @drop="onLabelDrop($event)"
       >
         <Draggable
@@ -95,6 +96,7 @@
       orientation="vertical"
       group-name="tasks"
       tag="div"
+      :drag-begin-delay="200"
       :shouldAcceptDrop="(e, payload) => e.groupName === 'tasks'"
       :get-child-payload="getTaskPayload(group._id)"
       @drop="onTaskDrop(group._id, $event)"
@@ -163,12 +165,12 @@ export default {
   },
   created() {
     this.board = JSON.parse(JSON.stringify(this.$store.getters.currBoard));
-    eventBus.on('dragCollapse' , () => {
-      this.collapse(true)
-    })
-    eventBus.on('dragEnded', () => {
-      this.collapse(false)
-    })
+    eventBus.on("dragCollapse", () => {
+      this.collapse(true);
+    });
+    eventBus.on("dragEnded", () => {
+      this.collapse(false);
+    });
   },
   methods: {
     getSvg(iconName) {

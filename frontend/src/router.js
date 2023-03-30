@@ -74,7 +74,7 @@ const routes = [
   {
     path: '/openai',
     name: 'Openai',
-    component: OpenAI
+    component: OpenAI 
   },
   // {
   //   path: '/LoginSignup',

@@ -31,7 +31,7 @@ async function remove(boardId) {
 async function save(board) {
   var savedBoard
   if (board._id) {
-    console.log('board._id', board._id)
+    // console.log('board._id', board._id)
     savedBoard = await httpService.put(`board/${board._id}`, board)
   } else {
     // Later, owner is set by the backend
@@ -98,7 +98,7 @@ async function saveTask(board, group, task) {
       task.id = utilService.makeId()
       boardToSave.groups[groupIdx].tasks.push(task)
     }
-    console.log('task', task)
+    // console.log('task', task)
     await save(boardToSave)
     return boardToSave
   }

@@ -87,23 +87,23 @@
 </template>
 
 <script>
-import { svgService } from "../services/svg.service";
-import { Container, Draggable } from "vue3-smooth-dnd";
-import { utilService } from "../services/util.service";
-import EditMenu from "./EditMenu.vue";
-import Status from "./dynamicCmps/StatusPicker.vue";
-import Priority from "./dynamicCmps/PriorityPicker.vue";
-import Timeline from "./dynamicCmps/TimelinePicker.vue";
-import Date from "./dynamicCmps/DatePicker.vue";
-import Person from "./dynamicCmps/PersonPicker.vue";
-import Text from "./dynamicCmps/TextArea.vue";
-import Files from "./dynamicCmps/FilesPicker.vue";
-import { eventBus } from "../services/event-bus.service";
-import EmptyProgress from "./dynamicCmps/EmptyProgress.vue";
-import { boardService } from "../services/board.service.local";
+import { svgService } from '../services/svg.service'
+import { Container, Draggable } from 'vue3-smooth-dnd'
+import { utilService } from '../services/util.service'
+import EditMenu from './EditMenu.vue'
+import Status from './dynamicCmps/StatusPicker.vue'
+import Priority from './dynamicCmps/PriorityPicker.vue'
+import Timeline from './dynamicCmps/TimelinePicker.vue'
+import Date from './dynamicCmps/DatePicker.vue'
+import Person from './dynamicCmps/PersonPicker.vue'
+import Text from './dynamicCmps/TextArea.vue'
+import Files from './dynamicCmps/FilesPicker.vue'
+import { eventBus } from '../services/event-bus.service'
+import EmptyProgress from './dynamicCmps/EmptyProgress.vue'
+import { boardService } from '../services/board.service.local'
 
 export default {
-  emits: ["saveTask", "remove", "addSelected", "removeSelected"],
+  emits: ['saveTask', 'remove', 'addSelected', 'removeSelected'],
   props: {
     labels: Array,
     task: Object,
@@ -114,81 +114,83 @@ export default {
       isEditOpen: false,
       isActive: false,
       isSelected: false,
-    };
+    }
   },
   created() {
-    eventBus.on("clearChecked", () => {
-      console.log("clearing");
-      this.isSelected = false;
-    });
-    eventBus.on("addSelected", (groupId) => {
+    eventBus.on('clearChecked', () => {
+      console.log('clearing')
+      this.isSelected = false
+    })
+    eventBus.on('addSelected', (groupId) => {
       if (groupId === this.group._id) {
-        this.isSelected = true;
-        this.$emit("addSelected", this.task);
+        this.isSelected = true
+        this.$emit('addSelected', this.task)
       }
-    });
-    eventBus.on("removeSelected", (groupId) => {
+    })
+    eventBus.on('removeSelected', (groupId) => {
       if (groupId === this.group._id) {
-        this.isSelected = false;
-        this.$emit("removeSelected", this.task);
+        this.isSelected = false
+        this.$emit('removeSelected', this.task)
       }
-    });
+    })
   },
   methods: {
     getSvg(iconName) {
-      return svgService.getSvg(iconName);
+      return svgService.getSvg(iconName)
     },
-    updateTask({ cmpType, data }) {
-      const activity = boardService.getEmptyActivity();
-      const taskToSave = { ...this.task };
+    updateTask({ cmpType, data, before }) {
+      const activity = boardService.getEmptyActivity()
+      const taskToSave = JSON.parse(JSON.stringify(this.task))
       if (!cmpType) {
-        taskToSave.taskTitle = this.$refs.taskTitle.innerText;
-        cmpType = "taskTitle";
-        activity.to = taskToSave.taskTitle;
+        taskToSave.taskTitle = this.$refs.taskTitle.innerText
+        cmpType = 'taskTitle'
+        activity.to = taskToSave.taskTitle
       } else {
-        taskToSave[cmpType] = data;
-        activity.to = data;
+        taskToSave[cmpType] = data
+        activity.to = data
+        console.log('to', activity.to)
       }
-      activity.from = this.task[cmpType];
-      console.log("activity", activity);
-      activity.changed = cmpType;
-      activity.taskTitle = this.task.taskTitle;
-      if (!taskToSave.activities) taskToSave.activities = [];
-      taskToSave.activities.push(activity);
-      this.$emit("saveTask", taskToSave);
+      if (before) activity.from = before
+      else activity.from = this.task[cmpType]
+      console.log('from', activity.from)
+      activity.changed = cmpType
+      activity.taskTitle = this.task.taskTitle
+      if (!taskToSave.activities) taskToSave.activities = []
+      taskToSave.activities.push(activity)
+      this.$emit('saveTask', taskToSave)
     },
     openCon() {
-      this.isSelected = true;
+      this.isSelected = true
       this.$router.push(
-        "/board/" + this.currBoardId + "/taskDetails/" + this.task.id
-      );
-      this.$store.commit({ type: "setCurrGroup", group: this.group });
+        '/board/' + this.currBoardId + '/taskDetails/' + this.task.id
+      )
+      this.$store.commit({ type: 'setCurrGroup', group: this.group })
     },
     toggleEdit() {
-      this.isEditOpen = !this.isEditOpen;
+      this.isEditOpen = !this.isEditOpen
     },
     removeTask(toRemove) {
-      this.$emit("remove", toRemove);
+      this.$emit('remove', toRemove)
     },
     selectTask() {
       if (this.$refs.checkbox.checked) {
-        this.isSelected = true;
-        this.$emit("addSelected", this.task);
+        this.isSelected = true
+        this.$emit('addSelected', this.task)
       } else {
-        this.isSelected = false;
-        this.$emit("removeSelected", this.task.id);
+        this.isSelected = false
+        this.$emit('removeSelected', this.task.id)
       }
     },
   },
   computed: {
     currBoardId() {
-      return this.$store.getters.currBoard._id;
+      return this.$store.getters.currBoard._id
     },
     currBoard() {
-      return this.$store.getters.currBoard;
+      return this.$store.getters.currBoard
     },
     isChecked() {
-      return this.isSelected;
+      return this.isSelected
     },
   },
   components: {
@@ -204,5 +206,5 @@ export default {
     Files,
     EmptyProgress,
   },
-};
+}
 </script>

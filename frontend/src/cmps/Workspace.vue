@@ -53,6 +53,10 @@
             v-model="searchTerm"
           />
         </div>
+        <div class="workspace-search flex align-center pointer open-ai">
+          <span v-html="getSvg('OpenAI')" class="workspace-icon"></span>
+          <span>Open AI</span>
+        </div>
         <br />
         <div class="workspace-line"></div>
         <Container
