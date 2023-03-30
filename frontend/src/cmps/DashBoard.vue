@@ -1,19 +1,22 @@
 <template>
   <section class="dashboard">
-    <section class="status-doughtnut">
-      <DoughnutChart :style="{'height':'250px', 'width':'270px'}" :chartData="testData" :options="options"/>
+    <section class="status-pie">
+      <div class="chart-header" >Tasks by status</div>
+      <PieChart class="chart" :style="{'height':'200px', 'width':'400px'}" :chartData="testData" :options="options"/>
     </section>
     <section class="person-bar">
-      <BarChart :chartData="personData" :options="options1" />
+      <div class="chart-header">Tasks by members</div>
+      <BarChart class="chart" :style="{'height':'490px'}" :chartData="personData" :options="options1" />
     </section>
     <section class="priority-doughtnut">
-      <DoughnutChart :style="{'height':'200px', 'width':'270px'}" :chartData="priorityData" :options="options2" />
+      <div class="chart-header">Tasks by priority</div>
+      <DoughnutChart class="chart" :style="{'height':'200px', 'width':'400px'}" :chartData="priorityData" :options="options2" />
     </section>
   </section>
 </template>
 
 <script>
-import { DoughnutChart , BarChart} from "vue-chart-3";
+import { PieChart, DoughnutChart , BarChart} from "vue-chart-3";
 import { Chart, registerables } from "chart.js";
 // statusOptions: ['Working on it', , 'Stuck', 'Done', ''],
 //       statusColors: ['#fdab3d', , '#e2445c', '#00c875', '#c3c4c3'],
@@ -95,7 +98,7 @@ export default {
       },  
     }
   },
-  components: { DoughnutChart , BarChart },
+  components: { DoughnutChart , BarChart, PieChart },
   computed: {
     currBoard() {
       return this.$store.getters.currBoard

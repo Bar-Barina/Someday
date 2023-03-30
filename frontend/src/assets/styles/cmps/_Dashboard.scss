@@ -23,27 +23,61 @@
 }
 
 .dashboard {
+    background-color: #f6f7fb;
     display: grid;
     grid-template-columns: 1.5fr,1fr;
-    grid-template-rows: repeat(3,1fr);
+    grid-template-rows: repeat(2,1fr);
     grid-template-areas:
     "person-bar status"
-    "person-bar priority"
-    "person-bar .";
-
+    "person-bar priority";
+    padding: 20px;
     gap: 10px;
-    .status-doughtnut {
-        padding: 10px;
+    .status-pie {
+        div.chart-header {
+            padding-block: 10px;
+            border-bottom: 2px solid $clr014;
+            font-size: 26px;
+            font-weight: 600;
+            padding-inline: 8px;
+        }
+        .chart {
+            padding-top: 10px;
+        }
+        background-color: white;
+        border-radius: 10px;
+        border: 2px solid $clr016;
         grid-area: status;
     }
     .person-bar {
-        padding: 10px;
-        margin-top: 40px;
+        div.chart-header {
+            padding-block: 10px;
+            border-bottom: 2px solid $clr014;
+            font-size: 26px;
+            font-weight: 600;
+            padding-inline: 8px;
+        }
+        .chart {
+            padding: 10px;
+        }
+        background-color: white;
+        border-radius: 10px;
+        border: 2px solid $clr016;
         grid-area: person-bar;
     }
     .priority-doughtnut {
-        // height: 200px;
-        padding: 10px;
+        div.chart-header {
+            padding-block: 10px;
+            padding-inline: 8px;
+            border-bottom: 2px solid $clr014;
+            font-weight: 600;
+            font-size: 26px;
+        }
+        .chart {
+            padding-top: 10px;
+        }
+        background-color: white;
+        border-radius: 10px;
+        border: 2px solid $clr016;
         grid-area: priority;
     }
 
