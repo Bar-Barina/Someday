@@ -123,6 +123,26 @@
     position: relative;
     margin-left: 1.7px;
 
+    .close {
+      position: absolute;
+      right: 0;
+      padding-right: 5px;
+      padding-top: 3px;
+
+      &:hover {
+        scale: 1.2;
+
+        svg {
+          fill: #323338;
+        }
+      }
+       svg {
+        fill: #fff;
+        width: 18px;
+        height: 18px;
+       }
+    }
+
     border-top: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.5);
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
