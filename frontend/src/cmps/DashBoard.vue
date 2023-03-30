@@ -2,15 +2,15 @@
   <section class="dashboard">
     <section class="status-pie">
       <div class="chart-header" >Tasks by status</div>
-      <PieChart class="chart" :style="{'height':'260px'}" :chartData="testData" :options="options"/>
+      <PieChart class="chart" :style="{'height':'280px'}" :chartData="testData" :options="options"/>
     </section>
     <section class="person-bar">
       <div class="chart-header">Tasks by members</div>
-      <BarChart class="chart" :style="{'height':'260px'}" :chartData="personData" :options="options1" />
+      <BarChart class="chart" :style="{'height':'280px'}" :chartData="personData" :options="options1" />
     </section>
     <section class="priority-doughtnut">
       <div class="chart-header">Tasks by priority</div>
-      <DoughnutChart class="chart" :style="{'height':'260px'}" :chartData="priorityData" :options="options2" />
+      <DoughnutChart class="chart" :style="{'height':'280px'}" :chartData="priorityData" :options="options2" />
     </section>
     <section class="board-tasks">
       <div class="title">Board tasks</div>
@@ -65,7 +65,7 @@ export default {
       },
       options: {
         plugins: {
-          legend: { display: false }
+          legend: { position: "left" } 
         },
       },
       personData: {
@@ -109,7 +109,7 @@ export default {
       },   
       options2: {
         plugins: {
-          legend: { display: false }
+          legend: { position: "left" }
         },
       },  
     }
