@@ -163,7 +163,7 @@ function getEmptyBoard() {
         color: 'rgb(0, 134, 192)',
         tasks: [
           {
-            id: 't101',
+            id: 't106',
             side: 'null',
             taskTitle: 'Task 1',
             person: [],
@@ -176,7 +176,7 @@ function getEmptyBoard() {
             msgs: [],
           },
           {
-            id: 't102',
+            id: 't105',
             side: 'null',
             taskTitle: 'Task 2',
             person: [
@@ -195,7 +195,7 @@ function getEmptyBoard() {
             msgs: [],
           },
           {
-            id: 't102',
+            id: 't104',
             taskTitle: 'Task 3',
             person: [
               {
@@ -232,7 +232,7 @@ function getEmptyBoard() {
             msgs: [],
           },
           {
-            id: 't102',
+            id: 't103',
             taskTitle: 'Task 2',
             person: [
               {

@@ -51,7 +51,6 @@ export default {
   },
   computed: {
     labels() {
-      console.log(this.$store.getters.currBoard.labels)
       return this.$store.getters.currBoard.labels
     },
     status() {

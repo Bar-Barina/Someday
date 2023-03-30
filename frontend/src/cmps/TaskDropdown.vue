@@ -5,7 +5,7 @@
       v-if="!showEditLabels"
       v-for="(option, idx) in options[type]"
       class="option flex align-center justify-center"
-      :style="{'background-color': option.color}"
+      :style="{ 'background-color': option.color }"
       :key="idx"
       @click.stop="changeOption(option.name)"
     >
@@ -30,7 +30,7 @@
     <!-- EDIT -->
     <div
       v-if="showEditLabels"
-      v-for="(option, idx) in options"
+      v-for="(option, idx) in options[type]"
       class="option flex editable-div"
       :key="idx"
       contenteditable="true"
@@ -60,9 +60,6 @@ export default {
     options: Object,
     type: String,
   },
-  created() {
-    console.log(this.options)
-  },
   data() {
     return {
       showEditLabels: false,
@@ -71,7 +68,7 @@ export default {
   },
   methods: {
     changeOption(optionName) {
-      console.log(optionName)
+      console.log('optionName',optionName)
       this.$emit('updateOption', optionName)
     },
     getSvg(iconName) {
