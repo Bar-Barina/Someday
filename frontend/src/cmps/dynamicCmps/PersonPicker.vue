@@ -9,8 +9,11 @@
     >
       <span v-for="(person, idx) in task.person" :key="idx">
         <div class="full-person">
-          <img :src="person.url" class="person-img"
-          :class="{'alone' : task.person.length === 1 , 'first': idx === 0}" />
+          <img
+            :src="person.url"
+            class="person-img"
+            :class="{ alone: task.person.length === 1, first: idx === 0 }"
+          />
         </div>
       </span>
     </div>
@@ -61,12 +64,15 @@ export default {
   },
   methods: {
     updatePerson(person) {
-      this.task.person.push(person)
-      this.$emit('updateTask', { cmpType: 'person', data: this.task.person })
+      const task = JSON.parse(JSON.stringify(this.task))
+      const before = JSON.parse(JSON.stringify(task)).person
+      task.person.push(person)
+      this.$emit('updateTask', { cmpType: 'person', data: task.person, before })
     },
     removePerson(idx) {
-      this.task.person.splice(idx, 1)
-      this.$emit('updateTask', { cmpType: 'person', data: this.task.person })
+      const task = JSON.parse(JSON.stringify(this.task))
+      task.person.splice(idx, 1)
+      this.$emit('updateTask', { cmpType: 'person', data: task.person })
     },
     closeModal() {
       this.isOpen = false

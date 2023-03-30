@@ -85,6 +85,14 @@
               {{
                 activity.changed === 'timeline'
                   ? timelineDisplay(activity.from)
+                  : activity.from.length < activity.to.length &&
+                    activity.changed === 'person'
+                  ? 'Added'
+                  : activity.from.length > activity.to.length &&
+                    activity.changed === 'person'
+                  ? 'Removed'
+                  : activity.changed === 'person'
+                  ? activity.to
                   : activity.from
               }}
             </span>
@@ -98,7 +106,7 @@
                 Blank:
                   activity.to === '' &&
                   activity.changed !== 'timeline' &&
-                  activity.changed !== 'date' && 
+                  activity.changed !== 'date' &&
                   activity.changed !== 'taskTitle',
                 [activity.to]:
                   activity.changed === 'status' ||
@@ -142,7 +150,6 @@ export default {
       console.log('activities', activities)
     },
     timelineDisplay(value) {
-      console.log(value)
       if (value.length === 0) return '-'
       return (
         value[0].split('-')[0] +
@@ -185,14 +192,6 @@ export default {
     },
     loggedInUser() {
       return this.$store.getters.loggedInUser
-    },
-    fromValue() {
-      return (activity) => {
-        if (activity.changed === 'timeline') {
-          return activity.from.replace('-', '')
-        }
-        return activity.from
-      }
     },
   },
   created() {},
