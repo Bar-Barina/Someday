@@ -1,7 +1,8 @@
 <template>
   <section class="task-dropdown">
     <div class="arrow-up-div"></div>
-    <div v-if="!showEditLabels"
+    <div
+      v-if="!showEditLabels"
       v-for="(option, idx) in options"
       class="option flex align-center justify-center"
       :class="option.class"
@@ -18,12 +19,17 @@
         <span v-html="getSvg('critical')" class="dropdown-critical-icon"></span>
       </span> -->
     </div>
-    <div v-if="!showEditLabels" class="edit-labels" @click.stop="showEditLabels = true">
+    <div
+      v-if="!showEditLabels"
+      class="edit-labels"
+      @click.stop="showEditLabels = true"
+    >
       <span v-icon="'editLabels'"></span>
       <span>Edit Labels</span>
     </div>
     <!-- EDIT -->
-    <div v-if="showEditLabels"
+    <div
+      v-if="showEditLabels"
       v-for="(option, idx) in options"
       class="option flex editable-div"
       :key="idx"
@@ -31,18 +37,19 @@
       @click.stop
       @focusout="changeOption(option.name)"
     >
-    <span @click="showColorPicker = !showColorPicker"
-    v-icon="'editLabelsColor'"
-    class="edit-labels-color"
-    :style="{ 'background-color': option.color }"
-    ></span>
-    {{ option.name }}
-  </div>
-  <div v-if="showEditLabels" class="edit-labels" @click.stop>
+      <span
+        @click="showColorPicker = !showColorPicker"
+        v-icon="'editLabelsColor'"
+        class="edit-labels-color"
+        :style="{ 'background-color': option.color }"
+      ></span>
+      {{ option.name }}
+    </div>
+    <div v-if="showEditLabels" class="edit-labels" @click.stop="saveLabel">
       <span>Apply</span>
     </div>
-  <ColorPicker v-if="showColorPicker" class="edit-color-picker"/>
-</section>
+    <ColorPicker v-if="showColorPicker" class="edit-color-picker" />
+  </section>
 </template>
 
 <script>
@@ -55,7 +62,7 @@ export default {
   data() {
     return {
       showEditLabels: false,
-      showColorPicker: false
+      showColorPicker: false,
     }
   },
   methods: {
@@ -64,6 +71,11 @@ export default {
     },
     getSvg(iconName) {
       return svgService.getSvg(iconName)
+    },
+  },
+  computed: {
+    labels() {
+      return this.$store.getters.labels
     },
   },
   components: {

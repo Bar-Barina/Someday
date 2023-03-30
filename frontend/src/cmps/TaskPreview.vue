@@ -148,11 +148,11 @@ export default {
       } else {
         taskToSave[cmpType] = data
         activity.to = data
-        console.log('to', activity.to)
+        // console.log('to', activity.to)
       }
       if (before) activity.from = before
       else activity.from = this.task[cmpType]
-      console.log('from', activity.from)
+      // console.log('from', activity.from)
       activity.changed = cmpType
       activity.taskTitle = this.task.taskTitle
       if (!taskToSave.activities) taskToSave.activities = []
