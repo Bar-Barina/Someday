@@ -4,7 +4,8 @@
     <TaskDropdown
     v-clickOutside="closeModal"
       v-if="showDropdown"
-      :options="priorityOptions"
+      :options="labels"
+      :type="'priority'"
       @updateOption="updatePriority"
       optionClass="priority-option"
     />
@@ -24,13 +25,6 @@ export default defineComponent ({
   name: '',
   data() {
     return {
-      priorityOptions: [
-        { name: 'Critical', class: 'priority-critical',color: '#333333' },
-        { name: 'High', class: 'priority-high',color: '#401694' },
-        { name: 'Medium', class: 'priority-medium',color: '#5559df' },
-        { name: 'Low', class: 'priority-low',color: '#579bfc' },
-        { name: '', class: 'priority-empty',color: '#c3c4c3' },
-      ],
       showDropdown: false,
       selectedPriority: this.task.priority,
     }
@@ -49,6 +43,9 @@ export default defineComponent ({
     }
   },
   computed: {
+    labels() {
+      return this.$store.getters.currBoard.labels
+    },
     priority() {
       return this.selectedPriority
     },

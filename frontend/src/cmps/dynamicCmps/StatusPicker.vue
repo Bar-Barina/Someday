@@ -8,7 +8,8 @@
     {{ status }}
     <TaskDropdown
       v-if="showDropdown"
-      :options="statusOptions"
+      :options="labels"
+      :type="'status'"
       @updateOption="updateStatus"
       optionClass="status-option"
     />
@@ -31,12 +32,6 @@ export default {
   name: '',
   data() {
     return {
-      statusOptions: [
-        { name: 'Working on it', class: 'status-working' ,color: '#fdab3d'},
-        { name: 'Stuck', class: 'status-stuck',color: '#e2445c' },
-        { name: 'Done', class: 'status-done',color: '#00c875' },
-        { name: '', class: 'status-empty',color: '#c3c4c3' },
-      ],
       showDropdown: false,
       selectedStatus: this.task.status,
     }
@@ -55,6 +50,9 @@ export default {
     },
   },
   computed: {
+    labels() {
+      return this.$store.getters.currBoard.labels
+    },
     status() {
       return this.selectedStatus
     },

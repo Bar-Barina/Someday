@@ -2,15 +2,43 @@
   <section class="dashboard">
     <section class="status-pie">
       <div class="chart-header" >Tasks by status</div>
-      <PieChart class="chart" :style="{'height':'200px', 'width':'400px'}" :chartData="testData" :options="options"/>
+      <PieChart class="chart" :style="{'height':'280px'}" :chartData="testData" :options="options"/>
     </section>
     <section class="person-bar">
       <div class="chart-header">Tasks by members</div>
-      <BarChart class="chart" :style="{'height':'490px'}" :chartData="personData" :options="options1" />
+      <BarChart class="chart" :style="{'height':'280px'}" :chartData="personData" :options="options1" />
     </section>
     <section class="priority-doughtnut">
       <div class="chart-header">Tasks by priority</div>
-      <DoughnutChart class="chart" :style="{'height':'200px', 'width':'400px'}" :chartData="priorityData" :options="options2" />
+      <DoughnutChart class="chart" :style="{'height':'280px'}" :chartData="priorityData" :options="options2" />
+    </section>
+    <section class="board-tasks">
+      <div class="title">Board tasks</div>
+        <div class="body flex align-center">
+          <div>{{ tasks }}</div>
+        <img src="../assets/img/task.png" alt=""/>
+        </div>
+    </section>
+    <section class="board-members">
+      <div class="title">Board members</div>
+        <div class="body flex align-center ">
+          <div>{{ members }}</div>
+        <img src="../assets/img/person.png" alt=""/>
+        </div>
+    </section>
+    <section class="board-groups">
+      <div class="title">Board groups</div>
+        <div class="body flex align-center ">
+          <div>{{ members }}</div>
+        <img src="../assets/img/members.png" alt=""/>
+        </div>
+    </section>
+    <section class="board-owners">
+      <div class="title">owners</div>
+        <div class="body flex align-center ">
+          <div>1</div>
+        <img src="../assets/img/members.png" alt=""/>
+        </div>
     </section>
   </section>
 </template>
@@ -37,8 +65,7 @@ export default {
       },
       options: {
         plugins: {
-          // legend: { display: false }
-          legend: { position: "left" },
+          legend: { position: "left" } 
         },
       },
       personData: {
@@ -56,21 +83,10 @@ export default {
       '#e76f51',
       '#ae2012'
     ],
-    // borderColor: [
-    //   'rgb(255, 99, 132)',
-    //   'rgb(255, 159, 64)',
-    //   'rgb(255, 205, 86)',
-    //   'rgb(75, 192, 192)',
-    //   'rgb(54, 162, 235)',
-    //   'rgb(153, 102, 255)',
-    //   'rgb(201, 203, 207)'
-    // ],
-    // borderWidth: 1,
           },
         ],
       },   
       options1: {
-        indexAxis: 'y',
         plugins: {
           legend: { display: false }
         },
@@ -103,6 +119,17 @@ export default {
     currBoard() {
       return this.$store.getters.currBoard
     },
+    tasks() {
+      return this.currBoard.groups.reduce((acc,group)=>{
+        return acc+=group.tasks.length
+      },0)
+    },
+    groups() {
+      return this.currBoard.groups.length
+    },
+    members() {
+      return this.currBoard.members.length
+    }
   },
   created() {
     const statusesLabels = ['Working on it', 'Stuck', 'Done', '']

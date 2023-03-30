@@ -35,7 +35,7 @@
       <section class="flex column workspace-container">
         <div
           class="workspace-add flex align-center pointer"
-          @click="addBoard(newBoard)"
+          @click="addBoard"
         >
           <span v-html="getSvg('plus')" class="workspace-icon"></span>
           <span class="add">Add</span>
@@ -84,7 +84,7 @@
 import { Container, Draggable } from "vue3-smooth-dnd";
 import { takeWhile } from "lodash";
 import { svgService } from "../services/svg.service.js";
-import { boardService } from "../services/board.service.local.js";
+import { boardService } from "../services/board.service.js";
 import BoardTitlePreview from "../cmps/BoardTitlePreview.vue";
 import { utilService } from '../services/util.service.js';
 import OpenAI from './OpenAI.vue';
@@ -97,7 +97,6 @@ export default {
   data() {
     return {
       isWorkspaceOpen: false,
-      newBoard: boardService.getEmptyBoard(),
       searchTerm: "",
       selectedBoard: null,
       isAI: false
@@ -110,8 +109,9 @@ export default {
     openWorkspace() {
       this.isWorkspaceOpen = !this.isWorkspaceOpen;
     },
-    addBoard(board) {
-      this.$store.dispatch({ type: "addBoard", board });
+    addBoard() {
+      const newBoard = boardService.getEmptyBoard()
+      this.$store.dispatch({ type: "addBoard", board : newBoard });
     },
     removeBoard(boardId) {
       this.$store.dispatch({ type: "removeBoard", boardId });
