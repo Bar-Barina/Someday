@@ -3,9 +3,9 @@
     <div class="arrow-up-div"></div>
     <div
       v-if="!showEditLabels"
-      v-for="(option, idx) in options"
+      v-for="(option, idx) in options[type]"
       class="option flex align-center justify-center"
-      :class="option.class"
+      :style="{'background-color': option.color}"
       :key="idx"
       @click.stop="changeOption(option.name)"
     >
@@ -57,7 +57,11 @@ import { svgService } from '../services/svg.service.js'
 import ColorPicker from '../cmps/dynamicCmps/ColorPicker.vue'
 export default {
   props: {
-    options: Array,
+    options: Object,
+    type: String,
+  },
+  created() {
+    console.log(this.options)
   },
   data() {
     return {
@@ -67,17 +71,14 @@ export default {
   },
   methods: {
     changeOption(optionName) {
+      console.log(optionName)
       this.$emit('updateOption', optionName)
     },
     getSvg(iconName) {
       return svgService.getSvg(iconName)
     },
   },
-  computed: {
-    labels() {
-      return this.$store.getters.labels
-    },
-  },
+  computed: {},
   components: {
     ColorPicker,
   },

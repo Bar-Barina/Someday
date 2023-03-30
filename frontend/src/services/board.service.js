@@ -137,22 +137,23 @@ async function removeItem(board, groupId, taskId) {
 }
 
 function getEmptyBoard() {
+  console.log('here')
   return {
     title: 'New Board',
     members: [],
     labels: {
       status: [
-        { id: '101', name: 'Working on it', color: '#fdab3d' },
-        { id: '102', name: 'Stuck', color: '#e2445c' },
-        { id: '103', name: 'Done', color: '#00c875' },
-        { id: '104', name: '', color: '#c3c4c3' },
+        {id: '101',name: 'Working on it',color: '#fdab3d',class: 'status-working',},
+        { id: '102', name: 'Stuck', color: '#e2445c', class: 'status-stuck' },
+        { id: '103', name: 'Done', color: '#00c875', class: 'status-done' },
+        { id: '104', name: '', color: '#c3c4c3', class: 'status-empty' },
       ],
       priority: [
-        { id: '105', name: 'Critical', color: '#333333' },
-        { id: '106', name: 'High', color: '#401694' },
-        { id: '107', name: 'Medium', color: '#5559df' },
-        { id: '108', name: 'Low', color: '#579bfc' },
-        { id: '109', name: '', color: '#c3c4c3' },
+        {id: '105',name: 'Critical',color: '#333333',class: 'priority-critical',},
+        { id: '106', name: 'High', color: '#401694', class: 'priority-high' },
+        {id: '107',name: 'Medium',color: '#5559df',class: 'priority-medium',},
+        { id: '108', name: 'Low', color: '#579bfc', class: 'priority-low' },
+        { id: '109', name: '', color: '#c3c4c3', class: 'priority-empty' },
       ],
     },
     groups: [
@@ -195,7 +196,6 @@ function getEmptyBoard() {
           },
           {
             id: 't102',
-            side: 'null',
             taskTitle: 'Task 3',
             person: [
               {
@@ -205,7 +205,7 @@ function getEmptyBoard() {
               },
             ],
             date: '',
-            status: 'Null',
+            status: '',
             priority: 'High',
             timeline: [],
             files: [],
@@ -221,7 +221,6 @@ function getEmptyBoard() {
         tasks: [
           {
             id: 't101',
-            side: 'null',
             taskTitle: 'Task 1',
             person: [],
             date: '',
@@ -234,7 +233,6 @@ function getEmptyBoard() {
           },
           {
             id: 't102',
-            side: 'null',
             taskTitle: 'Task 2',
             person: [
               {
@@ -253,7 +251,6 @@ function getEmptyBoard() {
           },
           {
             id: 't102',
-            side: 'null',
             taskTitle: 'Task 3',
             person: [
               {
@@ -263,7 +260,7 @@ function getEmptyBoard() {
               },
             ],
             date: '',
-            status: 'null',
+            status: '',
             priority: 'Low',
             timeline: [],
             files: [],
