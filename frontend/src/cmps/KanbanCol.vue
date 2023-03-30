@@ -53,7 +53,6 @@ export default {
     };
   },
   created() {
-    console.log('this.tasks', this.tasks)
   },
   methods: {
     getColPayload(id) {
@@ -94,7 +93,6 @@ export default {
       this.$store.dispatch({ type: "saveTask", toUpdate });
     },
     updateOrder() {
-      console.log('col')
       this.$emit('updateMap')
     }
   },

@@ -254,6 +254,8 @@
         ></div>
         Hide
       </div>
+      <span class="filterKanbanIcon" v-if="active" :class="{ active: isFilterOpen}"
+      @click="toggleKanbanFilter" v-icon="'headerSettings'"></span>
     </section>
   </section>
 </template>
@@ -287,6 +289,7 @@ export default {
       showBoardDesc: false,
       isStarred: false,
       showBoardActivity: false,
+      isFilterOpen: false,
     }
   },
   methods: {
@@ -345,6 +348,10 @@ export default {
     },
     closeActivity() {
       this.showBoardActivity = false
+    },
+    toggleKanbanFilter() {
+      this.isFilterOpen = !this.isFilterOpen
+      eventBus.emit('toggleKanban')
     }
   },
   watch: {

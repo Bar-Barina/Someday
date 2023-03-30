@@ -23,7 +23,7 @@
           </Draggable>
         </Container>
       </section>
-      <section class="kanban-filter flex column">
+      <section class="kanban-filter flex column" :class="{ open: isFilter }">
         <span class="customize">Customize View</span>
         <div class="sub-header flex align-center space-between">
           <span>Kanban Column</span>
@@ -78,6 +78,7 @@ import { Container, Draggable } from "vue3-smooth-dnd";
 import { utilService } from "../services/util.service";
 import KanbanCol from "./KanbanCol.vue";
 import KanbanFilter from "./KanbanFilter.vue";
+import { eventBus } from "../services/event-bus.service";
 
 export default {
   data() {
@@ -104,7 +105,7 @@ export default {
         { value: "status", label: "Status" },
         { value: "priority", label: "Priority" },
       ],
-      colSelected: "priority",
+      colSelected: "status",
       columns: [
         "Date",
         "Text",
@@ -114,10 +115,12 @@ export default {
         "Status",
         "Timeline",
       ],
+      isFilter: false,
     };
   },
   created() {
-    const board = this.currBoard || this.getFromParams
+    eventBus.on("toggleKanban", () => (this.isFilter = !this.isFilter));
+    const board = this.currBoard || this.getFromParams;
     const option = this.colSelected;
     if (!board) return;
     this.options[option].labels.forEach((opt, idx) => {
@@ -133,7 +136,6 @@ export default {
         tasks,
       };
     });
-    console.log("this.statusesMap", this.statusesMap);
   },
   methods: {
     onColumnDrop(dropResult) {
@@ -169,6 +171,7 @@ export default {
       const board = this.currBoard || this.board;
       const option = this.colSelected;
       if (!board) return;
+      console.log("this.options", this.options);
       this.options[option].labels.forEach((opt, idx) => {
         var tasks = [];
         board.groups.forEach((group) => {
@@ -182,6 +185,7 @@ export default {
           tasks,
         };
       });
+      console.log("this.statusesMap", this.statusesMap);
     },
     addColumn(col) {
       const labelsOrder = JSON.parse(JSON.stringify(this.currLabelsOrder));

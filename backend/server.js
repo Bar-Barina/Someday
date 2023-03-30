@@ -3,6 +3,7 @@ const cors = require('cors')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
+require('dotenv').config();
 
 const OpenAI = require('openai')
 const { Configuration, OpenAIApi } = OpenAI
