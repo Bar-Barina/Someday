@@ -36,10 +36,10 @@ export const boardStore = {
     filterBy: {
       activeFilters: [],
       txt: '',
-      member :null
+      member: null
     },
-    isBlackScreen:false,
-    statuses: ['Working on it' , 'Stuck' , 'Done' , 'Blank'],
+    isBlackScreen: false,
+    statuses: ['Working on it', 'Stuck', 'Done', 'Blank'],
     filteredLabels: [
       "Date",
       "Text",
@@ -69,16 +69,16 @@ export const boardStore = {
     currActiveFilters({ filterBy }) {
       return filterBy.activeFilters
     },
-    isBlackScreen({isBlackScreen}) {
+    isBlackScreen({ isBlackScreen }) {
       return isBlackScreen
     },
-    kanbanStatuses({statuses}) {
+    kanbanStatuses({ statuses }) {
       return statuses
     },
-    currLabelsOrder({filteredLabels}) {
+    currLabelsOrder({ filteredLabels }) {
       return filteredLabels
     },
-    currActiveMember({filterBy}) {
+    currActiveMember({ filterBy }) {
       return filterBy.member
     },
   },
@@ -124,8 +124,8 @@ export const boardStore = {
         state.filterBy.activeFilters.splice(labelIdx, 1)
       } else state.filterBy.activeFilters.push(label)
     },
-    updateActiveMember(state ,{ member }) {
-      if(!member) state.filterBy.member = ''
+    updateActiveMember(state, { member }) {
+      if (!member) state.filterBy.member = ''
       state.filterBy.member = member
     },
     setFilterBy(state, { searchQuery }) {
@@ -136,13 +136,13 @@ export const boardStore = {
       return filteredBoard
     },
     toggleBlackScreen(state) {
-      state.isBlackScreen = !state.isBlackScreen 
+      state.isBlackScreen = !state.isBlackScreen
     },
     closeBlackScreen(state) {
       state.isBlackScreen = false
     },
-    setBoardActivity(state , { activity }) {
-      if(!state.currBoard.activities) state.currBoard.activities = []
+    setBoardActivity(state, { activity }) {
+      if (!state.currBoard.activities) state.currBoard.activities = []
       state.currBoard.activities.push(activity)
     }
   },
@@ -186,9 +186,9 @@ export const boardStore = {
     },
     async removeBoard(context, { boardId }) {
       try {
-        console.log('removeeeee' , boardId)
+        console.log('boardId', boardId)
         await boardService.remove(boardId)
-        socketService.emit('update-boards' , boardId)
+        socketService.emit('update-boards', boardId)
         context.commit(getActionRemoveBoard(boardId))
       } catch (err) {
         console.log('boardStore: Error in removeBoard', err)
@@ -214,7 +214,7 @@ export const boardStore = {
           toUpdate.task
         )
         commit({ type: 'updateBoard', board })
-        socketService.emit('update-groups' , board.groups)
+        socketService.emit('update-groups', board.groups)
         commit({ type: 'setCurrGroup', group: toUpdate.group })
       } catch (err) {
         throw new Error(err)
@@ -226,7 +226,7 @@ export const boardStore = {
         toRemove.groupId,
         toRemove.taskId
       )
-      socketService.emit('update-groups' , board.groups)
+      socketService.emit('update-groups', board.groups)
       commit({ type: 'updateBoard', board })
     },
   },
