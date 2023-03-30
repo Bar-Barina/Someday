@@ -6,18 +6,38 @@
   width: 750px;
   height: 100vh;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  padding: 10px;
   background-color: $clr2;
   z-index: 10000;
-  transition: 2s;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  transition: 0.3s;
+  .activity-header {
+    margin-top: 27px;
+    padding: 0 25px;
+    h2 {
+      color: #323338;
+      font-size: 20px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid rgb(180, 180, 180);
+      margin-top: 0;
+      span {
+        font-weight: 500;
+      }
+    }
+  }
+  .activity-list-wrapper {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    .activity-list {
+      padding: 0 8px 0 25px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: rgb(149, 149, 149);
+    }
+    &::-webkit-scrollbar {
+      width: 9px;
+    }
 
-  h2 {
-    color: #323338;
-    font-size: 20px;
-    span {
-      font-weight: 500;
+    &::-webkit-scrollbar-thumb {
+      background-color: rgb(149, 149, 149);
     }
   }
   .board-activity {
@@ -33,6 +53,7 @@
     .member-preview {
       width: 30px;
       margin: 15px;
+      margin-right: 7px;
     }
     .time-icon {
       svg {
@@ -120,12 +141,13 @@
 
 svg {
   width: 22px;
+  fill: rgb(65, 65, 65);
 }
 
 .activity-time {
-  min-width: 30px;
+  min-width: 22px;
 }
 
 .activity-icons {
-  margin-left: 45px;
+  margin-left: 35px;
 }

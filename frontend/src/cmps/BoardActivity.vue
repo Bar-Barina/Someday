@@ -1,7 +1,11 @@
 <template>
   <section class="board-activity-container">
-    <span v-icon="'x'" @click="activityCheck"></span>
-    <h2>{{ this.currBoard.title }} <span>Log</span></h2>
+    <div class="activity-header">
+      <span v-icon="'x'" @click="activityCheck" class="close-activity"></span>
+      <h2>{{ this.currBoard.title }} <span>Log</span></h2>
+    </div>
+    <section class="activity-list-wrapper">
+    <section class="activity-list">
     <article
       v-for="(activity, idx) in activities"
       :key="idx"
@@ -93,6 +97,8 @@
         </span>
       </div>
     </article>
+  </section>
+</section>
   </section>
 </template>
 
