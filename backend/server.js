@@ -9,7 +9,7 @@ const { Configuration, OpenAIApi } = OpenAI
 
 const configuration = new Configuration({
     organization: "org-v9PltONXqwikEb2nUOnNF8cp",
-    apiKey: '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',
+    apiKey: process.env.OPEN_AI_KEY || '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',
 });
 const openai = new OpenAIApi(configuration);
 
@@ -61,51 +61,65 @@ app.post('/api/openai', async (req, res) => {
     const response = await openai.createCompletion({
         model: "text-davinci-003",
         prompt: `You are a Console. asnwer with Javescript object that has inside an array of 2 groups and 4 tasks for each group,
-        the title of each group will be the subject of the tasks.
+        the title of each group will be the subject of the tasks and the title of the board will be the subject the Person gave you but the key name will be title
+        Create key, value pairs from the following data and format the key, value pairs using JSON notation with keys, without trailing commas.
         Console: What is your board subject?.
         Person: developers.
-        Console: board: {
-            groups: [
+        {
+            "title": "developers",
+            "description": "Add your board's description here",
+            "members": [],
+            "groups": [
                 {
-                    title: 'Frontend',
-                    color: '#037f4c,
-                    tasks: [
+                    "_id": "ksd398fj3d32",
+                    "title": "Frontend",
+                    "color": "#037f4c",
+                    "tasks": [
                         {
-                            title: 'Develop the UI'
+                            "id": "kjdshf7sdhf",
+                            "taskTitle": "Develop the UI"
                         },
                         {
-                            title: 'Create a login form'
+                            "id": "udshf87hdsf",
+                            "taskTitle": "Create a login form"
                         },
                         {
-                            title: 'Design an onboarding flow'
+                            "id": "ds98fjh3ufh",
+                            "taskTitle": "Design an onboarding flow"
                         },
                         {
-                            title: 'Add authentication'
+                            "id": "oisdnf87jefnwi",
+                            "taskTitle": "Add authentication"
                         }
                     ]
                 },
                 {
-                    title: 'Backend',
-                    color: '#9cd326',
-                    tasksk: [
+                    "_id": "oisdjf9hdsf",
+                    "title": "Backend",
+                    "color": "#9cd326",
+                    "tasks": [
                         {
-                            title: 'Write automated tests'
+                            "id": "987shdfn8f",
+                            "taskTitle": "Write automated tests"
                         },
                         {
-                            title: 'Build a user profile page'
+                            "id": "oisjd8f9",
+                            "taskTitle": "Build a user profile page"
                         },
                         {
-                            title: 'Implement type'
+                            "id": "dsklfn873n",
+                            "taskTitle": "Implement type"
                         },
                         {
-                            title: 'Make a backend'
+                            "id": "3298jcds8df",
+                            "taskTitle": "Make a backend"
                         }
                     ]
                 }
             ]
-        }.
+        }
         Person: ${message}?`,
-        max_tokens: 500,
+        max_tokens: 1000,
         temperature: 0
     })
     console.log('response.data', response.data)

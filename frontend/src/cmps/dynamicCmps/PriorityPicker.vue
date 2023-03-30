@@ -25,11 +25,11 @@ export default defineComponent ({
   data() {
     return {
       priorityOptions: [
-        { name: 'Critical', class: 'priority-critical' },
-        { name: 'High', class: 'priority-high' },
-        { name: 'Medium', class: 'priority-medium' },
-        { name: 'Low', class: 'priority-low' },
-        { name: '', class: 'priority-empty' },
+        { name: 'Critical', class: 'priority-critical',color: '#333333' },
+        { name: 'High', class: 'priority-high',color: '#401694' },
+        { name: 'Medium', class: 'priority-medium',color: '#5559df' },
+        { name: 'Low', class: 'priority-low',color: '#579bfc' },
+        { name: '', class: 'priority-empty',color: '#c3c4c3' },
       ],
       showDropdown: false,
       selectedPriority: this.task.priority,

@@ -129,6 +129,7 @@
 <script>
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
+// import ActivityPerson from './ActivityPerson.vue'
 TimeAgo.addDefaultLocale(en)
 const timeAgo = new TimeAgo('en-US')
 
@@ -195,6 +196,8 @@ export default {
     },
   },
   created() {},
-  components: {},
+  components: {
+    // ActivityPerson,
+  },
 }
 </script>

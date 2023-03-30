@@ -33,4 +33,35 @@
     color: white;
     cursor: pointer;
   }
+
+  .editable-div {
+    position: relative;
+    color: $clr3;
+    font-size: 14px;
+    border: 1px solid rgb(228, 228, 228);
+    .edit-labels-color {
+      width: 24px;
+      height: 24px;
+      color: $clr2;
+      border-radius: 3px;
+      margin-right: 8px;
+      margin-top: 3.5px;
+    }
+    // .edit-color-picker {
+    // }
+  }
+}
+
+.edit-labels {
+  margin-top: 10px;
+  color: $clr3;
+  font-size: 14px;
+  border-radius: 4px;
+  height: 32px;
+
+  &:hover {
+    background-color: #dcdfec;
+  }
+  svg {
+  }
 }

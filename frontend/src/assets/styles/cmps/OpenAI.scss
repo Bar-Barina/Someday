@@ -1,0 +1,25 @@
+.open-ai {
+
+    .chat-container {
+        width: 100%;
+        display: grid;
+    }
+
+    .title {
+        padding-inline-end: 10px;
+        font-weight: bold;
+    }
+
+    .msg {
+        margin: 10px 0;
+    }
+
+    button {
+        margin-top: 10px;
+    }
+
+    .open-ai-input {
+        border: 2px solid $clr6;
+        background-color: inherit;
+    }
+}
