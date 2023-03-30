@@ -31,7 +31,7 @@
         </div>
         <div class="select-wrapper">
           <el-select
-          @change="updateStatusesMap"
+            @change="updateStatusesMap"
             v-model="colSelected"
             class="el-select"
             placeholder="Select"
@@ -82,6 +82,7 @@ import KanbanFilter from "./KanbanFilter.vue";
 export default {
   data() {
     return {
+      board: null,
       options: {
         status: {
           labels: ["Working on it", "Stuck", "Done", "Blank"],
@@ -116,7 +117,7 @@ export default {
     };
   },
   created() {
-    const board = this.currBoard;
+    const board = this.currBoard || this.getFromParams
     const option = this.colSelected;
     if (!board) return;
     this.options[option].labels.forEach((opt, idx) => {
@@ -136,23 +137,28 @@ export default {
   },
   methods: {
     onColumnDrop(dropResult) {
-      this.options[this.colSelected].labels = utilService.applyDrag(this.options[this.colSelected].labels, dropResult);
-      this.options[this.colSelected].colors = utilService.applyDrag(this.options[this.colSelected].colors, dropResult);
+      this.options[this.colSelected].labels = utilService.applyDrag(
+        this.options[this.colSelected].labels,
+        dropResult
+      );
+      this.options[this.colSelected].colors = utilService.applyDrag(
+        this.options[this.colSelected].colors,
+        dropResult
+      );
       this.updateStatusesMap();
     },
     addToMap({ task, status }) {
-      const statusIdx = this.statusesMap.findIndex(s => s.title === status)
+      const statusIdx = this.statusesMap.findIndex((s) => s.title === status);
       this.statusesMap[statusIdx].tasks.push(task);
       this.updateStatusesMap();
     },
     removeFromMap({ taskIdx, status }) {
-      const statusIdx = this.statusesMap.findIndex(s => s.title === status)
+      const statusIdx = this.statusesMap.findIndex((s) => s.title === status);
       this.statusesMap[statusIdx].tasks.splice(taskIdx, 1);
       this.updateStatusesMap();
     },
     setOrder({ status, dropResult }) {
-      console.log('here1111111111111')
-      const statusIdx = this.statusesMap.findIndex(s => s.title === status)
+      const statusIdx = this.statusesMap.findIndex((s) => s.title === status);
       this.statusesMap[statusIdx].tasks = utilService.applyDrag(
         this.statusesMap[statusIdx].tasks,
         dropResult
@@ -160,7 +166,7 @@ export default {
       this.updateStatusesMap();
     },
     updateStatusesMap() {
-      const board = this.currBoard;
+      const board = this.currBoard || this.board;
       const option = this.colSelected;
       if (!board) return;
       this.options[option].labels.forEach((opt, idx) => {
@@ -212,8 +218,17 @@ export default {
       return this.colSelected;
     },
     mappedTasks() {
-      return this.statusesMap
-    }
+      return this.statusesMap;
+    },
+    async getFromParams() {
+      const { boardId } = this.$route.params;
+      if (!boardId) return;
+      const board = await this.$store.dispatch({
+        type: "getBoardById",
+        boardId,
+      });
+      this.board = board;
+    },
   },
   components: {
     Container,

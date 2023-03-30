@@ -14,7 +14,6 @@
   
   <!-- <section class="table"> -->
     <Draggable
-    :class="{ 'group-drag-collapse': isGroupDrag}"
       class="group-container"
       v-for="group in currBoard.groups"
       :key="group"
