@@ -10,14 +10,14 @@
     v-if="value.length > 0"
     :class="emptyTimeline"
     class="timeline-progress-bar"
-    :style="{'background-color':`linear-gradient(to right,${group.color} 0%, ${group.color} ${widthPrecent}%,  #383838 ${100-widthPrecent}%, #383838 100%)`}"
+    :style="{'background-color':`linear-gradient(90deg,${group.color} ${widthPrecent}%,  #383838 ${widthPrecent}%)`}"
     
   >
-    <div
+    <!-- <div
       :style="{ width: widthPrecent + '%', 'background-color': group.color }"
       class="bar-precent flex justify-center align-center"
       :class="borderRadiusEnd"
-    >
+    > -->
       <div class="date-diff">
         {{ dateDiff }}
       </div>
@@ -26,7 +26,7 @@
         <span class="x-icon" v-icon="'closeTxt'"></span>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
   <div class="demo-date-picker">
 
       <el-date-picker

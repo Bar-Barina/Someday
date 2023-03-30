@@ -9,7 +9,7 @@ const { Configuration, OpenAIApi } = OpenAI
 
 const configuration = new Configuration({
     organization: "org-v9PltONXqwikEb2nUOnNF8cp",
-    apiKey: process.env.OPEN_AI_KEY,
+    apiKey: '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',
 });
 const openai = new OpenAIApi(configuration);
 
@@ -60,13 +60,52 @@ app.post('/api/openai', async (req, res) => {
     const { message } = req.body
     const response = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: `You are a Manager. asnwer with tasks for the person.
-        Person: I need tasks for frontend developers.
-        Manager: 1. Improve User Interface
-        2. Make a login page
-        3. Fix UI.
+        prompt: `You are a Console. asnwer with Javescript object that has inside an array of 2 groups and 4 tasks for each group,
+        the title of each group will be the subject of the tasks.
+        Console: What is your board subject?.
+        Person: developers.
+        Console: board: {
+            groups: [
+                {
+                    title: 'Frontend',
+                    color: '#037f4c,
+                    tasks: [
+                        {
+                            title: 'Develop the UI'
+                        },
+                        {
+                            title: 'Create a login form'
+                        },
+                        {
+                            title: 'Design an onboarding flow'
+                        },
+                        {
+                            title: 'Add authentication'
+                        }
+                    ]
+                },
+                {
+                    title: 'Backend',
+                    color: '#9cd326',
+                    tasksk: [
+                        {
+                            title: 'Write automated tests'
+                        },
+                        {
+                            title: 'Build a user profile page'
+                        },
+                        {
+                            title: 'Implement type'
+                        },
+                        {
+                            title: 'Make a backend'
+                        }
+                    ]
+                }
+            ]
+        }.
         Person: ${message}?`,
-        max_tokens: 60,
+        max_tokens: 500,
         temperature: 0
     })
     console.log('response.data', response.data)
