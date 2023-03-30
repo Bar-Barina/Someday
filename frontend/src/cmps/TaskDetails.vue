@@ -179,6 +179,7 @@ export default {
       console.log("user", user);
       this.msg.from = from;
       this.msg.txt = this.$refs.textArea.getHTML()
+      this.msg.createdAt=Date.now()
       // this.msg.txt = content.getHTML();
       console.log("this.msg.txtt", this.msg.txt);
       // if(this.msg.txt!== "") this.msg.txt.
