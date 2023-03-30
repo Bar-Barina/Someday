@@ -20,7 +20,7 @@ const app = createApp(App)
 app.directive('icon', icon)
 app.directive('clickOutside', clickOutside)
 app.use(vue3GoogleLogin, {
-  clientId: '481002303767-7aqa5ibhthkp41i6baucm6kekn7ae193.apps.googleusercontent.com'
+  clientId: '481002303767-7aqa5ibhthkp41i6baucm6kekn7ae193.apps.googleusercontent.com',
 })
 app.use(ElementPlus)
 app.use(router)
