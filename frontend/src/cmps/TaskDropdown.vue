@@ -1,7 +1,7 @@
 <template>
   <section class="task-dropdown">
     <div class="arrow-up-div"></div>
-    <div
+    <div v-if="!showEditLabels"
       v-for="(option, idx) in options"
       class="option flex align-center justify-center"
       :class="option.class"
@@ -9,12 +9,37 @@
       @click.stop="changeOption(option.name)"
     >
       {{ option.name }}
-      <span v-if="option.name === 'Critical'" v-icon="'critical'" class="critical-icon"></span>
+      <span
+        v-if="option.name === 'Critical'"
+        v-icon="'critical'"
+        class="critical-icon"
+      ></span>
       <!-- <span v-if="option.name === 'Critical'" class="dropdown-critical flex align-center justify-center">
         <span v-html="getSvg('critical')" class="dropdown-critical-icon"></span>
       </span> -->
     </div>
-  </section>
+    <div v-if="!showEditLabels" class="edit-labels" @click.stop="showEditLabels = true">
+      <span v-icon="'editLabels'"></span>
+      <span>Edit Labels</span>
+    </div>
+    <!-- EDIT -->
+    <div v-if="showEditLabels"
+      v-for="(option, idx) in options"
+      class="option flex editable-div"
+      :key="idx"
+      contenteditable="true"
+      @click.stop
+      @focusout="changeOption(option.name)"
+    >
+    <span @click="showColorPicker = !showColorPicker"
+    v-icon="'editLabelsColor'"
+    class="edit-labels-color"
+    :style="{ 'background-color': option.color }"
+    ></span>
+    {{ option.name }}
+  </div>
+  <ColorPicker v-if="showColorPicker" class="edit-color-picker"/>
+</section>
 </template>
 
 <script>
@@ -25,7 +50,10 @@ export default {
     options: Array,
   },
   data() {
-    return {}
+    return {
+      showEditLabels: false,
+      showColorPicker: false
+    }
   },
   methods: {
     changeOption(optionName) {
@@ -35,8 +63,8 @@ export default {
       return svgService.getSvg(iconName)
     },
   },
-  components : {
-    ColorPicker
-  }
+  components: {
+    ColorPicker,
+  },
 }
 </script>
