@@ -33,10 +33,7 @@
         <span v-html="getSvg('dots')"></span>
       </div>
       <section class="flex column workspace-container">
-        <div
-          class="workspace-add flex align-center pointer"
-          @click="addBoard"
-        >
+        <div class="workspace-add flex align-center pointer" @click="addBoard">
           <span v-html="getSvg('plus')" class="workspace-icon"></span>
           <span class="add">Add</span>
         </div>
@@ -53,28 +50,38 @@
             v-model="searchTerm"
           />
         </div>
-        <div @click="isAI = true" class="workspace-search flex align-center pointer open-ai">
+        <div
+          @click="isAI = true"
+          class="workspace-search flex align-center pointer open-ai"
+        >
           <span v-html="getSvg('OpenAI')" class="workspace-icon"></span>
           <span>Open AI</span>
+          <span class="top"></span>
+          <span class="right"></span>
+          <span class="bottom"></span>
+          <span class="left"></span>
         </div>
         <br />
         <div class="workspace-line"></div>
         <Container
-        v-if="!isAI"
-        class="vertical workspace-container"
-        orientation="vertical"
-        group-name="boards"
-        tag="div"
-        @drop="onBoardDrop($event)">
-            <Draggable v-for="(board, idx) in filteredBoards"
+          v-if="!isAI"
+          class="vertical workspace-container"
+          orientation="vertical"
+          group-name="boards"
+          tag="div"
+          @drop="onBoardDrop($event)"
+        >
+          <Draggable
+            v-for="(board, idx) in filteredBoards"
             :key="idx"
             @click="moveToBoard(board, idx)"
             class="flex align-center workspace-boards pointer"
-            :class="{ 'selected-board': currBoard._id === board._id }">
-              <BoardTitlePreview :board="board" @removeBoard="removeBoard" />
-            </Draggable>
+            :class="{ 'selected-board': currBoard._id === board._id }"
+          >
+            <BoardTitlePreview :board="board" @removeBoard="removeBoard" />
+          </Draggable>
         </Container>
-        <OpenAI v-if="isAI" @AIboard="addAIboard"/>
+        <OpenAI v-if="isAI" @AIboard="addAIboard" @closeAI="isAI = false"/>
       </section>
     </section>
   </section>
@@ -86,8 +93,8 @@ import { takeWhile } from "lodash";
 import { svgService } from "../services/svg.service.js";
 import { boardService } from "../services/board.service.js";
 import BoardTitlePreview from "../cmps/BoardTitlePreview.vue";
-import { utilService } from '../services/util.service.js';
-import OpenAI from './OpenAI.vue';
+import { utilService } from "../services/util.service.js";
+import OpenAI from "./OpenAI.vue";
 
 export default {
   props: {
@@ -99,7 +106,7 @@ export default {
       isWorkspaceOpen: false,
       searchTerm: "",
       selectedBoard: null,
-      isAI: false
+      isAI: false,
     };
   },
   methods: {
@@ -110,8 +117,8 @@ export default {
       this.isWorkspaceOpen = !this.isWorkspaceOpen;
     },
     addBoard() {
-      const newBoard = boardService.getEmptyBoard()
-      this.$store.dispatch({ type: "addBoard", board : newBoard });
+      const newBoard = boardService.getEmptyBoard();
+      this.$store.dispatch({ type: "addBoard", board: newBoard });
     },
     removeBoard(boardId) {
       this.$store.dispatch({ type: "removeBoard", boardId });
@@ -122,16 +129,16 @@ export default {
       this.selectedBoard = idx;
     },
     onBoardDrop(dropResult) {
-      let boards = JSON.parse(JSON.stringify(this.currBoards))
-      boards = utilService.applyDrag(boards, dropResult)
-      this.currBoards = boards
+      let boards = JSON.parse(JSON.stringify(this.currBoards));
+      boards = utilService.applyDrag(boards, dropResult);
+      this.currBoards = boards;
     },
     addAIboard(board) {
-      const boards = this.filteredBoards
-      console.log('boards', boards)
-      const boardIdx = boards.findIndex(b => b._id === board._id)
-      this.moveToBoard(board , boardIdx)
-    }
+      const boards = this.filteredBoards;
+      console.log("boards", boards);
+      const boardIdx = boards.findIndex((b) => b._id === board._id);
+      this.moveToBoard(board, boardIdx);
+    },
   },
   computed: {
     // boards() {
@@ -149,7 +156,7 @@ export default {
     BoardTitlePreview,
     Container,
     Draggable,
-    OpenAI
+    OpenAI,
   },
   mounted() {
     setTimeout(() => {

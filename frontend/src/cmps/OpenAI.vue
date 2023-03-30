@@ -1,5 +1,5 @@
 <template>
-  <section class="open-ai">
+  <section class="openai-container">
     <h5>Open Ai Test</h5>
     <div class="chat-container">
       <div class="msg">
@@ -9,6 +9,7 @@
       <button @click="sendQ">Send</button>
       <span v-if="isLoading">Loading....</span>
     </div>
+    <button @click="closeAI">Close</button>
   </section>
 </template>
 
@@ -35,6 +36,7 @@ export default {
       const boardToCreate = this.createBoard(res)
       const board = await this.$store.dispatch({type: 'addBoard' , board: boardToCreate})
       this.$emit('AIboard' , board)
+      this.closeAI()
     },
     createBoard(res) {
       const taskAI = boardService.getEmptyTask()
@@ -45,6 +47,9 @@ export default {
         })
       })
       return res
+    },
+    closeAI() {
+      this.$emit('closeAI')
     }
   },
   computed: {
