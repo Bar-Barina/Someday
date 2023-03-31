@@ -26,13 +26,19 @@
     }
   }
   .work-management {
-    width: 50px;
-    height: 42px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 8px;
-    border-radius: 6px;
+    border-radius: 8px;
+    background-color: #54596f;
+    margin-left: 7.2px;
+    svg {
+      margin-top: 4px;
+  margin-left: 1px;
+    }
   }
   .icon-wrapper {
     width: 36px;
@@ -56,7 +62,7 @@
     transition: opacity 0.1s ease-in-out;
     border-color: transparent #f6f7fb transparent transparent;
     position: absolute;
-    top: 74px;
+    top: 71px;
     left: 62px;
   }
   .member-wrapper {
