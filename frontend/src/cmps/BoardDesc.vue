@@ -25,13 +25,13 @@
       <!-- CREATED AT -->
       <div class="info-title">Created by</div>
       <div class="created-info-div flex align-center">
-        <img :src="currBoard.members[1].url" />
+        <img :src="currBoard.members[1].imgUrl" />
         <span class="info-subtitle"> March 22,2023</span>
       </div>
        <!-- OWNERS -->
        <div class="info-title">Owners</div>
        <div class="owners-info-div flex align-center">
-        <img :src="currBoard.members[1].url" />
+        <img :src="currBoard.members[1].imgUrl" />
         <span class="info-subtitle"> {{currBoard.members[1].name}}</span>
       </div>
       <!-- BOARD TYPE -->
