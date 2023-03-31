@@ -40,7 +40,6 @@ export default {
   },
   methods: {
     updateStatus(status) {
-      console.log('status from picker',status)
       this.selectedStatus = status
       this.toggleModal()
       this.$emit('updateTask', { cmpType: 'status', data: status })
@@ -51,14 +50,13 @@ export default {
     closeModal() {
       this.showDropdown = false
     },
-    updateOptions(options) {
-      console.log(options)
-      this.$emit('updateOptions', options)
+    updateOptions(optionsUpdate) {
+      this.$emit('updateOptions', optionsUpdate)
     },
   },
   computed: {
     labels() {
-      console.log('from picker',this.$store.getters.currBoard.labels)
+      // console.log('from picker', this.$store.getters.currBoard.labels)
       return this.$store.getters.currBoard.labels
     },
     status() {
@@ -81,11 +79,15 @@ export default {
     color() {
       const labels = this.labels
       const currLabel = []
-      console.log(this.task.status)
       labels.status.forEach((label) => {
         if (label.name === this.task.status) currLabel.push(label)
+        console.log(label)
       })
-      return currLabel[0].color
+      if (currLabel.length > 0) {
+    return currLabel[0].color
+  } else {
+    return null 
+  }
     },
   },
   components: {

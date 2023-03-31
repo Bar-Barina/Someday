@@ -36,7 +36,7 @@
       contenteditable="true"
       @click.stop
       ref="editableLabel"
-      @focusout="updateLabelName(idx)"
+       @focusout="updateLabelName(idx)"
     >
       <!-- COLOR -->
       <span
@@ -52,6 +52,11 @@
       class="edit-color-picker"
       @updateColor="updateLabelColor"
     />
+    <!-- ADD -->
+    <div v-if="showEditLabels" class="flex align-center editable-div new-label">
+      <span v-icon="'editLabelsPlus'" class="edit-plus"></span>
+      <span>New label</span>
+    </div>
     <div v-if="showEditLabels" class="edit-labels">
       <span @click="showEditLabels = false">Apply</span>
     </div>
@@ -76,7 +81,7 @@ export default {
   },
   methods: {
     changeOption(optionName) {
-      console.log('optionName from dropdown',optionName)
+      console.log('optionName from dropdown', optionName)
       this.$emit('updateOption', optionName)
     },
     getSvg(iconName) {
@@ -100,7 +105,7 @@ export default {
       const option = updatedOptions[this.type][idx]
       option.name = this.$refs.editableLabel[idx].innerText
       updatedOptions[this.type].splice(idx, 1, option)
-      this.$emit('updateOptions', updatedOptions)
+      this.$emit('updateOptions', {updatedOptions, idx, type :this.type})
     },
   },
   components: {
