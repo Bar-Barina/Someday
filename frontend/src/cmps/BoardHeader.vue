@@ -81,6 +81,7 @@
         <Activity
           v-if="showBoardActivity"
           v-clickOutside="closeActivity"
+          @closeActivity="closeActivity"
         />
 
         <div class="invite flex align-center btn-hover">
