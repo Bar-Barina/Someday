@@ -328,3 +328,21 @@
 .member-preview {
   border-radius: 50%;
 }
+
+.hide-filter-btn {
+  position: relative;
+
+  .hide-columns-filter {
+    position: absolute;
+    top: 110%;
+    right: 15%;
+    z-index: 9999;
+    padding: 6px;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #323338;
+    box-shadow: 0 4px 17px 6px rgba(0,0,0,.1);
+    min-width: 264px;
+    height: fit-content;
+  }
+}

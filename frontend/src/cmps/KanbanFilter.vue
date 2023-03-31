@@ -19,7 +19,6 @@ export default {
   },
   methods: {
     addColumn() {
-        console.log('hi')
       if (!this.isChecked) this.$emit("addCol", this.col);
       else this.$emit("removeCol", this.col);
     },

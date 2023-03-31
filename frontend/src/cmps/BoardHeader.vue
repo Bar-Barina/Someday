@@ -78,10 +78,7 @@
             class="member-preview"
           />
         </div>
-        <Activity
-          v-if="showBoardActivity"
-          v-clickOutside="closeActivity"
-        />
+        <Activity v-if="showBoardActivity" v-clickOutside="closeActivity" />
 
         <div class="invite flex align-center btn-hover">
           <div class="icon">
@@ -240,22 +237,33 @@
         Sort
       </div>
       <div
+      @click="isHideOpen = !isHideOpen"
         v-tippy="{
           content: 'Hidden columns',
           theme: 'classic',
           placement: 'top',
           arrow: true,
         }"
-        class="bottom-header-btn btn-hover"
+        class="bottom-header-btn btn-hover hide-filter-btn"
       >
         <div
           class="flex justify-center align-center"
           v-html="getSvg('hide')"
         ></div>
         Hide
+        <section v-clickOutside="closeHiddenFilter" v-if="isHideOpen" class="hide-columns-filter">
+          <div v-for="(col , idx) in columns" :key="idx">
+            <KanbanFilter :col="col"/>
+          </div>
+        </section>
       </div>
-      <span class="filterKanbanIcon" v-if="active" :class="{ active: isFilterOpen}"
-      @click="toggleKanbanFilter" v-icon="'headerSettings'"></span>
+      <span
+        class="filterKanbanIcon"
+        v-if="active"
+        :class="{ active: isFilterOpen }"
+        @click="toggleKanbanFilter"
+        v-icon="'headerSettings'"
+      ></span>
     </section>
   </section>
 </template>
@@ -269,6 +277,7 @@ import { utilService } from '../services/util.service.js'
 import { eventBus } from '../services/event-bus.service'
 import BoardDesc from './BoardDesc.vue'
 import Activity from './Activity.vue'
+import KanbanFilter from './KanbanFilter.vue'
 
 export default {
   name: 'BoardHeader',
@@ -290,6 +299,16 @@ export default {
       isStarred: false,
       showBoardActivity: false,
       isFilterOpen: false,
+      columns: [
+        "Date",
+        "Text",
+        "Priority",
+        "Person",
+        "Files",
+        "Status",
+        "Timeline",
+      ],
+      isHideOpen: false
     }
   },
   methods: {
@@ -352,6 +371,9 @@ export default {
     toggleKanbanFilter() {
       this.isFilterOpen = !this.isFilterOpen
       eventBus.emit('toggleKanban')
+    },
+    closeHiddenFilter() {
+      this.isHideOpen = false
     }
   },
   watch: {
@@ -381,6 +403,7 @@ export default {
     MainPersonFilter,
     BoardDesc,
     Activity,
+    KanbanFilter
   },
 }
 </script>
