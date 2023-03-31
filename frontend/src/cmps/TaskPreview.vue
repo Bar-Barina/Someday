@@ -74,7 +74,7 @@
         </button>
       </div>
     </section>
-    <section class="cell2" v-for="(cmp, idx) in labels" :key="idx">
+    <section class="cell2" v-for="(cmp, idx) in cmpsOrder" :key="idx">
       <component
         :is="cmp"
         :task="task"
@@ -212,6 +212,9 @@ export default {
     isChecked() {
       return this.isSelected
     },
+    cmpsOrder() {
+      return this.$store.getters.currLabelsOrder
+    }
   },
   components: {
     Draggable,
