@@ -217,8 +217,8 @@ export default {
       this.isEmoji = !this.isEmoji
     },
     onSelectEmoji(emoji) {
-      // this.msg.txt += emoji.i
-      // this.$refs.textArea.innerText += emoji.i;
+      this.msg.txt += emoji.i
+      // this.$refs.textArea.innerText += emoji.i
       // this.$refs.textArea.getText() += emoji.i
     },
     closeEmojiPick() {
@@ -250,7 +250,6 @@ export default {
       socketService.emit('user-typing', '')
     },
     renderTyping(msg) {
-      console.log('msg!!', msg)
       this.typing = msg
     },
     changeTopic() {
