@@ -9,7 +9,7 @@
           tag="div"
           @drop="onColumnDrop($event)"
         >
-          <Draggable v-for="(option, idx) in mappedTasks" :key="idx">
+          <Draggable v-for="(option, idx) in statusesMap" :key="idx">
             <KanbanCol
               :status="option.title"
               :tasks="option.tasks"
@@ -222,6 +222,7 @@ export default {
       return this.colSelected;
     },
     mappedTasks() {
+      console.log('this.statusesMap1111', this.statusesMap)
       return this.statusesMap;
     },
     async getFromParams() {

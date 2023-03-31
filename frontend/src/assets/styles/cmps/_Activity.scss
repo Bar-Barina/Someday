@@ -1,5 +1,5 @@
 .board-activity-container {
-  display: grid;
+  // display: grid;
   position: fixed;
   top: 0;
   right: 0;
@@ -13,6 +13,7 @@
   .activity-header {
     margin-top: 20px;
     padding: 0 25px;
+    max-height: 100px;
     h2 {
       color: #323338;
       font-size: 20px;
@@ -23,6 +24,27 @@
         font-weight: 500;
       }
     }
+  }
+  input {
+    width: 150px;
+    height: 32px;
+    margin-left: 40%;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    margin-bottom: 25px;
+    &:focus {
+        outline: 1px solid $clr8;
+        border: none;
+      }
+      &:hover {
+        outline: 1px solid #323338;
+        border: none;
+      }
+      &::placeholder {
+        padding: 15px;
+        color: #c2c2c2;
+        font-size: 14px;
+      }
   }
   .activity-list-wrapper {
     overflow-y: scroll;
@@ -76,6 +98,11 @@
       fill: #c4c4c4;
     }
   }
+  svg {
+  width: 22px;
+  max-width: 22px;
+  fill: rgb(65, 65, 65);
+}
 }
 .activity-status {
   display: flex;
@@ -84,7 +111,6 @@
   width: fit-content;
   min-width: 89.14px;
   height: 39px;
-  // padding: 5px;
   border-radius: 3px;
   text-align: center;
   white-space: nowrap;
@@ -143,10 +169,6 @@
   text-overflow: ellipsis;
 }
 
-// svg {
-//   width: 22px;
-//   fill: rgb(65, 65, 65);
-// }
 
 .activity-time {
   min-width: 25px;

@@ -1,0 +1,62 @@
+.invite-container {
+  padding: 24px 32px 8px 32px;
+  width: 530px;
+  height: 500px;
+  position: absolute;
+  top: 75%;
+  left: 25%;
+  background-color: $clr2;
+  box-shadow: rgb(0, 0, 0) 0px 6px 20px 0px;
+  transition: all 0.4s ease 0s;
+  z-index: 3000;
+  border-radius: 8px;
+  .invite-close-btn {
+    width: 28px;
+    height: 32px;
+   position: absolute;
+   right: 15px;
+   top: 13px;
+   border-radius: 4px;
+
+   svg {
+    margin-left: 2.2px;
+    margin-top: 4.8px;
+   }
+   &:hover {
+    background-color: #dcdfec;
+   }
+  }
+  .invite-title {
+    font-size: 24px;
+  }
+  input {
+    width: 100%;
+    height: 35px;
+    margin-top: 20px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    margin-bottom: 25px;
+    &:focus {
+        outline: 1px solid $clr8;
+        border: none;
+      }
+      &:hover {
+        outline: 1px solid #323338;
+        border: none;
+      }
+  }
+  .invite-subtitle-wrapper {
+    font-size: 15px;
+    .invite-subtitle {
+      width: 24px;
+      height: 23px;
+      border-radius: 8px;
+      background-color: #323338;
+      margin-right: 15px;
+      img {
+        width: 20px;
+        margin-left: 2px;
+      }
+    }
+  }
+}

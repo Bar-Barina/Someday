@@ -23,8 +23,18 @@
         <div v-html="getSvg('wm')"></div>
       </div>
     </section>
+    <!-- REMOVED -->
+    <div class="flex align-center space-between column someday">
+    <span>S</span>
+    <span>O</span>
+    <span>M</span>
+    <span>E</span>
+    <span>D</span>
+    <span>A</span>
+    <span>Y</span>
+  </div>
     <!-- <hr/> -->
-    <section class="icon-pattern-top">
+    <!-- <section class="icon-pattern-top">
       <div class="icon-wrapper">
         <span v-html="getSvg('bell')"></span>
       </div>
@@ -37,9 +47,9 @@
       <div class="icon-wrapper">
         <span v-html="getSvg('star')"></span>
       </div>
-    </section>
+    </section> -->
 
-    <section
+    <!-- <section
       class="icon-pattern-bottom flex column justify-center align-center"
     >
       <div class="icon-wrapper">
@@ -54,8 +64,9 @@
       <div class="icon-wrapper">
         <span v-html="getSvg('info')"></span>
       </div>
-    </section>
-    <section class="flex justify-center align-center column">
+    </section> -->
+    <!-- ADDED CLASS -->
+    <section class="flex justify-center align-center column user-img">
       <div class="icon-wrapper">
         <div v-html="getSvg('apps')"></div>
       </div>
@@ -67,7 +78,7 @@
               : 'https://cdn1.monday.com/dapulse_default_photo.png'"
           class="member-preview"
         />
-        <EditMenu v-if="userMenu" :user="true"/>
+        <EditMenu v-if="userMenu" :user="true" v-clickOutside="closeEditMenu"/>
       </div>
     </section>
     <div class="workspace-arrow-left-div"></div>
@@ -89,6 +100,9 @@ export default {
     getSvg(iconName) {
       return svgService.getSvg(iconName)
     },
+    closeEditMenu() {
+      this.userMenu = false
+    }
   },
   computed: {
     currUser() {

@@ -65,7 +65,7 @@
       <span>New label</span>
     </div>
     <div v-if="showEditLabels" class="edit-labels">
-      <span @click="showEditLabels = false">Apply</span>
+      <span @click.stop="showEditLabels = false">Apply</span>
     </div>
   </section>
 </template>
@@ -118,7 +118,7 @@ export default {
       const updatedOptions = JSON.parse(JSON.stringify(this.options))
       const newLabel = {
         id: utilService.makeId(),
-        name: utilService.getRandomStatus(),
+        name: this.type === 'status' ? utilService.getRandomStatus() : utilService.getRandomPriority(),
         color: utilService.getRandomColor(),
       }
       updatedOptions[this.type].push(newLabel)

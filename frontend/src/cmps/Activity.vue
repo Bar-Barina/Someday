@@ -6,11 +6,20 @@
     }"
   >
     <div class="activity-header" v-if="!task">
-      <div @click="closeActivity" class="close-activity flex justify-center align-center">
-      <span v-icon="'x'"></span>
+      <div
+        @click="closeActivity"
+        class="close-activity flex justify-center align-center"
+      >
+        <span v-icon="'x'"></span>
       </div>
       <h2>{{ this.currBoard.title }} <span>Log</span></h2>
     </div>
+    <input
+      type="text"
+      placeholder="Filter by name"
+      v-model="this.searchTerm"
+      v-if="!task"
+    />
     <section class="activity-list-wrapper">
       <section class="activity-list">
         <article
@@ -43,7 +52,7 @@
             />
             <span
               v-if="activity.changed === 'timeline'"
-              v-icon="'activityTimeLine'"
+              v-icon="'TimelineFilter'"
             ></span>
             <span
               v-if="activity.changed === 'date'"
@@ -141,7 +150,10 @@ export default {
     task: Object,
   },
   data() {
-    return {}
+    return {
+      searchTerm: '',
+      // showFilter: false
+    }
   },
   methods: {
     timeSince(date) {
@@ -168,7 +180,7 @@ export default {
     },
     closeActivity() {
       this.$emit('closeActivity')
-    }
+    },
   },
   computed: {
     currBoard() {
@@ -176,6 +188,7 @@ export default {
     },
     activities() {
       const board = this.$store.getters.currBoard
+      const regex = new RegExp(this.searchTerm, 'i')
       let activities = []
       if (this.task) {
         activities = this.task.activities || []
@@ -191,6 +204,9 @@ export default {
           if (task.activities) activities.push(...task.activities)
         })
       })
+      activities = activities.filter((activity) =>
+        regex.test(activity.taskTitle)
+      )
       activities.sort((a, b) => {
         return new Date(b.createdAt) - new Date(a.createdAt)
       })

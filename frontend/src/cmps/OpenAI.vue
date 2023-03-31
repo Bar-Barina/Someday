@@ -2,13 +2,13 @@
   <section class="openai-container">
     <div class="chat-container">
       <div class="msg">
-        <span class="title">AI:</span><span>What is your board subject?</span>
+        <span class="title">AI:</span><span>{{ msg }}</span>
       </div>
       <div class="send-section flex align-center">
       <input class="open-ai-input" type="text" placeholder="Write your subject" v-model="txt" />
       <span class="send" v-icon="'sendOpenAI'" @click="sendQ"></span>
       </div>
-      <span v-if="isLoading">Loading....</span>
+      <span class="ai-loader" v-if="isLoading"></span>
     </div>
   </section>
 </template>
@@ -22,6 +22,7 @@ export default {
     return {
       txt: "",
       res: "",
+      msg: "What is your board subject?",
       isLoading: false,
     };
   },
@@ -32,6 +33,10 @@ export default {
       this.isLoading = true;
       const url = "http://localhost:3030/api/openai";
       let res = await axios.post(url, { message: this.res });
+      if(res.data.message.length < 100) {
+        this.msg = res.data.message
+        return
+      }
       res = JSON.parse(res.data.message)
       const boardToCreate = this.createBoard(res)
       const board = await this.$store.dispatch({type: 'addBoard' , board: boardToCreate})

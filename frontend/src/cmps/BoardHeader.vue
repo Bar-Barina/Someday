@@ -84,13 +84,13 @@
           @closeActivity="closeActivity"
         />
 
-        <div class="invite flex align-center btn-hover">
+        <div class="invite flex align-center btn-hover" @click="showInvite = true">
           <div class="icon">
             <span v-html="getSvg('invitePeople')"></span>
           </div>
           Invite / {{ this.currBoard.members.length }}
         </div>
-
+         <Invite v-if="this.showInvite"  v-clickOutside="closeInvite" />
         <div class="dots flex align-center justify-center icon btn-hover">
           <div v-html="getSvg('headerDots')"></div>
         </div>
@@ -299,6 +299,7 @@ import { eventBus } from "../services/event-bus.service";
 import BoardDesc from "./BoardDesc.vue";
 import Activity from "./Activity.vue";
 import KanbanFilter from "./KanbanFilter.vue";
+import Invite from "./Invite.vue";
 
 export default {
   name: "BoardHeader",
@@ -320,6 +321,7 @@ export default {
       isStarred: false,
       showBoardActivity: false,
       isFilterOpen: false,
+      showInvite: false,
       columns: [
         "Date",
         "Text",
@@ -410,6 +412,9 @@ export default {
       cols.splice(colIdx, 1);
       this.$store.commit({ type: "setCurrLabels", labelsOrder: cols });
     },
+    closeInvite() {
+      this.showInvite = false
+    },
   },
   watch: {
     "$route.params": {
@@ -442,6 +447,7 @@ export default {
     BoardDesc,
     Activity,
     KanbanFilter,
+    Invite,
   },
 };
 </script>
