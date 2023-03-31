@@ -407,12 +407,12 @@
 }
 
 .component-push-enter-active, .component-push-leave-active {
-  transition: transform 0.5s;
+  transition: transform 0.4s;
 }
 .component-push-enter {
-  transform: translateY(-400%);
+  transform: translateY(0%);
 }
 .component-push-leave-to {
-  transform: translateY(300%);
+  transform: translateY(800%);
   opacity: 0.5;
 }
