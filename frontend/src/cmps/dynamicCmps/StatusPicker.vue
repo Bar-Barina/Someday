@@ -12,7 +12,6 @@
       :type="'status'"
       @updateOption="updateStatus"
       @updateOptions="updateOptions"
-      @addLabel="addLabel"
       optionClass="status-option"
     />
     <span class="peeling-span scale-up-tr"></span>
@@ -27,7 +26,7 @@
 import TaskDropdown from '../TaskDropdown.vue'
 
 export default {
-  emits: ['updateTask', 'updateOptions'],
+  emits: ['updateTask', 'updateOptions', 'addLabel'],
   props: {
     task: Object,
   },
@@ -52,10 +51,6 @@ export default {
     },
     updateOptions(updatedOptions) {
       this.$emit('updateOptions', updatedOptions)
-    },
-    addLabel(labelData) {
-      console.log('labelData', labelData)
-      this.$emit('addLabel', labelData)
     },
   },
   computed: {

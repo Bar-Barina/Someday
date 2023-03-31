@@ -50,7 +50,7 @@
 <script>
 import PersonPreview from '../PersonPreview.vue'
 export default {
-  emits: ['updateTask', 'updateOptions'],
+  emits: ['updateTask', 'updateOptions','addLabel'],
   name: 'person',
   props: {
     task: Object,
