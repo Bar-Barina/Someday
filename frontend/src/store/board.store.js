@@ -174,7 +174,7 @@ export const boardStore = {
       return board
     },
     async updateBoard(context, { board }) {
-      console.log(board)
+      console.log('board from store',board)
       try {
         board = await boardService.save(board)
         socketService.emit('update-boards', board)
