@@ -36,7 +36,7 @@
       contenteditable="true"
       @click.stop
       ref="editableLabel"
-       @focusout="updateLabelName(idx)"
+      @focusout="updateLabelName(idx)"
     >
       <!-- COLOR -->
       <span
@@ -81,7 +81,6 @@ export default {
   },
   methods: {
     changeOption(optionName) {
-      console.log('optionName from dropdown', optionName)
       this.$emit('updateOption', optionName)
     },
     getSvg(iconName) {
@@ -98,14 +97,14 @@ export default {
       )
       this.currOption.color = data
       updatedOptions[this.type].splice(optionIdx, 1, this.currOption)
-      this.$emit('updateOptions', {updatedOptions})
+      this.$emit('updateOptions', { updatedOptions })
     },
     updateLabelName(idx) {
       const updatedOptions = JSON.parse(JSON.stringify(this.options))
       const option = updatedOptions[this.type][idx]
       option.name = this.$refs.editableLabel[idx].innerText
       updatedOptions[this.type].splice(idx, 1, option)
-      this.$emit('updateOptions', {updatedOptions, idx, type :this.type})
+      this.$emit('updateOptions', { updatedOptions, idx, type: this.type })
     },
   },
   components: {

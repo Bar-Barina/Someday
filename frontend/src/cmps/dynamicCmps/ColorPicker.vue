@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  emits : ['updateOptions'],
+  emits: ['updateOptions', 'updateColor'],
   props: ['groupColor'],
   name: 'color-picker',
   data() {

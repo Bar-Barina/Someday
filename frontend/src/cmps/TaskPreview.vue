@@ -180,16 +180,16 @@ export default {
         this.$emit('removeSelected', this.task.id)
       }
     },
-    updateOptions({ updatedOptions , idx, type }) {
+    updateOptions({ updatedOptions, idx, type }) {
       const board = JSON.parse(JSON.stringify(this.currBoard))
-      if (idx && type) {
+      if (idx >= 0 && type) {
         board.groups.forEach((group) => {
-        group.tasks.forEach((task) => {
-          if (task[type] === board.labels[type][idx].name) {
-            task[type] = updatedOptions[type][idx].name
-          }
+          group.tasks.forEach((task) => {
+            if (task[type] === board.labels[type][idx].name) {
+              task[type] = updatedOptions[type][idx].name
+            }
+          })
         })
-      })
       }
       board.labels = updatedOptions
       this.$store.dispatch({ type: 'updateBoard', board })
