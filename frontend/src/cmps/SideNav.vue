@@ -59,7 +59,7 @@
       <div class="icon-wrapper">
         <div v-html="getSvg('apps')"></div>
       </div>
-      <div class="member-wrapper flex justify-center align-center">
+      <div class="member-wrapper flex justify-center align-center" @click="userMenu = !userMenu">
         <img
           :src="
             currUser
@@ -67,6 +67,7 @@
               : 'https://cdn1.monday.com/dapulse_default_photo.png'"
           class="member-preview"
         />
+        <EditMenu v-if="userMenu" :user="true"/>
       </div>
     </section>
     <div class="workspace-arrow-left-div"></div>
@@ -76,10 +77,13 @@
 
 <script>
 import { svgService } from '../services/svg.service.js'
+import EditMenu from './EditMenu.vue'
 export default {
   name: 'SideNav',
   data() {
-    return {}
+    return {
+      userMenu: false
+    }
   },
   methods: {
     getSvg(iconName) {
@@ -91,5 +95,8 @@ export default {
       return this.$store.getters.loggedInUser
     },
   },
+  components: {
+    EditMenu,
+  }
 }
 </script>

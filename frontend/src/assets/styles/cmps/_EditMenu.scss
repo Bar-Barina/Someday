@@ -10,6 +10,7 @@
     padding: 8px;
     z-index: 100;
     box-shadow: 0 4px 17px 6px rgba(0,0,0,.1);
+    
     .edit-cell {
         gap: 7px;
         padding: 4px 8px;
@@ -33,5 +34,8 @@
             width: 20px;
         }
 
+        .logout {
+            padding-top: 4px;
+        }
     }
 }
