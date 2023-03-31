@@ -58,6 +58,8 @@
         left: 62px;
     }
     .member-wrapper {
+        cursor: pointer;
+        position: relative;
         height: 42px;
         width: 42px;
         display: flex;
@@ -65,6 +67,13 @@
         justify-content: center;
         border-radius: 50%;
         background-color: $clr2;
+
+        .edit-menu {
+            position: absolute;
+            top: -30px;
+            left: 45px;
+        }
+
         .member-preview {
             height: 40px;
             width: 40px;
