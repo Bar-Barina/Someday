@@ -26,7 +26,7 @@
 import TaskDropdown from '../TaskDropdown.vue'
 
 export default {
-  emits: ['updateTask', 'updateOptions'],
+  emits: ['updateTask', 'updateOptions', 'addLabel'],
   props: {
     task: Object,
   },

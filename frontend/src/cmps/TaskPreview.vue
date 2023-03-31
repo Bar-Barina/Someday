@@ -181,6 +181,8 @@ export default {
       }
     },
     updateOptions({ updatedOptions, idx, type }) {
+      console.log(idx)
+      console.log(type)
       const board = JSON.parse(JSON.stringify(this.currBoard))
       if (idx >= 0 && type) {
         board.groups.forEach((group) => {
@@ -191,7 +193,12 @@ export default {
           })
         })
       }
+      // else if(!idx && type) {
+      //   // board.labels[type].push(newLabel)
+      // }
+      console.log('updatedOptions', updatedOptions)
       board.labels = updatedOptions
+      console.log('from preview', board)
       this.$store.dispatch({ type: 'updateBoard', board })
     },
   },
