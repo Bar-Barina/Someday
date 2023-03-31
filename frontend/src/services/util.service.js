@@ -7,6 +7,7 @@ export const utilService = {
   saveToStorage,
   loadFromStorage,
   applyDrag,
+  getRandomColor,
 }
 
 function makeId(length = 6) {
@@ -110,4 +111,30 @@ function applyDrag(arr, dragResult) {
     result.splice(addedIndex, 0, itemToAdd)
   }
   return result
+}
+
+function getRandomColor() {
+  const colors = [
+    '#037f4c',
+    '#00c875',
+    '#9cd326',
+    '#cab641',
+    '#ffcb00',
+    '#784bd1',
+    '#a25ddc',
+    '#0086c0',
+    '#66ccff',
+    '#bb3354',
+    '#e2445c',
+    '#ff158a',
+    '#ff5ac4',
+    '#ff642e',
+    '#fdab3d',
+    '#7f5347',
+    '#c4c4c4',
+    '#808080',
+  ];
+  
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
 }

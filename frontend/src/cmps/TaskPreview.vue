@@ -81,6 +81,7 @@
         :group="group"
         @updateTask="updateTask"
         @updateOptions="updateOptions"
+        @addLabel="addLabel"
       ></component>
     </section>
     <EmptyProgress class="last" :style="{ width: 'auto' }" />
@@ -192,6 +193,12 @@ export default {
         })
       }
       board.labels = updatedOptions
+      this.$store.dispatch({ type: 'updateBoard', board })
+    },
+    addLabel({newLabel,type}) {
+      const board = JSON.parse(JSON.stringify(this.currBoard))
+      const labels = board.labels
+      labels[type].push(newLabel)
       this.$store.dispatch({ type: 'updateBoard', board })
     },
   },

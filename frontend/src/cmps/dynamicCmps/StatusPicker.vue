@@ -12,6 +12,7 @@
       :type="'status'"
       @updateOption="updateStatus"
       @updateOptions="updateOptions"
+      @addLabel="addLabel"
       optionClass="status-option"
     />
     <span class="peeling-span scale-up-tr"></span>
@@ -51,6 +52,10 @@ export default {
     },
     updateOptions(updatedOptions) {
       this.$emit('updateOptions', updatedOptions)
+    },
+    addLabel(labelData) {
+      console.log('labelData', labelData)
+      this.$emit('addLabel', labelData)
     },
   },
   computed: {

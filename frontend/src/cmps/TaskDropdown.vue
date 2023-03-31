@@ -42,7 +42,13 @@
         class="edit-labels-color"
         :style="{ 'background-color': option.color }"
       ></span>
-      <span class="editable-div" contenteditable="true" ref="editableLabel" @focusout="updateLabelName(idx)">{{ option.name }}</span>
+      <span
+        class="editable-div"
+        contenteditable="true"
+        ref="editableLabel"
+        @focusout="updateLabelName(idx)"
+        >{{ option.name }}</span
+      >
     </div>
     <ColorPicker
       v-if="showColorPicker"
@@ -50,7 +56,11 @@
       @updateColor="updateLabelColor"
     />
     <!-- ADD -->
-    <div v-if="showEditLabels" class="flex align-center editable-div new-label">
+    <div
+      v-if="showEditLabels"
+      class="flex align-center editable-div new-label"
+      @click.stop="addLabel"
+    >
       <span v-icon="'editLabelsPlus'" class="edit-plus"></span>
       <span>New label</span>
     </div>
@@ -62,6 +72,7 @@
 
 <script>
 import { svgService } from '../services/svg.service.js'
+import { utilService } from '../services/util.service.js'
 import ColorPicker from '../cmps/dynamicCmps/ColorPicker.vue'
 export default {
   emits: ['updateOptions', 'updateOption'],
@@ -102,6 +113,14 @@ export default {
       option.name = this.$refs.editableLabel[idx].innerText
       updatedOptions[this.type].splice(idx, 1, option)
       this.$emit('updateOptions', { updatedOptions, idx, type: this.type })
+    },
+    addLabel() {
+      const newLabel = {
+        id: utilService.makeId(),
+        name: '',
+        color: utilService.getRandomColor(),
+      }
+      this.$emit('addLabel', { newLabel, type: this.type })
     },
   },
   components: {
