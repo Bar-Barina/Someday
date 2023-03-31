@@ -32,7 +32,6 @@ async function remove(boardId) {
 }
 
 async function save(board) {
-  // console.log('board', board)
   var savedBoard
   if (board._id) {
     // console.log('board._id', board._id)
