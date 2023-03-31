@@ -181,10 +181,10 @@ export default {
       }
     },
     updateOptions(options) {
+      console.log('options from taskpreview', options)
       const board = JSON.parse(JSON.stringify(this.currBoard))
       board.labels = options
-      console.log(board.labels)
-      console.log(options)
+      console.log('from taskpreview',board)
       this.$store.dispatch({ type: 'updateBoard', board })
     },
   },

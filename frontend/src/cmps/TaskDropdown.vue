@@ -35,8 +35,8 @@
       :key="idx"
       contenteditable="true"
       @click.stop
-      ref="`editableLabel + ${idx}`"
-      @focusout=""
+      ref="editableLabel"
+      @focusout="updateLabelName(idx)"
     >
       <!-- COLOR -->
       <span
@@ -62,7 +62,7 @@
 import { svgService } from '../services/svg.service.js'
 import ColorPicker from '../cmps/dynamicCmps/ColorPicker.vue'
 export default {
-  emits: ['updateOptions','updateOption'],
+  emits: ['updateOptions', 'updateOption'],
   props: {
     options: Object,
     type: String,
@@ -76,23 +76,31 @@ export default {
   },
   methods: {
     changeOption(optionName) {
-      console.log('optionName', optionName)
+      console.log('optionName from dropdown',optionName)
       this.$emit('updateOption', optionName)
     },
     getSvg(iconName) {
       return svgService.getSvg(iconName)
     },
     toggleColorPicker(option) {
-      this.currOption = {...option}
+      this.currOption = { ...option }
       this.showColorPicker = !this.showColorPicker
     },
     updateLabelColor({ data }) {
       const updatedOptions = JSON.parse(JSON.stringify(this.options))
-      const optionIdx = updatedOptions[this.type].findIndex(opt => opt.id === this.currOption.id)
+      const optionIdx = updatedOptions[this.type].findIndex(
+        (opt) => opt.id === this.currOption.id
+      )
       this.currOption.color = data
-      updatedOptions[this.type].splice(optionIdx,1,this.currOption)
-      console.log('from Dropdown',updatedOptions)
-      this.$emit('updateOptions',updatedOptions)
+      updatedOptions[this.type].splice(optionIdx, 1, this.currOption)
+      this.$emit('updateOptions', updatedOptions)
+    },
+    updateLabelName(idx) {
+      const updatedOptions = JSON.parse(JSON.stringify(this.options))
+      const option = updatedOptions[this.type][idx]
+      option.name = this.$refs.editableLabel[idx].innerText
+      updatedOptions[this.type].splice(idx, 1, option)
+      this.$emit('updateOptions', updatedOptions)
     },
   },
   components: {

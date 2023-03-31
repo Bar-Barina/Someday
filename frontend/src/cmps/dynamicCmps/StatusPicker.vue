@@ -40,6 +40,7 @@ export default {
   },
   methods: {
     updateStatus(status) {
+      console.log('status from picker',status)
       this.selectedStatus = status
       this.toggleModal()
       this.$emit('updateTask', { cmpType: 'status', data: status })
@@ -51,12 +52,13 @@ export default {
       this.showDropdown = false
     },
     updateOptions(options) {
+      console.log(options)
       this.$emit('updateOptions', options)
     },
   },
   computed: {
     labels() {
-      console.log(this.$store.getters.currBoard.labels)
+      console.log('from picker',this.$store.getters.currBoard.labels)
       return this.$store.getters.currBoard.labels
     },
     status() {
@@ -79,6 +81,7 @@ export default {
     color() {
       const labels = this.labels
       const currLabel = []
+      console.log(this.task.status)
       labels.status.forEach((label) => {
         if (label.name === this.task.status) currLabel.push(label)
       })
