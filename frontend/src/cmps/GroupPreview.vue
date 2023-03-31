@@ -82,7 +82,7 @@
       >
         <Draggable
           class="label cell1"
-          v-for="(label, idx) in currLabels"
+          v-for="(label, idx) in labelsOrder"
           :key="idx"
         >
           {{ label }}
@@ -258,9 +258,6 @@ export default {
     tasksCount() {
       return this.group.tasks.length;
     },
-    currLabels() {
-      return this.$store.getters.currLabelsOrder
-    }
   },
   components: {
     Container,

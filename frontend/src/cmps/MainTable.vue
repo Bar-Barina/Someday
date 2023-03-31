@@ -20,7 +20,7 @@
     >
       <GroupPreview
         :group="group"
-        :labelsOrder="labelsOrder"
+        :labelsOrder="currLabelsOrder"
         @labelDrop="labelDrop"
         @addSelected="addSelected"
         @removeSelected="removeSelected"
@@ -88,9 +88,9 @@ export default {
       this.$store.dispatch({ type: "updateBoard", board });
     },
     labelDrop(dropResult) {
-      let scene = [...this.labelsOrder];
-      scene = utilService.applyDrag(scene, dropResult);
-      this.labelsOrder = scene;
+      let newLabels = [...this.currLabelsOrder];
+      newLabels = utilService.applyDrag(newLabels, dropResult);
+      this.$store.commit({type: 'setCurrLabels' , labelsOrder: newLabels})
     },
     addSelected({ group, task }) {
       if (!this.selectedTasks[group._id]) this.selectedTasks[group._id] = [];
@@ -139,6 +139,9 @@ export default {
     isSelected() {
       return Object.keys(this.selectedTasks).length;
     },
+    currLabelsOrder() {
+      return this.$store.getters.currLabelsOrder
+    }
   },
   components: {
     GroupPreview,
