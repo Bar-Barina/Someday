@@ -37,6 +37,9 @@
         .smooth-dnd-container.horizontal {
           padding: 0 4px;
           display: flex !important;
+          overflow-x: auto;
+          height: 800px;
+          overflow-y: hidden;
         }
       }
 
@@ -48,7 +51,7 @@
         flex: 0 0 0px;
         background-color: #fff;
         border-left: 2px solid #d0d4e6;
-        transition: .2s;
+        transition: 0.2s;
 
         &.open {
           flex-basis: 270px;
