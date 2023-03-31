@@ -39,7 +39,7 @@
 <script>
 export default {
   name: "timeline",
-  emits: ["updateTask"],
+  emits: ["updateTask",'updateOptions'],
   props: {
     task: Object,
     group: Object,

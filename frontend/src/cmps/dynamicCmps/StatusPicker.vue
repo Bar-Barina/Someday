@@ -69,7 +69,7 @@ export default {
         console.log(label)
       })
       console.log(currColor)
-       return currColor
+      return currColor
     },
   },
   components: {

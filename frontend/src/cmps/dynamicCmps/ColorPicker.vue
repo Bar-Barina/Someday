@@ -12,7 +12,8 @@
 
 <script>
 export default {
-  props: ['groupColor', 'updateOptions'],
+  emits : ['updateOptions'],
+  props: ['groupColor'],
   name: 'color-picker',
   data() {
     return {

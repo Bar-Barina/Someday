@@ -33,7 +33,7 @@
 <script>
 import FileInfo from "../FileInfo.vue";
 export default {
-  emits: ["updateTask"],
+  emits: ["updateTask"  ,'updateOptions'],
   props: {
     task: Object,
     group: Object,

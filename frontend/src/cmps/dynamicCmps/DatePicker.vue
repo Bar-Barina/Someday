@@ -27,7 +27,7 @@
 import {icon} from '../../directives.js'
 export default {
   name: "date",
-  emits: ["updateTask"],
+  emits: ["updateTask" ,'updateOptions'],
   props: {
     task: Object,
     group: Object

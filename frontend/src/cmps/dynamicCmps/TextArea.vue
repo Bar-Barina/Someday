@@ -24,7 +24,7 @@
 <script>
 export default {
   name: "Text",
-  emits: ["updateTask"],
+  emits: ["updateTask" ,'updateOptions'],
   props: {
     task: Object,
     group: Object,
