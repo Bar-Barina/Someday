@@ -19,19 +19,21 @@
       </div>
       <input type="file" @change="readFile($event)" hidden />
     </label>
-    <span class="remove flex align-center justify-center" v-if="task.files.url" @click.stop="removeFile"><span class="x-icon" v-icon="'fileX'"></span></span>
+    <div v-if="isLoading" class="loader-files"></div>
+    <span
+      class="remove flex align-center justify-center"
+      v-if="task.files.url"
+      @click.stop="removeFile"
+      ><span class="x-icon" v-icon="'fileX'"></span
+    ></span>
   </section>
-  <FileInfo
-    v-if="showFileInfo"
-    v-clickOutside="closeModal"
-    :task="task"
-  />
+  <FileInfo v-if="showFileInfo" v-clickOutside="closeModal" :task="task" />
 </template>
 
 <script>
-import FileInfo from '../FileInfo.vue'
+import FileInfo from "../FileInfo.vue";
 export default {
-  emits: ['updateTask'],
+  emits: ["updateTask"],
   props: {
     task: Object,
     group: Object,
@@ -41,40 +43,42 @@ export default {
       files: this.task.files,
       showFileInfo: false,
       file: null,
-    }
+      isLoading: false,
+    };
   },
   methods: {
     readFile(e) {
-      const reader = new FileReader()
-      const file = e.target.files[0]
-      // console.log(file)
-      reader.addEventListener('load', () => {
-        const dataURL = reader.result
-        const fileToSave = {
-          url: dataURL,
-          name: file.name,
-        }
-        console.log(fileToSave)
-        this.$emit('updateTask', {
-          cmpType: 'files',
-          data: fileToSave,
-        })
-        // this.file = fileToSave
-      })
-      reader.readAsDataURL(file)
+      this.isLoading = true;
+      setTimeout(() => {
+        const reader = new FileReader();
+        const file = e.target.files[0];
+        reader.addEventListener("load", () => {
+          const dataURL = reader.result;
+          const fileToSave = {
+            url: dataURL,
+            name: file.name,
+          };
+          this.$emit("updateTask", {
+            cmpType: "files",
+            data: fileToSave,
+          });
+          this.isLoading = false;
+        });
+        reader.readAsDataURL(file);
+      }, 500);
     },
     removeFile() {
-      this.$emit('updateTask', {
-        cmpType: 'files',
+      this.$emit("updateTask", {
+        cmpType: "files",
         data: [],
-      })
+      });
     },
     closeModal() {
-      this.showFileInfo = !this.showFileInfo
+      this.showFileInfo = !this.showFileInfo;
     },
   },
   components: {
     FileInfo,
   },
-}
+};
 </script>
