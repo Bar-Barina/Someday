@@ -8,6 +8,7 @@ export const utilService = {
   loadFromStorage,
   applyDrag,
   getRandomColor,
+  getRandomStatus,
 }
 
 function makeId(length = 6) {
@@ -137,4 +138,27 @@ function getRandomColor() {
   
   const randomIndex = Math.floor(Math.random() * colors.length);
   return colors[randomIndex];
+}
+
+
+function getRandomStatus() {
+  const statuses = [
+    "New",
+    "In Progress",
+    "On Hold",
+    "Cancelled",
+    "Completed",
+    "Pending",
+    "Approved",
+    "Rejected",
+    "Under Review",
+    "Draft",
+    "Scheduled",
+    "Waiting",
+    "Delayed",
+    "Error",
+    "Resolved"
+  ];
+  const randomIndex = Math.floor(Math.random() * statuses.length);
+  return statuses[randomIndex];
 }

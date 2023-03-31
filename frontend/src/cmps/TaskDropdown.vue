@@ -115,12 +115,14 @@ export default {
       this.$emit('updateOptions', { updatedOptions, idx, type: this.type })
     },
     addLabel() {
+      const updatedOptions = JSON.parse(JSON.stringify(this.options))
       const newLabel = {
         id: utilService.makeId(),
-        name: '',
+        name: utilService.getRandomStatus(),
         color: utilService.getRandomColor(),
       }
-      this.$emit('addLabel', { newLabel, type: this.type })
+      updatedOptions[this.type].push(newLabel)
+      this.$emit('updateOptions', { updatedOptions, type: this.type })
     },
   },
   components: {

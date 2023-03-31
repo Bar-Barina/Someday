@@ -17,7 +17,7 @@
 import TaskDropdown from '../TaskDropdown.vue'
 import { defineComponent } from "vue";
 export default defineComponent ({
-  emits:['updateTask','updateOptions'],
+  emits:['updateTask','updateOptions','addLabel'],
   props: {
     task: Object,
     group: Object
