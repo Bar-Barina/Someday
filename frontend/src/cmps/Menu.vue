@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { eventBus } from "../services/event-bus.service";
+import { eventBus, showSuccessMsg } from "../services/event-bus.service";
 import { utilService } from "../services/util.service";
 export default {
   props: {
@@ -66,7 +66,7 @@ export default {
     },
   },
   methods: {
-    handleTasks(todo) {
+    async handleTasks(todo) {
       const board = JSON.parse(JSON.stringify(this.currBoard));
       Object.keys(this.selectedTasks).forEach((key) => {
         const groupIdx = board.groups.findIndex((g) => g._id === key);
@@ -84,8 +84,11 @@ export default {
           }
         });
       });
-      this.$store.dispatch({ type: "updateBoard", board });
+      await this.$store.dispatch({ type: "updateBoard", board });
       this.clearSelected();
+      const msg = (todo === 'remove') ? `We successfully deleted ${this.tasksCount} tasks` :
+      `we successfully duplicated ${this.tasksCount} tasks`
+      showSuccessMsg(msg)
     },
     clearSelected() {
       this.$emit("clearSelected");

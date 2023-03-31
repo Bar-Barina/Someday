@@ -1,16 +1,22 @@
 
 
 .alert {
-    background-color: lightgray;
+    color: #fff;
     position: fixed;
-    top: 0;
-    right: 0.5em;
+    top: -100%;
+    right: 37%;
     padding: 1em;
+    transition: .2s;
+    z-index: 5000;
     &.alert-success {
-        background-color: lightgreen;
+        background-color: $clr0050;
+        top: 60px;
+        transition: .2s;
     }
     &.alert-error {
         background-color: lightcoral;
+        top: 100px;
+        transition: .2s;
     }
 }
 

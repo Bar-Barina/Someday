@@ -1,5 +1,5 @@
 <template>
-  <div v-show="alive" class="alert" :class="alertClass">
+  <div class="alert flex align-center justify-center" :class="alertClass">
     {{ msg?.txt }}
   </div>
 </template>
@@ -12,9 +12,8 @@ export default {
     eventBus.on(SHOW_MSG, (msg) => {
       this.msg = msg
       var delay = msg.delay || 2000
-      this.alive = true
       setTimeout(() => {
-        this.alive = false
+        this.msg = ''
       }, delay)
     })
   },
@@ -26,7 +25,7 @@ export default {
   },
   computed: {
     alertClass() {
-      if (!this.msg) return
+      if (!this.msg) return false
       return `alert-${this.msg.type}`
     },
   },
