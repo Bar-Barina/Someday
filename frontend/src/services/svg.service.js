@@ -132,6 +132,7 @@ const SomedaySvgs = {
     <path d="M 89.399 0.601 c 0.53 0.53 0.729 1.306 0.518 2.025 L 64.793 88.525 c -0.228 0.778 -0.891 1.348 -1.693 1.457 c -0.642 0.086 -1.278 -0.136 -1.724 -0.582 c -0.11 -0.11 -0.21 -0.235 -0.294 -0.372 L 45.452 63.736 c -0.269 -0.436 -0.365 -0.956 -0.27 -1.459 l 4.079 -21.538 L 89.399 0.601 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255, 255, 255); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
   </g>
   </svg>`,
+  MsgV: `<svg viewBox="0 0 20 20" fill="currentColor" width="24px" height="24px" aria-hidden="true" class="icon_component icon_component--no-focus-style"><path d="M8.53033 14.2478L8 13.7175L7.46967 14.2478C7.76256 14.5407 8.23744 14.5407 8.53033 14.2478ZM8 12.6569L4.53033 9.18718C4.23744 8.89429 3.76256 8.89429 3.46967 9.18718C3.17678 9.48008 3.17678 9.95495 3.46967 10.2478L7.46967 14.2478L8 13.7175L8.53033 14.2478L16.2478 6.53033C16.5407 6.23743 16.5407 5.76256 16.2478 5.46967C15.955 5.17677 15.4801 5.17677 15.1872 5.46967L8 12.6569Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>`,
 }
 
 function getSvg(iconName) {
