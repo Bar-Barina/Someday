@@ -384,6 +384,8 @@ export default {
       this.showFilter = false
       this.showPersonFilter = false
       this.showBoardDesc = false
+      if (!this.activeFilters.length)
+      this.activeFilter = ''
       this.$store.commit({ type: 'closeBlackScreen' })
     },
     onSearch() {
