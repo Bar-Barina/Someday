@@ -321,7 +321,7 @@ export default {
       isStarred: false,
       showBoardActivity: false,
       isFilterOpen: false,
-      showInvite: true,
+      showInvite: false,
       columns: [
         "Date",
         "Text",
