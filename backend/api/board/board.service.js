@@ -3,13 +3,12 @@ const logger = require('../../services/logger.service')
 const utilService = require('../../services/util.service')
 const ObjectId = require('mongodb').ObjectId
 
-async function query() {
+async function query(userId) {
     try {
-        // const criteria = {
-        //     vendor: { $regex: filterBy.txt, $options: 'i' }
-        // }
         const collection = await dbService.getCollection('board')
-        var boards = await collection.find().toArray()
+        var boards = await collection.find({ owner: userId}).toArray()
+        if(boards.length === 0) boards = await collection.find({ owner: "sjk02338c3mskjrvy23eokfvo"}).toArray()
+        console.log('boards', boards)
         return boards
     } catch (err) {
         logger.error('cannot find boards', err)
@@ -29,7 +28,6 @@ async function getById(boardId) {
 }
 
 async function remove(boardId) {
-    console.log('boardId',boardId)
     try {
         const collection = await dbService.getCollection('board')
         await collection.deleteOne({ _id: ObjectId(boardId) })

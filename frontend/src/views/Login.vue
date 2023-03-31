@@ -77,13 +77,15 @@ export default {
     this.loadUsers()
   },
   methods: {
-    doLogin() {
+    async doLogin() {
       let credentials = {
         email: this.email,
         password: this.password,
       }
-      this.$store.dispatch({ type: 'login', userCred: credentials })
-      if (this.loggedInUser) this.$router.push({ path: '/board' })
+      await this.$store.dispatch({ type: 'login', userCred: credentials })
+      if (this.loggedInUser) {
+        this.$store.dispatch({type: 'loadBoards'})
+      }
     },
     doLogout() {
       this.$store.dispatch({ type: 'logout' })

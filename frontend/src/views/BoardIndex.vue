@@ -31,7 +31,7 @@ export default {
     };
   },
   created() {
-    this.$store.dispatch("loadBoards");
+    // this.$store.dispatch("loadBoards");
     socketService.on("update-board", this.updateBoard);
     socketService.on("update-boards", this.updateSocketBoards);
   },

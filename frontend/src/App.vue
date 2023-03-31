@@ -13,12 +13,18 @@ import { userService } from './services/user.service'
 import { store } from './store/store'
 
 import UserMsg from './cmps/UserMsg.vue'
+import { boardService } from './services/board.service'
 
 
 export default {
 
   created() {
-    this.$store.dispatch({ type: "loadBoards" });
+    const boards = this.$store.dispatch({ type: "loadBoards" });
+    // if(!boards) {
+    //   const demoBoard = boardService.getDemoBoard()
+    //   this.$store.commit({type: 'setBoards' , boards: [demoBoard]})
+    //   this.$store.commit({type: 'setCurrBoard', demoBoard})
+    // }
     const user = userService.getLoggedInUser()
     if (user)  store.commit({type: 'setLoggedInUser', user})
   },

@@ -1,6 +1,8 @@
 // import { boardService } from '../services/board.service.local'
 import { boardService } from '../services/board.service'
 import { socketService } from '../services/socket.service'
+import { userService } from '../services/user.service'
+import { utilService } from '../services/util.service'
 
 export function getActionRemoveBoard(boardId) {
   return {
@@ -177,7 +179,7 @@ export const boardStore = {
       return board
     },
     async updateBoard(context, { board }) {
-      console.log('board from store',board)
+      console.log('board from store', board)
       try {
         board = await boardService.save(board)
         socketService.emit('update-boards', board)
@@ -190,9 +192,29 @@ export const boardStore = {
     },
     async loadBoards(context) {
       try {
-        const boards = await boardService.query()
+        const user = userService.getLoggedInUser()
+        let boards = await boardService.query(user)
+        console.log('boards1', boards)
+        console.log('user', user)
+        if(!user && !utilService.loadFromStorage('userId')) {
+          const board = JSON.parse(JSON.stringify(boards[0]))
+          board.owner = utilService.makeId()
+          delete board._id
+          const boardSaved = await boardService.save(board)
+          utilService.saveToStorage('userId' , board.owner)
+          boards.splice(0 , 1 , boardSaved)
+        }
+        else if (user && boards[0].owner === "sjk02338c3mskjrvy23eokfvo"){
+          const board = JSON.parse(JSON.stringify(boards[0]))
+          console.log('board2', board)
+          board.owner = user._id
+          delete board._id
+          const boardSaved = await boardService.save(board)
+          boards.splice(0 , 1 , boardSaved)
+        }
         context.commit({ type: 'setBoards', boards })
         context.commit({ type: 'setCurrBoard', board: boards[0] })
+        return boards
       } catch (err) {
         console.log('boardStore: Error in loadBoards', err)
         throw err
@@ -200,7 +222,6 @@ export const boardStore = {
     },
     async removeBoard(context, { boardId }) {
       try {
-        console.log('boardId', boardId)
         await boardService.remove(boardId)
         socketService.emit('update-boards', boardId)
         context.commit(getActionRemoveBoard(boardId))

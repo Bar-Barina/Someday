@@ -41,7 +41,6 @@ export const userStore = {
   },
   actions: {
     async login({ commit }, { userCred }) {
-      console.log('from store',userCred)
       try {
         const user = await userService.login(userCred)
         commit({ type: 'setLoggedInUser', user })

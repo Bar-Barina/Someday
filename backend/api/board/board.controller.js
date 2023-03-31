@@ -3,9 +3,10 @@ const boardService = require('./board.service.js')
 const logger = require('../../services/logger.service')
 
 async function getBoards(req, res) {
+  const userId = req.query[0]
   try {
     logger.debug('Getting Boards')
-    const Boards = await boardService.query()
+    const Boards = await boardService.query(userId)
     res.json(Boards)
   } catch (err) {
     logger.error('Failed to get Boards', err)
@@ -29,7 +30,7 @@ async function addBoard(req, res) {
 
   try {
     const board = req.body
-    board.owner = loggedinUser
+    // board.owner = loggedinUser._id
     const addedBoard = await boardService.add(board)
     res.json(addedBoard)
   } catch (err) {

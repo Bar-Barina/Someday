@@ -51,6 +51,7 @@ export default {
           Object.assign(task , taskAI)
         })
       })
+      res.labels = boardService.getDefaultLabels()
       return res
     },
     closeAI() {
