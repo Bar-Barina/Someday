@@ -10,19 +10,19 @@
   transition: opacity 0.3s ease-in-out;
   display: none;
 }
-.status-working {
-  background-color: $clr10;
-}
-.status-stuck {
-  background-color: $clr12;
-}
-.status-done {
-  background-color: $clr11;
-  position: relative;
-}
-.status-empty {
-  background-color: $clr41;
-}
+// .status-working {
+//   background-color: $clr10;
+// }
+// .status-stuck {
+//   background-color: $clr12;
+// }
+// .status-done {
+//   background-color: $clr11;
+//   position: relative;
+// }
+// .status-empty {
+//   background-color: $clr41;
+// }
 
 .status .confetti-sprite-animation {
   position: absolute;
