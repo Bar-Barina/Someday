@@ -9,7 +9,7 @@
         border-top: 1px solid #d0d4e6;
     }
 
-    > *:nth-child(4)::after {
+    >*:nth-child(4)::after {
         content: "";
         pointer-events: none;
         position: absolute;
@@ -22,7 +22,7 @@
         border-left: 1px solid $clr014;
     }
 
-    > *:nth-child(4)::before {
+    >*:nth-child(4)::before {
         content: "";
         pointer-events: none;
         position: absolute;
@@ -39,20 +39,60 @@
 
     .second {
         left: 40px;
-        box-shadow: 1px 8px 0 -1px #fff ,inset 0 8px 9px -9px rgba(0,0,0,.1);
+        box-shadow: 1px 8px 0 -1px #fff, inset 0 8px 9px -9px rgba(0, 0, 0, .1);
     }
 
     .third {
-        box-shadow: 1px 8px 0 -1px #fff ,inset 0 8px 9px -9px rgba(0,0,0,.1);
+        box-shadow: 1px 8px 0 -1px #fff, inset 0 8px 9px -9px rgba(0, 0, 0, .1);
         border-top: 1px solid #d0d4e6;
         left: 46px;
     }
 
     .fourth {
         border-top: 1px solid #d0d4e6;
-        box-shadow: 1px 8px 0 -1px #fff ,inset 0 8px 9px -9px rgba(0,0,0,.1);
+        box-shadow: 1px 8px 0 -1px #fff, inset 0 8px 9px -9px rgba(0, 0, 0, .1);
         left: 78px;
         z-index: 1000;
         height: 100%;
+    }
+
+    .timeline-progress-container {
+
+        .timeline-progress-bar {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            height: 22px;
+            text-align: center;
+            color: white;
+            width: em(145px);
+            border-radius: 10px;
+            font-size: 14px;
+            background-color: #383838;
+            z-index: 6;
+        }
+
+        .day-diff {
+            position: absolute;
+            top: 3px;
+            right: 55px;
+            display: none;
+        }
+
+        &:hover .day-diff {
+            display: block;
+        }
+
+        &:hover .date-diff {
+            display: none;
+        }
+
+        .date-diff {
+            font-size: 13px;
+            position: absolute;
+            top: 3px;
+            right: 20px;
+        }
+
     }
 }
