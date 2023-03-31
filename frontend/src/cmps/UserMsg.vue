@@ -1,5 +1,6 @@
 <template>
   <div class="alert flex align-center justify-center" :class="alertClass">
+    <span v-icon="'MsgV'"></span>
     {{ msg?.txt }}
   </div>
 </template>
@@ -11,7 +12,7 @@ export default {
   created() {
     eventBus.on(SHOW_MSG, (msg) => {
       this.msg = msg
-      var delay = msg.delay || 2000
+      var delay = msg.delay || 3000
       setTimeout(() => {
         this.msg = ''
       }, delay)
