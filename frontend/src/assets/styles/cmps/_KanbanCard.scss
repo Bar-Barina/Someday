@@ -166,7 +166,7 @@
   .timeline-progress-bar {
     position: absolute;
     top: 6px !important;
-    right: 6px !important;
+    right: 5px !important;
     height: 22px;
     text-align: center;
     color: white;
@@ -203,15 +203,15 @@
       .day-diff {
         position: absolute;
         top: -6px !important;
-        left: 30px;
+        left: 32px;
         display: none;
       }
 
       .date-diff {
         font-size: 13px;
         position: absolute;
-        top: -5px;
-        right: 60px;
+        top: 0px;
+        right: 58px !important;
       }
 
       .reset-date {
@@ -269,4 +269,19 @@
       // left: 30px;
     }
   }
+  .person-preview {
+    width: fit-content;
+    height: fit-content;
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    position: absolute;
+    border: none;
+    border-radius: 6px;
+    top: 40px;
+    left: -105px !important;
+    z-index: 9100 !important;
+    padding: 15px;
+    font-size: 14px;
+  }  
 }
