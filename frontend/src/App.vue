@@ -20,6 +20,7 @@ export default {
 
   created() {
     const boards = this.$store.dispatch({ type: "loadBoards" });
+    this.$store.dispatch({type:'loadUsers'})
     // if(!boards) {
     //   const demoBoard = boardService.getDemoBoard()
     //   this.$store.commit({type: 'setBoards' , boards: [demoBoard]})

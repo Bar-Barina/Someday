@@ -4,7 +4,7 @@
     <section class="active-person flex align-center">
         <div v-for="(p, idx) in person"
         :key="idx" class="person-card flex align-center">
-          <img :src="p.url" alt="person-img" class="person-img" />
+          <img :src="p.imgUrl" alt="person-img" class="person-img" />
           <span class="person-name">{{ p.name }}</span>
           <button @click.stop="removeMember(idx)"><span class="x-icon" v-icon="'closeTxt'"></span></button>
         </div>
@@ -25,8 +25,8 @@
         :key="idx"
         @click.stop="updatePerson(member)"
       >
-        <img :src="member.url" class="member-img" />
-        <span class="member-mail">{{ member.name }}@gmail.com</span>
+        <img :src="member.imgUrl" class="member-img" />
+        <span class="member-mail">{{ member.email }}</span>
       </div>
     <div class="invite flex align-center">
       <span v-html="getSvg('invite')" class="workspace-icon-invite"></span>

@@ -23,7 +23,7 @@
           </Draggable>
         </Container>
       </section>
-      <section class="kanban-filter flex column" :class="{ open: isFilter }">
+      <div class="kanban-filter flex column" :class="{ open: isFilter }">
         <span class="customize">Customize View</span>
         <div class="sub-header flex align-center space-between">
           <span>Kanban Column</span>
@@ -67,7 +67,7 @@
             </div>
           </div>
         </section>
-      </section>
+      </div>
     </section>
   </section>
 </template>

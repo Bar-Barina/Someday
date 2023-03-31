@@ -19,20 +19,30 @@
           />
         </div>
       </router-link>
-      <div class="work-management">
+      <div
+        class="work-management"
+        v-tippy="{
+          content: 'Work management',
+          theme: 'classicRight',
+          placement: 'right',
+          arrow: true,
+        }"
+      >
         <div v-html="getSvg('wm')"></div>
       </div>
     </section>
-    <!-- REMOVED -->
+
+    <!-- ADDED -->
     <div class="flex align-center space-between column someday">
-    <span>S</span>
-    <span>O</span>
-    <span>M</span>
-    <span>E</span>
-    <span>D</span>
-    <span>A</span>
-    <span>Y</span>
-  </div>
+      <span>S</span>
+      <span>O</span>
+      <span>M</span>
+      <span>E</span>
+      <span>D</span>
+      <span>A</span>
+      <span>Y</span>
+    </div>
+    <!-- REMOVED -->
     <!-- <hr/> -->
     <!-- <section class="icon-pattern-top">
       <div class="icon-wrapper">
@@ -70,15 +80,19 @@
       <div class="icon-wrapper">
         <div v-html="getSvg('apps')"></div>
       </div>
-      <div class="member-wrapper flex justify-center align-center" @click="userMenu = !userMenu">
+      <div
+        class="member-wrapper flex justify-center align-center"
+        @click="userMenu = !userMenu"
+      >
         <img
           :src="
             currUser
               ? currUser.imgUrl
-              : 'https://cdn1.monday.com/dapulse_default_photo.png'"
+              : 'https://cdn1.monday.com/dapulse_default_photo.png'
+          "
           class="member-preview"
         />
-        <EditMenu v-if="userMenu" :user="true" v-clickOutside="closeEditMenu"/>
+        <EditMenu v-if="userMenu" :user="true" v-clickOutside="closeEditMenu" />
       </div>
     </section>
     <div class="workspace-arrow-left-div"></div>
@@ -93,7 +107,7 @@ export default {
   name: 'SideNav',
   data() {
     return {
-      userMenu: false
+      userMenu: false,
     }
   },
   methods: {
@@ -102,7 +116,7 @@ export default {
     },
     closeEditMenu() {
       this.userMenu = false
-    }
+    },
   },
   computed: {
     currUser() {
@@ -111,6 +125,6 @@ export default {
   },
   components: {
     EditMenu,
-  }
+  },
 }
 </script>

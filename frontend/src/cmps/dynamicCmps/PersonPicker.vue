@@ -21,7 +21,7 @@
       class="mini-person flex justify-center align-center"
       v-if="task.person.length > 2"
     >
-      <img :src="task.person[0].url" class="person-img" />
+      <img :src="task.person[0].imgUrl" class="person-img" />
       <div class="person-count flex align-center justify-content">
         +{{ task.person.length - 1 }}
       </div>
