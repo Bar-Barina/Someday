@@ -1,7 +1,6 @@
 <template>
   <div
     class="status full-cell"
-    :class="statusClass"
     v-clickOutside="closeModal"
     @click="toggleModal"
     :style="{ 'background-color': color }"
@@ -56,38 +55,21 @@ export default {
   },
   computed: {
     labels() {
-      // console.log('from picker', this.$store.getters.currBoard.labels)
       return this.$store.getters.currBoard.labels
     },
     status() {
       return this.selectedStatus
     },
-    statusClass() {
-      switch (this.selectedStatus) {
-        case 'Working on it':
-          return 'status-working'
-        case 'Stuck':
-          return 'status-stuck'
-        case 'Done':
-          return 'status-done animated-status'
-        case '':
-          return 'status-empty'
-        default:
-          break
-      }
-    },
     color() {
       const labels = this.labels
-      const currLabel = []
+      let currColor = ''
+      if (!labels) return
       labels.status.forEach((label) => {
-        if (label.name === this.task.status) currLabel.push(label)
+        if (label.name === this.task.status) currColor = label.color
         console.log(label)
       })
-      if (currLabel.length > 0) {
-    return currLabel[0].color
-  } else {
-    return null 
-  }
+      console.log(currColor)
+       return currColor
     },
   },
   components: {
