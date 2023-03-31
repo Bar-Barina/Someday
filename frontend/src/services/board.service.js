@@ -21,13 +21,16 @@ window.cs = boardService
 async function query() {
   return httpService.get(STORAGE_KEY + '/')
 }
+
 function getById(boardId) {
   return httpService.get(`board/${boardId}`)
 }
 
 async function remove(boardId) {
   return httpService.delete(`board/${boardId}`)
+  // return httpService.delete(`board/`,boardId)
 }
+
 async function save(board) {
   // console.log('board', board)
   var savedBoard

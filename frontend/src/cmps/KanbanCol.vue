@@ -16,7 +16,7 @@
     <section class="col-content flex column">
       <!-- <section class="cards-container"> -->
       <Container
-        class="smooth-dnd-container"
+        class="smooth-dnd-container col-container-drag"
         orientation="vertical"
         group-name="tasks"
         tag="div"
@@ -25,7 +25,7 @@
         :get-child-payload="getColPayload()"
         @drop="onTaskDrop($event)"
       >
-        <Draggable v-for="(task, idx) in tasks" :key="idx">
+        <Draggable v-for="(task, idx) in tasks" :key="idx" class="col-drag">
           <KanbanCard :task="task" @updateMap="updateOrder"/>
         </Draggable>
       </Container>

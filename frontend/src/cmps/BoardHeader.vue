@@ -81,6 +81,7 @@
         <Activity
           v-if="showBoardActivity"
           v-clickOutside="closeActivity"
+          @closeActivity="closeActivity"
         />
 
         <div class="invite flex align-center btn-hover">
@@ -240,140 +241,199 @@
         Sort
       </div>
       <div
+        @click="isHideOpen = !isHideOpen"
         v-tippy="{
           content: 'Hidden columns',
           theme: 'classic',
           placement: 'top',
           arrow: true,
         }"
-        class="bottom-header-btn btn-hover"
+        class="bottom-header-btn btn-hover hide-filter-btn"
       >
         <div
           class="flex justify-center align-center"
           v-html="getSvg('hide')"
         ></div>
         Hide
+        <section
+          @click.stop
+          v-clickOutside="closeHiddenFilter"
+          v-if="isHideOpen"
+          class="hide-columns-filter"
+        >
+          <div class="column-filter-title">Choose columns to display</div>
+          <div class="input-wrapper">
+            <input
+              class="filter-input"
+              type="text"
+              placeholder="Search column"
+            />
+          </div>
+          <div
+            v-for="(col, idx) in columns"
+            :key="idx"
+            class="flex column-div space-between"
+          >
+            <KanbanFilter @addCol="addCol" @removeCol="removeCol" :col="col" />
+          </div>
+        </section>
       </div>
-      <span class="filterKanbanIcon" v-if="active" :class="{ active: isFilterOpen}"
-      @click="toggleKanbanFilter" v-icon="'headerSettings'"></span>
+      <span
+        class="filterKanbanIcon"
+        v-if="active"
+        :class="{ active: isFilterOpen }"
+        @click="toggleKanbanFilter"
+        v-icon="'headerSettings'"
+      ></span>
     </section>
   </section>
 </template>
 
 <script>
-import { boardService } from '../services/board.service.local.js'
-import { svgService } from '../services/svg.service.js'
-import MainFilter from './MainFilter.vue'
-import MainPersonFilter from './MainPersonFilter.vue'
-import { utilService } from '../services/util.service.js'
-import { eventBus } from '../services/event-bus.service'
-import BoardDesc from './BoardDesc.vue'
-import Activity from './Activity.vue'
+import { boardService } from "../services/board.service.local.js";
+import { svgService } from "../services/svg.service.js";
+import MainFilter from "./MainFilter.vue";
+import MainPersonFilter from "./MainPersonFilter.vue";
+import { utilService } from "../services/util.service.js";
+import { eventBus } from "../services/event-bus.service";
+import BoardDesc from "./BoardDesc.vue";
+import Activity from "./Activity.vue";
+import KanbanFilter from "./KanbanFilter.vue";
 
 export default {
-  name: 'BoardHeader',
+  name: "BoardHeader",
   created() {
-    this.onSearchDeb = utilService.debounce(this.onSearch, 150)
-    eventBus.on('clearSearch', () => {
-      this.searchQuery = ''
-      this.$store.commit('setFilterBy', this.searchQuery)
-    })
+    this.onSearchDeb = utilService.debounce(this.onSearch, 150);
+    eventBus.on("clearSearch", () => {
+      this.searchQuery = "";
+      this.$store.commit("setFilterBy", this.searchQuery);
+    });
   },
   data() {
     return {
-      active: '',
+      active: "",
       task: boardService.getEmptyTask(),
       showFilter: false,
       showPersonFilter: false,
-      searchQuery: '',
+      searchQuery: "",
       showBoardDesc: false,
       isStarred: false,
       showBoardActivity: false,
       isFilterOpen: false,
-    }
+      columns: [
+        "Date",
+        "Text",
+        "Priority",
+        "Person",
+        "Files",
+        "Status",
+        "Timeline",
+      ],
+      isHideOpen: false,
+    };
   },
   methods: {
     getSvg(iconName) {
-      return svgService.getSvg(iconName)
+      return svgService.getSvg(iconName);
     },
     switchBoardView(routerName) {
-      this.active = routerName
-      this.$router.push(`/board/${this.currBoard._id}/${routerName}`)
+      this.active = routerName;
+      this.$router.push(`/board/${this.currBoard._id}/${routerName}`);
     },
     updateBoard() {
-      const board = JSON.parse(JSON.stringify(this.currBoard))
-      board.title = this.$refs.boardTitle.innerText
-      this.$store.dispatch({ type: 'updateBoard', board })
+      const board = JSON.parse(JSON.stringify(this.currBoard));
+      board.title = this.$refs.boardTitle.innerText;
+      this.$store.dispatch({ type: "updateBoard", board });
     },
     addTask() {
-      const group = JSON.parse(JSON.stringify(this.currBoard)).groups[0]
-      group.tasks.unshift({ ...this.task })
-      this.task.taskTitle = 'New Task'
-      const toUpdate = { task: this.task, group }
-      this.$store.dispatch({ type: 'saveTask', toUpdate })
-      this.task = boardService.getEmptyTask()
+      const group = JSON.parse(JSON.stringify(this.currBoard)).groups[0];
+      group.tasks.unshift({ ...this.task });
+      this.task.taskTitle = "New Task";
+      const toUpdate = { task: this.task, group };
+      this.$store.dispatch({ type: "saveTask", toUpdate });
+      this.task = boardService.getEmptyTask();
     },
     toggleFilterModal() {
-      this.showFilter = !this.showFilter
+      this.showFilter = !this.showFilter;
     },
     togglePersonModal() {
-      this.showPersonFilter = !this.showPersonFilter
+      this.showPersonFilter = !this.showPersonFilter;
     },
     closeModal() {
-      this.showFilter = false
-      this.showPersonFilter = false
-      this.showBoardDesc = false
-      this.$store.commit({ type: 'closeBlackScreen' })
+      this.showFilter = false;
+      this.showPersonFilter = false;
+      this.showBoardDesc = false;
+      this.$store.commit({ type: "closeBlackScreen" });
     },
     onSearch() {
-      this.$store.commit({ type: 'setFilterBy', searchQuery: this.searchQuery })
+      this.$store.commit({
+        type: "setFilterBy",
+        searchQuery: this.searchQuery,
+      });
     },
     toggleBoardDesc() {
-      this.showBoardDesc = !this.showBoardDesc
-      this.$store.commit({ type: 'toggleBlackScreen' })
+      this.showBoardDesc = !this.showBoardDesc;
+      this.$store.commit({ type: "toggleBlackScreen" });
     },
     closeDesc() {
-      this.showBoardDesc = false
+      this.showBoardDesc = false;
     },
     addGroup() {
       const newGroup = {
-        title: 'New Group',
-        color: '#e2445c',
+        title: "New Group",
+        color: "#e2445c",
         tasks: [],
-      }
-      this.$store.dispatch({ type: 'saveTask', toUpdate: { group: newGroup } })
+      };
+      this.$store.dispatch({ type: "saveTask", toUpdate: { group: newGroup } });
     },
     removeMemberFilter() {
-      this.$store.commit({ type: 'updateActiveMember' })
+      this.$store.commit({ type: "updateActiveMember" });
     },
     closeActivity() {
-      this.showBoardActivity = false
+      this.showBoardActivity = false;
     },
     toggleKanbanFilter() {
-      this.isFilterOpen = !this.isFilterOpen
-      eventBus.emit('toggleKanban')
-    }
+      this.isFilterOpen = !this.isFilterOpen;
+      eventBus.emit("toggleKanban");
+    },
+    closeHiddenFilter() {
+      this.isHideOpen = false;
+    },
+    addCol(col) {
+      const cols = JSON.parse(JSON.stringify(this.columnsOrder));
+      cols.push(col);
+      this.$store.commit({ type: "setCurrLabels", labelsOrder: cols });
+    },
+    removeCol(col) {
+      const cols = JSON.parse(JSON.stringify(this.columnsOrder));
+      const colIdx = cols.findIndex((c) => c === col);
+      cols.splice(colIdx, 1);
+      this.$store.commit({ type: "setCurrLabels", labelsOrder: cols });
+    },
   },
   watch: {
-    '$route.params': {
+    "$route.params": {
       async handler() {
-        const routeName = this.$route.name
-        if (routeName === 'table') this.active = ''
-        else if (routeName === 'dashboard') this.active = 'dashboard'
-        else this.active = 'kanban'
+        const routeName = this.$route.name;
+        if (routeName === "table") this.active = "";
+        else if (routeName === "dashboard") this.active = "dashboard";
+        else this.active = "kanban";
       },
       immediate: true,
     },
   },
   computed: {
     currBoard() {
-      return this.$store.getters.currBoard
+      return this.$store.getters.currBoard;
     },
     MemberToFilter() {
-      return this.$store.getters.currActiveMember
+      return this.$store.getters.currActiveMember;
     },
     currUser() {
-      return this.$store.getters.loggedInUser
+      return this.$store.getters.loggedInUser;
+    },
+    columnsOrder() {
+      return this.$store.getters.currLabelsOrder;
     },
   },
   components: {
@@ -381,6 +441,7 @@ export default {
     MainPersonFilter,
     BoardDesc,
     Activity,
+    KanbanFilter,
   },
-}
+};
 </script>

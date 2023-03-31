@@ -1,6 +1,7 @@
 <template>
   <div class="sub2 flex align-center">
     <input
+      @click.stop
       type="checkbox"
       :ref="col"
       :checked="isChecked"
@@ -19,7 +20,6 @@ export default {
   },
   methods: {
     addColumn() {
-        console.log('hi')
       if (!this.isChecked) this.$emit("addCol", this.col);
       else this.$emit("removeCol", this.col);
     },
