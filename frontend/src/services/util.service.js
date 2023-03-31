@@ -9,6 +9,7 @@ export const utilService = {
   applyDrag,
   getRandomColor,
   getRandomStatus,
+  getRandomPriority,
 }
 
 function makeId(length = 6) {
@@ -134,10 +135,28 @@ function getRandomColor() {
     '#7f5347',
     '#c4c4c4',
     '#808080',
+    '#f44336',
+    '#e91e63',
+    '#9c27b0',
+    '#673ab7',
+    '#3f51b5',
+    '#2196f3',
+    '#03a9f4',
+    '#00bcd4',
+    '#009688',
+    '#4caf50',
+    '#8bc34a',
+    '#cddc39',
+    '#ffeb3b',
+    '#ffc107',
+    '#ff9800',
+    '#ff5722',
+    '#795548',
+    '#9e9e9e',
+    '#607d8b'
   ];
-  
-  const randomIndex = Math.floor(Math.random() * colors.length);
-  return colors[randomIndex];
+  const randomColor = colors[Math.floor(Math.random() * colors.length)];
+  return randomColor;
 }
 
 
@@ -161,4 +180,31 @@ function getRandomStatus() {
   ];
   const randomIndex = Math.floor(Math.random() * statuses.length);
   return statuses[randomIndex];
+}
+
+function getRandomPriority() {
+const priorities = [
+  "High",
+  "Medium",
+  "Low",
+  "Urgent",
+  "Critical",
+  "Immediate",
+  "Important",
+  "Minor",
+  "Major",
+  "Top",
+  "Bottom",
+  "Emergency",
+  "Serious",
+  "Critical",
+  "Normal",
+  "Lowest",
+  "Highest",
+  "Extreme",
+  "Essential",
+  "Non-essential"
+]
+const randomIndex = Math.floor(Math.random() * priorities.length);
+return priorities[randomIndex];
 }
