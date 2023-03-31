@@ -64,7 +64,6 @@
         </div>
         <br />
         <div class="workspace-line"></div>
-        <transition name="component-push" mode="out-in">
         <Container
           v-if="!isAI"
           class="vertical workspace-container"
@@ -83,10 +82,7 @@
             <BoardTitlePreview :board="board" @removeBoard="removeBoard" />
           </Draggable>
         </Container>
-        </transition>
-        <transition name="component-push" mode="out-in">
         <OpenAI v-if="isAI" @AIboard="addAIboard" @closeAI="isAI = false"/>
-      </transition>
       </section>
     </section>
   </section>
