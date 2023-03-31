@@ -23,16 +23,18 @@
         <div v-html="getSvg('wm')"></div>
       </div>
     </section>
-    <!-- REMOVED -->
+    
+    <!-- ADDED -->
     <div class="flex align-center space-between column someday">
-    <span>S</span>
-    <span>O</span>
-    <span>M</span>
-    <span>E</span>
-    <span>D</span>
-    <span>A</span>
-    <span>Y</span>
-  </div>
+      <span>S</span>
+      <span>O</span>
+      <span>M</span>
+      <span>E</span>
+      <span>D</span>
+      <span>A</span>
+      <span>Y</span>
+    </div>
+    <!-- REMOVED -->
     <!-- <hr/> -->
     <!-- <section class="icon-pattern-top">
       <div class="icon-wrapper">
