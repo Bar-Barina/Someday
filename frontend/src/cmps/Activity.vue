@@ -6,7 +6,9 @@
     }"
   >
     <div class="activity-header" v-if="!task">
-      <span v-icon="'x'" @click="activityCheck" class="close-activity"></span>
+      <div @click="closeActivity" class="close-activity flex justify-center align-center">
+      <span v-icon="'x'"></span>
+      </div>
       <h2>{{ this.currBoard.title }} <span>Log</span></h2>
     </div>
     <section class="activity-list-wrapper">
@@ -164,6 +166,9 @@ export default {
         value[1].split('-')[1]
       )
     },
+    closeActivity() {
+      this.$emit('closeActivity')
+    }
   },
   computed: {
     currBoard() {
