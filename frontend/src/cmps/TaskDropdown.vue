@@ -65,7 +65,7 @@
       <span>New label</span>
     </div>
     <div v-if="showEditLabels" class="edit-labels">
-      <span @click="showEditLabels = false">Apply</span>
+      <span @click.stop="showEditLabels = false">Apply</span>
     </div>
   </section>
 </template>
