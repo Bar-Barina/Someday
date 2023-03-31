@@ -93,6 +93,7 @@
           </div>
           Invite / {{ this.currBoard.members.length }}
         </div>
+         <Invite v-if="this.showInvite" @updateBoard="updateMembers" @closeInvite="closeInvite"  v-clickOutside="closeInvite" />
         <Invite v-if="this.showInvite" v-clickOutside="closeInvite" />
         <div class="dots flex align-center justify-center icon btn-hover">
           <div v-html="getSvg('headerDots')"></div>
@@ -359,6 +360,9 @@ export default {
       const board = JSON.parse(JSON.stringify(this.currBoard))
       board.title = this.$refs.boardTitle.innerText
       this.$store.dispatch({ type: 'updateBoard', board })
+    },
+    updateMembers(board) {
+      this.$store.dispatch({ type: "updateBoard", board });
     },
     addTask() {
       const group = JSON.parse(JSON.stringify(this.currBoard)).groups[0]
