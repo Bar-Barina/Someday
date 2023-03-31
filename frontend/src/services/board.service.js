@@ -137,10 +137,10 @@ async function removeItem(board, groupId, taskId) {
 }
 
 function getEmptyBoard() {
-  console.log('here')
   return {
     title: 'New Board',
     members: [],
+    description: 'Add your board\'s description here',
     labels: {
       status: [
         {id: '101',name: 'Working on it',color: '#fdab3d',class: 'status-working',},
