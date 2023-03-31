@@ -1,7 +1,6 @@
 <template>
   <div
     class="priority full-cell flex align-center justify-center"
-    :class="priorityClass"
     @click="toggleModal"
     :style="{ 'background-color': color }"
   >
