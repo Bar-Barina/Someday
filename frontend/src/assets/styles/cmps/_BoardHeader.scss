@@ -329,6 +329,14 @@
   border-radius: 50%;
 }
 
+.column-div {
+  width: 100%;
+  max-width: 248px;
+  padding: 4px 16px;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
 .hide-filter-btn {
   position: relative;
 
@@ -344,5 +352,36 @@
     box-shadow: 0 4px 17px 6px rgba(0,0,0,.1);
     min-width: 264px;
     height: fit-content;
+
+    .column-filter-title {
+      margin-top: 8px;
+      padding: 16px;
+      color: rgb(50, 51, 56);
+      font-size: 15px;
+    }
+
+    .input-wrapper {
+      padding: 0 16px;
+      height: 32px;
+      width: 100%;
+
+      input[type="text"] {
+        padding: 8px 24px 8px 16px;
+        width: 100%;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+        color: #323338;
+        border: 1px solid $clr016;
+        border-radius: 4px;
+      }
+    }
+
+    .sub2 {
+      align-items: center;
+      flex-direction: row-reverse;
+      width: 100%;
+      justify-content: space-between;
+    }
   }
 }

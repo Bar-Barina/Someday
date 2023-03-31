@@ -1,6 +1,7 @@
 <template>
   <div class="sub2 flex align-center">
     <input
+      @click.stop
       type="checkbox"
       :ref="col"
       :checked="isChecked"
