@@ -97,7 +97,6 @@ export default {
       const totalTimeBetween = endDate.getTime() - startDate.getTime();
       const timePassed = totalTimeBetween - timeToNextDate;
       const percentagePassed = (timePassed / totalTimeBetween) * 100;
-      console.log('percentagePassed',percentagePassed )
       return percentagePassed;
     },
     borderRadiusEnd() {

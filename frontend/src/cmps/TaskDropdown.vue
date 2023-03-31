@@ -31,34 +31,34 @@
     <div
       v-if="showEditLabels"
       v-for="(option, idx) in options[type]"
-      class="option flex"
+      class="editable-div"
       :key="idx"
       @click.stop
+      @focusout="updateLabelName(idx)"
     >
       <!-- COLOR -->
+
       <span
         @click="toggleColorPicker(option)"
         v-icon="'editLabelsColor'"
         class="edit-labels-color"
         :style="{ 'background-color': option.color }"
       ></span>
-      <span
-        class="editable-div"
-        contenteditable="true"
-        ref="editableLabel"
-        @focusout="updateLabelName(idx)"
-        >{{ option.name }}</span
-      >
+      <span contenteditable="true" ref="editableLabel">{{ option.name }}</span>
+      <div class="remove-label flex align-center justify-center">
+        <span v-icon="'x'" @click="removeLabel(idx)"></span>
+      </div>
     </div>
     <ColorPicker
       v-if="showColorPicker"
       class="edit-color-picker"
       @updateColor="updateLabelColor"
     />
+
     <!-- ADD -->
     <div
       v-if="showEditLabels"
-      class="flex align-center editable-div new-label"
+      class="flex align-center new-label"
       @click.stop="addLabel"
     >
       <span v-icon="'editLabelsPlus'" class="edit-plus"></span>
@@ -122,6 +122,11 @@ export default {
         color: utilService.getRandomColor(),
       }
       updatedOptions[this.type].push(newLabel)
+      this.$emit('updateOptions', { updatedOptions, type: this.type })
+    },
+    removeLabel(idx) {
+      const updatedOptions = JSON.parse(JSON.stringify(this.options))
+      updatedOptions[this.type].splice(idx, 1)
       this.$emit('updateOptions', { updatedOptions, type: this.type })
     },
   },

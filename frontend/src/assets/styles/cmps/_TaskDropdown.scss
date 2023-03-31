@@ -35,45 +35,86 @@
   }
 
   .editable-div {
-    min-width: 100%;
-    min-height: 32px;
-    position: relative;
-    color: $clr3;
+    color: black;
     font-size: 14px;
     border: 1px solid rgb(228, 228, 228);
+    width: 100%;
+    height: 32px;
+    display: flex;
+    position: relative;
     min-width: 100%;
-    min-height: 32px;
-    .edit-labels-color {
-      min-width: 24px;
-      min-height: 24px;
-      color: $clr2;
-      border-radius: 3px;
-      margin-right: 8px;
-      margin-top: 3.5px;
+    span {
+      &:focus {
+        border: none;
+        outline: none;
+      }
     }
-    // .edit-color-picker {
-    // }
+    &:focus {
+      border: none;
+      outline: none;
+    }
+    &:hover .remove-label {
+      display: block;
+    }
+    .edit-labels-color {
+      margin-top: 3px;
+      margin-right: 8px;
+      min-width: 24px;
+      min-height: 5px;
+      height: 24px;
+      color: white;
+      border-radius: 3px;
+      width: 24px;
+    }
+  }
+  .remove-label {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    position: absolute;
+    right: -20px;
+    top: 5px;
+    display: none;
+    span {
+      padding-top: 10px;
+    }
+    &:hover {
+      background-color: #dcdfec;
+      display: block;
+    }
+    svg {
+      color: $clr3;
+      width: 12px;
+    }
   }
 }
 
 .edit-labels {
-  margin-top: 10px;
   color: $clr3;
   font-size: 14px;
-  border-radius: 4px;
   height: 32px;
-
   &:hover {
     background-color: #dcdfec;
   }
-  svg {
+  &:focus {
+    outline: none;
+    border: none;
   }
 }
 
 .new-label {
   justify-content: center;
   height: 32px;
+  color: $clr3;
+  border-radius: 3px;
+  font-size: 14px;
+  border: 1px solid rgb(228, 228, 228);
   .edit-plus {
     margin-top: 6px;
   }
+}
+
+.option-edit {
+  position: relative;
+  border: 1px solid rgb(228, 228, 228);
 }
