@@ -31,12 +31,9 @@
     <div
       v-if="showEditLabels"
       v-for="(option, idx) in options[type]"
-      class="option flex editable-div"
+      class="option flex"
       :key="idx"
-      contenteditable="true"
       @click.stop
-      ref="editableLabel"
-      @focusout="updateLabelName(idx)"
     >
       <!-- COLOR -->
       <span
@@ -45,7 +42,7 @@
         class="edit-labels-color"
         :style="{ 'background-color': option.color }"
       ></span>
-      {{ option.name }}
+      <span class="editable-div" contenteditable="true" ref="editableLabel" @focusout="updateLabelName(idx)">{{ option.name }}</span>
     </div>
     <ColorPicker
       v-if="showColorPicker"
