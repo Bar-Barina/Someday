@@ -156,6 +156,9 @@ export const boardStore = {
       if (!state.currBoard.activities) state.currBoard.activities = []
       state.currBoard.activities.push(activity)
     },
+    clearActiveFilters(state) {
+      state.filterBy.activeFilters = []
+    }
   },
   actions: {
     async addBoard(context, { board }) {
