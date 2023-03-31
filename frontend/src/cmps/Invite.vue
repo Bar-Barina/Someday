@@ -22,7 +22,7 @@
         />
       </span>
       <span
-        >Anyone at {{ this.currBoard.title }} account can find and access this
+        >Anyone at <span class="invite-board-title">{{ this.currBoard.title }} account</span> can find and access this
         board</span
       >
     </div>
