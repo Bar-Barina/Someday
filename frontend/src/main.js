@@ -8,7 +8,6 @@ import vue3GoogleLogin from 'vue3-google-login'
 import VueTippy from 'vue-tippy'
 import 'tippy.js/dist/tippy.css'
 import 'tippy.js/themes/light.css'
-import VueKinesis from "vue-kinesis";
 
 import { clickOutside, icon } from './directives.js'
 
@@ -23,7 +22,6 @@ app.directive('clickOutside', clickOutside)
 app.use(vue3GoogleLogin, {
   clientId: '481002303767-7aqa5ibhthkp41i6baucm6kekn7ae193.apps.googleusercontent.com',
 })
-app.use(VueKinesis);
 app.use(ElementPlus)
 app.use(router)
 app.use(store)
