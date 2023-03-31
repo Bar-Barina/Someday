@@ -7,7 +7,12 @@
       >
     </div>
     <!-- <div class="filter-recent-title">Recent filters</div> -->
-    <div @click="clearfilter" class="clear-all-btn flex justify-center align-center" >Clear all</div>
+    <div
+      @click="clearfilter"
+      class="clear-all-btn flex justify-center align-center"
+    >
+      Clear all
+    </div>
     <section class="filter-list-container flex">
       <!-- Members -->
       <article class="filter-members flex column">
@@ -110,8 +115,8 @@ export default {
       else return false
     },
     clearfilter() {
-      this.$store.commit({type:'clearActiveFilters'})
-    }
+      this.$store.commit({ type: 'clearActiveFilters' })
+    },
   },
   computed: {
     currBoard() {
