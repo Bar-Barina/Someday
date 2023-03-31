@@ -29,7 +29,7 @@
     <article v-for="(member, idx) in currBoard.members" :key="idx" class="members-list">
       <div class="member flex align-center">
       <img :src="member.imgUrl" />
-      <span>{{ member.accountName }}</span>
+      <span>{{ member.name }}</span>
       <div class="x flex justify-center align-center">
       <span @click="removeMember(idx)" v-icon="'x'"></span>
       </div>
@@ -54,10 +54,15 @@ export default {
       this.$emit('updateBoard', board)
     },
     saveUser(user) {
-      console.log('hiii')
+      const member = {
+        id:user.id,
+        name:fullName,
+        imgUrl:user.imgUrl,
+        email:user.email
+      }
       const board = JSON.parse(JSON.stringify(this.currBoard))
       const members = board.members
-      members.unshift(user)
+      members.unshift(member)
       this.searchTerm = ''
       this.$emit('updateBoard', board)
     },

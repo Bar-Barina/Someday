@@ -25,8 +25,8 @@
         :key="idx"
         @click.stop="updatePerson(member)"
       >
-        <img :src="member.url" class="member-img" />
-        <span class="member-mail">{{ member.name }}@gmail.com</span>
+        <img :src="member.imgUrl" class="member-img" />
+        <span class="member-mail">{{ member.email }}</span>
       </div>
     <div class="invite flex align-center">
       <span v-html="getSvg('invite')" class="workspace-icon-invite"></span>
