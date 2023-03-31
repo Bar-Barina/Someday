@@ -98,7 +98,7 @@ export default {
       )
       this.currOption.color = data
       updatedOptions[this.type].splice(optionIdx, 1, this.currOption)
-      this.$emit('updateOptions', updatedOptions)
+      this.$emit('updateOptions', {updatedOptions})
     },
     updateLabelName(idx) {
       const updatedOptions = JSON.parse(JSON.stringify(this.options))

@@ -49,8 +49,8 @@ export default {
     closeModal() {
       this.showDropdown = false
     },
-    updateOptions(optionsUpdate) {
-      this.$emit('updateOptions', optionsUpdate)
+    updateOptions(updatedOptions) {
+      this.$emit('updateOptions', updatedOptions)
     },
   },
   computed: {
@@ -66,9 +66,7 @@ export default {
       if (!labels) return
       labels.status.forEach((label) => {
         if (label.name === this.task.status) currColor = label.color
-        console.log(label)
       })
-      console.log(currColor)
       return currColor
     },
   },

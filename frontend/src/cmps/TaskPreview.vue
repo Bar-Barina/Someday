@@ -180,7 +180,7 @@ export default {
         this.$emit('removeSelected', this.task.id)
       }
     },
-    updateOptions({ updatedOptions, idx, type }) {
+    updateOptions({ updatedOptions , idx, type }) {
       const board = JSON.parse(JSON.stringify(this.currBoard))
       if (idx && type) {
         board.groups.forEach((group) => {
