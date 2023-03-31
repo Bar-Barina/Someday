@@ -90,7 +90,7 @@
           </div>
           Invite / {{ this.currBoard.members.length }}
         </div>
-         <Invite v-if="this.showInvite"/>
+         <Invite v-if="this.showInvite"  v-clickOutside="closeInvite" />
         <div class="dots flex align-center justify-center icon btn-hover">
           <div v-html="getSvg('headerDots')"></div>
         </div>
@@ -411,6 +411,9 @@ export default {
       const colIdx = cols.findIndex((c) => c === col);
       cols.splice(colIdx, 1);
       this.$store.commit({ type: "setCurrLabels", labelsOrder: cols });
+    },
+    closeInvite() {
+      this.showInvite = false
     },
   },
   watch: {
