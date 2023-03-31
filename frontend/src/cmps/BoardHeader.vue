@@ -359,6 +359,7 @@ export default {
       async handler() {
         const routeName = this.$route.name
         if (routeName === 'table') this.active = ''
+        else if (routeName === 'dashboard') this.active = 'dashboard'
         else this.active = 'kanban'
       },
       immediate: true,

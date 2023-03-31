@@ -48,6 +48,7 @@ const routes = [
         // ]
       },
       {
+        name: 'dashboard',
         path: ':boardId/dashboard',
         component: Dashboard
       },
