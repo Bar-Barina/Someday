@@ -1,12 +1,23 @@
 <template>
-  <div class="priority full-cell flex align-center justify-center" :class="priorityClass" @click="toggleModal">
-    {{ priority }} <span v-if="priority==='Critical'" v-icon="'critical'" class="critical-icon"></span>
+  <div
+    class="priority full-cell flex align-center justify-center"
+    :class="priorityClass"
+    @click="toggleModal"
+    :style="{ 'background-color': color }"
+  >
+    {{ priority }}
+    <span
+      v-if="priority === 'Critical'"
+      v-icon="'critical'"
+      class="critical-icon"
+    ></span>
     <TaskDropdown
-    v-clickOutside="closeModal"
+      v-clickOutside="closeModal"
       v-if="showDropdown"
       :options="labels"
       :type="'priority'"
       @updateOption="updatePriority"
+      @updateOptions="updateOptions"
       optionClass="priority-option"
     />
     <span class="peeling-span scale-up-tr"></span>
@@ -15,12 +26,12 @@
 
 <script>
 import TaskDropdown from '../TaskDropdown.vue'
-import { defineComponent } from "vue";
-export default defineComponent ({
-  emits:['updateTask','updateOptions','addLabel'],
+import { defineComponent } from 'vue'
+export default {
+  emits: ['updateTask', 'updateOptions', 'addLabel'],
   props: {
     task: Object,
-    group: Object
+    group: Object,
   },
   name: '',
   data() {
@@ -40,7 +51,10 @@ export default defineComponent ({
     },
     closeModal() {
       this.showDropdown = false
-    }
+    },
+    updateOptions(updatedOptions) {
+      this.$emit('updateOptions', updatedOptions)
+    },
   },
   computed: {
     labels() {
@@ -49,25 +63,18 @@ export default defineComponent ({
     priority() {
       return this.selectedPriority
     },
-    priorityClass() {
-      switch (this.selectedPriority) {
-        case 'Critical':
-          return 'priority-critical'
-        case 'High':
-          return 'priority-high'
-        case 'Medium':
-          return 'priority-medium'
-        case 'Low':
-          return 'priority-low'
-        case '':
-          return 'priority-empty'
-        default:
-          break
-      }
+    color() {
+      const labels = this.labels
+      let currColor = ''
+      if (!labels) return
+      labels.priority.forEach((label) => {
+        if (label.name === this.task.priority) currColor = label.color
+      })
+      return currColor
     },
   },
   components: {
     TaskDropdown,
   },
-})
+}
 </script>
