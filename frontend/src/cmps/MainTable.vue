@@ -108,6 +108,7 @@ export default {
         delete this.selectedTasks[group._id];
     },
     clearSelected() {
+      this.groupColors = []
       this.selectedTasks = {};
     },
     getSvg(iconName) {

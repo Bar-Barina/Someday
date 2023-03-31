@@ -29,7 +29,7 @@
     <section class="board-groups">
       <div class="title">Board groups</div>
         <div class="body flex align-center ">
-          <div>{{ members }}</div>
+          <div>{{ groups }}</div>
         <img src="../assets/img/members.png" alt=""/>
         </div>
     </section>

@@ -1,6 +1,7 @@
 .msg-preview {
     margin-top: 8px;
     height: em(202px);
+    // height: max-content;
     width: em(522px);
     border-radius: 8px;
     border: 1px solid $clr014;
@@ -36,7 +37,7 @@
     }
 
     .msg-txt {
-        padding-left: 17px;
+        padding-left: 20px;
         padding-top: 7px;
         height: 70px;
     }
