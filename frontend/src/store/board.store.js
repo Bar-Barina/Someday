@@ -47,11 +47,11 @@ export const boardStore = {
     isBlackScreen: false,
     statuses: ['Working on it', 'Stuck', 'Done', 'Blank'],
     filteredLabels: [
-      // 'Date',
-      // 'Text',
-      // 'Priority',
+      'Date',
+      'Text',
+      'Priority',
       'Person',
-      // 'Files',
+      'Files',
       'Status',
       'Timeline',
     ],
@@ -194,8 +194,8 @@ export const boardStore = {
       try {
         const user = userService.getLoggedInUser()
         let boards = await boardService.query(user)
-        console.log('boards1', boards)
-        console.log('user', user)
+        // console.log('boards1', boards)
+        // console.log('user', user)
         if(!user && !utilService.loadFromStorage('userId')) {
           const board = JSON.parse(JSON.stringify(boards[0]))
           board.owner = utilService.makeId()

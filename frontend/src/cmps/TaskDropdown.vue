@@ -118,10 +118,14 @@ export default {
       const updatedOptions = JSON.parse(JSON.stringify(this.options))
       const newLabel = {
         id: utilService.makeId(),
-        name: this.type === 'status' ? utilService.getRandomStatus() : utilService.getRandomPriority(),
+        name:
+          this.type === 'status'
+            ? utilService.getRandomStatus()
+            : utilService.getRandomPriority(),
         color: utilService.getRandomColor(),
       }
       updatedOptions[this.type].push(newLabel)
+      console.log('from dropdown',updatedOptions)
       this.$emit('updateOptions', { updatedOptions, type: this.type })
     },
     removeLabel(idx) {
