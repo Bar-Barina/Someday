@@ -8,6 +8,12 @@
           group-name="group-kanban"
           tag="div"
           @drop="onColumnDrop($event)"
+          :drop-placeholder="{
+            className: 'kanban-placeholder',
+            animationDuration: '200',
+            showOnTop: true,
+          }"
+          :drag-class="'kanban-drag'"
         >
           <Draggable v-for="(option, idx) in statusesMap" :key="idx">
             <KanbanCol
@@ -222,7 +228,7 @@ export default {
       return this.colSelected;
     },
     mappedTasks() {
-      console.log('this.statusesMap1111', this.statusesMap)
+      console.log("this.statusesMap1111", this.statusesMap);
       return this.statusesMap;
     },
     async getFromParams() {

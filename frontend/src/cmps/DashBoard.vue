@@ -163,7 +163,9 @@ export default {
       var tasks = []
       this.currBoard.groups.forEach((group) => {
         group.tasks.forEach((task) => {
-          if (task.person.some(p=>p._id===person._id)) tasks.push(task);
+          console.log('task.person', task.person)
+          console.log('person.id', person.id)
+          if (task.person.some(p=>p.id===person.id)) tasks.push(task);
         });
       });
       membersMap.push(tasks.length)
