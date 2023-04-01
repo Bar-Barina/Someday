@@ -114,11 +114,12 @@ export default {
       },   
       options2: {
         plugins: {
-          legend: { position: "left",
-          labels:{
+          legend: { 
+            position: "left",
+            labels:{
               usePointStyle: true
             }
-        }
+           } 
         },
       },  
     }
