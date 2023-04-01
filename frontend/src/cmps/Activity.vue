@@ -181,6 +181,7 @@ export default {
     closeActivity() {
       this.$emit('closeActivity')
     },
+    
   },
   computed: {
     currBoard() {
@@ -216,7 +217,9 @@ export default {
       return this.$store.getters.loggedInUser
     },
   },
-  created() {},
+  created() {
+    console.log('task',this.currBoard)
+  },
   components: {
     // ActivityPerson,
   },
