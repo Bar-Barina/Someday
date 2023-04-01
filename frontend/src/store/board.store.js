@@ -167,7 +167,7 @@ export const boardStore = {
       try {
         board = await boardService.save(board)
         context.commit(getActionAddBoard(board))
-        commit({ type: 'setCurrBoard', board })
+        context.commit({ type: 'setCurrBoard', board })
         return board
       } catch (err) {
         console.log('boardStore: Error in addBoard', err)
