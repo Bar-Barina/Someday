@@ -139,10 +139,9 @@ import EditMenu from "./EditMenu.vue";
 import AddTask from "./AddTask.vue";
 import ProgressBar from "./ProgressBar.vue";
 import ColorPicker from "../cmps/dynamicCmps/ColorPicker.vue";
-import { eventBus, showErrorMsg } from "../services/event-bus.service.js";
+import { eventBus, showErrorMsg,showSuccessMsg } from "../services/event-bus.service.js";
 import GroupCollapse from "./GroupCollapse.vue";
 import EmptyProgress from "./dynamicCmps/EmptyProgress.vue";
-
 export default {
   emits: [
     "labelDrop",
@@ -207,6 +206,8 @@ export default {
     },
     remove(toRemove) {
       this.$store.dispatch({ type: "remove", toRemove });
+      const msg = 'Group removed';
+        showSuccessMsg(msg);
     },
     toggleModal() {
       this.showColorPicker = !this.showColorPicker;

@@ -1,78 +1,169 @@
 .collapsed-group {
-    font-family: Figtree;
-    &.group-grid {
-        grid-template-rows: 3.75rem;
-    }
+  font-family: Figtree;
+  &.group-grid {
+    grid-template-rows: 3.75rem;
+  }
 
-    padding-bottom: 20px;
+  padding-bottom: 20px;
 
-    >* {
-        padding-bottom: 8px;
-        padding-top: 4px;
-        border-top: 1px solid $clr014;
-        border-bottom: 1px solid $clr014;
-    }
+  > * {
+    padding-bottom: 8px;
+    padding-top: 4px;
+    border-top: 1px solid $clr014;
+    border-bottom: 1px solid $clr014;
+  }
 
-    .first {
-        left: 0;
-        border: none;
-        height: 100%;
-        background-color: #fff;
-        padding: 0;
-    }
+  .first {
+    left: 0;
+    border: none;
+    height: 100%;
+    background-color: #fff;
+    padding: 0;
+  }
 
+  .more {
+    cursor: pointer;
+    background-color: #fff;
+    width: 100%;
+    left: 0;
+    border: none;
+    height: 24px;
+    width: 24px;
+    max-width: 24px;
+    margin-top: 6px;
+  }
+
+  &:hover {
     .more {
-        cursor: pointer;
-        background-color: #fff;
-        width: 100%;
-        left: 0;
-        border: none;
-        height: 24px;
-        width: 24px;
-        max-width: 24px;
-        margin-top: 6px;
+      opacity: 1;
+    }
+  }
+
+  .task-border {
+    left: 40px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+
+  .arrow {
+    cursor: pointer;
+    left: 46px;
+    padding-top: 4px;
+    svg {
+      margin-top: -2px;
+    }
+  }
+
+  .title-wrapper {
+    left: 78px;
+    border-right: 1px solid $clr014;
+    flex-direction: column;
+
+    .title-input {
+      font-size: 18px;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-family: 'PoppinsLight';
+      font-weight: 600;
     }
 
-    &:hover {
-        .more {
-            opacity: 1;
+    .tasks-count {
+      margin-top: 6px;
+      padding-left: 4px;
+    }
+  }
+    
+  .timeline-progress-container {
+   .collapse-progress-label {
+  
+          position: absolute;
+          top: 5px;
+          right: 42px;
+      }
+    }
+
+    .timeline-progress-bar {
+        position: absolute;
+        top: 30px;
+        right: 5px;
+        height: 22px;
+        text-align: center;
+        color: white;
+        width: em(145px);
+        border-radius: 10px;
+        font-size: 14px;
+        background-color: #383838;
+        z-index: 6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:hover .reset-date {
+          opacity: 1;
         }
-    }
-
-
-    .task-border {
-        left: 40px;
-        border-top-left-radius: 6px;
-        border-bottom-left-radius: 6px;
-    }
-
-    .arrow {
-        cursor: pointer;
-        left: 46px;
-        padding-top: 4px;
-        svg {
-            margin-top: -2px;
-        }
-    }
-
-    .title-wrapper {
-        left: 78px;
-        border-right: 1px solid $clr014;
-        flex-direction: column;
-
-        .title-input {
-            font-size: 18px;
-            width: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+    
+        &.emptyTimeline {
+          background-color: #c4c4c4;
+    
+          .day-diff {
+            position: absolute;
+            top: 2px;
+            right: 35px;
+            display: none;
+          }
+    
+          .date-diff {
+            font-size: 13px;
+            position: absolute;
+            top: 3px;
+            right: 60px;
+          }
         }
 
-        .tasks-count {
-            margin-top: 6px;
-            padding-left: 4px;
+        .reset-date {
+          box-shadow: 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
+          background-color: $clr39;
+          opacity: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          border: none;
+          height: 16px;
+          width: 16px;
+          border-radius: 2px;
+          position: absolute;
+          top: 3px;
+          right: -3px;
+          z-index: 1;
+    
+          .x-icon {
+            height: 16px;
+            color: rgb(41, 41, 41);
+          }
         }
-    }
-
-    .collapse-progress-label {}
+    
+        .day-diff {
+          position: absolute;
+          top: 3px;
+          right: 55px;
+          display: none;
+        }
+    
+        &:hover .day-diff {
+          display: block;
+        }
+    
+        &:hover .date-diff {
+          display: none;
+        }
+    
+        .date-diff {
+          font-size: 13px;
+          position: absolute;
+          top: 3px;
+          right: 20px;
+        }
+    }    
 }

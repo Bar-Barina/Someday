@@ -93,8 +93,7 @@
           </div>
           Invite / {{ this.currBoard.members.length }}
         </div>
-         <Invite v-if="this.showInvite" @updateBoard="updateMembers" @closeInvite="closeInvite"  v-clickOutside="closeInvite" />
-        <Invite v-if="this.showInvite" v-clickOutside="closeInvite"/>
+         <Invite v-if="showInvite" @updateBoard="updateMembers" @closeInvite="closeInvite"  v-clickOutside="closeInvite" />
         <div class="dots flex align-center justify-center icon btn-hover">
           <div v-html="getSvg('headerDots')"></div>
         </div>
@@ -232,7 +231,7 @@
           >Filter
           <span
             v-if="activeFilters.length > 0"
-            :class="{ active: activeFilters.length }"
+            :class="{ active: activeFilters.length}"
             >/ {{ activeFilters.length }}</span
           >
         </span>
@@ -313,6 +312,10 @@ import BoardDesc from './BoardDesc.vue'
 import Activity from './Activity.vue'
 import KanbanFilter from './KanbanFilter.vue'
 import Invite from './Invite.vue'
+import {
+  showSuccessMsg,
+  showErrorMsg,
+} from "../services/event-bus.service";
 
 export default {
   name: 'BoardHeader',
@@ -371,6 +374,8 @@ export default {
       const toUpdate = { task: this.task, group }
       this.$store.dispatch({ type: 'saveTask', toUpdate })
       this.task = boardService.getEmptyTask()
+      const msg = 'New task added';
+        showSuccessMsg(msg);
     },
     toggleFilterModal() {
       this.showFilter = !this.showFilter
@@ -412,6 +417,8 @@ export default {
         tasks: [],
       }
       this.$store.dispatch({ type: 'saveTask', toUpdate: { group: newGroup } })
+      const msg = 'New group added';
+        showSuccessMsg(msg);
     },
     removeMemberFilter() {
       this.$store.commit({ type: 'updateActiveMember' })

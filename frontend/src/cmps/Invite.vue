@@ -4,7 +4,7 @@
       <span v-icon="'x'"></span>
     </div>
     <div class="invite-title">Board Members</div>
-    <input v-model="searchTerm" type="text" placeholder="Enter name or email" />
+    <input @click.stop v-model="searchTerm" type="text" placeholder="Enter name or email" />
 
     <section v-if="searchTerm" class="searched-users">
       <div class="user" v-for="(user,idx) in filteredUsers" :key="idx">
@@ -55,15 +55,17 @@ export default {
     },
     saveUser(user) {
       const member = {
-        id:user.id,
-        name:fullName,
+        id:user._id,
+        name:user.fullname,
         imgUrl:user.imgUrl,
         email:user.email
       }
       const board = JSON.parse(JSON.stringify(this.currBoard))
       const members = board.members
       members.unshift(member)
+      console.log('members',members)
       this.searchTerm = ''
+      console.log('board',board)
       this.$emit('updateBoard', board)
     },
     closeInvite() {

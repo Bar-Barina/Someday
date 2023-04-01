@@ -32,7 +32,6 @@
       </div>
     </section>
 
-    <!-- ADDED -->
     <div class="flex align-center space-between column someday">
       <span>S</span>
       <span>O</span>
@@ -42,40 +41,7 @@
       <span>A</span>
       <span>Y</span>
     </div>
-    <!-- REMOVED -->
-    <!-- <hr/> -->
-    <!-- <section class="icon-pattern-top">
-      <div class="icon-wrapper">
-        <span v-html="getSvg('bell')"></span>
-      </div>
-      <div class="icon-wrapper">
-        <span v-html="getSvg('inbox')"></span>
-      </div>
-      <div class="icon-wrapper">
-        <span v-html="getSvg('date')"></span>
-      </div>
-      <div class="icon-wrapper">
-        <span v-html="getSvg('star')"></span>
-      </div>
-    </section> -->
 
-    <!-- <section
-      class="icon-pattern-bottom flex column justify-center align-center"
-    >
-      <div class="icon-wrapper">
-        <span v-html="getSvg('pazel')"></span>
-      </div>
-      <div class="icon-wrapper">
-        <span v-html="getSvg('addpeople')"></span>
-      </div>
-      <div class="icon-wrapper">
-        <span v-html="getSvg('search')"></span>
-      </div>
-      <div class="icon-wrapper">
-        <span v-html="getSvg('info')"></span>
-      </div>
-    </section> -->
-    <!-- ADDED CLASS -->
     <section class="flex justify-center align-center column user-img">
       <div class="icon-wrapper">
         <div v-html="getSvg('apps')"></div>

@@ -39,6 +39,10 @@ import { Container, Draggable } from "vue3-smooth-dnd";
 import { boardService } from "../services/board.service.local";
 import { utilService } from "../services/util.service";
 import KanbanCard from "./KanbanCard.vue";
+import {
+  showSuccessMsg,
+  showErrorMsg,
+} from "../services/event-bus.service";
 export default {
   emits: ["addStatusesMap", "removeStatusesMap", 'updateMapOrder'],
   props: {
@@ -90,7 +94,9 @@ export default {
       const group = this.currBoard.groups[0];
       this.tasks.unshift(task)
       const toUpdate = { group, task };
-      this.$store.dispatch({ type: "saveTask", toUpdate });
+      this.$store.dispatch({ type: "saveTask", toUpdate })
+      const msg = 'New task added';
+        showSuccessMsg(msg);
     },
     updateOrder() {
       this.$emit('updateMap')
