@@ -200,7 +200,7 @@
           class="member-filter flex justify-center align-center"
           v-if="MemberToFilter"
         >
-          <img :src="MemberToFilter.url" alt="" />
+          <img :src="MemberToFilter.imgUrl" alt="" />
           {{ MemberToFilter.name }}
           <span v-icon="'personX'" @click.stop="removeMemberFilter"></span>
         </div>
@@ -393,8 +393,7 @@ export default {
       this.showFilter = false
       this.showPersonFilter = false
       this.showBoardDesc = false
-      if (!this.activeFilters.length)
-      this.activeFilter = ''
+      if (!this.activeFilters.length) this.activeFilter = '' 
       this.$store.commit({ type: 'closeBlackScreen' })
     },
     onSearch() {

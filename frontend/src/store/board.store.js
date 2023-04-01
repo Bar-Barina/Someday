@@ -204,7 +204,7 @@ export const boardStore = {
           utilService.saveToStorage('userId' , board.owner)
           boards.splice(0 , 1 , boardSaved)
         }
-        else if (user && boards[0].owner === "sjk02338c3mskjrvy23eokfvo"){
+        else if (user && boards[0].owner === "6427f19911c3a45228ba1187"){
           const board = JSON.parse(JSON.stringify(boards[0]))
           console.log('board2', board)
           board.owner = user._id
