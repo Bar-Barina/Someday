@@ -127,6 +127,7 @@ export default {
   },
   created() {
     const board = this.currBoard || this.getFromParams;
+    console.log('board', board)
     this.options = {
       status: {
         labels: board.labels.status.map((label) => label.name),
@@ -202,7 +203,6 @@ export default {
           tasks,
         };
       });
-      console.log("this.statusesMap", this.statusesMap);
     },
     addColumn(col) {
       const labelsOrder = JSON.parse(JSON.stringify(this.currLabelsOrder));

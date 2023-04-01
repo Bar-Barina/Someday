@@ -8,7 +8,6 @@
       <input class="open-ai-input" type="text" placeholder="Write your subject" v-model="txt" />
       <span class="send" v-icon="'sendOpenAI'" @click="sendQ"></span>
       </div>
-      <span class="ai-loader" v-if="isLoading"></span>
     </div>
   </section>
 </template>
@@ -17,6 +16,7 @@
 import axios from "axios";
 import { httpService } from "../services/http.service";
 import { boardService } from '../services/board.service';
+
 export default {
   data() {
     return {
@@ -63,5 +63,7 @@ export default {
       return this.res;
     },
   },
+  components: {
+  }
 };
 </script>

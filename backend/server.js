@@ -121,9 +121,10 @@ app.post('/api/openai', async (req, res) => {
             ]
         }
         Person: ${message}?`,
-        max_tokens: 1000,
+        max_tokens: 700,
         temperature: 0
-    })
+    },
+    )
     if (response.data.choices) {
         res.json({
             message: response.data.choices[0].text
