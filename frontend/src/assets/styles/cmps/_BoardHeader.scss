@@ -80,7 +80,6 @@
 
     .see-more {
       color: #1f76c2;
-      ;
       white-space: nowrap;
       margin-left: 6px;
       padding-inline: 2px;
@@ -113,6 +112,12 @@
       padding-right: 9px;
       border: 1px solid $clr014;
       font-size: em(14px);
+      .icon {
+        padding-top: 4px;
+      }
+      span {
+        padding-top: 1px;
+      }
     }
   }
 

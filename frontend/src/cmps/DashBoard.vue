@@ -54,12 +54,12 @@ export default {
   data() {
     return {
       testData: {
-        labels:['Working on it', 'Stuck', 'Done', 'blank'],
+        labels:null,
         datasets: [
           {
             data: null,
             // data: this.labelsInv,
-            backgroundColor: ['#fdab3d', '#e2445c', '#00c875', '#c3c4c3'],
+            backgroundColor: null,
           },
         ],
       },
@@ -100,18 +100,12 @@ export default {
         },
       },  
       priorityData: {
-        labels: ["Critical", "High", "Medium", "Low", "blank"],
+        labels: null,
         datasets: [
           {
             data: [],
             // data: this.labelsInv,
-            backgroundColor: [
-            "rgb(51, 51, 51)",
-            "rgb(64, 22, 148)",
-            "rgb(85, 89, 223)",
-            "rgb(87, 155, 252)",
-            "#c3c4c3",
-          ],
+            backgroundColor: null,
           },
         ],
       },   
@@ -133,7 +127,7 @@ export default {
   components: { DoughnutChart , BarChart, PieChart },
   computed: {
     currBoard() {
-      return this.$store.getters.currBoard
+      return JSON.parse(JSON.stringify(this.$store.getters.currBoard))
     },
     tasks() {
       return this.currBoard.groups.reduce((acc,group)=>{
@@ -148,7 +142,11 @@ export default {
     }
   },
   created() {
-    const statusesLabels = ['Working on it', 'Stuck', 'Done', '']
+    const statusesLabels = this.currBoard.labels.status.map(label=>{
+      if(label.name === '') return 'blank'
+      else return label.name
+    })
+    const statusesColors = this.currBoard.labels.status.map(label=>label.color)
       const statusesMap = []
       statusesLabels.forEach((label,idx) => {
       var tasks = [];
@@ -159,8 +157,10 @@ export default {
       });
       statusesMap.push(tasks.length)
     });
+    this.testData.labels = statusesLabels
+    this.testData.datasets[0].backgroundColor = statusesColors
     this.testData.datasets[0].data = statusesMap
-/////////////////////////////////
+//////////////////////////////////////////
     const persons = this.currBoard.members
     const personsNames = this.currBoard.members.map(m=>m.name)
     console.log('personNames',personsNames)
@@ -181,7 +181,12 @@ export default {
     this.personData.labels = personsNames
     this.personData.datasets[0].data = membersMap
 ///////////////////////////////////
-const prioritiesLabels = ["Critical", "High", "Medium", "Low", ""]
+      const prioritiesLabels = this.currBoard.labels.priority.map(label=>{
+      if(label.name === '') return 'blank'
+      else return label.name
+    })
+    console.log('prioritiesLabels',prioritiesLabels)
+      const prioritiesColors = this.currBoard.labels.priority.map(label=>label.color)
       const priorityMap = []
       prioritiesLabels.forEach((label,idx) => {
       var tasks = [];
@@ -192,7 +197,8 @@ const prioritiesLabels = ["Critical", "High", "Medium", "Low", ""]
       });
       priorityMap.push(tasks.length)
     });
-    console.log('priorityMap',priorityMap)
+    this.priorityData.labels = prioritiesLabels
+    this.priorityData.datasets[0].backgroundColor = prioritiesColors
     this.priorityData.datasets[0].data = priorityMap
     }
   }
