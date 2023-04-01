@@ -29,18 +29,12 @@ export default {
   created() {
     if (this.label === "Status") {
       this.type = "status";
-      this.options = ["Working on it", "Done", "Stuck", ""];
-      this.colors = ["#fdab3d", "#00c875", "#e2445c", "#c3c4c3"];
+      this.options = this.currBoard.labels[this.type].map(l=>l.name)
+      this.colors =  this.currBoard.labels[this.type].map(l=>l.color)
     } else {
       this.type = "priority";
-      this.options = ["High", "Medium", "Low", "Critical", ""];
-      this.colors = [
-        "rgb(64, 22, 148)",
-        "rgb(85, 89, 223)",
-        "rgb(87, 155, 252)",
-        "rgb(51, 51, 51)",
-        "#c3c4c3",
-      ];
+      this.options = this.currBoard.labels[this.type].map(l=>l.name)
+      this.colors =  this.currBoard.labels[this.type].map(l=>l.color)
     }
   },
   data() {
@@ -69,6 +63,9 @@ export default {
       const stats = values.map((stat) => ((stat / total) * 100).toFixed(1));
       return stats;
     },
+    currBoard() {
+      return this.$store.getters.currBoard
+    }
   },
 };
 </script>
