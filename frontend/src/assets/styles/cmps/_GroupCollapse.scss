@@ -1,78 +1,80 @@
 .collapsed-group {
-    font-family: Figtree;
-    &.group-grid {
-        grid-template-rows: 3.75rem;
-    }
+  font-family: Figtree;
+  &.group-grid {
+    grid-template-rows: 3.75rem;
+  }
 
-    padding-bottom: 20px;
+  padding-bottom: 20px;
 
-    >* {
-        padding-bottom: 8px;
-        padding-top: 4px;
-        border-top: 1px solid $clr014;
-        border-bottom: 1px solid $clr014;
-    }
+  > * {
+    padding-bottom: 8px;
+    padding-top: 4px;
+    border-top: 1px solid $clr014;
+    border-bottom: 1px solid $clr014;
+  }
 
-    .first {
-        left: 0;
-        border: none;
-        height: 100%;
-        background-color: #fff;
-        padding: 0;
-    }
+  .first {
+    left: 0;
+    border: none;
+    height: 100%;
+    background-color: #fff;
+    padding: 0;
+  }
 
+  .more {
+    cursor: pointer;
+    background-color: #fff;
+    width: 100%;
+    left: 0;
+    border: none;
+    height: 24px;
+    width: 24px;
+    max-width: 24px;
+    margin-top: 6px;
+  }
+
+  &:hover {
     .more {
-        cursor: pointer;
-        background-color: #fff;
-        width: 100%;
-        left: 0;
-        border: none;
-        height: 24px;
-        width: 24px;
-        max-width: 24px;
-        margin-top: 6px;
+      opacity: 1;
+    }
+  }
+
+  .task-border {
+    left: 40px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+
+  .arrow {
+    cursor: pointer;
+    left: 46px;
+    padding-top: 4px;
+    svg {
+      margin-top: -2px;
+    }
+  }
+
+  .title-wrapper {
+    left: 78px;
+    border-right: 1px solid $clr014;
+    flex-direction: column;
+
+    .title-input {
+      font-size: 18px;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-family: 'PoppinsLight';
+      font-weight: 600;
     }
 
-    &:hover {
-        .more {
-            opacity: 1;
-        }
+    .tasks-count {
+      margin-top: 6px;
+      padding-left: 4px;
     }
+  }
 
-
-    .task-border {
-        left: 40px;
-        border-top-left-radius: 6px;
-        border-bottom-left-radius: 6px;
-    }
-
-    .arrow {
-        cursor: pointer;
-        left: 46px;
-        padding-top: 4px;
-        svg {
-            margin-top: -2px;
-        }
-    }
-
-    .title-wrapper {
-        left: 78px;
-        border-right: 1px solid $clr014;
-        flex-direction: column;
-
-        .title-input {
-            font-size: 18px;
-            width: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .tasks-count {
-            margin-top: 6px;
-            padding-left: 4px;
-        }
-    }
-
-    .collapse-progress-label {}
+  .collapse-progress-label {
+  }
 }

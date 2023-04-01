@@ -313,6 +313,10 @@ import BoardDesc from './BoardDesc.vue'
 import Activity from './Activity.vue'
 import KanbanFilter from './KanbanFilter.vue'
 import Invite from './Invite.vue'
+import {
+  showSuccessMsg,
+  showErrorMsg,
+} from "../services/event-bus.service";
 
 export default {
   name: 'BoardHeader',
@@ -371,6 +375,8 @@ export default {
       const toUpdate = { task: this.task, group }
       this.$store.dispatch({ type: 'saveTask', toUpdate })
       this.task = boardService.getEmptyTask()
+      const msg = 'New task added';
+        showSuccessMsg(msg);
     },
     toggleFilterModal() {
       this.showFilter = !this.showFilter
@@ -412,6 +418,8 @@ export default {
         tasks: [],
       }
       this.$store.dispatch({ type: 'saveTask', toUpdate: { group: newGroup } })
+      const msg = 'New group added';
+        showSuccessMsg(msg);
     },
     removeMemberFilter() {
       this.$store.commit({ type: 'updateActiveMember' })

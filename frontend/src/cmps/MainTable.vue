@@ -56,7 +56,10 @@ import { svgService } from "../services/svg.service.js";
 import { eventBus } from "../services/event-bus.service";
 import GroupDrag from "./GroupDrag.vue";
 import NoResultsFound from "./NoResultsFound.vue";
-
+import {
+  showSuccessMsg,
+  showErrorMsg,
+} from "../services/event-bus.service";
 export default {
   emits: ["labelDrop"],
   data() {
@@ -121,6 +124,8 @@ export default {
         tasks: [],
       };
       this.$store.dispatch({ type: "saveTask", toUpdate: { group: newGroup } });
+      const msg = 'New group added';
+        showSuccessMsg(msg);
     },
     updateDragGroup(group) {
       const board = this.currBoard;

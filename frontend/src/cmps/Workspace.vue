@@ -96,8 +96,13 @@ import { boardService } from "../services/board.service.js";
 import BoardTitlePreview from "../cmps/BoardTitlePreview.vue";
 import { utilService } from "../services/util.service.js";
 import OpenAI from "./OpenAI.vue";
-
+import {
+  eventBus,
+  showSuccessMsg,
+  showErrorMsg,
+} from "../services/event-bus.service";
 export default {
+  
   props: {
     boards: Array,
   },
@@ -120,9 +125,13 @@ export default {
     addBoard() {
       const newBoard = boardService.getEmptyBoard();
       this.$store.dispatch({ type: "addBoard", board: newBoard });
+        const msg = 'New board added';
+        showSuccessMsg(msg);
     },
     removeBoard(boardId) {
       this.$store.dispatch({ type: "removeBoard", boardId });
+      const msg = 'Board removed';
+        showSuccessMsg(msg);
     },
     moveToBoard(board, idx) {
       this.$store.commit({ type: "setCurrBoard", board });
