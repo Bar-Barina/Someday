@@ -207,11 +207,6 @@ function getEmptyBoard() {
             side: 'null',
             taskTitle: 'Task 2',
             person: [
-              {
-                name: 'Bar',
-                color: 'green',
-                url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512',
-              },
             ],
             date: '',
             status: 'Done',
@@ -225,11 +220,6 @@ function getEmptyBoard() {
             id: 't104',
             taskTitle: 'Task 3',
             person: [
-              {
-                name: 'Bar',
-                color: 'green',
-                url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512',
-              },
             ],
             date: '',
             status: '',
@@ -262,11 +252,7 @@ function getEmptyBoard() {
             id: 't103',
             taskTitle: 'Task 2',
             person: [
-              {
-                name: 'Bar',
-                color: 'green',
-                url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512',
-              },
+            
             ],
             date: '',
             status: 'Working on it',
@@ -280,11 +266,6 @@ function getEmptyBoard() {
             id: 't102',
             taskTitle: 'Task 3',
             person: [
-              {
-                name: 'Bar',
-                color: 'green',
-                url: 'https://ca.slack-edge.com/T04CLB0SNC9-U04GRRF255G-b265ef8c888a-512',
-              },
             ],
             date: '',
             status: '',
