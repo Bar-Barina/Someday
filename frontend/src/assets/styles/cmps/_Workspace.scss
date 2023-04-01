@@ -107,7 +107,7 @@
     background-color: $clr39;
   }
 
-  .workspace-container>*:not(.workspace-line) {
+  .workspace-container > *:not(.workspace-line) {
     height: 32px;
     width: 100%;
     border-radius: 4px;
@@ -136,11 +136,11 @@
           fill: #323338;
         }
       }
-       svg {
+      svg {
         fill: #fff;
         width: 18px;
         height: 18px;
-       }
+      }
     }
 
     border-top: 1px solid rgba(255, 255, 255, 0.5);
@@ -165,9 +165,12 @@
       }
     }
 
-    .top , .bottom, .right, .left {
+    .top,
+    .bottom,
+    .right,
+    .left {
       position: absolute;
-      border-radius: 100vmax; 
+      border-radius: 100vmax;
     }
 
     .top {
@@ -182,7 +185,7 @@
         rgb(255, 255, 255)
       );
     }
-    
+
     .bottom {
       right: 0;
       bottom: 0;
@@ -194,7 +197,7 @@
         transparent 50%
       );
     }
-    
+
     .right {
       top: 0;
       right: 0;
@@ -207,7 +210,7 @@
         rgb(255, 255, 255)
       );
     }
-    
+
     .left {
       left: 0;
       bottom: 0;
@@ -220,72 +223,72 @@
         transparent 70%
       );
     }
-    
+
     .top {
       animation: animateTop 2.7s ease-in-out infinite;
     }
-    
+
     .bottom {
       animation: animateBottom 2.7s ease-in-out infinite;
     }
-    
+
     .right {
       animation: animateRight 2.7s ease-in-out infinite;
     }
-    
+
     .left {
       animation: animateLeft 2.7s ease-in-out infinite;
     }
-    
+
     @keyframes animateTop {
       25% {
         width: 100%;
         opacity: 1;
       }
-    
+
       30%,
       100% {
         opacity: 0;
       }
     }
-    
+
     @keyframes animateBottom {
       0%,
       50% {
         opacity: 0;
         width: 0;
       }
-    
+
       75% {
         opacity: 1;
         width: 100%;
       }
-    
+
       76%,
       100% {
         opacity: 0;
       }
     }
-    
+
     @keyframes animateRight {
       0%,
       25% {
         opacity: 0;
         height: 0;
       }
-    
+
       50% {
         opacity: 1;
         height: 100%;
       }
-    
+
       55%,
       100% {
         height: 100%;
         opacity: 0;
       }
     }
-    
+
     @keyframes animateLeft {
       0%,
       75% {
@@ -293,13 +296,12 @@
         bottom: 0;
         height: 0;
       }
-    
+
       100% {
         opacity: 1;
         height: 100%;
       }
     }
-    
   }
 
   &.is-open {

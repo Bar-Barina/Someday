@@ -63,9 +63,7 @@ export default {
       const board = JSON.parse(JSON.stringify(this.currBoard))
       const members = board.members
       members.unshift(member)
-      console.log('members',members)
       this.searchTerm = ''
-      console.log('board',board)
       this.$emit('updateBoard', board)
     },
     closeInvite() {
@@ -78,8 +76,11 @@ export default {
     },
     filteredUsers() {
       const users = this.users
+      const members = this.currBoard.members
+      const membersIds = members.map(member => member.id)
       const regex = new RegExp(this.searchTerm, 'i')
-      return users.filter((user) => regex.test(user.accountName))
+      const filteredUsers = users.filter((user) => regex.test(user.accountName))
+      return filteredUsers.filter(user=>!membersIds.includes(user._id))
     },
     users() {
       return this.$store.getters.users

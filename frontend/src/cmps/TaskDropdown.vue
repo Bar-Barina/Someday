@@ -45,8 +45,14 @@
         :style="{ 'background-color': option.color }"
       ></span>
       <span contenteditable="true" ref="editableLabel">{{ option.name }}</span>
-      <div class="remove-label flex align-center justify-center">
-        <span v-icon="'x'" @click="removeLabel(idx)"></span>
+      <div class="remove-label flex align-center justify-center"
+          v-tippy="{
+            content: 'Delete label',
+            theme: 'classicRight',
+            placement: 'right',
+            arrow: true,
+          }">
+        <span v-icon="'x'" @click="removeLabel(idx)" class="remove-label-btn"></span>
       </div>
     </div>
     <ColorPicker
@@ -74,6 +80,11 @@
 import { svgService } from '../services/svg.service.js'
 import { utilService } from '../services/util.service.js'
 import ColorPicker from '../cmps/dynamicCmps/ColorPicker.vue'
+import {
+  eventBus,
+  showSuccessMsg,
+  showErrorMsg,
+} from "../services/event-bus.service";
 export default {
   emits: ['updateOptions', 'updateOption'],
   props: {
@@ -90,6 +101,8 @@ export default {
   methods: {
     changeOption(optionName) {
       this.$emit('updateOption', optionName)
+      const msg = 'Label changed';
+        showSuccessMsg(msg);
     },
     getSvg(iconName) {
       return svgService.getSvg(iconName)
@@ -106,6 +119,8 @@ export default {
       this.currOption.color = data
       updatedOptions[this.type].splice(optionIdx, 1, this.currOption)
       this.$emit('updateOptions', { updatedOptions })
+      const msg = 'Label color updated';
+        showSuccessMsg(msg);
     },
     updateLabelName(idx) {
       const updatedOptions = JSON.parse(JSON.stringify(this.options))
@@ -113,6 +128,8 @@ export default {
       option.name = this.$refs.editableLabel[idx].innerText
       updatedOptions[this.type].splice(idx, 1, option)
       this.$emit('updateOptions', { updatedOptions, idx, type: this.type })
+      const msg = 'Label name updated';
+        showSuccessMsg(msg);
     },
     addLabel() {
       const updatedOptions = JSON.parse(JSON.stringify(this.options))
@@ -127,11 +144,15 @@ export default {
       updatedOptions[this.type].push(newLabel)
       console.log('from dropdown',updatedOptions)
       this.$emit('updateOptions', { updatedOptions, type: this.type })
+      const msg = 'New label added';
+        showSuccessMsg(msg);
     },
     removeLabel(idx) {
       const updatedOptions = JSON.parse(JSON.stringify(this.options))
       updatedOptions[this.type].splice(idx, 1)
       this.$emit('updateOptions', { updatedOptions, type: this.type })
+      const msg = 'Label removed';
+        showSuccessMsg(msg);
     },
   },
   components: {
