@@ -55,8 +55,8 @@ export default {
     },
     saveUser(user) {
       const member = {
-        id:user.id,
-        name:user.fullName,
+        id:user._id,
+        name:user.fullname,
         imgUrl:user.imgUrl,
         email:user.email
       }
@@ -65,6 +65,7 @@ export default {
       members.unshift(member)
       console.log('members',members)
       this.searchTerm = ''
+      console.log('board',board)
       this.$emit('updateBoard', board)
     },
     closeInvite() {
