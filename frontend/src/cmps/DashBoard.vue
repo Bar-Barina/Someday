@@ -68,7 +68,10 @@ export default {
           legend: { 
             position: "left",
             labels:{
-              usePointStyle: true
+              usePointStyle: true,
+              font: {
+                size:12
+              }
             }
            } 
         },
@@ -117,7 +120,10 @@ export default {
           legend: { 
             position: "left",
             labels:{
-              usePointStyle: true
+              usePointStyle: true,
+              font: {
+                size:12
+              }
             }
            } 
         },
