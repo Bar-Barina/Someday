@@ -21,17 +21,18 @@
     border-radius: 50%;
   }
   .x-btn-desc {
-  position: absolute;
-  right: 10px;
-  top:10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 5px;
+    position: absolute;
+    right: 6px;
+    top: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
     svg {
       fill: rgb(65, 65, 65);
+      width: 20px;
     }
     &:hover {
       background-color: $clr014;
@@ -50,15 +51,17 @@
     padding: 0px 30px 10px;
     width: 62%;
     margin-top: -25px;
+    font-family: PoppinsMedium;
     h1 {
       width: 465px;
       height: 42px;
-      font-size: 24px;
+      font-size: 32px;
       color: rgb(42, 42, 42);
       border-radius: 4px;
-      padding-top: 5px;
+
       padding-left: 3px;
-      margin-block-end: 10px;
+      margin-block-end: 15px;
+      margin-block-start: 35px;
       cursor: auto;
       &:hover {
         outline: 0.5px solid rgb(183, 183, 183);
@@ -126,11 +129,16 @@
   }
   .info-subtitle {
     margin-left: 10px;
+    color: $clr3;
   }
   .board-type {
+    .workspace-icon {
+      color: #676879;
+    }
     span {
       margin-top: 10px;
       margin-right: 8px;
+      color: $clr3;
     }
   }
 }

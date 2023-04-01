@@ -26,7 +26,7 @@
           }"
           v-for="(member, idx) in currBoard.members"
           :key="idx"
-          class="filter-div flex align-center"
+          class="filter-div flex align-center filter-option"
           @click.stop="ChangeActive(member.name)"
           :class="{ active: isActive(member.name) }"
         >
@@ -46,7 +46,7 @@
           }"
           v-for="(status, idx) in statusLabels"
           :key="idx"
-          class="filter-div flex align-center"
+          class="filter-div flex align-center filter-option"
           @click.stop="ChangeActive(status.name)"
           :class="{ active: isActive(status.name) }"
         >
@@ -69,7 +69,7 @@
           }"
           v-for="(priority, idx) in priorityLabels"
           :key="idx"
-          class="filter-div flex align-center"
+          class="filter-div flex align-center filter-option"
           @click.stop="ChangeActive(priority.name)"
           :class="{ active: isActive(priority.name) }"
         >

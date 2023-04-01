@@ -9,6 +9,9 @@
   background-color: $clr2;
   border-radius: 5px;
   cursor: auto;
+  .filter-option {
+    color: rgb(45, 45, 45);
+  }
   .filter-div {
     background-color: $clr42;
     padding: 5px 10px;
@@ -50,20 +53,17 @@
     color: $clr3;
   }
 
-  .clear-all-btn{
-    font-size: 15px;
+  .clear-all-btn {
+    font-size: 13px;
     width: 65px;
     height: 32px;
-    color: #48494f;
+    color: #48494f65;
     border-radius: 4px;
     padding: 2px;
     position: absolute;
     top: 14px;
     right: 14px;
     cursor: pointer;
-    &:hover {
-      background-color: $clr016;
-    }
   }
 
   .triangle {

@@ -12,6 +12,7 @@
       :label="label"
     ></component>
     <EmptyProgress />
+    <EmptyProgress />
   </section>
 </template>
 
