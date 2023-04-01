@@ -36,23 +36,6 @@
       }
     }
 
-    // .reset-timeline {
-    //     background-color: $clr016;
-    //     color: gray;
-    //     opacity: 0;
-    //     display: flex;
-    //     justify-content: center;
-    //     align-items: center;
-    //     cursor: pointer;
-    //     height: em(16px);
-    //     width: em(16px);
-    //     position: absolute;
-    //     right: -2px;
-    //     top:4px;
-    //     padding: 3px;
-    //     padding-bottom: 6px;
-    //     z-index: 1;
-    // }
     .reset-date {
       box-shadow: 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
       background-color: $clr39;
@@ -64,9 +47,6 @@
       border: none;
       height: 16px;
       width: 16px;
-      // position: absolute;
-      // right: 10px;
-      // top: 9px;
       border-radius: 2px;
       position: absolute;
       top: 3px;
@@ -112,5 +92,11 @@
       border-bottom-right-radius: 10px;
       border-top-right-radius: 10px;
     }
+  }
+}
+.timeline-progress-container .cell {
+  .timeline-progress-bar {
+    position: absolute;
+    top: 7px;
   }
 }

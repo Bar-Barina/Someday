@@ -74,12 +74,15 @@
         }
     }
     
+    .timeline-progress-container {
+   .collapse-progress-label {
+          position: absolute;
+          top: 5px;
+          right: 42px;
+      }
+    }
+
     .timeline-progress-bar {
-        
-        .collapse-progress-label {
-            position: absolute;
-            right: 42px;
-        }
         position: absolute;
         top: 30px;
         right: 5px;
@@ -91,7 +94,9 @@
         font-size: 14px;
         background-color: #383838;
         z-index: 6;
-    
+        display: flex;
+        align-items: center;
+        justify-content: center;
         &:hover .reset-date {
           opacity: 1;
         }
@@ -159,5 +164,4 @@
           right: 20px;
         }
     }    
-    .collapse-progress-label {}
 }
