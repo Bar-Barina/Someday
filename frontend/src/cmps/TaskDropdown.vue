@@ -1,24 +1,24 @@
 <template>
   <section class="task-dropdown">
     <div class="arrow-up-div"></div>
-    <div
-      v-if="!showEditLabels"
-      v-for="(option, idx) in options[type]"
-      class="option flex align-center justify-center"
-      :style="{ 'background-color': option.color }"
-      :key="idx"
-      @click.stop="changeOption(option.name)"
-    >
-      {{ option.name }}
-      <span
-        v-if="option.name === 'Critical'"
-        v-icon="'critical'"
-        class="critical-icon"
-      ></span>
-      <!-- <span v-if="option.name === 'Critical'" class="dropdown-critical flex align-center justify-center">
-        <span v-html="getSvg('critical')" class="dropdown-critical-icon"></span>
-      </span> -->
-    </div>
+    <section v-if="!showEditLabels" class="dropdown-list">
+      <div
+        v-if="!showEditLabels"
+        v-for="(option, idx) in options[type]"
+        class="option flex align-center justify-center"
+        :style="{ 'background-color': option.color }"
+        :key="idx"
+        @click.stop="changeOption(option.name)"
+      >
+        {{ option.name }}
+        <span
+          v-if="option.name === 'Critical'"
+          v-icon="'critical'"
+          class="critical-icon"
+        ></span>
+      </div>
+    </section>
+    <div v-if="!showEditLabels" class="dropdown-line"></div>
     <div
       v-if="!showEditLabels"
       class="edit-labels"
@@ -28,48 +28,63 @@
       <span>Edit Labels</span>
     </div>
     <!-- EDIT -->
-    <div
-      v-if="showEditLabels"
-      v-for="(option, idx) in options[type]"
-      class="editable-div"
-      :key="idx"
-      @click.stop
-      @focusout="updateLabelName(idx)"
-    >
-      <!-- COLOR -->
-
-      <span
-        @click="toggleColorPicker(option)"
-        v-icon="'editLabelsColor'"
-        class="edit-labels-color"
-        :style="{ 'background-color': option.color }"
-      ></span>
-      <span contenteditable="true" ref="editableLabel">{{ option.name }}</span>
-      <div class="remove-label flex align-center justify-center"
+    <section v-if="showEditLabels" class="dropdown-list">
+      <div
+        v-if="showEditLabels"
+        v-for="(option, idx) in options[type]"
+        class="editable-div"
+        :key="idx"
+        @click.stop
+        @focusout="updateLabelName(idx)"
+      >
+        <!-- COLOR -->
+        <span
+          @click="toggleColorPicker(option)"
+          v-icon="'editLabelsColor'"
+          class="edit-labels-color"
+          :style="{ 'background-color': option.color }"
+        ></span>
+        <span
+          class="editable-span"
+          contenteditable="true"
+          placeholder="Default Label"
+          ref="editableLabel"
+          >{{ option.name }}</span
+        >
+        <div
+          v-if="option.name"
+          class="remove-label flex align-center justify-center"
           v-tippy="{
             content: 'Delete label',
             theme: 'classicRight',
             placement: 'right',
             arrow: true,
-          }">
-        <span v-icon="'x'" @click="removeLabel(idx)" class="remove-label-btn"></span>
+          }"
+        >
+          <span
+            v-icon="'x'"
+            @click="removeLabel(idx)"
+            class="remove-label-btn"
+          ></span>
+        </div>
       </div>
-    </div>
-    <ColorPicker
-      v-if="showColorPicker"
-      class="edit-color-picker"
-      @updateColor="updateLabelColor"
-    />
+      <ColorPicker
+        v-if="showColorPicker"
+        class="edit-color-picker"
+        @updateColor="updateLabelColor"
+      />
 
-    <!-- ADD -->
-    <div
-      v-if="showEditLabels"
-      class="flex align-center new-label"
-      @click.stop="addLabel"
-    >
-      <span v-icon="'editLabelsPlus'" class="edit-plus"></span>
-      <span>New label</span>
-    </div>
+      <!-- ADD -->
+      <div
+        v-if="showEditLabels"
+        class="flex align-center new-label"
+        @click.stop="addLabel"
+      >
+        <span v-icon="'editLabelsPlus'" class="edit-plus"></span>
+        <span>New label</span>
+      </div>
+    </section>
+    <div v-if="showEditLabels" class="dropdown-line-edit"></div>
     <div v-if="showEditLabels" class="edit-labels">
       <span @click.stop="showEditLabels = false">Apply</span>
     </div>
@@ -84,7 +99,7 @@ import {
   eventBus,
   showSuccessMsg,
   showErrorMsg,
-} from "../services/event-bus.service";
+} from '../services/event-bus.service'
 export default {
   emits: ['updateOptions', 'updateOption'],
   props: {
@@ -101,8 +116,8 @@ export default {
   methods: {
     changeOption(optionName) {
       this.$emit('updateOption', optionName)
-      const msg = 'Label changed';
-        showSuccessMsg(msg);
+      const msg = 'Label changed'
+      showSuccessMsg(msg)
     },
     getSvg(iconName) {
       return svgService.getSvg(iconName)
@@ -116,20 +131,24 @@ export default {
       const optionIdx = updatedOptions[this.type].findIndex(
         (opt) => opt.id === this.currOption.id
       )
-      this.currOption.color = data
-      updatedOptions[this.type].splice(optionIdx, 1, this.currOption)
-      this.$emit('updateOptions', { updatedOptions })
-      const msg = 'Label color updated';
-        showSuccessMsg(msg);
+      if (this.currOption.name) {
+        this.currOption.color = data
+        updatedOptions[this.type].splice(optionIdx, 1, this.currOption)
+        this.$emit('updateOptions', { updatedOptions })
+        const msg = 'Label color updated'
+        showSuccessMsg(msg)
+      }
     },
     updateLabelName(idx) {
       const updatedOptions = JSON.parse(JSON.stringify(this.options))
       const option = updatedOptions[this.type][idx]
-      option.name = this.$refs.editableLabel[idx].innerText
-      updatedOptions[this.type].splice(idx, 1, option)
-      this.$emit('updateOptions', { updatedOptions, idx, type: this.type })
-      const msg = 'Label name updated';
-        showSuccessMsg(msg);
+      if (this.currOption.name) {
+        option.name = this.$refs.editableLabel[idx].innerText
+        updatedOptions[this.type].splice(idx, 1, option)
+        this.$emit('updateOptions', { updatedOptions, idx, type: this.type })
+        const msg = 'Label name updated'
+        showSuccessMsg(msg)
+      }
     },
     addLabel() {
       const updatedOptions = JSON.parse(JSON.stringify(this.options))
@@ -142,17 +161,16 @@ export default {
         color: utilService.getRandomColor(),
       }
       updatedOptions[this.type].push(newLabel)
-      console.log('from dropdown',updatedOptions)
       this.$emit('updateOptions', { updatedOptions, type: this.type })
-      const msg = 'New label added';
-        showSuccessMsg(msg);
+      const msg = 'New label added'
+      showSuccessMsg(msg)
     },
     removeLabel(idx) {
       const updatedOptions = JSON.parse(JSON.stringify(this.options))
       updatedOptions[this.type].splice(idx, 1)
       this.$emit('updateOptions', { updatedOptions, type: this.type })
-      const msg = 'Label removed';
-        showSuccessMsg(msg);
+      const msg = 'Label removed'
+      showSuccessMsg(msg)
     },
   },
   components: {

@@ -4,8 +4,7 @@
   top: 35px;
   left: 0;
   display: grid;
-  gap: 10px;
-  width: 200px;
+  width: fit-content;
   background-color: white;
   z-index: 50000;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -26,6 +25,7 @@
 
   .option {
     width: 100%;
+    min-width: 152px;
     height: 32px;
     text-align: center;
     border-radius: 2px;
@@ -39,10 +39,10 @@
     font-size: 14px;
     border: 1px solid rgb(228, 228, 228);
     width: 100%;
+    min-width: 152px;
     height: 32px;
     display: flex;
     position: relative;
-    min-width: 100%;
     &:hover {
       outline: none;
     }
@@ -98,6 +98,11 @@
       width: 12px;
     }
   }
+  .dropdown-line {
+    height: 1px;
+    background-color: #d0d4e4;
+    margin-top: 15px;
+  }
 }
 
 .edit-labels {
@@ -105,8 +110,7 @@
   font-size: 14px;
   height: 32px;
   border-radius: 4px;
-  width: 115%;
-  margin-left: -12px;
+  margin-top: 10px;
   &:hover {
     background-color: #dcdfec;
   }
@@ -118,11 +122,13 @@
 
 .new-label {
   justify-content: center;
+  margin-bottom: -7px;
   height: 32px;
   color: $clr3;
   border-radius: 3px;
   font-size: 14px;
   border: 1px solid rgb(228, 228, 228);
+  min-width: 152px;
   .edit-plus {
     margin-top: 6px;
   }
@@ -134,4 +140,24 @@
 .option-edit {
   position: relative;
   border: 1px solid rgb(228, 228, 228);
+}
+
+.dropdown-list {
+  display: grid;
+  gap: 8px;
+  grid-template-rows: repeat(5, auto);
+  grid-auto-flow: column;
+}
+
+.dropdown-line-edit {
+  margin-top: 15px;
+  height: 1px;
+  background-color: #d0d4e4;
+}
+
+.editable-span {
+  &[placeholder]:empty:before {
+    content: attr(placeholder);
+    color: #555;
+  }
 }
