@@ -14,7 +14,7 @@
       }"
       @click="ChangeActive(member)"
     >
-      <img :src="member.url" />
+      <img :src="member.imgurl" />
     </span>
   </section>
 </template>

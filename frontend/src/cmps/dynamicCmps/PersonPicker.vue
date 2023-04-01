@@ -10,7 +10,7 @@
       <span v-for="(person, idx) in task.person" :key="idx">
         <div class="full-person">
           <img
-            :src="person.url"
+            :src="person.imgUrl"
             class="person-img"
             :class="{ alone: task.person.length === 1, first: idx === 0 }"
           />
