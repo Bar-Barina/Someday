@@ -127,14 +127,22 @@
     }
 
     button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background-color: inherit;
       border: none;
-      border-radius: 50px;
+      height: 15px;
+      width: 15px;
+      border-radius: 5px;
       font-size: 10px;
-      margin: 3px;
-
+      margin: 5px;
+      span {
+        padding-top: 6px;
+        padding-left: 6px;
+      }
       &:hover {
-        background-color: $clr2;
+        background-color: $clr014;
       }
     }
   }

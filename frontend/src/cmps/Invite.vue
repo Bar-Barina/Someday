@@ -31,7 +31,7 @@
       <img :src="member.imgUrl" />
       <span>{{ member.name }}</span>
       <div class="x flex justify-center align-center">
-      <span @click.stop="removeMember(idx)" v-icon="'x'"></span>
+      <span @click.stop="removeMember(idx)" v-icon="'inviteX'"></span>
       </div>
       </div>
     </article>
