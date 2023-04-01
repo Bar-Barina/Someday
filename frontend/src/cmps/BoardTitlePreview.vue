@@ -2,6 +2,7 @@
            <span v-html="getSvg('board')" class="workspace-icon"></span>
           <div v-show="!editable">{{ board.title }}</div>
           <input class="board-title-input" ref="boardInput" @focusout="updateBoard" type="text" v-show="editable" v-model="boardTitle"/>
+          <span class="owner-icon flex align-center justify-center" v-if="isOwner" v-icon="'owner'"></span>
           <span 
             v-html="getSvg('Dots')"
             class="workspace-icon dots"
@@ -14,6 +15,7 @@
 <script>
 import { svgService } from '../services/svg.service.js'
 import  EditMenu  from '../cmps/EditMenu.vue'
+import { userService } from '../services/user.service.js'
 
 export default {
     emits:['removeBoard'],
@@ -64,6 +66,12 @@ created() {
   computed: {
     editable() {
       return this.isEditable
+    },
+    isOwner() {
+      const user = userService.getLoggedInUser()
+      if(!user) return
+      if(user._id === this.board.owner) return true
+      return false
     }
   }
 }

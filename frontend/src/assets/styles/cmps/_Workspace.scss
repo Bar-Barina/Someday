@@ -409,3 +409,11 @@
   width: 100%;
   background: linear-gradient(180deg, #7474eb 0.69%, #08032d 80%);
 }
+
+.owner-icon {
+  margin-inline-start: 5px;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  background-color: $clr8;
+}
