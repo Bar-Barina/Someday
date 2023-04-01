@@ -183,6 +183,7 @@ export default {
     updateOptions({ updatedOptions, idx, type }) {
       console.log(idx)
       console.log(type)
+      console.log('from task',updatedOptions)
       const board = JSON.parse(JSON.stringify(this.currBoard))
       if (idx >= 0 && type) {
         board.groups.forEach((group) => {

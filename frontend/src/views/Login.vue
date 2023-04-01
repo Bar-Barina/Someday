@@ -1,7 +1,6 @@
 <template>
   <LoginHeader />
   <div v-if="loggedInUser" class="logged-in">
-    <button @click="doLogout" class="logout">Log out</button>
     <h3>
       Get things done,
       {{ loggedInUser.fullname }} !

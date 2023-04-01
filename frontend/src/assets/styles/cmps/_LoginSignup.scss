@@ -128,11 +128,20 @@
     font-family: 'Poppins';
   }
   .get-started-login {
-    background-color: #036dd0;
-    background: linear-gradient(rgb(20, 22, 139) 0%, rgb(140, 141, 201) 100%);
-    width: 100px;
-    height: 70px;
-    font-size: 14px;
+    align-items: center;
+    background: linear-gradient(90deg, #5034ff 25.69%, #b4b4ff 100%);
+    border-radius: 30px;
+    color: #fff;
+    padding-left: 40px;
+    display: flex;
+    font-size: 1rem;
+    font-weight: 400;
+    height: 50px;
+    width: 175px;
+    margin-top: 40px;
+    border: none;
+    cursor: pointer;
     font-family: 'Poppins';
+    margin-left: 40%;
   }
 }
