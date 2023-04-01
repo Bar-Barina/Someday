@@ -54,7 +54,7 @@ async function updateBoard(req, res) {
 
 async function removeBoard(req, res) {
   try {
-    console.log('req',req)
+    console.log('req1111',req)
     const boardId = req.params.id
     console.log('boardId',boardId)
     const removedId = await boardService.remove(boardId)

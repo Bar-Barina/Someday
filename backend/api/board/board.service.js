@@ -8,7 +8,6 @@ async function query(userId) {
         const collection = await dbService.getCollection('board')
         var boards = await collection.find({ owner: userId}).toArray()
         if(boards.length === 0) boards = await collection.find({ owner: "sjk02338c3mskjrvy23eokfvo"}).toArray()
-        console.log('boards', boards)
         return boards
     } catch (err) {
         logger.error('cannot find boards', err)
