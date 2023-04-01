@@ -232,7 +232,7 @@
           >Filter
           <span
             v-if="activeFilters.length > 0"
-            :class="{ active: activeFilters.length }"
+            :class="{ active: activeFilters.length}"
             >/ {{ activeFilters.length }}</span
           >
         </span>
