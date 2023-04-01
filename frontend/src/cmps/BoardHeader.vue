@@ -91,7 +91,7 @@
           <div class="icon">
             <span v-html="getSvg('invitePeople')"></span>
           </div>
-          Invite / {{ this.currBoard.members.length }}
+         <span> Invite / {{ this.currBoard.members.length }} </span>
         </div>
          <Invite v-if="showInvite" @updateBoard="updateMembers" @closeInvite="closeInvite"  v-clickOutside="closeInvite" />
         <div class="dots flex align-center justify-center icon btn-hover">
