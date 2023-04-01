@@ -16,7 +16,7 @@
           <span v-icon="'con'" @click="openCon" class="open-con flex align-center space-between">
           </span>
         </div>
-      <span class="kanban-dots" v-icon="'Dots'"></span>
+      <span class="kanban-dots" v-icon="'kanbanDots'"></span>
     </div>
     <section
       class="card-cmp flex align-center"

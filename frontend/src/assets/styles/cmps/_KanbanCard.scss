@@ -12,8 +12,10 @@
     height: 20px;
     border-radius: 4px;
     margin-top: 2px;
+    color: #0073ea;
     svg {
       width: 20px;
+     
     }
     &:hover {
       background-color: #dcdfec;
@@ -25,6 +27,9 @@
     overflow: hidden;
     min-height: 16px;
     flex-wrap: nowrap;
+      // {
+      //   color: red;
+      // }
     svg:hover {
       fill: $clr8;
     }
