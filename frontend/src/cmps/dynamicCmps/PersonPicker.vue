@@ -37,14 +37,14 @@
       />
     </div>
     <span class="plus">+</span>
+    <PersonPreview
+      v-clickOutside="closeModal"
+      v-if="isOpen"
+      :person="task.person"
+      @updatePerson="updatePerson"
+      @removeMember="removePerson"
+    />
   </div>
-  <PersonPreview
-    v-clickOutside="closeModal"
-    v-if="isOpen"
-    :person="task.person"
-    @updatePerson="updatePerson"
-    @removeMember="removePerson"
-  />
 </template>
 
 <script>
