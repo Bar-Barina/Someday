@@ -14,7 +14,7 @@ async function query(userId) {
           console.log('boards', boards)
         if(boards.length === 0){
             console.log('here!!!!!!!!!!!!!!!!!!!!!!')
-            boards = await collection.find({ owner: "6427f19911c3a45228ba1187"}).toArray()
+            boards = await collection.find({ owner: "64233ebc79347a439c027636"}).toArray()
         }
         return boards
     } catch (err) {

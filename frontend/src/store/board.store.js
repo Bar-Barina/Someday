@@ -203,7 +203,7 @@ export const boardStore = {
           utilService.saveToStorage('userId' , board.owner)
           boards.splice(0 , 1 , boardSaved)
         }
-        else if (user && boards[0].owner === "6427f19911c3a45228ba1187"){
+        else if (user && boards[0].owner === "64233ebc79347a439c027636"){
           console.log('board22132', board)
           board.owner = user._id
           delete board._id
