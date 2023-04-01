@@ -90,22 +90,23 @@ export default {
   data() {
     return {
       board: null,
-      options: {
-        status: {
-          labels: ["Working on it", "Stuck", "Done", "Blank"],
-          colors: ["#fdab3d", "#e2445c", "#00c875", "#c3c4c3"],
-        },
-        priority: {
-          labels: ["Critical", "High", "Medium", "Low", ""],
-          colors: [
-            "rgb(51, 51, 51)",
-            "rgb(64, 22, 148)",
-            "rgb(85, 89, 223)",
-            "rgb(87, 155, 252)",
-            "#c3c4c3",
-          ],
-        },
-      },
+      options: null,
+      // options: {
+      //   status: {
+      //     labels: ["Working on it", "Stuck", "Done", "Blank"],
+      //     colors: ["#fdab3d", "#e2445c", "#00c875", "#c3c4c3"],
+      //   },
+      //   priority: {
+      //     labels: ["Critical", "High", "Medium", "Low", ""],
+      //     colors: [
+      //       "rgb(51, 51, 51)",
+      //       "rgb(64, 22, 148)",
+      //       "rgb(85, 89, 223)",
+      //       "rgb(87, 155, 252)",
+      //       "#c3c4c3",
+      //     ],
+      //   },
+      // },
       statusesMap: [],
       selectOptions: [
         { value: "status", label: "Status" },
@@ -125,8 +126,18 @@ export default {
     };
   },
   created() {
-    eventBus.on("toggleKanban", () => (this.isFilter = !this.isFilter));
     const board = this.currBoard || this.getFromParams;
+    this.options = {
+      status: {
+        labels: board.labels.status.map((label) => label.name),
+        colors: board.labels.status.map((label) => label.color),
+      },
+      priority: {
+        labels: board.labels.priority.map((label) => label.name),
+        colors: board.labels.priority.map((label) => label.color),
+      },
+    };
+    eventBus.on("toggleKanban", () => (this.isFilter = !this.isFilter));
     const option = this.colSelected;
     if (!board) return;
     this.options[option].labels.forEach((opt, idx) => {

@@ -48,7 +48,7 @@
             </a>
             <div class="title">Dor Tayari</div>
             <a href="https://www.facebook.com/profile.php?id=100000463356100">
-            <span class="linkedin" v-icon="'linkedin'"></span>
+              <span class="linkedin" v-icon="'linkedin'"></span>
             </a>
           </div>
         </section>
@@ -135,12 +135,12 @@ export default {
       secondFlip: false,
       thirdFlip: false,
       testData: {
-        labels: ["Working on it", "Stuck", "Done", "blank"],
+        labels: null,
         datasets: [
           {
             data: null,
             // data: this.labelsInv,
-            backgroundColor: ["#fdab3d", "#e2445c", "#00c875", "#c3c4c3"],
+            backgroundColor: null,
           },
         ],
       },
@@ -181,18 +181,12 @@ export default {
         },
       },
       priorityData: {
-        labels: ["Critical", "High", "Medium", "Low", "blank"],
+        labels: null,
         datasets: [
           {
             data: [],
             // data: this.labelsInv,
-            backgroundColor: [
-              "rgb(51, 51, 51)",
-              "rgb(64, 22, 148)",
-              "rgb(85, 89, 223)",
-              "rgb(87, 155, 252)",
-              "#c3c4c3",
-            ],
+            backgroundColor: null,
           },
         ],
       },
@@ -212,8 +206,31 @@ export default {
     };
   },
   components: { DoughnutChart, BarChart, PieChart },
+  computed: {
+    currBoard() {
+      return JSON.parse(JSON.stringify(this.$store.getters.currBoard));
+    },
+    tasks() {
+      return this.currBoard.groups.reduce((acc, group) => {
+        return (acc += group.tasks.length);
+      }, 0);
+    },
+    groups() {
+      return this.currBoard.groups.length;
+    },
+    members() {
+      return this.currBoard.members.length;
+    },
+  },
+  components: { DoughnutChart, BarChart, PieChart },
   created() {
-    const statusesLabels = ["Working on it", "Stuck", "Done", ""];
+    const statusesLabels = this.currBoard.labels.status.map((label) => {
+      if (label.name === "") return "blank";
+      else return label.name;
+    });
+    const statusesColors = this.currBoard.labels.status.map(
+      (label) => label.color
+    );
     const statusesMap = [];
     statusesLabels.forEach((label, idx) => {
       var tasks = [];
@@ -224,10 +241,13 @@ export default {
       });
       statusesMap.push(tasks.length);
     });
+    this.testData.labels = statusesLabels;
+    this.testData.datasets[0].backgroundColor = statusesColors;
     this.testData.datasets[0].data = statusesMap;
-    /////////////////////////////////
+    //////////////////////////////////////////
     const persons = this.currBoard.members;
     const personsNames = this.currBoard.members.map((m) => m.name);
+    console.log("personNames", personsNames);
     const membersMap = [];
     persons.forEach((person, idx) => {
       var tasks = [];
@@ -242,7 +262,14 @@ export default {
     this.personData.labels = personsNames;
     this.personData.datasets[0].data = membersMap;
     ///////////////////////////////////
-    const prioritiesLabels = ["Critical", "High", "Medium", "Low", ""];
+    const prioritiesLabels = this.currBoard.labels.priority.map((label) => {
+      if (label.name === "") return "blank";
+      else return label.name;
+    });
+    console.log("prioritiesLabels", prioritiesLabels);
+    const prioritiesColors = this.currBoard.labels.priority.map(
+      (label) => label.color
+    );
     const priorityMap = [];
     prioritiesLabels.forEach((label, idx) => {
       var tasks = [];
@@ -253,49 +280,9 @@ export default {
       });
       priorityMap.push(tasks.length);
     });
+    this.priorityData.labels = prioritiesLabels;
+    this.priorityData.datasets[0].backgroundColor = prioritiesColors;
     this.priorityData.datasets[0].data = priorityMap;
-  },
-  methods: {
-    openOwners() {
-      this.isFlip = !this.isFlip;
-      if (this.isFlip) {
-        setTimeout(() => {
-          this.firstFlip = true;
-        }, 0);
-        setTimeout(() => {
-          this.secondFlip = true;
-        }, 100);
-        setTimeout(() => {
-          this.thirdFlip = true;
-        }, 200);
-      } else {
-        setTimeout(() => {
-          this.thirdFlip = false;
-        }, 0);
-        setTimeout(() => {
-          this.secondFlip = false;
-        }, 100);
-        setTimeout(() => {
-          this.firstFlip = false;
-        }, 200);
-      }
-    },
-  },
-  computed: {
-    currBoard() {
-      return this.$store.getters.currBoard;
-    },
-    tasks() {
-      return this.currBoard.groups.reduce((acc, group) => {
-        return (acc += group.tasks.length);
-      }, 0);
-    },
-    groups() {
-      return this.currBoard.groups.length;
-    },
-    members() {
-      return this.currBoard.members.length;
-    },
   },
 };
 </script>
