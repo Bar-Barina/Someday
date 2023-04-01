@@ -46,6 +46,7 @@ async function save(board) {
     // Later, owner is set by the backend
     const user = userService.getLoggedInUser()
     if(user) board.owner = user._id
+    else board.owner = utilService.loadFromStorage('userId')
     savedBoard = await httpService.post('board', board)
   }
   return savedBoard
