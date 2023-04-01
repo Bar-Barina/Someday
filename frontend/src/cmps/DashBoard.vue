@@ -65,7 +65,12 @@ export default {
       },
       options: {
         plugins: {
-          legend: { position: "left" } 
+          legend: { 
+            position: "left",
+            labels:{
+              usePointStyle: true
+            }
+           } 
         },
       },
       personData: {
@@ -109,7 +114,11 @@ export default {
       },   
       options2: {
         plugins: {
-          legend: { position: "left" }
+          legend: { position: "left",
+          labels:{
+              usePointStyle: true
+            }
+        }
         },
       },  
     }
