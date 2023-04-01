@@ -154,14 +154,18 @@
     }
   }
   .activePersonFilter {
-    background-color: $clr014;
-    height: 35px;
+    background-color: #cce5ff;
+    height: 30px;
+
+    &:hover {
+      background-color: $clr39;
+    }
   }
   .member-filter {
     gap: 3px;
     img {
-      height: 30px;
-      width: 30px;
+      height: 25px;
+      width: 25px;
       border-radius: 50%;
     }
     span {
