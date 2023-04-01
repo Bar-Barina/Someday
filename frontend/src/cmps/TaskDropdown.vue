@@ -19,6 +19,7 @@
         <span v-html="getSvg('critical')" class="dropdown-critical-icon"></span>
       </span> -->
     </div>
+    <div v-if="!showEditLabels" class="dropdown-line"></div>
     <div
       v-if="!showEditLabels"
       class="edit-labels"
@@ -37,7 +38,6 @@
       @focusout="updateLabelName(idx)"
     >
       <!-- COLOR -->
-
       <span
         @click="toggleColorPicker(option)"
         v-icon="'editLabelsColor'"
@@ -70,6 +70,7 @@
       <span v-icon="'editLabelsPlus'" class="edit-plus"></span>
       <span>New label</span>
     </div>
+    <div v-if="showEditLabels" class="dropdown-line"></div>
     <div v-if="showEditLabels" class="edit-labels">
       <span @click.stop="showEditLabels = false">Apply</span>
     </div>
