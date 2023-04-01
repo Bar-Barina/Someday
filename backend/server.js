@@ -44,6 +44,7 @@ const { setupSocketAPI } = require('./services/socket.service')
 const setupAsyncLocalStorage = require('./middlewares/setupAls.middleware')
 app.all('*', setupAsyncLocalStorage)
 
+
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/review', reviewRoutes)
@@ -123,7 +124,6 @@ app.post('/api/openai', async (req, res) => {
         max_tokens: 1000,
         temperature: 0
     })
-    console.log('response.data', response.data)
     if (response.data.choices) {
         res.json({
             message: response.data.choices[0].text
