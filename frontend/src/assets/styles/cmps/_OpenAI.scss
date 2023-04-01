@@ -4,7 +4,7 @@
     padding: 20px;
     border: 1px solid $clr014;
     color: #fff;
-    background: linear-gradient(180deg, #b4b4ff 0.69%, #482fe9 80%);
+    background: linear-gradient(180deg, #8e8ee6 0.69%, #1b1837 80%);
 
     .chat-container {
         width: 100%;
@@ -46,7 +46,12 @@
             // padding-top: 6px;
            
             
-            
+            &:hover {
+                svg {
+                    scale: 1.2;
+                }
+            }
+
             svg {
                 width: 15px;
                 height: 15px;

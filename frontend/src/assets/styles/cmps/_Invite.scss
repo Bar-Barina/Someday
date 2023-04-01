@@ -40,7 +40,7 @@
     margin-top: 20px;
     border: 1px solid #cccccc;
     border-radius: 4px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 
     &:focus {
       outline: 1px solid $clr8;
@@ -55,8 +55,8 @@
 
   .invite-subtitle-wrapper {
     font-size: 15px;
-
     .invite-subtitle {
+      margin-bottom: 3px;
       width: 24px;
       height: 23px;
       border-radius: 8px;
@@ -97,13 +97,14 @@
         height: 30px;
         width: 30px;
         border-radius: 4px;
+        transition: 0.18s;
         cursor: pointer;
         &:hover {
           background-color: $clr014;
         }
         span {
           margin-top: 4px;
-          fill: $clr3;
+          fill: black;
         }
       }
     }
@@ -113,7 +114,7 @@
     position: absolute;
     padding: 5px;
     padding-top: 0px;
-    top: 130px;
+    top: 116px;
     width: 466px;
     height: 350px;
     overflow-y: scroll;
