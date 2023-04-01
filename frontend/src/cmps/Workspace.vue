@@ -129,6 +129,10 @@ export default {
         showSuccessMsg(msg);
     },
     removeBoard(boardId) {
+      if(boardId === this.currBoard._id) {
+        const board = this.filteredBoards[0]
+        this.$store.commit({ type: "setCurrBoard",  board});
+      }
       this.$store.dispatch({ type: "removeBoard", boardId });
       const msg = 'Board removed';
         showSuccessMsg(msg);
@@ -145,7 +149,6 @@ export default {
     },
     addAIboard(board) {
       const boards = this.filteredBoards;
-      console.log("boards", boards);
       const boardIdx = boards.findIndex((b) => b._id === board._id);
       this.moveToBoard(board, boardIdx);
     },
