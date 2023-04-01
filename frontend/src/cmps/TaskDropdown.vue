@@ -15,9 +15,6 @@
         v-icon="'critical'"
         class="critical-icon"
       ></span>
-      <!-- <span v-if="option.name === 'Critical'" class="dropdown-critical flex align-center justify-center">
-        <span v-html="getSvg('critical')" class="dropdown-critical-icon"></span>
-      </span> -->
     </div>
     <div v-if="!showEditLabels" class="dropdown-line"></div>
     <div

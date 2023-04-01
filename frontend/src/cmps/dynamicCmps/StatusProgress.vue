@@ -31,8 +31,6 @@ export default {
       this.type = "status";
       this.options = this.currBoard.labels[this.type].map(l=>l.name)
       this.colors =  this.currBoard.labels[this.type].map(l=>l.color)
-      console.log('this.options',this.options)
-      console.log('this.colors',this.colors)
     } else {
       this.type = "priority";
       this.options = this.currBoard.labels[this.type].map(l=>l.name)
