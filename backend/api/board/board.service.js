@@ -6,8 +6,16 @@ const ObjectId = require('mongodb').ObjectId
 async function query(userId) {
     try {
         const collection = await dbService.getCollection('board')
-        var boards = await collection.find({ owner: userId}).toArray()
-        if(boards.length === 0) boards = await collection.find({ owner: "sjk02338c3mskjrvy23eokfvo"}).toArray()
+        console.log('userId', userId)
+        var boards = await collection.find({ $or: [
+            { owner: userId },
+            { "members.id": userId }
+          ]}).toArray()
+          console.log('boards', boards)
+        if(boards.length === 0){
+            console.log('here!!!!!!!!!!!!!!!!!!!!!!')
+            boards = await collection.find({ owner: "6427f19911c3a45228ba1187"}).toArray()
+        }
         return boards
     } catch (err) {
         logger.error('cannot find boards', err)
