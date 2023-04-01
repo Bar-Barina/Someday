@@ -25,7 +25,6 @@ async function query(user) {
   if (user) userId = user._id
   else if (demoCache) userId = demoCache
   else userId =  "7fn387dkd9md28f4m30f4f54"
-  console.log('userId', userId)
   return httpService.get(STORAGE_KEY + '/', userId)
 }
 

@@ -34,11 +34,72 @@
     padding: 20px;
     gap: 25px;
 
+    .flip-card {
+        height: 200px;
+        width: 100%;
+        perspective: 1000px;
+
+        .flip-card-front , .flip-card-back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            transition: transform 0.6s ease;
+        }
+
+        .flip-card-back {
+            display: flex;
+            justify-items: center;
+            transform: rotateY(180deg);
+            background-color: white;
+            box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+        }
+
+        &.flipped .flip-card-front {
+            transform: rotateX(180deg);
+        }
+
+        &.flipped .flip-card-back {
+            transform: rotateX(0);
+        }
+
+        .img-container {
+            display: flex;
+            justify-content: center;
+            padding-top: 15px;
+
+            .member-img {
+                border-radius: 16px;
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        .bar-section , .dor-section , .ofek-section {
+            position: relative;
+            width: 100%;
+
+            .title {
+                font-size: 18px;
+                font-weight: bold;
+            }
+        }
+
+
+        .icon-container {
+            width: 100%;
+            position: absolute;
+            justify-content: space-around;
+            bottom: 0;
+            display: flex;
+        }
+    }
+
     .board-tasks {
         box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-        height: 200px;
         background-color: white;
         border: 2px solid $clr016;
+        height: 100%;
 
         .title {
             font-size: 28px;
@@ -62,9 +123,9 @@
     }
     .board-members {
         box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-        height: 200px;
         background-color: white;
         border: 2px solid $clr016;
+        height: 100%;
 
         .title {
             font-size: 28px;
@@ -88,9 +149,9 @@
     }
     .board-groups {
         box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-        height: 200px;
         background-color: white;
         border: 2px solid $clr016;
+        height: 100%;
 
         .title {
             font-size: 28px;
@@ -113,6 +174,7 @@
         grid-area: board-groups;
     }
     .board-owners {
+        cursor: pointer;
         box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
         height: 200px;
         background-color: white;
@@ -137,6 +199,10 @@
             }
         }
         grid-area: board-owners;
+
+        &:hover {
+            scale: 1.05;
+        }
     }
 
     .status-pie {
