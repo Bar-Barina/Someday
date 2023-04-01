@@ -203,8 +203,7 @@ export const boardStore = {
           utilService.saveToStorage('userId' , board.owner)
           boards.splice(0 , 1 , boardSaved)
         }
-        else if (user && boards[0].owner === "6427f19911c3a45228ba1187"){
-          console.log('board22132', board)
+        else if (user && boards[0].owner === "7fn387dkd9md28f4m30f4f54"){
           board.owner = user._id
           delete board._id
           const boardSaved = await boardService.save(board)
