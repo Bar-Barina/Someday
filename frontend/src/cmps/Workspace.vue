@@ -55,7 +55,7 @@
           class="workspace-search flex align-center pointer open-ai"
         >
           <span v-html="getSvg('OpenAI')" class="workspace-icon"></span>
-          <span>Open AI</span>
+          <span>Board AI</span>
           <span v-if="isAI" @click.stop="isAI = false" class="close" v-icon="'x'"></span>
           <span class="top"></span>
           <span class="right"></span>
