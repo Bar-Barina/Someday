@@ -195,10 +195,8 @@ export const boardStore = {
       try {
         const user = userService.getLoggedInUser()
         let boards = await boardService.query(user)
-        // console.log('boards1', boards)
-        // console.log('user', user)
+        const board = JSON.parse(JSON.stringify(boards[0]))
         if(!user && !utilService.loadFromStorage('userId')) {
-          const board = JSON.parse(JSON.stringify(boards[0]))
           board.owner = utilService.makeId()
           delete board._id
           const boardSaved = await boardService.save(board)
@@ -206,8 +204,7 @@ export const boardStore = {
           boards.splice(0 , 1 , boardSaved)
         }
         else if (user && boards[0].owner === "6427f19911c3a45228ba1187"){
-          const board = JSON.parse(JSON.stringify(boards[0]))
-          console.log('board2', board)
+          console.log('board22132', board)
           board.owner = user._id
           delete board._id
           const boardSaved = await boardService.save(board)

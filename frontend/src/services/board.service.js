@@ -25,6 +25,7 @@ async function query(user) {
   if (user) userId = user._id
   else if (demoCache) userId = demoCache
   else userId =  "6427f19911c3a45228ba1187"
+  console.log('userId', userId)
   return httpService.get(STORAGE_KEY + '/', userId)
 }
 
@@ -44,9 +45,10 @@ async function save(board) {
     savedBoard = await httpService.put(`board/${board._id}`, board)
   } else {
     // Later, owner is set by the backend
+    const cache = utilService.loadFromStorage('userId')
     const user = userService.getLoggedInUser()
     if(user) board.owner = user._id
-    else board.owner = utilService.loadFromStorage('userId')
+    else if(cache) board.owner = cache
     savedBoard = await httpService.post('board', board)
   }
   return savedBoard

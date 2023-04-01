@@ -187,6 +187,7 @@ export default {
       this.updateTask()
     },
     addMsg() {
+      console.log('adding')
       const user = userService.getLoggedInUser()
       const from = user || {
         accountName: 'Guest',
@@ -210,6 +211,7 @@ export default {
     },
     updateTask() {
       const toUpdate = { group: this.group, task: this.task }
+      console.log('toUpdate', toUpdate)
       this.$store.dispatch({ type: 'saveTask', toUpdate })
       this.msg.txt = ''
     },
@@ -255,9 +257,10 @@ export default {
     changeTopic() {
       socketService.emit(SOCKET_EMIT_SET_TOPIC, this.topic)
     },
-    recieveMsg(msg) {
-      this.task.msgs.unshift(msg)
-    },
+    // recieveMsg(msg) {
+    //   console.log('recieve msg', msg)
+    //   this.task.msgs.unshift(msg)
+    // },
     changeView(view = '') {
       this.active = view
     },
@@ -305,7 +308,8 @@ export default {
     this.onUserStopInputDeb = utilService.debounce(this.onUserStopInput, 800)
   },
   destroyed() {
-    socketService.off(SOCKET_EVENT_ADD_MSG, this.addMsg)
+    console.log('destroyed')
+    socketService.off(SOCKET_EMIT_SEND_MSG, this.addMsg)
   },
   components: {
     MsgPreview,
