@@ -257,10 +257,10 @@ export default {
     changeTopic() {
       socketService.emit(SOCKET_EMIT_SET_TOPIC, this.topic)
     },
-    // recieveMsg(msg) {
-    //   console.log('recieve msg', msg)
-    //   this.task.msgs.unshift(msg)
-    // },
+    recieveMsg(msg) {
+      console.log('recieve msg', msg)
+      this.task.msgs.unshift(msg)
+    },
     changeView(view = '') {
       this.active = view
     },
