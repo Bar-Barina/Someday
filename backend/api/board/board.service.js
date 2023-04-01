@@ -59,7 +59,9 @@ async function add(board) {
 async function update(board) {
     try {
         const boardToSave = {
+            owner:board.owner,
             title: board.title,
+            labels:board.labels,
             description: board.description,
             members:board.members,
             groups:board.groups,
