@@ -47,8 +47,8 @@
         <span
           class="editable-span"
           contenteditable="true"
-          placeholder="Default Label"
           ref="editableLabel"
+          :placeholder="option.name ? '' : 'Default Label'"
           >{{ option.name }}</span
         >
         <div

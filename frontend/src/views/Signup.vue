@@ -55,21 +55,21 @@
 </template>
 
 <script>
-import { svgService } from "../services/svg.service.js";
-import { uploadImg } from "../services/upload.service.js";
+import { svgService } from '../services/svg.service.js'
+import { uploadImg } from '../services/upload.service.js'
 export default {
   props: {
     signupCred: Object,
   },
-  name: "Signup",
+  name: 'Signup',
   data() {
     return {
       signUpCred: this.signupCred,
-    };
+    }
   },
   methods: {
     getSvg(iconName) {
-      return svgService.getSvg(iconName);
+      return svgService.getSvg(iconName)
     },
     doSignup() {
       if (
@@ -78,29 +78,27 @@ export default {
         !this.signUpCred.accountName ||
         !this.signUpCred.email
       ) {
-        this.msg = "Please fill up the form";
-        return;
+        this.msg = 'Please fill up the form'
+        return
       }
-      console.log("signing");
-      this.$store.dispatch({ type: "signup", userCred: this.signUpCred });
-      this.$router.push("/login");
+      console.log('signing')
+      this.$store.dispatch({ type: 'signup', userCred: this.signUpCred })
+      this.$router.push('/login')
     },
     async handleFile(ev) {
-      console.log("ev", ev);
       const file =
-        ev.type === "change" ? ev.target.files[0] : ev.dataTransfer.files[0];
-      const { url } = await uploadImg(file);
-      console.log('url',url)
-      this.signUpCred.imgUrl = url;
-      console.log('this.signupCred',this.signupCred)
+        ev.type === 'change' ? ev.target.files[0] : ev.dataTransfer.files[0]
+      const { url } = await uploadImg(file)
+
+      this.signUpCred.imgUrl = url
     },
   },
   computed: {
     img() {
       return this.signUpCred.imgUrl
         ? this.signUpCred.imgUrl
-        : "src/assets/img/user-upload-img.png";
+        : 'src/assets/img/user-upload-img.png'
     },
   },
-};
+}
 </script>

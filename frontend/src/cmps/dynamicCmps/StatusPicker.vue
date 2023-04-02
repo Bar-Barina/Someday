@@ -50,7 +50,6 @@ export default {
       this.showDropdown = false
     },
     updateOptions(updatedOptions) {
-      console.log('from picker',updatedOptions)
       this.$emit('updateOptions', updatedOptions)
     },
   },

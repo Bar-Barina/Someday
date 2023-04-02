@@ -247,7 +247,6 @@ export default {
     //////////////////////////////////////////
     const persons = this.currBoard.members;
     const personsNames = this.currBoard.members.map((m) => m.name);
-    console.log("personNames", personsNames);
     const membersMap = [];
     persons.forEach((person, idx) => {
       var tasks = [];
@@ -266,7 +265,6 @@ export default {
       if (label.name === "") return "blank";
       else return label.name;
     });
-    console.log("prioritiesLabels", prioritiesLabels);
     const prioritiesColors = this.currBoard.labels.priority.map(
       (label) => label.color
     );
