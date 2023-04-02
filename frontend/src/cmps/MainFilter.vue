@@ -37,6 +37,7 @@
       <!-- Status -->
       <article class="filter-status flex column">
         <p>Status</p>
+        <div class="labels-container flex column">
         <div
           v-tippy="{
             content: 'Status is ' + status.name,
@@ -56,10 +57,12 @@
           ></div>
           <span>{{ status.name }}</span>
         </div>
+      </div>
       </article>
       <!-- Priority -->
       <article class="filter-status flex column">
         <p>Priority</p>
+        <div class="labels-container flex column">
         <div
           v-tippy="{
             content: 'Priority is ' + priority.name,
@@ -79,6 +82,7 @@
           ></div>
           <span>{{ priority.name }}</span>
         </div>
+      </div>
       </article>
     </section>
     <div class="triangle"></div>
@@ -87,52 +91,55 @@
 
 <script>
 export default {
-  name: 'mainFilter',
+  name: "mainFilter",
   data() {
     return {
       selectedMember: null,
-      statusLabels: [
-        { name: 'Done', class: 'status-done', color: '#00c875' },
-        { name: 'Working on it', class: 'status-working', color: '#fdab3d' },
-        { name: 'Stuck', class: 'status-stuck', color: '#e2445c' },
-        { name: 'Blank', class: 'status-empty', color: '#c4c4c4' },
-      ],
-      priorityLabels: [
-        { name: 'Critical', class: 'priority-critical', color: '#333333' },
-        { name: 'High', class: 'priority-high', color: '#401794' },
-        { name: 'Medium', class: 'priority-medium', color: '#5559df' },
-        { name: 'Low', class: 'priority-low', color: '#579bfc' },
-        { name: 'Blank', class: 'priority-empty', color: '#c4c4c4' },
-      ],
-    }
+    };
   },
   methods: {
     ChangeActive(label) {
-      this.$store.commit({ type: 'updateActiveFilters', label })
+      this.$store.commit({ type: "updateActiveFilters", label });
     },
     isActive(label) {
-      if (this.currActiveFilters.includes(label)) return true
-      else return false
+      if (this.currActiveFilters.includes(label)) return true;
+      else return false;
     },
     clearfilter() {
-      this.$store.commit({ type: 'clearActiveFilters' })
+      this.$store.commit({ type: "clearActiveFilters" });
     },
   },
   computed: {
     currBoard() {
-      return this.$store.getters.currBoard
+      return this.$store.getters.currBoard;
     },
     currActiveFilters() {
-      return this.$store.getters.currActiveFilters
+      return this.$store.getters.currActiveFilters;
     },
     tasksLength() {
       return this.currBoard.groups.reduce((acc, group) => {
         group.tasks.forEach((task) => {
-          acc++
-        })
-        return acc
-      }, 0)
+          acc++;
+        });
+        return acc;
+      }, 0);
+    },
+    statusLabels() {
+      return this.currBoard.labels.status.map((label) => {
+        return {
+          name: label.name || 'blank',
+          color: label.color,
+        };
+      });
+    },
+    priorityLabels() {
+      return this.currBoard.labels.priority.map((label) => {
+        return {
+          name: label.name || 'blank',
+          color: label.color,
+        };
+      });
     },
   },
-}
+};
 </script>
