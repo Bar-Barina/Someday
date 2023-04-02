@@ -162,7 +162,6 @@ export default {
     },
     activityCheck() {
       let activities = JSON.parse(JSON.stringify(this.currBoard.activities))
-      console.log('activities', activities)
     },
     timelineDisplay(value) {
       if (value.length === 0) return '-'
@@ -218,10 +217,8 @@ export default {
     },
   },
   created() {
-    console.log('task',this.currBoard)
   },
   components: {
-    // ActivityPerson,
   },
 }
 </script>

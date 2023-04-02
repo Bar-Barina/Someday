@@ -47,8 +47,8 @@
         <span
           class="editable-span"
           contenteditable="true"
-          placeholder="Default Label"
           ref="editableLabel"
+          :placeholder="option.name ? '' : 'Default Label'"
           >{{ option.name }}</span
         >
         <div
@@ -142,7 +142,7 @@ export default {
     updateLabelName(idx) {
       const updatedOptions = JSON.parse(JSON.stringify(this.options))
       const option = updatedOptions[this.type][idx]
-      if (this.currOption.name) {
+      if (option.name) {
         option.name = this.$refs.editableLabel[idx].innerText
         updatedOptions[this.type].splice(idx, 1, option)
         this.$emit('updateOptions', { updatedOptions, idx, type: this.type })

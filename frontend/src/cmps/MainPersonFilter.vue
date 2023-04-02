@@ -42,7 +42,6 @@ export default {
       return this.$store.getters.currActiveMember
     },
     membersToShow() {
-      console.log('this.currBoard.members', this.currBoard.members)
       let members = this.currBoard.members
       if(members.includes(this.currActiveMember)) {
         const memberIdx = members.findIndex(m=>m.name===this.currActiveMember.name)

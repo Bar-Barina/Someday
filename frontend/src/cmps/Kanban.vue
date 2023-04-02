@@ -248,7 +248,6 @@ export default {
       return this.colSelected;
     },
     mappedTasks() {
-      console.log("this.statusesMap1111", this.statusesMap);
       return this.statusesMap;
     },
     async getFromParams() {

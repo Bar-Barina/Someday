@@ -66,7 +66,6 @@ export default {
         const likedIdx = this.msg.liked.findIndex(
           (from) => from === this.msg.from
         )
-        console.log('likedIdx', likedIdx)
         this.msg.liked.splice(likedIdx, 1)
       } else this.msg.liked.push(this.msg.from)
     },

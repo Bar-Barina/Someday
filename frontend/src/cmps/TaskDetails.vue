@@ -187,7 +187,6 @@ export default {
       this.updateTask()
     },
     addMsg() {
-      console.log('adding')
       const user = userService.getLoggedInUser()
       const from = user || {
         accountName: 'Guest',
@@ -211,7 +210,7 @@ export default {
     },
     updateTask() {
       const toUpdate = { group: this.group, task: this.task }
-      console.log('toUpdate', toUpdate)
+     
       this.$store.dispatch({ type: 'saveTask', toUpdate })
       this.msg.txt = ''
     },
@@ -230,9 +229,7 @@ export default {
       // this.textArea = this.$refs.textArea.innerHTML
     },
     toggleIsEditor(value = false) {
-      console.log('this.msg.txt', this.msg.txt)
       if (this.msg.txt.length > 1 || value) {
-        console.log('true')
         this.isEditor = true
       } else {
         this.isEditor = value
@@ -248,7 +245,6 @@ export default {
       this.onUserStopInputDeb()
     },
     onUserStopInput() {
-      console.log('stop typing:')
       socketService.emit('user-typing', '')
     },
     renderTyping(msg) {
@@ -258,7 +254,6 @@ export default {
       socketService.emit(SOCKET_EMIT_SET_TOPIC, this.topic)
     },
     recieveMsg(msg) {
-      console.log('recieve msg', msg)
       this.task.msgs.unshift(msg)
     },
     changeView(view = '') {
