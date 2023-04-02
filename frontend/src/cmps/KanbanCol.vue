@@ -63,7 +63,7 @@ export default {
         return this.tasks[index];
       };
     },
-    onTaskDrop(dropResult) {
+    async onTaskDrop(dropResult) {
       if (dropResult.removedIndex === null && dropResult.addedIndex === null)
         return;
       const task = JSON.parse(JSON.stringify(dropResult.payload));
@@ -75,7 +75,7 @@ export default {
         });
         task[this.option] = this.status;
         const toUpdate = { group, task };
-        this.$store.dispatch({ type: "saveTask", toUpdate });
+        await this.$store.dispatch({ type: "saveTask", toUpdate });
         this.$emit("addStatusesMap", { task, status: this.status });
       } else if (
         dropResult.addedIndex === null &&
