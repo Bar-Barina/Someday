@@ -143,7 +143,7 @@ export default {
       const updatedOptions = JSON.parse(JSON.stringify(this.options))
       const option = updatedOptions[this.type][idx]
       if (option.name) {
-        option.name = this.$refs.editableLabel[idx].innerText
+        option.name = event.target.innerText
         updatedOptions[this.type].splice(idx, 1, option)
         this.$emit('updateOptions', { updatedOptions, idx, type: this.type })
         const msg = 'Label name updated'
