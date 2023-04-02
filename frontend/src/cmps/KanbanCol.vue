@@ -37,7 +37,6 @@
 <script>
 import { Container, Draggable } from "vue3-smooth-dnd";
 import { boardService } from "../services/board.service.local";
-import { utilService } from "../services/util.service";
 import KanbanCard from "./KanbanCard.vue";
 import {
   showSuccessMsg,
@@ -75,9 +74,9 @@ export default {
           return group.tasks.filter((t) => t.id === task.id)[0];
         });
         task[this.option] = this.status;
-        this.$emit("addStatusesMap", { task, status: this.status });
         const toUpdate = { group, task };
         this.$store.dispatch({ type: "saveTask", toUpdate });
+        this.$emit("addStatusesMap", { task, status: this.status });
       } else if (
         dropResult.addedIndex === null &&
         dropResult.removedIndex !== null
@@ -109,6 +108,14 @@ export default {
     tasksCount() {
       return this.tasks.length;
     },
+  },
+  watch: {
+    tasks: {
+      handler() {
+        console.log('tasks', this.tasks)
+      },
+      deep: true
+    }
   },
   components: {
     KanbanCard,
