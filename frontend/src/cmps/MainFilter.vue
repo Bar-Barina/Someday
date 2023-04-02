@@ -30,7 +30,7 @@
           @click.stop="ChangeActive(member.name)"
           :class="{ active: isActive(member.name) }"
         >
-          <img :src="member.url" class="filter-member-img" />
+          <img :src="member.imgUrl" class="filter-member-img" />
           <span>{{ member.name }}</span>
         </div>
       </article>
