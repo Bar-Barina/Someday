@@ -13,7 +13,7 @@
         @focusout="addTask"
         v-model="task.taskTitle"
         type="text"
-        class="flex align-center"
+        class="flex align-center editable-div"
         placeholder="+ Add task"
       />
     </div>
