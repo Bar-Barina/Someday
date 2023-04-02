@@ -3,8 +3,9 @@
   width: 530px;
   height: 500px;
   position: absolute;
-  top: 75%;
-  left: 25%;
+  top: 50%;
+  left: 50%;
+  transform: -50% 0%;
   background-color: $clr2;
   box-shadow: rgb(0, 0, 0) 0px 6px 20px 0px;
   transition: all 0.4s ease 0s;
