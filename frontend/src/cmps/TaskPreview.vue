@@ -119,7 +119,6 @@ export default {
   },
   created() {
     eventBus.on('clearChecked', () => {
-      console.log('clearing')
       this.isSelected = false
     })
     eventBus.on('addSelected', (groupId) => {

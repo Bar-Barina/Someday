@@ -188,7 +188,6 @@ export default {
       const board = this.currBoard || this.board;
       const option = this.colSelected;
       if (!board) return;
-      console.log("this.options", this.options);
       this.options[option].labels.forEach((opt, idx) => {
         var tasks = [];
         board.groups.forEach((group) => {
@@ -238,7 +237,6 @@ export default {
       return this.colSelected;
     },
     mappedTasks() {
-      console.log("this.statusesMap1111", this.statusesMap);
       return this.statusesMap;
     },
     async getFromParams() {
