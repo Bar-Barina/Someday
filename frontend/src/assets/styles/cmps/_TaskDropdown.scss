@@ -106,11 +106,15 @@
 }
 
 .edit-labels {
+  
   color: $clr3;
   font-size: 14px;
   height: 32px;
   border-radius: 4px;
   margin-top: 10px;
+  .icon-container {
+    gap: 3px;
+  }
   &:hover {
     background-color: #dcdfec;
   }
