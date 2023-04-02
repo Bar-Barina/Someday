@@ -111,7 +111,7 @@
             class="emoji-picker"
           />
         </div>
-        <button class="update-btn" @click.stop="addMsg">Update</button>
+        <button class="update-btn" @click.stop="sendMsg">Update</button>
       </section>
       <section v-if="task.msgs.length > 0 && active === ''" class="task-msgs">
         <MsgPreview
@@ -146,165 +146,158 @@ import {
   SOCKET_EMIT_ADD_MSG,
   SOCKET_EMIT_SET_TOPIC,
   SOCKET_EVENT_TYPING,
-} from '../services/socket.service'
-import { svgService } from '../services/svg.service.js'
-import MsgPreview from './MsgPreview.vue'
-import EmojiPicker from 'vue3-emoji-picker'
-import 'vue3-emoji-picker/css'
-import { clickOutside } from '../directives.js'
-import { QuillEditor } from '@vueup/vue-quill'
-import '@vueup/vue-quill/dist/vue-quill.snow.css'
-import { userService } from '../services/user.service'
-import { utilService } from '../services/util.service.js'
-import Activity from '../cmps/Activity.vue'
+} from "../services/socket.service";
+import { svgService } from "../services/svg.service.js";
+import MsgPreview from "./MsgPreview.vue";
+import EmojiPicker from "vue3-emoji-picker";
+import "vue3-emoji-picker/css";
+import { clickOutside } from "../directives.js";
+import { QuillEditor } from "@vueup/vue-quill";
+import "@vueup/vue-quill/dist/vue-quill.snow.css";
+import { userService } from "../services/user.service";
+import { utilService } from "../services/util.service.js";
+import Activity from "../cmps/Activity.vue";
 
 export default {
-  name: 'TaskDetails',
+  name: "TaskDetails",
   data() {
     return {
-      active: '',
+      active: "",
       task: null,
       isEmoji: false,
       msg: {
-        txt: '',
+        txt: "",
         from: null,
         liked: [],
       },
-      textArea: '',
+      textArea: "",
       overlayVisible: false,
       isEditor: false,
-      typing: '',
+      typing: "",
       msgs: [],
-    }
+    };
   },
   methods: {
     getSvg(iconName) {
-      return svgService.getSvg(iconName)
+      return svgService.getSvg(iconName);
     },
     updateTaskTitle() {
-      this.task.taskTitle = this.$refs.taskTitle.innerText
-      this.group.tasks.splice(this.taskIdx, 1, this.task)
-      this.updateTask()
+      this.task.taskTitle = this.$refs.taskTitle.innerText;
+      this.group.tasks.splice(this.taskIdx, 1, this.task);
+      this.updateTask();
     },
-    addMsg() {
-      const user = userService.getLoggedInUser()
+    sendMsg() {
+      const user = userService.getLoggedInUser();
       const from = user || {
-        accountName: 'Guest',
-        imgUrl: 'https://cdn1.monday.com/dapulse_default_photo.png',
-      }
-
-      this.msg.from = from
-      this.msg.txt = this.$refs.textArea.getHTML()
-      this.msg.createdAt = Date.now()
-      // this.msg.txt = content.getHTML();
-      // if(this.msg.txt!== "") this.msg.txt.
-      socketService.emit(SOCKET_EMIT_SEND_MSG, this.msg)
-      const msgToAdd = { ...this.msg }
-      this.task.msgs.unshift(msgToAdd)
-      this.group.tasks.splice(this.taskIdx, 1, this.task)
-      this.updateTask()
-      // this.$refs.textArea.innerText = "";
-      this.msg.txt = ''
-      this.msg.from = ''
-      this.msg.createdAt = ''
+        accountName: "Guest",
+        imgUrl: "https://cdn1.monday.com/dapulse_default_photo.png",
+      };
+      this.msg.from = from;
+      this.msg.txt = this.$refs.textArea.getHTML();
+      this.msg.createdAt = Date.now();
+      socketService.emit(SOCKET_EMIT_SEND_MSG, this.msg);
+      this.msg.txt = "";
+      this.msg.from = "";
+      this.msg.createdAt = "";
     },
-    updateTask() {
-      const toUpdate = { group: this.group, task: this.task }
-     
-      this.$store.dispatch({ type: 'saveTask', toUpdate })
-      this.msg.txt = ''
+    updateTask(group) {
+      const toUpdate = { group , task: this.task };
+      this.$store.dispatch({ type: "saveTask", toUpdate });
+      this.msg.txt = "";
     },
     emojiPick() {
-      this.isEmoji = !this.isEmoji
+      this.isEmoji = !this.isEmoji;
     },
     onSelectEmoji(emoji) {
-      this.msg.txt += emoji.i
+      this.msg.txt += emoji.i;
       // this.$refs.textArea.innerText += emoji.i
       // this.$refs.textArea.getText() += emoji.i
     },
     closeEmojiPick() {
-      this.isEmoji = false
+      this.isEmoji = false;
     },
     updateContent() {
       // this.textArea = this.$refs.textArea.innerHTML
     },
     toggleIsEditor(value = false) {
       if (this.msg.txt.length > 1 || value) {
-        this.isEditor = true
+        this.isEditor = true;
       } else {
-        this.isEditor = value
+        this.isEditor = value;
       }
     },
     closeChat() {
-      this.$router.push(`/board/${this.currBoard._id}`)
+      this.$router.push(`/board/${this.currBoard._id}`);
     },
     onUserInput() {
-      let user = userService.getLoggedInUser()
-      if (!user) socketService.emit('user-typing', '')
-      else socketService.emit('user-typing', user._id)
-      this.onUserStopInputDeb()
+      let user = userService.getLoggedInUser();
+      if (!user) socketService.emit("user-typing", "");
+      else socketService.emit("user-typing", user._id);
+      this.onUserStopInputDeb();
     },
     onUserStopInput() {
-      socketService.emit('user-typing', '')
+      socketService.emit("user-typing", "");
     },
     renderTyping(msg) {
-      this.typing = msg
+      this.typing = msg;
     },
     changeTopic() {
-      socketService.emit(SOCKET_EMIT_SET_TOPIC, this.topic)
+      socketService.emit(SOCKET_EMIT_SET_TOPIC, this.topic);
     },
     recieveMsg(msg) {
-      this.task.msgs.unshift(msg)
+      const group = JSON.parse(JSON.stringify(this.group))
+      this.task.msgs.unshift(msg);
+      group.tasks.splice(this.taskIdx, 1, this.task);
+      this.updateTask(group);
     },
-    changeView(view = '') {
-      this.active = view
+    changeView(view = "") {
+      this.active = view;
     },
   },
   watch: {
-    '$route.params': {
+    "$route.params": {
       async handler() {
-        const { taskId } = this.$route.params
-        if (!taskId) return
-        this.group = JSON.parse(JSON.stringify(this.currGroup))
+        const { taskId } = this.$route.params;
+        if (!taskId) return;
+        this.group = JSON.parse(JSON.stringify(this.currGroup));
         this.task = JSON.parse(
           JSON.stringify(this.group.tasks.find((t) => t.id === taskId))
-        )
+        );
       },
       immediate: true,
     },
   },
   computed: {
     currBoard() {
-      return this.$store.getters.currBoard
+      return this.$store.getters.currBoard;
     },
     currGroup() {
-      return this.$store.getters.currGroup
+      return this.$store.getters.currGroup;
     },
     taskIdx() {
-      return this.group.tasks.findIndex((t) => t.id === this.task.id)
+      return this.group.tasks.findIndex((t) => t.id === this.task.id);
     },
     openTextArea() {
-      return this.msg.txt !== ''
+      return this.msg.txt !== "";
       // return this.$refs.textArea.innerText !== ''
     },
     getTyping() {
-      return this.typing
+      return this.typing;
     },
     user() {
-      return userService.getLoggedInUser()
+      return userService.getLoggedInUser();
     },
   },
   created() {
-    socketService.emit(SOCKET_EMIT_SET_TOPIC, this.task.id)
-    socketService.on(SOCKET_EMIT_SEND_MSG, this.addMsg)
-    socketService.on(SOCKET_EMIT_ADD_MSG, this.recieveMsg)
-    socketService.on(SOCKET_EVENT_TYPING, this.renderTyping)
+    socketService.emit(SOCKET_EMIT_SET_TOPIC, this.task.id);
+    // socketService.on(SOCKET_EMIT_SEND_MSG, this.addMsg)
+    socketService.on(SOCKET_EMIT_ADD_MSG, this.recieveMsg);
+    socketService.on(SOCKET_EVENT_TYPING, this.renderTyping);
     // socketService.on(SOCKET_EVENT_ADD_MSGS, msgs => msgs.forEach(this.addMsg))
-    this.onUserStopInputDeb = utilService.debounce(this.onUserStopInput, 800)
+    this.onUserStopInputDeb = utilService.debounce(this.onUserStopInput, 800);
   },
   destroyed() {
-    console.log('destroyed')
-    socketService.off(SOCKET_EMIT_SEND_MSG, this.addMsg)
+    socketService.off(SOCKET_EMIT_SEND_MSG, this.addMsg);
   },
   components: {
     MsgPreview,
@@ -312,5 +305,5 @@ export default {
     QuillEditor,
     Activity,
   },
-}
+};
 </script>
