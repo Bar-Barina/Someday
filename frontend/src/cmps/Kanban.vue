@@ -127,7 +127,6 @@ export default {
   },
   created() {
     const board = this.currBoard || this.getFromParams;
-    console.log('board', board)
     this.options = {
       status: {
         labels: board.labels.status.map((label) => label.name),

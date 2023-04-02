@@ -9,7 +9,7 @@
           arrow: true,
         }"
       >
-        {{ status }} / {{ tasksCount }}
+        {{ status === '' ? status = 'Blank' : status}} / {{ tasksCount }}
       </div>
       <span class="add-task-plus" @click="addTask" v-icon="'plusKanban'"></span>
     </div>
