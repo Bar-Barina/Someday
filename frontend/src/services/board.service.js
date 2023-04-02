@@ -24,7 +24,7 @@ async function query(user) {
   const demoCache = utilService.loadFromStorage('userId')
   if (user) userId = user._id
   else if (demoCache) userId = demoCache
-  else userId =  "64233ebc79347a439c027636"
+  else userId =  "948jv8j432fj0239i9kf93203f"
   return httpService.get(STORAGE_KEY + '/', userId)
 }
 
