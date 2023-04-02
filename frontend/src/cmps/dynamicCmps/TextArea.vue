@@ -9,7 +9,7 @@
       >
         {{ task.text }}
       </div> -->
-      <input type="text" v-model="txt" class="text" @focusin="togglePlaceholder" @focusout="togglePlaceholder"/>
+      <input type="text" v-model="txt" class="text" @focusin="togglePlaceholder" @focusout="updateTask"/>
       <div v-if="txt" class="reset-text" @click="resetText">
         <span class="x-icon" v-icon="'closeTxt'"></span>
       </div>
@@ -41,7 +41,8 @@ export default {
       this.$emit("updateTask", {
         cmptype: "text",
         data: this.txt,
-      });
+      })
+      console.log('this.task.text',this.task.text)
     },
     resetText() {
       // this.$refs.cmpText.innerText = "";
