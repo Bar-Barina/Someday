@@ -112,7 +112,7 @@
             placement: 'top',
             arrow: true,
           }"
-          class="view-option flex align-center btn-hover"
+          class="view-option flex align-center btn-hover main-table"
           @click="switchBoardView('')"
         >
           <div v-html="getSvg('headerHome')"></div>
