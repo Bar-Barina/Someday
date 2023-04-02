@@ -15,7 +15,7 @@
         <button class="login">Log in</button>
       </router-link>
       <RouterLink :to="`/board/${firstBoard}`"
-        ><button class="start-btn">
+        ><button class="start-btn header-start-btn">
           Get Started
           <span class="arrow"
             ><div className="arrow" v-html="getSvg('arrow')"></div

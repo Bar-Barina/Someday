@@ -18,6 +18,11 @@
     line-height: 74px;
     margin-top: 20px;
     margin-bottom: -2px;
+    @include for-mobile-layout {
+      font-size: 30px;
+      line-height: 45px;
+      margin-top: 0px;
+    }
   }
 
   .sub-line {
@@ -27,6 +32,11 @@
     text-align: center;
     color: #fff;
     margin-bottom: -1px;
+    @include for-mobile-layout {
+      font-size: 15px;
+      margin-top: 5px;
+      margin-bottom: -5px;
+    }
   }
 
   .underline {
@@ -77,6 +87,16 @@
       height: 40px;
       display: flex;
       align-items: center;
+    }
+    @include for-mobile-layout {
+      margin-top: 25px;
+      height: 40px;
+      width: 150px;
+      font-size: 13px;
+      svg {
+        margin-top: 7px;
+        padding-left: 6px;
+      }
     }
   }
 
@@ -133,6 +153,10 @@
   top: 300px;
   animation-duration: 2s;
   animation-delay: 6s;
+  @include for-mobile-layout {
+    left: 300px;
+    top: 100px;
+  }
 }
 
 .star4 {
@@ -262,6 +286,10 @@
   top: 53.7%;
   animation-duration: 20s;
   animation-delay: 10s;
+  @include for-mobile-layout {
+    left: 40.5%;
+    top: 50%;
+  }
 }
 
 @keyframes twinkle {
@@ -289,6 +317,9 @@
   span {
     margin: 18px;
   }
+  @include for-mobile-layout {
+    font-size: 10px;
+  }
 }
 
 .home-footer {
@@ -296,6 +327,7 @@
   margin: 40px;
   font-size: 22px;
 }
+
 // .green-try-demo {
 //   height: 30vw;
 //   width: 30vw;

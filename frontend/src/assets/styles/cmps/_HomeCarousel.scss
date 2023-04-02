@@ -11,9 +11,15 @@
         width: 80%;
         margin-left: 10%;
         margin-top: 50px;
+        @include for-mobile-layout {
+            height: 120px !important;
+          }
 
         .el-carousel__item {
             border-radius: 3px;
+            @include for-mobile-layout {
+                height: 120px;
+              }
 
             h3 {
                 background-color: rgba(lightblue , 75%);
@@ -32,6 +38,9 @@
                 height: 400px;
                 margin: auto;
                 object-fit: fill;
+                @include for-mobile-layout {
+                    height: 120px;
+                }
             }
 
             &:nth-child(2n) {
@@ -45,5 +54,10 @@
     }
     .el-carousel__indicators--outside {
         display: none;
+    }
+    .el-carousel__container {
+        @include for-mobile-layout {
+            height: 120px !important;
+          }
     }
 }

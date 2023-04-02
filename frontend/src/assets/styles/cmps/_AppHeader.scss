@@ -6,7 +6,13 @@
   color: #333;
   align-items: center;
   margin: 0 65px;
+
+  @include for-mobile-layout {
+    margin: 0px;
+    padding: 25px;
+  }
 }
+
 
 .home-logo {
   display: flex;
@@ -71,5 +77,11 @@
     padding-left: 2px;
     width: 100%;
     transition: 400ms;
+  }
+}
+
+.header-start-btn {
+  @include for-mobile-layout {
+    display: none;
   }
 }
