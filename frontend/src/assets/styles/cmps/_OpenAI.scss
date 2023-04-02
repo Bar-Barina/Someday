@@ -57,6 +57,33 @@
                 height: 15px;
             }
         }
+
+        .mic {
+          display: block;
+          height: 20px;
+          margin-left: 3px;
+          cursor: pointer;
+
+          &:hover {
+            svg {
+              scale: 1.1;
+            }
+          }
+        }
+
+        .stopRec {
+          height: 16px;
+          width: 16px;
+          background-color: rgb(253, 34, 34);
+          border-radius: 50%;
+          margin-left: 6px;
+          cursor: pointer;
+
+          &:hover {
+            scale: 1.1;
+            opacity: 0.8;
+          }
+        }
     }
 
     .msg {
