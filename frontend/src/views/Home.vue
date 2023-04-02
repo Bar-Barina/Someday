@@ -27,10 +27,11 @@
       <span class="star star18"></span>
       <span>Unlimited time on Free plan</span>
     </div>
-    <img
+    <!-- <img
       src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/Generator_featured%20images/Home%20Page%20-%202022%20Rebrand/first_fold/image.png"
       alt=""
-    />
+    /> -->
+    <HomeCarousel/>
     <!-- <div class="green-try-demo">Try the 
       <br>
       interactive demo 
@@ -45,6 +46,7 @@
 import { onUnmounted } from 'vue'
 import AppHeader from '../cmps/AppHeader.vue'
 import { svgService } from '../services/svg.service.js'
+import HomeCarousel from '../cmps/HomeCarousel.vue'
 export default {
   name: 'Home',
   setup() {
@@ -64,6 +66,7 @@ export default {
   },
   components: {
     AppHeader,
+    HomeCarousel
   },
 }
 </script>

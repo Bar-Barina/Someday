@@ -2,7 +2,7 @@
 export default {
   data() {
     return {
-      labels: this.$store.getters.dashLabels,
+    //   labels: this.$store.getters.dashLabels,
       urls: [
         "https://images.unsplash.com/photo-1597670250484-0e9aff7f8804?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y2FyJTIwdG95c3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
         "https://images.unsplash.com/photo-1640461470346-c8b56497850a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8bW9ub3BvbHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
@@ -21,11 +21,9 @@ export default {
 
 <template>
   <section class="carousel-section full">
-    <h2>Many types of games</h2>
     <el-carousel class="carousel" :interval="2000" type="card" height="200px">
-      <el-carousel-item v-for="(label, index) in labels" :key="label">
-        <img :src="urls[index]" />
-        <h3>{{ label }}</h3>
+      <el-carousel-item v-for="(url, idx) in this.urls" :key="idx">
+        <img :src="url" />
       </el-carousel-item>
     </el-carousel>
   </section>
