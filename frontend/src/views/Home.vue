@@ -38,6 +38,9 @@
       <p>See how easy it is to manage your work with someday.com</p>
       <button>Let's go</button>
     </div> -->
+    <section>
+      
+    </section>
   </section>
   <div class="home-footer">Trusted by 180,000+ customers worldwide</div>
 </template>
