@@ -14,7 +14,6 @@
 
 <script>
 import axios from "axios";
-import { httpService } from "../services/http.service";
 import { boardService } from '../services/board.service';
 
 export default {
