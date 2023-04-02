@@ -15,10 +15,10 @@
       optionClass="status-option"
     />
     <span class="peeling-span scale-up-tr"></span>
-    <!-- <span
-      v-if="selectedStatus === 'Done'"
-      class="confetti-sprite-animation"
-    ></span> -->
+    <span
+    v-if="selectedStatus === 'Done'"
+    class="confetti-sprite-animation"
+  ></span>
   </div>
 </template>
 
