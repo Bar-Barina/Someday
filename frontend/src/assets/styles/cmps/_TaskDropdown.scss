@@ -111,6 +111,9 @@
   height: 32px;
   border-radius: 4px;
   margin-top: 10px;
+  svg {
+    padding-top: 4px;
+  }
   &:hover {
     background-color: #dcdfec;
   }
