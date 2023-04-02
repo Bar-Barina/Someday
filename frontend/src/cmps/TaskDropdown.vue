@@ -24,8 +24,10 @@
       class="edit-labels"
       @click.stop="showEditLabels = true"
     >
-      <span v-icon="'editLabels'"></span>
+    <div class="icon-container flex justify-center align-center">
+      <span v-icon="'editLabels'" class="flex collumn justify-center"></span>
       <span>Edit Labels</span>
+    </div>
     </div>
     <!-- EDIT -->
     <section v-if="showEditLabels" class="dropdown-list">

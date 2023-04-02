@@ -4,12 +4,20 @@
       <div class="msg">
         <span class="title">AI:</span><span>{{ msg }}</span>
       </div>
-      <div class="msg">
+      <!-- <div class="msg">
         <span v-if="res" class="title">Me:</span><span>{{ res }}</span>
+      </div> -->
+      <div v-if="isLoading" class="loader-container">
+        <div class="container">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+       </div>
       </div>
-      <div class="msg">
+      <!-- <div class="msg">
         <span v-if="typing" class="title">AI:</span><span>{{ typing }}</span>
-      </div>
+      </div> -->
       <div class="send-section flex align-center">
       <input class="open-ai-input" type="text" placeholder="Write your subject" v-model="txt" />
       <span class="send" v-icon="'sendOpenAI'" @click="sendQ"></span>
@@ -29,7 +37,6 @@ export default {
       res: "",
       msg: "What is your board subject?",
       isLoading: false,
-      typing: ''
     };
   },
   methods: {
