@@ -1,5 +1,8 @@
 .smooth-dnd-container.vertical>.smooth-dnd-draggable-wrapper {
   overflow: visible;
+  @include for-mobile-layout {
+    width: 150vw;
+  }
 }
 
 
@@ -34,10 +37,8 @@
 }
 
 .group-container {
-
   cursor: auto;
   position: relative;
-
   .labels-container {
     display: flex !important;
 

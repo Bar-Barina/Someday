@@ -1,6 +1,4 @@
 .side-nav {
-  // Removed grid rows
-  // grid-template-rows:98px auto 178px 110px;
   display: grid;
   justify-items: center;
   align-content: space-between;
@@ -94,6 +92,9 @@
       }
     }
   }
+  // @include for-mobile-layout {
+  //  display: none;
+  // }
 }
 
 // ADDED
