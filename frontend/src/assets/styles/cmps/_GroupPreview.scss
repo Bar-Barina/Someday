@@ -29,6 +29,10 @@
 
 .group-container {
 
+  .smooth-dnd-container.vertical>.smooth-dnd-draggable-wrapper {
+    overflow: visible;
+  }
+
   cursor: auto;
   position: relative;
 
