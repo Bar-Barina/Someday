@@ -2,11 +2,11 @@
     display: grid;
     width: 100vw;
     grid-template-columns: 67px auto 1fr;
-    // grid-template-rows: 180px 1fr;
     grid-template-areas:
-        "side-nav workspace board-content"
-        // "side-nav workspace";
-        
+        "side-nav workspace board-content";
+        @include for-mobile-layout {
+            grid-template-columns: auto auto auto;
+          }
 }
 
 .group-grid {

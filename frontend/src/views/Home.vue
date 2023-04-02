@@ -27,22 +27,27 @@
       <span class="star star18"></span>
       <span>Unlimited time on Free plan</span>
     </div>
-    <!-- <img
-      src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/Generator_featured%20images/Home%20Page%20-%202022%20Rebrand/first_fold/image.png"
-      alt=""
-    /> -->
-    <HomeCarousel/>
+    <HomeCarousel />
     <!-- <div class="green-try-demo">Try the 
       <br>
       interactive demo 
       <p>See how easy it is to manage your work with someday.com</p>
       <button>Let's go</button>
     </div> -->
-    <section>
-      
-    </section>
+    <section></section>
   </section>
   <div class="home-footer">Trusted by 180,000+ customers worldwide</div>
+  <!-- <section class="companies">
+    <img src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/customers/logos-v2/genpact.png" class="company-logo"/>
+    <img src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/customers/logos-v2/HoltCat.png" class="company-logo"/>
+    <img src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/customers/logos-v2/canva.png" class="company-logo"/>
+    <img src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/customers/logos-v2/coca_cola.png" class="company-logo" />
+    <img src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/customers/logos-v2/lionsgate.png" class="company-logo"/>
+    <img src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/customers/logos-v2/hulu.png" class="company-logo"/>
+    <img src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/customers/logos-v2/bd.png" class="company-logo"/>
+    <img src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/customers/logos-v2/glossier.png" class="company-logo"/>
+    <img src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/customers/logos-v2/universal.png" class="company-logo"/>
+  </section> -->
 </template>
 
 <script>
@@ -69,7 +74,7 @@ export default {
   },
   components: {
     AppHeader,
-    HomeCarousel
+    HomeCarousel,
   },
 }
 </script>

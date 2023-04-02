@@ -320,13 +320,24 @@
   @include for-mobile-layout {
     font-size: 10px;
   }
+
 }
 
+// .companies {
+//   display: flex;
+//   gap: 10px;
+//   .company-logo {
+//     max-height: 69px; 
+//     max-width: 118px;
+//     margin: 0 15px;
+//   }
+// }
 .home-footer {
   text-align: center;
   margin: 40px;
   font-size: 22px;
 }
+
 
 // .green-try-demo {
 //   height: 30vw;
