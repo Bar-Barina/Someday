@@ -167,7 +167,9 @@ export default {
       this.updateStatusesMap();
     },
     addToMap({ task, status }) {
-      const statusIdx = this.statusesMap.findIndex((s) => s.title === status);
+      const statusIdx = this.statusesMap.findIndex((s) => {
+        return s.title === status;
+      });
       this.statusesMap[statusIdx].tasks.push(task);
       this.updateStatusesMap();
     },
@@ -185,9 +187,18 @@ export default {
       this.updateStatusesMap();
     },
     updateStatusesMap() {
-      const board = this.currBoard || this.board;
+      const board = this.currBoard || this.getFromParams;
+      this.options = {
+        status: {
+          labels: board.labels.status.map((label) => label.name),
+          colors: board.labels.status.map((label) => label.color),
+        },
+        priority: {
+          labels: board.labels.priority.map((label) => label.name),
+          colors: board.labels.priority.map((label) => label.color),
+        },
+      };
       const option = this.colSelected;
-      if (!board) return;
       this.options[option].labels.forEach((opt, idx) => {
         var tasks = [];
         board.groups.forEach((group) => {
