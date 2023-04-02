@@ -22,16 +22,18 @@
 
 }
 
+:root {
+  .smooth-dnd-container.vertical>.smooth-dnd-draggable-wrapper {
+    overflow: visible;
+  }
+}
+
 .main-table {
   font-family: Figtree;
   width: 100%;
 }
 
 .group-container {
-
-  .smooth-dnd-container.vertical>.smooth-dnd-draggable-wrapper {
-    overflow: visible;
-  }
 
   cursor: auto;
   position: relative;
