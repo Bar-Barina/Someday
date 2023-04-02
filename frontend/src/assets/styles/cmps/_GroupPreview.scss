@@ -157,6 +157,11 @@
   }
 
   .group-content {
+
+    .smooth-dnd-container.vertical>.smooth-dnd-draggable-wrapper {
+      overflow: visible;
+    }
+
     .labels-grid {
       &>*:not(:first-child) {
         border-top: 1px solid $clr014;
