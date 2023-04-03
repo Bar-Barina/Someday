@@ -30,8 +30,8 @@
   width: 50px;
   height: 50px;
   position: fixed;
-  bottom: 20px;
-  right: 25px;
+  bottom: 24px;
+  right: 16px;
   cursor: pointer;
   transform: rotate(45deg);
   display: none;
@@ -50,18 +50,20 @@
   @include for-mobile-layout {
     display: block;
   }
-  
 }
 
 .add-new-mobile {
+  // &.rotate {
+  //   transform: rotate(45deg);
+  // }
   .icon-moblie {
     background-color: #0073ea;
     border-radius: 50%;
     width: 40px;
     height: 40px;
     position: fixed;
-    bottom: 95px;
-    right: 30px;
+    bottom: 85px;
+    right: 20px;
     z-index: 10000;
   }
   span {
@@ -74,13 +76,13 @@
     }
   }
   .add-group-moblie {
-    bottom: 142px;
+    bottom: 135px;
   }
   .icon-mobile-text {
-    background-color: #232323;
+    background-color: #3d3d3d;
 
     position: fixed;
-    bottom: 100px;
+    bottom: 90px;
     right: 75px;
     padding: 10px;
     color: $clr2;
@@ -90,9 +92,10 @@
     z-index: 10000;
   }
   .task {
-    bottom: 145px;
+    bottom: 139px;
   }
 }
+
 // .main-loader {
 //     margin-left:  45%;
 //     margin-top:  20%;

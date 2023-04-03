@@ -1,6 +1,7 @@
 <template>
   <section class="board-header" v-if="currBoard">
     <section class="up-header flex align-center space-between">
+      <span class="mobile-arrow" v-icon="'arrowLeft'"></span>
       <section class="board-name flex align-center justify-center">
         <h1
           v-tippy="{
@@ -95,7 +96,7 @@
         </div>
          <Invite v-if="showInvite" @updateBoard="updateMembers" @closeInvite="closeInvite"  v-clickOutside="closeInvite" />
         <div class="dots flex align-center justify-center icon btn-hover">
-          <div v-html="getSvg('headerDots')"></div>
+          <div class="dots-div" v-html="getSvg('headerDots')"></div>
         </div>
       </section>
     </section>

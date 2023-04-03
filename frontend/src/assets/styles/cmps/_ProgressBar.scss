@@ -1,7 +1,7 @@
 .progress-grid {
     margin-top: -1px;
     @include for-mobile-layout {
-        background-color: #313131;
+        background-color: #232323;
         color: white;
       }
 
@@ -12,7 +12,7 @@
     >*:not(:first-child, .empty) {
         border-top: 1px solid #d0d4e6;
         @include for-mobile-layout {
-            background-color: #313131;
+            background-color: #232323;
           }
     }
 
@@ -39,16 +39,16 @@
         background-color: #fff;
         box-shadow: 0 6px 2px -2px #fff;
         @include for-mobile-layout {
-            background-color: #313131;
-            box-shadow: 0 6px 2px -2px #313131;
+            background-color: #232323;
+            box-shadow: 0 6px 2px -2px #232323;
           }
     }
 
     .empty {
         box-shadow: 1px 8px 0 -1px #fff;
         @include for-mobile-layout {
-            background-color: #313131;
-            box-shadow: 0 6px 2px -2px #313131;
+            background-color: #232323;
+            box-shadow: 0 6px 2px -2px #232323;
           }
     }
 
@@ -56,8 +56,9 @@
         left: 40px;
         box-shadow: 1px 8px 0 -1px #fff, inset 0 8px 9px -9px rgba(0, 0, 0, .1);
         @include for-mobile-layout {
-            background-color: #313131;
-            box-shadow: 0 6px 2px -2px #313131;
+            background-color: #232323;
+            box-shadow: 0 6px 2px -2px #232323;
+            left: -2px;
           }
     }
 
@@ -67,8 +68,8 @@
         left: 46px;
         @include for-mobile-layout {
             left: 0px;
-            background-color: #313131;
-            box-shadow: 0 6px 2px -2px #313131;
+            background-color: #232323;
+            box-shadow: 0 6px 2px -2px #232323;
           }
     }
 
@@ -79,8 +80,8 @@
         z-index: 1000;
         height: 100%;
         @include for-mobile-layout {
-            background-color: #313131;
-            box-shadow: 0 6px 2px -2px #313131;
+            background-color: #232323;
+            box-shadow: 0 6px 2px -2px #232323;
           }
     }
 

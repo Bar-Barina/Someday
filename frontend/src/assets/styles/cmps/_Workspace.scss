@@ -11,8 +11,7 @@
   border-right: 1.2px solid #d0d4e6;
   font-size: 14px;
   @include for-mobile-layout {
-    background-color: #313131;
-    color: white;
+    display: none;
   }
 
   .workspace-header {
@@ -351,7 +350,7 @@
       }
     }
     @include for-mobile-layout {
-      background-color: #313131;
+      background-color: #232323;
       color: white;
       display: none;
     }

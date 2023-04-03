@@ -44,7 +44,10 @@
     @clearSearch="clearSearch"
   /> -->
   <div @click="showAddOptions = !showAddOptions" class="mobile-plus">
-    <span v-icon="'x'"></span>
+    <span
+      v-icon="'x'"
+      :style="{ rotate: showAddOptions}"
+    ></span>
   </div>
 
   <section v-if="showAddOptions" class="add-new-mobile">
@@ -162,9 +165,9 @@ export default {
       const toUpdate = { task: this.task, group }
       this.$store.dispatch({ type: 'saveTask', toUpdate })
       this.task = boardService.getEmptyTask()
-      const msg = 'New task added';
-        showSuccessMsg(msg);
-        this.showAddOptions = !this.showAddOptions
+      const msg = 'New task added'
+      showSuccessMsg(msg)
+      this.showAddOptions = !this.showAddOptions
     },
   },
   computed: {

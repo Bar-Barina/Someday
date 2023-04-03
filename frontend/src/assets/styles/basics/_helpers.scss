@@ -68,7 +68,7 @@
   font-size: 0.875em;
   position: relative;
   @include for-mobile-layout {
-    background-color: #313131;
+    background-color: #232323;
   }
 }
 
@@ -240,9 +240,10 @@
 }
 
 .dark-mode {
-  background-color: #313131;
+  background-color: #232323;
   color: white;
 }
+
 // Media helpers
 
 // .square-ratio {

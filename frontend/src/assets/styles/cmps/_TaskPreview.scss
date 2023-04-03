@@ -1,23 +1,37 @@
 .task-row {
   &.active-row {
     .third,
+    
     .task-title {
       background-color: rgb(204, 229, 255);
+      @include for-mobile-layout {
+        background-color: #232323;
+      }
     }
 
     > * {
       background-color: rgb(204, 229, 255);
+      @include for-mobile-layout {
+        background-color: #232323;
+      }
+      
     }
   }
 
   &:hover {
     > * {
       background-color: rgb(245, 246, 248);
+      @include for-mobile-layout {
+        background-color: #232323;
+      }
     }
 
     .third,
     .task-title {
       background-color: rgb(245, 246, 248);
+      @include for-mobile-layout {
+        background-color: #232323;
+      }
     }
   }
 
@@ -26,9 +40,10 @@
     left: 78px;
     background-color: #fff;
     @include for-mobile-layout {
-      left: 38px;
-      background-color: #313131;
+      left: 6px;
+      background-color: #232323;
       color: white;
+      padding-inline-start: 0px;
     }
 
     .task-title-sub {
@@ -80,12 +95,7 @@
     width: 65px;
     border-left: 1px solid #d0d4e6;
     @include for-mobile-layout {
-      position: absolute;
-      right: -65px;
-      background-color: white;
-      border-right: 1px solid #d0d4e6;
-      background-color: #313131;
-      color: white;
+      display: none;
     }
 
     &:hover {

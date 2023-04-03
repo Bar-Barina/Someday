@@ -17,9 +17,13 @@
 
     > * {
         background-color: #fff;
+        @include for-mobile-layout {
+            background-color: #232323;
+          }
+        
     }
     @include for-mobile-layout {
-        grid-template-columns: 6px 32px 190px repeat(7,140px) 1fr;
+        grid-template-columns: 6px 190px repeat(7,140px) 1fr;
       }
 }
 
@@ -42,6 +46,6 @@
 .last {
     border-right: none;
     @include for-mobile-layout {
-        background-color: #313131;
+        background-color: #232323;
       }
 }

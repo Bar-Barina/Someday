@@ -9,11 +9,22 @@
   background-color: #fff;
   padding-bottom: 20px;
   z-index: 2700;
-
+  .dots-div {
+    svg {
+      fill: black;
+    }
+  }
   @include for-mobile-layout {
+    padding-inline: 0px;
+    padding-top: 8px;
     height: 110px;
-    background-color: #313131;
+    background-color: #232323;
     color: white;
+    .dots-div {
+      svg {
+        fill: white;
+      }
+    }
   }
 
   .icon {
@@ -63,6 +74,7 @@
       @include for-mobile-layout {
         font-size: 20px;
         color: white;
+        justify-content: center;
       }
 
       @include for-narrow-layout {
@@ -459,8 +471,9 @@
   grid-template-columns: 1fr 1fr;
   gap: 10px;
   margin-top: 15px;
+  padding-inline: 30px;
   select {
-    background-color: #232323;
+    background-color:#3d3d3d;
     color: white;
     font-family: 'PoppinsLight';
     border-radius: 4px;
@@ -472,7 +485,7 @@
     border: none;
   }
   .mobile-filter {
-    background-color: #232323;
+    background-color:#3d3d3d;
     color: white;
     font-family: 'PoppinsLight';
     border-radius: 4px;
@@ -483,5 +496,19 @@
   }
   @include for-mobile-layout {
     display: grid;
+  }
+}
+
+.mobile-arrow {
+  display: none;
+  svg {
+    fill: white;
+    path {
+      height: 10px;
+      width: 20px;
+    }
+  }
+  @include for-mobile-layout {
+    display: block;
   }
 }
