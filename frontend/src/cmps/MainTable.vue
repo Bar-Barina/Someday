@@ -50,7 +50,7 @@
   <section v-if="showAddOptions" class="add-new-mobile">
     <div class="mobile-icon-container flex align-center">
       <span class="icon-mobile-text task">New Task</span>
-      <div class="add-group-moblie icon-moblie">
+      <div class="add-group-moblie icon-moblie" @click="addTask">
         <span v-icon="'mobileAddTask'"></span>
       </div>
     </div>
@@ -74,12 +74,14 @@ import { eventBus } from '../services/event-bus.service'
 import GroupDrag from './GroupDrag.vue'
 import NoResultsFound from './NoResultsFound.vue'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
+import { boardService } from '../services/board.service.local.js'
 export default {
   data() {
     return {
       board: null,
       groups: null,
       showAddOptions: false,
+      task: boardService.getEmptyTask(),
       labelsOrder: [
         'Date',
         'Text',
@@ -151,6 +153,16 @@ export default {
     },
     clearSearch() {
       eventBus.emit('clearSearch')
+    },
+    addTask() {
+      const group = JSON.parse(JSON.stringify(this.currBoard)).groups[0]
+      group.tasks.unshift({ ...this.task })
+      this.task.taskTitle = 'New Task'
+      const toUpdate = { task: this.task, group }
+      this.$store.dispatch({ type: 'saveTask', toUpdate })
+      this.task = boardService.getEmptyTask()
+      const msg = 'New task added';
+        showSuccessMsg(msg);
     },
   },
   computed: {
