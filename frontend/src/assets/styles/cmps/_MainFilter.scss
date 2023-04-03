@@ -11,6 +11,7 @@
   cursor: auto;
   .filter-option {
     color: rgb(45, 45, 45);
+    min-height: 33px;
   }
   .filter-div {
     background-color: $clr42;
@@ -53,17 +54,41 @@
     color: $clr3;
   }
 
+  .filter-option {
+    height: 33px !important;
+  }
+
+  .labels-container {
+    height: 150px;
+    gap: 6px;
+    overflow-y: scroll;
+   
+    &::-webkit-scrollbar {
+      width: 4px;
+      background-color: #ffffff;
+  }
+
+  &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: rgb(230, 230, 230);
+  }
+
+}
+
   .clear-all-btn {
     font-size: 13px;
     width: 65px;
     height: 32px;
-    color: #48494f65;
+    color: rgb(64, 64, 64);
     border-radius: 4px;
     padding: 2px;
     position: absolute;
     top: 14px;
     right: 14px;
     cursor: pointer;
+    &:hover {
+      background-color: $clr014;
+    }
   }
 
   .triangle {
