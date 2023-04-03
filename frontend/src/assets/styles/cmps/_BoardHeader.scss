@@ -112,6 +112,10 @@
         height: em(28px);
         width: em(28px);
       }
+
+      @include for-mobile-layout {
+        display: none;
+      }
     }
 
     .invite {
@@ -125,6 +129,10 @@
       }
       span {
         padding-top: 1px;
+      }
+
+      @include for-mobile-layout {
+        display: none;
       }
     }
   }
