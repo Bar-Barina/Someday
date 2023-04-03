@@ -1,7 +1,7 @@
 .smooth-dnd-container.vertical>.smooth-dnd-draggable-wrapper {
   overflow: visible;
   @include for-mobile-layout {
-    width: 150vw;
+    width: 100vw;
   }
 }
 
@@ -37,8 +37,10 @@
 }
 
 .group-container {
+
   cursor: auto;
   position: relative;
+
   .labels-container {
     display: flex !important;
 
@@ -157,6 +159,9 @@
 
   .task-border {
     left: 40px;
+    @include for-mobile-layout {
+      left: 5px;
+    }
   }
 
   .empty {
@@ -178,6 +183,9 @@
     .group-grid.labels-grid {
       text-align: center;
       grid-template-columns: 40px 6px 32px 364px 980px 1fr;
+      // @include for-mobile-layout {
+      //   grid-template-columns: 6px 32px 364px 980px 1fr;
+      //   }
 
       .task-border {
         border-top-left-radius: 6px;
@@ -186,6 +194,9 @@
       .empty {
         left: 0;
         background-color: #fff;
+        @include for-mobile-layout {
+        display: none;
+        }
       }
 
       .task-border {
@@ -216,6 +227,9 @@
       .more-task {
         opacity: 1;
         background-color: #fff;
+        @include for-mobile-layout {
+          display: none;
+        }
       }
 
       &:hover {

@@ -357,9 +357,9 @@
       color: #323338;
     }
   }
-  // @include for-mobile-layout {
-  //   display: none;
-  //  }
+  @include for-mobile-layout {
+    grid-column: 1;
+   }
 }
 
 .is-open {
