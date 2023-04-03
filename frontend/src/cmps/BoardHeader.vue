@@ -164,6 +164,8 @@
     <option value="kanban">Kanban</option>
     <option value="dashboard">Dashboard</option>
   </select>
+</div>
+  
   <div  :class="{ activeFilter: activeFilter === 'filter' }"
         v-tippy="{
           content: 'Filter by anything',
@@ -187,8 +189,6 @@
           >
         </span>
       </div>
-</div>
-
 </section>
 
 
