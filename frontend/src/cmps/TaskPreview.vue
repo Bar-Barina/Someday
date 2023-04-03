@@ -74,8 +74,9 @@
         </button>
       </div>
     </section>
-    <section class="cell2" v-for="(cmp, idx) in labels" :key="idx">
+    <section ref="confettiCell" class="cell2" v-for="(cmp, idx) in labels" :key="idx">
       <component
+        @confetti="startConfetti"
         :is="cmp"
         :task="task"
         :group="group"
@@ -182,7 +183,7 @@ export default {
     updateOptions({ updatedOptions, idx, type }) {
       const board = JSON.parse(JSON.stringify(this.currBoard));
       const labelsBeforeUpdate = board.labels[type];
-      labelsBeforeUpdate.forEach((label , idx) => {
+      labelsBeforeUpdate.forEach((label, idx) => {
         board.groups.forEach((group) => {
           group.tasks.forEach((task) => {
             if (task[type] === label.name) {

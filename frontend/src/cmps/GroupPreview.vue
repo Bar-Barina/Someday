@@ -198,7 +198,7 @@ export default {
     async saveGroup(task, group = this.group) {
       try {
         const toUpdate = { task, group };
-        this.$store.dispatch({ type: "saveTask", toUpdate });
+        await this.$store.dispatch({ type: "saveTask", toUpdate });
       } catch (err) {
         showErrorMsg("Couldnt add task");
       }

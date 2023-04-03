@@ -8,6 +8,7 @@ import vue3GoogleLogin from 'vue3-google-login'
 import VueTippy from 'vue-tippy'
 import 'tippy.js/dist/tippy.css'
 import 'tippy.js/themes/light.css'
+import VueConfetti from "vue-confetti";
 
 import { clickOutside, icon } from './directives.js'
 
@@ -17,6 +18,8 @@ import App from './App.vue'
 
 const app = createApp(App)
 
+
+app.use(VueConfetti);
 app.directive('icon', icon)
 app.directive('clickOutside', clickOutside)
 app.use(vue3GoogleLogin, {
