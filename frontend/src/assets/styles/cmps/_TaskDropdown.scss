@@ -11,6 +11,9 @@
   margin-left: -29px;
   margin-top: 8px;
   border-radius: 6px;
+  @include for-mobile-layout {
+    background-color: #2d2d2d;
+  }
 
   .arrow-up-div {
     position: absolute;
@@ -21,6 +24,9 @@
     margin-left: 47%;
     z-index: 52;
     rotate: 45deg;
+    @include for-mobile-layout {
+      background-color: #2d2d2d;
+    }
   }
 
   .option {
@@ -43,6 +49,9 @@
     height: 32px;
     display: flex;
     position: relative;
+    @include for-mobile-layout {
+      color: $clr2;
+    }
     .editable-span {
       width: 100%;
       text-align: start;
@@ -110,12 +119,14 @@
 }
 
 .edit-labels {
-  
   color: $clr3;
   font-size: 14px;
   height: 32px;
   border-radius: 4px;
   margin-top: 10px;
+  @include for-mobile-layout {
+    color: $clr2;
+  }
   .icon-container {
     gap: 3px;
   }
@@ -137,6 +148,9 @@
   font-size: 14px;
   border: 1px solid rgb(228, 228, 228);
   min-width: 152px;
+  @include for-mobile-layout {
+    color: $clr2;
+  }
   .edit-plus {
     margin-top: 6px;
   }
