@@ -58,6 +58,7 @@ async function add(board) {
 async function update(board) {
     try {
         const boardToSave = {
+            labelsOrder: board.labelsOrder,
             owner:board.owner,
             title: board.title,
             labels:board.labels,

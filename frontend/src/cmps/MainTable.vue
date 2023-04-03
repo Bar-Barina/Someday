@@ -61,7 +61,6 @@ import {
   showErrorMsg,
 } from "../services/event-bus.service";
 export default {
-  emits: ["labelDrop"],
   data() {
     return {
       board: null,
@@ -93,7 +92,10 @@ export default {
     labelDrop(dropResult) {
       let newLabels = [...this.currLabelsOrder];
       newLabels = utilService.applyDrag(newLabels, dropResult);
-      this.$store.commit({type: 'setCurrLabels' , labelsOrder: newLabels})
+      const board = this.currBoard
+      board.labelsOrder = newLabels
+      console.log('board.labelsOrder', board.labelsOrder)
+      this.$store.dispatch({type: 'updateBoard' , board})
     },
     addSelected({ group, task }) {
       if (!this.selectedTasks[group._id]) this.selectedTasks[group._id] = [];
@@ -145,7 +147,7 @@ export default {
       return Object.keys(this.selectedTasks).length;
     },
     currLabelsOrder() {
-      return this.$store.getters.currLabelsOrder
+      return this.currBoard.labelsOrder
     }
   },
   components: {

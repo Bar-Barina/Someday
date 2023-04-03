@@ -54,15 +54,7 @@ async function save(board) {
 
 function filterBoard(board, filterBy) {
   const filteredBoard = JSON.parse(JSON.stringify(board))
-  const regex = new RegExp(filterBy.txt, 'i')
-  filteredBoard.groups = filteredBoard.groups
-    .map((group) => {
-      const filteredTasks = group.tasks.filter((task) => {
-        return JSON.stringify(task).match(regex)
-      })
-      return { ...group, tasks: filteredTasks }
-    })
-    .filter((group) => group.tasks.length > 0)
+
   if (filterBy.activeFilters.length > 0) {
     filteredBoard.groups = filteredBoard.groups.filter((group) => {
       return (group.tasks = group.tasks.filter((task) => {
@@ -82,6 +74,17 @@ function filterBoard(board, filterBy) {
       }))
     })
   }
+
+  const regex = new RegExp(filterBy.txt, 'i')
+  filteredBoard.groups = filteredBoard.groups
+    .map((group) => {
+      const filteredTasks = group.tasks.filter((task) => {
+        return JSON.stringify(task).match(regex)
+      })
+      return { ...group, tasks: filteredTasks }
+    })
+    .filter((group) => group.tasks.length > 0)
+    
   return filteredBoard
 }
 
@@ -168,6 +171,15 @@ function getEmptyBoard() {
     title: 'New Board',
     members: [],
     description: 'Add your board\'s description here',
+    labelsOrder: [
+      'Priority',
+      'Person',
+      'Status',
+      'Timeline',
+      'Date',
+      'Files',
+      'Text',
+    ],
     labels: {
       status: [
         { id: '101', name: 'Working on it', color: '#fdab3d', class: 'status-working', },

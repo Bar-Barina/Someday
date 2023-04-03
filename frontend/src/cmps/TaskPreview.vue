@@ -74,7 +74,7 @@
         </button>
       </div>
     </section>
-    <section class="cell2" v-for="(cmp, idx) in cmpsOrder" :key="idx">
+    <section class="cell2" v-for="(cmp, idx) in labels" :key="idx">
       <component
         :is="cmp"
         :task="task"
