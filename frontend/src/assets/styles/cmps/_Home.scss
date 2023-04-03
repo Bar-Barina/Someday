@@ -100,7 +100,7 @@
     }
   }
 
-  img {
+  img :not(.static-star) {
     border-top: 200px solid inherit;
     margin-top: 50px;
     width: 102%;
@@ -282,7 +282,7 @@
 .star18 {
   width: 9.55173px;
   height: 9.55173px;
-  left: 47.7%;
+  left: 15.7%;
   top: 53.7%;
   animation-duration: 20s;
   animation-delay: 10s;
@@ -313,9 +313,9 @@
   color: $clr2;
   font-size: 13px;
   font-family: 'Poppins';
-  margin-top: 17px;
+  // margin-top: 17px;
   span {
-    margin: 18px;
+    margin: 13px;
   }
   @include for-mobile-layout {
     font-size: 10px;
@@ -339,16 +339,3 @@
 }
 
 
-// .green-try-demo {
-//   height: 30vw;
-//   width: 30vw;
-//   border-radius: 50%;
-//   z-index: 10000000;
-//   background-color: #025231;
-//   position: absolute;
-//   left: calc(100% - 50vw);
-//   top: calc(100% - 36vw);
-//   opacity: 1;
-//   -webkit-transition: opacity 2s;
-//   transition: opacity 2s;
-// }
