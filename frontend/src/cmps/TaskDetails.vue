@@ -279,7 +279,6 @@ export default {
     },
     openTextArea() {
       return this.msg.txt !== "";
-      // return this.$refs.textArea.innerText !== ''
     },
     getTyping() {
       return this.typing;
@@ -290,10 +289,8 @@ export default {
   },
   created() {
     socketService.emit(SOCKET_EMIT_SET_TOPIC, this.task.id);
-    // socketService.on(SOCKET_EMIT_SEND_MSG, this.addMsg)
     socketService.on(SOCKET_EMIT_ADD_MSG, this.recieveMsg);
     socketService.on(SOCKET_EVENT_TYPING, this.renderTyping);
-    // socketService.on(SOCKET_EVENT_ADD_MSGS, msgs => msgs.forEach(this.addMsg))
     this.onUserStopInputDeb = utilService.debounce(this.onUserStopInput, 800);
   },
   destroyed() {
