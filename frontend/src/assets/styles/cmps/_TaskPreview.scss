@@ -26,6 +26,10 @@
     padding-inline-start: 30px;
     left: 78px;
     background-color: #fff;
+    @include for-mobile-layout {
+      left: 38px;
+      background-color: #fffffff5;
+    }
 
     .task-title-sub {
       max-width: 270px;
@@ -75,6 +79,12 @@
     height: 100%;
     width: 65px;
     border-left: 1px solid #d0d4e6;
+    @include for-mobile-layout {
+      position: absolute;
+      right: -65px;
+      background-color: white;
+      border-right: 1px solid #d0d4e6;
+      }
 
     &:hover {
       svg {

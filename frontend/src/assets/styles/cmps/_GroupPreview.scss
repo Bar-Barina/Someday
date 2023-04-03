@@ -1,8 +1,6 @@
 .smooth-dnd-container.vertical>.smooth-dnd-draggable-wrapper {
   overflow: visible;
-  @include for-mobile-layout {
-    width: 100vw;
-  }
+
 }
 
 
@@ -81,6 +79,9 @@
     .title-wrapper {
       width: auto;
       max-width: 100%;
+      @include for-mobile-layout {
+        max-width: 135%;
+      }
 
       h4 {
         white-space: nowrap;
@@ -127,6 +128,10 @@
   .third {
     left: 46px;
     background-color: #fff;
+    @include for-mobile-layout {
+      left: 11px;
+      z-index: 20000;
+    }
   }
 
   .arrow-down {
@@ -160,7 +165,8 @@
   .task-border {
     left: 40px;
     @include for-mobile-layout {
-      left: 5px;
+      left: 6px;
+      z-index: 20000;
     }
   }
 
@@ -183,9 +189,9 @@
     .group-grid.labels-grid {
       text-align: center;
       grid-template-columns: 40px 6px 32px 364px 980px 1fr;
-      // @include for-mobile-layout {
-      //   grid-template-columns: 6px 32px 364px 980px 1fr;
-      //   }
+      @include for-mobile-layout {
+        grid-template-columns: 6px 32px 364px 980px 1fr;
+        }
 
       .task-border {
         border-top-left-radius: 6px;
@@ -202,16 +208,27 @@
       .task-border {
         left: 40px;
         background-color: #fff;
+        @include for-mobile-layout {
+           left: 6px;
+           width: 5px;
+          }
       }
 
       .check-box {
         left: 46px;
         background-color: #fff;
+        min-width: 30px;
+        @include for-mobile-layout {
+          left: 11px;
+          }
       }
 
       .task {
         background-color: #fff;
         left: 78px;
+        @include for-mobile-layout {
+          left: 38px;
+          }
       }
     }
 
