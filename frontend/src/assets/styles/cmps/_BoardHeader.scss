@@ -28,6 +28,9 @@
   .board-name {
     height: 45px;
     width: max-content;
+    @include for-mobile-layout {
+      min-width: 240px;
+    }
     .icon {
       @include for-mobile-layout {
         display: none;
@@ -46,7 +49,7 @@
       // font-weight: 100;
       margin-left: -5px;
       color: rgb(50, 51, 56);
-
+      min-width: 235px;
       &:focus {
         width: 500px;
       }
@@ -433,4 +436,19 @@
   @include for-mobile-layout {
     display: block;
   }
+}
+
+.mobile-filter-header {
+  
+element.style {
+  background-color: #212121;
+  color: white;
+  border-radius: 4px;
+  font-size: 11px;
+  height: 24px;
+  width: fit-content;
+  min-width: 90px;
+  text-align: center;
+  font-family: 'PoppinsLight';
+}
 }
