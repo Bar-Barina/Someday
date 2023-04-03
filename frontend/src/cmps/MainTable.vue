@@ -144,6 +144,7 @@ export default {
       this.$store.dispatch({ type: 'saveTask', toUpdate: { group: newGroup } })
       const msg = 'New group added'
       showSuccessMsg(msg)
+      this.showAddOptions = !this.showAddOptions
     },
     updateDragGroup(group) {
       const board = this.currBoard
@@ -163,6 +164,7 @@ export default {
       this.task = boardService.getEmptyTask()
       const msg = 'New task added';
         showSuccessMsg(msg);
+        this.showAddOptions = !this.showAddOptions
     },
   },
   computed: {
