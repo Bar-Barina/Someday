@@ -17,7 +17,7 @@
           class="open-ai-input"
           type="text"
           placeholder="Your subject"
-          v-model="txt"
+          v-model="rec"
         />
         <span v-if="txt" class="send" v-icon="'sendOpenAI'" @click="sendQ"></span>
         <VoiceRecorder class="mic" v-if="!txt" @sendTxt="setTxt" @stopRec="sendQTest" />
