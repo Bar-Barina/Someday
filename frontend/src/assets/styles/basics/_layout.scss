@@ -5,7 +5,7 @@
     grid-template-areas:
         "side-nav workspace board-content";
         @include for-mobile-layout {
-            grid-template-columns: auto auto auto;
+            grid-template-columns: auto auto;
           }
 }
 
@@ -18,6 +18,9 @@
     > * {
         background-color: #fff;
     }
+    @include for-mobile-layout {
+        grid-template-columns: 6px 32px 364px repeat(7,140px) 1fr;
+      }
 }
 
 .side-nav {
