@@ -19,6 +19,9 @@
   svg {
     margin-top: 4px;
   }
+  @include for-mobile-layout {
+    display: none;
+  }
 }
 
 .mobile-plus {
