@@ -153,58 +153,121 @@ function getRandomColor() {
     '#ff5722',
     '#795548',
     '#9e9e9e',
-    '#607d8b'
-  ];
-  const randomColor = colors[Math.floor(Math.random() * colors.length)];
-  return randomColor;
+    '#607d8b',
+    '#2d3b49',
+    '#6d4c41',
+    '#c679e3',
+    '#f06292',
+    '#f4511e',
+    '#d81b60',
+    '#00bfa5',
+    '#64b5f6',
+    '#1e88e5',
+    '#0d47a1',
+    '#00acc1',
+    '#7b1fa2',
+    '#4527a0',
+    '#6a1b9a',
+    '#5d4037',
+    '#424242',
+    '#546e7a',
+    '#ef6c00',
+    '#d84315',
+    '#2e7d32',
+    '#006064',
+    '#3e2723',
+    '#827717',
+    '#f57f17',
+    '#e65100',
+    '#bf360c'
+  ]
+  const randomColor = colors[Math.floor(Math.random() * colors.length)]
+  return randomColor
 }
-
 
 function getRandomStatus() {
   const statuses = [
-    "New",
-    "In Progress",
-    "On Hold",
-    "Cancelled",
-    "Completed",
-    "Pending",
-    "Approved",
-    "Rejected",
-    "Under Review",
-    "Draft",
-    "Scheduled",
-    "Waiting",
-    "Delayed",
-    "Error",
-    "Resolved"
-  ];
-  const randomIndex = Math.floor(Math.random() * statuses.length);
-  return statuses[randomIndex];
+    'New',
+    'In Progress',
+    'On Hold',
+    'Cancelled',
+    'Completed',
+    'Pending',
+    'Approved',
+    'Rejected',
+    'Under Review',
+    'Draft',
+    'Scheduled',
+    'Waiting',
+    'Delayed',
+    'Error',
+    'Resolved',
+    'In Review',
+    'In Testing',
+    'In Design',
+    'In Development',
+    'In Production',
+    'On Track',
+    'Overdue',
+    'Deferred',
+    'Reopened',
+    'Resolved with Changes',
+    'Blocked',
+    'Closed',
+    'Duplicate',
+    'Verified',
+    'Rejected with Feedback',
+    'Rejected with No Feedback'
+
+  ]
+  const randomIndex = Math.floor(Math.random() * statuses.length)
+  return statuses[randomIndex]
 }
 
 function getRandomPriority() {
-const priorities = [
-  "High",
-  "Medium",
-  "Low",
-  "Urgent",
-  "Critical",
-  "Immediate",
-  "Important",
-  "Minor",
-  "Major",
-  "Top",
-  "Bottom",
-  "Emergency",
-  "Serious",
-  "Critical",
-  "Normal",
-  "Lowest",
-  "Highest",
-  "Extreme",
-  "Essential",
-  "Non-essential"
-]
-const randomIndex = Math.floor(Math.random() * priorities.length);
-return priorities[randomIndex];
+  const priorities = [
+    'High',
+    'Medium',
+    'Low',
+    'Urgent',
+    'Critical',
+    'Immediate',
+    'Important',
+    'Minor',
+    'Major',
+    'Top',
+    'Bottom',
+    'Emergency',
+    'Serious',
+    'Critical',
+    'Normal',
+    'Lowest',
+    'Highest',
+    'Extreme',
+    'Essential',
+    'Non-essential',
+    'Very High',
+    'Very Low',
+    'Critical High',
+    'Critical Low',
+    'Important High',
+    'Important Low',
+    'Non-Urgent',
+    'Rush',
+    'Mission-Critical',
+    'Critical Urgency',
+    'High Priority',
+    'Low Priority',
+    'Essential High',
+    'Essential Low',
+    'Routine',
+    'Out of Scope',
+    'On Hold High',
+    'On Hold Low',
+    'Minor Urgency',
+    'Major Urgency',
+    'Super High'
+  ]
+  const randomIndex = Math.floor(Math.random() * priorities.length)
+  return priorities[randomIndex]
 }
