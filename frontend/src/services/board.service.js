@@ -171,6 +171,15 @@ function getEmptyBoard() {
     title: 'New Board',
     members: [],
     description: 'Add your board\'s description here',
+    labelsOrder: [
+      'Priority',
+      'Person',
+      'Status',
+      'Timeline',
+      'Date',
+      'Files',
+      'Text',
+    ],
     labels: {
       status: [
         { id: '101', name: 'Working on it', color: '#fdab3d', class: 'status-working', },

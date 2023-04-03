@@ -1,7 +1,7 @@
 <template>
   <section class="task-dropdown">
     <div class="arrow-up-div"></div>
-    <section v-if="!showEditLabels" class="dropdown-list">
+    <section v-if="!showEditLabels" class="dropdown-list-active">
       <div
         v-if="!showEditLabels"
         v-for="(option, idx) in options[type]"
@@ -63,11 +63,11 @@
             arrow: true,
           }"
         >
-          <span
-            v-icon="'x'"
-            @click="removeLabel(idx)"
-            class="remove-label-btn"
-          ></span>
+        <span
+          v-icon="'x'"
+          @click="removeLabel(idx)"
+          class="remove-label-btn"
+        ></span>
         </div>
       </div>
       <ColorPicker

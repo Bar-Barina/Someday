@@ -93,7 +93,9 @@ export default {
     labelDrop(dropResult) {
       let newLabels = [...this.currLabelsOrder];
       newLabels = utilService.applyDrag(newLabels, dropResult);
-      this.$store.commit({type: 'setCurrLabels' , labelsOrder: newLabels})
+      const board = this.currBoard
+      board.labelsOrder = newLabels
+      this.$store.dispatch({type: 'updateBoard' , board})
     },
     addSelected({ group, task }) {
       if (!this.selectedTasks[group._id]) this.selectedTasks[group._id] = [];
@@ -145,7 +147,7 @@ export default {
       return Object.keys(this.selectedTasks).length;
     },
     currLabelsOrder() {
-      return this.$store.getters.currLabelsOrder
+      return this.currBoard.labelsOrder
     }
   },
   components: {

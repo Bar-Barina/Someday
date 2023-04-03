@@ -148,6 +148,13 @@
 
 .dropdown-list {
   display: grid;
+  gap: 8px 24px;
+  grid-template-rows: repeat(5, auto);
+  grid-auto-flow: column;
+}
+
+.dropdown-list-active {
+  display: grid;
   gap: 8px;
   grid-template-rows: repeat(5, auto);
   grid-auto-flow: column;

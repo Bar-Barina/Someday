@@ -47,13 +47,13 @@ export const boardStore = {
     isBlackScreen: false,
     statuses: ['Working on it', 'Stuck', 'Done', 'Blank'],
     filteredLabels: [
-      'Date',
-      'Text',
       'Priority',
       'Person',
-      'Files',
       'Status',
       'Timeline',
+      'Date',
+      'Files',
+      'Text',
     ],
   },
   getters: {

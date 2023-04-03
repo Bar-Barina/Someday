@@ -29,7 +29,7 @@
     <article v-for="(member, idx) in currBoard.members" :key="idx" class="members-list">
       <div class="member flex align-center">
       <img :src="member.imgUrl" />
-      <span>{{ member.name }}</span>
+      <span>{{ member.email }}</span>
       <div class="x flex justify-center align-center">
       <span @click.stop="removeMember(idx)" v-icon="'inviteX'"></span>
       </div>
