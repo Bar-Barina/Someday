@@ -7,6 +7,10 @@
 .main-content-table {
   width: 100%;
   overflow-x: scroll;
+  @include for-mobile-layout {
+    // overflow-x:hidden;
+    // overflow-y:hidden;
+  }
 
   &::-webkit-scrollbar {
     width: 11px;
