@@ -4,7 +4,7 @@
       v-for="(color, idx) in colors"
       :key="idx"
       class="color"
-      @click="updateColor(color)"
+      @click.stop="updateColor(color)"
       :style="{ backgroundColor: color }"
     ></div>
   </section>

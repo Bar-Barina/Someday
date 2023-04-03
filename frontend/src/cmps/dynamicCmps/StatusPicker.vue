@@ -5,7 +5,7 @@
     @click="toggleModal"
     :style="{ 'background-color': color }"
   >
-    {{ status }}
+    {{ task.status }}
     <TaskDropdown
       v-if="showDropdown"
       :options="labels"
@@ -50,6 +50,7 @@ export default {
       this.showDropdown = false
     },
     updateOptions(updatedOptions) {
+      console.log('statusPicker', updatedOptions)
       this.$emit('updateOptions', updatedOptions)
     },
   },

@@ -195,6 +195,7 @@ export const boardStore = {
       try {
         const user = userService.getLoggedInUser()
         let boards = await boardService.query(user)
+        console.log(boards)
         const board = JSON.parse(JSON.stringify(boards[0]))
         if(!user && !utilService.loadFromStorage('userId')) {
           board.owner = utilService.makeId()
