@@ -43,6 +43,10 @@
     height: 32px;
     display: flex;
     position: relative;
+    .editable-span {
+      width: 100%;
+      text-align: start;
+    }
     &:hover {
       outline: none;
     }

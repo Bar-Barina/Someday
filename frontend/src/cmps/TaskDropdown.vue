@@ -118,7 +118,8 @@ export default {
   methods: {
     changeOption(optionName) {
       this.$emit('updateOption', optionName)
-      const msg = 'Label changed'
+      const type = this.type.charAt(0).toUpperCase() + this.type.slice(1)
+      const msg = `${type} changed`
       showSuccessMsg(msg)
     },
     getSvg(iconName) {
@@ -137,7 +138,8 @@ export default {
         this.currOption.color = data
         updatedOptions[this.type].splice(optionIdx, 1, this.currOption)
         this.$emit('updateOptions', { updatedOptions })
-        const msg = 'Label color updated'
+        const type = this.type.charAt(0).toUpperCase() + this.type.slice(1)
+        const msg = `${type} color updated`
         showSuccessMsg(msg)
       }
     },
@@ -148,7 +150,8 @@ export default {
         option.name = event.target.innerText
         updatedOptions[this.type].splice(idx, 1, option)
         this.$emit('updateOptions', { updatedOptions, idx, type: this.type })
-        const msg = 'Label name updated'
+        const type = this.type.charAt(0).toUpperCase() + this.type.slice(1)
+        const msg = `${type} name updated`
         showSuccessMsg(msg)
       }
     },
@@ -171,7 +174,8 @@ export default {
       const updatedOptions = JSON.parse(JSON.stringify(this.options))
       updatedOptions[this.type].splice(idx, 1)
       this.$emit('updateOptions', { updatedOptions, type: this.type })
-      const msg = 'Label removed'
+      const type = this.type.charAt(0).toUpperCase() + this.type.slice(1)
+      const msg = `${type} removed`
       showSuccessMsg(msg)
     },
   },
