@@ -74,26 +74,6 @@ const routes = [
     name: 'Openai',
     component: OpenAI 
   },
-  // {
-  //   path: '/LoginSignup',
-  //   name: 'LoginSignup',
-  //   component: LoginSignup
-  // },
-  // {
-  //   path: '/review',
-  //   name: 'ReviewIndex',
-  //   component: ReviewIndex
-  // },
-  // {
-  //   path: '/chat',
-  //   name: 'Chat',
-  //   component: Chat
-  // },
-  // {
-  //   path: '/user/:id',
-  //   name: 'UserDetails',
-  //   component: UserDetails
-  // }
 ]
 
 

@@ -33,18 +33,18 @@
     border-radius: 4px;
     margin-bottom: 25px;
     &:focus {
-        outline: 1px solid $clr8;
-        border: none;
-      }
-      &:hover {
-        outline: 1px solid #323338;
-        border: none;
-      }
-      &::placeholder {
-        padding: 15px;
-        color: #c2c2c2;
-        font-size: 14px;
-      }
+      outline: 1px solid $clr8;
+      border: none;
+    }
+    &:hover {
+      outline: 1px solid #323338;
+      border: none;
+    }
+    &::placeholder {
+      padding: 15px;
+      color: #c2c2c2;
+      font-size: 14px;
+    }
   }
   .activity-list-wrapper {
     overflow-y: scroll;
@@ -78,8 +78,11 @@
     }
     .member-preview {
       width: 30px;
+      min-height: 30px;
+      min-width: 30px;
       margin: 15px;
       margin-right: 7px;
+      height: 30px;
     }
     .time-icon {
       svg {
@@ -99,10 +102,10 @@
     }
   }
   svg {
-  width: 22px;
-  max-width: 22px;
-  fill: rgb(65, 65, 65);
-}
+    width: 22px;
+    max-width: 22px;
+    fill: rgb(65, 65, 65);
+  }
 }
 .activity-status {
   display: flex;
@@ -169,7 +172,6 @@
   text-overflow: ellipsis;
 }
 
-
 .activity-time {
   min-width: 25px;
 }
@@ -203,6 +205,9 @@
       width: 30px;
       margin: 15px;
       margin-right: 7px;
+      min-height: 30px;
+      min-width: 30px;
+      height: 30px;
     }
     .time-icon {
       svg {
@@ -215,7 +220,7 @@
     width: 22px;
     fill: rgb(65, 65, 65);
   }
-  
+
   .status-img {
     height: 10px;
     width: 15px;
