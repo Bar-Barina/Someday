@@ -28,7 +28,6 @@
   .board-name {
     height: 45px;
     width: max-content;
-    min-width: 300px;
     .icon {
       @include for-mobile-layout {
         display: none;
