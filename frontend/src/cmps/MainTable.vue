@@ -61,7 +61,6 @@ import {
   showErrorMsg,
 } from "../services/event-bus.service";
 export default {
-  emits: ["labelDrop"],
   data() {
     return {
       board: null,
@@ -95,6 +94,7 @@ export default {
       newLabels = utilService.applyDrag(newLabels, dropResult);
       const board = this.currBoard
       board.labelsOrder = newLabels
+      console.log('board.labelsOrder', board.labelsOrder)
       this.$store.dispatch({type: 'updateBoard' , board})
     },
     addSelected({ group, task }) {
