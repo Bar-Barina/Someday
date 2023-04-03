@@ -10,6 +10,10 @@
   padding-top: 12px;
   border-right: 1.2px solid #d0d4e6;
   font-size: 14px;
+  @include for-mobile-layout {
+    background-color: #313131;
+    color: white;
+  }
 
   .workspace-header {
     justify-content: space-around;
@@ -305,6 +309,7 @@
         right: -10px;
       }
     }
+    
   }
 
   .workspace-open-btn {
@@ -326,6 +331,7 @@
       right 0.15s ease padding-inline-start 0.15s ease,
       background-color 0.15s ease;
     transition: 0.1s;
+    
 
     svg {
       margin-top: 1.5px;
@@ -344,6 +350,11 @@
         margin-top: 1px;
       }
     }
+    @include for-mobile-layout {
+      background-color: #313131;
+      color: white;
+      display: none;
+    }
   }
 
   .workspace-input {
@@ -357,9 +368,9 @@
       color: #323338;
     }
   }
-  @include for-mobile-layout {
-    grid-column: 1;
-   }
+  // @include for-mobile-layout {
+  //   grid-column: 1;
+  //  }
 }
 
 .is-open {

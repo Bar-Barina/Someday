@@ -19,7 +19,6 @@
     .task-title {
       background-color: rgb(245, 246, 248);
     }
-
   }
 
   .task-title {
@@ -28,7 +27,8 @@
     background-color: #fff;
     @include for-mobile-layout {
       left: 38px;
-      background-color: #fffffff5;
+      background-color: #313131;
+      color: white;
     }
 
     .task-title-sub {
@@ -84,7 +84,9 @@
       right: -65px;
       background-color: white;
       border-right: 1px solid #d0d4e6;
-      }
+      background-color: #313131;
+      color: white;
+    }
 
     &:hover {
       svg {
@@ -122,10 +124,10 @@
     cursor: pointer;
     margin-top: 3px;
     svg {
-        color: #c5c7d0;
-        &:hover {
-            color: #0073ea;
-        }
+      color: #c5c7d0;
+      &:hover {
+        color: #0073ea;
+      }
     }
   }
 }

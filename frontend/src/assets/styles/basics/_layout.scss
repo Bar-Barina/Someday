@@ -5,7 +5,7 @@
     grid-template-areas:
         "side-nav workspace board-content";
         @include for-mobile-layout {
-            grid-template-columns: auto auto;
+            grid-template-columns: auto;
           }
 }
 
@@ -41,4 +41,7 @@
 
 .last {
     border-right: none;
+    @include for-mobile-layout {
+        background-color: #313131;
+      }
 }
