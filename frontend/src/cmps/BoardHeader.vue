@@ -379,15 +379,18 @@ export default {
     },
     toggleFilterModal() {
       this.showFilter = !this.showFilter
-      this.activeFilter = 'filter'
+      if(this.activeFilter = 'filter') this.activeFilter = ''
+      else this.activeFilter = 'filter'
     },
     togglePersonModal() {
       this.showPersonFilter = !this.showPersonFilter
-      this.activeFilter = 'person'
+      if(this.activeFilter = 'person') this.activeFilter = ''
+      else this.activeFilter = 'person'
     },
     toggleHideModal() {
       this.isHideOpen = !this.isHideOpen
-      this.activeFilter = 'hide'
+      if(this.activeFilter = 'hide') this.activeFilter = ''
+      else this.activeFilter = 'hide'
     },
     closeModal() {
       this.showFilter = false
