@@ -154,6 +154,18 @@
         </div>
       </div>
     </section>
+
+
+<!-- ADDED -->
+    <section class="board-view-change-mobile flex align-center">
+  <select @change="switchBoardViewMobile($event.target.value)" v-model="active">
+    <option value="">Main Table</option>
+    <option value="kanban">Kanban</option>
+    <option value="dashboard">Dashboard</option>
+  </select>
+</section>
+
+
     <section class="bottom-header flex align-center">
       <div class="new-item flex justify-center align-center" @click="addTask">
         New Task
@@ -359,6 +371,14 @@ export default {
       this.active = routerName
       this.$router.push(`/board/${this.currBoard._id}/${routerName}`)
     },
+    switchBoardViewMobile(routerName) {
+    this.active = routerName;
+    if (routerName === '') {
+      this.$router.push(`/board/${this.currBoard._id}`);
+    } else {
+      this.$router.push(`/board/${this.currBoard._id}/${routerName}`);
+    }
+  },
     updateBoard() {
       const board = JSON.parse(JSON.stringify(this.currBoard))
       board.title = this.$refs.boardTitle.innerText

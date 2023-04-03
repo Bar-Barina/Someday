@@ -46,6 +46,9 @@
         box-shadow: 1px 8px 0 -1px #fff, inset 0 8px 9px -9px rgba(0, 0, 0, .1);
         border-top: 1px solid #d0d4e6;
         left: 46px;
+        @include for-mobile-layout {
+            left: 0px;
+          }
     }
 
     .fourth {

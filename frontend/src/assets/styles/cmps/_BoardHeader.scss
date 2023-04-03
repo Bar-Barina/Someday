@@ -29,6 +29,11 @@
     height: 45px;
     width: max-content;
     min-width: 300px;
+    .icon {
+      @include for-mobile-layout {
+        display: none;
+      }
+    }
 
     .title {
       display: flex;
@@ -73,6 +78,9 @@
     color: #676879;
     font-size: 14px;
     white-space: nowrap;
+    @include for-mobile-layout {
+      display: none;
+    }
 
     .header-desc {
       text-overflow: ellipsis;
@@ -125,6 +133,9 @@
   .board-view-change {
     height: em(36px);
     margin-top: 10px;
+    @include for-mobile-layout {
+      display: none;
+    }
 
     .view-option-container {
       height: em(36px);
@@ -301,7 +312,7 @@
   margin-inline-start: auto;
   border-radius: 4px;
   padding: 5px 4px;
-  
+
   svg {
     fill: #fff;
     stroke: #202020;
@@ -360,7 +371,7 @@
     border-radius: 8px;
     background-color: #fff;
     color: #323338;
-    box-shadow: 0 4px 17px 6px rgba(0,0,0,.1);
+    box-shadow: 0 4px 17px 6px rgba(0, 0, 0, 0.1);
     min-width: 264px;
     height: fit-content;
 
@@ -376,7 +387,7 @@
       height: 32px;
       width: 100%;
 
-      input[type="text"] {
+      input[type='text'] {
         padding: 8px 24px 8px 16px;
         width: 100%;
         white-space: normal;
@@ -401,5 +412,12 @@
 }
 
 .main-table {
-min-width: 105px;
+  min-width: 105px;
+}
+
+.board-view-change-mobile {
+  display: none;
+  @include for-mobile-layout {
+    display: block;
+  }
 }

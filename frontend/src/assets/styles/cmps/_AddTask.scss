@@ -16,7 +16,9 @@
         border-bottom-left-radius: 6px;
         left: 40px;
         @include for-mobile-layout {
-            left: 5px;
+            left: 6px;
+            z-index: 20001;
+            width: 4px;
           }
     }
 
@@ -24,6 +26,9 @@
         border-inline-end: 0;
         left: 78px;
         padding: 6px 10px;
+        @include for-mobile-layout {
+            left: 38px;
+          }
 
         input {
             border: 0;

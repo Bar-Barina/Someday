@@ -19,7 +19,7 @@
         background-color: #fff;
     }
     @include for-mobile-layout {
-        grid-template-columns: 6px 32px 364px repeat(7,140px) 1fr;
+        grid-template-columns: 6px 32px 190px repeat(7,140px) 1fr;
       }
 }
 
