@@ -157,12 +157,14 @@
 
 
 <!-- ADDED -->
-    <section class="board-view-change-mobile flex align-center">
+<section class="mobile-filter-header">
+    <div class="board-view-change-mobile flex align-center">
   <select @change="switchBoardViewMobile($event.target.value)" v-model="active">
     <option value="">Main Table</option>
     <option value="kanban">Kanban</option>
     <option value="dashboard">Dashboard</option>
   </select>
+</div>
 </section>
 
 
