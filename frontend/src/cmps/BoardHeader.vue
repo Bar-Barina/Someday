@@ -164,7 +164,31 @@
     <option value="kanban">Kanban</option>
     <option value="dashboard">Dashboard</option>
   </select>
+  <div  :class="{ activeFilter: activeFilter === 'filter' }"
+        v-tippy="{
+          content: 'Filter by anything',
+          theme: 'classic',
+          placement: 'top',
+          arrow: true,
+        }"
+        class="bottom-header-btn mobile-filter btn-hover"
+        @click="toggleMobileFilter"
+      >
+        <div
+          class="flex justify-center align-center"
+          v-html="getSvg('filter')"
+        ></div>
+        <span
+          >Filter
+          <span
+            v-if="activeFilters.length > 0"
+            :class="{ active: activeFilters.length}"
+            >/ {{ activeFilters.length }}</span
+          >
+        </span>
+      </div>
 </div>
+
 </section>
 
 
@@ -471,6 +495,9 @@ export default {
     closeInvite() {
       this.showInvite = false
     },
+    toggleMobileFilter() {
+
+    }
   },
   watch: {
     '$route.params': {

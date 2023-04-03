@@ -10,6 +10,11 @@
   padding-bottom: 20px;
   z-index: 2700;
 
+  @include for-mobile-layout {
+   height: 110px;
+}
+  
+
   .icon {
     height: em(32px);
     width: em(32px);
@@ -52,7 +57,8 @@
       }
 
       @include for-mobile-layout {
-        font-size: 24px;
+        font-size: 20px;
+        padding-left: 70px;
       }
 
       @include for-narrow-layout {
@@ -97,6 +103,7 @@
       &:hover {
         text-decoration: underline;
       }
+      
     }
   }
 
@@ -211,6 +218,10 @@
     padding-block: 15px;
     gap: 5px;
 
+    @include for-mobile-layout {
+      display: none;
+    }
+
     .add-group-arrow {
       width: 28px;
       height: 31px;
@@ -296,6 +307,12 @@
     justify-content: center;
     align-items: center;
     gap: 4px;
+
+    &.mobile-filter {
+      @include for-mobile-layout {
+        display: inline-flex;
+    }
+  }
 
     .filter-input {
       cursor: pointer;
