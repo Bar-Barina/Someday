@@ -23,7 +23,7 @@
 import TaskDropdown from "../TaskDropdown.vue";
 
 export default {
-  emits: ["updateTask", "updateOptions", "addLabel", "confetti"],
+  emits: ["updateTask", "updateOptions", "addLabel"],
   props: {
     task: Object,
   },
@@ -33,24 +33,6 @@ export default {
     return {
       showDropdown: false,
       selectedStatus: this.task.status,
-      settings: {
-        target: this.$refs.labelStatus,
-        max: 50,
-        size: 1,
-        animate: true,
-        props: ["circle", "square"],
-        colors: [
-          [165, 104, 246],
-          [230, 61, 135],
-          [0, 199, 228],
-          [253, 214, 126],
-        ],
-        origin: {
-          x: 0.5,
-          y: 0.5,
-          element: this.$refs.labelStatus,
-        },
-      },
     };
   },
   methods: {

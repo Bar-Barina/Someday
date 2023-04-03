@@ -74,9 +74,8 @@
         </button>
       </div>
     </section>
-    <section ref="confettiCell" class="cell2" v-for="(cmp, idx) in labels" :key="idx">
+    <section class="cell2" v-for="(cmp, idx) in labels" :key="idx">
       <component
-        @confetti="startConfetti"
         :is="cmp"
         :task="task"
         :group="group"
