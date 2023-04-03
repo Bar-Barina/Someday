@@ -130,7 +130,7 @@
     background-color: #fff;
     @include for-mobile-layout {
       left: 11px;
-      z-index: 20000;
+      // z-index: 20000;
     }
   }
 
@@ -166,7 +166,7 @@
     left: 40px;
     @include for-mobile-layout {
       left: 6px;
-      z-index: 20000;
+      // z-index: 20000;
     }
   }
 

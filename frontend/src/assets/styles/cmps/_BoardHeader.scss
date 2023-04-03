@@ -227,6 +227,9 @@
         margin-left: -4.5px;
         margin-top: 3px;
       }
+      @include for-mobile-layout {
+        display: none;
+      }
     }
   }
 
@@ -245,6 +248,9 @@
 
     &:hover {
       background-color: $primary-hover;
+    }
+    @include for-mobile-layout {
+      display: none;
     }
   }
 
