@@ -80,6 +80,7 @@
           <div class="flex align-center">
             <span
               class="activity-status"
+              :style="{ 'background-color': getActivityColor(activity , 'from') , 'color': '#fff' }"
               :class="{
                 timeline: activity.changed === 'timeline',
                 date: activity.changed === 'date',
@@ -94,15 +95,15 @@
               }"
             >
               {{
-                activity.changed === 'timeline'
+                activity.changed === "timeline"
                   ? timelineDisplay(activity.from)
                   : activity.from.length < activity.to.length &&
-                    activity.changed === 'person'
-                  ? 'Added'
+                    activity.changed === "person"
+                  ? "Added"
                   : activity.from.length > activity.to.length &&
-                    activity.changed === 'person'
-                  ? 'Removed'
-                  : activity.changed === 'person'
+                    activity.changed === "person"
+                  ? "Removed"
+                  : activity.changed === "person"
                   ? activity.to
                   : activity.from
               }}
@@ -111,6 +112,7 @@
             <span v-icon="'arrowRightG'" class="arrow-right"></span>
             <span
               class="activity-status"
+              :style="{ 'background-color': getActivityColor(activity , 'to') , 'color': '#fff' }"
               :class="{
                 timeline: activity.changed === 'timeline',
                 date: activity.changed === 'date',
@@ -125,7 +127,7 @@
               }"
             >
               {{
-                activity.changed === 'timeline'
+                activity.changed === "timeline"
                   ? timelineDisplay(activity.to)
                   : activity.to
               }}
@@ -138,87 +140,97 @@
 </template>
 
 <script>
-import TimeAgo from 'javascript-time-ago'
-import en from 'javascript-time-ago/locale/en'
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en";
 // import ActivityPerson from './ActivityPerson.vue'
-TimeAgo.addDefaultLocale(en)
-const timeAgo = new TimeAgo('en-US')
+TimeAgo.addDefaultLocale(en);
+const timeAgo = new TimeAgo("en-US");
 
 export default {
-  name: '',
+  name: "",
   props: {
     task: Object,
   },
   data() {
     return {
-      searchTerm: '',
+      searchTerm: "",
       // showFilter: false
-    }
+    };
   },
   methods: {
     timeSince(date) {
-      const timeAgoInstance = timeAgo.format(new Date(date), 'mini')
-      return timeAgoInstance
+      const timeAgoInstance = timeAgo.format(new Date(date), "mini");
+      return timeAgoInstance;
     },
     activityCheck() {
-      let activities = JSON.parse(JSON.stringify(this.currBoard.activities))
+      let activities = JSON.parse(JSON.stringify(this.currBoard.activities));
     },
     timelineDisplay(value) {
-      if (value.length === 0) return '-'
+      if (value.length === 0) return "-";
       return (
-        value[0].split('-')[0] +
-        ' ' +
-        value[0].split('-')[1] +
-        ' ' +
-        '-' +
-        ' ' +
-        value[1].split('-')[0] +
-        ' ' +
-        value[1].split('-')[1]
-      )
+        value[0].split("-")[0] +
+        " " +
+        value[0].split("-")[1] +
+        " " +
+        "-" +
+        " " +
+        value[1].split("-")[0] +
+        " " +
+        value[1].split("-")[1]
+      );
     },
     closeActivity() {
-      this.$emit('closeActivity')
+      this.$emit("closeActivity");
     },
-    
+    getActivityColor(activity , typeOfChange) {
+      const type = activity.changed;
+      const name = activity[typeOfChange];
+      if (type === "status" || type === "priority") {
+        const board = this.currBoard;
+        const label = board.labels[type].filter((label) => {
+          if (label.name === name) return label;
+          else return;
+        });
+        if(label[0]) return label[0].color
+        else return 'gray'
+      }
+    },
   },
   computed: {
     currBoard() {
-      return this.$store.getters.currBoard
+      return this.$store.getters.currBoard;
     },
     activities() {
-      const board = this.$store.getters.currBoard
-      const regex = new RegExp(this.searchTerm, 'i')
-      let activities = []
+      const board = this.$store.getters.currBoard;
+      const regex = new RegExp(this.searchTerm, "i");
+      let activities = [];
       if (this.task) {
-        activities = this.task.activities || []
+        activities = this.task.activities || [];
         activities.sort((a, b) => {
-          return new Date(b.createdAt) - new Date(a.createdAt)
-        })
-        return activities
+          return new Date(b.createdAt) - new Date(a.createdAt);
+        });
+        return activities;
       }
-      if (board.activities) activities.push(...board.activities)
+      if (board.activities) activities.push(...board.activities);
       board.groups.forEach((group) => {
-        if (group.activities) activities.push(...group.activities)
+        if (group.activities) activities.push(...group.activities);
         group.tasks.forEach((task) => {
-          if (task.activities) activities.push(...task.activities)
-        })
-      })
+          if (task.activities) activities.push(...task.activities);
+        });
+      });
       activities = activities.filter((activity) =>
         regex.test(activity.taskTitle)
-      )
+      );
       activities.sort((a, b) => {
-        return new Date(b.createdAt) - new Date(a.createdAt)
-      })
-      return activities
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      });
+      return activities;
     },
     loggedInUser() {
-      return this.$store.getters.loggedInUser
+      return this.$store.getters.loggedInUser;
     },
   },
-  created() {
-  },
-  components: {
-  },
-}
+  created() {},
+  components: {},
+};
 </script>

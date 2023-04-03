@@ -1,26 +1,96 @@
 .Add-new-group {
-    position: sticky;
-    left: 46px;
-    margin-top: 8px;
-    width: 142px;
-    height: 32px;
-    max-width: 300px;
-    padding: 5px;
-    cursor: pointer;
-    border: 2px solid #e6e9ef;
-    border-radius: 4px;
-    &:hover {
-        background-color: #dcdfec;
-    }
-    button {
-        border: none;
-        background-color: inherit;
-    }
-    svg {
-        margin-top: 4px;
-    }
+  position: sticky;
+  left: 46px;
+  margin-top: 8px;
+  width: 142px;
+  height: 32px;
+  max-width: 300px;
+  padding: 5px;
+  cursor: pointer;
+  border: 2px solid #e6e9ef;
+  border-radius: 4px;
+  &:hover {
+    background-color: #dcdfec;
+  }
+  button {
+    border: none;
+    background-color: inherit;
+  }
+  svg {
+    margin-top: 4px;
+  }
+  @include for-mobile-layout {
+    display: none;
+  }
 }
 
+.mobile-plus {
+  background-color: #0073ea;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  cursor: pointer;
+  transform: rotate(45deg);
+  display: none;
+  z-index: 10000;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+
+  span {
+    svg {
+      fill: $clr2;
+      margin-left: 14px;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+  }
+  @include for-mobile-layout {
+    display: block;
+  }
+}
+
+.add-new-mobile {
+  .icon-moblie {
+    background-color: #0073ea;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    bottom: 75px;
+    right: 20px;
+    z-index: 10000;
+  }
+  span {
+    svg {
+      fill: $clr2;
+      margin-left: 11px;
+      margin-top: -4px;
+      font-weight: bold;
+      width: 20px;
+    }
+  }
+  .add-group-moblie {
+    bottom: 125px;
+  }
+  .icon-mobile-text {
+    background-color: gray;
+    position: fixed;
+    bottom: 77px;
+    right: 70px;
+    padding: 10px;
+    color: $clr2;
+    border-radius: 5px;
+    font-size: 11px;
+    height: 32px;
+    z-index: 10000;
+  }
+  .task {
+    bottom: 130px;
+  }
+}
 // .main-loader {
 //     margin-left:  45%;
 //     margin-top:  20%;
@@ -44,14 +114,13 @@
 //     background-color: #fff;
 //     z-index: 99;
 //   }
-  
+
 //   #loading-image {
 //     position: absolute;
 //     top: 100px;
 //     left: 240px;
 //     z-index: 100;
 //   }
-
 
 // MAIN LOADER
 // <div id="loading">

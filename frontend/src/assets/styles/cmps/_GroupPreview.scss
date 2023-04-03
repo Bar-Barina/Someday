@@ -7,6 +7,10 @@
 .main-content-table {
   width: 100%;
   overflow-x: scroll;
+  @include for-mobile-layout {
+    // overflow-x:hidden;
+    // overflow-y:hidden;
+  }
 
   &::-webkit-scrollbar {
     width: 11px;
@@ -68,6 +72,12 @@
     &:hover {
       background-color: $clr016;
     }
+    
+    &.more-group {
+      @include for-mobile-layout {
+        display: none;
+      }
+    }
   }
 
   .title-wrapper-container {
@@ -75,6 +85,10 @@
     left: 78px;
     background-color: #fff;
     max-width: 100%;
+
+    @include for-mobile-layout {
+        left: 42px;
+    }
 
     .title-wrapper {
       width: auto;
@@ -130,7 +144,7 @@
     background-color: #fff;
     @include for-mobile-layout {
       left: 11px;
-      z-index: 20000;
+      // z-index: 20000;
     }
   }
 
@@ -138,6 +152,11 @@
     cursor: pointer;
     left: 48px;
     background-color: #fff;
+
+    @include for-mobile-layout {
+      margin-top: 6px;
+        left: 15px;
+    }
   }
 
   .group-title {
@@ -166,7 +185,7 @@
     left: 40px;
     @include for-mobile-layout {
       left: 6px;
-      z-index: 20000;
+      // z-index: 20000;
     }
   }
 
