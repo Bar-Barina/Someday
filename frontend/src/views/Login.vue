@@ -45,7 +45,6 @@
         <span class="separator-line"></span>
       </div>
       <button class="google">
-        <GoogleLogin :callback="callback"/>
         <img src="https://cdn.monday.com/images/logo_google_v2.svg" />Google
       </button>
       <div class="suggest-signup">
