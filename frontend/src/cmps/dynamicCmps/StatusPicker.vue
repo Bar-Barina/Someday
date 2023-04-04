@@ -5,7 +5,6 @@
     @click="toggleModal"
     :style="{ 'background-color': color }"
   >
-    <canvas ref="labelStatus"></canvas>
     {{ task.status }}
     <TaskDropdown
       v-if="showDropdown"
@@ -57,14 +56,6 @@ export default {
     },
     updateOptions(updatedOptions) {
       this.$emit("updateOptions", updatedOptions);
-    },
-    startConfetti() {
-      this.$confetti.start({
-        canvasElement: this.$refs.labelStatus,
-      });
-      setTimeout(() => {
-        this.$confetti.stop();
-      }, 3000);
     },
   },
   computed: {
