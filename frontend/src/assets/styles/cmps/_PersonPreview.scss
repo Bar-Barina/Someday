@@ -13,13 +13,17 @@
   padding: 15px;
   font-size: 14px;
 
+  .member-invite-container {
+    overflow-y: scroll;
+  }
+
   .person-img {
     border-radius: 50%;
   }
 
   .x-icon {
     color: #666;
-    padding-left:3px;
+    padding-left: 3px;
   }
 
   input {

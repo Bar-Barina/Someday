@@ -19,6 +19,7 @@
       <span v-if="!searchTerm" v-html="getSvg('searchGray')" class="workspace-icon-search"></span>
       <span v-else><span @click="this.searchTerm =' '" v-html="getSvg('x')" class="workspace-icon-search"></span></span>
     <p class="suggest-txt">Suggested people</p>
+    <section class="member-invite-container">
       <div
         class="flex align-center member"
         v-for="(member, idx) in filteredMembers"
@@ -32,6 +33,7 @@
       <span v-html="getSvg('invite')" class="workspace-icon-invite"></span>
       <p>Invite a new member by email</p>
     </div>
+  </section>
     </section>
   </section>
 </template>
