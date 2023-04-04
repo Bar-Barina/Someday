@@ -36,6 +36,7 @@
         can find and access this board</span
       >
     </div>
+    <section class="member-article-container">
     <article
       v-for="(member, idx) in currBoard.members"
       :key="idx"
@@ -49,6 +50,7 @@
         </div>
       </div>
     </article>
+  </section>
   </section>
 </template>
 

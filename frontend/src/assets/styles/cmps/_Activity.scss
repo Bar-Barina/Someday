@@ -1,5 +1,4 @@
 .board-activity-container {
-  // display: grid;
   position: fixed;
   top: 0;
   right: 0;
@@ -47,20 +46,18 @@
     }
   }
   .activity-list-wrapper {
-    overflow-y: scroll;
     overflow-x: hidden;
+    height: 100%;
     .activity-list {
       padding: 0 8px 10px 25px;
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: rgb(149, 149, 149);
-    }
-    &::-webkit-scrollbar {
-      width: 9px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: rgb(149, 149, 149);
+      height: 100%;
+      overflow-y: scroll;
+      &::-webkit-scrollbar-thumb {
+        background-color: rgb(149, 149, 149);
+      }
+      &::-webkit-scrollbar {
+        width: 9px;
+      }
     }
   }
   .board-activity {
