@@ -32,7 +32,7 @@
     left: 78px;
     padding: 6px 10px;
     @include for-mobile-layout {
-      left: 38px;
+      left: 0px;
       background-color: #232323;
       color: white;
     }

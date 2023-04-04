@@ -59,6 +59,7 @@
             background-color: #232323;
             box-shadow: 0 6px 2px -2px #232323;
             left: -2px;
+            border-top: 1px solid #d0d4e6;
           }
     }
 
@@ -82,6 +83,7 @@
         @include for-mobile-layout {
             background-color: #232323;
             box-shadow: 0 6px 2px -2px #232323;
+            display: none;
           }
     }
 
