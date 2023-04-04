@@ -17,6 +17,7 @@
       <!-- Members -->
       <article class="filter-members flex column">
         <p>Members</p>
+        <div class="labels-container flex column">
         <div
           v-tippy="{
             content: 'Member is ' + member.name,
@@ -30,8 +31,10 @@
           @click.stop="ChangeActive(member.name)"
           :class="{ active: isActive(member.name) }"
         >
+   
           <img :src="member.imgUrl" class="filter-member-img" />
           <span>{{ member.name }}</span>
+        </div>
         </div>
       </article>
       <!-- Status -->
