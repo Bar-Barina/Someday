@@ -180,12 +180,11 @@ export const boardStore = {
       return board
     },
     async updateBoard(context, { board }) {
-      console.log('board from store', board)
       try {
-        board = await boardService.save(board)
-        socketService.emit('update-boards', board)
-        context.commit(getActionUpdateBoard(board))
-        return board
+        const newBoard = await boardService.save(board)
+        socketService.emit('update-boards', newBoard)
+        context.commit({type: 'updateBoard', board: newBoard})
+        return newBoard
       } catch (err) {
         console.log('boardStore: Error in updateBoard', err)
         throw err

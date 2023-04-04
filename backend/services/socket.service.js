@@ -77,10 +77,13 @@ function setupSocketAPI(http) {
             socket.broadcast.emit('update-boards' , {boards , board})
             return
         })
-        // socket.on('update-board', (board) => {
-        //     socket.broadcast.emit('update-boards' , board)
-        //     return
-        // })
+        socket.on('update-board', async (board) => {
+            const boards = await boardService.query()
+            const boardIdx = boards.findIndex(b => b._id === board)
+            boards.splice(boardIdx , 1 , board)
+            socket.broadcast.emit('update-boards' , board)
+            return
+        })
     })
 }
 
