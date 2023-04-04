@@ -22,18 +22,13 @@
           ><div className="arrow" v-html="getSvg('arrow')"></div
         ></span></button
     ></RouterLink>
-    <div class="unlimited">
+    <div class="unlimited flex align-center">
       <span>No credit card needed</span>
-      <span class="star star18"></span>
+      <!-- <span class="star star18">s</span> -->
+      <img src="https://i.gyazo.com/c64f40b8df741c834a4ce196354333c1.png" class="static-star"/>
       <span>Unlimited time on Free plan</span>
     </div>
     <HomeCarousel />
-    <!-- <div class="green-try-demo">Try the 
-      <br>
-      interactive demo 
-      <p>See how easy it is to manage your work with someday.com</p>
-      <button>Let's go</button>
-    </div> -->
     <section></section>
   </section>
   <div class="home-footer">Trusted by 180,000+ customers worldwide</div>

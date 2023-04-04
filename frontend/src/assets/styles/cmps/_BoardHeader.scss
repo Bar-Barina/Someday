@@ -9,11 +9,23 @@
   background-color: #fff;
   padding-bottom: 20px;
   z-index: 2700;
-
+  .dots-div {
+    svg {
+      fill: black;
+    }
+  }
   @include for-mobile-layout {
-   height: 110px;
-}
-  
+    padding-inline: 0px;
+    padding-top: 8px;
+    height: 110px;
+    background-color: #232323;
+    color: white;
+    .dots-div {
+      svg {
+        fill: white;
+      }
+    }
+  }
 
   .icon {
     height: em(32px);
@@ -61,7 +73,8 @@
 
       @include for-mobile-layout {
         font-size: 20px;
-        padding-left: 70px;
+        color: white;
+        justify-content: center;
       }
 
       @include for-narrow-layout {
@@ -106,7 +119,6 @@
       &:hover {
         text-decoration: underline;
       }
-      
     }
   }
 
@@ -190,7 +202,6 @@
   .activePersonFilter {
     background-color: #cce5ff;
     height: 30px;
-
     &:hover {
       background-color: $clr39;
     }
@@ -314,8 +325,8 @@
     &.mobile-filter {
       @include for-mobile-layout {
         display: inline-flex;
+      }
     }
-  }
 
     .filter-input {
       cursor: pointer;
@@ -456,16 +467,48 @@
 }
 
 .mobile-filter-header {
-  
-element.style {
-  background-color: #212121;
-  color: white;
-  border-radius: 4px;
-  font-size: 11px;
-  height: 24px;
-  width: fit-content;
-  min-width: 90px;
-  text-align: center;
-  font-family: 'PoppinsLight';
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 15px;
+  padding-inline: 30px;
+  select {
+    background-color:#3d3d3d;
+    color: white;
+    font-family: 'PoppinsLight';
+    border-radius: 4px;
+    font-size: 11px;
+    height: 24px;
+    width: 100%;
+    min-width: 90px;
+    text-align: center;
+    border: none;
+  }
+  .mobile-filter {
+    background-color:#3d3d3d;
+    color: white;
+    font-family: 'PoppinsLight';
+    border-radius: 4px;
+    font-size: 11px;
+    height: 24px;
+    width: 100%;
+    text-align: center;
+  }
+  @include for-mobile-layout {
+    display: grid;
+  }
 }
+
+.mobile-arrow {
+  display: none;
+  svg {
+    fill: white;
+    path {
+      height: 10px;
+      width: 20px;
+    }
+  }
+  @include for-mobile-layout {
+    display: block;
+  }
 }

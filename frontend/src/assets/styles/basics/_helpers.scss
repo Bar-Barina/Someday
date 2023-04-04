@@ -67,6 +67,9 @@
   border-right: 1px solid $clr014;
   font-size: 0.875em;
   position: relative;
+  @include for-mobile-layout {
+    background-color: #232323;
+  }
 }
 
 .cell1 {
@@ -234,6 +237,11 @@
 
 .selected-cell {
   border: 2px solid blue;
+}
+
+.dark-mode {
+  background-color: #232323;
+  color: white;
 }
 
 // Media helpers

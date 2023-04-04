@@ -5,6 +5,7 @@
     @click="toggleModal"
     :style="{ 'background-color': color }"
   >
+    <canvas ref="labelStatus"></canvas>
     {{ task.status }}
     <TaskDropdown
       v-if="showDropdown"
@@ -15,64 +16,76 @@
       optionClass="status-option"
     />
     <span class="peeling-span scale-up-tr"></span>
-    <span
-    v-if="selectedStatus === 'Done'"
-    class="confetti-sprite-animation"
-  ></span>
   </div>
 </template>
 
 <script>
-import TaskDropdown from '../TaskDropdown.vue'
+import TaskDropdown from "../TaskDropdown.vue";
 
 export default {
-  emits: ['updateTask', 'updateOptions', 'addLabel'],
+  emits: ["updateTask", "updateOptions", "addLabel"],
   props: {
     task: Object,
   },
-  name: '',
+  name: "",
+  created() {},
   data() {
     return {
       showDropdown: false,
       selectedStatus: this.task.status,
-    }
+    };
   },
   methods: {
-    updateStatus(status) {
-      this.selectedStatus = status
-      this.toggleModal()
-      this.$emit('updateTask', { cmpType: 'status', data: status })
+    async updateStatus(status) {
+      this.selectedStatus = status;
+      this.toggleModal();
+      if (status === "Done") {
+    
+          this.$emit("updateTask", { cmpType: "status", data: status });
+              this.$confetti.start({
+          canvasElement: this.$refs.labelStatus,
+              })
+        return
+      }
+      this.$emit("updateTask", { cmpType: "status", data: status });
     },
     toggleModal() {
-      this.showDropdown = !this.showDropdown
+      this.showDropdown = !this.showDropdown;
     },
     closeModal() {
-      this.showDropdown = false
+      this.showDropdown = false;
     },
     updateOptions(updatedOptions) {
-      console.log('statusPicker', updatedOptions)
-      this.$emit('updateOptions', updatedOptions)
+      this.$emit("updateOptions", updatedOptions);
+    },
+    startConfetti() {
+      this.$confetti.start({
+        canvasElement: this.$refs.labelStatus,
+      });
+      setTimeout(() => {
+        this.$confetti.stop();
+      }, 3000);
     },
   },
   computed: {
     labels() {
-      return this.$store.getters.currBoard.labels
+      return this.$store.getters.currBoard.labels;
     },
     status() {
-      return this.selectedStatus
+      return this.selectedStatus;
     },
     color() {
-      const labels = this.labels
-      let currColor = ''
-      if (!labels) return
+      const labels = this.labels;
+      let currColor = "";
+      if (!labels) return;
       labels.status.forEach((label) => {
-        if (label.name === this.task.status) currColor = label.color
-      })
-      return currColor
+        if (label.name === this.task.status) currColor = label.color;
+      });
+      return currColor;
     },
   },
   components: {
     TaskDropdown,
   },
-}
+};
 </script>

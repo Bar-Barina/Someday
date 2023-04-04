@@ -182,7 +182,7 @@ export default {
     updateOptions({ updatedOptions, idx, type }) {
       const board = JSON.parse(JSON.stringify(this.currBoard));
       const labelsBeforeUpdate = board.labels[type];
-      labelsBeforeUpdate.forEach((label , idx) => {
+      labelsBeforeUpdate.forEach((label, idx) => {
         board.groups.forEach((group) => {
           group.tasks.forEach((task) => {
             if (task[type] === label.name) {

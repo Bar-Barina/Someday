@@ -26,18 +26,22 @@
 
     .el-input__wrapper {
         padding: 0;
+          @include for-mobile-layout {
+            background-color: #232323;
+          }
     }
 
     .el-input {
         padding: 5px;
-        --el-input-border-radius: 0%;
-       
+        --el-input-border-radius: 0%;   
+            
     }
 
     .el-input__wrapper {
         opacity: 0;
         padding: 0;
         background-image: none;
+        
      
     }
 
@@ -60,7 +64,10 @@
         height: 27px;
         background-color: white;
         width: 100%;
-      
+        @include for-mobile-layout {
+            background-color: #232323;
+            color: white;
+          }
     }
 
     .date-preview {

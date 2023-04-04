@@ -14,6 +14,10 @@
     position: relative;
     height: 100%;
     width: 100%;
+    @include for-mobile-layout {
+      background-color: #232323;
+      color: white;
+    }
   }
 
   .file-image {

@@ -15,7 +15,8 @@ export const boardService = {
   removeItem,
   filterBoard,
   getEmptyActivity,
-  getDefaultLabels
+  getDefaultLabels,
+  getLabelsOrder
 }
 window.cs = boardService
 
@@ -146,6 +147,18 @@ async function removeItem(board, groupId, taskId) {
   }
   save(currBoard)
   return currBoard
+}
+
+function getLabelsOrder() {
+  return [
+    'Priority',
+    'Person',
+    'Status',
+    'Timeline',
+    'Date',
+    'Files',
+    'Text',
+  ]
 }
 
 function getDefaultLabels() {
