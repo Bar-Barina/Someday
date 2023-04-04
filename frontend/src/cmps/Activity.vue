@@ -33,7 +33,7 @@
               timeSince(activity.createdAt)
             }}</span>
             <img
-              :src="activity.by.imgUrl"
+              :src="activity.changedBy.imgUrl"
               class="member-preview"
             />
             <span class="activity-task-title">{{ activity.taskTitle }}</span>
@@ -226,7 +226,8 @@ export default {
       return this.$store.getters.loggedInUser;
     },
   },
-  created() {},
+  created() {
+  },
   components: {},
 };
 </script>
