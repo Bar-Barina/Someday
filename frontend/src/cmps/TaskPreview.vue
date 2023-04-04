@@ -102,6 +102,7 @@ import Files from "./dynamicCmps/FilesPicker.vue";
 import { eventBus } from "../services/event-bus.service";
 import EmptyProgress from "./dynamicCmps/EmptyProgress.vue";
 import { boardService } from "../services/board.service.local";
+import { userService } from '../services/user.service';
 
 export default {
   emits: ["saveTask", "remove", "addSelected", "removeSelected"],
@@ -152,6 +153,7 @@ export default {
       if (before) activity.from = before;
       else activity.from = this.task[cmpType];
       activity.changed = cmpType;
+      activity.by = userService.getLoggedInUser()
       activity.taskTitle = this.task.taskTitle;
       if (!taskToSave.activities) taskToSave.activities = [];
       taskToSave.activities.push(activity);
