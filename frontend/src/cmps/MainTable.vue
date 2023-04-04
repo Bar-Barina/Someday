@@ -113,7 +113,6 @@ export default {
       newLabels = utilService.applyDrag(newLabels, dropResult)
       const board = this.currBoard
       board.labelsOrder = newLabels
-      console.log('board.labelsOrder', board.labelsOrder)
       this.$store.dispatch({ type: 'updateBoard', board })
     },
     addSelected({ group, task }) {
