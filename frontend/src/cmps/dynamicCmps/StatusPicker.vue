@@ -38,14 +38,6 @@ export default {
     async updateStatus(status) {
       this.selectedStatus = status;
       this.toggleModal();
-      if (status === "Done") {
-    
-          this.$emit("updateTask", { cmpType: "status", data: status });
-              this.$confetti.start({
-          canvasElement: this.$refs.labelStatus,
-              })
-        return
-      }
       this.$emit("updateTask", { cmpType: "status", data: status });
     },
     toggleModal() {
