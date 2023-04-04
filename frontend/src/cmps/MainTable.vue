@@ -59,7 +59,7 @@
     </div>
     <div class="mobile-icon-container flex align-center">
       <span class="icon-mobile-text group">New Group</span>
-      <div class="add-task-moblie icon-moblie" @click="addGroup">
+      <div class="add-task-moblie icon-moblie" @click="addGroupMobile">
         <span v-icon="'mobileAddGroup'"></span>
       </div>
     </div>
@@ -138,6 +138,17 @@ export default {
       return svgService.getSvg(iconName)
     },
     addGroup() {
+      const newGroup = {
+        title: 'New Group',
+        color: '#e2445c',
+        tasks: [],
+      }
+      this.$store.dispatch({ type: 'saveTask', toUpdate: { group: newGroup } })
+      const msg = 'New group added'
+      showSuccessMsg(msg)
+      // this.showAddOptions = !this.showAddOptions
+    },
+    addGroupMobile() {
       const newGroup = {
         title: 'New Group',
         color: '#e2445c',

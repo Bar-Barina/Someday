@@ -10,8 +10,15 @@
   top: 40px;
   left: -104px;
   z-index: 1100;
-  padding: 15px;
+  // padding: 15px;
   font-size: 14px;
+
+  .member-invite-container {
+    overflow-y: scroll;
+    padding: 15px;
+    max-height: 230px;
+  }
+  
 
   .person-img {
     border-radius: 50%;
@@ -19,7 +26,7 @@
 
   .x-icon {
     color: #666;
-    padding-left:3px;
+    padding-left: 3px;
   }
 
   input {
@@ -29,6 +36,7 @@
     border-radius: 5px;
     margin-top: 20px;
     padding: 8px 24px 8px 16px;
+    margin: 15px;
 
     &:hover {
       border: 1px solid black;
@@ -53,6 +61,9 @@
       border-radius: 5px;
       height: 24px;
       padding: 3px;
+      position: absolute;
+      right: 20px;
+      top: -5px;
     }
 
     :hover {
@@ -108,6 +119,7 @@
   font-size: 12px;
   flex-wrap: wrap;
   justify-content: flex-start;
+  padding: 15px;
 
   .person-card {
     margin: 4px;
@@ -157,4 +169,8 @@
   margin-left: 44%;
   z-index: 52;
   rotate: 45deg;
+}
+
+.suggest-txt {
+  margin-left: 15px;
 }
