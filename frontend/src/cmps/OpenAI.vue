@@ -68,6 +68,7 @@ export default {
       this.closeAI();
     },
     createBoard(res) {
+      res.labelsOrder = boardService.getLabelsOrder()
       const taskAI = boardService.getEmptyTask();
       delete taskAI.taskTitle;
       res.groups.forEach((group) => {

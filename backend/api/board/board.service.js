@@ -39,6 +39,8 @@ async function remove(boardId) {
         await collection.deleteOne({ _id: ObjectId(boardId) })
         return boardId
     } catch (err) {
+        logger.error(`cannot remove board ${boardId}`, err)
+        throw err
     }
 }
 
