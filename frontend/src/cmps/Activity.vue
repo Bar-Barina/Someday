@@ -33,11 +33,7 @@
               timeSince(activity.createdAt)
             }}</span>
             <img
-              :src="
-                loggedInUser
-                  ? loggedInUser.imgUrl
-                  : 'https://cdn1.monday.com/dapulse_default_photo.png'
-              "
+              :src="activity.by.imgUrl"
               class="member-preview"
             />
             <span class="activity-task-title">{{ activity.taskTitle }}</span>
