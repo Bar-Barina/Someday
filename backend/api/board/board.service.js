@@ -13,7 +13,7 @@ async function query(userId) {
           ]}).toArray()
           console.log('boards', boards)
         if(boards.length === 0){
-            boards = await collection.find({ owner: "948jv8j432fj0239i9kf93203f"}).toArray()
+            boards = await collection.find({ owner: "skdj8s7dkj38jsk92d23sdk"}).toArray()
         }
         return boards
     } catch (err) {
