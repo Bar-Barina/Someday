@@ -64,6 +64,7 @@ export default {
   },
   computed: {
     firstBoard() {
+      console.log('this.$store.getters.boards', this.$store.getters.boards)
       return this.$store.getters.boards[0]._id
     },
   },
