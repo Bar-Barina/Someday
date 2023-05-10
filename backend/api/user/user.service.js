@@ -1,7 +1,6 @@
 
 const dbService = require('../../services/db.service')
 const logger = require('../../services/logger.service')
-const reviewService = require('../review/review.service')
 const ObjectId = require('mongodb').ObjectId
 
 module.exports = {
@@ -109,8 +108,6 @@ async function add(user) {
         const userToAdd = {
             accountName: user.accountName,
             password: user.password,
-            fullname: user.fullname,
-            imgUrl: user.imgUrl,
             email:user.email
         }
         console.log('user to add addddddddddd',userToAdd)

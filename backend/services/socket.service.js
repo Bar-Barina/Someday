@@ -1,6 +1,5 @@
 const logger = require('./logger.service')
 const userService = require('../api/user/user.service')
-const boardService = require('../api/board/board.service')
 
 var gIo = null
 

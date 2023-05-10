@@ -1,6 +1,6 @@
 require('dotenv').config()
 
 module.exports = {
-	dbURL: process.env.ATLAS_URL,
-	dbName: process.env.ATLAS_DB_NAME,
+	dbURL: "mongodb+srv://mister-toy:DOR1505te@mongo.rqczatz.mongodb.net/?retryWrites=true&w=majority",
+	dbName: "product_db",
 }
