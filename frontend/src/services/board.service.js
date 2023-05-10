@@ -97,7 +97,7 @@ function getEmptyActivity() {
     whatChanged: null,
     from: null,
     to: null,
-  }
+  } 
 }
 
 async function saveTask(board, group, task) {
